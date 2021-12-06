@@ -78,16 +78,16 @@ All URIs are relative to *http://localhost:3002*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**DeleteResource**](docs/DefaultApi.md#deleteresource) | **Delete** /services/{serviceId}/resources/{resourceId} | Delete Service Resource by ID
-*DefaultApi* | [**DeleteService**](docs/DefaultApi.md#deleteservice) | **Delete** /services/{id} | Delete Service by ID
-*DefaultApi* | [**GetResource**](docs/DefaultApi.md#getresource) | **Get** /services/{serviceId}/resources/{resourceId} | Return Service Resource by ID
-*DefaultApi* | [**GetResources**](docs/DefaultApi.md#getresources) | **Get** /services/{serviceId}/resources | Return Service Resources by page
-*DefaultApi* | [**GetService**](docs/DefaultApi.md#getservice) | **Get** /services/{id} | Return Service by ID
-*DefaultApi* | [**GetServices**](docs/DefaultApi.md#getservices) | **Get** /services/ | Return Services by page
-*DefaultApi* | [**NewService**](docs/DefaultApi.md#newservice) | **Post** /services/ | Create Service
-*DefaultApi* | [**PatchService**](docs/DefaultApi.md#patchservice) | **Patch** /services/{id} | Update Service by ID
-*DefaultApi* | [**PatchServiceResource**](docs/DefaultApi.md#patchserviceresource) | **Patch** /services/{serviceId}/resources/{resourceId} | Update Service Resource by ID
-*DefaultApi* | [**PostResource**](docs/DefaultApi.md#postresource) | **Post** /services/{serviceId}/resources | Create Service Resource
+*DefaultApi* | [**DeleteResource**](docs/DefaultApi.md#deleteresource) | **Delete** /edge_services/{serviceId}/resources/{resourceId} | Delete Service Resource by ID
+*DefaultApi* | [**DeleteService**](docs/DefaultApi.md#deleteservice) | **Delete** /edge_services/{id} | Delete Service by ID
+*DefaultApi* | [**GetResource**](docs/DefaultApi.md#getresource) | **Get** /edge_services/{serviceId}/resources/{resourceId} | Return Service Resource by ID
+*DefaultApi* | [**GetResources**](docs/DefaultApi.md#getresources) | **Get** /edge_services/{serviceId}/resources | Return Service Resources by page
+*DefaultApi* | [**GetService**](docs/DefaultApi.md#getservice) | **Get** /edge_services/{id} | Return Service by ID
+*DefaultApi* | [**GetServices**](docs/DefaultApi.md#getservices) | **Get** /edge_services/ | Return Services by page
+*DefaultApi* | [**NewService**](docs/DefaultApi.md#newservice) | **Post** /edge_services/ | Create Service
+*DefaultApi* | [**PatchService**](docs/DefaultApi.md#patchservice) | **Patch** /edge_services/{id} | Update Service by ID
+*DefaultApi* | [**PatchServiceResource**](docs/DefaultApi.md#patchserviceresource) | **Patch** /edge_services/{serviceId}/resources/{resourceId} | Update Service Resource by ID
+*DefaultApi* | [**PostResource**](docs/DefaultApi.md#postresource) | **Post** /edge_services/{serviceId}/resources | Create Service Resource
 
 
 ## Documentation For Models
@@ -95,7 +95,9 @@ Class | Method | HTTP request | Description
  - [CreateResourceRequest](docs/CreateResourceRequest.md)
  - [CreateServiceRequest](docs/CreateServiceRequest.md)
  - [ResourceResponse](docs/ResourceResponse.md)
+ - [ResourceResponseWithTotal](docs/ResourceResponseWithTotal.md)
  - [ServiceResponse](docs/ServiceResponse.md)
+ - [ServiceResponseWithTotals](docs/ServiceResponseWithTotals.md)
  - [UpdateResourceRequest](docs/UpdateResourceRequest.md)
  - [UpdateServiceRequest](docs/UpdateServiceRequest.md)
  - [Variable](docs/Variable.md)

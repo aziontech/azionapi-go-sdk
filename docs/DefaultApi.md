@@ -4,16 +4,16 @@ All URIs are relative to *http://localhost:3002*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteResource**](DefaultApi.md#DeleteResource) | **Delete** /services/{serviceId}/resources/{resourceId} | Delete Service Resource by ID
-[**DeleteService**](DefaultApi.md#DeleteService) | **Delete** /services/{id} | Delete Service by ID
-[**GetResource**](DefaultApi.md#GetResource) | **Get** /services/{serviceId}/resources/{resourceId} | Return Service Resource by ID
-[**GetResources**](DefaultApi.md#GetResources) | **Get** /services/{serviceId}/resources | Return Service Resources by page
-[**GetService**](DefaultApi.md#GetService) | **Get** /services/{id} | Return Service by ID
-[**GetServices**](DefaultApi.md#GetServices) | **Get** /services/ | Return Services by page
-[**NewService**](DefaultApi.md#NewService) | **Post** /services/ | Create Service
-[**PatchService**](DefaultApi.md#PatchService) | **Patch** /services/{id} | Update Service by ID
-[**PatchServiceResource**](DefaultApi.md#PatchServiceResource) | **Patch** /services/{serviceId}/resources/{resourceId} | Update Service Resource by ID
-[**PostResource**](DefaultApi.md#PostResource) | **Post** /services/{serviceId}/resources | Create Service Resource
+[**DeleteResource**](DefaultApi.md#DeleteResource) | **Delete** /edge_services/{serviceId}/resources/{resourceId} | Delete Service Resource by ID
+[**DeleteService**](DefaultApi.md#DeleteService) | **Delete** /edge_services/{id} | Delete Service by ID
+[**GetResource**](DefaultApi.md#GetResource) | **Get** /edge_services/{serviceId}/resources/{resourceId} | Return Service Resource by ID
+[**GetResources**](DefaultApi.md#GetResources) | **Get** /edge_services/{serviceId}/resources | Return Service Resources by page
+[**GetService**](DefaultApi.md#GetService) | **Get** /edge_services/{id} | Return Service by ID
+[**GetServices**](DefaultApi.md#GetServices) | **Get** /edge_services/ | Return Services by page
+[**NewService**](DefaultApi.md#NewService) | **Post** /edge_services/ | Create Service
+[**PatchService**](DefaultApi.md#PatchService) | **Patch** /edge_services/{id} | Update Service by ID
+[**PatchServiceResource**](DefaultApi.md#PatchServiceResource) | **Patch** /edge_services/{serviceId}/resources/{resourceId} | Update Service Resource by ID
+[**PostResource**](DefaultApi.md#PostResource) | **Post** /edge_services/{serviceId}/resources | Create Service Resource
 
 
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## GetResources
 
-> []ResourceResponse GetResources(ctx, serviceId).Page(page).Limit(limit).Filter(filter).SortBy(sortBy).SortAsc(sortAsc).Execute()
+> ResourceResponseWithTotal GetResources(ctx, serviceId).Page(page).Limit(limit).Filter(filter).SortBy(sortBy).SortAsc(sortAsc).Execute()
 
 Return Service Resources by page
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetResources``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetResources`: []ResourceResponse
+    // response from `GetResources`: ResourceResponseWithTotal
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetResources`: %v\n", resp)
 }
 ```
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ResourceResponse**](ResourceResponse.md)
+[**ResourceResponseWithTotal**](ResourceResponseWithTotal.md)
 
 ### Authorization
 
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ## GetService
 
-> ServiceResponse GetService(ctx, id).Execute()
+> ServiceResponse GetService(ctx, id).WithVars(withVars).Execute()
 
 Return Service by ID
 
@@ -321,10 +321,11 @@ import (
 
 func main() {
     id := int64(789) // int64 | 
+    withVars := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.GetService(context.Background(), id).Execute()
+    resp, r, err := api_client.DefaultApi.GetService(context.Background(), id).WithVars(withVars).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -350,6 +351,7 @@ Other parameters are passed through a pointer to a apiGetServiceRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **withVars** | **bool** |  | 
 
 ### Return type
 
@@ -371,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## GetServices
 
-> []ServiceResponse GetServices(ctx).Page(page).Limit(limit).Filter(filter).SortBy(sortBy).SortAsc(sortAsc).Execute()
+> ServiceResponseWithTotals GetServices(ctx).Page(page).Limit(limit).Filter(filter).SortBy(sortBy).SortAsc(sortAsc).Execute()
 
 Return Services by page
 
@@ -401,7 +403,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetServices``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetServices`: []ServiceResponse
+    // response from `GetServices`: ServiceResponseWithTotals
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetServices`: %v\n", resp)
 }
 ```
@@ -425,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ServiceResponse**](ServiceResponse.md)
+[**ServiceResponseWithTotals**](ServiceResponseWithTotals.md)
 
 ### Authorization
 

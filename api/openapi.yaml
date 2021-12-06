@@ -13,7 +13,7 @@ servers:
 security:
 - bearerAuth: []
 paths:
-  /api/v1/services/:
+  /edge_services/:
     get:
       operationId: getServices
       parameters:
@@ -59,9 +59,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/ServiceResponse'
-                type: array
+                $ref: '#/components/schemas/ServiceResponseWithTotals'
           description: OK
         "400":
           description: Bad Request
@@ -92,7 +90,7 @@ paths:
         "500":
           description: Internal Server Error
       summary: Create Service
-  /api/v1/services/{id}:
+  /edge_services/{id}:
     delete:
       operationId: deleteService
       parameters:
@@ -129,6 +127,13 @@ paths:
           format: int64
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: with_vars
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -178,7 +183,7 @@ paths:
         "500":
           description: Internal Server Error
       summary: Update Service by ID
-  /api/v1/services/{serviceId}/resources:
+  /edge_services/{serviceId}/resources:
     get:
       operationId: getResources
       parameters:
@@ -232,9 +237,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/ResourceResponse'
-                type: array
+                $ref: '#/components/schemas/ResourceResponseWithTotal'
           description: OK
         "400":
           description: Bad Request
@@ -278,7 +281,7 @@ paths:
         "500":
           description: Internal Server Error
       summary: Create Service Resource
-  /api/v1/services/{serviceId}/resources/{resourceId}:
+  /edge_services/{serviceId}/resources/{resourceId}:
     delete:
       operationId: deleteResource
       parameters:
@@ -453,6 +456,35 @@ components:
       - type
       - updated_at
       type: object
+    ResourceResponseWithTotal:
+      additionalProperties: false
+      example:
+        total: 6
+        resources:
+        - content_type: content_type
+          updated_at: updated_at
+          last_editor: last_editor
+          name: name
+          id: 0
+          type: type
+        - content_type: content_type
+          updated_at: updated_at
+          last_editor: last_editor
+          name: name
+          id: 0
+          type: type
+      properties:
+        resources:
+          items:
+            $ref: '#/components/schemas/ResourceResponse'
+          type: array
+        total:
+          format: int64
+          type: integer
+      required:
+      - resources
+      - total
+      type: object
     ServiceResponse:
       additionalProperties: false
       example:
@@ -501,6 +533,51 @@ components:
       - name
       - permissions
       - updated_at
+      type: object
+    ServiceResponseWithTotals:
+      additionalProperties: false
+      example:
+        total: 1
+        services:
+        - variables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          updated_at: updated_at
+          permissions:
+          - permissions
+          - permissions
+          last_editor: last_editor
+          name: name
+          active: true
+          bound_nodes: 0
+          id: 6
+        - variables:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          updated_at: updated_at
+          permissions:
+          - permissions
+          - permissions
+          last_editor: last_editor
+          name: name
+          active: true
+          bound_nodes: 0
+          id: 6
+      properties:
+        services:
+          items:
+            $ref: '#/components/schemas/ServiceResponse'
+          type: array
+        total:
+          format: int64
+          type: integer
+      required:
+      - services
+      - total
       type: object
     UpdateResourceRequest:
       additionalProperties: false
