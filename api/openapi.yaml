@@ -268,7 +268,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResourceResponse'
+                $ref: '#/components/schemas/ResourceDetail'
           description: Created
         "400":
           description: Bad Request
@@ -339,7 +339,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResourceResponse'
+                $ref: '#/components/schemas/ResourceDetail'
           description: OK
         "400":
           description: Bad Request
@@ -378,7 +378,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResourceResponse'
+                $ref: '#/components/schemas/ResourceDetail'
           description: OK
         "400":
           description: Bad Request
@@ -424,6 +424,33 @@ components:
           type: string
       required:
       - name
+      type: object
+    ResourceDetail:
+      additionalProperties: false
+      example:
+        content_type: content_type
+        name: name
+        id: 0
+        type: type
+        content: content
+      properties:
+        content:
+          type: string
+        content_type:
+          type: string
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - content
+      - content_type
+      - id
+      - name
+      - type
       type: object
     ResourceResponse:
       additionalProperties: false

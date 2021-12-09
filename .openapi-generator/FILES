@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -9,8 +8,11 @@ configuration.go
 docs/CreateResourceRequest.md
 docs/CreateServiceRequest.md
 docs/DefaultApi.md
+docs/ResourceDetail.md
 docs/ResourceResponse.md
+docs/ResourceResponseWithTotal.md
 docs/ServiceResponse.md
+docs/ServiceResponseWithTotals.md
 docs/UpdateResourceRequest.md
 docs/UpdateServiceRequest.md
 docs/Variable.md
@@ -19,8 +21,11 @@ go.mod
 go.sum
 model_create_resource_request.go
 model_create_service_request.go
+model_resource_detail.go
 model_resource_response.go
+model_resource_response_with_total.go
 model_service_response.go
+model_service_response_with_totals.go
 model_update_resource_request.go
 model_update_service_request.go
 model_variable.go
