@@ -225,7 +225,7 @@ type ApiGetResourceRequest struct {
 }
 
 
-func (r ApiGetResourceRequest) Execute() (ResourceResponse, *_nethttp.Response, error) {
+func (r ApiGetResourceRequest) Execute() (ResourceDetail, *_nethttp.Response, error) {
 	return r.ApiService.GetResourceExecute(r)
 }
 
@@ -247,15 +247,15 @@ func (a *DefaultApiService) GetResource(ctx _context.Context, serviceId int64, r
 }
 
 // Execute executes the request
-//  @return ResourceResponse
-func (a *DefaultApiService) GetResourceExecute(r ApiGetResourceRequest) (ResourceResponse, *_nethttp.Response, error) {
+//  @return ResourceDetail
+func (a *DefaultApiService) GetResourceExecute(r ApiGetResourceRequest) (ResourceDetail, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ResourceResponse
+		localVarReturnValue  ResourceDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetResource")
@@ -958,7 +958,7 @@ func (r ApiPatchServiceResourceRequest) UpdateResourceRequest(updateResourceRequ
 	return r
 }
 
-func (r ApiPatchServiceResourceRequest) Execute() (ResourceResponse, *_nethttp.Response, error) {
+func (r ApiPatchServiceResourceRequest) Execute() (ResourceDetail, *_nethttp.Response, error) {
 	return r.ApiService.PatchServiceResourceExecute(r)
 }
 
@@ -980,15 +980,15 @@ func (a *DefaultApiService) PatchServiceResource(ctx _context.Context, serviceId
 }
 
 // Execute executes the request
-//  @return ResourceResponse
-func (a *DefaultApiService) PatchServiceResourceExecute(r ApiPatchServiceResourceRequest) (ResourceResponse, *_nethttp.Response, error) {
+//  @return ResourceDetail
+func (a *DefaultApiService) PatchServiceResourceExecute(r ApiPatchServiceResourceRequest) (ResourceDetail, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ResourceResponse
+		localVarReturnValue  ResourceDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PatchServiceResource")
@@ -1075,7 +1075,7 @@ func (r ApiPostResourceRequest) CreateResourceRequest(createResourceRequest Crea
 	return r
 }
 
-func (r ApiPostResourceRequest) Execute() (ResourceResponse, *_nethttp.Response, error) {
+func (r ApiPostResourceRequest) Execute() (ResourceDetail, *_nethttp.Response, error) {
 	return r.ApiService.PostResourceExecute(r)
 }
 
@@ -1095,15 +1095,15 @@ func (a *DefaultApiService) PostResource(ctx _context.Context, serviceId int64) 
 }
 
 // Execute executes the request
-//  @return ResourceResponse
-func (a *DefaultApiService) PostResourceExecute(r ApiPostResourceRequest) (ResourceResponse, *_nethttp.Response, error) {
+//  @return ResourceDetail
+func (a *DefaultApiService) PostResourceExecute(r ApiPostResourceRequest) (ResourceDetail, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ResourceResponse
+		localVarReturnValue  ResourceDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PostResource")

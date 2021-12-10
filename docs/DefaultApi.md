@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## GetResource
 
-> ResourceResponse GetResource(ctx, serviceId, resourceId).Execute()
+> ResourceDetail GetResource(ctx, serviceId, resourceId).Execute()
 
 Return Service Resource by ID
 
@@ -181,7 +181,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetResource`: ResourceResponse
+    // response from `GetResource`: ResourceDetail
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetResource`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceResponse**](ResourceResponse.md)
+[**ResourceDetail**](ResourceDetail.md)
 
 ### Authorization
 
@@ -579,7 +579,7 @@ Name | Type | Description  | Notes
 
 ## PatchServiceResource
 
-> ResourceResponse PatchServiceResource(ctx, serviceId, resourceId).UpdateResourceRequest(updateResourceRequest).Execute()
+> ResourceDetail PatchServiceResource(ctx, serviceId, resourceId).UpdateResourceRequest(updateResourceRequest).Execute()
 
 Update Service Resource by ID
 
@@ -607,7 +607,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PatchServiceResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchServiceResource`: ResourceResponse
+    // response from `PatchServiceResource`: ResourceDetail
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.PatchServiceResource`: %v\n", resp)
 }
 ```
@@ -634,7 +634,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceResponse**](ResourceResponse.md)
+[**ResourceDetail**](ResourceDetail.md)
 
 ### Authorization
 
@@ -652,7 +652,7 @@ Name | Type | Description  | Notes
 
 ## PostResource
 
-> ResourceResponse PostResource(ctx, serviceId).CreateResourceRequest(createResourceRequest).Execute()
+> ResourceDetail PostResource(ctx, serviceId).CreateResourceRequest(createResourceRequest).Execute()
 
 Create Service Resource
 
@@ -679,7 +679,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PostResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PostResource`: ResourceResponse
+    // response from `PostResource`: ResourceDetail
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.PostResource`: %v\n", resp)
 }
 ```
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceResponse**](ResourceResponse.md)
+[**ResourceDetail**](ResourceDetail.md)
 
 ### Authorization
 

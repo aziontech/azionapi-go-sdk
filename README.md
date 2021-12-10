@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 
  - [CreateResourceRequest](docs/CreateResourceRequest.md)
  - [CreateServiceRequest](docs/CreateServiceRequest.md)
+ - [ResourceDetail](docs/ResourceDetail.md)
  - [ResourceResponse](docs/ResourceResponse.md)
  - [ResourceResponseWithTotal](docs/ResourceResponseWithTotal.md)
  - [ServiceResponse](docs/ServiceResponse.md)
