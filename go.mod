@@ -1,4 +1,4 @@
-module github.com/aziontech/edgeservices-go-sdk
+module github.com/aziontech/azionapi-go-sdk
 
 go 1.13
 
