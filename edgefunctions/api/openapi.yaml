@@ -1,0 +1,425 @@
+openapi: 3.0.0
+info:
+  description: Azion Edge Function API
+  title: Edge Function
+  version: "3.0"
+servers:
+- url: https://api.azionapi.net
+tags:
+- name: edge_functions
+paths:
+  /edge_functions:
+    get:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              example:
+                count: 1
+                total_pages: 1
+                schema_version: 3
+                links:
+                  previous: null
+                  next: null
+                results:
+                - id: 4184
+                  name: Teste
+                  language: javascript
+                  code: "async function handleRequest(request) {\r\n     return new\
+                    \ Response(\"Hello World!\",\r\n       {\r\n           status:200\r\
+                    \n       })\r\n    }\r\n    addEventListener(\"fetch\", event\
+                    \ => {\r\n     event.respondWith(handleRequest(event.request))\r\
+                    \n    })"
+                  json_args: {}
+                  function_to_run: ""
+                  initiator_type: edge_application
+                  active: true
+                  last_editor: teste@gmail.com
+                  modified: 2021-12-27T19:44:04.427738Z
+                  reference_count: 0
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        default:
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+          description: Unexpected error
+      security:
+      - JWT: []
+      summary: edge_functions
+      tags:
+      - edge_functions
+    post:
+      parameters: []
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object'
+        content:
+          application/json:
+            example:
+              name: Teste2
+              language: javascript
+              code: "async function handleRequest(request) {\r\n     return new Response(\"\
+                Hello World!\",\r\n       {\r\n           status:200\r\n       })\r\
+                \n    }\r\n    addEventListener(\"fetch\", event => {\r\n     event.respondWith(handleRequest(event.request))\r\
+                \n    })"
+              json_args: {}
+              active: true
+            schema:
+              properties:
+                name:
+                  type: string
+                language:
+                  type: string
+                code:
+                  type: string
+                json_args:
+                  properties: {}
+                  type: object
+                active:
+                  type: boolean
+              type: object
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              example:
+                active:
+                - This field is required.
+                code:
+                - This field is required.
+                language:
+                - This field is required.
+              schema:
+                $ref: '#/components/schemas/inline_response_400'
+        default:
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+          description: Unexpected error
+      security:
+      - JWT: []
+      summary: edge_functions
+      tags:
+      - edge_functions
+  /edge_functions/{id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        default:
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+          description: Unexpected error
+      security:
+      - JWT: []
+      summary: edge_functions
+      tags:
+      - edge_functions
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              example:
+                results:
+                  id: 4184
+                  name: Teste
+                  language: javascript
+                  code: "async function handleRequest(request) {\r\n     return new\
+                    \ Response(\"Hello World!\",\r\n       {\r\n           status:200\r\
+                    \n       })\r\n    }\r\n    addEventListener(\"fetch\", event\
+                    \ => {\r\n     event.respondWith(handleRequest(event.request))\r\
+                    \n    })"
+                  json_args: {}
+                  function_to_run: ""
+                  initiator_type: edge_application
+                  active: true
+                  last_editor: teste@gmail.com
+                  modified: 2021-12-27T19:44:04.427738Z
+                  reference_count: 0
+                schema_version: 3
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+        default:
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+          description: Unexpected error
+      security:
+      - JWT: []
+      summary: edge_functions
+      tags:
+      - edge_functions
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object_1'
+        content:
+          application/json; version=3:
+            example:
+              name: Teste
+              code: "async function handleRequest(request) {\r\n     return new Response(\"\
+                Hello World!\",\r\n       {\r\n           status:200\r\n       })\r\
+                \n    }\r\n    addEventListener(\"fetch\", event => {\r\n     event.respondWith(handleRequest(event.request))\r\
+                \n    })"
+              json_args: {}
+              active: true
+            schema:
+              properties:
+                name:
+                  type: string
+                code:
+                  type: string
+                json_args:
+                  properties: {}
+                  type: object
+                active:
+                  type: boolean
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                results:
+                  id: 4184
+                  name: Teste
+                  language: javascript
+                  code: "async function handleRequest(request) {\r\n     return new\
+                    \ Response(\"Hello World!\",\r\n       {\r\n           status:200\r\
+                    \n       })\r\n    }\r\n    addEventListener(\"fetch\", event\
+                    \ => {\r\n     event.respondWith(handleRequest(event.request))\r\
+                    \n    })"
+                  json_args: {}
+                  function_to_run: ""
+                  initiator_type: edge_application
+                  active: true
+                  last_editor: lehdermann@gmail.com
+                  modified: 2021-12-27T20:49:25.373356Z
+                  reference_count: 0
+                schema_version: 3
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+        default:
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+          description: Unexpected error
+      security:
+      - JWT: []
+      summary: edge_functions
+      tags:
+      - edge_functions
+components:
+  requestBodies:
+    inline_object_1:
+      content:
+        application/json; version=3:
+          schema:
+            $ref: '#/components/schemas/inline_object_1'
+      required: true
+    inline_object:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object'
+      required: true
+  schemas:
+    ErrorModel:
+      properties:
+        code:
+          type: string
+      type: object
+    inline_response_200_links:
+      example:
+        next: next
+        previous: previous
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
+      type: object
+    inline_response_200_results:
+      example:
+        code: code
+        last_editor: last_editor
+        name: name
+        active: true
+        modified: modified
+        language: language
+        json_args: '{}'
+        id: 5.962133916683182
+        function_to_run: function_to_run
+        reference_count: 5.637376656633329
+        initiator_type: initiator_type
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        language:
+          type: string
+        code:
+          type: string
+        json_args:
+          properties: {}
+          type: object
+        function_to_run:
+          type: string
+        initiator_type:
+          type: string
+        active:
+          type: boolean
+        last_editor:
+          type: string
+        modified:
+          type: string
+        reference_count:
+          type: number
+      type: object
+    inline_response_200:
+      example:
+        schema_version: 1.4658129805029452
+        count: 0.8008281904610115
+        links:
+          next: next
+          previous: previous
+        total_pages: 6.027456183070403
+        results:
+        - code: code
+          last_editor: last_editor
+          name: name
+          active: true
+          modified: modified
+          language: language
+          json_args: '{}'
+          id: 5.962133916683182
+          function_to_run: function_to_run
+          reference_count: 5.637376656633329
+          initiator_type: initiator_type
+        - code: code
+          last_editor: last_editor
+          name: name
+          active: true
+          modified: modified
+          language: language
+          json_args: '{}'
+          id: 5.962133916683182
+          function_to_run: function_to_run
+          reference_count: 5.637376656633329
+          initiator_type: initiator_type
+      properties:
+        count:
+          type: number
+        total_pages:
+          type: number
+        schema_version:
+          type: number
+        links:
+          $ref: '#/components/schemas/inline_response_200_links'
+        results:
+          items:
+            $ref: '#/components/schemas/inline_response_200_results'
+          type: array
+      type: object
+    inline_object:
+      properties:
+        name:
+          type: string
+        language:
+          type: string
+        code:
+          type: string
+        json_args:
+          properties: {}
+          type: object
+        active:
+          type: boolean
+      type: object
+    inline_response_400:
+      properties:
+        active:
+          items:
+            type: string
+          type: array
+        code:
+          items:
+            type: string
+          type: array
+        language:
+          items:
+            type: string
+          type: array
+      type: object
+    inline_response_200_1:
+      example:
+        schema_version: 0.8008281904610115
+        results:
+          code: code
+          last_editor: last_editor
+          name: name
+          active: true
+          modified: modified
+          language: language
+          json_args: '{}'
+          id: 5.962133916683182
+          function_to_run: function_to_run
+          reference_count: 5.637376656633329
+          initiator_type: initiator_type
+      properties:
+        results:
+          $ref: '#/components/schemas/inline_response_200_results'
+        schema_version:
+          type: number
+      type: object
+    inline_object_1:
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        json_args:
+          properties: {}
+          type: object
+        active:
+          type: boolean
+      type: object
+  securitySchemes:
+    JWT:
+      description: |
+        You must inform a token to auth.
+        Usage format: `Token <TOKEN>`
+      in: header
+      name: Authorization
+      type: apiKey
