@@ -30,10 +30,30 @@ type EdgeFunctionsApiService service
 type ApiEdgeFunctionsGetRequest struct {
 	ctx _context.Context
 	ApiService *EdgeFunctionsApiService
+	page *int64
+	pageSize *int64
+	sort *string
+	orderBy *string
 }
 
+func (r ApiEdgeFunctionsGetRequest) Page(page int64) ApiEdgeFunctionsGetRequest {
+	r.page = &page
+	return r
+}
+func (r ApiEdgeFunctionsGetRequest) PageSize(pageSize int64) ApiEdgeFunctionsGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+func (r ApiEdgeFunctionsGetRequest) Sort(sort string) ApiEdgeFunctionsGetRequest {
+	r.sort = &sort
+	return r
+}
+func (r ApiEdgeFunctionsGetRequest) OrderBy(orderBy string) ApiEdgeFunctionsGetRequest {
+	r.orderBy = &orderBy
+	return r
+}
 
-func (r ApiEdgeFunctionsGetRequest) Execute() (InlineResponse200, *_nethttp.Response, error) {
+func (r ApiEdgeFunctionsGetRequest) Execute() (ListEdgeFunctionResponse, *_nethttp.Response, error) {
 	return r.ApiService.EdgeFunctionsGetExecute(r)
 }
 
@@ -51,15 +71,15 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsGet(ctx _context.Context) ApiEdge
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetRequest) (InlineResponse200, *_nethttp.Response, error) {
+//  @return ListEdgeFunctionResponse
+func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetRequest) (ListEdgeFunctionResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarReturnValue  ListEdgeFunctionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsGet")
@@ -73,6 +93,18 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.sort != nil {
+		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+	}
+	if r.orderBy != nil {
+		localVarQueryParams.Add("order_by", parameterToString(*r.orderBy, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -126,6 +158,13 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -144,7 +183,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetR
 type ApiEdgeFunctionsIdDeleteRequest struct {
 	ctx _context.Context
 	ApiService *EdgeFunctionsApiService
-	id string
+	id int64
 }
 
 
@@ -159,7 +198,7 @@ EdgeFunctionsIdDelete edge_functions
  @param id
  @return ApiEdgeFunctionsIdDeleteRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdDelete(ctx _context.Context, id string) ApiEdgeFunctionsIdDeleteRequest {
+func (a *EdgeFunctionsApiService) EdgeFunctionsIdDelete(ctx _context.Context, id int64) ApiEdgeFunctionsIdDeleteRequest {
 	return ApiEdgeFunctionsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -242,6 +281,13 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdDeleteExecute(r ApiEdgeFunction
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarHTTPResponse, newErr
 	}
 
@@ -251,11 +297,11 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdDeleteExecute(r ApiEdgeFunction
 type ApiEdgeFunctionsIdGetRequest struct {
 	ctx _context.Context
 	ApiService *EdgeFunctionsApiService
-	id string
+	id int64
 }
 
 
-func (r ApiEdgeFunctionsIdGetRequest) Execute() (InlineResponse2001, *_nethttp.Response, error) {
+func (r ApiEdgeFunctionsIdGetRequest) Execute() (EdgeFunctionResponse, *_nethttp.Response, error) {
 	return r.ApiService.EdgeFunctionsIdGetExecute(r)
 }
 
@@ -266,7 +312,7 @@ EdgeFunctionsIdGet edge_functions
  @param id
  @return ApiEdgeFunctionsIdGetRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdGet(ctx _context.Context, id string) ApiEdgeFunctionsIdGetRequest {
+func (a *EdgeFunctionsApiService) EdgeFunctionsIdGet(ctx _context.Context, id int64) ApiEdgeFunctionsIdGetRequest {
 	return ApiEdgeFunctionsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -275,15 +321,15 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdGet(ctx _context.Context, id st
 }
 
 // Execute executes the request
-//  @return InlineResponse2001
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsIdGetRequest) (InlineResponse2001, *_nethttp.Response, error) {
+//  @return EdgeFunctionResponse
+func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsIdGetRequest) (EdgeFunctionResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2001
+		localVarReturnValue  EdgeFunctionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsIdGet")
@@ -308,7 +354,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsId
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json; version=3", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -351,6 +397,13 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsId
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -366,31 +419,31 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsId
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEdgeFunctionsIdPutRequest struct {
+type ApiEdgeFunctionsIdPatchRequest struct {
 	ctx _context.Context
 	ApiService *EdgeFunctionsApiService
-	id string
-	inlineObject1 *InlineObject1
+	id int64
+	patchEdgeFunctionRequest *PatchEdgeFunctionRequest
 }
 
-func (r ApiEdgeFunctionsIdPutRequest) InlineObject1(inlineObject1 InlineObject1) ApiEdgeFunctionsIdPutRequest {
-	r.inlineObject1 = &inlineObject1
+func (r ApiEdgeFunctionsIdPatchRequest) PatchEdgeFunctionRequest(patchEdgeFunctionRequest PatchEdgeFunctionRequest) ApiEdgeFunctionsIdPatchRequest {
+	r.patchEdgeFunctionRequest = &patchEdgeFunctionRequest
 	return r
 }
 
-func (r ApiEdgeFunctionsIdPutRequest) Execute() (InlineResponse2001, *_nethttp.Response, error) {
-	return r.ApiService.EdgeFunctionsIdPutExecute(r)
+func (r ApiEdgeFunctionsIdPatchRequest) Execute() (EdgeFunctionResponse, *_nethttp.Response, error) {
+	return r.ApiService.EdgeFunctionsIdPatchExecute(r)
 }
 
 /*
-EdgeFunctionsIdPut edge_functions
+EdgeFunctionsIdPatch edge_functions
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
- @return ApiEdgeFunctionsIdPutRequest
+ @return ApiEdgeFunctionsIdPatchRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdPut(ctx _context.Context, id string) ApiEdgeFunctionsIdPutRequest {
-	return ApiEdgeFunctionsIdPutRequest{
+func (a *EdgeFunctionsApiService) EdgeFunctionsIdPatch(ctx _context.Context, id int64) ApiEdgeFunctionsIdPatchRequest {
+	return ApiEdgeFunctionsIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -398,18 +451,18 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPut(ctx _context.Context, id st
 }
 
 // Execute executes the request
-//  @return InlineResponse2001
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsIdPutRequest) (InlineResponse2001, *_nethttp.Response, error) {
+//  @return EdgeFunctionResponse
+func (a *EdgeFunctionsApiService) EdgeFunctionsIdPatchExecute(r ApiEdgeFunctionsIdPatchRequest) (EdgeFunctionResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2001
+		localVarReturnValue  EdgeFunctionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -420,8 +473,8 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsId
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.inlineObject1 == nil {
-		return localVarReturnValue, nil, reportError("inlineObject1 is required and must be specified")
+	if r.patchEdgeFunctionRequest == nil {
+		return localVarReturnValue, nil, reportError("patchEdgeFunctionRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -442,7 +495,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsId
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject1
+	localVarPostBody = r.patchEdgeFunctionRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -479,6 +532,168 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsId
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v BadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEdgeFunctionsIdPutRequest struct {
+	ctx _context.Context
+	ApiService *EdgeFunctionsApiService
+	id int64
+	putEdgeFunctionRequest *PutEdgeFunctionRequest
+}
+
+func (r ApiEdgeFunctionsIdPutRequest) PutEdgeFunctionRequest(putEdgeFunctionRequest PutEdgeFunctionRequest) ApiEdgeFunctionsIdPutRequest {
+	r.putEdgeFunctionRequest = &putEdgeFunctionRequest
+	return r
+}
+
+func (r ApiEdgeFunctionsIdPutRequest) Execute() (EdgeFunctionResponse, *_nethttp.Response, error) {
+	return r.ApiService.EdgeFunctionsIdPutExecute(r)
+}
+
+/*
+EdgeFunctionsIdPut edge_functions
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiEdgeFunctionsIdPutRequest
+*/
+func (a *EdgeFunctionsApiService) EdgeFunctionsIdPut(ctx _context.Context, id int64) ApiEdgeFunctionsIdPutRequest {
+	return ApiEdgeFunctionsIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return EdgeFunctionResponse
+func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsIdPutRequest) (EdgeFunctionResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  EdgeFunctionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/edge_functions/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.putEdgeFunctionRequest == nil {
+		return localVarReturnValue, nil, reportError("putEdgeFunctionRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json; version=3"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.putEdgeFunctionRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v BadRequestResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -497,15 +712,15 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsId
 type ApiEdgeFunctionsPostRequest struct {
 	ctx _context.Context
 	ApiService *EdgeFunctionsApiService
-	inlineObject *InlineObject
+	createEdgeFunctionRequest *CreateEdgeFunctionRequest
 }
 
-func (r ApiEdgeFunctionsPostRequest) InlineObject(inlineObject InlineObject) ApiEdgeFunctionsPostRequest {
-	r.inlineObject = &inlineObject
+func (r ApiEdgeFunctionsPostRequest) CreateEdgeFunctionRequest(createEdgeFunctionRequest CreateEdgeFunctionRequest) ApiEdgeFunctionsPostRequest {
+	r.createEdgeFunctionRequest = &createEdgeFunctionRequest
 	return r
 }
 
-func (r ApiEdgeFunctionsPostRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiEdgeFunctionsPostRequest) Execute() (EdgeFunctionResponse, *_nethttp.Response, error) {
 	return r.ApiService.EdgeFunctionsPostExecute(r)
 }
 
@@ -523,18 +738,20 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsPost(ctx _context.Context) ApiEdg
 }
 
 // Execute executes the request
-func (a *EdgeFunctionsApiService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPostRequest) (*_nethttp.Response, error) {
+//  @return EdgeFunctionResponse
+func (a *EdgeFunctionsApiService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPostRequest) (EdgeFunctionResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  EdgeFunctionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsPost")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_functions"
@@ -542,8 +759,8 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPos
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.inlineObject == nil {
-		return nil, reportError("inlineObject is required and must be specified")
+	if r.createEdgeFunctionRequest == nil {
+		return localVarReturnValue, nil, reportError("createEdgeFunctionRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -564,7 +781,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPos
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject
+	localVarPostBody = r.createEdgeFunctionRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -581,19 +798,19 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPos
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -602,17 +819,33 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPos
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v InlineResponse400
+			var v BadRequestResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

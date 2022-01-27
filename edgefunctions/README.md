@@ -81,20 +81,23 @@ Class | Method | HTTP request | Description
 *EdgeFunctionsApi* | [**EdgeFunctionsGet**](docs/EdgeFunctionsApi.md#edgefunctionsget) | **Get** /edge_functions | edge_functions
 *EdgeFunctionsApi* | [**EdgeFunctionsIdDelete**](docs/EdgeFunctionsApi.md#edgefunctionsiddelete) | **Delete** /edge_functions/{id} | edge_functions
 *EdgeFunctionsApi* | [**EdgeFunctionsIdGet**](docs/EdgeFunctionsApi.md#edgefunctionsidget) | **Get** /edge_functions/{id} | edge_functions
+*EdgeFunctionsApi* | [**EdgeFunctionsIdPatch**](docs/EdgeFunctionsApi.md#edgefunctionsidpatch) | **Patch** /edge_functions/{id} | edge_functions
 *EdgeFunctionsApi* | [**EdgeFunctionsIdPut**](docs/EdgeFunctionsApi.md#edgefunctionsidput) | **Put** /edge_functions/{id} | edge_functions
 *EdgeFunctionsApi* | [**EdgeFunctionsPost**](docs/EdgeFunctionsApi.md#edgefunctionspost) | **Post** /edge_functions | edge_functions
 
 
 ## Documentation For Models
 
+ - [BadRequestResponse](docs/BadRequestResponse.md)
+ - [CreateEdgeFunctionRequest](docs/CreateEdgeFunctionRequest.md)
+ - [EdgeFunctionResponse](docs/EdgeFunctionResponse.md)
  - [ErrorModel](docs/ErrorModel.md)
- - [InlineObject](docs/InlineObject.md)
- - [InlineObject1](docs/InlineObject1.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse2001](docs/InlineResponse2001.md)
- - [InlineResponse200Links](docs/InlineResponse200Links.md)
- - [InlineResponse200Results](docs/InlineResponse200Results.md)
- - [InlineResponse400](docs/InlineResponse400.md)
+ - [ErrorResponse](docs/ErrorResponse.md)
+ - [Links](docs/Links.md)
+ - [ListEdgeFunctionResponse](docs/ListEdgeFunctionResponse.md)
+ - [PatchEdgeFunctionRequest](docs/PatchEdgeFunctionRequest.md)
+ - [PutEdgeFunctionRequest](docs/PutEdgeFunctionRequest.md)
+ - [Results](docs/Results.md)
 
 
 ## Documentation For Authorization
