@@ -5,12 +5,43 @@ info:
   version: "3.0"
 servers:
 - url: https://api.azionapi.net
+- url: https://stage-api.azionapi.net
 tags:
 - name: edge_functions
 paths:
   /edge_functions:
     get:
-      parameters: []
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -39,12 +70,15 @@ paths:
                   modified: 2021-12-27T19:44:04.427738Z
                   reference_count: 0
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/ListEdgeFunctionResponse'
+          description: Success
         default:
           content:
             application/json:
               example:
-                message: Sorry unable to perform operation.
+                detail: Sorry unable to perform operation.
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Unexpected error
       security:
       - JWT: []
@@ -54,38 +88,20 @@ paths:
     post:
       parameters: []
       requestBody:
-        $ref: '#/components/requestBodies/inline_object'
-        content:
-          application/json:
-            example:
-              name: Teste2
-              language: javascript
-              code: "async function handleRequest(request) {\r\n     return new Response(\"\
-                Hello World!\",\r\n       {\r\n           status:200\r\n       })\r\
-                \n    }\r\n    addEventListener(\"fetch\", event => {\r\n     event.respondWith(handleRequest(event.request))\r\
-                \n    })"
-              json_args: {}
-              active: true
-            schema:
-              properties:
-                name:
-                  type: string
-                language:
-                  type: string
-                code:
-                  type: string
-                json_args:
-                  properties: {}
-                  type: object
-                active:
-                  type: boolean
-              type: object
-        required: true
+        $ref: '#/components/requestBodies/CreateEdgeFunctionRequest'
       responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdgeFunctionResponse'
+          description: Success
         "400":
           content:
             application/json:
               example:
+                name:
+                - This field may not be blank
                 active:
                 - This field is required.
                 code:
@@ -93,12 +109,15 @@ paths:
                 language:
                 - This field is required.
               schema:
-                $ref: '#/components/schemas/inline_response_400'
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Invalid request
         default:
           content:
             application/json:
               example:
                 message: Sorry unable to perform operation.
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Unexpected error
       security:
       - JWT: []
@@ -113,14 +132,19 @@ paths:
         name: id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
+        "204":
+          description: Success
         default:
           content:
             application/json:
               example:
                 message: Sorry unable to perform operation.
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Unexpected error
       security:
       - JWT: []
@@ -134,77 +158,9 @@ paths:
         name: id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-      responses:
-        "200":
-          content:
-            application/json; version=3:
-              example:
-                results:
-                  id: 4184
-                  name: Teste
-                  language: javascript
-                  code: "async function handleRequest(request) {\r\n     return new\
-                    \ Response(\"Hello World!\",\r\n       {\r\n           status:200\r\
-                    \n       })\r\n    }\r\n    addEventListener(\"fetch\", event\
-                    \ => {\r\n     event.respondWith(handleRequest(event.request))\r\
-                    \n    })"
-                  json_args: {}
-                  function_to_run: ""
-                  initiator_type: edge_application
-                  active: true
-                  last_editor: teste@gmail.com
-                  modified: 2021-12-27T19:44:04.427738Z
-                  reference_count: 0
-                schema_version: 3
-              schema:
-                $ref: '#/components/schemas/inline_response_200_1'
-        default:
-          content:
-            application/json:
-              example:
-                message: Sorry unable to perform operation.
-          description: Unexpected error
-      security:
-      - JWT: []
-      summary: edge_functions
-      tags:
-      - edge_functions
-    put:
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        $ref: '#/components/requestBodies/inline_object_1'
-        content:
-          application/json; version=3:
-            example:
-              name: Teste
-              code: "async function handleRequest(request) {\r\n     return new Response(\"\
-                Hello World!\",\r\n       {\r\n           status:200\r\n       })\r\
-                \n    }\r\n    addEventListener(\"fetch\", event => {\r\n     event.respondWith(handleRequest(event.request))\r\
-                \n    })"
-              json_args: {}
-              active: true
-            schema:
-              properties:
-                name:
-                  type: string
-                code:
-                  type: string
-                json_args:
-                  properties: {}
-                  type: object
-                active:
-                  type: boolean
-              type: object
-        required: true
       responses:
         "200":
           content:
@@ -228,12 +184,145 @@ paths:
                   reference_count: 0
                 schema_version: 3
               schema:
-                $ref: '#/components/schemas/inline_response_200_1'
+                $ref: '#/components/schemas/EdgeFunctionResponse'
+          description: Success
         default:
           content:
             application/json:
               example:
                 message: Sorry unable to perform operation.
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unexpected error
+      security:
+      - JWT: []
+      summary: edge_functions
+      tags:
+      - edge_functions
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/PatchEdgeFunctionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                results:
+                  id: 4184
+                  name: Teste
+                  language: javascript
+                  code: "async function handleRequest(request) {\r\n     return new\
+                    \ Response(\"Hello World!\",\r\n       {\r\n           status:200\r\
+                    \n       })\r\n    }\r\n    addEventListener(\"fetch\", event\
+                    \ => {\r\n     event.respondWith(handleRequest(event.request))\r\
+                    \n    })"
+                  json_args: {}
+                  function_to_run: ""
+                  initiator_type: edge_application
+                  active: true
+                  last_editor: lehdermann@gmail.com
+                  modified: 2021-12-27T20:49:25.373356Z
+                  reference_count: 0
+                schema_version: 3
+              schema:
+                $ref: '#/components/schemas/EdgeFunctionResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                name:
+                - This field may not be blank
+                active:
+                - This field is required.
+                code:
+                - This field is required.
+                language:
+                - This field is required.
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Invalid request
+        default:
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unexpected error
+      security:
+      - JWT: []
+      summary: edge_functions
+      tags:
+      - edge_functions
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/PutEdgeFunctionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                results:
+                  id: 4184
+                  name: Teste
+                  language: javascript
+                  code: "async function handleRequest(request) {\r\n     return new\
+                    \ Response(\"Hello World!\",\r\n       {\r\n           status:200\r\
+                    \n       })\r\n    }\r\n    addEventListener(\"fetch\", event\
+                    \ => {\r\n     event.respondWith(handleRequest(event.request))\r\
+                    \n    })"
+                  json_args: {}
+                  function_to_run: ""
+                  initiator_type: edge_application
+                  active: true
+                  last_editor: lehdermann@gmail.com
+                  modified: 2021-12-27T20:49:25.373356Z
+                  reference_count: 0
+                schema_version: 3
+              schema:
+                $ref: '#/components/schemas/EdgeFunctionResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                name:
+                - This field may not be blank
+                active:
+                - This field is required.
+                code:
+                - This field is required.
+                language:
+                - This field is required.
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Invalid request
+        default:
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Unexpected error
       security:
       - JWT: []
@@ -242,17 +331,23 @@ paths:
       - edge_functions
 components:
   requestBodies:
-    inline_object_1:
+    PutEdgeFunctionRequest:
       content:
         application/json; version=3:
           schema:
-            $ref: '#/components/schemas/inline_object_1'
+            $ref: '#/components/schemas/PutEdgeFunctionRequest'
       required: true
-    inline_object:
+    PatchEdgeFunctionRequest:
+      content:
+        application/json; version=3:
+          schema:
+            $ref: '#/components/schemas/PatchEdgeFunctionRequest'
+      required: true
+    CreateEdgeFunctionRequest:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/inline_object'
+            $ref: '#/components/schemas/CreateEdgeFunctionRequest'
       required: true
   schemas:
     ErrorModel:
@@ -260,7 +355,12 @@ components:
         code:
           type: string
       type: object
-    inline_response_200_links:
+    ErrorResponse:
+      properties:
+        detail:
+          type: string
+      type: object
+    Links:
       example:
         next: next
         previous: previous
@@ -270,22 +370,23 @@ components:
         next:
           type: string
       type: object
-    inline_response_200_results:
+    Results:
       example:
-        code: code
-        last_editor: last_editor
-        name: name
+        code: function foo() { console.log('hello world');
+        last_editor: user@azion.com
+        name: MyFunction
         active: true
         modified: modified
-        language: language
-        json_args: '{}'
-        id: 5.962133916683182
+        language: javascript
+        json_args: '{"a": 1, "b": 2}'
+        id: 5
         function_to_run: function_to_run
-        reference_count: 5.637376656633329
-        initiator_type: initiator_type
+        reference_count: 5
+        initiator_type: edge_application
       properties:
         id:
-          type: number
+          format: int64
+          type: integer
         name:
           type: string
         language:
@@ -306,16 +407,17 @@ components:
         modified:
           type: string
         reference_count:
-          type: number
+          format: int64
+          type: integer
       type: object
-    inline_response_200:
+    ListEdgeFunctionResponse:
       example:
-        schema_version: 1.4658129805029452
-        count: 0.8008281904610115
+        schema_version: 1
+        count: 1
         links:
           next: next
           previous: previous
-        total_pages: 6.027456183070403
+        total_pages: 6
         results:
         - code: code
           last_editor: last_editor
@@ -324,9 +426,9 @@ components:
           modified: modified
           language: language
           json_args: '{}'
-          id: 5.962133916683182
+          id: 5
           function_to_run: function_to_run
-          reference_count: 5.637376656633329
+          reference_count: 5
           initiator_type: initiator_type
         - code: code
           last_editor: last_editor
@@ -335,25 +437,35 @@ components:
           modified: modified
           language: language
           json_args: '{}'
-          id: 5.962133916683182
+          id: 5
           function_to_run: function_to_run
-          reference_count: 5.637376656633329
+          reference_count: 5
           initiator_type: initiator_type
       properties:
         count:
-          type: number
+          format: int64
+          type: integer
         total_pages:
-          type: number
+          format: int64
+          type: integer
         schema_version:
-          type: number
+          format: int64
+          type: integer
         links:
-          $ref: '#/components/schemas/inline_response_200_links'
+          $ref: '#/components/schemas/Links'
         results:
           items:
-            $ref: '#/components/schemas/inline_response_200_results'
+            $ref: '#/components/schemas/Results'
           type: array
       type: object
-    inline_object:
+    CreateEdgeFunctionRequest:
+      example:
+        code: code
+        name: name
+        active: true
+        language: language
+        json_args: '{}'
+        initiator_type: initiator_type
       properties:
         name:
           type: string
@@ -366,9 +478,15 @@ components:
           type: object
         active:
           type: boolean
+        initiator_type:
+          type: string
       type: object
-    inline_response_400:
+    BadRequestResponse:
       properties:
+        name:
+          items:
+            type: string
+          type: array
         active:
           items:
             type: string
@@ -382,9 +500,9 @@ components:
             type: string
           type: array
       type: object
-    inline_response_200_1:
+    EdgeFunctionResponse:
       example:
-        schema_version: 0.8008281904610115
+        schema_version: 1
         results:
           code: code
           last_editor: last_editor
@@ -393,17 +511,45 @@ components:
           modified: modified
           language: language
           json_args: '{}'
-          id: 5.962133916683182
+          id: 5
           function_to_run: function_to_run
-          reference_count: 5.637376656633329
+          reference_count: 5
           initiator_type: initiator_type
       properties:
         results:
-          $ref: '#/components/schemas/inline_response_200_results'
+          $ref: '#/components/schemas/Results'
         schema_version:
           type: number
       type: object
-    inline_object_1:
+    PutEdgeFunctionRequest:
+      example:
+        code: code
+        name: name
+        active: true
+        json_args: '{}'
+        language: language
+        initiator_type: initiator_type
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        json_args:
+          properties: {}
+          type: object
+        active:
+          type: boolean
+        initiator_type:
+          type: string
+        language:
+          type: string
+      type: object
+    PatchEdgeFunctionRequest:
+      example:
+        code: code
+        name: name
+        active: true
+        json_args: '{}'
       properties:
         name:
           type: string
