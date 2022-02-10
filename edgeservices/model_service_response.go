@@ -23,7 +23,7 @@ type ServiceResponse struct {
 	Name string `json:"name"`
 	Permissions []string `json:"permissions"`
 	UpdatedAt string `json:"updated_at"`
-	Variables *[]Variable `json:"variables,omitempty"`
+	Variables []Variable `json:"variables,omitempty"`
 }
 
 // NewServiceResponse instantiates a new ServiceResponse object
@@ -182,11 +182,11 @@ func (o *ServiceResponse) GetPermissions() []string {
 
 // GetPermissionsOk returns a tuple with the Permissions field value
 // and a boolean to check if the value has been set.
-func (o *ServiceResponse) GetPermissionsOk() (*[]string, bool) {
+func (o *ServiceResponse) GetPermissionsOk() ([]string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Permissions, true
+	return o.Permissions, true
 }
 
 // SetPermissions sets field value
@@ -224,12 +224,12 @@ func (o *ServiceResponse) GetVariables() []Variable {
 		var ret []Variable
 		return ret
 	}
-	return *o.Variables
+	return o.Variables
 }
 
 // GetVariablesOk returns a tuple with the Variables field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceResponse) GetVariablesOk() (*[]Variable, bool) {
+func (o *ServiceResponse) GetVariablesOk() ([]Variable, bool) {
 	if o == nil || o.Variables == nil {
 		return nil, false
 	}
@@ -247,7 +247,7 @@ func (o *ServiceResponse) HasVariables() bool {
 
 // SetVariables gets a reference to the given []Variable and assigns it to the Variables field.
 func (o *ServiceResponse) SetVariables(v []Variable) {
-	o.Variables = &v
+	o.Variables = v
 }
 
 func (o ServiceResponse) MarshalJSON() ([]byte, error) {

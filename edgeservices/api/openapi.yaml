@@ -27,7 +27,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: limit
+        name: page_size
         required: false
         schema:
           format: int64
@@ -42,17 +42,17 @@ paths:
         style: form
       - explode: true
         in: query
-        name: sort_by
+        name: order_by
         required: false
         schema:
           type: string
         style: form
       - explode: true
         in: query
-        name: sort_asc
+        name: sort
         required: false
         schema:
-          type: boolean
+          type: string
         style: form
       responses:
         "200":
@@ -205,7 +205,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: limit
+        name: page_size
         required: false
         schema:
           format: int64
@@ -220,17 +220,17 @@ paths:
         style: form
       - explode: true
         in: query
-        name: sort_by
+        name: order_by
         required: false
         schema:
           type: string
         style: form
       - explode: true
         in: query
-        name: sort_asc
+        name: sort
         required: false
         schema:
-          type: boolean
+          type: string
         style: form
       responses:
         "200":

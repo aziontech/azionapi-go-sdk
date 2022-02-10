@@ -18,7 +18,7 @@ import (
 type UpdateServiceRequest struct {
 	Active *bool `json:"active,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Variables *[]Variable `json:"variables,omitempty"`
+	Variables []Variable `json:"variables,omitempty"`
 }
 
 // NewUpdateServiceRequest instantiates a new UpdateServiceRequest object
@@ -108,12 +108,12 @@ func (o *UpdateServiceRequest) GetVariables() []Variable {
 		var ret []Variable
 		return ret
 	}
-	return *o.Variables
+	return o.Variables
 }
 
 // GetVariablesOk returns a tuple with the Variables field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateServiceRequest) GetVariablesOk() (*[]Variable, bool) {
+func (o *UpdateServiceRequest) GetVariablesOk() ([]Variable, bool) {
 	if o == nil || o.Variables == nil {
 		return nil, false
 	}
@@ -131,7 +131,7 @@ func (o *UpdateServiceRequest) HasVariables() bool {
 
 // SetVariables gets a reference to the given []Variable and assigns it to the Variables field.
 func (o *UpdateServiceRequest) SetVariables(v []Variable) {
-	o.Variables = &v
+	o.Variables = v
 }
 
 func (o UpdateServiceRequest) MarshalJSON() ([]byte, error) {
