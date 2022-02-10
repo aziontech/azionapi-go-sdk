@@ -51,11 +51,11 @@ func (o *ServiceResponseWithTotals) GetServices() []ServiceResponse {
 
 // GetServicesOk returns a tuple with the Services field value
 // and a boolean to check if the value has been set.
-func (o *ServiceResponseWithTotals) GetServicesOk() (*[]ServiceResponse, bool) {
+func (o *ServiceResponseWithTotals) GetServicesOk() ([]ServiceResponse, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Services, true
+	return o.Services, true
 }
 
 // SetServices sets field value

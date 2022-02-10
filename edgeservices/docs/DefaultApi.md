@@ -40,8 +40,8 @@ func main() {
     resourceId := int64(789) // int64 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.DeleteResource(context.Background(), serviceId, resourceId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.DeleteResource(context.Background(), serviceId, resourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.DeleteResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,8 +108,8 @@ func main() {
     id := int64(789) // int64 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.DeleteService(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.DeleteService(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.DeleteService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     resourceId := int64(789) // int64 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.GetResource(context.Background(), serviceId, resourceId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetResource(context.Background(), serviceId, resourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## GetResources
 
-> ResourceResponseWithTotal GetResources(ctx, serviceId).Page(page).Limit(limit).Filter(filter).SortBy(sortBy).SortAsc(sortAsc).Execute()
+> ResourceResponseWithTotal GetResources(ctx, serviceId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Execute()
 
 Return Service Resources by page
 
@@ -244,14 +244,14 @@ import (
 func main() {
     serviceId := int64(789) // int64 | 
     page := int64(789) // int64 |  (optional)
-    limit := int64(789) // int64 |  (optional)
+    pageSize := int64(789) // int64 |  (optional)
     filter := "filter_example" // string |  (optional)
-    sortBy := "sortBy_example" // string |  (optional)
-    sortAsc := true // bool |  (optional)
+    orderBy := "orderBy_example" // string |  (optional)
+    sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.GetResources(context.Background(), serviceId).Page(page).Limit(limit).Filter(filter).SortBy(sortBy).SortAsc(sortAsc).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetResources(context.Background(), serviceId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetResources``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,10 +278,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **page** | **int64** |  | 
- **limit** | **int64** |  | 
+ **pageSize** | **int64** |  | 
  **filter** | **string** |  | 
- **sortBy** | **string** |  | 
- **sortAsc** | **bool** |  | 
+ **orderBy** | **string** |  | 
+ **sort** | **string** |  | 
 
 ### Return type
 
@@ -324,8 +324,8 @@ func main() {
     withVars := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.GetService(context.Background(), id).WithVars(withVars).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetService(context.Background(), id).WithVars(withVars).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## GetServices
 
-> ServiceResponseWithTotals GetServices(ctx).Page(page).Limit(limit).Filter(filter).SortBy(sortBy).SortAsc(sortAsc).Execute()
+> ServiceResponseWithTotals GetServices(ctx).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Execute()
 
 Return Services by page
 
@@ -391,14 +391,14 @@ import (
 
 func main() {
     page := int64(789) // int64 |  (optional)
-    limit := int64(789) // int64 |  (optional)
+    pageSize := int64(789) // int64 |  (optional)
     filter := "filter_example" // string |  (optional)
-    sortBy := "sortBy_example" // string |  (optional)
-    sortAsc := true // bool |  (optional)
+    orderBy := "orderBy_example" // string |  (optional)
+    sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.GetServices(context.Background()).Page(page).Limit(limit).Filter(filter).SortBy(sortBy).SortAsc(sortAsc).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetServices(context.Background()).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetServices``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -420,10 +420,10 @@ Other parameters are passed through a pointer to a apiGetServicesRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64** |  | 
- **limit** | **int64** |  | 
+ **pageSize** | **int64** |  | 
  **filter** | **string** |  | 
- **sortBy** | **string** |  | 
- **sortAsc** | **bool** |  | 
+ **orderBy** | **string** |  | 
+ **sort** | **string** |  | 
 
 ### Return type
 
@@ -465,8 +465,8 @@ func main() {
     createServiceRequest := *openapiclient.NewCreateServiceRequest("Name_example") // CreateServiceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.NewService(context.Background()).CreateServiceRequest(createServiceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.NewService(context.Background()).CreateServiceRequest(createServiceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NewService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -530,8 +530,8 @@ func main() {
     updateServiceRequest := *openapiclient.NewUpdateServiceRequest() // UpdateServiceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.PatchService(context.Background(), id).UpdateServiceRequest(updateServiceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.PatchService(context.Background(), id).UpdateServiceRequest(updateServiceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PatchService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -601,8 +601,8 @@ func main() {
     updateResourceRequest := *openapiclient.NewUpdateResourceRequest() // UpdateResourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.PatchServiceResource(context.Background(), serviceId, resourceId).UpdateResourceRequest(updateResourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.PatchServiceResource(context.Background(), serviceId, resourceId).UpdateResourceRequest(updateResourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PatchServiceResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -673,8 +673,8 @@ func main() {
     createResourceRequest := *openapiclient.NewCreateResourceRequest("Content_example", "ContentType_example", "Name_example", "Trigger_example") // CreateResourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DefaultApi.PostResource(context.Background(), serviceId).CreateResourceRequest(createResourceRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.PostResource(context.Background(), serviceId).CreateResourceRequest(createResourceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.PostResource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
