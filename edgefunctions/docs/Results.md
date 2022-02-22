@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Language** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
-**JsonArgs** | Pointer to **map[string]interface{}** |  | [optional] 
+**JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **FunctionToRun** | Pointer to **string** |  | [optional] 
 **InitiatorType** | Pointer to **string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
@@ -137,20 +137,20 @@ HasCode returns a boolean if a field has been set.
 
 ### GetJsonArgs
 
-`func (o *Results) GetJsonArgs() map[string]interface{}`
+`func (o *Results) GetJsonArgs() interface{}`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *Results) GetJsonArgsOk() (*map[string]interface{}, bool)`
+`func (o *Results) GetJsonArgsOk() (*interface{}, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *Results) SetJsonArgs(v map[string]interface{})`
+`func (o *Results) SetJsonArgs(v interface{})`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -160,6 +160,16 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
+### SetJsonArgsNil
+
+`func (o *Results) SetJsonArgsNil(b bool)`
+
+ SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
+
+### UnsetJsonArgs
+`func (o *Results) UnsetJsonArgs()`
+
+UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetFunctionToRun
 
 `func (o *Results) GetFunctionToRun() string`
