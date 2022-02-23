@@ -19,7 +19,7 @@ type CreateEdgeFunctionRequest struct {
 	Name *string `json:"name,omitempty"`
 	Language *string `json:"language,omitempty"`
 	Code *string `json:"code,omitempty"`
-	JsonArgs *map[string]interface{} `json:"json_args,omitempty"`
+	JsonArgs interface{} `json:"json_args,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	InitiatorType *string `json:"initiator_type,omitempty"`
 }
@@ -137,22 +137,23 @@ func (o *CreateEdgeFunctionRequest) SetCode(v string) {
 	o.Code = &v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
-func (o *CreateEdgeFunctionRequest) GetJsonArgs() map[string]interface{} {
-	if o == nil || o.JsonArgs == nil {
-		var ret map[string]interface{}
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateEdgeFunctionRequest) GetJsonArgs() interface{} {
+	if o == nil  {
+		var ret interface{}
 		return ret
 	}
-	return *o.JsonArgs
+	return o.JsonArgs
 }
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFunctionRequest) GetJsonArgsOk() (*map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool) {
 	if o == nil || o.JsonArgs == nil {
 		return nil, false
 	}
-	return o.JsonArgs, true
+	return &o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
@@ -164,9 +165,9 @@ func (o *CreateEdgeFunctionRequest) HasJsonArgs() bool {
 	return false
 }
 
-// SetJsonArgs gets a reference to the given map[string]interface{} and assigns it to the JsonArgs field.
-func (o *CreateEdgeFunctionRequest) SetJsonArgs(v map[string]interface{}) {
-	o.JsonArgs = &v
+// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
+func (o *CreateEdgeFunctionRequest) SetJsonArgs(v interface{}) {
+	o.JsonArgs = v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
