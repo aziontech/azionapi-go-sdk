@@ -108,6 +108,10 @@ func NewConfiguration() *Configuration {
 				URL: "https://api.azionapi.net",
 				Description: "No description provided",
 			},
+			{
+				URL: "https://stage-api.azionapi.net",
+				Description: "No description provided",
+			},
 		},
 		OperationServers: map[string]ServerConfigurations{
 		},

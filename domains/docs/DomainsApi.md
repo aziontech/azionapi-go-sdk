@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateDomain
 
-> DomainResponseWithResult CreateDomain(ctx).Accept(accept).Authorization(authorization).ContentType(contentType).CreateDomainRequest(createDomainRequest).Execute()
+> DomainResponseWithResult CreateDomain(ctx).Accept(accept).ContentType(contentType).CreateDomainRequest(createDomainRequest).Execute()
 
 /domains
 
@@ -35,13 +35,12 @@ import (
 
 func main() {
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     createDomainRequest := *openapiclient.NewCreateDomainRequest([]string{"Cnames_example"}, false, "Name_example", false, int64(123), NullableInt64(123)) // CreateDomainRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DomainsApi.CreateDomain(context.Background()).Accept(accept).Authorization(authorization).ContentType(contentType).CreateDomainRequest(createDomainRequest).Execute()
+    resp, r, err := api_client.DomainsApi.CreateDomain(context.Background()).Accept(accept).ContentType(contentType).CreateDomainRequest(createDomainRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.CreateDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +62,6 @@ Other parameters are passed through a pointer to a apiCreateDomainRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
  **createDomainRequest** | [**CreateDomainRequest**](CreateDomainRequest.md) |  | 
 
@@ -87,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## DelDomain
 
-> DelDomain(ctx, id).Accept(accept).Authorization(authorization).Execute()
+> DelDomain(ctx, id).Accept(accept).Execute()
 
 /domains/:id
 
@@ -108,11 +106,10 @@ import (
 func main() {
     id := "id_example" // string | The id of the domain to be deleted. 
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DomainsApi.DelDomain(context.Background(), id).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.DomainsApi.DelDomain(context.Background(), id).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.DelDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +134,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -159,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## GetDomain
 
-> DomainResponseWithResult GetDomain(ctx, id).Accept(accept).Authorization(authorization).Execute()
+> DomainResponseWithResult GetDomain(ctx, id).Accept(accept).Execute()
 
 /domains/:id
 
@@ -180,11 +176,10 @@ import (
 func main() {
     id := "id_example" // string | The id of the domain to be consulted. 
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DomainsApi.GetDomain(context.Background(), id).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.DomainsApi.GetDomain(context.Background(), id).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.GetDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,7 +206,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -233,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## GetDomains
 
-> DomainResponseWithResults GetDomains(ctx).Accept(accept).Authorization(authorization).Execute()
+> DomainResponseWithResults GetDomains(ctx).Accept(accept).Execute()
 
 /domains
 
@@ -253,11 +247,10 @@ import (
 
 func main() {
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DomainsApi.GetDomains(context.Background()).Accept(accept).Authorization(authorization).Execute()
+    resp, r, err := api_client.DomainsApi.GetDomains(context.Background()).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.GetDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,7 +272,6 @@ Other parameters are passed through a pointer to a apiGetDomainsRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -301,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## PutDomain
 
-> DomainResponseWithResult PutDomain(ctx, domainId).Accept(accept).Authorization(authorization).ContentType(contentType).PutDomainRequest(putDomainRequest).Execute()
+> DomainResponseWithResult PutDomain(ctx, domainId).Accept(accept).ContentType(contentType).PutDomainRequest(putDomainRequest).Execute()
 
 /domains:/:domain_id
 
@@ -322,13 +314,12 @@ import (
 func main() {
     domainId := "domainId_example" // string | 
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     putDomainRequest := *openapiclient.NewPutDomainRequest([]string{"Cnames_example"}, false, "Name_example", false, int64(123), NullableInt64(123)) // PutDomainRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DomainsApi.PutDomain(context.Background(), domainId).Accept(accept).Authorization(authorization).ContentType(contentType).PutDomainRequest(putDomainRequest).Execute()
+    resp, r, err := api_client.DomainsApi.PutDomain(context.Background(), domainId).Accept(accept).ContentType(contentType).PutDomainRequest(putDomainRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.PutDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -355,7 +346,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
  **putDomainRequest** | [**PutDomainRequest**](PutDomainRequest.md) |  | 
 
@@ -379,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDomain
 
-> DomainResponseWithResult UpdateDomain(ctx, domainId).Accept(accept).Authorization(authorization).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
+> DomainResponseWithResult UpdateDomain(ctx, domainId).Accept(accept).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
 
 /domains/:domain_id
 
@@ -400,13 +390,12 @@ import (
 func main() {
     domainId := "domainId_example" // string | 
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     updateDomainRequest := *openapiclient.NewUpdateDomainRequest() // UpdateDomainRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DomainsApi.UpdateDomain(context.Background(), domainId).Accept(accept).Authorization(authorization).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
+    resp, r, err := api_client.DomainsApi.UpdateDomain(context.Background(), domainId).Accept(accept).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.UpdateDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -433,7 +422,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
  **updateDomainRequest** | [**UpdateDomainRequest**](UpdateDomainRequest.md) |  | 
 

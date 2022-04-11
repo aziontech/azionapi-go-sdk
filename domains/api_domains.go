@@ -31,17 +31,12 @@ type ApiCreateDomainRequest struct {
 	ctx _context.Context
 	ApiService *DomainsApiService
 	accept *string
-	authorization *string
 	contentType *string
 	createDomainRequest *CreateDomainRequest
 }
 
 func (r ApiCreateDomainRequest) Accept(accept string) ApiCreateDomainRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiCreateDomainRequest) Authorization(authorization string) ApiCreateDomainRequest {
-	r.authorization = &authorization
 	return r
 }
 func (r ApiCreateDomainRequest) ContentType(contentType string) ApiCreateDomainRequest {
@@ -115,9 +110,6 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (Domai
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
@@ -179,15 +171,10 @@ type ApiDelDomainRequest struct {
 	ApiService *DomainsApiService
 	id string
 	accept *string
-	authorization *string
 }
 
 func (r ApiDelDomainRequest) Accept(accept string) ApiDelDomainRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiDelDomainRequest) Authorization(authorization string) ApiDelDomainRequest {
-	r.authorization = &authorization
 	return r
 }
 
@@ -254,9 +241,6 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*_nethttp.R
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -304,15 +288,10 @@ type ApiGetDomainRequest struct {
 	ApiService *DomainsApiService
 	id string
 	accept *string
-	authorization *string
 }
 
 func (r ApiGetDomainRequest) Accept(accept string) ApiGetDomainRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiGetDomainRequest) Authorization(authorization string) ApiGetDomainRequest {
-	r.authorization = &authorization
 	return r
 }
 
@@ -381,9 +360,6 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (DomainRespo
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -439,15 +415,10 @@ type ApiGetDomainsRequest struct {
 	ctx _context.Context
 	ApiService *DomainsApiService
 	accept *string
-	authorization *string
 }
 
 func (r ApiGetDomainsRequest) Accept(accept string) ApiGetDomainsRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiGetDomainsRequest) Authorization(authorization string) ApiGetDomainsRequest {
-	r.authorization = &authorization
 	return r
 }
 
@@ -513,9 +484,6 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (DomainRes
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -572,17 +540,12 @@ type ApiPutDomainRequest struct {
 	ApiService *DomainsApiService
 	domainId string
 	accept *string
-	authorization *string
 	contentType *string
 	putDomainRequest *PutDomainRequest
 }
 
 func (r ApiPutDomainRequest) Accept(accept string) ApiPutDomainRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiPutDomainRequest) Authorization(authorization string) ApiPutDomainRequest {
-	r.authorization = &authorization
 	return r
 }
 func (r ApiPutDomainRequest) ContentType(contentType string) ApiPutDomainRequest {
@@ -661,9 +624,6 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (DomainRespo
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
@@ -725,17 +685,12 @@ type ApiUpdateDomainRequest struct {
 	ApiService *DomainsApiService
 	domainId string
 	accept *string
-	authorization *string
 	contentType *string
 	updateDomainRequest *UpdateDomainRequest
 }
 
 func (r ApiUpdateDomainRequest) Accept(accept string) ApiUpdateDomainRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiUpdateDomainRequest) Authorization(authorization string) ApiUpdateDomainRequest {
-	r.authorization = &authorization
 	return r
 }
 func (r ApiUpdateDomainRequest) ContentType(contentType string) ApiUpdateDomainRequest {
@@ -811,9 +766,6 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (Domai
 	}
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
-	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
 	}
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")

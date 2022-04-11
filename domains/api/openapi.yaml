@@ -94,6 +94,7 @@ info:
   version: 1.0.0
 servers:
 - url: https://api.azionapi.net
+- url: https://stage-api.azionapi.net
 tags:
 - description: Through My Domains API you can retrieve, create, remove or update Domains
     used by Edge Applications
@@ -108,14 +109,6 @@ paths:
         explode: false
         in: header
         name: Accept
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
         required: false
         schema:
           type: string
@@ -148,14 +141,6 @@ paths:
         explode: false
         in: header
         name: Accept
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
         required: false
         schema:
           type: string
@@ -208,14 +193,6 @@ paths:
         schema:
           type: string
         style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - description: "The id of the domain to be deleted.\t"
         explode: false
         in: path
@@ -250,14 +227,6 @@ paths:
         explode: false
         in: header
         name: Accept
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
         required: false
         schema:
           type: string
@@ -302,14 +271,6 @@ paths:
         explode: false
         in: header
         name: Accept
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
         required: false
         schema:
           type: string
@@ -367,14 +328,6 @@ paths:
         explode: false
         in: header
         name: Accept
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
         required: false
         schema:
           type: string
