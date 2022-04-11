@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## PurgeCacheKey
 
-> PurgeCacheKey(ctx).Accept(accept).Authorization(authorization).ContentType(contentType).PurgeCacheKeyRequest(purgeCacheKeyRequest).Execute()
+> PurgeCacheKey(ctx).Accept(accept).ContentType(contentType).PurgeCacheKeyRequest(purgeCacheKeyRequest).Execute()
 
 /purge/cachekey
 
@@ -32,13 +32,12 @@ import (
 
 func main() {
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     purgeCacheKeyRequest := *openapiclient.NewPurgeCacheKeyRequest([]string{"Urls_example"}, "Method_example", "Layer_example") // PurgeCacheKeyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RealTimePurgeApi.PurgeCacheKey(context.Background()).Accept(accept).Authorization(authorization).ContentType(contentType).PurgeCacheKeyRequest(purgeCacheKeyRequest).Execute()
+    resp, r, err := api_client.RealTimePurgeApi.PurgeCacheKey(context.Background()).Accept(accept).ContentType(contentType).PurgeCacheKeyRequest(purgeCacheKeyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RealTimePurgeApi.PurgeCacheKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,7 +57,6 @@ Other parameters are passed through a pointer to a apiPurgeCacheKeyRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
  **purgeCacheKeyRequest** | [**PurgeCacheKeyRequest**](PurgeCacheKeyRequest.md) |  | 
 
@@ -82,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## PurgeUrl
 
-> PurgeUrl(ctx).Accept(accept).Authorization(authorization).ContentType(contentType).PurgeUrlRequest(purgeUrlRequest).Execute()
+> PurgeUrl(ctx).Accept(accept).ContentType(contentType).PurgeUrlRequest(purgeUrlRequest).Execute()
 
 /purge/url
 
@@ -102,13 +100,12 @@ import (
 
 func main() {
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     purgeUrlRequest := *openapiclient.NewPurgeUrlRequest([]string{"Urls_example"}, "Method_example") // PurgeUrlRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RealTimePurgeApi.PurgeUrl(context.Background()).Accept(accept).Authorization(authorization).ContentType(contentType).PurgeUrlRequest(purgeUrlRequest).Execute()
+    resp, r, err := api_client.RealTimePurgeApi.PurgeUrl(context.Background()).Accept(accept).ContentType(contentType).PurgeUrlRequest(purgeUrlRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RealTimePurgeApi.PurgeUrl``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -128,7 +125,6 @@ Other parameters are passed through a pointer to a apiPurgeUrlRequest struct via
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
  **purgeUrlRequest** | [**PurgeUrlRequest**](PurgeUrlRequest.md) |  | 
 
@@ -152,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## PurgeWildcard
 
-> PurgeWildcard(ctx).Accept(accept).Authorization(authorization).ContentType(contentType).PurgeWildcardRequest(purgeWildcardRequest).Execute()
+> PurgeWildcard(ctx).Accept(accept).ContentType(contentType).PurgeWildcardRequest(purgeWildcardRequest).Execute()
 
 /purge/wildcard
 
@@ -172,13 +168,12 @@ import (
 
 func main() {
     accept := "application/json; version=3" // string |  (optional)
-    authorization := "Token [TOKEN VALUE]" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     purgeWildcardRequest := *openapiclient.NewPurgeWildcardRequest([]string{"Urls_example"}, "Method_example") // PurgeWildcardRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RealTimePurgeApi.PurgeWildcard(context.Background()).Accept(accept).Authorization(authorization).ContentType(contentType).PurgeWildcardRequest(purgeWildcardRequest).Execute()
+    resp, r, err := api_client.RealTimePurgeApi.PurgeWildcard(context.Background()).Accept(accept).ContentType(contentType).PurgeWildcardRequest(purgeWildcardRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RealTimePurgeApi.PurgeWildcard``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -198,7 +193,6 @@ Other parameters are passed through a pointer to a apiPurgeWildcardRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | 
- **authorization** | **string** |  | 
  **contentType** | **string** |  | 
  **purgeWildcardRequest** | [**PurgeWildcardRequest**](PurgeWildcardRequest.md) |  | 
 

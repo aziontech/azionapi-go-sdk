@@ -34,14 +34,6 @@ paths:
         schema:
           type: string
         style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - example: application/json
         explode: false
         in: header
@@ -133,14 +125,6 @@ paths:
         schema:
           type: string
         style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - example: application/json
         explode: false
         in: header
@@ -226,14 +210,6 @@ paths:
         explode: false
         in: header
         name: Accept
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: Token [TOKEN VALUE]
-        explode: false
-        in: header
-        name: Authorization
         required: false
         schema:
           type: string

@@ -30,17 +30,12 @@ type ApiPurgeCacheKeyRequest struct {
 	ctx _context.Context
 	ApiService *RealTimePurgeApiService
 	accept *string
-	authorization *string
 	contentType *string
 	purgeCacheKeyRequest *PurgeCacheKeyRequest
 }
 
 func (r ApiPurgeCacheKeyRequest) Accept(accept string) ApiPurgeCacheKeyRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiPurgeCacheKeyRequest) Authorization(authorization string) ApiPurgeCacheKeyRequest {
-	r.authorization = &authorization
 	return r
 }
 func (r ApiPurgeCacheKeyRequest) ContentType(contentType string) ApiPurgeCacheKeyRequest {
@@ -118,9 +113,6 @@ func (a *RealTimePurgeApiService) PurgeCacheKeyExecute(r ApiPurgeCacheKeyRequest
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
@@ -172,17 +164,12 @@ type ApiPurgeUrlRequest struct {
 	ctx _context.Context
 	ApiService *RealTimePurgeApiService
 	accept *string
-	authorization *string
 	contentType *string
 	purgeUrlRequest *PurgeUrlRequest
 }
 
 func (r ApiPurgeUrlRequest) Accept(accept string) ApiPurgeUrlRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiPurgeUrlRequest) Authorization(authorization string) ApiPurgeUrlRequest {
-	r.authorization = &authorization
 	return r
 }
 func (r ApiPurgeUrlRequest) ContentType(contentType string) ApiPurgeUrlRequest {
@@ -258,9 +245,6 @@ func (a *RealTimePurgeApiService) PurgeUrlExecute(r ApiPurgeUrlRequest) (*_netht
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
@@ -312,17 +296,12 @@ type ApiPurgeWildcardRequest struct {
 	ctx _context.Context
 	ApiService *RealTimePurgeApiService
 	accept *string
-	authorization *string
 	contentType *string
 	purgeWildcardRequest *PurgeWildcardRequest
 }
 
 func (r ApiPurgeWildcardRequest) Accept(accept string) ApiPurgeWildcardRequest {
 	r.accept = &accept
-	return r
-}
-func (r ApiPurgeWildcardRequest) Authorization(authorization string) ApiPurgeWildcardRequest {
-	r.authorization = &authorization
 	return r
 }
 func (r ApiPurgeWildcardRequest) ContentType(contentType string) ApiPurgeWildcardRequest {
@@ -397,9 +376,6 @@ func (a *RealTimePurgeApiService) PurgeWildcardExecute(r ApiPurgeWildcardRequest
 	}
 	if r.accept != nil {
 		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
-	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
 	}
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
