@@ -1,6 +1,6 @@
 # \RealTimePurgeApi
 
-All URIs are relative to *https://api.azionapi.net*
+All URIs are relative to *http://localhost:3002*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
