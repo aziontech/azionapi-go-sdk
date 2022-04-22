@@ -9,7 +9,7 @@ azionapi-go-sdk is the official Azion SDK for the Go programming language.
 |---|---|
 |[Domains](domains/README.md)|Domains API enables you to retrieve, create, remove or update Domains used by Edge Applications.|
 |[Edge Functions](edgefunctions/README.md)|Edge Functions API.|
-|[Real-Time Purge](realtimepurge/README.md)|Real-Time Purge API enables you to perform an object deletion from the Edge Caching or L2 Caching layers before time-out.|
+|[Real-Time Purge](realtimepurge/README.md)|Real-Time Purge API enables you to purge a cache entry before its TTL for Edge Caching or L2 Caching.|
 |[Edge Services](edgeservices/README.md)|Edge Services API, part of the Edge Orchestrator
 
 ## License
