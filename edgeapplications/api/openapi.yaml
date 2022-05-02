@@ -918,6 +918,62 @@ paths:
       tags:
       - Edge Applications > Edge Functions Instances
   /edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: edge_application_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: functions_instances_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: application/json; version=3
+        explode: false
+        in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: |-
+          The type of coding used in the Body (application/json).
+          <br>
+
+          Example:
+          Content-Type: application/json
+        example: application/json
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "422":
+          description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      summary: '/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:'
+      tags:
+      - Edge Applications > Edge Functions Instances
     get:
       parameters:
       - explode: false
@@ -950,7 +1006,74 @@ paths:
           content:
             application/json; version=3:
               schema:
-                $ref: '#/components/schemas/ApplicationInstancesGetResponse'
+                $ref: '#/components/schemas/ApplicationInstancesGetOneResponse'
+          description: Successful response
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "422":
+          description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      summary: '/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:'
+      tags:
+      - Edge Applications > Edge Functions Instances
+    patch:
+      parameters:
+      - example: application/json; version=3
+        explode: false
+        in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: |-
+          The type of coding used in the Body (application/json).
+          <br>
+
+          Example:
+          Content-Type: application/json
+        example: application/json
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: "The id of the edge application you plan to overwrite\t"
+        explode: false
+        in: path
+        name: edge_application_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The id of the edge function instance you plan to overwrite.
+        explode: false
+        in: path
+        name: functions_instances_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json; version=3:
+            schema:
+              $ref: '#/components/schemas/ApplicationUpdateInstanceRequest'
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/ApplicationInstanceResults'
           description: Successful response
         "400":
           description: Bad Request
@@ -1765,6 +1888,7 @@ components:
           http_port: 5
           https_port: 2
           minimum_tls_version: minimum_tls_version
+          name: name
           edge_functions: true
           l2_caching: true
           id: 5
@@ -1782,6 +1906,7 @@ components:
           http_port: 5
           https_port: 2
           minimum_tls_version: minimum_tls_version
+          name: name
           edge_functions: true
           l2_caching: true
           id: 5
@@ -1872,6 +1997,7 @@ components:
           http_port: 5
           https_port: 2
           minimum_tls_version: minimum_tls_version
+          name: name
           edge_functions: true
           l2_caching: true
           id: 5
@@ -1902,6 +2028,7 @@ components:
         http_port: 5
         https_port: 2
         minimum_tls_version: minimum_tls_version
+        name: name
         edge_functions: true
         l2_caching: true
         id: 5
@@ -1910,6 +2037,8 @@ components:
         id:
           format: int64
           type: integer
+        name:
+          type: string
         next:
           type: string
         active:
@@ -2118,18 +2247,14 @@ components:
         delivery_protocol: delivery_protocol
         edge_firewall: true
         caching: true
-        http_port: 6
-        https_port: 1
+        http_port: 0
+        https_port: 6
         minimum_tls_version: minimum_tls_version
         name: name
         edge_functions: true
         l2_caching: true
-        id: 0
         image_optimization: true
       properties:
-        id:
-          format: int64
-          type: integer
         name:
           type: string
         delivery_protocol:
@@ -2286,18 +2411,14 @@ components:
         delivery_protocol: delivery_protocol
         edge_firewall: true
         caching: true
-        http_port: 6
-        https_port: 1
+        http_port: 0
+        https_port: 6
         minimum_tls_version: minimum_tls_version
         name: name
         edge_functions: true
         l2_caching: true
-        id: 0
         image_optimization: true
       properties:
-        id:
-          format: int64
-          type: integer
         name:
           type: string
         delivery_protocol:
@@ -3062,11 +3183,16 @@ components:
       type: object
     ApplicationInstancesGetOneResponse:
       additionalProperties: false
+      example:
+        schema_version: 0
+        results:
+          args: ""
+          edge_function_id: 5
+          name: name
+          id: 5
       properties:
         results:
-          items:
-            $ref: '#/components/schemas/ApplicationInstancesResults'
-          type: array
+          $ref: '#/components/schemas/ApplicationInstancesResults'
         schema_version:
           format: int64
           type: integer
@@ -3128,6 +3254,10 @@ components:
       - edge_function_id
       - name
     ApplicationUpdateInstanceRequest:
+      example:
+        args: ""
+        edge_function_id: 0
+        name: name
       properties:
         name:
           nullable: true

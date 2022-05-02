@@ -17,6 +17,7 @@ import (
 // ApplicationResults struct for ApplicationResults
 type ApplicationResults struct {
 	Id int64 `json:"id"`
+	Name string `json:"name"`
 	Next *string `json:"next,omitempty"`
 	Active bool `json:"active"`
 	DeliveryProtocol string `json:"delivery_protocol"`
@@ -39,9 +40,10 @@ type ApplicationResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationResults(id int64, active bool, deliveryProtocol string, httpPort int64, httpsPort int64, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResults {
+func NewApplicationResults(id int64, name string, active bool, deliveryProtocol string, httpPort int64, httpsPort int64, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResults {
 	this := ApplicationResults{}
 	this.Id = id
+	this.Name = name
 	this.Active = active
 	this.DeliveryProtocol = deliveryProtocol
 	this.HttpPort = httpPort
@@ -90,6 +92,30 @@ func (o *ApplicationResults) GetIdOk() (*int64, bool) {
 // SetId sets field value
 func (o *ApplicationResults) SetId(v int64) {
 	o.Id = v
+}
+
+// GetName returns the Name field value
+func (o *ApplicationResults) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResults) GetNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *ApplicationResults) SetName(v string) {
+	o.Name = v
 }
 
 // GetNext returns the Next field value if set, zero value otherwise.
@@ -488,6 +514,9 @@ func (o ApplicationResults) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	if o.Next != nil {
 		toSerialize["next"] = o.Next

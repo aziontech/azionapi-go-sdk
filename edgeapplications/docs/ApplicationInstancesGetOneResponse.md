@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | [**[]ApplicationInstancesResults**](ApplicationInstancesResults.md) |  | 
+**Results** | [**ApplicationInstancesResults**](ApplicationInstancesResults.md) |  | 
 **SchemaVersion** | **int64** |  | 
 
 ## Methods
 
 ### NewApplicationInstancesGetOneResponse
 
-`func NewApplicationInstancesGetOneResponse(results []ApplicationInstancesResults, schemaVersion int64, ) *ApplicationInstancesGetOneResponse`
+`func NewApplicationInstancesGetOneResponse(results ApplicationInstancesResults, schemaVersion int64, ) *ApplicationInstancesGetOneResponse`
 
 NewApplicationInstancesGetOneResponse instantiates a new ApplicationInstancesGetOneResponse object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ApplicationInstancesGetOneResponse) GetResults() []ApplicationInstancesResults`
+`func (o *ApplicationInstancesGetOneResponse) GetResults() ApplicationInstancesResults`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ApplicationInstancesGetOneResponse) GetResultsOk() (*[]ApplicationInstancesResults, bool)`
+`func (o *ApplicationInstancesGetOneResponse) GetResultsOk() (*ApplicationInstancesResults, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ApplicationInstancesGetOneResponse) SetResults(v []ApplicationInstancesResults)`
+`func (o *ApplicationInstancesGetOneResponse) SetResults(v ApplicationInstancesResults)`
 
 SetResults sets Results field to given value.
 

@@ -16,7 +16,6 @@ import (
 
 // ApplicationPutRequest struct for ApplicationPutRequest
 type ApplicationPutRequest struct {
-	Id *int64 `json:"id,omitempty"`
 	Name string `json:"name"`
 	DeliveryProtocol *string `json:"delivery_protocol,omitempty"`
 	HttpPort *int64 `json:"http_port,omitempty"`
@@ -51,38 +50,6 @@ func NewApplicationPutRequest(name string) *ApplicationPutRequest {
 func NewApplicationPutRequestWithDefaults() *ApplicationPutRequest {
 	this := ApplicationPutRequest{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *ApplicationPutRequest) GetId() int64 {
-	if o == nil || o.Id == nil {
-		var ret int64
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationPutRequest) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *ApplicationPutRequest) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int64 and assigns it to the Id field.
-func (o *ApplicationPutRequest) SetId(v int64) {
-	o.Id = &v
 }
 
 // GetName returns the Name field value
@@ -591,9 +558,6 @@ func (o *ApplicationPutRequest) SetWebApplicationFirewall(v bool) {
 
 func (o ApplicationPutRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
