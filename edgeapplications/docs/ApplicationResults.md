@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | 
+**Name** | **string** |  | 
 **Next** | Pointer to **string** |  | [optional] 
 **Active** | **bool** |  | 
 **DeliveryProtocol** | **string** |  | 
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationResults
 
-`func NewApplicationResults(id int64, active bool, deliveryProtocol string, httpPort int64, httpsPort int64, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationResults`
+`func NewApplicationResults(id int64, name string, active bool, deliveryProtocol string, httpPort int64, httpsPort int64, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationResults`
 
 NewApplicationResults instantiates a new ApplicationResults object
 This constructor will assign default values to properties that have it defined,
@@ -59,6 +60,26 @@ and a boolean to check if the value has been set.
 `func (o *ApplicationResults) SetId(v int64)`
 
 SetId sets Id field to given value.
+
+
+### GetName
+
+`func (o *ApplicationResults) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *ApplicationResults) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *ApplicationResults) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 ### GetNext

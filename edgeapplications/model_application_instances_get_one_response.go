@@ -16,7 +16,7 @@ import (
 
 // ApplicationInstancesGetOneResponse struct for ApplicationInstancesGetOneResponse
 type ApplicationInstancesGetOneResponse struct {
-	Results []ApplicationInstancesResults `json:"results"`
+	Results ApplicationInstancesResults `json:"results"`
 	SchemaVersion int64 `json:"schema_version"`
 }
 
@@ -24,7 +24,7 @@ type ApplicationInstancesGetOneResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationInstancesGetOneResponse(results []ApplicationInstancesResults, schemaVersion int64) *ApplicationInstancesGetOneResponse {
+func NewApplicationInstancesGetOneResponse(results ApplicationInstancesResults, schemaVersion int64) *ApplicationInstancesGetOneResponse {
 	this := ApplicationInstancesGetOneResponse{}
 	this.Results = results
 	this.SchemaVersion = schemaVersion
@@ -40,9 +40,9 @@ func NewApplicationInstancesGetOneResponseWithDefaults() *ApplicationInstancesGe
 }
 
 // GetResults returns the Results field value
-func (o *ApplicationInstancesGetOneResponse) GetResults() []ApplicationInstancesResults {
+func (o *ApplicationInstancesGetOneResponse) GetResults() ApplicationInstancesResults {
 	if o == nil {
-		var ret []ApplicationInstancesResults
+		var ret ApplicationInstancesResults
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *ApplicationInstancesGetOneResponse) GetResults() []ApplicationInstances
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationInstancesGetOneResponse) GetResultsOk() (*[]ApplicationInstancesResults, bool) {
+func (o *ApplicationInstancesGetOneResponse) GetResultsOk() (*ApplicationInstancesResults, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *ApplicationInstancesGetOneResponse) GetResultsOk() (*[]ApplicationInsta
 }
 
 // SetResults sets field value
-func (o *ApplicationInstancesGetOneResponse) SetResults(v []ApplicationInstancesResults) {
+func (o *ApplicationInstancesGetOneResponse) SetResults(v ApplicationInstancesResults) {
 	o.Results = v
 }
 
