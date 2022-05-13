@@ -5,18 +5,11 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: centos:7
 
     steps:
-      - name : Basic image setup
-        run: |
-          yum install -y \
-            https://repo.ius.io/ius-release-el7.rpm \
-            https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-          yum install -y git222 which make
-          
       - name: Checkout code
         uses: actions/checkout@v2
         with:
