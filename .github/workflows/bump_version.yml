@@ -6,8 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: centos:7
 
     steps:
       - name: Checkout code
