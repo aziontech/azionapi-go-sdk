@@ -19,7 +19,7 @@ type RulesEngineResultResponse struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
 	Phase string `json:"phase"`
-	Behaviors *[]CreateRulesEngineRequestBehaviors `json:"behaviors,omitempty"`
+	Behaviors *[]RulesEngineResultResponseBehaviors `json:"behaviors,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria"`
 	IsActive bool `json:"is_active"`
 	Order int64 `json:"order"`
@@ -121,9 +121,9 @@ func (o *RulesEngineResultResponse) SetPhase(v string) {
 }
 
 // GetBehaviors returns the Behaviors field value if set, zero value otherwise.
-func (o *RulesEngineResultResponse) GetBehaviors() []CreateRulesEngineRequestBehaviors {
+func (o *RulesEngineResultResponse) GetBehaviors() []RulesEngineResultResponseBehaviors {
 	if o == nil || o.Behaviors == nil {
-		var ret []CreateRulesEngineRequestBehaviors
+		var ret []RulesEngineResultResponseBehaviors
 		return ret
 	}
 	return *o.Behaviors
@@ -131,7 +131,7 @@ func (o *RulesEngineResultResponse) GetBehaviors() []CreateRulesEngineRequestBeh
 
 // GetBehaviorsOk returns a tuple with the Behaviors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RulesEngineResultResponse) GetBehaviorsOk() (*[]CreateRulesEngineRequestBehaviors, bool) {
+func (o *RulesEngineResultResponse) GetBehaviorsOk() (*[]RulesEngineResultResponseBehaviors, bool) {
 	if o == nil || o.Behaviors == nil {
 		return nil, false
 	}
@@ -147,8 +147,8 @@ func (o *RulesEngineResultResponse) HasBehaviors() bool {
 	return false
 }
 
-// SetBehaviors gets a reference to the given []CreateRulesEngineRequestBehaviors and assigns it to the Behaviors field.
-func (o *RulesEngineResultResponse) SetBehaviors(v []CreateRulesEngineRequestBehaviors) {
+// SetBehaviors gets a reference to the given []RulesEngineResultResponseBehaviors and assigns it to the Behaviors field.
+func (o *RulesEngineResultResponse) SetBehaviors(v []RulesEngineResultResponseBehaviors) {
 	o.Behaviors = &v
 }
 

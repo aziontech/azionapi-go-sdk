@@ -299,7 +299,6 @@ Class | Method | HTTP request | Description
  - [CreateOriginsRequest](docs/CreateOriginsRequest.md)
  - [CreateOriginsRequestAddresses](docs/CreateOriginsRequestAddresses.md)
  - [CreateRulesEngineRequest](docs/CreateRulesEngineRequest.md)
- - [CreateRulesEngineRequestBehaviors](docs/CreateRulesEngineRequestBehaviors.md)
  - [GetApplicationResponse](docs/GetApplicationResponse.md)
  - [GetApplicationsResponse](docs/GetApplicationsResponse.md)
  - [OriginsIdResponse](docs/OriginsIdResponse.md)
@@ -309,13 +308,14 @@ Class | Method | HTTP request | Description
  - [OriginsResultResponseAddresses](docs/OriginsResultResponseAddresses.md)
  - [PatchOriginsRequest](docs/PatchOriginsRequest.md)
  - [PatchRulesEngineRequest](docs/PatchRulesEngineRequest.md)
+ - [RulesEngineBehavior](docs/RulesEngineBehavior.md)
  - [RulesEngineCriteria](docs/RulesEngineCriteria.md)
  - [RulesEngineIdResponse](docs/RulesEngineIdResponse.md)
  - [RulesEngineResponse](docs/RulesEngineResponse.md)
  - [RulesEngineResultResponse](docs/RulesEngineResultResponse.md)
+ - [RulesEngineResultResponseBehaviors](docs/RulesEngineResultResponseBehaviors.md)
  - [UpdateOriginsRequest](docs/UpdateOriginsRequest.md)
  - [UpdateRulesEngineRequest](docs/UpdateRulesEngineRequest.md)
- - [UpdateRulesEngineRequestBehaviors](docs/UpdateRulesEngineRequestBehaviors.md)
 
 
 ## Documentation For Authorization

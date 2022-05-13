@@ -14,35 +14,32 @@ import (
 	"encoding/json"
 )
 
-// UpdateRulesEngineRequest struct for UpdateRulesEngineRequest
-type UpdateRulesEngineRequest struct {
+// RulesEngineResultResponseBehaviors struct for RulesEngineResultResponseBehaviors
+type RulesEngineResultResponseBehaviors struct {
 	Name string `json:"name"`
-	Criteria [][]RulesEngineCriteria `json:"criteria"`
-	Behaviors []RulesEngineBehavior `json:"behaviors"`
+	Target interface{} `json:"target,omitempty"`
 }
 
-// NewUpdateRulesEngineRequest instantiates a new UpdateRulesEngineRequest object
+// NewRulesEngineResultResponseBehaviors instantiates a new RulesEngineResultResponseBehaviors object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateRulesEngineRequest(name string, criteria [][]RulesEngineCriteria, behaviors []RulesEngineBehavior) *UpdateRulesEngineRequest {
-	this := UpdateRulesEngineRequest{}
+func NewRulesEngineResultResponseBehaviors(name string) *RulesEngineResultResponseBehaviors {
+	this := RulesEngineResultResponseBehaviors{}
 	this.Name = name
-	this.Criteria = criteria
-	this.Behaviors = behaviors
 	return &this
 }
 
-// NewUpdateRulesEngineRequestWithDefaults instantiates a new UpdateRulesEngineRequest object
+// NewRulesEngineResultResponseBehaviorsWithDefaults instantiates a new RulesEngineResultResponseBehaviors object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUpdateRulesEngineRequestWithDefaults() *UpdateRulesEngineRequest {
-	this := UpdateRulesEngineRequest{}
+func NewRulesEngineResultResponseBehaviorsWithDefaults() *RulesEngineResultResponseBehaviors {
+	this := RulesEngineResultResponseBehaviors{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *UpdateRulesEngineRequest) GetName() string {
+func (o *RulesEngineResultResponseBehaviors) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -53,7 +50,7 @@ func (o *UpdateRulesEngineRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *UpdateRulesEngineRequest) GetNameOk() (*string, bool) {
+func (o *RulesEngineResultResponseBehaviors) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -61,104 +58,86 @@ func (o *UpdateRulesEngineRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *UpdateRulesEngineRequest) SetName(v string) {
+func (o *RulesEngineResultResponseBehaviors) SetName(v string) {
 	o.Name = v
 }
 
-// GetCriteria returns the Criteria field value
-func (o *UpdateRulesEngineRequest) GetCriteria() [][]RulesEngineCriteria {
-	if o == nil {
-		var ret [][]RulesEngineCriteria
+// GetTarget returns the Target field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RulesEngineResultResponseBehaviors) GetTarget() interface{} {
+	if o == nil  {
+		var ret interface{}
 		return ret
 	}
-
-	return o.Criteria
+	return o.Target
 }
 
-// GetCriteriaOk returns a tuple with the Criteria field value
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateRulesEngineRequest) GetCriteriaOk() (*[][]RulesEngineCriteria, bool) {
-	if o == nil  {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RulesEngineResultResponseBehaviors) GetTargetOk() (*interface{}, bool) {
+	if o == nil || o.Target == nil {
 		return nil, false
 	}
-	return &o.Criteria, true
+	return &o.Target, true
 }
 
-// SetCriteria sets field value
-func (o *UpdateRulesEngineRequest) SetCriteria(v [][]RulesEngineCriteria) {
-	o.Criteria = v
-}
-
-// GetBehaviors returns the Behaviors field value
-func (o *UpdateRulesEngineRequest) GetBehaviors() []RulesEngineBehavior {
-	if o == nil {
-		var ret []RulesEngineBehavior
-		return ret
+// HasTarget returns a boolean if a field has been set.
+func (o *RulesEngineResultResponseBehaviors) HasTarget() bool {
+	if o != nil && o.Target != nil {
+		return true
 	}
 
-	return o.Behaviors
+	return false
 }
 
-// GetBehaviorsOk returns a tuple with the Behaviors field value
-// and a boolean to check if the value has been set.
-func (o *UpdateRulesEngineRequest) GetBehaviorsOk() (*[]RulesEngineBehavior, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Behaviors, true
+// SetTarget gets a reference to the given interface{} and assigns it to the Target field.
+func (o *RulesEngineResultResponseBehaviors) SetTarget(v interface{}) {
+	o.Target = v
 }
 
-// SetBehaviors sets field value
-func (o *UpdateRulesEngineRequest) SetBehaviors(v []RulesEngineBehavior) {
-	o.Behaviors = v
-}
-
-func (o UpdateRulesEngineRequest) MarshalJSON() ([]byte, error) {
+func (o RulesEngineResultResponseBehaviors) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
-		toSerialize["criteria"] = o.Criteria
-	}
-	if true {
-		toSerialize["behaviors"] = o.Behaviors
+	if o.Target != nil {
+		toSerialize["target"] = o.Target
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableUpdateRulesEngineRequest struct {
-	value *UpdateRulesEngineRequest
+type NullableRulesEngineResultResponseBehaviors struct {
+	value *RulesEngineResultResponseBehaviors
 	isSet bool
 }
 
-func (v NullableUpdateRulesEngineRequest) Get() *UpdateRulesEngineRequest {
+func (v NullableRulesEngineResultResponseBehaviors) Get() *RulesEngineResultResponseBehaviors {
 	return v.value
 }
 
-func (v *NullableUpdateRulesEngineRequest) Set(val *UpdateRulesEngineRequest) {
+func (v *NullableRulesEngineResultResponseBehaviors) Set(val *RulesEngineResultResponseBehaviors) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUpdateRulesEngineRequest) IsSet() bool {
+func (v NullableRulesEngineResultResponseBehaviors) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUpdateRulesEngineRequest) Unset() {
+func (v *NullableRulesEngineResultResponseBehaviors) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUpdateRulesEngineRequest(val *UpdateRulesEngineRequest) *NullableUpdateRulesEngineRequest {
-	return &NullableUpdateRulesEngineRequest{value: val, isSet: true}
+func NewNullableRulesEngineResultResponseBehaviors(val *RulesEngineResultResponseBehaviors) *NullableRulesEngineResultResponseBehaviors {
+	return &NullableRulesEngineResultResponseBehaviors{value: val, isSet: true}
 }
 
-func (v NullableUpdateRulesEngineRequest) MarshalJSON() ([]byte, error) {
+func (v NullableRulesEngineResultResponseBehaviors) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUpdateRulesEngineRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableRulesEngineResultResponseBehaviors) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
