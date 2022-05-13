@@ -42,7 +42,6 @@ docs/CreateApplicationResult.md
 docs/CreateOriginsRequest.md
 docs/CreateOriginsRequestAddresses.md
 docs/CreateRulesEngineRequest.md
-docs/CreateRulesEngineRequestBehaviors.md
 docs/EdgeApplicationsCacheSettingsApi.md
 docs/EdgeApplicationsEdgeFunctionsInstancesApi.md
 docs/EdgeApplicationsMainSettingsApi.md
@@ -57,13 +56,14 @@ docs/OriginsResultResponse.md
 docs/OriginsResultResponseAddresses.md
 docs/PatchOriginsRequest.md
 docs/PatchRulesEngineRequest.md
+docs/RulesEngineBehavior.md
 docs/RulesEngineCriteria.md
 docs/RulesEngineIdResponse.md
 docs/RulesEngineResponse.md
 docs/RulesEngineResultResponse.md
+docs/RulesEngineResultResponseBehaviors.md
 docs/UpdateOriginsRequest.md
 docs/UpdateRulesEngineRequest.md
-docs/UpdateRulesEngineRequestBehaviors.md
 git_push.sh
 go.mod
 go.sum
@@ -100,7 +100,6 @@ model_create_application_result.go
 model_create_origins_request.go
 model_create_origins_request_addresses.go
 model_create_rules_engine_request.go
-model_create_rules_engine_request_behaviors.go
 model_get_application_response.go
 model_get_applications_response.go
 model_origins_id_response.go
@@ -110,12 +109,13 @@ model_origins_result_response.go
 model_origins_result_response_addresses.go
 model_patch_origins_request.go
 model_patch_rules_engine_request.go
+model_rules_engine_behavior.go
 model_rules_engine_criteria.go
 model_rules_engine_id_response.go
 model_rules_engine_response.go
 model_rules_engine_result_response.go
+model_rules_engine_result_response_behaviors.go
 model_update_origins_request.go
 model_update_rules_engine_request.go
-model_update_rules_engine_request_behaviors.go
 response.go
 utils.go

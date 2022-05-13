@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **Criteria** | Pointer to [**[][]RulesEngineCriteria**]([]RulesEngineCriteria.md) |  | [optional] 
-**Behaviors** | Pointer to [**[]UpdateRulesEngineRequestBehaviors**](UpdateRulesEngineRequestBehaviors.md) |  | [optional] 
+**Behaviors** | Pointer to [**[]RulesEngineBehavior**](RulesEngineBehavior.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasCriteria returns a boolean if a field has been set.
 
 ### GetBehaviors
 
-`func (o *PatchRulesEngineRequest) GetBehaviors() []UpdateRulesEngineRequestBehaviors`
+`func (o *PatchRulesEngineRequest) GetBehaviors() []RulesEngineBehavior`
 
 GetBehaviors returns the Behaviors field if non-nil, zero value otherwise.
 
 ### GetBehaviorsOk
 
-`func (o *PatchRulesEngineRequest) GetBehaviorsOk() (*[]UpdateRulesEngineRequestBehaviors, bool)`
+`func (o *PatchRulesEngineRequest) GetBehaviorsOk() (*[]RulesEngineBehavior, bool)`
 
 GetBehaviorsOk returns a tuple with the Behaviors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBehaviors
 
-`func (o *PatchRulesEngineRequest) SetBehaviors(v []UpdateRulesEngineRequestBehaviors)`
+`func (o *PatchRulesEngineRequest) SetBehaviors(v []RulesEngineBehavior)`
 
 SetBehaviors sets Behaviors field to given value.
 

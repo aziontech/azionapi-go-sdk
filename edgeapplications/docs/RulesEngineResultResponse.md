@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | 
 **Name** | **string** |  | 
 **Phase** | **string** |  | 
-**Behaviors** | Pointer to [**[]CreateRulesEngineRequestBehaviors**](CreateRulesEngineRequestBehaviors.md) |  | [optional] 
+**Behaviors** | Pointer to [**[]RulesEngineResultResponseBehaviors**](RulesEngineResultResponseBehaviors.md) |  | [optional] 
 **Criteria** | [**[][]RulesEngineCriteria**]([]RulesEngineCriteria.md) |  | 
 **IsActive** | **bool** |  | 
 **Order** | **int64** |  | 
@@ -93,20 +93,20 @@ SetPhase sets Phase field to given value.
 
 ### GetBehaviors
 
-`func (o *RulesEngineResultResponse) GetBehaviors() []CreateRulesEngineRequestBehaviors`
+`func (o *RulesEngineResultResponse) GetBehaviors() []RulesEngineResultResponseBehaviors`
 
 GetBehaviors returns the Behaviors field if non-nil, zero value otherwise.
 
 ### GetBehaviorsOk
 
-`func (o *RulesEngineResultResponse) GetBehaviorsOk() (*[]CreateRulesEngineRequestBehaviors, bool)`
+`func (o *RulesEngineResultResponse) GetBehaviorsOk() (*[]RulesEngineResultResponseBehaviors, bool)`
 
 GetBehaviorsOk returns a tuple with the Behaviors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBehaviors
 
-`func (o *RulesEngineResultResponse) SetBehaviors(v []CreateRulesEngineRequestBehaviors)`
+`func (o *RulesEngineResultResponse) SetBehaviors(v []RulesEngineResultResponseBehaviors)`
 
 SetBehaviors sets Behaviors field to given value.
 

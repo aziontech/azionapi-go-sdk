@@ -3651,7 +3651,7 @@ components:
           type: array
         behaviors:
           items:
-            $ref: '#/components/schemas/CreateRulesEngineRequest_behaviors'
+            $ref: '#/components/schemas/RulesEngineBehavior'
           type: array
       required:
       - behaviors
@@ -3680,7 +3680,9 @@ components:
             operator: operator
         behaviors:
         - name: name
+          target: ""
         - name: name
+          target: ""
         name: name
       properties:
         name:
@@ -3693,7 +3695,7 @@ components:
           type: array
         behaviors:
           items:
-            $ref: '#/components/schemas/UpdateRulesEngineRequest_behaviors'
+            $ref: '#/components/schemas/RulesEngineBehavior'
           type: array
       required:
       - behaviors
@@ -3722,7 +3724,9 @@ components:
             operator: operator
         behaviors:
         - name: name
+          target: ""
         - name: name
+          target: ""
         name: name
       properties:
         name:
@@ -3735,7 +3739,7 @@ components:
           type: array
         behaviors:
           items:
-            $ref: '#/components/schemas/UpdateRulesEngineRequest_behaviors'
+            $ref: '#/components/schemas/RulesEngineBehavior'
           type: array
       type: object
     RulesEngineResultResponse:
@@ -3777,7 +3781,7 @@ components:
           type: string
         behaviors:
           items:
-            $ref: '#/components/schemas/CreateRulesEngineRequest_behaviors'
+            $ref: '#/components/schemas/RulesEngineResultResponse_behaviors'
           type: array
         criteria:
           items:
@@ -3819,6 +3823,18 @@ components:
       - conditional
       - operator
       - variable
+      type: object
+    RulesEngineBehavior:
+      additionalProperties: false
+      example:
+        name: name
+        target: ""
+      properties:
+        name:
+          type: string
+        target: {}
+      required:
+      - name
       type: object
     RulesEngineResponse:
       additionalProperties: false
@@ -3992,7 +4008,7 @@ components:
           nullable: true
           type: string
       type: object
-    CreateRulesEngineRequest_behaviors:
+    RulesEngineResultResponse_behaviors:
       example:
         name: name
         target: ""
@@ -4000,15 +4016,6 @@ components:
         name:
           type: string
         target: {}
-      required:
-      - name
-      type: object
-    UpdateRulesEngineRequest_behaviors:
-      example:
-        name: name
-      properties:
-        name:
-          type: string
       required:
       - name
       type: object

@@ -120,7 +120,7 @@ func main() {
     phase := "phase_example" // string | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    createRulesEngineRequest := *openapiclient.NewCreateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.CreateRulesEngineRequestBehaviors{*openapiclient.NewCreateRulesEngineRequestBehaviors("Name_example")}) // CreateRulesEngineRequest |  (optional)
+    createRulesEngineRequest := *openapiclient.NewCreateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.RulesEngineBehavior{*openapiclient.NewRulesEngineBehavior("Name_example")}) // CreateRulesEngineRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -352,7 +352,7 @@ func main() {
     ruleId := int64(789) // int64 | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    updateRulesEngineRequest := *openapiclient.NewUpdateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.UpdateRulesEngineRequestBehaviors{*openapiclient.NewUpdateRulesEngineRequestBehaviors("Name_example")}) // UpdateRulesEngineRequest |  (optional)
+    updateRulesEngineRequest := *openapiclient.NewUpdateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.RulesEngineBehavior{*openapiclient.NewRulesEngineBehavior("Name_example")}) // UpdateRulesEngineRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
