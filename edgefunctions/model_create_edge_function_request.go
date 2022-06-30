@@ -21,7 +21,6 @@ type CreateEdgeFunctionRequest struct {
 	Code *string `json:"code,omitempty"`
 	JsonArgs interface{} `json:"json_args,omitempty"`
 	Active *bool `json:"active,omitempty"`
-	InitiatorType *string `json:"initiator_type,omitempty"`
 }
 
 // NewCreateEdgeFunctionRequest instantiates a new CreateEdgeFunctionRequest object
@@ -202,38 +201,6 @@ func (o *CreateEdgeFunctionRequest) SetActive(v bool) {
 	o.Active = &v
 }
 
-// GetInitiatorType returns the InitiatorType field value if set, zero value otherwise.
-func (o *CreateEdgeFunctionRequest) GetInitiatorType() string {
-	if o == nil || o.InitiatorType == nil {
-		var ret string
-		return ret
-	}
-	return *o.InitiatorType
-}
-
-// GetInitiatorTypeOk returns a tuple with the InitiatorType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateEdgeFunctionRequest) GetInitiatorTypeOk() (*string, bool) {
-	if o == nil || o.InitiatorType == nil {
-		return nil, false
-	}
-	return o.InitiatorType, true
-}
-
-// HasInitiatorType returns a boolean if a field has been set.
-func (o *CreateEdgeFunctionRequest) HasInitiatorType() bool {
-	if o != nil && o.InitiatorType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetInitiatorType gets a reference to the given string and assigns it to the InitiatorType field.
-func (o *CreateEdgeFunctionRequest) SetInitiatorType(v string) {
-	o.InitiatorType = &v
-}
-
 func (o CreateEdgeFunctionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -250,9 +217,6 @@ func (o CreateEdgeFunctionRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Active != nil {
 		toSerialize["active"] = o.Active
-	}
-	if o.InitiatorType != nil {
-		toSerialize["initiator_type"] = o.InitiatorType
 	}
 	return json.Marshal(toSerialize)
 }
