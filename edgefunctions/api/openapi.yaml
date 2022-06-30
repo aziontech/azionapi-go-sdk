@@ -462,8 +462,7 @@ components:
         name: name
         active: true
         language: language
-        json_args: '{}'
-        initiator_type: initiator_type
+        json_args: ""
       properties:
         name:
           type: string
@@ -474,8 +473,6 @@ components:
         json_args: {}
         active:
           type: boolean
-        initiator_type:
-          type: string
       type: object
     BadRequestResponse:
       properties:
@@ -522,7 +519,7 @@ components:
         code: code
         name: name
         active: true
-        json_args: '{}'
+        json_args: ""
         language: language
         initiator_type: initiator_type
       properties:
@@ -543,7 +540,7 @@ components:
         code: code
         name: name
         active: true
-        json_args: '{}'
+        json_args: ""
       properties:
         name:
           type: string

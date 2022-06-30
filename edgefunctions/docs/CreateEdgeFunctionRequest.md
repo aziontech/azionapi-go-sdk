@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Code** | Pointer to **string** |  | [optional] 
 **JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
-**InitiatorType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -164,31 +163,6 @@ SetActive sets Active field to given value.
 `func (o *CreateEdgeFunctionRequest) HasActive() bool`
 
 HasActive returns a boolean if a field has been set.
-
-### GetInitiatorType
-
-`func (o *CreateEdgeFunctionRequest) GetInitiatorType() string`
-
-GetInitiatorType returns the InitiatorType field if non-nil, zero value otherwise.
-
-### GetInitiatorTypeOk
-
-`func (o *CreateEdgeFunctionRequest) GetInitiatorTypeOk() (*string, bool)`
-
-GetInitiatorTypeOk returns a tuple with the InitiatorType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInitiatorType
-
-`func (o *CreateEdgeFunctionRequest) SetInitiatorType(v string)`
-
-SetInitiatorType sets InitiatorType field to given value.
-
-### HasInitiatorType
-
-`func (o *CreateEdgeFunctionRequest) HasInitiatorType() bool`
-
-HasInitiatorType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
