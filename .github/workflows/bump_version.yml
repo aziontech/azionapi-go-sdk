@@ -5,25 +5,16 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
-    container:
-      image: centos:7
+    runs-on: ubuntu-latest
 
     steps:
-      - name : Basic image setup
-        run: |
-          yum install -y \
-            https://repo.ius.io/ius-release-el7.rpm \
-            https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-          yum install -y git222 which make
-          
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: '0'
+          fetch-depth: 0
 
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@master
+        uses: anothrNick/github-tag-action@1.37.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCHES: master
