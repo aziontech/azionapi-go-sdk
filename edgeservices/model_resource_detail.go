@@ -20,20 +20,20 @@ type ResourceDetail struct {
 	ContentType string `json:"content_type"`
 	Id int64 `json:"id"`
 	Name string `json:"name"`
-	Type string `json:"type"`
+	Trigger string `json:"trigger"`
 }
 
 // NewResourceDetail instantiates a new ResourceDetail object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceDetail(content string, contentType string, id int64, name string, type_ string) *ResourceDetail {
+func NewResourceDetail(content string, contentType string, id int64, name string, trigger string) *ResourceDetail {
 	this := ResourceDetail{}
 	this.Content = content
 	this.ContentType = contentType
 	this.Id = id
 	this.Name = name
-	this.Type = type_
+	this.Trigger = trigger
 	return &this
 }
 
@@ -141,28 +141,28 @@ func (o *ResourceDetail) SetName(v string) {
 	o.Name = v
 }
 
-// GetType returns the Type field value
-func (o *ResourceDetail) GetType() string {
+// GetTrigger returns the Trigger field value
+func (o *ResourceDetail) GetTrigger() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Type
+	return o.Trigger
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTriggerOk returns a tuple with the Trigger field value
 // and a boolean to check if the value has been set.
-func (o *ResourceDetail) GetTypeOk() (*string, bool) {
+func (o *ResourceDetail) GetTriggerOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.Trigger, true
 }
 
-// SetType sets field value
-func (o *ResourceDetail) SetType(v string) {
-	o.Type = v
+// SetTrigger sets field value
+func (o *ResourceDetail) SetTrigger(v string) {
+	o.Trigger = v
 }
 
 func (o ResourceDetail) MarshalJSON() ([]byte, error) {
@@ -180,7 +180,7 @@ func (o ResourceDetail) MarshalJSON() ([]byte, error) {
 		toSerialize["name"] = o.Name
 	}
 	if true {
-		toSerialize["type"] = o.Type
+		toSerialize["trigger"] = o.Trigger
 	}
 	return json.Marshal(toSerialize)
 }

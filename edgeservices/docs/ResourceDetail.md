@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **ContentType** | **string** |  | 
 **Id** | **int64** |  | 
 **Name** | **string** |  | 
-**Type** | **string** |  | 
+**Trigger** | **string** |  | 
 
 ## Methods
 
 ### NewResourceDetail
 
-`func NewResourceDetail(content string, contentType string, id int64, name string, type_ string, ) *ResourceDetail`
+`func NewResourceDetail(content string, contentType string, id int64, name string, trigger string, ) *ResourceDetail`
 
 NewResourceDetail instantiates a new ResourceDetail object
 This constructor will assign default values to properties that have it defined,
@@ -109,24 +109,24 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetType
+### GetTrigger
 
-`func (o *ResourceDetail) GetType() string`
+`func (o *ResourceDetail) GetTrigger() string`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetTrigger returns the Trigger field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetTriggerOk
 
-`func (o *ResourceDetail) GetTypeOk() (*string, bool)`
+`func (o *ResourceDetail) GetTriggerOk() (*string, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetTriggerOk returns a tuple with the Trigger field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetTrigger
 
-`func (o *ResourceDetail) SetType(v string)`
+`func (o *ResourceDetail) SetTrigger(v string)`
 
-SetType sets Type field to given value.
+SetTrigger sets Trigger field to given value.
 
 
 

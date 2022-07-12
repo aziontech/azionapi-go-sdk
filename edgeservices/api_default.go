@@ -12,42 +12,42 @@ package edgeservices
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // DefaultApiService DefaultApi service
 type DefaultApiService service
 
 type ApiDeleteResourceRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	serviceId int64
 	resourceId int64
 }
 
 
-func (r ApiDeleteResourceRequest) Execute() (*http.Response, error) {
+func (r ApiDeleteResourceRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteResourceExecute(r)
 }
 
 /*
 DeleteResource Delete Service Resource by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serviceId
  @param resourceId
  @return ApiDeleteResourceRequest
 */
-func (a *DefaultApiService) DeleteResource(ctx context.Context, serviceId int64, resourceId int64) ApiDeleteResourceRequest {
+func (a *DefaultApiService) DeleteResource(ctx _context.Context, serviceId int64, resourceId int64) ApiDeleteResourceRequest {
 	return ApiDeleteResourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,25 +57,27 @@ func (a *DefaultApiService) DeleteResource(ctx context.Context, serviceId int64,
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteResourceExecute(r ApiDeleteResourceRequest) (*http.Response, error) {
+func (a *DefaultApiService) DeleteResourceExecute(r ApiDeleteResourceRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteResource")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/{serviceId}/resources/{resourceId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceId"+"}", url.PathEscape(parameterToString(r.resourceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", _neturl.PathEscape(parameterToString(r.serviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceId"+"}", _neturl.PathEscape(parameterToString(r.resourceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -94,7 +96,7 @@ func (a *DefaultApiService) DeleteResourceExecute(r ApiDeleteResourceRequest) (*
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -104,15 +106,15 @@ func (a *DefaultApiService) DeleteResourceExecute(r ApiDeleteResourceRequest) (*
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -123,24 +125,24 @@ func (a *DefaultApiService) DeleteResourceExecute(r ApiDeleteResourceRequest) (*
 }
 
 type ApiDeleteServiceRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	id int64
 }
 
 
-func (r ApiDeleteServiceRequest) Execute() (*http.Response, error) {
+func (r ApiDeleteServiceRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteServiceExecute(r)
 }
 
 /*
 DeleteService Delete Service by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
  @return ApiDeleteServiceRequest
 */
-func (a *DefaultApiService) DeleteService(ctx context.Context, id int64) ApiDeleteServiceRequest {
+func (a *DefaultApiService) DeleteService(ctx _context.Context, id int64) ApiDeleteServiceRequest {
 	return ApiDeleteServiceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -149,24 +151,26 @@ func (a *DefaultApiService) DeleteService(ctx context.Context, id int64) ApiDele
 }
 
 // Execute executes the request
-func (a *DefaultApiService) DeleteServiceExecute(r ApiDeleteServiceRequest) (*http.Response, error) {
+func (a *DefaultApiService) DeleteServiceExecute(r ApiDeleteServiceRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.DeleteService")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -185,7 +189,7 @@ func (a *DefaultApiService) DeleteServiceExecute(r ApiDeleteServiceRequest) (*ht
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -195,15 +199,15 @@ func (a *DefaultApiService) DeleteServiceExecute(r ApiDeleteServiceRequest) (*ht
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -214,26 +218,26 @@ func (a *DefaultApiService) DeleteServiceExecute(r ApiDeleteServiceRequest) (*ht
 }
 
 type ApiGetResourceRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	serviceId int64
 	resourceId int64
 }
 
 
-func (r ApiGetResourceRequest) Execute() (*ResourceDetail, *http.Response, error) {
+func (r ApiGetResourceRequest) Execute() (ResourceDetail, *_nethttp.Response, error) {
 	return r.ApiService.GetResourceExecute(r)
 }
 
 /*
 GetResource Return Service Resource by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serviceId
  @param resourceId
  @return ApiGetResourceRequest
 */
-func (a *DefaultApiService) GetResource(ctx context.Context, serviceId int64, resourceId int64) ApiGetResourceRequest {
+func (a *DefaultApiService) GetResource(ctx _context.Context, serviceId int64, resourceId int64) ApiGetResourceRequest {
 	return ApiGetResourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -244,26 +248,28 @@ func (a *DefaultApiService) GetResource(ctx context.Context, serviceId int64, re
 
 // Execute executes the request
 //  @return ResourceDetail
-func (a *DefaultApiService) GetResourceExecute(r ApiGetResourceRequest) (*ResourceDetail, *http.Response, error) {
+func (a *DefaultApiService) GetResourceExecute(r ApiGetResourceRequest) (ResourceDetail, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceDetail
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ResourceDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetResource")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/{serviceId}/resources/{resourceId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceId"+"}", url.PathEscape(parameterToString(r.resourceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", _neturl.PathEscape(parameterToString(r.serviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceId"+"}", _neturl.PathEscape(parameterToString(r.resourceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -282,7 +288,7 @@ func (a *DefaultApiService) GetResourceExecute(r ApiGetResourceRequest) (*Resour
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -292,15 +298,15 @@ func (a *DefaultApiService) GetResourceExecute(r ApiGetResourceRequest) (*Resour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -309,7 +315,7 @@ func (a *DefaultApiService) GetResourceExecute(r ApiGetResourceRequest) (*Resour
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -320,7 +326,7 @@ func (a *DefaultApiService) GetResourceExecute(r ApiGetResourceRequest) (*Resour
 }
 
 type ApiGetResourcesRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	serviceId int64
 	page *int64
@@ -351,18 +357,18 @@ func (r ApiGetResourcesRequest) Sort(sort string) ApiGetResourcesRequest {
 	return r
 }
 
-func (r ApiGetResourcesRequest) Execute() (*ResourceResponseWithTotal, *http.Response, error) {
+func (r ApiGetResourcesRequest) Execute() (ResourceResponseWithTotal, *_nethttp.Response, error) {
 	return r.ApiService.GetResourcesExecute(r)
 }
 
 /*
 GetResources Return Service Resources by page
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serviceId
  @return ApiGetResourcesRequest
 */
-func (a *DefaultApiService) GetResources(ctx context.Context, serviceId int64) ApiGetResourcesRequest {
+func (a *DefaultApiService) GetResources(ctx _context.Context, serviceId int64) ApiGetResourcesRequest {
 	return ApiGetResourcesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -372,25 +378,27 @@ func (a *DefaultApiService) GetResources(ctx context.Context, serviceId int64) A
 
 // Execute executes the request
 //  @return ResourceResponseWithTotal
-func (a *DefaultApiService) GetResourcesExecute(r ApiGetResourcesRequest) (*ResourceResponseWithTotal, *http.Response, error) {
+func (a *DefaultApiService) GetResourcesExecute(r ApiGetResourcesRequest) (ResourceResponseWithTotal, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceResponseWithTotal
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ResourceResponseWithTotal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetResources")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/{serviceId}/resources"
-	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", _neturl.PathEscape(parameterToString(r.serviceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -424,7 +432,7 @@ func (a *DefaultApiService) GetResourcesExecute(r ApiGetResourcesRequest) (*Reso
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -434,15 +442,15 @@ func (a *DefaultApiService) GetResourcesExecute(r ApiGetResourcesRequest) (*Reso
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -451,7 +459,7 @@ func (a *DefaultApiService) GetResourcesExecute(r ApiGetResourcesRequest) (*Reso
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -462,7 +470,7 @@ func (a *DefaultApiService) GetResourcesExecute(r ApiGetResourcesRequest) (*Reso
 }
 
 type ApiGetServiceRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	id int64
 	withVars *bool
@@ -473,18 +481,18 @@ func (r ApiGetServiceRequest) WithVars(withVars bool) ApiGetServiceRequest {
 	return r
 }
 
-func (r ApiGetServiceRequest) Execute() (*ServiceResponse, *http.Response, error) {
+func (r ApiGetServiceRequest) Execute() (ServiceResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetServiceExecute(r)
 }
 
 /*
 GetService Return Service by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
  @return ApiGetServiceRequest
 */
-func (a *DefaultApiService) GetService(ctx context.Context, id int64) ApiGetServiceRequest {
+func (a *DefaultApiService) GetService(ctx _context.Context, id int64) ApiGetServiceRequest {
 	return ApiGetServiceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -494,25 +502,27 @@ func (a *DefaultApiService) GetService(ctx context.Context, id int64) ApiGetServ
 
 // Execute executes the request
 //  @return ServiceResponse
-func (a *DefaultApiService) GetServiceExecute(r ApiGetServiceRequest) (*ServiceResponse, *http.Response, error) {
+func (a *DefaultApiService) GetServiceExecute(r ApiGetServiceRequest) (ServiceResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceResponse
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ServiceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetService")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.withVars != nil {
 		localVarQueryParams.Add("with_vars", parameterToString(*r.withVars, ""))
@@ -534,7 +544,7 @@ func (a *DefaultApiService) GetServiceExecute(r ApiGetServiceRequest) (*ServiceR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -544,15 +554,15 @@ func (a *DefaultApiService) GetServiceExecute(r ApiGetServiceRequest) (*ServiceR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -561,7 +571,7 @@ func (a *DefaultApiService) GetServiceExecute(r ApiGetServiceRequest) (*ServiceR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -572,7 +582,7 @@ func (a *DefaultApiService) GetServiceExecute(r ApiGetServiceRequest) (*ServiceR
 }
 
 type ApiGetServicesRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	page *int64
 	pageSize *int64
@@ -602,17 +612,17 @@ func (r ApiGetServicesRequest) Sort(sort string) ApiGetServicesRequest {
 	return r
 }
 
-func (r ApiGetServicesRequest) Execute() (*ServiceResponseWithTotals, *http.Response, error) {
+func (r ApiGetServicesRequest) Execute() (ServiceResponseWithTotals, *_nethttp.Response, error) {
 	return r.ApiService.GetServicesExecute(r)
 }
 
 /*
 GetServices Return Services by page
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetServicesRequest
 */
-func (a *DefaultApiService) GetServices(ctx context.Context) ApiGetServicesRequest {
+func (a *DefaultApiService) GetServices(ctx _context.Context) ApiGetServicesRequest {
 	return ApiGetServicesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -621,24 +631,26 @@ func (a *DefaultApiService) GetServices(ctx context.Context) ApiGetServicesReque
 
 // Execute executes the request
 //  @return ServiceResponseWithTotals
-func (a *DefaultApiService) GetServicesExecute(r ApiGetServicesRequest) (*ServiceResponseWithTotals, *http.Response, error) {
+func (a *DefaultApiService) GetServicesExecute(r ApiGetServicesRequest) (ServiceResponseWithTotals, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceResponseWithTotals
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ServiceResponseWithTotals
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetServices")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.page != nil {
 		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
@@ -672,7 +684,7 @@ func (a *DefaultApiService) GetServicesExecute(r ApiGetServicesRequest) (*Servic
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -682,15 +694,15 @@ func (a *DefaultApiService) GetServicesExecute(r ApiGetServicesRequest) (*Servic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -699,7 +711,7 @@ func (a *DefaultApiService) GetServicesExecute(r ApiGetServicesRequest) (*Servic
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -710,7 +722,7 @@ func (a *DefaultApiService) GetServicesExecute(r ApiGetServicesRequest) (*Servic
 }
 
 type ApiNewServiceRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	createServiceRequest *CreateServiceRequest
 }
@@ -720,17 +732,17 @@ func (r ApiNewServiceRequest) CreateServiceRequest(createServiceRequest CreateSe
 	return r
 }
 
-func (r ApiNewServiceRequest) Execute() (*ServiceResponse, *http.Response, error) {
+func (r ApiNewServiceRequest) Execute() (ServiceResponse, *_nethttp.Response, error) {
 	return r.ApiService.NewServiceExecute(r)
 }
 
 /*
 NewService Create Service
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiNewServiceRequest
 */
-func (a *DefaultApiService) NewService(ctx context.Context) ApiNewServiceRequest {
+func (a *DefaultApiService) NewService(ctx _context.Context) ApiNewServiceRequest {
 	return ApiNewServiceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -739,24 +751,26 @@ func (a *DefaultApiService) NewService(ctx context.Context) ApiNewServiceRequest
 
 // Execute executes the request
 //  @return ServiceResponse
-func (a *DefaultApiService) NewServiceExecute(r ApiNewServiceRequest) (*ServiceResponse, *http.Response, error) {
+func (a *DefaultApiService) NewServiceExecute(r ApiNewServiceRequest) (ServiceResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceResponse
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ServiceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NewService")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.createServiceRequest == nil {
 		return localVarReturnValue, nil, reportError("createServiceRequest is required and must be specified")
 	}
@@ -780,7 +794,7 @@ func (a *DefaultApiService) NewServiceExecute(r ApiNewServiceRequest) (*ServiceR
 	}
 	// body params
 	localVarPostBody = r.createServiceRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -790,15 +804,15 @@ func (a *DefaultApiService) NewServiceExecute(r ApiNewServiceRequest) (*ServiceR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -807,7 +821,7 @@ func (a *DefaultApiService) NewServiceExecute(r ApiNewServiceRequest) (*ServiceR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -818,7 +832,7 @@ func (a *DefaultApiService) NewServiceExecute(r ApiNewServiceRequest) (*ServiceR
 }
 
 type ApiPatchServiceRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	id int64
 	updateServiceRequest *UpdateServiceRequest
@@ -829,18 +843,18 @@ func (r ApiPatchServiceRequest) UpdateServiceRequest(updateServiceRequest Update
 	return r
 }
 
-func (r ApiPatchServiceRequest) Execute() (*ServiceResponse, *http.Response, error) {
+func (r ApiPatchServiceRequest) Execute() (ServiceResponse, *_nethttp.Response, error) {
 	return r.ApiService.PatchServiceExecute(r)
 }
 
 /*
 PatchService Update Service by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
  @return ApiPatchServiceRequest
 */
-func (a *DefaultApiService) PatchService(ctx context.Context, id int64) ApiPatchServiceRequest {
+func (a *DefaultApiService) PatchService(ctx _context.Context, id int64) ApiPatchServiceRequest {
 	return ApiPatchServiceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -850,25 +864,27 @@ func (a *DefaultApiService) PatchService(ctx context.Context, id int64) ApiPatch
 
 // Execute executes the request
 //  @return ServiceResponse
-func (a *DefaultApiService) PatchServiceExecute(r ApiPatchServiceRequest) (*ServiceResponse, *http.Response, error) {
+func (a *DefaultApiService) PatchServiceExecute(r ApiPatchServiceRequest) (ServiceResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
+		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceResponse
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ServiceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PatchService")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.updateServiceRequest == nil {
 		return localVarReturnValue, nil, reportError("updateServiceRequest is required and must be specified")
 	}
@@ -892,7 +908,7 @@ func (a *DefaultApiService) PatchServiceExecute(r ApiPatchServiceRequest) (*Serv
 	}
 	// body params
 	localVarPostBody = r.updateServiceRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -902,15 +918,15 @@ func (a *DefaultApiService) PatchServiceExecute(r ApiPatchServiceRequest) (*Serv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -919,7 +935,7 @@ func (a *DefaultApiService) PatchServiceExecute(r ApiPatchServiceRequest) (*Serv
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -930,7 +946,7 @@ func (a *DefaultApiService) PatchServiceExecute(r ApiPatchServiceRequest) (*Serv
 }
 
 type ApiPatchServiceResourceRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	serviceId int64
 	resourceId int64
@@ -942,19 +958,19 @@ func (r ApiPatchServiceResourceRequest) UpdateResourceRequest(updateResourceRequ
 	return r
 }
 
-func (r ApiPatchServiceResourceRequest) Execute() (*ResourceDetail, *http.Response, error) {
+func (r ApiPatchServiceResourceRequest) Execute() (ResourceDetail, *_nethttp.Response, error) {
 	return r.ApiService.PatchServiceResourceExecute(r)
 }
 
 /*
 PatchServiceResource Update Service Resource by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serviceId
  @param resourceId
  @return ApiPatchServiceResourceRequest
 */
-func (a *DefaultApiService) PatchServiceResource(ctx context.Context, serviceId int64, resourceId int64) ApiPatchServiceResourceRequest {
+func (a *DefaultApiService) PatchServiceResource(ctx _context.Context, serviceId int64, resourceId int64) ApiPatchServiceResourceRequest {
 	return ApiPatchServiceResourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -965,26 +981,28 @@ func (a *DefaultApiService) PatchServiceResource(ctx context.Context, serviceId 
 
 // Execute executes the request
 //  @return ResourceDetail
-func (a *DefaultApiService) PatchServiceResourceExecute(r ApiPatchServiceResourceRequest) (*ResourceDetail, *http.Response, error) {
+func (a *DefaultApiService) PatchServiceResourceExecute(r ApiPatchServiceResourceRequest) (ResourceDetail, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
+		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceDetail
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ResourceDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PatchServiceResource")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/{serviceId}/resources/{resourceId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourceId"+"}", url.PathEscape(parameterToString(r.resourceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", _neturl.PathEscape(parameterToString(r.serviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceId"+"}", _neturl.PathEscape(parameterToString(r.resourceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.updateResourceRequest == nil {
 		return localVarReturnValue, nil, reportError("updateResourceRequest is required and must be specified")
 	}
@@ -1008,7 +1026,7 @@ func (a *DefaultApiService) PatchServiceResourceExecute(r ApiPatchServiceResourc
 	}
 	// body params
 	localVarPostBody = r.updateResourceRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1018,15 +1036,15 @@ func (a *DefaultApiService) PatchServiceResourceExecute(r ApiPatchServiceResourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1035,7 +1053,7 @@ func (a *DefaultApiService) PatchServiceResourceExecute(r ApiPatchServiceResourc
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1046,7 +1064,7 @@ func (a *DefaultApiService) PatchServiceResourceExecute(r ApiPatchServiceResourc
 }
 
 type ApiPostResourceRequest struct {
-	ctx context.Context
+	ctx _context.Context
 	ApiService *DefaultApiService
 	serviceId int64
 	createResourceRequest *CreateResourceRequest
@@ -1057,18 +1075,18 @@ func (r ApiPostResourceRequest) CreateResourceRequest(createResourceRequest Crea
 	return r
 }
 
-func (r ApiPostResourceRequest) Execute() (*ResourceDetail, *http.Response, error) {
+func (r ApiPostResourceRequest) Execute() (ResourceDetail, *_nethttp.Response, error) {
 	return r.ApiService.PostResourceExecute(r)
 }
 
 /*
 PostResource Create Service Resource
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serviceId
  @return ApiPostResourceRequest
 */
-func (a *DefaultApiService) PostResource(ctx context.Context, serviceId int64) ApiPostResourceRequest {
+func (a *DefaultApiService) PostResource(ctx _context.Context, serviceId int64) ApiPostResourceRequest {
 	return ApiPostResourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1078,25 +1096,27 @@ func (a *DefaultApiService) PostResource(ctx context.Context, serviceId int64) A
 
 // Execute executes the request
 //  @return ResourceDetail
-func (a *DefaultApiService) PostResourceExecute(r ApiPostResourceRequest) (*ResourceDetail, *http.Response, error) {
+func (a *DefaultApiService) PostResourceExecute(r ApiPostResourceRequest) (ResourceDetail, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceDetail
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ResourceDetail
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PostResource")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_services/{serviceId}/resources"
-	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", _neturl.PathEscape(parameterToString(r.serviceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.createResourceRequest == nil {
 		return localVarReturnValue, nil, reportError("createResourceRequest is required and must be specified")
 	}
@@ -1120,7 +1140,7 @@ func (a *DefaultApiService) PostResourceExecute(r ApiPostResourceRequest) (*Reso
 	}
 	// body params
 	localVarPostBody = r.createResourceRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1130,15 +1150,15 @@ func (a *DefaultApiService) PostResourceExecute(r ApiPostResourceRequest) (*Reso
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1147,7 +1167,7 @@ func (a *DefaultApiService) PostResourceExecute(r ApiPostResourceRequest) (*Reso
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

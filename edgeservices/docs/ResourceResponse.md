@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | 
 **LastEditor** | **string** |  | 
 **Name** | **string** |  | 
-**Type** | **string** |  | 
+**Trigger** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 
 ## Methods
 
 ### NewResourceResponse
 
-`func NewResourceResponse(contentType string, id int64, lastEditor string, name string, type_ string, updatedAt string, ) *ResourceResponse`
+`func NewResourceResponse(contentType string, id int64, lastEditor string, name string, trigger string, updatedAt string, ) *ResourceResponse`
 
 NewResourceResponse instantiates a new ResourceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -110,24 +110,24 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetType
+### GetTrigger
 
-`func (o *ResourceResponse) GetType() string`
+`func (o *ResourceResponse) GetTrigger() string`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetTrigger returns the Trigger field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetTriggerOk
 
-`func (o *ResourceResponse) GetTypeOk() (*string, bool)`
+`func (o *ResourceResponse) GetTriggerOk() (*string, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetTriggerOk returns a tuple with the Trigger field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetTrigger
 
-`func (o *ResourceResponse) SetType(v string)`
+`func (o *ResourceResponse) SetTrigger(v string)`
 
-SetType sets Type field to given value.
+SetTrigger sets Trigger field to given value.
 
 
 ### GetUpdatedAt

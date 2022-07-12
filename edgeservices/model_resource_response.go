@@ -20,7 +20,7 @@ type ResourceResponse struct {
 	Id int64 `json:"id"`
 	LastEditor string `json:"last_editor"`
 	Name string `json:"name"`
-	Type string `json:"type"`
+	Trigger string `json:"trigger"`
 	UpdatedAt string `json:"updated_at"`
 }
 
@@ -28,13 +28,13 @@ type ResourceResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceResponse(contentType string, id int64, lastEditor string, name string, type_ string, updatedAt string) *ResourceResponse {
+func NewResourceResponse(contentType string, id int64, lastEditor string, name string, trigger string, updatedAt string) *ResourceResponse {
 	this := ResourceResponse{}
 	this.ContentType = contentType
 	this.Id = id
 	this.LastEditor = lastEditor
 	this.Name = name
-	this.Type = type_
+	this.Trigger = trigger
 	this.UpdatedAt = updatedAt
 	return &this
 }
@@ -143,28 +143,28 @@ func (o *ResourceResponse) SetName(v string) {
 	o.Name = v
 }
 
-// GetType returns the Type field value
-func (o *ResourceResponse) GetType() string {
+// GetTrigger returns the Trigger field value
+func (o *ResourceResponse) GetTrigger() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Type
+	return o.Trigger
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTriggerOk returns a tuple with the Trigger field value
 // and a boolean to check if the value has been set.
-func (o *ResourceResponse) GetTypeOk() (*string, bool) {
+func (o *ResourceResponse) GetTriggerOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.Trigger, true
 }
 
-// SetType sets field value
-func (o *ResourceResponse) SetType(v string) {
-	o.Type = v
+// SetTrigger sets field value
+func (o *ResourceResponse) SetTrigger(v string) {
+	o.Trigger = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
@@ -206,7 +206,7 @@ func (o ResourceResponse) MarshalJSON() ([]byte, error) {
 		toSerialize["name"] = o.Name
 	}
 	if true {
-		toSerialize["type"] = o.Type
+		toSerialize["trigger"] = o.Trigger
 	}
 	if true {
 		toSerialize["updated_at"] = o.UpdatedAt

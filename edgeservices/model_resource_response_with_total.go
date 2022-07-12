@@ -51,11 +51,11 @@ func (o *ResourceResponseWithTotal) GetResources() []ResourceResponse {
 
 // GetResourcesOk returns a tuple with the Resources field value
 // and a boolean to check if the value has been set.
-func (o *ResourceResponseWithTotal) GetResourcesOk() ([]ResourceResponse, bool) {
+func (o *ResourceResponseWithTotal) GetResourcesOk() (*[]ResourceResponse, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return o.Resources, true
+	return &o.Resources, true
 }
 
 // SetResources sets field value
