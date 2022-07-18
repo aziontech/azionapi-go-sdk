@@ -443,14 +443,14 @@ components:
           type: integer
         name:
           type: string
-        type:
+        trigger:
           type: string
       required:
       - content
       - content_type
       - id
       - name
-      - type
+      - trigger
       type: object
     ResourceResponse:
       additionalProperties: false
@@ -460,7 +460,7 @@ components:
         last_editor: last_editor
         name: name
         id: 0
-        type: type
+        trigger: reload
       properties:
         content_type:
           type: string
@@ -471,7 +471,7 @@ components:
           type: string
         name:
           type: string
-        type:
+        trigger:
           type: string
         updated_at:
           type: string
@@ -480,7 +480,7 @@ components:
       - id
       - last_editor
       - name
-      - type
+      - trigger
       - updated_at
       type: object
     ResourceResponseWithTotal:
