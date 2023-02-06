@@ -1,0 +1,17 @@
+.gitignore
+.openapi-generator-ignore
+.travis.yml
+README.md
+api/openapi.yaml
+api_edge_applications.go
+client.go
+configuration.go
+docs/CreateVersion201Response.md
+docs/EdgeApplicationsApi.md
+git_push.sh
+go.mod
+go.sum
+model_create_version_201_response.go
+response.go
+test/api_edge_applications_test.go
+utils.go

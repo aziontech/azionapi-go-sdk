@@ -1,0 +1,119 @@
+openapi: 3.0.3
+info:
+  title: Edge Application Statics API
+  version: v1
+servers:
+- description: prod
+  url: https://edge-application-statics-storage.azion.com
+- description: stage
+  url: https://stage-edge-application-statics-storage.azion.com
+paths:
+  /edge-applications/{edge_application_id}/statics/{version_id}/files:
+    post:
+      description: Upload file and transfer to cloud storage
+      parameters:
+      - description: "Required in order to get the file name. Example: Content-Disposition:\
+          \ attachment; filename=index.js"
+        explode: false
+        in: header
+        name: Content-Disposition
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Original path file being uploaded. Given an original file path\
+          \ like 'assets/css/main.css' the value would be: assets/css"
+        explode: false
+        in: header
+        name: X-Azion-Static-Path
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Edge Application id (global_id)
+        explode: false
+        in: path
+        name: edge_application_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: version_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              format: binary
+              type: string
+      responses:
+        "201":
+          content:
+            application/json:
+              schema: {}
+          description: ""
+      security:
+      - authToken: []
+      tags:
+      - edge-applications
+  /edge-applications/{edge_application_id}/statics:
+    post:
+      description: ""
+      operationId: createVersion
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: edge_application_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createVersion_201_response'
+          description: ""
+      security:
+      - authToken: []
+      tags:
+      - edge-applications
+components:
+  responses:
+    "401":
+      content:
+        application/json:
+          schema:
+            properties:
+              detail:
+                type: string
+            type: object
+      description: Token/Personal Token has been expired or invalid
+  schemas:
+    createVersion_201_response:
+      example:
+        version_id: version_id
+      properties:
+        version_id:
+          description: the generated version
+          type: string
+      type: object
+  securitySchemes:
+    authToken:
+      description: "Prefix the value with \"Token \". The final header is: Authorization:\
+        \ Token my-token-value"
+      in: header
+      name: Authorization
+      type: apiKey
