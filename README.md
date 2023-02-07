@@ -13,6 +13,8 @@ azionapi-go-sdk is the official Azion SDK for the Go programming language.
 |[Edge Services](edgeservices/README.md)|Edge Services API, part of the Edge Orchestrator.|
 |[Intelligent DNS](idns/README.md)|Intelligent DNS API.|
 |[Real-Time Purge](realtimepurge/README.md)|Real-Time Purge API enables you to purge a cache entry before its TTL for Edge Caching or L2 Caching.|
+|[Storage-API](storageapi/README.md)|General-purpose KV-Storage for Azion.|
+
 
 ## License
 
