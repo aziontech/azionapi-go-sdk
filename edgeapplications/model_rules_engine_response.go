@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RulesEngineResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RulesEngineResponse{}
+
 // RulesEngineResponse struct for RulesEngineResponse
 type RulesEngineResponse struct {
 	Count int64 `json:"count"`
@@ -58,7 +61,7 @@ func (o *RulesEngineResponse) GetCount() int64 {
 // GetCountOk returns a tuple with the Count field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResponse) GetCountOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Count, true
@@ -82,7 +85,7 @@ func (o *RulesEngineResponse) GetTotalPages() int64 {
 // GetTotalPagesOk returns a tuple with the TotalPages field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResponse) GetTotalPagesOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TotalPages, true
@@ -106,7 +109,7 @@ func (o *RulesEngineResponse) GetSchemaVersion() int64 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResponse) GetSchemaVersionOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SchemaVersion, true
@@ -130,7 +133,7 @@ func (o *RulesEngineResponse) GetLinks() OriginsResponseLinks {
 // GetLinksOk returns a tuple with the Links field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResponse) GetLinksOk() (*OriginsResponseLinks, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Links, true
@@ -153,11 +156,11 @@ func (o *RulesEngineResponse) GetResults() []RulesEngineResultResponse {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *RulesEngineResponse) GetResultsOk() (*[]RulesEngineResultResponse, bool) {
-	if o == nil  {
+func (o *RulesEngineResponse) GetResultsOk() ([]RulesEngineResultResponse, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Results, true
+	return o.Results, true
 }
 
 // SetResults sets field value
@@ -166,23 +169,21 @@ func (o *RulesEngineResponse) SetResults(v []RulesEngineResultResponse) {
 }
 
 func (o RulesEngineResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["count"] = o.Count
-	}
-	if true {
-		toSerialize["total_pages"] = o.TotalPages
-	}
-	if true {
-		toSerialize["schema_version"] = o.SchemaVersion
-	}
-	if true {
-		toSerialize["links"] = o.Links
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RulesEngineResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["count"] = o.Count
+	toSerialize["total_pages"] = o.TotalPages
+	toSerialize["schema_version"] = o.SchemaVersion
+	toSerialize["links"] = o.Links
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
 }
 
 type NullableRulesEngineResponse struct {

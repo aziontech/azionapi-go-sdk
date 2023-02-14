@@ -12,23 +12,19 @@ package domains
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // DomainsApiService DomainsApi service
 type DomainsApiService service
 
 type ApiCreateDomainRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DomainsApiService
 	accept *string
 	contentType *string
@@ -39,16 +35,18 @@ func (r ApiCreateDomainRequest) Accept(accept string) ApiCreateDomainRequest {
 	r.accept = &accept
 	return r
 }
+
 func (r ApiCreateDomainRequest) ContentType(contentType string) ApiCreateDomainRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiCreateDomainRequest) CreateDomainRequest(createDomainRequest CreateDomainRequest) ApiCreateDomainRequest {
 	r.createDomainRequest = &createDomainRequest
 	return r
 }
 
-func (r ApiCreateDomainRequest) Execute() (DomainResponseWithResult, *_nethttp.Response, error) {
+func (r ApiCreateDomainRequest) Execute() (*DomainResponseWithResult, *http.Response, error) {
 	return r.ApiService.CreateDomainExecute(r)
 }
 
@@ -57,10 +55,10 @@ CreateDomain /domains
 
 It enables you to include a new domain into an account.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateDomainRequest
 */
-func (a *DomainsApiService) CreateDomain(ctx _context.Context) ApiCreateDomainRequest {
+func (a *DomainsApiService) CreateDomain(ctx context.Context) ApiCreateDomainRequest {
 	return ApiCreateDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -69,26 +67,24 @@ func (a *DomainsApiService) CreateDomain(ctx _context.Context) ApiCreateDomainRe
 
 // Execute executes the request
 //  @return DomainResponseWithResult
-func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (DomainResponseWithResult, *_nethttp.Response, error) {
+func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DomainResponseWithResult
+		formFiles            []formFile
+		localVarReturnValue  *DomainResponseWithResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.CreateDomain")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/domains"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -108,10 +104,10 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (Domai
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.createDomainRequest
@@ -129,7 +125,7 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (Domai
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -139,15 +135,15 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (Domai
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -156,7 +152,7 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (Domai
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -167,7 +163,7 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (Domai
 }
 
 type ApiDelDomainRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DomainsApiService
 	id string
 	accept *string
@@ -178,7 +174,7 @@ func (r ApiDelDomainRequest) Accept(accept string) ApiDelDomainRequest {
 	return r
 }
 
-func (r ApiDelDomainRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDelDomainRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DelDomainExecute(r)
 }
 
@@ -187,11 +183,11 @@ DelDomain /domains/:id
 
 It enables you to delete a domain.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The id of the domain to be deleted. 
  @return ApiDelDomainRequest
 */
-func (a *DomainsApiService) DelDomain(ctx _context.Context, id string) ApiDelDomainRequest {
+func (a *DomainsApiService) DelDomain(ctx context.Context, id string) ApiDelDomainRequest {
 	return ApiDelDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -200,26 +196,24 @@ func (a *DomainsApiService) DelDomain(ctx _context.Context, id string) ApiDelDom
 }
 
 // Execute executes the request
-func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*_nethttp.Response, error) {
+func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.DelDomain")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/domains/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -239,7 +233,7 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*_nethttp.R
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -255,7 +249,7 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*_nethttp.R
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -265,15 +259,15 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*_nethttp.R
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -284,7 +278,7 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*_nethttp.R
 }
 
 type ApiGetDomainRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DomainsApiService
 	id string
 	accept *string
@@ -295,7 +289,7 @@ func (r ApiGetDomainRequest) Accept(accept string) ApiGetDomainRequest {
 	return r
 }
 
-func (r ApiGetDomainRequest) Execute() (DomainResponseWithResult, *_nethttp.Response, error) {
+func (r ApiGetDomainRequest) Execute() (*DomainResponseWithResult, *http.Response, error) {
 	return r.ApiService.GetDomainExecute(r)
 }
 
@@ -304,11 +298,11 @@ GetDomain /domains/:id
 
 It returns details of a domain.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The id of the domain to be consulted. 
  @return ApiGetDomainRequest
 */
-func (a *DomainsApiService) GetDomain(ctx _context.Context, id string) ApiGetDomainRequest {
+func (a *DomainsApiService) GetDomain(ctx context.Context, id string) ApiGetDomainRequest {
 	return ApiGetDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -318,27 +312,25 @@ func (a *DomainsApiService) GetDomain(ctx _context.Context, id string) ApiGetDom
 
 // Execute executes the request
 //  @return DomainResponseWithResult
-func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (DomainResponseWithResult, *_nethttp.Response, error) {
+func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DomainResponseWithResult
+		formFiles            []formFile
+		localVarReturnValue  *DomainResponseWithResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.GetDomain")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/domains/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -358,7 +350,7 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (DomainRespo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -374,7 +366,7 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (DomainRespo
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -384,15 +376,15 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (DomainRespo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -401,7 +393,7 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (DomainRespo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -412,9 +404,39 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (DomainRespo
 }
 
 type ApiGetDomainsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DomainsApiService
+	page *int64
+	pageSize *int64
+	filter *string
+	orderBy *string
+	sort *string
 	accept *string
+}
+
+func (r ApiGetDomainsRequest) Page(page int64) ApiGetDomainsRequest {
+	r.page = &page
+	return r
+}
+
+func (r ApiGetDomainsRequest) PageSize(pageSize int64) ApiGetDomainsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiGetDomainsRequest) Filter(filter string) ApiGetDomainsRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r ApiGetDomainsRequest) OrderBy(orderBy string) ApiGetDomainsRequest {
+	r.orderBy = &orderBy
+	return r
+}
+
+func (r ApiGetDomainsRequest) Sort(sort string) ApiGetDomainsRequest {
+	r.sort = &sort
+	return r
 }
 
 func (r ApiGetDomainsRequest) Accept(accept string) ApiGetDomainsRequest {
@@ -422,7 +444,7 @@ func (r ApiGetDomainsRequest) Accept(accept string) ApiGetDomainsRequest {
 	return r
 }
 
-func (r ApiGetDomainsRequest) Execute() (DomainResponseWithResults, *_nethttp.Response, error) {
+func (r ApiGetDomainsRequest) Execute() (*DomainResponseWithResults, *http.Response, error) {
 	return r.ApiService.GetDomainsExecute(r)
 }
 
@@ -431,10 +453,10 @@ GetDomains /domains
 
 It returns the list of domains of an account.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDomainsRequest
 */
-func (a *DomainsApiService) GetDomains(ctx _context.Context) ApiGetDomainsRequest {
+func (a *DomainsApiService) GetDomains(ctx context.Context) ApiGetDomainsRequest {
 	return ApiGetDomainsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -443,27 +465,40 @@ func (a *DomainsApiService) GetDomains(ctx _context.Context) ApiGetDomainsReques
 
 // Execute executes the request
 //  @return DomainResponseWithResults
-func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (DomainResponseWithResults, *_nethttp.Response, error) {
+func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainResponseWithResults, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DomainResponseWithResults
+		formFiles            []formFile
+		localVarReturnValue  *DomainResponseWithResults
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.GetDomains")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/domains"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
+	if r.page != nil {
+		parameterAddToQuery(localVarQueryParams, "page", r.page, "")
+	}
+	if r.pageSize != nil {
+		parameterAddToQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	}
+	if r.filter != nil {
+		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
+	}
+	if r.orderBy != nil {
+		parameterAddToQuery(localVarQueryParams, "order_by", r.orderBy, "")
+	}
+	if r.sort != nil {
+		parameterAddToQuery(localVarQueryParams, "sort", r.sort, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -482,7 +517,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (DomainRes
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -498,7 +533,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (DomainRes
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -508,15 +543,15 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (DomainRes
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -525,7 +560,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (DomainRes
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -536,7 +571,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (DomainRes
 }
 
 type ApiPutDomainRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DomainsApiService
 	domainId string
 	accept *string
@@ -548,16 +583,18 @@ func (r ApiPutDomainRequest) Accept(accept string) ApiPutDomainRequest {
 	r.accept = &accept
 	return r
 }
+
 func (r ApiPutDomainRequest) ContentType(contentType string) ApiPutDomainRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiPutDomainRequest) PutDomainRequest(putDomainRequest PutDomainRequest) ApiPutDomainRequest {
 	r.putDomainRequest = &putDomainRequest
 	return r
 }
 
-func (r ApiPutDomainRequest) Execute() (DomainResponseWithResult, *_nethttp.Response, error) {
+func (r ApiPutDomainRequest) Execute() (*DomainResponseWithResult, *http.Response, error) {
 	return r.ApiService.PutDomainExecute(r)
 }
 
@@ -568,11 +605,11 @@ It overwrites all fields of a domain, while preserving the id. Optional fields n
 
 To update only some fields in a domain, consider using the PATCH method instead of PUT.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param domainId
  @return ApiPutDomainRequest
 */
-func (a *DomainsApiService) PutDomain(ctx _context.Context, domainId string) ApiPutDomainRequest {
+func (a *DomainsApiService) PutDomain(ctx context.Context, domainId string) ApiPutDomainRequest {
 	return ApiPutDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -582,27 +619,25 @@ func (a *DomainsApiService) PutDomain(ctx _context.Context, domainId string) Api
 
 // Execute executes the request
 //  @return DomainResponseWithResult
-func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (DomainResponseWithResult, *_nethttp.Response, error) {
+func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DomainResponseWithResult
+		formFiles            []formFile
+		localVarReturnValue  *DomainResponseWithResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.PutDomain")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/domains/{domain_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"domain_id"+"}", _neturl.PathEscape(parameterToString(r.domainId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"domain_id"+"}", url.PathEscape(parameterValueToString(r.domainId, "domainId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -622,10 +657,10 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (DomainRespo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.putDomainRequest
@@ -643,7 +678,7 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (DomainRespo
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -653,15 +688,15 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (DomainRespo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -670,7 +705,7 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (DomainRespo
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -681,7 +716,7 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (DomainRespo
 }
 
 type ApiUpdateDomainRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *DomainsApiService
 	domainId string
 	accept *string
@@ -693,16 +728,18 @@ func (r ApiUpdateDomainRequest) Accept(accept string) ApiUpdateDomainRequest {
 	r.accept = &accept
 	return r
 }
+
 func (r ApiUpdateDomainRequest) ContentType(contentType string) ApiUpdateDomainRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiUpdateDomainRequest) UpdateDomainRequest(updateDomainRequest UpdateDomainRequest) ApiUpdateDomainRequest {
 	r.updateDomainRequest = &updateDomainRequest
 	return r
 }
 
-func (r ApiUpdateDomainRequest) Execute() (DomainResponseWithResult, *_nethttp.Response, error) {
+func (r ApiUpdateDomainRequest) Execute() (*DomainResponseWithResult, *http.Response, error) {
 	return r.ApiService.UpdateDomainExecute(r)
 }
 
@@ -711,11 +748,11 @@ UpdateDomain /domains/:domain_id
 
 It updates one or more fields in a Domain, preserving the value of the fields not informed.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param domainId
  @return ApiUpdateDomainRequest
 */
-func (a *DomainsApiService) UpdateDomain(ctx _context.Context, domainId string) ApiUpdateDomainRequest {
+func (a *DomainsApiService) UpdateDomain(ctx context.Context, domainId string) ApiUpdateDomainRequest {
 	return ApiUpdateDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -725,27 +762,25 @@ func (a *DomainsApiService) UpdateDomain(ctx _context.Context, domainId string) 
 
 // Execute executes the request
 //  @return DomainResponseWithResult
-func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (DomainResponseWithResult, *_nethttp.Response, error) {
+func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DomainResponseWithResult
+		formFiles            []formFile
+		localVarReturnValue  *DomainResponseWithResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.UpdateDomain")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/domains/{domain_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"domain_id"+"}", _neturl.PathEscape(parameterToString(r.domainId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"domain_id"+"}", url.PathEscape(parameterValueToString(r.domainId, "domainId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -765,10 +800,10 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (Domai
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.updateDomainRequest
@@ -786,7 +821,7 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (Domai
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -796,15 +831,15 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (Domai
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -813,7 +848,7 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (Domai
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

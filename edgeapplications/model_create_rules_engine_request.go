@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateRulesEngineRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateRulesEngineRequest{}
+
 // CreateRulesEngineRequest struct for CreateRulesEngineRequest
 type CreateRulesEngineRequest struct {
 	Name string `json:"name"`
@@ -54,7 +57,7 @@ func (o *CreateRulesEngineRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CreateRulesEngineRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -77,11 +80,11 @@ func (o *CreateRulesEngineRequest) GetCriteria() [][]RulesEngineCriteria {
 
 // GetCriteriaOk returns a tuple with the Criteria field value
 // and a boolean to check if the value has been set.
-func (o *CreateRulesEngineRequest) GetCriteriaOk() (*[][]RulesEngineCriteria, bool) {
-	if o == nil  {
+func (o *CreateRulesEngineRequest) GetCriteriaOk() ([][]RulesEngineCriteria, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Criteria, true
+	return o.Criteria, true
 }
 
 // SetCriteria sets field value
@@ -101,11 +104,11 @@ func (o *CreateRulesEngineRequest) GetBehaviors() []RulesEngineBehavior {
 
 // GetBehaviorsOk returns a tuple with the Behaviors field value
 // and a boolean to check if the value has been set.
-func (o *CreateRulesEngineRequest) GetBehaviorsOk() (*[]RulesEngineBehavior, bool) {
-	if o == nil  {
+func (o *CreateRulesEngineRequest) GetBehaviorsOk() ([]RulesEngineBehavior, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Behaviors, true
+	return o.Behaviors, true
 }
 
 // SetBehaviors sets field value
@@ -114,17 +117,19 @@ func (o *CreateRulesEngineRequest) SetBehaviors(v []RulesEngineBehavior) {
 }
 
 func (o CreateRulesEngineRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["criteria"] = o.Criteria
-	}
-	if true {
-		toSerialize["behaviors"] = o.Behaviors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateRulesEngineRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["criteria"] = o.Criteria
+	toSerialize["behaviors"] = o.Behaviors
+	return toSerialize, nil
 }
 
 type NullableCreateRulesEngineRequest struct {

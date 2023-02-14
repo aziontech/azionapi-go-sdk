@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateOriginsRequestAddresses type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateOriginsRequestAddresses{}
+
 // CreateOriginsRequestAddresses struct for CreateOriginsRequestAddresses
 type CreateOriginsRequestAddresses struct {
 	Address string `json:"address"`
@@ -50,7 +53,7 @@ func (o *CreateOriginsRequestAddresses) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequestAddresses) GetAddressOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Address, true
@@ -62,11 +65,17 @@ func (o *CreateOriginsRequestAddresses) SetAddress(v string) {
 }
 
 func (o CreateOriginsRequestAddresses) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["address"] = o.Address
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateOriginsRequestAddresses) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["address"] = o.Address
+	return toSerialize, nil
 }
 
 type NullableCreateOriginsRequestAddresses struct {

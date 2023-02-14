@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationLinks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationLinks{}
+
 // ApplicationLinks struct for ApplicationLinks
 type ApplicationLinks struct {
 	Previous NullableString `json:"previous"`
@@ -54,7 +57,7 @@ func (o *ApplicationLinks) GetPrevious() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationLinks) GetPreviousOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Previous.Get(), o.Previous.IsSet()
@@ -80,7 +83,7 @@ func (o *ApplicationLinks) GetNext() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationLinks) GetNextOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Next.Get(), o.Next.IsSet()
@@ -92,14 +95,18 @@ func (o *ApplicationLinks) SetNext(v string) {
 }
 
 func (o ApplicationLinks) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["previous"] = o.Previous.Get()
-	}
-	if true {
-		toSerialize["next"] = o.Next.Get()
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationLinks) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["previous"] = o.Previous.Get()
+	toSerialize["next"] = o.Next.Get()
+	return toSerialize, nil
 }
 
 type NullableApplicationLinks struct {

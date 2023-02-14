@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RulesEngineCriteria type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RulesEngineCriteria{}
+
 // RulesEngineCriteria struct for RulesEngineCriteria
 type RulesEngineCriteria struct {
 	Conditional string `json:"conditional"`
@@ -55,7 +58,7 @@ func (o *RulesEngineCriteria) GetConditional() string {
 // GetConditionalOk returns a tuple with the Conditional field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineCriteria) GetConditionalOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Conditional, true
@@ -79,7 +82,7 @@ func (o *RulesEngineCriteria) GetVariable() string {
 // GetVariableOk returns a tuple with the Variable field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineCriteria) GetVariableOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Variable, true
@@ -103,7 +106,7 @@ func (o *RulesEngineCriteria) GetOperator() string {
 // GetOperatorOk returns a tuple with the Operator field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineCriteria) GetOperatorOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Operator, true
@@ -116,7 +119,7 @@ func (o *RulesEngineCriteria) SetOperator(v string) {
 
 // GetInputValue returns the InputValue field value if set, zero value otherwise.
 func (o *RulesEngineCriteria) GetInputValue() string {
-	if o == nil || o.InputValue == nil {
+	if o == nil || isNil(o.InputValue) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *RulesEngineCriteria) GetInputValue() string {
 // GetInputValueOk returns a tuple with the InputValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RulesEngineCriteria) GetInputValueOk() (*string, bool) {
-	if o == nil || o.InputValue == nil {
+	if o == nil || isNil(o.InputValue) {
 		return nil, false
 	}
 	return o.InputValue, true
@@ -134,7 +137,7 @@ func (o *RulesEngineCriteria) GetInputValueOk() (*string, bool) {
 
 // HasInputValue returns a boolean if a field has been set.
 func (o *RulesEngineCriteria) HasInputValue() bool {
-	if o != nil && o.InputValue != nil {
+	if o != nil && !isNil(o.InputValue) {
 		return true
 	}
 
@@ -147,20 +150,22 @@ func (o *RulesEngineCriteria) SetInputValue(v string) {
 }
 
 func (o RulesEngineCriteria) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["conditional"] = o.Conditional
-	}
-	if true {
-		toSerialize["variable"] = o.Variable
-	}
-	if true {
-		toSerialize["operator"] = o.Operator
-	}
-	if o.InputValue != nil {
-		toSerialize["input_value"] = o.InputValue
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RulesEngineCriteria) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["conditional"] = o.Conditional
+	toSerialize["variable"] = o.Variable
+	toSerialize["operator"] = o.Operator
+	if !isNil(o.InputValue) {
+		toSerialize["input_value"] = o.InputValue
+	}
+	return toSerialize, nil
 }
 
 type NullableRulesEngineCriteria struct {

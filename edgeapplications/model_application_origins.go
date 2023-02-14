@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationOrigins type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationOrigins{}
+
 // ApplicationOrigins struct for ApplicationOrigins
 type ApplicationOrigins struct {
 	Name *string `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewApplicationOriginsWithDefaults() *ApplicationOrigins {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ApplicationOrigins) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ApplicationOrigins) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOrigins) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *ApplicationOrigins) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ApplicationOrigins) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ApplicationOrigins) SetName(v string) {
 
 // GetOriginType returns the OriginType field value if set, zero value otherwise.
 func (o *ApplicationOrigins) GetOriginType() string {
-	if o == nil || o.OriginType == nil {
+	if o == nil || isNil(o.OriginType) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ApplicationOrigins) GetOriginType() string {
 // GetOriginTypeOk returns a tuple with the OriginType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOrigins) GetOriginTypeOk() (*string, bool) {
-	if o == nil || o.OriginType == nil {
+	if o == nil || isNil(o.OriginType) {
 		return nil, false
 	}
 	return o.OriginType, true
@@ -90,7 +93,7 @@ func (o *ApplicationOrigins) GetOriginTypeOk() (*string, bool) {
 
 // HasOriginType returns a boolean if a field has been set.
 func (o *ApplicationOrigins) HasOriginType() bool {
-	if o != nil && o.OriginType != nil {
+	if o != nil && !isNil(o.OriginType) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ApplicationOrigins) SetOriginType(v string) {
 
 // GetOriginId returns the OriginId field value if set, zero value otherwise.
 func (o *ApplicationOrigins) GetOriginId() string {
-	if o == nil || o.OriginId == nil {
+	if o == nil || isNil(o.OriginId) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ApplicationOrigins) GetOriginId() string {
 // GetOriginIdOk returns a tuple with the OriginId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOrigins) GetOriginIdOk() (*string, bool) {
-	if o == nil || o.OriginId == nil {
+	if o == nil || isNil(o.OriginId) {
 		return nil, false
 	}
 	return o.OriginId, true
@@ -122,7 +125,7 @@ func (o *ApplicationOrigins) GetOriginIdOk() (*string, bool) {
 
 // HasOriginId returns a boolean if a field has been set.
 func (o *ApplicationOrigins) HasOriginId() bool {
-	if o != nil && o.OriginId != nil {
+	if o != nil && !isNil(o.OriginId) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ApplicationOrigins) SetOriginId(v string) {
 }
 
 func (o ApplicationOrigins) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.OriginType != nil {
-		toSerialize["origin_type"] = o.OriginType
-	}
-	if o.OriginId != nil {
-		toSerialize["origin_id"] = o.OriginId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationOrigins) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.OriginType) {
+		toSerialize["origin_type"] = o.OriginType
+	}
+	if !isNil(o.OriginId) {
+		toSerialize["origin_id"] = o.OriginId
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationOrigins struct {

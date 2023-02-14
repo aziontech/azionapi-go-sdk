@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateApplicationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateApplicationRequest{}
+
 // CreateApplicationRequest struct for CreateApplicationRequest
 type CreateApplicationRequest struct {
 	Name string `json:"name"`
@@ -59,7 +62,7 @@ func (o *CreateApplicationRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -72,7 +75,7 @@ func (o *CreateApplicationRequest) SetName(v string) {
 
 // GetDeliveryProtocol returns the DeliveryProtocol field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetDeliveryProtocol() string {
-	if o == nil || o.DeliveryProtocol == nil {
+	if o == nil || isNil(o.DeliveryProtocol) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CreateApplicationRequest) GetDeliveryProtocol() string {
 // GetDeliveryProtocolOk returns a tuple with the DeliveryProtocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetDeliveryProtocolOk() (*string, bool) {
-	if o == nil || o.DeliveryProtocol == nil {
+	if o == nil || isNil(o.DeliveryProtocol) {
 		return nil, false
 	}
 	return o.DeliveryProtocol, true
@@ -90,7 +93,7 @@ func (o *CreateApplicationRequest) GetDeliveryProtocolOk() (*string, bool) {
 
 // HasDeliveryProtocol returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasDeliveryProtocol() bool {
-	if o != nil && o.DeliveryProtocol != nil {
+	if o != nil && !isNil(o.DeliveryProtocol) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *CreateApplicationRequest) SetDeliveryProtocol(v string) {
 
 // GetOriginType returns the OriginType field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetOriginType() string {
-	if o == nil || o.OriginType == nil {
+	if o == nil || isNil(o.OriginType) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *CreateApplicationRequest) GetOriginType() string {
 // GetOriginTypeOk returns a tuple with the OriginType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetOriginTypeOk() (*string, bool) {
-	if o == nil || o.OriginType == nil {
+	if o == nil || isNil(o.OriginType) {
 		return nil, false
 	}
 	return o.OriginType, true
@@ -122,7 +125,7 @@ func (o *CreateApplicationRequest) GetOriginTypeOk() (*string, bool) {
 
 // HasOriginType returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasOriginType() bool {
-	if o != nil && o.OriginType != nil {
+	if o != nil && !isNil(o.OriginType) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *CreateApplicationRequest) SetOriginType(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil || isNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *CreateApplicationRequest) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
+	if o == nil || isNil(o.Address) {
 		return nil, false
 	}
 	return o.Address, true
@@ -154,7 +157,7 @@ func (o *CreateApplicationRequest) GetAddressOk() (*string, bool) {
 
 // HasAddress returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasAddress() bool {
-	if o != nil && o.Address != nil {
+	if o != nil && !isNil(o.Address) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *CreateApplicationRequest) SetAddress(v string) {
 
 // GetOriginProtocolPolicy returns the OriginProtocolPolicy field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetOriginProtocolPolicy() string {
-	if o == nil || o.OriginProtocolPolicy == nil {
+	if o == nil || isNil(o.OriginProtocolPolicy) {
 		var ret string
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *CreateApplicationRequest) GetOriginProtocolPolicy() string {
 // GetOriginProtocolPolicyOk returns a tuple with the OriginProtocolPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetOriginProtocolPolicyOk() (*string, bool) {
-	if o == nil || o.OriginProtocolPolicy == nil {
+	if o == nil || isNil(o.OriginProtocolPolicy) {
 		return nil, false
 	}
 	return o.OriginProtocolPolicy, true
@@ -186,7 +189,7 @@ func (o *CreateApplicationRequest) GetOriginProtocolPolicyOk() (*string, bool) {
 
 // HasOriginProtocolPolicy returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasOriginProtocolPolicy() bool {
-	if o != nil && o.OriginProtocolPolicy != nil {
+	if o != nil && !isNil(o.OriginProtocolPolicy) {
 		return true
 	}
 
@@ -200,7 +203,7 @@ func (o *CreateApplicationRequest) SetOriginProtocolPolicy(v string) {
 
 // GetHostHeader returns the HostHeader field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetHostHeader() string {
-	if o == nil || o.HostHeader == nil {
+	if o == nil || isNil(o.HostHeader) {
 		var ret string
 		return ret
 	}
@@ -210,7 +213,7 @@ func (o *CreateApplicationRequest) GetHostHeader() string {
 // GetHostHeaderOk returns a tuple with the HostHeader field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetHostHeaderOk() (*string, bool) {
-	if o == nil || o.HostHeader == nil {
+	if o == nil || isNil(o.HostHeader) {
 		return nil, false
 	}
 	return o.HostHeader, true
@@ -218,7 +221,7 @@ func (o *CreateApplicationRequest) GetHostHeaderOk() (*string, bool) {
 
 // HasHostHeader returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasHostHeader() bool {
-	if o != nil && o.HostHeader != nil {
+	if o != nil && !isNil(o.HostHeader) {
 		return true
 	}
 
@@ -232,7 +235,7 @@ func (o *CreateApplicationRequest) SetHostHeader(v string) {
 
 // GetBrowserCacheSettings returns the BrowserCacheSettings field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetBrowserCacheSettings() string {
-	if o == nil || o.BrowserCacheSettings == nil {
+	if o == nil || isNil(o.BrowserCacheSettings) {
 		var ret string
 		return ret
 	}
@@ -242,7 +245,7 @@ func (o *CreateApplicationRequest) GetBrowserCacheSettings() string {
 // GetBrowserCacheSettingsOk returns a tuple with the BrowserCacheSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetBrowserCacheSettingsOk() (*string, bool) {
-	if o == nil || o.BrowserCacheSettings == nil {
+	if o == nil || isNil(o.BrowserCacheSettings) {
 		return nil, false
 	}
 	return o.BrowserCacheSettings, true
@@ -250,7 +253,7 @@ func (o *CreateApplicationRequest) GetBrowserCacheSettingsOk() (*string, bool) {
 
 // HasBrowserCacheSettings returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasBrowserCacheSettings() bool {
-	if o != nil && o.BrowserCacheSettings != nil {
+	if o != nil && !isNil(o.BrowserCacheSettings) {
 		return true
 	}
 
@@ -264,7 +267,7 @@ func (o *CreateApplicationRequest) SetBrowserCacheSettings(v string) {
 
 // GetCdnCacheSettings returns the CdnCacheSettings field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetCdnCacheSettings() string {
-	if o == nil || o.CdnCacheSettings == nil {
+	if o == nil || isNil(o.CdnCacheSettings) {
 		var ret string
 		return ret
 	}
@@ -274,7 +277,7 @@ func (o *CreateApplicationRequest) GetCdnCacheSettings() string {
 // GetCdnCacheSettingsOk returns a tuple with the CdnCacheSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetCdnCacheSettingsOk() (*string, bool) {
-	if o == nil || o.CdnCacheSettings == nil {
+	if o == nil || isNil(o.CdnCacheSettings) {
 		return nil, false
 	}
 	return o.CdnCacheSettings, true
@@ -282,7 +285,7 @@ func (o *CreateApplicationRequest) GetCdnCacheSettingsOk() (*string, bool) {
 
 // HasCdnCacheSettings returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasCdnCacheSettings() bool {
-	if o != nil && o.CdnCacheSettings != nil {
+	if o != nil && !isNil(o.CdnCacheSettings) {
 		return true
 	}
 
@@ -296,7 +299,7 @@ func (o *CreateApplicationRequest) SetCdnCacheSettings(v string) {
 
 // GetBrowserCacheSettingsMaximumTtl returns the BrowserCacheSettingsMaximumTtl field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetBrowserCacheSettingsMaximumTtl() int64 {
-	if o == nil || o.BrowserCacheSettingsMaximumTtl == nil {
+	if o == nil || isNil(o.BrowserCacheSettingsMaximumTtl) {
 		var ret int64
 		return ret
 	}
@@ -306,7 +309,7 @@ func (o *CreateApplicationRequest) GetBrowserCacheSettingsMaximumTtl() int64 {
 // GetBrowserCacheSettingsMaximumTtlOk returns a tuple with the BrowserCacheSettingsMaximumTtl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetBrowserCacheSettingsMaximumTtlOk() (*int64, bool) {
-	if o == nil || o.BrowserCacheSettingsMaximumTtl == nil {
+	if o == nil || isNil(o.BrowserCacheSettingsMaximumTtl) {
 		return nil, false
 	}
 	return o.BrowserCacheSettingsMaximumTtl, true
@@ -314,7 +317,7 @@ func (o *CreateApplicationRequest) GetBrowserCacheSettingsMaximumTtlOk() (*int64
 
 // HasBrowserCacheSettingsMaximumTtl returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasBrowserCacheSettingsMaximumTtl() bool {
-	if o != nil && o.BrowserCacheSettingsMaximumTtl != nil {
+	if o != nil && !isNil(o.BrowserCacheSettingsMaximumTtl) {
 		return true
 	}
 
@@ -328,7 +331,7 @@ func (o *CreateApplicationRequest) SetBrowserCacheSettingsMaximumTtl(v int64) {
 
 // GetCdnCacheSettingsMaximumTtl returns the CdnCacheSettingsMaximumTtl field value if set, zero value otherwise.
 func (o *CreateApplicationRequest) GetCdnCacheSettingsMaximumTtl() int64 {
-	if o == nil || o.CdnCacheSettingsMaximumTtl == nil {
+	if o == nil || isNil(o.CdnCacheSettingsMaximumTtl) {
 		var ret int64
 		return ret
 	}
@@ -338,7 +341,7 @@ func (o *CreateApplicationRequest) GetCdnCacheSettingsMaximumTtl() int64 {
 // GetCdnCacheSettingsMaximumTtlOk returns a tuple with the CdnCacheSettingsMaximumTtl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateApplicationRequest) GetCdnCacheSettingsMaximumTtlOk() (*int64, bool) {
-	if o == nil || o.CdnCacheSettingsMaximumTtl == nil {
+	if o == nil || isNil(o.CdnCacheSettingsMaximumTtl) {
 		return nil, false
 	}
 	return o.CdnCacheSettingsMaximumTtl, true
@@ -346,7 +349,7 @@ func (o *CreateApplicationRequest) GetCdnCacheSettingsMaximumTtlOk() (*int64, bo
 
 // HasCdnCacheSettingsMaximumTtl returns a boolean if a field has been set.
 func (o *CreateApplicationRequest) HasCdnCacheSettingsMaximumTtl() bool {
-	if o != nil && o.CdnCacheSettingsMaximumTtl != nil {
+	if o != nil && !isNil(o.CdnCacheSettingsMaximumTtl) {
 		return true
 	}
 
@@ -359,38 +362,44 @@ func (o *CreateApplicationRequest) SetCdnCacheSettingsMaximumTtl(v int64) {
 }
 
 func (o CreateApplicationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.DeliveryProtocol != nil {
-		toSerialize["delivery_protocol"] = o.DeliveryProtocol
-	}
-	if o.OriginType != nil {
-		toSerialize["origin_type"] = o.OriginType
-	}
-	if o.Address != nil {
-		toSerialize["address"] = o.Address
-	}
-	if o.OriginProtocolPolicy != nil {
-		toSerialize["origin_protocol_policy"] = o.OriginProtocolPolicy
-	}
-	if o.HostHeader != nil {
-		toSerialize["host_header"] = o.HostHeader
-	}
-	if o.BrowserCacheSettings != nil {
-		toSerialize["browser_cache_settings"] = o.BrowserCacheSettings
-	}
-	if o.CdnCacheSettings != nil {
-		toSerialize["cdn_cache_settings"] = o.CdnCacheSettings
-	}
-	if o.BrowserCacheSettingsMaximumTtl != nil {
-		toSerialize["browser_cache_settings_maximum_ttl"] = o.BrowserCacheSettingsMaximumTtl
-	}
-	if o.CdnCacheSettingsMaximumTtl != nil {
-		toSerialize["cdn_cache_settings_maximum_ttl"] = o.CdnCacheSettingsMaximumTtl
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateApplicationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !isNil(o.DeliveryProtocol) {
+		toSerialize["delivery_protocol"] = o.DeliveryProtocol
+	}
+	if !isNil(o.OriginType) {
+		toSerialize["origin_type"] = o.OriginType
+	}
+	if !isNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
+	if !isNil(o.OriginProtocolPolicy) {
+		toSerialize["origin_protocol_policy"] = o.OriginProtocolPolicy
+	}
+	if !isNil(o.HostHeader) {
+		toSerialize["host_header"] = o.HostHeader
+	}
+	if !isNil(o.BrowserCacheSettings) {
+		toSerialize["browser_cache_settings"] = o.BrowserCacheSettings
+	}
+	if !isNil(o.CdnCacheSettings) {
+		toSerialize["cdn_cache_settings"] = o.CdnCacheSettings
+	}
+	if !isNil(o.BrowserCacheSettingsMaximumTtl) {
+		toSerialize["browser_cache_settings_maximum_ttl"] = o.BrowserCacheSettingsMaximumTtl
+	}
+	if !isNil(o.CdnCacheSettingsMaximumTtl) {
+		toSerialize["cdn_cache_settings_maximum_ttl"] = o.CdnCacheSettingsMaximumTtl
+	}
+	return toSerialize, nil
 }
 
 type NullableCreateApplicationRequest struct {

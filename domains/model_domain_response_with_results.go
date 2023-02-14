@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DomainResponseWithResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainResponseWithResults{}
+
 // DomainResponseWithResults struct for DomainResponseWithResults
 type DomainResponseWithResults struct {
 	Count int64 `json:"count"`
@@ -62,7 +65,7 @@ func (o *DomainResponseWithResults) GetCount() int64 {
 // GetCountOk returns a tuple with the Count field value
 // and a boolean to check if the value has been set.
 func (o *DomainResponseWithResults) GetCountOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Count, true
@@ -86,7 +89,7 @@ func (o *DomainResponseWithResults) GetTotalPages() int64 {
 // GetTotalPagesOk returns a tuple with the TotalPages field value
 // and a boolean to check if the value has been set.
 func (o *DomainResponseWithResults) GetTotalPagesOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TotalPages, true
@@ -110,7 +113,7 @@ func (o *DomainResponseWithResults) GetSchemaVersion() int64 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value
 // and a boolean to check if the value has been set.
 func (o *DomainResponseWithResults) GetSchemaVersionOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SchemaVersion, true
@@ -134,7 +137,7 @@ func (o *DomainResponseWithResults) GetDomainName() string {
 // GetDomainNameOk returns a tuple with the DomainName field value
 // and a boolean to check if the value has been set.
 func (o *DomainResponseWithResults) GetDomainNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DomainName, true
@@ -158,7 +161,7 @@ func (o *DomainResponseWithResults) GetEnvironment() string {
 // GetEnvironmentOk returns a tuple with the Environment field value
 // and a boolean to check if the value has been set.
 func (o *DomainResponseWithResults) GetEnvironmentOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Environment, true
@@ -182,7 +185,7 @@ func (o *DomainResponseWithResults) GetLinks() DomainLinks {
 // GetLinksOk returns a tuple with the Links field value
 // and a boolean to check if the value has been set.
 func (o *DomainResponseWithResults) GetLinksOk() (*DomainLinks, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Links, true
@@ -205,11 +208,11 @@ func (o *DomainResponseWithResults) GetResults() []DomainResults {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *DomainResponseWithResults) GetResultsOk() (*[]DomainResults, bool) {
-	if o == nil  {
+func (o *DomainResponseWithResults) GetResultsOk() ([]DomainResults, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Results, true
+	return o.Results, true
 }
 
 // SetResults sets field value
@@ -218,29 +221,23 @@ func (o *DomainResponseWithResults) SetResults(v []DomainResults) {
 }
 
 func (o DomainResponseWithResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["count"] = o.Count
-	}
-	if true {
-		toSerialize["total_pages"] = o.TotalPages
-	}
-	if true {
-		toSerialize["schema_version"] = o.SchemaVersion
-	}
-	if true {
-		toSerialize["domain_name"] = o.DomainName
-	}
-	if true {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["links"] = o.Links
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DomainResponseWithResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["count"] = o.Count
+	toSerialize["total_pages"] = o.TotalPages
+	toSerialize["schema_version"] = o.SchemaVersion
+	toSerialize["domain_name"] = o.DomainName
+	toSerialize["environment"] = o.Environment
+	toSerialize["links"] = o.Links
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
 }
 
 type NullableDomainResponseWithResults struct {

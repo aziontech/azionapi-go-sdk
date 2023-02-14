@@ -41,8 +41,8 @@ func main() {
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet(context.Background(), edgeApplicationId, phase).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet(context.Background(), edgeApplicationId, phase).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,8 +123,8 @@ func main() {
     createRulesEngineRequest := *openapiclient.NewCreateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.RulesEngineBehavior{*openapiclient.NewRulesEngineBehavior("Name_example")}) // CreateRulesEngineRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost(context.Background(), edgeApplicationId, phase).Accept(accept).ContentType(contentType).CreateRulesEngineRequest(createRulesEngineRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost(context.Background(), edgeApplicationId, phase).Accept(accept).ContentType(contentType).CreateRulesEngineRequest(createRulesEngineRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -199,8 +199,8 @@ func main() {
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -275,8 +275,8 @@ func main() {
     patchRulesEngineRequest := *openapiclient.NewPatchRulesEngineRequest() // PatchRulesEngineRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).ContentType(contentType).PatchRulesEngineRequest(patchRulesEngineRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).ContentType(contentType).PatchRulesEngineRequest(patchRulesEngineRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -355,8 +355,8 @@ func main() {
     updateRulesEngineRequest := *openapiclient.NewUpdateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.RulesEngineBehavior{*openapiclient.NewRulesEngineBehavior("Name_example")}) // UpdateRulesEngineRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).ContentType(contentType).UpdateRulesEngineRequest(updateRulesEngineRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).ContentType(contentType).UpdateRulesEngineRequest(updateRulesEngineRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

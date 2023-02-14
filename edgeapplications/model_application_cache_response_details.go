@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationCacheResponseDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationCacheResponseDetails{}
+
 // ApplicationCacheResponseDetails struct for ApplicationCacheResponseDetails
 type ApplicationCacheResponseDetails struct {
 	Id int64 `json:"id"`
@@ -28,7 +31,7 @@ type ApplicationCacheResponseDetails struct {
 	CacheByCookies string `json:"cache_by_cookies"`
 	CookieNames []string `json:"cookie_names"`
 	AdaptiveDeliveryAction *string `json:"adaptive_delivery_action,omitempty"`
-	DeviceGroup *[]string `json:"device_group,omitempty"`
+	DeviceGroup []string `json:"device_group,omitempty"`
 	EnableCachingForPost bool `json:"enable_caching_for_post"`
 	L2CachingEnabled bool `json:"l2_caching_enabled"`
 }
@@ -76,7 +79,7 @@ func (o *ApplicationCacheResponseDetails) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -100,7 +103,7 @@ func (o *ApplicationCacheResponseDetails) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -124,7 +127,7 @@ func (o *ApplicationCacheResponseDetails) GetBrowserCacheSettings() string {
 // GetBrowserCacheSettingsOk returns a tuple with the BrowserCacheSettings field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetBrowserCacheSettingsOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BrowserCacheSettings, true
@@ -148,7 +151,7 @@ func (o *ApplicationCacheResponseDetails) GetBrowserCacheSettingsMaximumTtl() in
 // GetBrowserCacheSettingsMaximumTtlOk returns a tuple with the BrowserCacheSettingsMaximumTtl field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetBrowserCacheSettingsMaximumTtlOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.BrowserCacheSettingsMaximumTtl, true
@@ -172,7 +175,7 @@ func (o *ApplicationCacheResponseDetails) GetCdnCacheSettings() string {
 // GetCdnCacheSettingsOk returns a tuple with the CdnCacheSettings field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetCdnCacheSettingsOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CdnCacheSettings, true
@@ -196,7 +199,7 @@ func (o *ApplicationCacheResponseDetails) GetCdnCacheSettingsMaximumTtl() int64 
 // GetCdnCacheSettingsMaximumTtlOk returns a tuple with the CdnCacheSettingsMaximumTtl field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetCdnCacheSettingsMaximumTtlOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CdnCacheSettingsMaximumTtl, true
@@ -220,7 +223,7 @@ func (o *ApplicationCacheResponseDetails) GetCacheByQueryString() string {
 // GetCacheByQueryStringOk returns a tuple with the CacheByQueryString field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetCacheByQueryStringOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CacheByQueryString, true
@@ -245,11 +248,11 @@ func (o *ApplicationCacheResponseDetails) GetQueryStringFields() []string {
 // GetQueryStringFieldsOk returns a tuple with the QueryStringFields field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationCacheResponseDetails) GetQueryStringFieldsOk() (*[]string, bool) {
-	if o == nil || o.QueryStringFields == nil {
+func (o *ApplicationCacheResponseDetails) GetQueryStringFieldsOk() ([]string, bool) {
+	if o == nil || isNil(o.QueryStringFields) {
 		return nil, false
 	}
-	return &o.QueryStringFields, true
+	return o.QueryStringFields, true
 }
 
 // SetQueryStringFields sets field value
@@ -270,7 +273,7 @@ func (o *ApplicationCacheResponseDetails) GetEnableQueryStringSort() bool {
 // GetEnableQueryStringSortOk returns a tuple with the EnableQueryStringSort field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetEnableQueryStringSortOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EnableQueryStringSort, true
@@ -294,7 +297,7 @@ func (o *ApplicationCacheResponseDetails) GetCacheByCookies() string {
 // GetCacheByCookiesOk returns a tuple with the CacheByCookies field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetCacheByCookiesOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CacheByCookies, true
@@ -319,11 +322,11 @@ func (o *ApplicationCacheResponseDetails) GetCookieNames() []string {
 // GetCookieNamesOk returns a tuple with the CookieNames field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationCacheResponseDetails) GetCookieNamesOk() (*[]string, bool) {
-	if o == nil || o.CookieNames == nil {
+func (o *ApplicationCacheResponseDetails) GetCookieNamesOk() ([]string, bool) {
+	if o == nil || isNil(o.CookieNames) {
 		return nil, false
 	}
-	return &o.CookieNames, true
+	return o.CookieNames, true
 }
 
 // SetCookieNames sets field value
@@ -333,7 +336,7 @@ func (o *ApplicationCacheResponseDetails) SetCookieNames(v []string) {
 
 // GetAdaptiveDeliveryAction returns the AdaptiveDeliveryAction field value if set, zero value otherwise.
 func (o *ApplicationCacheResponseDetails) GetAdaptiveDeliveryAction() string {
-	if o == nil || o.AdaptiveDeliveryAction == nil {
+	if o == nil || isNil(o.AdaptiveDeliveryAction) {
 		var ret string
 		return ret
 	}
@@ -343,7 +346,7 @@ func (o *ApplicationCacheResponseDetails) GetAdaptiveDeliveryAction() string {
 // GetAdaptiveDeliveryActionOk returns a tuple with the AdaptiveDeliveryAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetAdaptiveDeliveryActionOk() (*string, bool) {
-	if o == nil || o.AdaptiveDeliveryAction == nil {
+	if o == nil || isNil(o.AdaptiveDeliveryAction) {
 		return nil, false
 	}
 	return o.AdaptiveDeliveryAction, true
@@ -351,7 +354,7 @@ func (o *ApplicationCacheResponseDetails) GetAdaptiveDeliveryActionOk() (*string
 
 // HasAdaptiveDeliveryAction returns a boolean if a field has been set.
 func (o *ApplicationCacheResponseDetails) HasAdaptiveDeliveryAction() bool {
-	if o != nil && o.AdaptiveDeliveryAction != nil {
+	if o != nil && !isNil(o.AdaptiveDeliveryAction) {
 		return true
 	}
 
@@ -365,17 +368,17 @@ func (o *ApplicationCacheResponseDetails) SetAdaptiveDeliveryAction(v string) {
 
 // GetDeviceGroup returns the DeviceGroup field value if set, zero value otherwise.
 func (o *ApplicationCacheResponseDetails) GetDeviceGroup() []string {
-	if o == nil || o.DeviceGroup == nil {
+	if o == nil || isNil(o.DeviceGroup) {
 		var ret []string
 		return ret
 	}
-	return *o.DeviceGroup
+	return o.DeviceGroup
 }
 
 // GetDeviceGroupOk returns a tuple with the DeviceGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationCacheResponseDetails) GetDeviceGroupOk() (*[]string, bool) {
-	if o == nil || o.DeviceGroup == nil {
+func (o *ApplicationCacheResponseDetails) GetDeviceGroupOk() ([]string, bool) {
+	if o == nil || isNil(o.DeviceGroup) {
 		return nil, false
 	}
 	return o.DeviceGroup, true
@@ -383,7 +386,7 @@ func (o *ApplicationCacheResponseDetails) GetDeviceGroupOk() (*[]string, bool) {
 
 // HasDeviceGroup returns a boolean if a field has been set.
 func (o *ApplicationCacheResponseDetails) HasDeviceGroup() bool {
-	if o != nil && o.DeviceGroup != nil {
+	if o != nil && !isNil(o.DeviceGroup) {
 		return true
 	}
 
@@ -392,7 +395,7 @@ func (o *ApplicationCacheResponseDetails) HasDeviceGroup() bool {
 
 // SetDeviceGroup gets a reference to the given []string and assigns it to the DeviceGroup field.
 func (o *ApplicationCacheResponseDetails) SetDeviceGroup(v []string) {
-	o.DeviceGroup = &v
+	o.DeviceGroup = v
 }
 
 // GetEnableCachingForPost returns the EnableCachingForPost field value
@@ -408,7 +411,7 @@ func (o *ApplicationCacheResponseDetails) GetEnableCachingForPost() bool {
 // GetEnableCachingForPostOk returns a tuple with the EnableCachingForPost field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetEnableCachingForPostOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EnableCachingForPost, true
@@ -432,7 +435,7 @@ func (o *ApplicationCacheResponseDetails) GetL2CachingEnabled() bool {
 // GetL2CachingEnabledOk returns a tuple with the L2CachingEnabled field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheResponseDetails) GetL2CachingEnabledOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.L2CachingEnabled, true
@@ -444,53 +447,39 @@ func (o *ApplicationCacheResponseDetails) SetL2CachingEnabled(v bool) {
 }
 
 func (o ApplicationCacheResponseDetails) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationCacheResponseDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["browser_cache_settings"] = o.BrowserCacheSettings
-	}
-	if true {
-		toSerialize["browser_cache_settings_maximum_ttl"] = o.BrowserCacheSettingsMaximumTtl
-	}
-	if true {
-		toSerialize["cdn_cache_settings"] = o.CdnCacheSettings
-	}
-	if true {
-		toSerialize["cdn_cache_settings_maximum_ttl"] = o.CdnCacheSettingsMaximumTtl
-	}
-	if true {
-		toSerialize["cache_by_query_string"] = o.CacheByQueryString
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["browser_cache_settings"] = o.BrowserCacheSettings
+	toSerialize["browser_cache_settings_maximum_ttl"] = o.BrowserCacheSettingsMaximumTtl
+	toSerialize["cdn_cache_settings"] = o.CdnCacheSettings
+	toSerialize["cdn_cache_settings_maximum_ttl"] = o.CdnCacheSettingsMaximumTtl
+	toSerialize["cache_by_query_string"] = o.CacheByQueryString
 	if o.QueryStringFields != nil {
 		toSerialize["query_string_fields"] = o.QueryStringFields
 	}
-	if true {
-		toSerialize["enable_query_string_sort"] = o.EnableQueryStringSort
-	}
-	if true {
-		toSerialize["cache_by_cookies"] = o.CacheByCookies
-	}
+	toSerialize["enable_query_string_sort"] = o.EnableQueryStringSort
+	toSerialize["cache_by_cookies"] = o.CacheByCookies
 	if o.CookieNames != nil {
 		toSerialize["cookie_names"] = o.CookieNames
 	}
-	if o.AdaptiveDeliveryAction != nil {
+	if !isNil(o.AdaptiveDeliveryAction) {
 		toSerialize["adaptive_delivery_action"] = o.AdaptiveDeliveryAction
 	}
-	if o.DeviceGroup != nil {
+	if !isNil(o.DeviceGroup) {
 		toSerialize["device_group"] = o.DeviceGroup
 	}
-	if true {
-		toSerialize["enable_caching_for_post"] = o.EnableCachingForPost
-	}
-	if true {
-		toSerialize["l2_caching_enabled"] = o.L2CachingEnabled
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["enable_caching_for_post"] = o.EnableCachingForPost
+	toSerialize["l2_caching_enabled"] = o.L2CachingEnabled
+	return toSerialize, nil
 }
 
 type NullableApplicationCacheResponseDetails struct {

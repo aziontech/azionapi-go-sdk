@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DomainResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainResults{}
+
 // DomainResults struct for DomainResults
 type DomainResults struct {
 	Id int64 `json:"id"`
@@ -59,7 +62,7 @@ func (o *DomainResults) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -83,7 +86,7 @@ func (o *DomainResults) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -96,7 +99,7 @@ func (o *DomainResults) SetName(v string) {
 
 // GetCnames returns the Cnames field value if set, zero value otherwise.
 func (o *DomainResults) GetCnames() []string {
-	if o == nil || o.Cnames == nil {
+	if o == nil || isNil(o.Cnames) {
 		var ret []string
 		return ret
 	}
@@ -105,16 +108,16 @@ func (o *DomainResults) GetCnames() []string {
 
 // GetCnamesOk returns a tuple with the Cnames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainResults) GetCnamesOk() (*[]string, bool) {
-	if o == nil || o.Cnames == nil {
+func (o *DomainResults) GetCnamesOk() ([]string, bool) {
+	if o == nil || isNil(o.Cnames) {
 		return nil, false
 	}
-	return o.Cnames, true
+	return *o.Cnames, true
 }
 
 // HasCnames returns a boolean if a field has been set.
 func (o *DomainResults) HasCnames() bool {
-	if o != nil && o.Cnames != nil {
+	if o != nil && !isNil(o.Cnames) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *DomainResults) SetCnames(v []string) {
 
 // GetCnameAccessOnly returns the CnameAccessOnly field value if set, zero value otherwise.
 func (o *DomainResults) GetCnameAccessOnly() bool {
-	if o == nil || o.CnameAccessOnly == nil {
+	if o == nil || isNil(o.CnameAccessOnly) {
 		var ret bool
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *DomainResults) GetCnameAccessOnly() bool {
 // GetCnameAccessOnlyOk returns a tuple with the CnameAccessOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetCnameAccessOnlyOk() (*bool, bool) {
-	if o == nil || o.CnameAccessOnly == nil {
+	if o == nil || isNil(o.CnameAccessOnly) {
 		return nil, false
 	}
 	return o.CnameAccessOnly, true
@@ -146,7 +149,7 @@ func (o *DomainResults) GetCnameAccessOnlyOk() (*bool, bool) {
 
 // HasCnameAccessOnly returns a boolean if a field has been set.
 func (o *DomainResults) HasCnameAccessOnly() bool {
-	if o != nil && o.CnameAccessOnly != nil {
+	if o != nil && !isNil(o.CnameAccessOnly) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *DomainResults) SetCnameAccessOnly(v bool) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *DomainResults) GetIsActive() bool {
-	if o == nil || o.IsActive == nil {
+	if o == nil || isNil(o.IsActive) {
 		var ret bool
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *DomainResults) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetIsActiveOk() (*bool, bool) {
-	if o == nil || o.IsActive == nil {
+	if o == nil || isNil(o.IsActive) {
 		return nil, false
 	}
 	return o.IsActive, true
@@ -178,7 +181,7 @@ func (o *DomainResults) GetIsActiveOk() (*bool, bool) {
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *DomainResults) HasIsActive() bool {
-	if o != nil && o.IsActive != nil {
+	if o != nil && !isNil(o.IsActive) {
 		return true
 	}
 
@@ -192,7 +195,7 @@ func (o *DomainResults) SetIsActive(v bool) {
 
 // GetEdgeApplicationId returns the EdgeApplicationId field value if set, zero value otherwise.
 func (o *DomainResults) GetEdgeApplicationId() int64 {
-	if o == nil || o.EdgeApplicationId == nil {
+	if o == nil || isNil(o.EdgeApplicationId) {
 		var ret int64
 		return ret
 	}
@@ -202,7 +205,7 @@ func (o *DomainResults) GetEdgeApplicationId() int64 {
 // GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetEdgeApplicationIdOk() (*int64, bool) {
-	if o == nil || o.EdgeApplicationId == nil {
+	if o == nil || isNil(o.EdgeApplicationId) {
 		return nil, false
 	}
 	return o.EdgeApplicationId, true
@@ -210,7 +213,7 @@ func (o *DomainResults) GetEdgeApplicationIdOk() (*int64, bool) {
 
 // HasEdgeApplicationId returns a boolean if a field has been set.
 func (o *DomainResults) HasEdgeApplicationId() bool {
-	if o != nil && o.EdgeApplicationId != nil {
+	if o != nil && !isNil(o.EdgeApplicationId) {
 		return true
 	}
 
@@ -224,7 +227,7 @@ func (o *DomainResults) SetEdgeApplicationId(v int64) {
 
 // GetDigitalCertificateId returns the DigitalCertificateId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DomainResults) GetDigitalCertificateId() int64 {
-	if o == nil || o.DigitalCertificateId.Get() == nil {
+	if o == nil || isNil(o.DigitalCertificateId.Get()) {
 		var ret int64
 		return ret
 	}
@@ -235,7 +238,7 @@ func (o *DomainResults) GetDigitalCertificateId() int64 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DomainResults) GetDigitalCertificateIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.DigitalCertificateId.Get(), o.DigitalCertificateId.IsSet()
@@ -266,7 +269,7 @@ func (o *DomainResults) UnsetDigitalCertificateId() {
 
 // GetDomainName returns the DomainName field value if set, zero value otherwise.
 func (o *DomainResults) GetDomainName() string {
-	if o == nil || o.DomainName == nil {
+	if o == nil || isNil(o.DomainName) {
 		var ret string
 		return ret
 	}
@@ -276,7 +279,7 @@ func (o *DomainResults) GetDomainName() string {
 // GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetDomainNameOk() (*string, bool) {
-	if o == nil || o.DomainName == nil {
+	if o == nil || isNil(o.DomainName) {
 		return nil, false
 	}
 	return o.DomainName, true
@@ -284,7 +287,7 @@ func (o *DomainResults) GetDomainNameOk() (*string, bool) {
 
 // HasDomainName returns a boolean if a field has been set.
 func (o *DomainResults) HasDomainName() bool {
-	if o != nil && o.DomainName != nil {
+	if o != nil && !isNil(o.DomainName) {
 		return true
 	}
 
@@ -298,7 +301,7 @@ func (o *DomainResults) SetDomainName(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *DomainResults) GetEnvironment() string {
-	if o == nil || o.Environment == nil {
+	if o == nil || isNil(o.Environment) {
 		var ret string
 		return ret
 	}
@@ -308,7 +311,7 @@ func (o *DomainResults) GetEnvironment() string {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetEnvironmentOk() (*string, bool) {
-	if o == nil || o.Environment == nil {
+	if o == nil || isNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -316,7 +319,7 @@ func (o *DomainResults) GetEnvironmentOk() (*string, bool) {
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *DomainResults) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
+	if o != nil && !isNil(o.Environment) {
 		return true
 	}
 
@@ -329,35 +332,39 @@ func (o *DomainResults) SetEnvironment(v string) {
 }
 
 func (o DomainResults) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DomainResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Cnames != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	if !isNil(o.Cnames) {
 		toSerialize["cnames"] = o.Cnames
 	}
-	if o.CnameAccessOnly != nil {
+	if !isNil(o.CnameAccessOnly) {
 		toSerialize["cname_access_only"] = o.CnameAccessOnly
 	}
-	if o.IsActive != nil {
+	if !isNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
 	}
-	if o.EdgeApplicationId != nil {
+	if !isNil(o.EdgeApplicationId) {
 		toSerialize["edge_application_id"] = o.EdgeApplicationId
 	}
 	if o.DigitalCertificateId.IsSet() {
 		toSerialize["digital_certificate_id"] = o.DigitalCertificateId.Get()
 	}
-	if o.DomainName != nil {
+	if !isNil(o.DomainName) {
 		toSerialize["domain_name"] = o.DomainName
 	}
-	if o.Environment != nil {
+	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableDomainResults struct {

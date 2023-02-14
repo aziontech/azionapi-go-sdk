@@ -12,23 +12,19 @@ package edgeapplications
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // EdgeApplicationsEdgeFunctionsInstancesApiService EdgeApplicationsEdgeFunctionsInstancesApi service
 type EdgeApplicationsEdgeFunctionsInstancesApiService service
 
 type ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsEdgeFunctionsInstancesApiService
 	edgeApplicationId string
 	functionsInstancesId string
@@ -40,25 +36,26 @@ func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstances
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDelete /edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param functionsInstancesId
  @return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest
 */
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDelete(ctx _context.Context, edgeApplicationId string, functionsInstancesId string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDelete(ctx context.Context, edgeApplicationId string, functionsInstancesId string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -68,27 +65,25 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsEdgeFunctionsInstancesApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"functions_instances_id"+"}", _neturl.PathEscape(parameterToString(r.functionsInstancesId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"functions_instances_id"+"}", url.PathEscape(parameterValueToString(r.functionsInstancesId, "functionsInstancesId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -108,10 +103,10 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -127,7 +122,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -137,15 +132,15 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -156,7 +151,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsEdgeFunctionsInstancesApiService
 	edgeApplicationId int64
 	functionsInstancesId int64
@@ -169,19 +164,19 @@ func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstances
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest) Execute() (ApplicationInstancesGetOneResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest) Execute() (*ApplicationInstancesGetOneResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGet /edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param functionsInstancesId
  @return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest
 */
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGet(ctx _context.Context, edgeApplicationId int64, functionsInstancesId int64) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGet(ctx context.Context, edgeApplicationId int64, functionsInstancesId int64) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -192,28 +187,26 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 // Execute executes the request
 //  @return ApplicationInstancesGetOneResponse
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest) (ApplicationInstancesGetOneResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGetRequest) (*ApplicationInstancesGetOneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationInstancesGetOneResponse
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationInstancesGetOneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsEdgeFunctionsInstancesApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"functions_instances_id"+"}", _neturl.PathEscape(parameterToString(r.functionsInstancesId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"functions_instances_id"+"}", url.PathEscape(parameterValueToString(r.functionsInstancesId, "functionsInstancesId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -233,7 +226,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -249,7 +242,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -259,15 +252,15 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -276,7 +269,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -287,7 +280,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsEdgeFunctionsInstancesApiService
 	edgeApplicationId string
 	functionsInstancesId string
@@ -300,29 +293,31 @@ func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstances
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest) ApplicationUpdateInstanceRequest(applicationUpdateInstanceRequest ApplicationUpdateInstanceRequest) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest {
 	r.applicationUpdateInstanceRequest = &applicationUpdateInstanceRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest) Execute() (ApplicationInstanceResults, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest) Execute() (*ApplicationInstanceResults, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatch /edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId The id of the edge application you plan to overwrite 
  @param functionsInstancesId The id of the edge function instance you plan to overwrite.
  @return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest
 */
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatch(ctx _context.Context, edgeApplicationId string, functionsInstancesId string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatch(ctx context.Context, edgeApplicationId string, functionsInstancesId string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -333,28 +328,26 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 // Execute executes the request
 //  @return ApplicationInstanceResults
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest) (ApplicationInstanceResults, *_nethttp.Response, error) {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatchRequest) (*ApplicationInstanceResults, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationInstanceResults
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationInstanceResults
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsEdgeFunctionsInstancesApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatch")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"functions_instances_id"+"}", _neturl.PathEscape(parameterToString(r.functionsInstancesId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"functions_instances_id"+"}", url.PathEscape(parameterValueToString(r.functionsInstancesId, "functionsInstancesId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -374,10 +367,10 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.applicationUpdateInstanceRequest
@@ -395,7 +388,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -405,15 +398,15 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -422,7 +415,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -433,7 +426,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsEdgeFunctionsInstancesApiService
 	edgeApplicationId string
 	functionsInstancesId string
@@ -446,29 +439,31 @@ func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstances
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest) ApplicationPutInstanceRequest(applicationPutInstanceRequest ApplicationPutInstanceRequest) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest {
 	r.applicationPutInstanceRequest = &applicationPutInstanceRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest) Execute() (ApplicationInstanceResults, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest) Execute() (*ApplicationInstanceResults, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPut /edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId The id of the edge application you plan to overwrite 
  @param functionsInstancesId The id of the edge function instance you plan to overwrite.
  @return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest
 */
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPut(ctx _context.Context, edgeApplicationId string, functionsInstancesId string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPut(ctx context.Context, edgeApplicationId string, functionsInstancesId string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -479,28 +474,26 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 // Execute executes the request
 //  @return ApplicationInstanceResults
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest) (ApplicationInstanceResults, *_nethttp.Response, error) {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPutRequest) (*ApplicationInstanceResults, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationInstanceResults
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationInstanceResults
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsEdgeFunctionsInstancesApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"functions_instances_id"+"}", _neturl.PathEscape(parameterToString(r.functionsInstancesId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"functions_instances_id"+"}", url.PathEscape(parameterValueToString(r.functionsInstancesId, "functionsInstancesId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -520,10 +513,10 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.applicationPutInstanceRequest
@@ -541,7 +534,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -551,15 +544,15 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -568,7 +561,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -579,7 +572,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsEdgeFunctionsInstancesApiService
 	edgeApplicationId int64
 	page *int64
@@ -594,39 +587,44 @@ func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) Page(p
 	r.page = &page
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) PageSize(pageSize int64) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) Filter(filter string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest {
 	r.filter = &filter
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) OrderBy(orderBy string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest {
 	r.orderBy = &orderBy
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) Sort(sort string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest {
 	r.sort = &sort
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest {
 	r.accept = &accept
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) Execute() (ApplicationInstancesGetResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) Execute() (*ApplicationInstancesGetResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesGetExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdFunctionsInstancesGet /edge_applications/:edge_application_id:/functions_instances
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest
 */
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesGet(ctx _context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -636,42 +634,40 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 // Execute executes the request
 //  @return ApplicationInstancesGetResponse
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesGetExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) (ApplicationInstancesGetResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesGetExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesGetRequest) (*ApplicationInstancesGetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationInstancesGetResponse
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationInstancesGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsEdgeFunctionsInstancesApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/functions_instances"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
 	}
 	if r.orderBy != nil {
-		localVarQueryParams.Add("order_by", parameterToString(*r.orderBy, ""))
+		parameterAddToQuery(localVarQueryParams, "order_by", r.orderBy, "")
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToQuery(localVarQueryParams, "sort", r.sort, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -691,7 +687,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -707,7 +703,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -717,15 +713,15 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -734,7 +730,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -745,7 +741,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsEdgeFunctionsInstancesApiService
 	edgeApplicationId int64
 	accept *string
@@ -757,28 +753,30 @@ func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest) Accep
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest) ApplicationCreateInstanceRequest(applicationCreateInstanceRequest ApplicationCreateInstanceRequest) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest {
 	r.applicationCreateInstanceRequest = &applicationCreateInstanceRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest) Execute() (ApplicationInstanceResults, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest) Execute() (*ApplicationInstanceResults, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesPostExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdFunctionsInstancesPost edge_application/:edge_application_id:/functions_instances
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest
 */
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesPost(ctx _context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -788,27 +786,25 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 // Execute executes the request
 //  @return ApplicationInstanceResults
-func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesPostExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest) (ApplicationInstanceResults, *_nethttp.Response, error) {
+func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeApplicationIdFunctionsInstancesPostExecute(r ApiEdgeApplicationsEdgeApplicationIdFunctionsInstancesPostRequest) (*ApplicationInstanceResults, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationInstanceResults
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationInstanceResults
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsEdgeFunctionsInstancesApiService.EdgeApplicationsEdgeApplicationIdFunctionsInstancesPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/functions_instances"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -828,10 +824,10 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.applicationCreateInstanceRequest
@@ -849,7 +845,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -859,15 +855,15 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -876,7 +872,7 @@ func (a *EdgeApplicationsEdgeFunctionsInstancesApiService) EdgeApplicationsEdgeA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationInstancesResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationInstancesResults{}
+
 // ApplicationInstancesResults struct for ApplicationInstancesResults
 type ApplicationInstancesResults struct {
 	Id int64 `json:"id"`
@@ -56,7 +59,7 @@ func (o *ApplicationInstancesResults) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationInstancesResults) GetIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -80,7 +83,7 @@ func (o *ApplicationInstancesResults) GetEdgeFunctionId() int64 {
 // GetEdgeFunctionIdOk returns a tuple with the EdgeFunctionId field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationInstancesResults) GetEdgeFunctionIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EdgeFunctionId, true
@@ -104,7 +107,7 @@ func (o *ApplicationInstancesResults) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationInstancesResults) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -130,7 +133,7 @@ func (o *ApplicationInstancesResults) GetArgs() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationInstancesResults) GetArgsOk() (*interface{}, bool) {
-	if o == nil || o.Args == nil {
+	if o == nil || isNil(o.Args) {
 		return nil, false
 	}
 	return &o.Args, true
@@ -142,20 +145,22 @@ func (o *ApplicationInstancesResults) SetArgs(v interface{}) {
 }
 
 func (o ApplicationInstancesResults) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationInstancesResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["edge_function_id"] = o.EdgeFunctionId
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["edge_function_id"] = o.EdgeFunctionId
+	toSerialize["name"] = o.Name
 	if o.Args != nil {
 		toSerialize["args"] = o.Args
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableApplicationInstancesResults struct {

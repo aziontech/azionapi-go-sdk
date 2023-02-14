@@ -12,26 +12,52 @@ package edgeapplications
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // EdgeApplicationsOriginsApiService EdgeApplicationsOriginsApi service
 type EdgeApplicationsOriginsApiService service
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsOriginsApiService
 	edgeApplicationId int64
+	page *int64
+	pageSize *int64
+	filter *string
+	orderBy *string
+	sort *string
 	accept *string
+}
+
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) Page(page int64) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) PageSize(pageSize int64) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) Filter(filter string) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) OrderBy(orderBy string) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
+	r.orderBy = &orderBy
+	return r
+}
+
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) Sort(sort string) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
+	r.sort = &sort
+	return r
 }
 
 func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
@@ -39,18 +65,18 @@ func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) Accept(accept str
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) Execute() (OriginsResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) Execute() (*OriginsResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdOriginsGetExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdOriginsGet /edge_applications/{edge_application_id}/origins
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsGet(ctx _context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,28 +86,41 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) (OriginsResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) (*OriginsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OriginsResponse
+		formFiles            []formFile
+		localVarReturnValue  *OriginsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/origins"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
+	if r.page != nil {
+		parameterAddToQuery(localVarQueryParams, "page", r.page, "")
+	}
+	if r.pageSize != nil {
+		parameterAddToQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	}
+	if r.filter != nil {
+		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
+	}
+	if r.orderBy != nil {
+		parameterAddToQuery(localVarQueryParams, "order_by", r.orderBy, "")
+	}
+	if r.sort != nil {
+		parameterAddToQuery(localVarQueryParams, "sort", r.sort, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -100,7 +139,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -116,7 +155,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -126,15 +165,15 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -143,7 +182,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -154,7 +193,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsOriginsApiService
 	edgeApplicationId int64
 	originKey string
@@ -167,19 +206,19 @@ func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest) Accep
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete /edge_applications/{edge_application_id}/origins/{origin_id}
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param originKey
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete(ctx _context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -189,27 +228,25 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest) (*_nethttp.Response, error) {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/origins/{origin_key}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"origin_key"+"}", _neturl.PathEscape(parameterToString(r.originKey, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"origin_key"+"}", url.PathEscape(parameterValueToString(r.originKey, "originKey")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -229,7 +266,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -245,7 +282,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -255,15 +292,15 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -274,7 +311,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsOriginsApiService
 	edgeApplicationId int64
 	originKey string
@@ -287,19 +324,19 @@ func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest) Accept(a
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest) Execute() (OriginsIdResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest) Execute() (*OriginsIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet /edge_applications/{edge_application_id}/origins/{origin_key}
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param originKey
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet(ctx _context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -310,28 +347,26 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsIdResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest) (OriginsIdResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest) (*OriginsIdResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OriginsIdResponse
+		formFiles            []formFile
+		localVarReturnValue  *OriginsIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/origins/{origin_key}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"origin_key"+"}", _neturl.PathEscape(parameterToString(r.originKey, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"origin_key"+"}", url.PathEscape(parameterValueToString(r.originKey, "originKey")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -351,7 +386,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -367,7 +402,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -377,15 +412,15 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -394,7 +429,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -405,7 +440,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsOriginsApiService
 	edgeApplicationId int64
 	originKey string
@@ -418,29 +453,31 @@ func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) Accept
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) PatchOriginsRequest(patchOriginsRequest PatchOriginsRequest) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest {
 	r.patchOriginsRequest = &patchOriginsRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) Execute() (OriginsIdResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) Execute() (*OriginsIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch /edge_applications/:edge_application_id:/origins/:origin_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param originKey
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch(ctx _context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -451,28 +488,26 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsIdResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) (OriginsIdResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) (*OriginsIdResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OriginsIdResponse
+		formFiles            []formFile
+		localVarReturnValue  *OriginsIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/origins/{origin_key}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"origin_key"+"}", _neturl.PathEscape(parameterToString(r.originKey, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"origin_key"+"}", url.PathEscape(parameterValueToString(r.originKey, "originKey")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -492,10 +527,10 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.patchOriginsRequest
@@ -513,7 +548,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -523,15 +558,15 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -540,7 +575,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -551,7 +586,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsOriginsApiService
 	edgeApplicationId int64
 	originKey string
@@ -564,29 +599,31 @@ func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) Accept(a
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) UpdateOriginsRequest(updateOriginsRequest UpdateOriginsRequest) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest {
 	r.updateOriginsRequest = &updateOriginsRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) Execute() (OriginsIdResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) Execute() (*OriginsIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut /edge_applications/{edge_application_id}/origins/{origin_id}
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param originKey
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut(ctx _context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -597,28 +634,26 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsIdResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) (OriginsIdResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) (*OriginsIdResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OriginsIdResponse
+		formFiles            []formFile
+		localVarReturnValue  *OriginsIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/origins/{origin_key}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"origin_key"+"}", _neturl.PathEscape(parameterToString(r.originKey, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"origin_key"+"}", url.PathEscape(parameterValueToString(r.originKey, "originKey")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -638,10 +673,10 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.updateOriginsRequest
@@ -659,7 +694,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -669,15 +704,15 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -686,7 +721,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -697,7 +732,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsOriginsApiService
 	edgeApplicationId int64
 	accept *string
@@ -709,28 +744,30 @@ func (r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) Accept(accept st
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) CreateOriginsRequest(createOriginsRequest CreateOriginsRequest) ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest {
 	r.createOriginsRequest = &createOriginsRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) Execute() (OriginsIdResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) Execute() (*OriginsIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdOriginsPostExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdOriginsPost /edge_applications/{edge_application_id}/origins
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsPost(ctx _context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -740,27 +777,25 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsIdResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) (OriginsIdResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) (*OriginsIdResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OriginsIdResponse
+		formFiles            []formFile
+		localVarReturnValue  *OriginsIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/origins"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -780,10 +815,10 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.createOriginsRequest
@@ -801,7 +836,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -811,15 +846,15 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -828,7 +863,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

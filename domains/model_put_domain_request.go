@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PutDomainRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PutDomainRequest{}
+
 // PutDomainRequest struct for PutDomainRequest
 type PutDomainRequest struct {
 	Cnames []string `json:"cnames"`
@@ -59,11 +62,11 @@ func (o *PutDomainRequest) GetCnames() []string {
 
 // GetCnamesOk returns a tuple with the Cnames field value
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetCnamesOk() (*[]string, bool) {
-	if o == nil  {
+func (o *PutDomainRequest) GetCnamesOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Cnames, true
+	return o.Cnames, true
 }
 
 // SetCnames sets field value
@@ -84,7 +87,7 @@ func (o *PutDomainRequest) GetCnameAccessOnly() bool {
 // GetCnameAccessOnlyOk returns a tuple with the CnameAccessOnly field value
 // and a boolean to check if the value has been set.
 func (o *PutDomainRequest) GetCnameAccessOnlyOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CnameAccessOnly, true
@@ -108,7 +111,7 @@ func (o *PutDomainRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *PutDomainRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -132,7 +135,7 @@ func (o *PutDomainRequest) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value
 // and a boolean to check if the value has been set.
 func (o *PutDomainRequest) GetIsActiveOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsActive, true
@@ -156,7 +159,7 @@ func (o *PutDomainRequest) GetEdgeApplicationId() int64 {
 // GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field value
 // and a boolean to check if the value has been set.
 func (o *PutDomainRequest) GetEdgeApplicationIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EdgeApplicationId, true
@@ -182,7 +185,7 @@ func (o *PutDomainRequest) GetDigitalCertificateId() int64 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PutDomainRequest) GetDigitalCertificateIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.DigitalCertificateId.Get(), o.DigitalCertificateId.IsSet()
@@ -194,26 +197,22 @@ func (o *PutDomainRequest) SetDigitalCertificateId(v int64) {
 }
 
 func (o PutDomainRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["cnames"] = o.Cnames
-	}
-	if true {
-		toSerialize["cname_access_only"] = o.CnameAccessOnly
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["is_active"] = o.IsActive
-	}
-	if true {
-		toSerialize["edge_application_id"] = o.EdgeApplicationId
-	}
-	if true {
-		toSerialize["digital_certificate_id"] = o.DigitalCertificateId.Get()
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PutDomainRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["cnames"] = o.Cnames
+	toSerialize["cname_access_only"] = o.CnameAccessOnly
+	toSerialize["name"] = o.Name
+	toSerialize["is_active"] = o.IsActive
+	toSerialize["edge_application_id"] = o.EdgeApplicationId
+	toSerialize["digital_certificate_id"] = o.DigitalCertificateId.Get()
+	return toSerialize, nil
 }
 
 type NullablePutDomainRequest struct {

@@ -14,11 +14,14 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchRulesEngineRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchRulesEngineRequest{}
+
 // PatchRulesEngineRequest struct for PatchRulesEngineRequest
 type PatchRulesEngineRequest struct {
 	Name *string `json:"name,omitempty"`
-	Criteria *[][]RulesEngineCriteria `json:"criteria,omitempty"`
-	Behaviors *[]RulesEngineBehavior `json:"behaviors,omitempty"`
+	Criteria [][]RulesEngineCriteria `json:"criteria,omitempty"`
+	Behaviors []RulesEngineBehavior `json:"behaviors,omitempty"`
 }
 
 // NewPatchRulesEngineRequest instantiates a new PatchRulesEngineRequest object
@@ -40,7 +43,7 @@ func NewPatchRulesEngineRequestWithDefaults() *PatchRulesEngineRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchRulesEngineRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PatchRulesEngineRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchRulesEngineRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *PatchRulesEngineRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchRulesEngineRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -72,17 +75,17 @@ func (o *PatchRulesEngineRequest) SetName(v string) {
 
 // GetCriteria returns the Criteria field value if set, zero value otherwise.
 func (o *PatchRulesEngineRequest) GetCriteria() [][]RulesEngineCriteria {
-	if o == nil || o.Criteria == nil {
+	if o == nil || isNil(o.Criteria) {
 		var ret [][]RulesEngineCriteria
 		return ret
 	}
-	return *o.Criteria
+	return o.Criteria
 }
 
 // GetCriteriaOk returns a tuple with the Criteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchRulesEngineRequest) GetCriteriaOk() (*[][]RulesEngineCriteria, bool) {
-	if o == nil || o.Criteria == nil {
+func (o *PatchRulesEngineRequest) GetCriteriaOk() ([][]RulesEngineCriteria, bool) {
+	if o == nil || isNil(o.Criteria) {
 		return nil, false
 	}
 	return o.Criteria, true
@@ -90,7 +93,7 @@ func (o *PatchRulesEngineRequest) GetCriteriaOk() (*[][]RulesEngineCriteria, boo
 
 // HasCriteria returns a boolean if a field has been set.
 func (o *PatchRulesEngineRequest) HasCriteria() bool {
-	if o != nil && o.Criteria != nil {
+	if o != nil && !isNil(o.Criteria) {
 		return true
 	}
 
@@ -99,22 +102,22 @@ func (o *PatchRulesEngineRequest) HasCriteria() bool {
 
 // SetCriteria gets a reference to the given [][]RulesEngineCriteria and assigns it to the Criteria field.
 func (o *PatchRulesEngineRequest) SetCriteria(v [][]RulesEngineCriteria) {
-	o.Criteria = &v
+	o.Criteria = v
 }
 
 // GetBehaviors returns the Behaviors field value if set, zero value otherwise.
 func (o *PatchRulesEngineRequest) GetBehaviors() []RulesEngineBehavior {
-	if o == nil || o.Behaviors == nil {
+	if o == nil || isNil(o.Behaviors) {
 		var ret []RulesEngineBehavior
 		return ret
 	}
-	return *o.Behaviors
+	return o.Behaviors
 }
 
 // GetBehaviorsOk returns a tuple with the Behaviors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchRulesEngineRequest) GetBehaviorsOk() (*[]RulesEngineBehavior, bool) {
-	if o == nil || o.Behaviors == nil {
+func (o *PatchRulesEngineRequest) GetBehaviorsOk() ([]RulesEngineBehavior, bool) {
+	if o == nil || isNil(o.Behaviors) {
 		return nil, false
 	}
 	return o.Behaviors, true
@@ -122,7 +125,7 @@ func (o *PatchRulesEngineRequest) GetBehaviorsOk() (*[]RulesEngineBehavior, bool
 
 // HasBehaviors returns a boolean if a field has been set.
 func (o *PatchRulesEngineRequest) HasBehaviors() bool {
-	if o != nil && o.Behaviors != nil {
+	if o != nil && !isNil(o.Behaviors) {
 		return true
 	}
 
@@ -131,21 +134,29 @@ func (o *PatchRulesEngineRequest) HasBehaviors() bool {
 
 // SetBehaviors gets a reference to the given []RulesEngineBehavior and assigns it to the Behaviors field.
 func (o *PatchRulesEngineRequest) SetBehaviors(v []RulesEngineBehavior) {
-	o.Behaviors = &v
+	o.Behaviors = v
 }
 
 func (o PatchRulesEngineRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Criteria != nil {
-		toSerialize["criteria"] = o.Criteria
-	}
-	if o.Behaviors != nil {
-		toSerialize["behaviors"] = o.Behaviors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchRulesEngineRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.Criteria) {
+		toSerialize["criteria"] = o.Criteria
+	}
+	if !isNil(o.Behaviors) {
+		toSerialize["behaviors"] = o.Behaviors
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchRulesEngineRequest struct {

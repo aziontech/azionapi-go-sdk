@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationInstanceResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationInstanceResults{}
+
 // ApplicationInstanceResults struct for ApplicationInstanceResults
 type ApplicationInstanceResults struct {
 	SchemaVersion *int64 `json:"schema_version,omitempty"`
@@ -39,7 +42,7 @@ func NewApplicationInstanceResultsWithDefaults() *ApplicationInstanceResults {
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *ApplicationInstanceResults) GetSchemaVersion() int64 {
-	if o == nil || o.SchemaVersion == nil {
+	if o == nil || isNil(o.SchemaVersion) {
 		var ret int64
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ApplicationInstanceResults) GetSchemaVersion() int64 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationInstanceResults) GetSchemaVersionOk() (*int64, bool) {
-	if o == nil || o.SchemaVersion == nil {
+	if o == nil || isNil(o.SchemaVersion) {
 		return nil, false
 	}
 	return o.SchemaVersion, true
@@ -57,7 +60,7 @@ func (o *ApplicationInstanceResults) GetSchemaVersionOk() (*int64, bool) {
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *ApplicationInstanceResults) HasSchemaVersion() bool {
-	if o != nil && o.SchemaVersion != nil {
+	if o != nil && !isNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ApplicationInstanceResults) SetSchemaVersion(v int64) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ApplicationInstanceResults) GetResults() ApplicationInstancesResults {
-	if o == nil || o.Results == nil {
+	if o == nil || isNil(o.Results) {
 		var ret ApplicationInstancesResults
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ApplicationInstanceResults) GetResults() ApplicationInstancesResults {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationInstanceResults) GetResultsOk() (*ApplicationInstancesResults, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || isNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -89,7 +92,7 @@ func (o *ApplicationInstanceResults) GetResultsOk() (*ApplicationInstancesResult
 
 // HasResults returns a boolean if a field has been set.
 func (o *ApplicationInstanceResults) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !isNil(o.Results) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ApplicationInstanceResults) SetResults(v ApplicationInstancesResults) {
 }
 
 func (o ApplicationInstanceResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SchemaVersion != nil {
-		toSerialize["schema_version"] = o.SchemaVersion
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationInstanceResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.SchemaVersion) {
+		toSerialize["schema_version"] = o.SchemaVersion
+	}
+	if !isNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationInstanceResults struct {

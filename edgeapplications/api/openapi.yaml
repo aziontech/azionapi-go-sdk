@@ -189,12 +189,6 @@ paths:
         schema:
           type: string
         style: simple
-      - explode: false
-        in: header
-        required: false
-        schema:
-          type: string
-        style: simple
       requestBody:
         content:
           application/json; version=3:
@@ -490,7 +484,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/cache_settings
+      summary: "/edge_applications/{edge_application_id}/cache_settings"
       tags:
       - Edge Applications > Cache Settings
     post:
@@ -1168,6 +1162,43 @@ paths:
           format: int64
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
       - example: application/json; version=3
         explode: false
         in: header
@@ -1195,7 +1226,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/origins
+      summary: "/edge_applications/{edge_application_id}/origins"
       tags:
       - Edge Applications > Origins
     post:
@@ -1254,7 +1285,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/origins
+      summary: "/edge_applications/{edge_application_id}/origins"
       tags:
       - Edge Applications > Origins
   /edge_applications/{edge_application_id}/origins/{origin_key}:
@@ -1299,7 +1330,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/origins/{origin_id}
+      summary: "/edge_applications/{edge_application_id}/origins/{origin_id}"
       tags:
       - Edge Applications > Origins
     get:
@@ -1347,7 +1378,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/origins/{origin_key}
+      summary: "/edge_applications/{edge_application_id}/origins/{origin_key}"
       tags:
       - Edge Applications > Origins
     patch:
@@ -1479,7 +1510,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/origins/{origin_id}
+      summary: "/edge_applications/{edge_application_id}/origins/{origin_id}"
       tags:
       - Edge Applications > Origins
   /edge_applications/{edge_application_id}/rules_engine/{phase}/rules:
@@ -1564,7 +1595,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
+      summary: "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules"
       tags:
       - Edge Applications > Rules Engine
     post:
@@ -1658,7 +1689,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
+      summary: "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules"
       tags:
       - Edge Applications > Rules Engine
   /edge_applications/{edge_application_id}/rules_engine/{phase}/rules/{rule_id}:
@@ -1712,7 +1743,7 @@ paths:
           description: Internal Server Error
       security:
       - JWT: []
-      summary: /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
+      summary: "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules"
       tags:
       - Edge Applications > Rules Engine
     patch:

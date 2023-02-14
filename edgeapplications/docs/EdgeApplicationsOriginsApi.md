@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## EdgeApplicationsEdgeApplicationIdOriginsGet
 
-> OriginsResponse EdgeApplicationsEdgeApplicationIdOriginsGet(ctx, edgeApplicationId).Accept(accept).Execute()
+> OriginsResponse EdgeApplicationsEdgeApplicationIdOriginsGet(ctx, edgeApplicationId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
 
 /edge_applications/{edge_application_id}/origins
 
@@ -33,11 +33,16 @@ import (
 
 func main() {
     edgeApplicationId := int64(789) // int64 | 
+    page := int64(789) // int64 |  (optional)
+    pageSize := int64(789) // int64 |  (optional)
+    filter := "filter_example" // string |  (optional)
+    orderBy := "orderBy_example" // string |  (optional)
+    sort := "sort_example" // string |  (optional)
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsGet(context.Background(), edgeApplicationId).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsGet(context.Background(), edgeApplicationId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,6 +68,11 @@ Other parameters are passed through a pointer to a apiEdgeApplicationsEdgeApplic
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **page** | **int64** |  | 
+ **pageSize** | **int64** |  | 
+ **filter** | **string** |  | 
+ **orderBy** | **string** |  | 
+ **sort** | **string** |  | 
  **accept** | **string** |  | 
 
 ### Return type
@@ -107,8 +117,8 @@ func main() {
     accept := "application/json; version=3" // string | The id of the Origin that you plan to delete. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete(context.Background(), edgeApplicationId, originKey).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete(context.Background(), edgeApplicationId, originKey).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,8 +188,8 @@ func main() {
     accept := "application/json; version=3" // string | The id of the Origin that you plan to query. (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet(context.Background(), edgeApplicationId, originKey).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet(context.Background(), edgeApplicationId, originKey).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -253,8 +263,8 @@ func main() {
     patchOriginsRequest := *openapiclient.NewPatchOriginsRequest() // PatchOriginsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch(context.Background(), edgeApplicationId, originKey).Accept(accept).ContentType(contentType).PatchOriginsRequest(patchOriginsRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch(context.Background(), edgeApplicationId, originKey).Accept(accept).ContentType(contentType).PatchOriginsRequest(patchOriginsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -330,8 +340,8 @@ func main() {
     updateOriginsRequest := *openapiclient.NewUpdateOriginsRequest("Name_example", []openapiclient.CreateOriginsRequestAddresses{*openapiclient.NewCreateOriginsRequestAddresses("Address_example")}, "HostHeader_example") // UpdateOriginsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut(context.Background(), edgeApplicationId, originKey).Accept(accept).ContentType(contentType).UpdateOriginsRequest(updateOriginsRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut(context.Background(), edgeApplicationId, originKey).Accept(accept).ContentType(contentType).UpdateOriginsRequest(updateOriginsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -406,8 +416,8 @@ func main() {
     createOriginsRequest := *openapiclient.NewCreateOriginsRequest("Name_example", []openapiclient.CreateOriginsRequestAddresses{*openapiclient.NewCreateOriginsRequestAddresses("Address_example")}, "HostHeader_example") // CreateOriginsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).CreateOriginsRequest(createOriginsRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).CreateOriginsRequest(createOriginsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsOriginsApi.EdgeApplicationsEdgeApplicationIdOriginsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

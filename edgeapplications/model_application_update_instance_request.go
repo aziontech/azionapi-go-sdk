@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationUpdateInstanceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationUpdateInstanceRequest{}
+
 // ApplicationUpdateInstanceRequest struct for ApplicationUpdateInstanceRequest
 type ApplicationUpdateInstanceRequest struct {
 	Name NullableString `json:"name"`
@@ -56,7 +59,7 @@ func (o *ApplicationUpdateInstanceRequest) GetName() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationUpdateInstanceRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
@@ -82,7 +85,7 @@ func (o *ApplicationUpdateInstanceRequest) GetEdgeFunctionId() int64 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationUpdateInstanceRequest) GetEdgeFunctionIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.EdgeFunctionId.Get(), o.EdgeFunctionId.IsSet()
@@ -108,7 +111,7 @@ func (o *ApplicationUpdateInstanceRequest) GetArgs() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationUpdateInstanceRequest) GetArgsOk() (*interface{}, bool) {
-	if o == nil || o.Args == nil {
+	if o == nil || isNil(o.Args) {
 		return nil, false
 	}
 	return &o.Args, true
@@ -120,17 +123,21 @@ func (o *ApplicationUpdateInstanceRequest) SetArgs(v interface{}) {
 }
 
 func (o ApplicationUpdateInstanceRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationUpdateInstanceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if true {
-		toSerialize["edge_function_id"] = o.EdgeFunctionId.Get()
-	}
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["edge_function_id"] = o.EdgeFunctionId.Get()
 	if o.Args != nil {
 		toSerialize["args"] = o.Args
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableApplicationUpdateInstanceRequest struct {
