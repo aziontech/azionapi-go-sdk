@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationResults{}
+
 // ApplicationResults struct for ApplicationResults
 type ApplicationResults struct {
 	Id int64 `json:"id"`
@@ -83,7 +86,7 @@ func (o *ApplicationResults) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -107,7 +110,7 @@ func (o *ApplicationResults) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -120,7 +123,7 @@ func (o *ApplicationResults) SetName(v string) {
 
 // GetNext returns the Next field value if set, zero value otherwise.
 func (o *ApplicationResults) GetNext() string {
-	if o == nil || o.Next == nil {
+	if o == nil || isNil(o.Next) {
 		var ret string
 		return ret
 	}
@@ -130,7 +133,7 @@ func (o *ApplicationResults) GetNext() string {
 // GetNextOk returns a tuple with the Next field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetNextOk() (*string, bool) {
-	if o == nil || o.Next == nil {
+	if o == nil || isNil(o.Next) {
 		return nil, false
 	}
 	return o.Next, true
@@ -138,7 +141,7 @@ func (o *ApplicationResults) GetNextOk() (*string, bool) {
 
 // HasNext returns a boolean if a field has been set.
 func (o *ApplicationResults) HasNext() bool {
-	if o != nil && o.Next != nil {
+	if o != nil && !isNil(o.Next) {
 		return true
 	}
 
@@ -163,7 +166,7 @@ func (o *ApplicationResults) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetActiveOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Active, true
@@ -187,7 +190,7 @@ func (o *ApplicationResults) GetDeliveryProtocol() string {
 // GetDeliveryProtocolOk returns a tuple with the DeliveryProtocol field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetDeliveryProtocolOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DeliveryProtocol, true
@@ -211,7 +214,7 @@ func (o *ApplicationResults) GetHttpPort() int64 {
 // GetHttpPortOk returns a tuple with the HttpPort field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetHttpPortOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HttpPort, true
@@ -235,7 +238,7 @@ func (o *ApplicationResults) GetHttpsPort() int64 {
 // GetHttpsPortOk returns a tuple with the HttpsPort field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetHttpsPortOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HttpsPort, true
@@ -259,7 +262,7 @@ func (o *ApplicationResults) GetMinimumTlsVersion() string {
 // GetMinimumTlsVersionOk returns a tuple with the MinimumTlsVersion field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetMinimumTlsVersionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.MinimumTlsVersion, true
@@ -283,7 +286,7 @@ func (o *ApplicationResults) GetApplicationAcceleration() bool {
 // GetApplicationAccelerationOk returns a tuple with the ApplicationAcceleration field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetApplicationAccelerationOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ApplicationAcceleration, true
@@ -307,7 +310,7 @@ func (o *ApplicationResults) GetCaching() bool {
 // GetCachingOk returns a tuple with the Caching field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetCachingOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Caching, true
@@ -331,7 +334,7 @@ func (o *ApplicationResults) GetDeviceDetection() bool {
 // GetDeviceDetectionOk returns a tuple with the DeviceDetection field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetDeviceDetectionOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DeviceDetection, true
@@ -355,7 +358,7 @@ func (o *ApplicationResults) GetEdgeFirewall() bool {
 // GetEdgeFirewallOk returns a tuple with the EdgeFirewall field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetEdgeFirewallOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EdgeFirewall, true
@@ -379,7 +382,7 @@ func (o *ApplicationResults) GetEdgeFunctions() bool {
 // GetEdgeFunctionsOk returns a tuple with the EdgeFunctions field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetEdgeFunctionsOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EdgeFunctions, true
@@ -403,7 +406,7 @@ func (o *ApplicationResults) GetImageOptimization() bool {
 // GetImageOptimizationOk returns a tuple with the ImageOptimization field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetImageOptimizationOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ImageOptimization, true
@@ -427,7 +430,7 @@ func (o *ApplicationResults) GetL2Caching() bool {
 // GetL2CachingOk returns a tuple with the L2Caching field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetL2CachingOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.L2Caching, true
@@ -451,7 +454,7 @@ func (o *ApplicationResults) GetLoadBalancer() bool {
 // GetLoadBalancerOk returns a tuple with the LoadBalancer field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetLoadBalancerOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.LoadBalancer, true
@@ -475,7 +478,7 @@ func (o *ApplicationResults) GetRawLogs() bool {
 // GetRawLogsOk returns a tuple with the RawLogs field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetRawLogsOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.RawLogs, true
@@ -499,7 +502,7 @@ func (o *ApplicationResults) GetWebApplicationFirewall() bool {
 // GetWebApplicationFirewallOk returns a tuple with the WebApplicationFirewall field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetWebApplicationFirewallOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.WebApplicationFirewall, true
@@ -511,62 +514,36 @@ func (o *ApplicationResults) SetWebApplicationFirewall(v bool) {
 }
 
 func (o ApplicationResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Next != nil {
-		toSerialize["next"] = o.Next
-	}
-	if true {
-		toSerialize["active"] = o.Active
-	}
-	if true {
-		toSerialize["delivery_protocol"] = o.DeliveryProtocol
-	}
-	if true {
-		toSerialize["http_port"] = o.HttpPort
-	}
-	if true {
-		toSerialize["https_port"] = o.HttpsPort
-	}
-	if true {
-		toSerialize["minimum_tls_version"] = o.MinimumTlsVersion
-	}
-	if true {
-		toSerialize["application_acceleration"] = o.ApplicationAcceleration
-	}
-	if true {
-		toSerialize["caching"] = o.Caching
-	}
-	if true {
-		toSerialize["device_detection"] = o.DeviceDetection
-	}
-	if true {
-		toSerialize["edge_firewall"] = o.EdgeFirewall
-	}
-	if true {
-		toSerialize["edge_functions"] = o.EdgeFunctions
-	}
-	if true {
-		toSerialize["image_optimization"] = o.ImageOptimization
-	}
-	if true {
-		toSerialize["l2_caching"] = o.L2Caching
-	}
-	if true {
-		toSerialize["load_balancer"] = o.LoadBalancer
-	}
-	if true {
-		toSerialize["raw_logs"] = o.RawLogs
-	}
-	if true {
-		toSerialize["web_application_firewall"] = o.WebApplicationFirewall
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	if !isNil(o.Next) {
+		toSerialize["next"] = o.Next
+	}
+	toSerialize["active"] = o.Active
+	toSerialize["delivery_protocol"] = o.DeliveryProtocol
+	toSerialize["http_port"] = o.HttpPort
+	toSerialize["https_port"] = o.HttpsPort
+	toSerialize["minimum_tls_version"] = o.MinimumTlsVersion
+	toSerialize["application_acceleration"] = o.ApplicationAcceleration
+	toSerialize["caching"] = o.Caching
+	toSerialize["device_detection"] = o.DeviceDetection
+	toSerialize["edge_firewall"] = o.EdgeFirewall
+	toSerialize["edge_functions"] = o.EdgeFunctions
+	toSerialize["image_optimization"] = o.ImageOptimization
+	toSerialize["l2_caching"] = o.L2Caching
+	toSerialize["load_balancer"] = o.LoadBalancer
+	toSerialize["raw_logs"] = o.RawLogs
+	toSerialize["web_application_firewall"] = o.WebApplicationFirewall
+	return toSerialize, nil
 }
 
 type NullableApplicationResults struct {

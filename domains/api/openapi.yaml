@@ -96,8 +96,8 @@ servers:
 - url: https://api.azionapi.net
 - url: https://stage-api.azionapi.net
 tags:
-- description: Through My Domains API you can retrieve, create, remove or update Domains
-    used by Edge Applications
+- description: "Through My Domains API you can retrieve, create, remove or update\
+    \ Domains used by Edge Applications"
   name: Domains
 paths:
   /domains:
@@ -105,6 +105,43 @@ paths:
       description: It returns the list of domains of an account.
       operationId: getDomains
       parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
       - example: application/json; version=3
         explode: false
         in: header
@@ -263,8 +300,8 @@ paths:
       - Domains
   /domains/{domain_id}:
     patch:
-      description: It updates one or more fields in a Domain, preserving the value
-        of the fields not informed.
+      description: "It updates one or more fields in a Domain, preserving the value\
+        \ of the fields not informed."
       operationId: updateDomain
       parameters:
       - example: application/json; version=3

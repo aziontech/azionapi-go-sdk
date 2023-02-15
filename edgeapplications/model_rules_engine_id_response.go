@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RulesEngineIdResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RulesEngineIdResponse{}
+
 // RulesEngineIdResponse struct for RulesEngineIdResponse
 type RulesEngineIdResponse struct {
 	Results RulesEngineResultResponse `json:"results"`
@@ -52,7 +55,7 @@ func (o *RulesEngineIdResponse) GetResults() RulesEngineResultResponse {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineIdResponse) GetResultsOk() (*RulesEngineResultResponse, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -76,7 +79,7 @@ func (o *RulesEngineIdResponse) GetSchemaVersion() int64 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineIdResponse) GetSchemaVersionOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SchemaVersion, true
@@ -88,14 +91,18 @@ func (o *RulesEngineIdResponse) SetSchemaVersion(v int64) {
 }
 
 func (o RulesEngineIdResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["results"] = o.Results
-	}
-	if true {
-		toSerialize["schema_version"] = o.SchemaVersion
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RulesEngineIdResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["results"] = o.Results
+	toSerialize["schema_version"] = o.SchemaVersion
+	return toSerialize, nil
 }
 
 type NullableRulesEngineIdResponse struct {

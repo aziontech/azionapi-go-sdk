@@ -12,23 +12,19 @@ package edgeapplications
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // EdgeApplicationsRulesEngineApiService EdgeApplicationsRulesEngineApi service
 type EdgeApplicationsRulesEngineApiService service
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsRulesEngineApiService
 	edgeApplicationId int64
 	phase string
@@ -44,40 +40,45 @@ func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) Pag
 	r.page = &page
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) PageSize(pageSize int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) Filter(filter string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
 	r.filter = &filter
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) OrderBy(orderBy string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
 	r.orderBy = &orderBy
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) Sort(sort string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
 	r.sort = &sort
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
 	r.accept = &accept
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) Execute() (RulesEngineResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) Execute() (*RulesEngineResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param phase
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet(ctx _context.Context, edgeApplicationId int64, phase string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet(ctx context.Context, edgeApplicationId int64, phase string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -88,43 +89,41 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) (RulesEngineResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) (*RulesEngineResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  RulesEngineResponse
+		formFiles            []formFile
+		localVarReturnValue  *RulesEngineResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", _neturl.PathEscape(parameterToString(r.phase, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", url.PathEscape(parameterValueToString(r.phase, "phase")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
 	}
 	if r.orderBy != nil {
-		localVarQueryParams.Add("order_by", parameterToString(*r.orderBy, ""))
+		parameterAddToQuery(localVarQueryParams, "order_by", r.orderBy, "")
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToQuery(localVarQueryParams, "sort", r.sort, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -144,7 +143,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -160,7 +159,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -170,15 +169,15 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -187,7 +186,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -198,7 +197,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsRulesEngineApiService
 	edgeApplicationId int64
 	phase string
@@ -211,17 +210,19 @@ func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) Ac
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) CreateRulesEngineRequest(createRulesEngineRequest CreateRulesEngineRequest) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest {
 	r.createRulesEngineRequest = &createRulesEngineRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) Execute() (RulesEngineIdResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) Execute() (*RulesEngineIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostExecute(r)
 }
 
@@ -256,12 +257,12 @@ Check below the list of behaviors that can be applied:
 | Set Cache Policy                    | set_cache_policy       |
 | Set Origin                          | set_origin             |
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param phase
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost(ctx _context.Context, edgeApplicationId int64, phase string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost(ctx context.Context, edgeApplicationId int64, phase string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -272,28 +273,26 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineIdResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) (RulesEngineIdResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) (*RulesEngineIdResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  RulesEngineIdResponse
+		formFiles            []formFile
+		localVarReturnValue  *RulesEngineIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", _neturl.PathEscape(parameterToString(r.phase, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", url.PathEscape(parameterValueToString(r.phase, "phase")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -313,10 +312,10 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.createRulesEngineRequest
@@ -334,7 +333,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -344,15 +343,15 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -361,7 +360,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -372,7 +371,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsRulesEngineApiService
 	edgeApplicationId int64
 	phase string
@@ -385,20 +384,20 @@ func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteReq
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId The id of the edge application you plan to delete. 
  @param phase
  @param ruleId The id of the rule you plan to delete. 
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete(ctx _context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -409,28 +408,26 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules/{rule_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", _neturl.PathEscape(parameterToString(r.phase, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rule_id"+"}", _neturl.PathEscape(parameterToString(r.ruleId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", url.PathEscape(parameterValueToString(r.phase, "phase")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"rule_id"+"}", url.PathEscape(parameterValueToString(r.ruleId, "ruleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -450,7 +447,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -466,7 +463,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -476,15 +473,15 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -495,7 +492,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsRulesEngineApiService
 	edgeApplicationId int64
 	phase string
@@ -509,30 +506,32 @@ func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequ
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest) PatchRulesEngineRequest(patchRulesEngineRequest PatchRulesEngineRequest) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest {
 	r.patchRulesEngineRequest = &patchRulesEngineRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest) Execute() (RulesEngineIdResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest) Execute() (*RulesEngineIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch /edge_applications/:edge_application_id:/rules_engine/:phase:/rules/:rule_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param phase
  @param ruleId
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch(ctx _context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -544,29 +543,27 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineIdResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest) (RulesEngineIdResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest) (*RulesEngineIdResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  RulesEngineIdResponse
+		formFiles            []formFile
+		localVarReturnValue  *RulesEngineIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules/{rule_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", _neturl.PathEscape(parameterToString(r.phase, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rule_id"+"}", _neturl.PathEscape(parameterToString(r.ruleId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", url.PathEscape(parameterValueToString(r.phase, "phase")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"rule_id"+"}", url.PathEscape(parameterValueToString(r.ruleId, "ruleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -586,10 +583,10 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.patchRulesEngineRequest
@@ -607,7 +604,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -617,15 +614,15 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -634,7 +631,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -645,7 +642,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsRulesEngineApiService
 	edgeApplicationId int64
 	phase string
@@ -659,30 +656,32 @@ func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutReques
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest) UpdateRulesEngineRequest(updateRulesEngineRequest UpdateRulesEngineRequest) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest {
 	r.updateRulesEngineRequest = &updateRulesEngineRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest) Execute() (RulesEngineIdResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest) Execute() (*RulesEngineIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut /edge_applications/:edge_application_id:/rules_engine/:phase:/rules/:rule_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param phase
  @param ruleId
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut(ctx _context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -694,29 +693,27 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineIdResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest) (RulesEngineIdResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest) (*RulesEngineIdResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  RulesEngineIdResponse
+		formFiles            []formFile
+		localVarReturnValue  *RulesEngineIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules/{rule_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", _neturl.PathEscape(parameterToString(r.phase, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"rule_id"+"}", _neturl.PathEscape(parameterToString(r.ruleId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"phase"+"}", url.PathEscape(parameterValueToString(r.phase, "phase")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"rule_id"+"}", url.PathEscape(parameterValueToString(r.ruleId, "ruleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -736,10 +733,10 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.updateRulesEngineRequest
@@ -757,7 +754,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -767,15 +764,15 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -784,7 +781,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

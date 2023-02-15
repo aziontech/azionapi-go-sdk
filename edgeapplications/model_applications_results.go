@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationsResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationsResults{}
+
 // ApplicationsResults struct for ApplicationsResults
 type ApplicationsResults struct {
 	Id *int64 `json:"id,omitempty"`
@@ -42,7 +45,7 @@ func NewApplicationsResultsWithDefaults() *ApplicationsResults {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ApplicationsResults) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ApplicationsResults) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationsResults) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -60,7 +63,7 @@ func (o *ApplicationsResults) GetIdOk() (*int64, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ApplicationsResults) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *ApplicationsResults) GetNext() string {
 // GetNextOk returns a tuple with the Next field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationsResults) GetNextOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Next, true
@@ -98,7 +101,7 @@ func (o *ApplicationsResults) SetNext(v string) {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *ApplicationsResults) GetActive() bool {
-	if o == nil || o.Active == nil {
+	if o == nil || isNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -108,7 +111,7 @@ func (o *ApplicationsResults) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationsResults) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
+	if o == nil || isNil(o.Active) {
 		return nil, false
 	}
 	return o.Active, true
@@ -116,7 +119,7 @@ func (o *ApplicationsResults) GetActiveOk() (*bool, bool) {
 
 // HasActive returns a boolean if a field has been set.
 func (o *ApplicationsResults) HasActive() bool {
-	if o != nil && o.Active != nil {
+	if o != nil && !isNil(o.Active) {
 		return true
 	}
 
@@ -130,7 +133,7 @@ func (o *ApplicationsResults) SetActive(v bool) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ApplicationsResults) GetLinks() ApplicationOrigins {
-	if o == nil || o.Links == nil {
+	if o == nil || isNil(o.Links) {
 		var ret ApplicationOrigins
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *ApplicationsResults) GetLinks() ApplicationOrigins {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationsResults) GetLinksOk() (*ApplicationOrigins, bool) {
-	if o == nil || o.Links == nil {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -148,7 +151,7 @@ func (o *ApplicationsResults) GetLinksOk() (*ApplicationOrigins, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ApplicationsResults) HasLinks() bool {
-	if o != nil && o.Links != nil {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -161,20 +164,26 @@ func (o *ApplicationsResults) SetLinks(v ApplicationOrigins) {
 }
 
 func (o ApplicationsResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["next"] = o.Next
-	}
-	if o.Active != nil {
-		toSerialize["active"] = o.Active
-	}
-	if o.Links != nil {
-		toSerialize["links"] = o.Links
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationsResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["next"] = o.Next
+	if !isNil(o.Active) {
+		toSerialize["active"] = o.Active
+	}
+	if !isNil(o.Links) {
+		toSerialize["links"] = o.Links
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationsResults struct {

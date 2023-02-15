@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateOriginsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateOriginsRequest{}
+
 // CreateOriginsRequest struct for CreateOriginsRequest
 type CreateOriginsRequest struct {
 	Name string `json:"name"`
@@ -61,7 +64,7 @@ func (o *CreateOriginsRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -74,7 +77,7 @@ func (o *CreateOriginsRequest) SetName(v string) {
 
 // GetOriginType returns the OriginType field value if set, zero value otherwise.
 func (o *CreateOriginsRequest) GetOriginType() string {
-	if o == nil || o.OriginType == nil {
+	if o == nil || isNil(o.OriginType) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *CreateOriginsRequest) GetOriginType() string {
 // GetOriginTypeOk returns a tuple with the OriginType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetOriginTypeOk() (*string, bool) {
-	if o == nil || o.OriginType == nil {
+	if o == nil || isNil(o.OriginType) {
 		return nil, false
 	}
 	return o.OriginType, true
@@ -92,7 +95,7 @@ func (o *CreateOriginsRequest) GetOriginTypeOk() (*string, bool) {
 
 // HasOriginType returns a boolean if a field has been set.
 func (o *CreateOriginsRequest) HasOriginType() bool {
-	if o != nil && o.OriginType != nil {
+	if o != nil && !isNil(o.OriginType) {
 		return true
 	}
 
@@ -116,11 +119,11 @@ func (o *CreateOriginsRequest) GetAddresses() []CreateOriginsRequestAddresses {
 
 // GetAddressesOk returns a tuple with the Addresses field value
 // and a boolean to check if the value has been set.
-func (o *CreateOriginsRequest) GetAddressesOk() (*[]CreateOriginsRequestAddresses, bool) {
-	if o == nil  {
+func (o *CreateOriginsRequest) GetAddressesOk() ([]CreateOriginsRequestAddresses, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Addresses, true
+	return o.Addresses, true
 }
 
 // SetAddresses sets field value
@@ -130,7 +133,7 @@ func (o *CreateOriginsRequest) SetAddresses(v []CreateOriginsRequestAddresses) {
 
 // GetOriginProtocolPolicy returns the OriginProtocolPolicy field value if set, zero value otherwise.
 func (o *CreateOriginsRequest) GetOriginProtocolPolicy() string {
-	if o == nil || o.OriginProtocolPolicy == nil {
+	if o == nil || isNil(o.OriginProtocolPolicy) {
 		var ret string
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *CreateOriginsRequest) GetOriginProtocolPolicy() string {
 // GetOriginProtocolPolicyOk returns a tuple with the OriginProtocolPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetOriginProtocolPolicyOk() (*string, bool) {
-	if o == nil || o.OriginProtocolPolicy == nil {
+	if o == nil || isNil(o.OriginProtocolPolicy) {
 		return nil, false
 	}
 	return o.OriginProtocolPolicy, true
@@ -148,7 +151,7 @@ func (o *CreateOriginsRequest) GetOriginProtocolPolicyOk() (*string, bool) {
 
 // HasOriginProtocolPolicy returns a boolean if a field has been set.
 func (o *CreateOriginsRequest) HasOriginProtocolPolicy() bool {
-	if o != nil && o.OriginProtocolPolicy != nil {
+	if o != nil && !isNil(o.OriginProtocolPolicy) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *CreateOriginsRequest) GetHostHeader() string {
 // GetHostHeaderOk returns a tuple with the HostHeader field value
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetHostHeaderOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HostHeader, true
@@ -186,7 +189,7 @@ func (o *CreateOriginsRequest) SetHostHeader(v string) {
 
 // GetOriginPath returns the OriginPath field value if set, zero value otherwise.
 func (o *CreateOriginsRequest) GetOriginPath() string {
-	if o == nil || o.OriginPath == nil {
+	if o == nil || isNil(o.OriginPath) {
 		var ret string
 		return ret
 	}
@@ -196,7 +199,7 @@ func (o *CreateOriginsRequest) GetOriginPath() string {
 // GetOriginPathOk returns a tuple with the OriginPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetOriginPathOk() (*string, bool) {
-	if o == nil || o.OriginPath == nil {
+	if o == nil || isNil(o.OriginPath) {
 		return nil, false
 	}
 	return o.OriginPath, true
@@ -204,7 +207,7 @@ func (o *CreateOriginsRequest) GetOriginPathOk() (*string, bool) {
 
 // HasOriginPath returns a boolean if a field has been set.
 func (o *CreateOriginsRequest) HasOriginPath() bool {
-	if o != nil && o.OriginPath != nil {
+	if o != nil && !isNil(o.OriginPath) {
 		return true
 	}
 
@@ -218,7 +221,7 @@ func (o *CreateOriginsRequest) SetOriginPath(v string) {
 
 // GetHmacAuthentication returns the HmacAuthentication field value if set, zero value otherwise.
 func (o *CreateOriginsRequest) GetHmacAuthentication() bool {
-	if o == nil || o.HmacAuthentication == nil {
+	if o == nil || isNil(o.HmacAuthentication) {
 		var ret bool
 		return ret
 	}
@@ -228,7 +231,7 @@ func (o *CreateOriginsRequest) GetHmacAuthentication() bool {
 // GetHmacAuthenticationOk returns a tuple with the HmacAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetHmacAuthenticationOk() (*bool, bool) {
-	if o == nil || o.HmacAuthentication == nil {
+	if o == nil || isNil(o.HmacAuthentication) {
 		return nil, false
 	}
 	return o.HmacAuthentication, true
@@ -236,7 +239,7 @@ func (o *CreateOriginsRequest) GetHmacAuthenticationOk() (*bool, bool) {
 
 // HasHmacAuthentication returns a boolean if a field has been set.
 func (o *CreateOriginsRequest) HasHmacAuthentication() bool {
-	if o != nil && o.HmacAuthentication != nil {
+	if o != nil && !isNil(o.HmacAuthentication) {
 		return true
 	}
 
@@ -250,7 +253,7 @@ func (o *CreateOriginsRequest) SetHmacAuthentication(v bool) {
 
 // GetHmacRegionName returns the HmacRegionName field value if set, zero value otherwise.
 func (o *CreateOriginsRequest) GetHmacRegionName() string {
-	if o == nil || o.HmacRegionName == nil {
+	if o == nil || isNil(o.HmacRegionName) {
 		var ret string
 		return ret
 	}
@@ -260,7 +263,7 @@ func (o *CreateOriginsRequest) GetHmacRegionName() string {
 // GetHmacRegionNameOk returns a tuple with the HmacRegionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetHmacRegionNameOk() (*string, bool) {
-	if o == nil || o.HmacRegionName == nil {
+	if o == nil || isNil(o.HmacRegionName) {
 		return nil, false
 	}
 	return o.HmacRegionName, true
@@ -268,7 +271,7 @@ func (o *CreateOriginsRequest) GetHmacRegionNameOk() (*string, bool) {
 
 // HasHmacRegionName returns a boolean if a field has been set.
 func (o *CreateOriginsRequest) HasHmacRegionName() bool {
-	if o != nil && o.HmacRegionName != nil {
+	if o != nil && !isNil(o.HmacRegionName) {
 		return true
 	}
 
@@ -282,7 +285,7 @@ func (o *CreateOriginsRequest) SetHmacRegionName(v string) {
 
 // GetHmacAccessKey returns the HmacAccessKey field value if set, zero value otherwise.
 func (o *CreateOriginsRequest) GetHmacAccessKey() string {
-	if o == nil || o.HmacAccessKey == nil {
+	if o == nil || isNil(o.HmacAccessKey) {
 		var ret string
 		return ret
 	}
@@ -292,7 +295,7 @@ func (o *CreateOriginsRequest) GetHmacAccessKey() string {
 // GetHmacAccessKeyOk returns a tuple with the HmacAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetHmacAccessKeyOk() (*string, bool) {
-	if o == nil || o.HmacAccessKey == nil {
+	if o == nil || isNil(o.HmacAccessKey) {
 		return nil, false
 	}
 	return o.HmacAccessKey, true
@@ -300,7 +303,7 @@ func (o *CreateOriginsRequest) GetHmacAccessKeyOk() (*string, bool) {
 
 // HasHmacAccessKey returns a boolean if a field has been set.
 func (o *CreateOriginsRequest) HasHmacAccessKey() bool {
-	if o != nil && o.HmacAccessKey != nil {
+	if o != nil && !isNil(o.HmacAccessKey) {
 		return true
 	}
 
@@ -314,7 +317,7 @@ func (o *CreateOriginsRequest) SetHmacAccessKey(v string) {
 
 // GetHmacSecretKey returns the HmacSecretKey field value if set, zero value otherwise.
 func (o *CreateOriginsRequest) GetHmacSecretKey() string {
-	if o == nil || o.HmacSecretKey == nil {
+	if o == nil || isNil(o.HmacSecretKey) {
 		var ret string
 		return ret
 	}
@@ -324,7 +327,7 @@ func (o *CreateOriginsRequest) GetHmacSecretKey() string {
 // GetHmacSecretKeyOk returns a tuple with the HmacSecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOriginsRequest) GetHmacSecretKeyOk() (*string, bool) {
-	if o == nil || o.HmacSecretKey == nil {
+	if o == nil || isNil(o.HmacSecretKey) {
 		return nil, false
 	}
 	return o.HmacSecretKey, true
@@ -332,7 +335,7 @@ func (o *CreateOriginsRequest) GetHmacSecretKeyOk() (*string, bool) {
 
 // HasHmacSecretKey returns a boolean if a field has been set.
 func (o *CreateOriginsRequest) HasHmacSecretKey() bool {
-	if o != nil && o.HmacSecretKey != nil {
+	if o != nil && !isNil(o.HmacSecretKey) {
 		return true
 	}
 
@@ -345,38 +348,40 @@ func (o *CreateOriginsRequest) SetHmacSecretKey(v string) {
 }
 
 func (o CreateOriginsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.OriginType != nil {
-		toSerialize["origin_type"] = o.OriginType
-	}
-	if true {
-		toSerialize["addresses"] = o.Addresses
-	}
-	if o.OriginProtocolPolicy != nil {
-		toSerialize["origin_protocol_policy"] = o.OriginProtocolPolicy
-	}
-	if true {
-		toSerialize["host_header"] = o.HostHeader
-	}
-	if o.OriginPath != nil {
-		toSerialize["origin_path"] = o.OriginPath
-	}
-	if o.HmacAuthentication != nil {
-		toSerialize["hmac_authentication"] = o.HmacAuthentication
-	}
-	if o.HmacRegionName != nil {
-		toSerialize["hmac_region_name"] = o.HmacRegionName
-	}
-	if o.HmacAccessKey != nil {
-		toSerialize["hmac_access_key"] = o.HmacAccessKey
-	}
-	if o.HmacSecretKey != nil {
-		toSerialize["hmac_secret_key"] = o.HmacSecretKey
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateOriginsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !isNil(o.OriginType) {
+		toSerialize["origin_type"] = o.OriginType
+	}
+	toSerialize["addresses"] = o.Addresses
+	if !isNil(o.OriginProtocolPolicy) {
+		toSerialize["origin_protocol_policy"] = o.OriginProtocolPolicy
+	}
+	toSerialize["host_header"] = o.HostHeader
+	if !isNil(o.OriginPath) {
+		toSerialize["origin_path"] = o.OriginPath
+	}
+	if !isNil(o.HmacAuthentication) {
+		toSerialize["hmac_authentication"] = o.HmacAuthentication
+	}
+	if !isNil(o.HmacRegionName) {
+		toSerialize["hmac_region_name"] = o.HmacRegionName
+	}
+	if !isNil(o.HmacAccessKey) {
+		toSerialize["hmac_access_key"] = o.HmacAccessKey
+	}
+	if !isNil(o.HmacSecretKey) {
+		toSerialize["hmac_secret_key"] = o.HmacSecretKey
+	}
+	return toSerialize, nil
 }
 
 type NullableCreateOriginsRequest struct {

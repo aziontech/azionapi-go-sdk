@@ -40,8 +40,8 @@ func main() {
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsMainSettingsApi.EdgeApplicationsGet(context.Background()).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsMainSettingsApi.EdgeApplicationsGet(context.Background()).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsApi.EdgeApplicationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -110,8 +110,8 @@ func main() {
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsMainSettingsApi.EdgeApplicationsIdDelete(context.Background(), id).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsMainSettingsApi.EdgeApplicationsIdDelete(context.Background(), id).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsApi.EdgeApplicationsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,8 +178,8 @@ func main() {
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsMainSettingsApi.EdgeApplicationsIdGet(context.Background(), id).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsMainSettingsApi.EdgeApplicationsIdGet(context.Background(), id).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsApi.EdgeApplicationsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,8 +250,8 @@ func main() {
     applicationUpdateRequest := *openapiclient.NewApplicationUpdateRequest() // ApplicationUpdateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsMainSettingsApi.EdgeApplicationsIdPatch(context.Background(), id).Accept(accept).ContentType(contentType).ApplicationUpdateRequest(applicationUpdateRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsMainSettingsApi.EdgeApplicationsIdPatch(context.Background(), id).Accept(accept).ContentType(contentType).ApplicationUpdateRequest(applicationUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsApi.EdgeApplicationsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -324,8 +324,8 @@ func main() {
     applicationPutRequest := *openapiclient.NewApplicationPutRequest("Name_example") // ApplicationPutRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsMainSettingsApi.EdgeApplicationsIdPut(context.Background(), id).Accept(accept).ContentType(contentType).ApplicationPutRequest(applicationPutRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsMainSettingsApi.EdgeApplicationsIdPut(context.Background(), id).Accept(accept).ContentType(contentType).ApplicationPutRequest(applicationPutRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsApi.EdgeApplicationsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ## EdgeApplicationsPost
 
-> CreateApplicationResult EdgeApplicationsPost(ctx).Accept(accept).ContentType(contentType).ERRORUNKNOWN(eRRORUNKNOWN).CreateApplicationRequest(createApplicationRequest).Execute()
+> CreateApplicationResult EdgeApplicationsPost(ctx).Accept(accept).ContentType(contentType).CreateApplicationRequest(createApplicationRequest).Execute()
 
 /edge_applications
 
@@ -394,12 +394,11 @@ import (
 func main() {
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    eRRORUNKNOWN := "eRRORUNKNOWN_example" // string |  (optional)
     createApplicationRequest := *openapiclient.NewCreateApplicationRequest("Name_example") // CreateApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsMainSettingsApi.EdgeApplicationsPost(context.Background()).Accept(accept).ContentType(contentType).ERRORUNKNOWN(eRRORUNKNOWN).CreateApplicationRequest(createApplicationRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsMainSettingsApi.EdgeApplicationsPost(context.Background()).Accept(accept).ContentType(contentType).CreateApplicationRequest(createApplicationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsApi.EdgeApplicationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -422,7 +421,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | 
  **contentType** | **string** | The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json | 
- **eRRORUNKNOWN** | **string** |  | 
  **createApplicationRequest** | [**CreateApplicationRequest**](CreateApplicationRequest.md) |  | 
 
 ### Return type

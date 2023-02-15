@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OriginsResponseLinks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OriginsResponseLinks{}
+
 // OriginsResponseLinks struct for OriginsResponseLinks
 type OriginsResponseLinks struct {
 	Previous NullableString `json:"previous,omitempty"`
@@ -39,7 +42,7 @@ func NewOriginsResponseLinksWithDefaults() *OriginsResponseLinks {
 
 // GetPrevious returns the Previous field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OriginsResponseLinks) GetPrevious() string {
-	if o == nil || o.Previous.Get() == nil {
+	if o == nil || isNil(o.Previous.Get()) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *OriginsResponseLinks) GetPrevious() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OriginsResponseLinks) GetPreviousOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Previous.Get(), o.Previous.IsSet()
@@ -81,7 +84,7 @@ func (o *OriginsResponseLinks) UnsetPrevious() {
 
 // GetNext returns the Next field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OriginsResponseLinks) GetNext() string {
-	if o == nil || o.Next.Get() == nil {
+	if o == nil || isNil(o.Next.Get()) {
 		var ret string
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *OriginsResponseLinks) GetNext() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OriginsResponseLinks) GetNextOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Next.Get(), o.Next.IsSet()
@@ -122,6 +125,14 @@ func (o *OriginsResponseLinks) UnsetNext() {
 }
 
 func (o OriginsResponseLinks) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OriginsResponseLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Previous.IsSet() {
 		toSerialize["previous"] = o.Previous.Get()
@@ -129,7 +140,7 @@ func (o OriginsResponseLinks) MarshalJSON() ([]byte, error) {
 	if o.Next.IsSet() {
 		toSerialize["next"] = o.Next.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOriginsResponseLinks struct {

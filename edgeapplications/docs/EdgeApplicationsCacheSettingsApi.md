@@ -38,8 +38,8 @@ func main() {
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete(context.Background(), edgeApplicationId, cacheSettings).Accept(accept).ContentType(contentType).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete(context.Background(), edgeApplicationId, cacheSettings).Accept(accept).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -110,8 +110,8 @@ func main() {
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -185,8 +185,8 @@ func main() {
     applicationCachePutRequest := *openapiclient.NewApplicationCachePutRequest("Name_example") // ApplicationCachePutRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).ApplicationCachePutRequest(applicationCachePutRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).ApplicationCachePutRequest(applicationCachePutRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,8 +261,8 @@ func main() {
     applicationCachePatchRequest := *openapiclient.NewApplicationCachePatchRequest() // ApplicationCachePatchRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch(context.Background(), edgeApplicationId, cacheSettings).Accept(accept).ApplicationCachePatchRequest(applicationCachePatchRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch(context.Background(), edgeApplicationId, cacheSettings).Accept(accept).ApplicationCachePatchRequest(applicationCachePatchRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -339,8 +339,8 @@ func main() {
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsGet(context.Background(), edgeApplicationId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsGet(context.Background(), edgeApplicationId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -416,8 +416,8 @@ func main() {
     applicationCacheCreateRequest := *openapiclient.NewApplicationCacheCreateRequest("Name_example") // ApplicationCacheCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).ApplicationCacheCreateRequest(applicationCacheCreateRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).ApplicationCacheCreateRequest(applicationCacheCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

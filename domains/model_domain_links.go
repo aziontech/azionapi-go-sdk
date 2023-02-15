@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DomainLinks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainLinks{}
+
 // DomainLinks struct for DomainLinks
 type DomainLinks struct {
 	Previous string `json:"previous"`
@@ -52,7 +55,7 @@ func (o *DomainLinks) GetPrevious() string {
 // GetPreviousOk returns a tuple with the Previous field value
 // and a boolean to check if the value has been set.
 func (o *DomainLinks) GetPreviousOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Previous, true
@@ -76,7 +79,7 @@ func (o *DomainLinks) GetNext() string {
 // GetNextOk returns a tuple with the Next field value
 // and a boolean to check if the value has been set.
 func (o *DomainLinks) GetNextOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Next, true
@@ -88,14 +91,18 @@ func (o *DomainLinks) SetNext(v string) {
 }
 
 func (o DomainLinks) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["previous"] = o.Previous
-	}
-	if true {
-		toSerialize["next"] = o.Next
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DomainLinks) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["previous"] = o.Previous
+	toSerialize["next"] = o.Next
+	return toSerialize, nil
 }
 
 type NullableDomainLinks struct {

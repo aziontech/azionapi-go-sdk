@@ -12,23 +12,19 @@ package edgeapplications
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // EdgeApplicationsCacheSettingsApiService EdgeApplicationsCacheSettingsApi service
 type EdgeApplicationsCacheSettingsApiService service
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsCacheSettingsApiService
 	edgeApplicationId int64
 	cacheSettings int64
@@ -40,25 +36,26 @@ func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequ
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete /edge_applications/:edge_application_id:/cache_settings/:cache_settings:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param cacheSettings
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete(ctx _context.Context, edgeApplicationId int64, cacheSettings int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete(ctx context.Context, edgeApplicationId int64, cacheSettings int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -68,27 +65,25 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest) (*_nethttp.Response, error) {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/cache_settings/{cache_settings}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cache_settings"+"}", _neturl.PathEscape(parameterToString(r.cacheSettings, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cache_settings"+"}", url.PathEscape(parameterValueToString(r.cacheSettings, "cacheSettings")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -108,10 +103,10 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -127,7 +122,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -137,15 +132,15 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -156,7 +151,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsCacheSettingsApiService
 	edgeApplicationId int64
 	cacheSettingsId int64
@@ -168,19 +163,19 @@ func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetReque
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest) Execute() (ApplicationCacheGetOneResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest) Execute() (*ApplicationCacheGetOneResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param cacheSettingsId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet(ctx _context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -191,28 +186,26 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCacheGetOneResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest) (ApplicationCacheGetOneResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest) (*ApplicationCacheGetOneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationCacheGetOneResponse
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationCacheGetOneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/cache_settings/{cache_settings_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cache_settings_id"+"}", _neturl.PathEscape(parameterToString(r.cacheSettingsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cache_settings_id"+"}", url.PathEscape(parameterValueToString(r.cacheSettingsId, "cacheSettingsId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -232,7 +225,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -248,7 +241,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -258,15 +251,15 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -275,7 +268,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -286,7 +279,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsCacheSettingsApiService
 	edgeApplicationId int64
 	cacheSettingsId int64
@@ -299,29 +292,31 @@ func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutReque
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest) ApplicationCachePutRequest(applicationCachePutRequest ApplicationCachePutRequest) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest {
 	r.applicationCachePutRequest = &applicationCachePutRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest) Execute() (ApplicationCachePutResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest) Execute() (*ApplicationCachePutResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut /edge_applications/:edge_application_id:/cache_settings/ca
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param cacheSettingsId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(ctx _context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -332,28 +327,26 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCachePutResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest) (ApplicationCachePutResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest) (*ApplicationCachePutResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationCachePutResponse
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationCachePutResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/cache_settings/{cache_settings_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cache_settings_id"+"}", _neturl.PathEscape(parameterToString(r.cacheSettingsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cache_settings_id"+"}", url.PathEscape(parameterValueToString(r.cacheSettingsId, "cacheSettingsId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -373,10 +366,10 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.applicationCachePutRequest
@@ -394,7 +387,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -404,15 +397,15 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -421,7 +414,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -432,7 +425,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsCacheSettingsApiService
 	edgeApplicationId int64
 	cacheSettings int64
@@ -444,24 +437,25 @@ func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchReque
 	r.accept = &accept
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest) ApplicationCachePatchRequest(applicationCachePatchRequest ApplicationCachePatchRequest) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest {
 	r.applicationCachePatchRequest = &applicationCachePatchRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest) Execute() (ApplicationCachePatchResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest) Execute() (*ApplicationCachePatchResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @param cacheSettings
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch(ctx _context.Context, edgeApplicationId int64, cacheSettings int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch(ctx context.Context, edgeApplicationId int64, cacheSettings int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -472,28 +466,26 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCachePatchResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest) (ApplicationCachePatchResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest) (*ApplicationCachePatchResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationCachePatchResponse
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationCachePatchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/cache_settings/{cache_settings}"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cache_settings"+"}", _neturl.PathEscape(parameterToString(r.cacheSettings, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cache_settings"+"}", url.PathEscape(parameterValueToString(r.cacheSettings, "cacheSettings")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -513,7 +505,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	// body params
 	localVarPostBody = r.applicationCachePatchRequest
@@ -531,7 +523,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -541,15 +533,15 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -558,7 +550,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -569,7 +561,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsCacheSettingsApiService
 	edgeApplicationId int64
 	page *int64
@@ -584,39 +576,44 @@ func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) Page(page i
 	r.page = &page
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) PageSize(pageSize int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) Filter(filter string) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
 	r.filter = &filter
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) OrderBy(orderBy string) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
 	r.orderBy = &orderBy
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) Sort(sort string) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
 	r.sort = &sort
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
 	r.accept = &accept
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) Execute() (ApplicationCacheGetResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) Execute() (*ApplicationCacheGetResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsGetExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdCacheSettingsGet /edge_applications/{edge_application_id}/cache_settings
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsGet(ctx _context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -626,42 +623,40 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCacheGetResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) (ApplicationCacheGetResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) (*ApplicationCacheGetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationCacheGetResponse
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationCacheGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsGet")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/cache_settings"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
 	}
 	if r.orderBy != nil {
-		localVarQueryParams.Add("order_by", parameterToString(*r.orderBy, ""))
+		parameterAddToQuery(localVarQueryParams, "order_by", r.orderBy, "")
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToQuery(localVarQueryParams, "sort", r.sort, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -681,7 +676,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -697,7 +692,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -707,15 +702,15 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -724,7 +719,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -735,7 +730,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 }
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *EdgeApplicationsCacheSettingsApiService
 	edgeApplicationId int64
 	accept *string
@@ -747,28 +742,30 @@ func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) Accept(acc
 	r.accept = &accept
 	return r
 }
+
 // The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) ContentType(contentType string) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) ApplicationCacheCreateRequest(applicationCacheCreateRequest ApplicationCacheCreateRequest) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest {
 	r.applicationCacheCreateRequest = &applicationCacheCreateRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) Execute() (ApplicationCacheCreateResponse, *_nethttp.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) Execute() (*ApplicationCacheCreateResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsPostExecute(r)
 }
 
 /*
 EdgeApplicationsEdgeApplicationIdCacheSettingsPost /edge_applications/:edge_application_id:/cache_settings
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsPost(ctx _context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -778,27 +775,25 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCacheCreateResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) (ApplicationCacheCreateResponse, *_nethttp.Response, error) {
+func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) (*ApplicationCacheCreateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationCacheCreateResponse
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationCacheCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsPost")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_applications/{edge_application_id}/cache_settings"
-	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", _neturl.PathEscape(parameterToString(r.edgeApplicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_application_id"+"}", url.PathEscape(parameterValueToString(r.edgeApplicationId, "edgeApplicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -818,10 +813,10 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.applicationCacheCreateRequest
@@ -839,7 +834,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -849,15 +844,15 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -866,7 +861,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OriginsResultResponseAddresses type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OriginsResultResponseAddresses{}
+
 // OriginsResultResponseAddresses struct for OriginsResultResponseAddresses
 type OriginsResultResponseAddresses struct {
 	Address string `json:"address"`
@@ -56,7 +59,7 @@ func (o *OriginsResultResponseAddresses) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponseAddresses) GetAddressOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Address, true
@@ -82,7 +85,7 @@ func (o *OriginsResultResponseAddresses) GetWeight() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OriginsResultResponseAddresses) GetWeightOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Weight.Get(), o.Weight.IsSet()
@@ -106,7 +109,7 @@ func (o *OriginsResultResponseAddresses) GetServerRole() string {
 // GetServerRoleOk returns a tuple with the ServerRole field value
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponseAddresses) GetServerRoleOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ServerRole, true
@@ -130,7 +133,7 @@ func (o *OriginsResultResponseAddresses) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponseAddresses) GetIsActiveOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsActive, true
@@ -142,20 +145,20 @@ func (o *OriginsResultResponseAddresses) SetIsActive(v bool) {
 }
 
 func (o OriginsResultResponseAddresses) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["address"] = o.Address
-	}
-	if true {
-		toSerialize["weight"] = o.Weight.Get()
-	}
-	if true {
-		toSerialize["server_role"] = o.ServerRole
-	}
-	if true {
-		toSerialize["is_active"] = o.IsActive
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OriginsResultResponseAddresses) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["address"] = o.Address
+	toSerialize["weight"] = o.Weight.Get()
+	toSerialize["server_role"] = o.ServerRole
+	toSerialize["is_active"] = o.IsActive
+	return toSerialize, nil
 }
 
 type NullableOriginsResultResponseAddresses struct {

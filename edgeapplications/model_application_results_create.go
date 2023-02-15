@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationResultsCreate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationResultsCreate{}
+
 // ApplicationResultsCreate struct for ApplicationResultsCreate
 type ApplicationResultsCreate struct {
 	Id int64 `json:"id"`
@@ -80,7 +83,7 @@ func (o *ApplicationResultsCreate) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -104,7 +107,7 @@ func (o *ApplicationResultsCreate) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -128,7 +131,7 @@ func (o *ApplicationResultsCreate) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetActiveOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Active, true
@@ -152,7 +155,7 @@ func (o *ApplicationResultsCreate) GetDeliveryProtocol() string {
 // GetDeliveryProtocolOk returns a tuple with the DeliveryProtocol field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetDeliveryProtocolOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DeliveryProtocol, true
@@ -176,7 +179,7 @@ func (o *ApplicationResultsCreate) GetHttpPort() int64 {
 // GetHttpPortOk returns a tuple with the HttpPort field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetHttpPortOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HttpPort, true
@@ -200,7 +203,7 @@ func (o *ApplicationResultsCreate) GetHttpsPort() int64 {
 // GetHttpsPortOk returns a tuple with the HttpsPort field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetHttpsPortOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HttpsPort, true
@@ -224,7 +227,7 @@ func (o *ApplicationResultsCreate) GetMinimumTlsVersion() string {
 // GetMinimumTlsVersionOk returns a tuple with the MinimumTlsVersion field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetMinimumTlsVersionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.MinimumTlsVersion, true
@@ -248,7 +251,7 @@ func (o *ApplicationResultsCreate) GetApplicationAcceleration() bool {
 // GetApplicationAccelerationOk returns a tuple with the ApplicationAcceleration field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetApplicationAccelerationOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ApplicationAcceleration, true
@@ -272,7 +275,7 @@ func (o *ApplicationResultsCreate) GetCaching() bool {
 // GetCachingOk returns a tuple with the Caching field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetCachingOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Caching, true
@@ -296,7 +299,7 @@ func (o *ApplicationResultsCreate) GetDeviceDetection() bool {
 // GetDeviceDetectionOk returns a tuple with the DeviceDetection field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetDeviceDetectionOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.DeviceDetection, true
@@ -320,7 +323,7 @@ func (o *ApplicationResultsCreate) GetEdgeFirewall() bool {
 // GetEdgeFirewallOk returns a tuple with the EdgeFirewall field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetEdgeFirewallOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EdgeFirewall, true
@@ -344,7 +347,7 @@ func (o *ApplicationResultsCreate) GetEdgeFunctions() bool {
 // GetEdgeFunctionsOk returns a tuple with the EdgeFunctions field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetEdgeFunctionsOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EdgeFunctions, true
@@ -368,7 +371,7 @@ func (o *ApplicationResultsCreate) GetImageOptimization() bool {
 // GetImageOptimizationOk returns a tuple with the ImageOptimization field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetImageOptimizationOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ImageOptimization, true
@@ -392,7 +395,7 @@ func (o *ApplicationResultsCreate) GetLoadBalancer() bool {
 // GetLoadBalancerOk returns a tuple with the LoadBalancer field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetLoadBalancerOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.LoadBalancer, true
@@ -416,7 +419,7 @@ func (o *ApplicationResultsCreate) GetRawLogs() bool {
 // GetRawLogsOk returns a tuple with the RawLogs field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetRawLogsOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.RawLogs, true
@@ -440,7 +443,7 @@ func (o *ApplicationResultsCreate) GetWebApplicationFirewall() bool {
 // GetWebApplicationFirewallOk returns a tuple with the WebApplicationFirewall field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResultsCreate) GetWebApplicationFirewallOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.WebApplicationFirewall, true
@@ -452,56 +455,32 @@ func (o *ApplicationResultsCreate) SetWebApplicationFirewall(v bool) {
 }
 
 func (o ApplicationResultsCreate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["active"] = o.Active
-	}
-	if true {
-		toSerialize["delivery_protocol"] = o.DeliveryProtocol
-	}
-	if true {
-		toSerialize["http_port"] = o.HttpPort
-	}
-	if true {
-		toSerialize["https_port"] = o.HttpsPort
-	}
-	if true {
-		toSerialize["minimum_tls_version"] = o.MinimumTlsVersion
-	}
-	if true {
-		toSerialize["application_acceleration"] = o.ApplicationAcceleration
-	}
-	if true {
-		toSerialize["caching"] = o.Caching
-	}
-	if true {
-		toSerialize["device_detection"] = o.DeviceDetection
-	}
-	if true {
-		toSerialize["edge_firewall"] = o.EdgeFirewall
-	}
-	if true {
-		toSerialize["edge_functions"] = o.EdgeFunctions
-	}
-	if true {
-		toSerialize["image_optimization"] = o.ImageOptimization
-	}
-	if true {
-		toSerialize["load_balancer"] = o.LoadBalancer
-	}
-	if true {
-		toSerialize["raw_logs"] = o.RawLogs
-	}
-	if true {
-		toSerialize["web_application_firewall"] = o.WebApplicationFirewall
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationResultsCreate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["active"] = o.Active
+	toSerialize["delivery_protocol"] = o.DeliveryProtocol
+	toSerialize["http_port"] = o.HttpPort
+	toSerialize["https_port"] = o.HttpsPort
+	toSerialize["minimum_tls_version"] = o.MinimumTlsVersion
+	toSerialize["application_acceleration"] = o.ApplicationAcceleration
+	toSerialize["caching"] = o.Caching
+	toSerialize["device_detection"] = o.DeviceDetection
+	toSerialize["edge_firewall"] = o.EdgeFirewall
+	toSerialize["edge_functions"] = o.EdgeFunctions
+	toSerialize["image_optimization"] = o.ImageOptimization
+	toSerialize["load_balancer"] = o.LoadBalancer
+	toSerialize["raw_logs"] = o.RawLogs
+	toSerialize["web_application_firewall"] = o.WebApplicationFirewall
+	return toSerialize, nil
 }
 
 type NullableApplicationResultsCreate struct {

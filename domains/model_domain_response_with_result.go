@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DomainResponseWithResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainResponseWithResult{}
+
 // DomainResponseWithResult struct for DomainResponseWithResult
 type DomainResponseWithResult struct {
 	SchemaVersion int64 `json:"schema_version"`
@@ -52,7 +55,7 @@ func (o *DomainResponseWithResult) GetSchemaVersion() int64 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value
 // and a boolean to check if the value has been set.
 func (o *DomainResponseWithResult) GetSchemaVersionOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.SchemaVersion, true
@@ -76,7 +79,7 @@ func (o *DomainResponseWithResult) GetResults() DomainResults {
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
 func (o *DomainResponseWithResult) GetResultsOk() (*DomainResults, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Results, true
@@ -88,14 +91,18 @@ func (o *DomainResponseWithResult) SetResults(v DomainResults) {
 }
 
 func (o DomainResponseWithResult) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["schema_version"] = o.SchemaVersion
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DomainResponseWithResult) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["schema_version"] = o.SchemaVersion
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
 }
 
 type NullableDomainResponseWithResult struct {

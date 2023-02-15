@@ -14,12 +14,15 @@ import (
 	"encoding/json"
 )
 
+// checks if the RulesEngineResultResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RulesEngineResultResponse{}
+
 // RulesEngineResultResponse struct for RulesEngineResultResponse
 type RulesEngineResultResponse struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
 	Phase string `json:"phase"`
-	Behaviors *[]RulesEngineResultResponseBehaviors `json:"behaviors,omitempty"`
+	Behaviors []RulesEngineResultResponseBehaviors `json:"behaviors,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria"`
 	IsActive bool `json:"is_active"`
 	Order int64 `json:"order"`
@@ -61,7 +64,7 @@ func (o *RulesEngineResultResponse) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResultResponse) GetIdOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -85,7 +88,7 @@ func (o *RulesEngineResultResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResultResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -109,7 +112,7 @@ func (o *RulesEngineResultResponse) GetPhase() string {
 // GetPhaseOk returns a tuple with the Phase field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResultResponse) GetPhaseOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Phase, true
@@ -122,17 +125,17 @@ func (o *RulesEngineResultResponse) SetPhase(v string) {
 
 // GetBehaviors returns the Behaviors field value if set, zero value otherwise.
 func (o *RulesEngineResultResponse) GetBehaviors() []RulesEngineResultResponseBehaviors {
-	if o == nil || o.Behaviors == nil {
+	if o == nil || isNil(o.Behaviors) {
 		var ret []RulesEngineResultResponseBehaviors
 		return ret
 	}
-	return *o.Behaviors
+	return o.Behaviors
 }
 
 // GetBehaviorsOk returns a tuple with the Behaviors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RulesEngineResultResponse) GetBehaviorsOk() (*[]RulesEngineResultResponseBehaviors, bool) {
-	if o == nil || o.Behaviors == nil {
+func (o *RulesEngineResultResponse) GetBehaviorsOk() ([]RulesEngineResultResponseBehaviors, bool) {
+	if o == nil || isNil(o.Behaviors) {
 		return nil, false
 	}
 	return o.Behaviors, true
@@ -140,7 +143,7 @@ func (o *RulesEngineResultResponse) GetBehaviorsOk() (*[]RulesEngineResultRespon
 
 // HasBehaviors returns a boolean if a field has been set.
 func (o *RulesEngineResultResponse) HasBehaviors() bool {
-	if o != nil && o.Behaviors != nil {
+	if o != nil && !isNil(o.Behaviors) {
 		return true
 	}
 
@@ -149,7 +152,7 @@ func (o *RulesEngineResultResponse) HasBehaviors() bool {
 
 // SetBehaviors gets a reference to the given []RulesEngineResultResponseBehaviors and assigns it to the Behaviors field.
 func (o *RulesEngineResultResponse) SetBehaviors(v []RulesEngineResultResponseBehaviors) {
-	o.Behaviors = &v
+	o.Behaviors = v
 }
 
 // GetCriteria returns the Criteria field value
@@ -164,11 +167,11 @@ func (o *RulesEngineResultResponse) GetCriteria() [][]RulesEngineCriteria {
 
 // GetCriteriaOk returns a tuple with the Criteria field value
 // and a boolean to check if the value has been set.
-func (o *RulesEngineResultResponse) GetCriteriaOk() (*[][]RulesEngineCriteria, bool) {
-	if o == nil  {
+func (o *RulesEngineResultResponse) GetCriteriaOk() ([][]RulesEngineCriteria, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Criteria, true
+	return o.Criteria, true
 }
 
 // SetCriteria sets field value
@@ -189,7 +192,7 @@ func (o *RulesEngineResultResponse) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResultResponse) GetIsActiveOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsActive, true
@@ -213,7 +216,7 @@ func (o *RulesEngineResultResponse) GetOrder() int64 {
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResultResponse) GetOrderOk() (*int64, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Order, true
@@ -225,29 +228,25 @@ func (o *RulesEngineResultResponse) SetOrder(v int64) {
 }
 
 func (o RulesEngineResultResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["phase"] = o.Phase
-	}
-	if o.Behaviors != nil {
-		toSerialize["behaviors"] = o.Behaviors
-	}
-	if true {
-		toSerialize["criteria"] = o.Criteria
-	}
-	if true {
-		toSerialize["is_active"] = o.IsActive
-	}
-	if true {
-		toSerialize["order"] = o.Order
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RulesEngineResultResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["phase"] = o.Phase
+	if !isNil(o.Behaviors) {
+		toSerialize["behaviors"] = o.Behaviors
+	}
+	toSerialize["criteria"] = o.Criteria
+	toSerialize["is_active"] = o.IsActive
+	toSerialize["order"] = o.Order
+	return toSerialize, nil
 }
 
 type NullableRulesEngineResultResponse struct {
