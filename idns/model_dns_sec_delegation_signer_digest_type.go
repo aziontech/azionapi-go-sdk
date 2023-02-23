@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DnsSecDelegationSignerDigestType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DnsSecDelegationSignerDigestType{}
+
 // DnsSecDelegationSignerDigestType struct for DnsSecDelegationSignerDigestType
 type DnsSecDelegationSignerDigestType struct {
 	Id *int32 `json:"id,omitempty"`
@@ -39,7 +42,7 @@ func NewDnsSecDelegationSignerDigestTypeWithDefaults() *DnsSecDelegationSignerDi
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DnsSecDelegationSignerDigestType) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *DnsSecDelegationSignerDigestType) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSecDelegationSignerDigestType) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *DnsSecDelegationSignerDigestType) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *DnsSecDelegationSignerDigestType) SetId(v int32) {
 
 // GetSlug returns the Slug field value if set, zero value otherwise.
 func (o *DnsSecDelegationSignerDigestType) GetSlug() string {
-	if o == nil || isNil(o.Slug) {
+	if o == nil || IsNil(o.Slug) {
 		var ret string
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *DnsSecDelegationSignerDigestType) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSecDelegationSignerDigestType) GetSlugOk() (*string, bool) {
-	if o == nil || isNil(o.Slug) {
-    return nil, false
+	if o == nil || IsNil(o.Slug) {
+		return nil, false
 	}
 	return o.Slug, true
 }
 
 // HasSlug returns a boolean if a field has been set.
 func (o *DnsSecDelegationSignerDigestType) HasSlug() bool {
-	if o != nil && !isNil(o.Slug) {
+	if o != nil && !IsNil(o.Slug) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *DnsSecDelegationSignerDigestType) SetSlug(v string) {
 }
 
 func (o DnsSecDelegationSignerDigestType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Slug) {
-		toSerialize["slug"] = o.Slug
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DnsSecDelegationSignerDigestType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Slug) {
+		toSerialize["slug"] = o.Slug
+	}
+	return toSerialize, nil
 }
 
 type NullableDnsSecDelegationSignerDigestType struct {

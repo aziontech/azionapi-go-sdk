@@ -13,7 +13,7 @@ package idns
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -64,7 +64,7 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 	}
 
 	localVarPath := localBasePath + "/intelligent_dns/{zone_id}/dnssec"
-	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterToString(r.zoneId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -114,9 +114,9 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -133,8 +133,8 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -198,7 +198,7 @@ func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*Get
 	}
 
 	localVarPath := localBasePath + "/intelligent_dns/{zone_id}/dnssec"
-	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterToString(r.zoneId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"zone_id"+"}", url.PathEscape(parameterValueToString(r.zoneId, "zoneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -250,9 +250,9 @@ func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*Get
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -269,8 +269,8 @@ func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

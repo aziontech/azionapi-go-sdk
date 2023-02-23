@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetZonesResponseLinks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetZonesResponseLinks{}
+
 // GetZonesResponseLinks struct for GetZonesResponseLinks
 type GetZonesResponseLinks struct {
 	Previous NullableString `json:"previous,omitempty"`
@@ -39,7 +42,7 @@ func NewGetZonesResponseLinksWithDefaults() *GetZonesResponseLinks {
 
 // GetPrevious returns the Previous field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetZonesResponseLinks) GetPrevious() string {
-	if o == nil || isNil(o.Previous.Get()) {
+	if o == nil || IsNil(o.Previous.Get()) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *GetZonesResponseLinks) GetPrevious() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetZonesResponseLinks) GetPreviousOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Previous.Get(), o.Previous.IsSet()
 }
@@ -81,7 +84,7 @@ func (o *GetZonesResponseLinks) UnsetPrevious() {
 
 // GetNext returns the Next field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetZonesResponseLinks) GetNext() string {
-	if o == nil || isNil(o.Next.Get()) {
+	if o == nil || IsNil(o.Next.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *GetZonesResponseLinks) GetNext() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetZonesResponseLinks) GetNextOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Next.Get(), o.Next.IsSet()
 }
@@ -122,6 +125,14 @@ func (o *GetZonesResponseLinks) UnsetNext() {
 }
 
 func (o GetZonesResponseLinks) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GetZonesResponseLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Previous.IsSet() {
 		toSerialize["previous"] = o.Previous.Get()
@@ -129,7 +140,7 @@ func (o GetZonesResponseLinks) MarshalJSON() ([]byte, error) {
 	if o.Next.IsSet() {
 		toSerialize["next"] = o.Next.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableGetZonesResponseLinks struct {

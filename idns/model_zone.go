@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Zone type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Zone{}
+
 // Zone struct for Zone
 type Zone struct {
 	// Hosted zone id
@@ -52,7 +55,7 @@ func NewZoneWithDefaults() *Zone {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Zone) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -62,15 +65,15 @@ func (o *Zone) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Zone) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Zone) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *Zone) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Zone) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -94,15 +97,15 @@ func (o *Zone) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Zone) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Zone) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *Zone) SetName(v string) {
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *Zone) GetDomain() string {
-	if o == nil || isNil(o.Domain) {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
@@ -126,15 +129,15 @@ func (o *Zone) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Zone) GetDomainOk() (*string, bool) {
-	if o == nil || isNil(o.Domain) {
-    return nil, false
+	if o == nil || IsNil(o.Domain) {
+		return nil, false
 	}
 	return o.Domain, true
 }
 
 // HasDomain returns a boolean if a field has been set.
 func (o *Zone) HasDomain() bool {
-	if o != nil && !isNil(o.Domain) {
+	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *Zone) SetDomain(v string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *Zone) GetIsActive() bool {
-	if o == nil || isNil(o.IsActive) {
+	if o == nil || IsNil(o.IsActive) {
 		var ret bool
 		return ret
 	}
@@ -158,15 +161,15 @@ func (o *Zone) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Zone) GetIsActiveOk() (*bool, bool) {
-	if o == nil || isNil(o.IsActive) {
-    return nil, false
+	if o == nil || IsNil(o.IsActive) {
+		return nil, false
 	}
 	return o.IsActive, true
 }
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *Zone) HasIsActive() bool {
-	if o != nil && !isNil(o.IsActive) {
+	if o != nil && !IsNil(o.IsActive) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *Zone) SetIsActive(v bool) {
 
 // GetRetry returns the Retry field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Zone) GetRetry() int32 {
-	if o == nil || isNil(o.Retry.Get()) {
+	if o == nil || IsNil(o.Retry.Get()) {
 		var ret int32
 		return ret
 	}
@@ -192,7 +195,7 @@ func (o *Zone) GetRetry() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Zone) GetRetryOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Retry.Get(), o.Retry.IsSet()
 }
@@ -222,7 +225,7 @@ func (o *Zone) UnsetRetry() {
 
 // GetNxTtl returns the NxTtl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Zone) GetNxTtl() int32 {
-	if o == nil || isNil(o.NxTtl.Get()) {
+	if o == nil || IsNil(o.NxTtl.Get()) {
 		var ret int32
 		return ret
 	}
@@ -234,7 +237,7 @@ func (o *Zone) GetNxTtl() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Zone) GetNxTtlOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.NxTtl.Get(), o.NxTtl.IsSet()
 }
@@ -264,7 +267,7 @@ func (o *Zone) UnsetNxTtl() {
 
 // GetSoaTtl returns the SoaTtl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Zone) GetSoaTtl() int32 {
-	if o == nil || isNil(o.SoaTtl.Get()) {
+	if o == nil || IsNil(o.SoaTtl.Get()) {
 		var ret int32
 		return ret
 	}
@@ -276,7 +279,7 @@ func (o *Zone) GetSoaTtl() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Zone) GetSoaTtlOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.SoaTtl.Get(), o.SoaTtl.IsSet()
 }
@@ -306,7 +309,7 @@ func (o *Zone) UnsetSoaTtl() {
 
 // GetRefresh returns the Refresh field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Zone) GetRefresh() int32 {
-	if o == nil || isNil(o.Refresh.Get()) {
+	if o == nil || IsNil(o.Refresh.Get()) {
 		var ret int32
 		return ret
 	}
@@ -318,7 +321,7 @@ func (o *Zone) GetRefresh() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Zone) GetRefreshOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Refresh.Get(), o.Refresh.IsSet()
 }
@@ -348,7 +351,7 @@ func (o *Zone) UnsetRefresh() {
 
 // GetExpiry returns the Expiry field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Zone) GetExpiry() int32 {
-	if o == nil || isNil(o.Expiry.Get()) {
+	if o == nil || IsNil(o.Expiry.Get()) {
 		var ret int32
 		return ret
 	}
@@ -360,7 +363,7 @@ func (o *Zone) GetExpiry() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Zone) GetExpiryOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Expiry.Get(), o.Expiry.IsSet()
 }
@@ -401,15 +404,15 @@ func (o *Zone) GetNameservers() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Zone) GetNameserversOk() ([]string, bool) {
-	if o == nil || isNil(o.Nameservers) {
-    return nil, false
+	if o == nil || IsNil(o.Nameservers) {
+		return nil, false
 	}
 	return o.Nameservers, true
 }
 
 // HasNameservers returns a boolean if a field has been set.
 func (o *Zone) HasNameservers() bool {
-	if o != nil && isNil(o.Nameservers) {
+	if o != nil && IsNil(o.Nameservers) {
 		return true
 	}
 
@@ -422,17 +425,25 @@ func (o *Zone) SetNameservers(v []string) {
 }
 
 func (o Zone) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Zone) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Domain) {
+	if !IsNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}
-	if !isNil(o.IsActive) {
+	if !IsNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
 	}
 	if o.Retry.IsSet() {
@@ -453,7 +464,7 @@ func (o Zone) MarshalJSON() ([]byte, error) {
 	if o.Nameservers != nil {
 		toSerialize["nameservers"] = o.Nameservers
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableZone struct {

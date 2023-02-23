@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DnsSecDelegationSigner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DnsSecDelegationSigner{}
+
 // DnsSecDelegationSigner struct for DnsSecDelegationSigner
 type DnsSecDelegationSigner struct {
 	DigestType *DnsSecDelegationSignerDigestType `json:"digest_type,omitempty"`
@@ -38,7 +41,7 @@ func NewDnsSecDelegationSignerWithDefaults() *DnsSecDelegationSigner {
 
 // GetDigestType returns the DigestType field value if set, zero value otherwise.
 func (o *DnsSecDelegationSigner) GetDigestType() DnsSecDelegationSignerDigestType {
-	if o == nil || isNil(o.DigestType) {
+	if o == nil || IsNil(o.DigestType) {
 		var ret DnsSecDelegationSignerDigestType
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *DnsSecDelegationSigner) GetDigestType() DnsSecDelegationSignerDigestTyp
 // GetDigestTypeOk returns a tuple with the DigestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSecDelegationSigner) GetDigestTypeOk() (*DnsSecDelegationSignerDigestType, bool) {
-	if o == nil || isNil(o.DigestType) {
-    return nil, false
+	if o == nil || IsNil(o.DigestType) {
+		return nil, false
 	}
 	return o.DigestType, true
 }
 
 // HasDigestType returns a boolean if a field has been set.
 func (o *DnsSecDelegationSigner) HasDigestType() bool {
-	if o != nil && !isNil(o.DigestType) {
+	if o != nil && !IsNil(o.DigestType) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *DnsSecDelegationSigner) SetDigestType(v DnsSecDelegationSignerDigestTyp
 }
 
 func (o DnsSecDelegationSigner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.DigestType) {
-		toSerialize["digest_type"] = o.DigestType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DnsSecDelegationSigner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DigestType) {
+		toSerialize["digest_type"] = o.DigestType
+	}
+	return toSerialize, nil
 }
 
 type NullableDnsSecDelegationSigner struct {
