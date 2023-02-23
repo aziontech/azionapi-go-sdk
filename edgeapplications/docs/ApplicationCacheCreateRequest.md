@@ -8,10 +8,12 @@ Name | Type | Description | Notes
 **BrowserCacheSettings** | Pointer to **string** |  | [optional] 
 **BrowserCacheSettingsMaximumTtl** | Pointer to **int64** |  | [optional] 
 **CdnCacheSettings** | Pointer to **string** |  | [optional] 
+**AdaptiveDeliveryAction** | Pointer to **string** |  | [optional] 
+**EnableCachingForOptions** | Pointer to **bool** |  | [optional] 
+**EnableQueryStringSort** | Pointer to **bool** |  | [optional] 
 **CdnCacheSettingsMaximumTtl** | Pointer to **int64** |  | [optional] 
 **CacheByQueryString** | Pointer to **string** |  | [optional] 
 **QueryStringFields** | Pointer to **[]string** |  | [optional] 
-**EnableQueryStringSort** | Pointer to **bool** |  | [optional] 
 **CacheByCookies** | Pointer to **string** |  | [optional] 
 **CookieNames** | Pointer to **[]string** |  | [optional] 
 **EnableCachingForPost** | Pointer to **bool** |  | [optional] 
@@ -135,6 +137,81 @@ SetCdnCacheSettings sets CdnCacheSettings field to given value.
 
 HasCdnCacheSettings returns a boolean if a field has been set.
 
+### GetAdaptiveDeliveryAction
+
+`func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryAction() string`
+
+GetAdaptiveDeliveryAction returns the AdaptiveDeliveryAction field if non-nil, zero value otherwise.
+
+### GetAdaptiveDeliveryActionOk
+
+`func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryActionOk() (*string, bool)`
+
+GetAdaptiveDeliveryActionOk returns a tuple with the AdaptiveDeliveryAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdaptiveDeliveryAction
+
+`func (o *ApplicationCacheCreateRequest) SetAdaptiveDeliveryAction(v string)`
+
+SetAdaptiveDeliveryAction sets AdaptiveDeliveryAction field to given value.
+
+### HasAdaptiveDeliveryAction
+
+`func (o *ApplicationCacheCreateRequest) HasAdaptiveDeliveryAction() bool`
+
+HasAdaptiveDeliveryAction returns a boolean if a field has been set.
+
+### GetEnableCachingForOptions
+
+`func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptions() bool`
+
+GetEnableCachingForOptions returns the EnableCachingForOptions field if non-nil, zero value otherwise.
+
+### GetEnableCachingForOptionsOk
+
+`func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptionsOk() (*bool, bool)`
+
+GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableCachingForOptions
+
+`func (o *ApplicationCacheCreateRequest) SetEnableCachingForOptions(v bool)`
+
+SetEnableCachingForOptions sets EnableCachingForOptions field to given value.
+
+### HasEnableCachingForOptions
+
+`func (o *ApplicationCacheCreateRequest) HasEnableCachingForOptions() bool`
+
+HasEnableCachingForOptions returns a boolean if a field has been set.
+
+### GetEnableQueryStringSort
+
+`func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSort() bool`
+
+GetEnableQueryStringSort returns the EnableQueryStringSort field if non-nil, zero value otherwise.
+
+### GetEnableQueryStringSortOk
+
+`func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSortOk() (*bool, bool)`
+
+GetEnableQueryStringSortOk returns a tuple with the EnableQueryStringSort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableQueryStringSort
+
+`func (o *ApplicationCacheCreateRequest) SetEnableQueryStringSort(v bool)`
+
+SetEnableQueryStringSort sets EnableQueryStringSort field to given value.
+
+### HasEnableQueryStringSort
+
+`func (o *ApplicationCacheCreateRequest) HasEnableQueryStringSort() bool`
+
+HasEnableQueryStringSort returns a boolean if a field has been set.
+
 ### GetCdnCacheSettingsMaximumTtl
 
 `func (o *ApplicationCacheCreateRequest) GetCdnCacheSettingsMaximumTtl() int64`
@@ -209,31 +286,6 @@ SetQueryStringFields sets QueryStringFields field to given value.
 `func (o *ApplicationCacheCreateRequest) HasQueryStringFields() bool`
 
 HasQueryStringFields returns a boolean if a field has been set.
-
-### GetEnableQueryStringSort
-
-`func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSort() bool`
-
-GetEnableQueryStringSort returns the EnableQueryStringSort field if non-nil, zero value otherwise.
-
-### GetEnableQueryStringSortOk
-
-`func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSortOk() (*bool, bool)`
-
-GetEnableQueryStringSortOk returns a tuple with the EnableQueryStringSort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableQueryStringSort
-
-`func (o *ApplicationCacheCreateRequest) SetEnableQueryStringSort(v bool)`
-
-SetEnableQueryStringSort sets EnableQueryStringSort field to given value.
-
-### HasEnableQueryStringSort
-
-`func (o *ApplicationCacheCreateRequest) HasEnableQueryStringSort() bool`
-
-HasEnableQueryStringSort returns a boolean if a field has been set.
 
 ### GetCacheByCookies
 

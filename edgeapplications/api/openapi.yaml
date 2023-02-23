@@ -2744,6 +2744,12 @@ components:
           type: integer
         cdn_cache_settings:
           type: string
+        adaptive_delivery_action:
+          type: string
+        enable_caching_for_options:
+          type: boolean
+        enable_query_string_sort:
+          type: boolean
         cdn_cache_settings_maximum_ttl:
           format: int64
           type: integer
@@ -2753,8 +2759,6 @@ components:
           items:
             type: string
           type: array
-        enable_query_string_sort:
-          type: boolean
         cache_by_cookies:
           type: string
         cookie_names:

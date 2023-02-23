@@ -23,10 +23,12 @@ type ApplicationCacheCreateRequest struct {
 	BrowserCacheSettings *string `json:"browser_cache_settings,omitempty"`
 	BrowserCacheSettingsMaximumTtl *int64 `json:"browser_cache_settings_maximum_ttl,omitempty"`
 	CdnCacheSettings *string `json:"cdn_cache_settings,omitempty"`
+	AdaptiveDeliveryAction *string `json:"adaptive_delivery_action,omitempty"`
+	EnableCachingForOptions *bool `json:"enable_caching_for_options,omitempty"`
+	EnableQueryStringSort *bool `json:"enable_query_string_sort,omitempty"`
 	CdnCacheSettingsMaximumTtl *int64 `json:"cdn_cache_settings_maximum_ttl,omitempty"`
 	CacheByQueryString *string `json:"cache_by_query_string,omitempty"`
 	QueryStringFields []string `json:"query_string_fields,omitempty"`
-	EnableQueryStringSort *bool `json:"enable_query_string_sort,omitempty"`
 	CacheByCookies *string `json:"cache_by_cookies,omitempty"`
 	CookieNames []string `json:"cookie_names,omitempty"`
 	EnableCachingForPost *bool `json:"enable_caching_for_post,omitempty"`
@@ -175,6 +177,102 @@ func (o *ApplicationCacheCreateRequest) SetCdnCacheSettings(v string) {
 	o.CdnCacheSettings = &v
 }
 
+// GetAdaptiveDeliveryAction returns the AdaptiveDeliveryAction field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryAction() string {
+	if o == nil || isNil(o.AdaptiveDeliveryAction) {
+		var ret string
+		return ret
+	}
+	return *o.AdaptiveDeliveryAction
+}
+
+// GetAdaptiveDeliveryActionOk returns a tuple with the AdaptiveDeliveryAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryActionOk() (*string, bool) {
+	if o == nil || isNil(o.AdaptiveDeliveryAction) {
+		return nil, false
+	}
+	return o.AdaptiveDeliveryAction, true
+}
+
+// HasAdaptiveDeliveryAction returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasAdaptiveDeliveryAction() bool {
+	if o != nil && !isNil(o.AdaptiveDeliveryAction) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdaptiveDeliveryAction gets a reference to the given string and assigns it to the AdaptiveDeliveryAction field.
+func (o *ApplicationCacheCreateRequest) SetAdaptiveDeliveryAction(v string) {
+	o.AdaptiveDeliveryAction = &v
+}
+
+// GetEnableCachingForOptions returns the EnableCachingForOptions field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptions() bool {
+	if o == nil || isNil(o.EnableCachingForOptions) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableCachingForOptions
+}
+
+// GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptionsOk() (*bool, bool) {
+	if o == nil || isNil(o.EnableCachingForOptions) {
+		return nil, false
+	}
+	return o.EnableCachingForOptions, true
+}
+
+// HasEnableCachingForOptions returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasEnableCachingForOptions() bool {
+	if o != nil && !isNil(o.EnableCachingForOptions) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableCachingForOptions gets a reference to the given bool and assigns it to the EnableCachingForOptions field.
+func (o *ApplicationCacheCreateRequest) SetEnableCachingForOptions(v bool) {
+	o.EnableCachingForOptions = &v
+}
+
+// GetEnableQueryStringSort returns the EnableQueryStringSort field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSort() bool {
+	if o == nil || isNil(o.EnableQueryStringSort) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableQueryStringSort
+}
+
+// GetEnableQueryStringSortOk returns a tuple with the EnableQueryStringSort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSortOk() (*bool, bool) {
+	if o == nil || isNil(o.EnableQueryStringSort) {
+		return nil, false
+	}
+	return o.EnableQueryStringSort, true
+}
+
+// HasEnableQueryStringSort returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasEnableQueryStringSort() bool {
+	if o != nil && !isNil(o.EnableQueryStringSort) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableQueryStringSort gets a reference to the given bool and assigns it to the EnableQueryStringSort field.
+func (o *ApplicationCacheCreateRequest) SetEnableQueryStringSort(v bool) {
+	o.EnableQueryStringSort = &v
+}
+
 // GetCdnCacheSettingsMaximumTtl returns the CdnCacheSettingsMaximumTtl field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetCdnCacheSettingsMaximumTtl() int64 {
 	if o == nil || isNil(o.CdnCacheSettingsMaximumTtl) {
@@ -269,38 +367,6 @@ func (o *ApplicationCacheCreateRequest) HasQueryStringFields() bool {
 // SetQueryStringFields gets a reference to the given []string and assigns it to the QueryStringFields field.
 func (o *ApplicationCacheCreateRequest) SetQueryStringFields(v []string) {
 	o.QueryStringFields = v
-}
-
-// GetEnableQueryStringSort returns the EnableQueryStringSort field value if set, zero value otherwise.
-func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSort() bool {
-	if o == nil || isNil(o.EnableQueryStringSort) {
-		var ret bool
-		return ret
-	}
-	return *o.EnableQueryStringSort
-}
-
-// GetEnableQueryStringSortOk returns a tuple with the EnableQueryStringSort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSortOk() (*bool, bool) {
-	if o == nil || isNil(o.EnableQueryStringSort) {
-		return nil, false
-	}
-	return o.EnableQueryStringSort, true
-}
-
-// HasEnableQueryStringSort returns a boolean if a field has been set.
-func (o *ApplicationCacheCreateRequest) HasEnableQueryStringSort() bool {
-	if o != nil && !isNil(o.EnableQueryStringSort) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableQueryStringSort gets a reference to the given bool and assigns it to the EnableQueryStringSort field.
-func (o *ApplicationCacheCreateRequest) SetEnableQueryStringSort(v bool) {
-	o.EnableQueryStringSort = &v
 }
 
 // GetCacheByCookies returns the CacheByCookies field value if set, zero value otherwise.
@@ -579,6 +645,15 @@ func (o ApplicationCacheCreateRequest) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.CdnCacheSettings) {
 		toSerialize["cdn_cache_settings"] = o.CdnCacheSettings
 	}
+	if !isNil(o.AdaptiveDeliveryAction) {
+		toSerialize["adaptive_delivery_action"] = o.AdaptiveDeliveryAction
+	}
+	if !isNil(o.EnableCachingForOptions) {
+		toSerialize["enable_caching_for_options"] = o.EnableCachingForOptions
+	}
+	if !isNil(o.EnableQueryStringSort) {
+		toSerialize["enable_query_string_sort"] = o.EnableQueryStringSort
+	}
 	if !isNil(o.CdnCacheSettingsMaximumTtl) {
 		toSerialize["cdn_cache_settings_maximum_ttl"] = o.CdnCacheSettingsMaximumTtl
 	}
@@ -587,9 +662,6 @@ func (o ApplicationCacheCreateRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.QueryStringFields) {
 		toSerialize["query_string_fields"] = o.QueryStringFields
-	}
-	if !isNil(o.EnableQueryStringSort) {
-		toSerialize["enable_query_string_sort"] = o.EnableQueryStringSort
 	}
 	if !isNil(o.CacheByCookies) {
 		toSerialize["cache_by_cookies"] = o.CacheByCookies
