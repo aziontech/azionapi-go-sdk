@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DnsSec type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DnsSec{}
+
 // DnsSec struct for DnsSec
 type DnsSec struct {
 	IsEnabled *bool `json:"is_enabled,omitempty"`
@@ -43,7 +46,7 @@ func NewDnsSecWithDefaults() *DnsSec {
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
 func (o *DnsSec) GetIsEnabled() bool {
-	if o == nil || isNil(o.IsEnabled) {
+	if o == nil || IsNil(o.IsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *DnsSec) GetIsEnabled() bool {
 // GetIsEnabledOk returns a tuple with the IsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSec) GetIsEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.IsEnabled) {
-    return nil, false
+	if o == nil || IsNil(o.IsEnabled) {
+		return nil, false
 	}
 	return o.IsEnabled, true
 }
 
 // HasIsEnabled returns a boolean if a field has been set.
 func (o *DnsSec) HasIsEnabled() bool {
-	if o != nil && !isNil(o.IsEnabled) {
+	if o != nil && !IsNil(o.IsEnabled) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *DnsSec) SetIsEnabled(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *DnsSec) GetStatus() string {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *DnsSec) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSec) GetStatusOk() (*string, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *DnsSec) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *DnsSec) SetStatus(v string) {
 
 // GetDelegationSigner returns the DelegationSigner field value if set, zero value otherwise.
 func (o *DnsSec) GetDelegationSigner() DnsSecDelegationSigner {
-	if o == nil || isNil(o.DelegationSigner) {
+	if o == nil || IsNil(o.DelegationSigner) {
 		var ret DnsSecDelegationSigner
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *DnsSec) GetDelegationSigner() DnsSecDelegationSigner {
 // GetDelegationSignerOk returns a tuple with the DelegationSigner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSec) GetDelegationSignerOk() (*DnsSecDelegationSigner, bool) {
-	if o == nil || isNil(o.DelegationSigner) {
-    return nil, false
+	if o == nil || IsNil(o.DelegationSigner) {
+		return nil, false
 	}
 	return o.DelegationSigner, true
 }
 
 // HasDelegationSigner returns a boolean if a field has been set.
 func (o *DnsSec) HasDelegationSigner() bool {
-	if o != nil && !isNil(o.DelegationSigner) {
+	if o != nil && !IsNil(o.DelegationSigner) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *DnsSec) SetDelegationSigner(v DnsSecDelegationSigner) {
 
 // GetAlgorithmType returns the AlgorithmType field value if set, zero value otherwise.
 func (o *DnsSec) GetAlgorithmType() DnsSecDelegationSignerDigestType {
-	if o == nil || isNil(o.AlgorithmType) {
+	if o == nil || IsNil(o.AlgorithmType) {
 		var ret DnsSecDelegationSignerDigestType
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *DnsSec) GetAlgorithmType() DnsSecDelegationSignerDigestType {
 // GetAlgorithmTypeOk returns a tuple with the AlgorithmType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSec) GetAlgorithmTypeOk() (*DnsSecDelegationSignerDigestType, bool) {
-	if o == nil || isNil(o.AlgorithmType) {
-    return nil, false
+	if o == nil || IsNil(o.AlgorithmType) {
+		return nil, false
 	}
 	return o.AlgorithmType, true
 }
 
 // HasAlgorithmType returns a boolean if a field has been set.
 func (o *DnsSec) HasAlgorithmType() bool {
-	if o != nil && !isNil(o.AlgorithmType) {
+	if o != nil && !IsNil(o.AlgorithmType) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *DnsSec) SetAlgorithmType(v DnsSecDelegationSignerDigestType) {
 
 // GetDigest returns the Digest field value if set, zero value otherwise.
 func (o *DnsSec) GetDigest() string {
-	if o == nil || isNil(o.Digest) {
+	if o == nil || IsNil(o.Digest) {
 		var ret string
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *DnsSec) GetDigest() string {
 // GetDigestOk returns a tuple with the Digest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSec) GetDigestOk() (*string, bool) {
-	if o == nil || isNil(o.Digest) {
-    return nil, false
+	if o == nil || IsNil(o.Digest) {
+		return nil, false
 	}
 	return o.Digest, true
 }
 
 // HasDigest returns a boolean if a field has been set.
 func (o *DnsSec) HasDigest() bool {
-	if o != nil && !isNil(o.Digest) {
+	if o != nil && !IsNil(o.Digest) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *DnsSec) SetDigest(v string) {
 
 // GetKeyTag returns the KeyTag field value if set, zero value otherwise.
 func (o *DnsSec) GetKeyTag() int32 {
-	if o == nil || isNil(o.KeyTag) {
+	if o == nil || IsNil(o.KeyTag) {
 		var ret int32
 		return ret
 	}
@@ -213,15 +216,15 @@ func (o *DnsSec) GetKeyTag() int32 {
 // GetKeyTagOk returns a tuple with the KeyTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSec) GetKeyTagOk() (*int32, bool) {
-	if o == nil || isNil(o.KeyTag) {
-    return nil, false
+	if o == nil || IsNil(o.KeyTag) {
+		return nil, false
 	}
 	return o.KeyTag, true
 }
 
 // HasKeyTag returns a boolean if a field has been set.
 func (o *DnsSec) HasKeyTag() bool {
-	if o != nil && !isNil(o.KeyTag) {
+	if o != nil && !IsNil(o.KeyTag) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *DnsSec) SetKeyTag(v int32) {
 }
 
 func (o DnsSec) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.IsEnabled) {
-		toSerialize["is_enabled"] = o.IsEnabled
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.DelegationSigner) {
-		toSerialize["delegation_signer"] = o.DelegationSigner
-	}
-	if !isNil(o.AlgorithmType) {
-		toSerialize["algorithm_type"] = o.AlgorithmType
-	}
-	if !isNil(o.Digest) {
-		toSerialize["digest"] = o.Digest
-	}
-	if !isNil(o.KeyTag) {
-		toSerialize["key_tag"] = o.KeyTag
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DnsSec) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsEnabled) {
+		toSerialize["is_enabled"] = o.IsEnabled
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.DelegationSigner) {
+		toSerialize["delegation_signer"] = o.DelegationSigner
+	}
+	if !IsNil(o.AlgorithmType) {
+		toSerialize["algorithm_type"] = o.AlgorithmType
+	}
+	if !IsNil(o.Digest) {
+		toSerialize["digest"] = o.Digest
+	}
+	if !IsNil(o.KeyTag) {
+		toSerialize["key_tag"] = o.KeyTag
+	}
+	return toSerialize, nil
 }
 
 type NullableDnsSec struct {

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ZoneId** | Pointer to **int32** |  | [optional] 
-**Domain** | Pointer to **string** |  | [optional] 
+**ZoneDomain** | Pointer to **string** |  | [optional] 
 **Records** | Pointer to [**[]Record**](Record.md) | Zone records collection | [optional] 
 
 ## Methods
@@ -52,30 +52,30 @@ SetZoneId sets ZoneId field to given value.
 
 HasZoneId returns a boolean if a field has been set.
 
-### GetDomain
+### GetZoneDomain
 
-`func (o *GetRecordsResponseResults) GetDomain() string`
+`func (o *GetRecordsResponseResults) GetZoneDomain() string`
 
-GetDomain returns the Domain field if non-nil, zero value otherwise.
+GetZoneDomain returns the ZoneDomain field if non-nil, zero value otherwise.
 
-### GetDomainOk
+### GetZoneDomainOk
 
-`func (o *GetRecordsResponseResults) GetDomainOk() (*string, bool)`
+`func (o *GetRecordsResponseResults) GetZoneDomainOk() (*string, bool)`
 
-GetDomainOk returns a tuple with the Domain field if it's non-nil, zero value otherwise
+GetZoneDomainOk returns a tuple with the ZoneDomain field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDomain
+### SetZoneDomain
 
-`func (o *GetRecordsResponseResults) SetDomain(v string)`
+`func (o *GetRecordsResponseResults) SetZoneDomain(v string)`
 
-SetDomain sets Domain field to given value.
+SetZoneDomain sets ZoneDomain field to given value.
 
-### HasDomain
+### HasZoneDomain
 
-`func (o *GetRecordsResponseResults) HasDomain() bool`
+`func (o *GetRecordsResponseResults) HasZoneDomain() bool`
 
-HasDomain returns a boolean if a field has been set.
+HasZoneDomain returns a boolean if a field has been set.
 
 ### GetRecords
 

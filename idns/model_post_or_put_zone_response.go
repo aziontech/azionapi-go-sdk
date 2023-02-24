@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PostOrPutZoneResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PostOrPutZoneResponse{}
+
 // PostOrPutZoneResponse Object returned by create or update zone
 type PostOrPutZoneResponse struct {
 	// The schema version
@@ -41,7 +44,7 @@ func NewPostOrPutZoneResponseWithDefaults() *PostOrPutZoneResponse {
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *PostOrPutZoneResponse) GetSchemaVersion() int32 {
-	if o == nil || isNil(o.SchemaVersion) {
+	if o == nil || IsNil(o.SchemaVersion) {
 		var ret int32
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *PostOrPutZoneResponse) GetSchemaVersion() int32 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostOrPutZoneResponse) GetSchemaVersionOk() (*int32, bool) {
-	if o == nil || isNil(o.SchemaVersion) {
-    return nil, false
+	if o == nil || IsNil(o.SchemaVersion) {
+		return nil, false
 	}
 	return o.SchemaVersion, true
 }
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *PostOrPutZoneResponse) HasSchemaVersion() bool {
-	if o != nil && !isNil(o.SchemaVersion) {
+	if o != nil && !IsNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PostOrPutZoneResponse) SetSchemaVersion(v int32) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *PostOrPutZoneResponse) GetResults() []Zone {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		var ret []Zone
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *PostOrPutZoneResponse) GetResults() []Zone {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostOrPutZoneResponse) GetResultsOk() ([]Zone, bool) {
-	if o == nil || isNil(o.Results) {
-    return nil, false
+	if o == nil || IsNil(o.Results) {
+		return nil, false
 	}
 	return o.Results, true
 }
 
 // HasResults returns a boolean if a field has been set.
 func (o *PostOrPutZoneResponse) HasResults() bool {
-	if o != nil && !isNil(o.Results) {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *PostOrPutZoneResponse) SetResults(v []Zone) {
 }
 
 func (o PostOrPutZoneResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.SchemaVersion) {
-		toSerialize["schema_version"] = o.SchemaVersion
-	}
-	if !isNil(o.Results) {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PostOrPutZoneResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SchemaVersion) {
+		toSerialize["schema_version"] = o.SchemaVersion
+	}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullablePostOrPutZoneResponse struct {

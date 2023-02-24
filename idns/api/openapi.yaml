@@ -609,6 +609,7 @@ components:
           previous: previous
         total_pages: 1
         results:
+          zone_domain: zone_domain
           zone_id: 5
           records:
           - record_id: 5
@@ -629,7 +630,6 @@ components:
             ttl: 2
             record_type: record_type
             policy: policy
-          domain: domain
       properties:
         schema_version:
           description: The schema version
@@ -748,6 +748,7 @@ components:
       type: object
     GetRecordsResponse_results:
       example:
+        zone_domain: zone_domain
         zone_id: 5
         records:
         - record_id: 5
@@ -768,11 +769,10 @@ components:
           ttl: 2
           record_type: record_type
           policy: policy
-        domain: domain
       properties:
         zone_id:
           type: integer
-        domain:
+        zone_domain:
           type: string
         records:
           description: Zone records collection

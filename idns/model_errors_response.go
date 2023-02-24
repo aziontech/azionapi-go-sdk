@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ErrorsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ErrorsResponse{}
+
 // ErrorsResponse struct for ErrorsResponse
 type ErrorsResponse struct {
 	Errors []string `json:"errors,omitempty"`
@@ -38,7 +41,7 @@ func NewErrorsResponseWithDefaults() *ErrorsResponse {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *ErrorsResponse) GetErrors() []string {
-	if o == nil || isNil(o.Errors) {
+	if o == nil || IsNil(o.Errors) {
 		var ret []string
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *ErrorsResponse) GetErrors() []string {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorsResponse) GetErrorsOk() ([]string, bool) {
-	if o == nil || isNil(o.Errors) {
-    return nil, false
+	if o == nil || IsNil(o.Errors) {
+		return nil, false
 	}
 	return o.Errors, true
 }
 
 // HasErrors returns a boolean if a field has been set.
 func (o *ErrorsResponse) HasErrors() bool {
-	if o != nil && !isNil(o.Errors) {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ErrorsResponse) SetErrors(v []string) {
 }
 
 func (o ErrorsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Errors) {
-		toSerialize["errors"] = o.Errors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ErrorsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Errors) {
+		toSerialize["errors"] = o.Errors
+	}
+	return toSerialize, nil
 }
 
 type NullableErrorsResponse struct {
