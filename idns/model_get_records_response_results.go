@@ -44,7 +44,7 @@ func NewGetRecordsResponseResultsWithDefaults() *GetRecordsResponseResults {
 
 // GetZoneId returns the ZoneId field value if set, zero value otherwise.
 func (o *GetRecordsResponseResults) GetZoneId() int32 {
-	if o == nil || IsNil(o.ZoneId) {
+	if o == nil || isNil(o.ZoneId) {
 		var ret int32
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *GetRecordsResponseResults) GetZoneId() int32 {
 // GetZoneIdOk returns a tuple with the ZoneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetRecordsResponseResults) GetZoneIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ZoneId) {
+	if o == nil || isNil(o.ZoneId) {
 		return nil, false
 	}
 	return o.ZoneId, true
@@ -62,7 +62,7 @@ func (o *GetRecordsResponseResults) GetZoneIdOk() (*int32, bool) {
 
 // HasZoneId returns a boolean if a field has been set.
 func (o *GetRecordsResponseResults) HasZoneId() bool {
-	if o != nil && !IsNil(o.ZoneId) {
+	if o != nil && !isNil(o.ZoneId) {
 		return true
 	}
 
@@ -76,7 +76,7 @@ func (o *GetRecordsResponseResults) SetZoneId(v int32) {
 
 // GetZoneDomain returns the ZoneDomain field value if set, zero value otherwise.
 func (o *GetRecordsResponseResults) GetZoneDomain() string {
-	if o == nil || IsNil(o.ZoneDomain) {
+	if o == nil || isNil(o.ZoneDomain) {
 		var ret string
 		return ret
 	}
@@ -86,7 +86,7 @@ func (o *GetRecordsResponseResults) GetZoneDomain() string {
 // GetZoneDomainOk returns a tuple with the ZoneDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetRecordsResponseResults) GetZoneDomainOk() (*string, bool) {
-	if o == nil || IsNil(o.ZoneDomain) {
+	if o == nil || isNil(o.ZoneDomain) {
 		return nil, false
 	}
 	return o.ZoneDomain, true
@@ -94,7 +94,7 @@ func (o *GetRecordsResponseResults) GetZoneDomainOk() (*string, bool) {
 
 // HasZoneDomain returns a boolean if a field has been set.
 func (o *GetRecordsResponseResults) HasZoneDomain() bool {
-	if o != nil && !IsNil(o.ZoneDomain) {
+	if o != nil && !isNil(o.ZoneDomain) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *GetRecordsResponseResults) SetZoneDomain(v string) {
 
 // GetRecords returns the Records field value if set, zero value otherwise.
 func (o *GetRecordsResponseResults) GetRecords() []Record {
-	if o == nil || IsNil(o.Records) {
+	if o == nil || isNil(o.Records) {
 		var ret []Record
 		return ret
 	}
@@ -118,7 +118,7 @@ func (o *GetRecordsResponseResults) GetRecords() []Record {
 // GetRecordsOk returns a tuple with the Records field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetRecordsResponseResults) GetRecordsOk() ([]Record, bool) {
-	if o == nil || IsNil(o.Records) {
+	if o == nil || isNil(o.Records) {
 		return nil, false
 	}
 	return o.Records, true
@@ -126,7 +126,7 @@ func (o *GetRecordsResponseResults) GetRecordsOk() ([]Record, bool) {
 
 // HasRecords returns a boolean if a field has been set.
 func (o *GetRecordsResponseResults) HasRecords() bool {
-	if o != nil && !IsNil(o.Records) {
+	if o != nil && !isNil(o.Records) {
 		return true
 	}
 
@@ -148,13 +148,13 @@ func (o GetRecordsResponseResults) MarshalJSON() ([]byte, error) {
 
 func (o GetRecordsResponseResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ZoneId) {
+	if !isNil(o.ZoneId) {
 		toSerialize["zone_id"] = o.ZoneId
 	}
-	if !IsNil(o.ZoneDomain) {
+	if !isNil(o.ZoneDomain) {
 		toSerialize["zone_domain"] = o.ZoneDomain
 	}
-	if !IsNil(o.Records) {
+	if !isNil(o.Records) {
 		toSerialize["records"] = o.Records
 	}
 	return toSerialize, nil

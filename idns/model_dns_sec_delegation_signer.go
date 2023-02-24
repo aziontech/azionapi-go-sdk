@@ -41,7 +41,7 @@ func NewDnsSecDelegationSignerWithDefaults() *DnsSecDelegationSigner {
 
 // GetDigestType returns the DigestType field value if set, zero value otherwise.
 func (o *DnsSecDelegationSigner) GetDigestType() DnsSecDelegationSignerDigestType {
-	if o == nil || IsNil(o.DigestType) {
+	if o == nil || isNil(o.DigestType) {
 		var ret DnsSecDelegationSignerDigestType
 		return ret
 	}
@@ -51,7 +51,7 @@ func (o *DnsSecDelegationSigner) GetDigestType() DnsSecDelegationSignerDigestTyp
 // GetDigestTypeOk returns a tuple with the DigestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsSecDelegationSigner) GetDigestTypeOk() (*DnsSecDelegationSignerDigestType, bool) {
-	if o == nil || IsNil(o.DigestType) {
+	if o == nil || isNil(o.DigestType) {
 		return nil, false
 	}
 	return o.DigestType, true
@@ -59,7 +59,7 @@ func (o *DnsSecDelegationSigner) GetDigestTypeOk() (*DnsSecDelegationSignerDiges
 
 // HasDigestType returns a boolean if a field has been set.
 func (o *DnsSecDelegationSigner) HasDigestType() bool {
-	if o != nil && !IsNil(o.DigestType) {
+	if o != nil && !isNil(o.DigestType) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o DnsSecDelegationSigner) MarshalJSON() ([]byte, error) {
 
 func (o DnsSecDelegationSigner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DigestType) {
+	if !isNil(o.DigestType) {
 		toSerialize["digest_type"] = o.DigestType
 	}
 	return toSerialize, nil

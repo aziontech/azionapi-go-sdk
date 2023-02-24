@@ -48,7 +48,7 @@ func NewGetRecordsResponseWithDefaults() *GetRecordsResponse {
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *GetRecordsResponse) GetSchemaVersion() int32 {
-	if o == nil || IsNil(o.SchemaVersion) {
+	if o == nil || isNil(o.SchemaVersion) {
 		var ret int32
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *GetRecordsResponse) GetSchemaVersion() int32 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetRecordsResponse) GetSchemaVersionOk() (*int32, bool) {
-	if o == nil || IsNil(o.SchemaVersion) {
+	if o == nil || isNil(o.SchemaVersion) {
 		return nil, false
 	}
 	return o.SchemaVersion, true
@@ -66,7 +66,7 @@ func (o *GetRecordsResponse) GetSchemaVersionOk() (*int32, bool) {
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *GetRecordsResponse) HasSchemaVersion() bool {
-	if o != nil && !IsNil(o.SchemaVersion) {
+	if o != nil && !isNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *GetRecordsResponse) SetSchemaVersion(v int32) {
 
 // GetCount returns the Count field value if set, zero value otherwise.
 func (o *GetRecordsResponse) GetCount() int32 {
-	if o == nil || IsNil(o.Count) {
+	if o == nil || isNil(o.Count) {
 		var ret int32
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *GetRecordsResponse) GetCount() int32 {
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetRecordsResponse) GetCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.Count) {
+	if o == nil || isNil(o.Count) {
 		return nil, false
 	}
 	return o.Count, true
@@ -98,7 +98,7 @@ func (o *GetRecordsResponse) GetCountOk() (*int32, bool) {
 
 // HasCount returns a boolean if a field has been set.
 func (o *GetRecordsResponse) HasCount() bool {
-	if o != nil && !IsNil(o.Count) {
+	if o != nil && !isNil(o.Count) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *GetRecordsResponse) SetCount(v int32) {
 
 // GetTotalPages returns the TotalPages field value if set, zero value otherwise.
 func (o *GetRecordsResponse) GetTotalPages() int32 {
-	if o == nil || IsNil(o.TotalPages) {
+	if o == nil || isNil(o.TotalPages) {
 		var ret int32
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *GetRecordsResponse) GetTotalPages() int32 {
 // GetTotalPagesOk returns a tuple with the TotalPages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetRecordsResponse) GetTotalPagesOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalPages) {
+	if o == nil || isNil(o.TotalPages) {
 		return nil, false
 	}
 	return o.TotalPages, true
@@ -130,7 +130,7 @@ func (o *GetRecordsResponse) GetTotalPagesOk() (*int32, bool) {
 
 // HasTotalPages returns a boolean if a field has been set.
 func (o *GetRecordsResponse) HasTotalPages() bool {
-	if o != nil && !IsNil(o.TotalPages) {
+	if o != nil && !isNil(o.TotalPages) {
 		return true
 	}
 
@@ -144,7 +144,7 @@ func (o *GetRecordsResponse) SetTotalPages(v int32) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *GetRecordsResponse) GetLinks() GetZonesResponseLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret GetZonesResponseLinks
 		return ret
 	}
@@ -154,7 +154,7 @@ func (o *GetRecordsResponse) GetLinks() GetZonesResponseLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetRecordsResponse) GetLinksOk() (*GetZonesResponseLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -162,7 +162,7 @@ func (o *GetRecordsResponse) GetLinksOk() (*GetZonesResponseLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *GetRecordsResponse) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -176,7 +176,7 @@ func (o *GetRecordsResponse) SetLinks(v GetZonesResponseLinks) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *GetRecordsResponse) GetResults() GetRecordsResponseResults {
-	if o == nil || IsNil(o.Results) {
+	if o == nil || isNil(o.Results) {
 		var ret GetRecordsResponseResults
 		return ret
 	}
@@ -186,7 +186,7 @@ func (o *GetRecordsResponse) GetResults() GetRecordsResponseResults {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetRecordsResponse) GetResultsOk() (*GetRecordsResponseResults, bool) {
-	if o == nil || IsNil(o.Results) {
+	if o == nil || isNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -194,7 +194,7 @@ func (o *GetRecordsResponse) GetResultsOk() (*GetRecordsResponseResults, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *GetRecordsResponse) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
+	if o != nil && !isNil(o.Results) {
 		return true
 	}
 
@@ -216,19 +216,19 @@ func (o GetRecordsResponse) MarshalJSON() ([]byte, error) {
 
 func (o GetRecordsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SchemaVersion) {
+	if !isNil(o.SchemaVersion) {
 		toSerialize["schema_version"] = o.SchemaVersion
 	}
-	if !IsNil(o.Count) {
+	if !isNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
-	if !IsNil(o.TotalPages) {
+	if !isNil(o.TotalPages) {
 		toSerialize["total_pages"] = o.TotalPages
 	}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["links"] = o.Links
 	}
-	if !IsNil(o.Results) {
+	if !isNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
 	return toSerialize, nil
