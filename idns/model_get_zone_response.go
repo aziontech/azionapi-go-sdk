@@ -43,7 +43,7 @@ func NewGetZoneResponseWithDefaults() *GetZoneResponse {
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *GetZoneResponse) GetSchemaVersion() int32 {
-	if o == nil || IsNil(o.SchemaVersion) {
+	if o == nil || isNil(o.SchemaVersion) {
 		var ret int32
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *GetZoneResponse) GetSchemaVersion() int32 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetZoneResponse) GetSchemaVersionOk() (*int32, bool) {
-	if o == nil || IsNil(o.SchemaVersion) {
+	if o == nil || isNil(o.SchemaVersion) {
 		return nil, false
 	}
 	return o.SchemaVersion, true
@@ -61,7 +61,7 @@ func (o *GetZoneResponse) GetSchemaVersionOk() (*int32, bool) {
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *GetZoneResponse) HasSchemaVersion() bool {
-	if o != nil && !IsNil(o.SchemaVersion) {
+	if o != nil && !isNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *GetZoneResponse) SetSchemaVersion(v int32) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *GetZoneResponse) GetResults() Zone {
-	if o == nil || IsNil(o.Results) {
+	if o == nil || isNil(o.Results) {
 		var ret Zone
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *GetZoneResponse) GetResults() Zone {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetZoneResponse) GetResultsOk() (*Zone, bool) {
-	if o == nil || IsNil(o.Results) {
+	if o == nil || isNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -93,7 +93,7 @@ func (o *GetZoneResponse) GetResultsOk() (*Zone, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *GetZoneResponse) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
+	if o != nil && !isNil(o.Results) {
 		return true
 	}
 
@@ -115,10 +115,10 @@ func (o GetZoneResponse) MarshalJSON() ([]byte, error) {
 
 func (o GetZoneResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SchemaVersion) {
+	if !isNil(o.SchemaVersion) {
 		toSerialize["schema_version"] = o.SchemaVersion
 	}
-	if !IsNil(o.Results) {
+	if !isNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
 	return toSerialize, nil

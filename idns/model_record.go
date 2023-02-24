@@ -47,7 +47,7 @@ func NewRecordWithDefaults() *Record {
 
 // GetRecordId returns the RecordId field value if set, zero value otherwise.
 func (o *Record) GetRecordId() int32 {
-	if o == nil || IsNil(o.RecordId) {
+	if o == nil || isNil(o.RecordId) {
 		var ret int32
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *Record) GetRecordId() int32 {
 // GetRecordIdOk returns a tuple with the RecordId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetRecordIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.RecordId) {
+	if o == nil || isNil(o.RecordId) {
 		return nil, false
 	}
 	return o.RecordId, true
@@ -65,7 +65,7 @@ func (o *Record) GetRecordIdOk() (*int32, bool) {
 
 // HasRecordId returns a boolean if a field has been set.
 func (o *Record) HasRecordId() bool {
-	if o != nil && !IsNil(o.RecordId) {
+	if o != nil && !isNil(o.RecordId) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *Record) SetRecordId(v int32) {
 
 // GetEntry returns the Entry field value if set, zero value otherwise.
 func (o *Record) GetEntry() string {
-	if o == nil || IsNil(o.Entry) {
+	if o == nil || isNil(o.Entry) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *Record) GetEntry() string {
 // GetEntryOk returns a tuple with the Entry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetEntryOk() (*string, bool) {
-	if o == nil || IsNil(o.Entry) {
+	if o == nil || isNil(o.Entry) {
 		return nil, false
 	}
 	return o.Entry, true
@@ -97,7 +97,7 @@ func (o *Record) GetEntryOk() (*string, bool) {
 
 // HasEntry returns a boolean if a field has been set.
 func (o *Record) HasEntry() bool {
-	if o != nil && !IsNil(o.Entry) {
+	if o != nil && !isNil(o.Entry) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *Record) SetEntry(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Record) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *Record) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || isNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -129,7 +129,7 @@ func (o *Record) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Record) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -143,7 +143,7 @@ func (o *Record) SetDescription(v string) {
 
 // GetAnswersList returns the AnswersList field value if set, zero value otherwise.
 func (o *Record) GetAnswersList() []string {
-	if o == nil || IsNil(o.AnswersList) {
+	if o == nil || isNil(o.AnswersList) {
 		var ret []string
 		return ret
 	}
@@ -153,7 +153,7 @@ func (o *Record) GetAnswersList() []string {
 // GetAnswersListOk returns a tuple with the AnswersList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetAnswersListOk() ([]string, bool) {
-	if o == nil || IsNil(o.AnswersList) {
+	if o == nil || isNil(o.AnswersList) {
 		return nil, false
 	}
 	return o.AnswersList, true
@@ -161,7 +161,7 @@ func (o *Record) GetAnswersListOk() ([]string, bool) {
 
 // HasAnswersList returns a boolean if a field has been set.
 func (o *Record) HasAnswersList() bool {
-	if o != nil && !IsNil(o.AnswersList) {
+	if o != nil && !isNil(o.AnswersList) {
 		return true
 	}
 
@@ -175,7 +175,7 @@ func (o *Record) SetAnswersList(v []string) {
 
 // GetPolicy returns the Policy field value if set, zero value otherwise.
 func (o *Record) GetPolicy() string {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil || isNil(o.Policy) {
 		var ret string
 		return ret
 	}
@@ -185,7 +185,7 @@ func (o *Record) GetPolicy() string {
 // GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetPolicyOk() (*string, bool) {
-	if o == nil || IsNil(o.Policy) {
+	if o == nil || isNil(o.Policy) {
 		return nil, false
 	}
 	return o.Policy, true
@@ -193,7 +193,7 @@ func (o *Record) GetPolicyOk() (*string, bool) {
 
 // HasPolicy returns a boolean if a field has been set.
 func (o *Record) HasPolicy() bool {
-	if o != nil && !IsNil(o.Policy) {
+	if o != nil && !isNil(o.Policy) {
 		return true
 	}
 
@@ -207,7 +207,7 @@ func (o *Record) SetPolicy(v string) {
 
 // GetRecordType returns the RecordType field value if set, zero value otherwise.
 func (o *Record) GetRecordType() string {
-	if o == nil || IsNil(o.RecordType) {
+	if o == nil || isNil(o.RecordType) {
 		var ret string
 		return ret
 	}
@@ -217,7 +217,7 @@ func (o *Record) GetRecordType() string {
 // GetRecordTypeOk returns a tuple with the RecordType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetRecordTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.RecordType) {
+	if o == nil || isNil(o.RecordType) {
 		return nil, false
 	}
 	return o.RecordType, true
@@ -225,7 +225,7 @@ func (o *Record) GetRecordTypeOk() (*string, bool) {
 
 // HasRecordType returns a boolean if a field has been set.
 func (o *Record) HasRecordType() bool {
-	if o != nil && !IsNil(o.RecordType) {
+	if o != nil && !isNil(o.RecordType) {
 		return true
 	}
 
@@ -239,7 +239,7 @@ func (o *Record) SetRecordType(v string) {
 
 // GetTtl returns the Ttl field value if set, zero value otherwise.
 func (o *Record) GetTtl() int32 {
-	if o == nil || IsNil(o.Ttl) {
+	if o == nil || isNil(o.Ttl) {
 		var ret int32
 		return ret
 	}
@@ -249,7 +249,7 @@ func (o *Record) GetTtl() int32 {
 // GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Record) GetTtlOk() (*int32, bool) {
-	if o == nil || IsNil(o.Ttl) {
+	if o == nil || isNil(o.Ttl) {
 		return nil, false
 	}
 	return o.Ttl, true
@@ -257,7 +257,7 @@ func (o *Record) GetTtlOk() (*int32, bool) {
 
 // HasTtl returns a boolean if a field has been set.
 func (o *Record) HasTtl() bool {
-	if o != nil && !IsNil(o.Ttl) {
+	if o != nil && !isNil(o.Ttl) {
 		return true
 	}
 
@@ -279,25 +279,25 @@ func (o Record) MarshalJSON() ([]byte, error) {
 
 func (o Record) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RecordId) {
+	if !isNil(o.RecordId) {
 		toSerialize["record_id"] = o.RecordId
 	}
-	if !IsNil(o.Entry) {
+	if !isNil(o.Entry) {
 		toSerialize["entry"] = o.Entry
 	}
-	if !IsNil(o.Description) {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.AnswersList) {
+	if !isNil(o.AnswersList) {
 		toSerialize["answers_list"] = o.AnswersList
 	}
-	if !IsNil(o.Policy) {
+	if !isNil(o.Policy) {
 		toSerialize["policy"] = o.Policy
 	}
-	if !IsNil(o.RecordType) {
+	if !isNil(o.RecordType) {
 		toSerialize["record_type"] = o.RecordType
 	}
-	if !IsNil(o.Ttl) {
+	if !isNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl
 	}
 	return toSerialize, nil
