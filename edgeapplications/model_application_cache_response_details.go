@@ -33,6 +33,7 @@ type ApplicationCacheResponseDetails struct {
 	AdaptiveDeliveryAction *string `json:"adaptive_delivery_action,omitempty"`
 	DeviceGroup []string `json:"device_group,omitempty"`
 	EnableCachingForPost bool `json:"enable_caching_for_post"`
+	EnableCachingForOptions *bool `json:"enable_caching_for_options,omitempty"`
 	L2CachingEnabled bool `json:"l2_caching_enabled"`
 }
 
@@ -422,6 +423,38 @@ func (o *ApplicationCacheResponseDetails) SetEnableCachingForPost(v bool) {
 	o.EnableCachingForPost = v
 }
 
+// GetEnableCachingForOptions returns the EnableCachingForOptions field value if set, zero value otherwise.
+func (o *ApplicationCacheResponseDetails) GetEnableCachingForOptions() bool {
+	if o == nil || isNil(o.EnableCachingForOptions) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableCachingForOptions
+}
+
+// GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResponseDetails) GetEnableCachingForOptionsOk() (*bool, bool) {
+	if o == nil || isNil(o.EnableCachingForOptions) {
+		return nil, false
+	}
+	return o.EnableCachingForOptions, true
+}
+
+// HasEnableCachingForOptions returns a boolean if a field has been set.
+func (o *ApplicationCacheResponseDetails) HasEnableCachingForOptions() bool {
+	if o != nil && !isNil(o.EnableCachingForOptions) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableCachingForOptions gets a reference to the given bool and assigns it to the EnableCachingForOptions field.
+func (o *ApplicationCacheResponseDetails) SetEnableCachingForOptions(v bool) {
+	o.EnableCachingForOptions = &v
+}
+
 // GetL2CachingEnabled returns the L2CachingEnabled field value
 func (o *ApplicationCacheResponseDetails) GetL2CachingEnabled() bool {
 	if o == nil {
@@ -478,6 +511,9 @@ func (o ApplicationCacheResponseDetails) ToMap() (map[string]interface{}, error)
 		toSerialize["device_group"] = o.DeviceGroup
 	}
 	toSerialize["enable_caching_for_post"] = o.EnableCachingForPost
+	if !isNil(o.EnableCachingForOptions) {
+		toSerialize["enable_caching_for_options"] = o.EnableCachingForOptions
+	}
 	toSerialize["l2_caching_enabled"] = o.L2CachingEnabled
 	return toSerialize, nil
 }

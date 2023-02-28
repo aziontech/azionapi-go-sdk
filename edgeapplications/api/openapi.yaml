@@ -3030,6 +3030,10 @@ components:
           type: integer
         cdn_cache_settings:
           type: string
+        adaptive_delivery_action:
+          type: string
+        enable_caching_for_options:
+          type: boolean
         cdn_cache_settings_maximum_ttl:
           format: int64
           type: integer
@@ -3157,6 +3161,8 @@ components:
             type: string
           type: array
         enable_caching_for_post:
+          type: boolean
+        enable_caching_for_options:
           type: boolean
         l2_caching_enabled:
           type: boolean

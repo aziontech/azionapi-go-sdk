@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **AdaptiveDeliveryAction** | Pointer to **string** |  | [optional] 
 **DeviceGroup** | Pointer to **[]string** |  | [optional] 
 **EnableCachingForPost** | **bool** |  | 
+**EnableCachingForOptions** | Pointer to **bool** |  | [optional] 
 **L2CachingEnabled** | **bool** |  | 
 
 ## Methods
@@ -348,6 +349,31 @@ and a boolean to check if the value has been set.
 
 SetEnableCachingForPost sets EnableCachingForPost field to given value.
 
+
+### GetEnableCachingForOptions
+
+`func (o *ApplicationCacheResponseDetails) GetEnableCachingForOptions() bool`
+
+GetEnableCachingForOptions returns the EnableCachingForOptions field if non-nil, zero value otherwise.
+
+### GetEnableCachingForOptionsOk
+
+`func (o *ApplicationCacheResponseDetails) GetEnableCachingForOptionsOk() (*bool, bool)`
+
+GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableCachingForOptions
+
+`func (o *ApplicationCacheResponseDetails) SetEnableCachingForOptions(v bool)`
+
+SetEnableCachingForOptions sets EnableCachingForOptions field to given value.
+
+### HasEnableCachingForOptions
+
+`func (o *ApplicationCacheResponseDetails) HasEnableCachingForOptions() bool`
+
+HasEnableCachingForOptions returns a boolean if a field has been set.
 
 ### GetL2CachingEnabled
 
