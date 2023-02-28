@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **BrowserCacheSettings** | Pointer to **string** |  | [optional] 
 **BrowserCacheSettingsMaximumTtl** | Pointer to **int64** |  | [optional] 
 **CdnCacheSettings** | Pointer to **string** |  | [optional] 
+**AdaptiveDeliveryAction** | Pointer to **string** |  | [optional] 
+**EnableCachingForOptions** | Pointer to **bool** |  | [optional] 
 **CdnCacheSettingsMaximumTtl** | Pointer to **int64** |  | [optional] 
 **CacheByQueryString** | Pointer to **string** |  | [optional] 
 **QueryStringFields** | Pointer to **[]string** |  | [optional] 
@@ -139,6 +141,56 @@ SetCdnCacheSettings sets CdnCacheSettings field to given value.
 `func (o *ApplicationCachePatchRequest) HasCdnCacheSettings() bool`
 
 HasCdnCacheSettings returns a boolean if a field has been set.
+
+### GetAdaptiveDeliveryAction
+
+`func (o *ApplicationCachePatchRequest) GetAdaptiveDeliveryAction() string`
+
+GetAdaptiveDeliveryAction returns the AdaptiveDeliveryAction field if non-nil, zero value otherwise.
+
+### GetAdaptiveDeliveryActionOk
+
+`func (o *ApplicationCachePatchRequest) GetAdaptiveDeliveryActionOk() (*string, bool)`
+
+GetAdaptiveDeliveryActionOk returns a tuple with the AdaptiveDeliveryAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdaptiveDeliveryAction
+
+`func (o *ApplicationCachePatchRequest) SetAdaptiveDeliveryAction(v string)`
+
+SetAdaptiveDeliveryAction sets AdaptiveDeliveryAction field to given value.
+
+### HasAdaptiveDeliveryAction
+
+`func (o *ApplicationCachePatchRequest) HasAdaptiveDeliveryAction() bool`
+
+HasAdaptiveDeliveryAction returns a boolean if a field has been set.
+
+### GetEnableCachingForOptions
+
+`func (o *ApplicationCachePatchRequest) GetEnableCachingForOptions() bool`
+
+GetEnableCachingForOptions returns the EnableCachingForOptions field if non-nil, zero value otherwise.
+
+### GetEnableCachingForOptionsOk
+
+`func (o *ApplicationCachePatchRequest) GetEnableCachingForOptionsOk() (*bool, bool)`
+
+GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableCachingForOptions
+
+`func (o *ApplicationCachePatchRequest) SetEnableCachingForOptions(v bool)`
+
+SetEnableCachingForOptions sets EnableCachingForOptions field to given value.
+
+### HasEnableCachingForOptions
+
+`func (o *ApplicationCachePatchRequest) HasEnableCachingForOptions() bool`
+
+HasEnableCachingForOptions returns a boolean if a field has been set.
 
 ### GetCdnCacheSettingsMaximumTtl
 
