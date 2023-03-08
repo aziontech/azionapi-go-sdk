@@ -73,17 +73,16 @@ ctx = context.WithValue(context.Background(), storageapi.ContextOperationServerV
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://edge-application-statics-storage.azion.com*
+All URIs are relative to *https://storage-api.azion.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EdgeApplicationsApi* | [**CreateVersion**](docs/EdgeApplicationsApi.md#createversion) | **Post** /edge-applications/{edge_application_id}/statics | 
-*EdgeApplicationsApi* | [**EdgeApplicationsEdgeApplicationIdStaticsVersionIdFilesPost**](docs/EdgeApplicationsApi.md#edgeapplicationsedgeapplicationidstaticsversionidfilespost) | **Post** /edge-applications/{edge_application_id}/statics/{version_id}/files | 
+*DefaultApi* | [**DeleteVersion**](docs/DefaultApi.md#deleteversion) | **Delete** /storage/{version_id}/delete | 
+*DefaultApi* | [**StorageVersionIdPost**](docs/DefaultApi.md#storageversionidpost) | **Post** /storage/{version_id} | 
 
 
 ## Documentation For Models
 
- - [CreateVersion201Response](docs/CreateVersion201Response.md)
 
 
 ## Documentation For Authorization
