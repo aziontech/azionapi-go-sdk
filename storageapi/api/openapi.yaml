@@ -1,39 +1,21 @@
 openapi: 3.0.3
 info:
-  title: Edge Application Statics API
+  title: Storage API
   version: v1
 servers:
 - description: prod
-  url: https://edge-application-statics-storage.azion.com
+  url: https://storage-api.azion.com
 - description: stage
-  url: https://stage-edge-application-statics-storage.azion.com
+  url: https://stage-storage-api.azion.com
 paths:
-  /edge-applications/{edge_application_id}/statics/{version_id}/files:
+  /storage/{version_id}:
     post:
-      description: Upload file and transfer to cloud storage
+      description: Upload file and transfer to remote storage
       parameters:
-      - description: "Required in order to get the file name. Example: Content-Disposition:\
-          \ attachment; filename=index.js"
-        explode: false
-        in: header
-        name: Content-Disposition
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: "Original path file being uploaded. Given an original file path\
-          \ like 'assets/css/main.css' the value would be: assets/css"
+      - description: "Required in order to get the path and file name. i.e.: assets/css/main.css"
         explode: false
         in: header
         name: X-Azion-Static-Path
-        required: false
-        schema:
-          type: string
-        style: simple
-      - description: Edge Application id (global_id)
-        explode: false
-        in: path
-        name: edge_application_id
         required: true
         schema:
           type: string
@@ -60,36 +42,25 @@ paths:
           description: ""
       security:
       - authToken: []
-      tags:
-      - edge-applications
-  /edge-applications/{edge_application_id}/statics:
-    post:
-      description: ""
-      operationId: createVersion
+  /storage/{version_id}/delete:
+    delete:
+      description: Delete a version. A version is just um path prefix/sub-namespace
+        for a set of files.
+      operationId: deleteVersion
       parameters:
-      - description: ""
+      - description: The version identifier
         explode: false
         in: path
-        name: edge_application_id
+        name: version_id
         required: true
         schema:
           type: string
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema: {}
       responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createVersion_201_response'
-          description: ""
+        "204":
+          description: The resource was deleted successfully.
       security:
       - authToken: []
-      tags:
-      - edge-applications
 components:
   responses:
     "401":
@@ -101,15 +72,7 @@ components:
                 type: string
             type: object
       description: Token/Personal Token has been expired or invalid
-  schemas:
-    createVersion_201_response:
-      example:
-        version_id: version_id
-      properties:
-        version_id:
-          description: the generated version
-          type: string
-      type: object
+  schemas: {}
   securitySchemes:
     authToken:
       description: "Prefix the value with \"Token \". The final header is: Authorization:\
