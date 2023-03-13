@@ -667,27 +667,25 @@ components:
     DnsSec:
       example:
         is_enabled: true
-        status: "ready"
+        status: ready
         delegation_signer:
           key_tag: 12345
           digest_type:
             id: 13
-            slug: "SHA256"
+            slug: SHA256
           algorithm_type:
             id: 2
-            slug: "ECDSAP256SHA256"
-          digest: "0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789"
+            slug: ECDSAP256SHA256
+          digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
       properties:
         is_enabled:
           type: boolean
-          required: true
         status:
           enum:
-          - "unconfigured"
-          - "waiting"
-          - "ready"
+          - unconfigured
+          - waiting
+          - ready
           type: string
-          required: true
         delegation_signer:
           $ref: '#/components/schemas/DnsSec_delegation_signer'
       type: object
@@ -697,16 +695,16 @@ components:
         schema_version: 3
         results:
           is_enabled: true
-          status: "ready"
+          status: ready
           delegation_signer:
             key_tag: 12345
             digest_type:
               id: 13
-              slug: "SHA256"
+              slug: SHA256
             algorithm_type:
               id: 2
-              slug: "ECDSAP256SHA256"
-            digest: "0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789"
+              slug: ECDSAP256SHA256
+            digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
       properties:
         schema_version:
           description: The schema version
@@ -720,8 +718,7 @@ components:
         is_enabled: true
       properties:
         is_enabled:
-          type: bool
-          required: true
+          type: boolean
       type: object
     ErrorsResponse:
       properties:
@@ -784,50 +781,42 @@ components:
     DnsSec_delegation_signer_digest_type:
       example:
         id: 13
-        slug: "SHA256"
+        slug: SHA256
       properties:
         id:
           type: integer
-          required: true
         slug:
           type: string
-          required: true
       type: object
     DnsSec_delegation_signer_algorithm_type:
       example:
         id: 2
-        slug: "ECDSP256SHA256"
+        slug: ECDSP256SHA256
       properties:
         id:
           type: integer
-          required: true
         slug:
           type: string
-          required: true
       type: object
     DnsSec_delegation_signer:
       example:
         key_tag: 12345
         digest_type:
           id: 13
-          slug: "SHA256"
+          slug: SHA256
         algorithm_type:
           id: 2
-          slug: "ECDSAP256SHA256"
-        digest: "0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789"
+          slug: ECDSAP256SHA256
+        digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
       properties:
         key_tag:
           type: integer
-          required: true
         digest_type:
           $ref: '#/components/schemas/DnsSec_delegation_signer_digest_type'
-          required: true
         algorithm_type:
           $ref: '#/components/schemas/DnsSec_delegation_signer_algorithm_type'
-          required: true
         digest:
           type: string
-          required: true
       type: object
   securitySchemes:
     tokenAuth:

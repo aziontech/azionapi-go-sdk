@@ -24,7 +24,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## PutZoneDnsSec
 
-> GetOrPatchDnsSecResponse PutZoneDnsSec(ctx, zoneId).DnsSec(dnsSec).Execute()
+> GetOrPatchDnsSecResponse PutZoneDnsSec(ctx, zoneId).PatchDnsSecRequest(patchDnsSecRequest).Execute()
 
 Update the DNSSEC zone
 
@@ -92,16 +92,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
     zoneId := int32(56) // int32 | The hosted zone id
-    dnsSec := *openapiclient.NewDnsSec() // DnsSec |  (optional)
+    patchDnsSecRequest := *openapiclient.NewPatchDnsSecRequest() // PatchDnsSecRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DNSSECApi.PutZoneDnsSec(context.Background(), zoneId).DnsSec(dnsSec).Execute()
+    resp, r, err := apiClient.DNSSECApi.PutZoneDnsSec(context.Background(), zoneId).PatchDnsSecRequest(patchDnsSecRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DNSSECApi.PutZoneDnsSec``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -127,7 +127,7 @@ Other parameters are passed through a pointer to a apiPutZoneDnsSecRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **dnsSec** | [**DnsSec**](DnsSec.md) |  | 
+ **patchDnsSecRequest** | [**PatchDnsSecRequest**](PatchDnsSecRequest.md) |  | 
 
 ### Return type
 

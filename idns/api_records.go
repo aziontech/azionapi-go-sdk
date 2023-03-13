@@ -13,21 +13,20 @@ package idns
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-
 // RecordsApiService RecordsApi service
 type RecordsApiService service
 
 type ApiDeleteZoneRecordRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RecordsApiService
-	zoneId int32
-	recordId int32
+	zoneId     int32
+	recordId   int32
 }
 
 func (r ApiDeleteZoneRecordRequest) Execute() (string, *http.Response, error) {
@@ -37,28 +36,29 @@ func (r ApiDeleteZoneRecordRequest) Execute() (string, *http.Response, error) {
 /*
 DeleteZoneRecord Remove an Intelligent DNS zone record
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId The hosted zone id
- @param recordId The zone record id
- @return ApiDeleteZoneRecordRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param zoneId The hosted zone id
+	@param recordId The zone record id
+	@return ApiDeleteZoneRecordRequest
 */
 func (a *RecordsApiService) DeleteZoneRecord(ctx context.Context, zoneId int32, recordId int32) ApiDeleteZoneRecordRequest {
 	return ApiDeleteZoneRecordRequest{
 		ApiService: a,
-		ctx: ctx,
-		zoneId: zoneId,
-		recordId: recordId,
+		ctx:        ctx,
+		zoneId:     zoneId,
+		recordId:   recordId,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *RecordsApiService) DeleteZoneRecordExecute(r ApiDeleteZoneRecordRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsApiService.DeleteZoneRecord")
@@ -121,9 +121,9 @@ func (a *RecordsApiService) DeleteZoneRecordExecute(r ApiDeleteZoneRecordRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -140,8 +140,8 @@ func (a *RecordsApiService) DeleteZoneRecordExecute(r ApiDeleteZoneRecordRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -159,9 +159,9 @@ func (a *RecordsApiService) DeleteZoneRecordExecute(r ApiDeleteZoneRecordRequest
 }
 
 type ApiGetZoneRecordsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RecordsApiService
-	zoneId int32
+	zoneId     int32
 }
 
 func (r ApiGetZoneRecordsRequest) Execute() (*GetRecordsResponse, *http.Response, error) {
@@ -171,26 +171,27 @@ func (r ApiGetZoneRecordsRequest) Execute() (*GetRecordsResponse, *http.Response
 /*
 GetZoneRecords Get a collection of Intelligent DNS zone records
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId The hosted zone id
- @return ApiGetZoneRecordsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param zoneId The hosted zone id
+	@return ApiGetZoneRecordsRequest
 */
 func (a *RecordsApiService) GetZoneRecords(ctx context.Context, zoneId int32) ApiGetZoneRecordsRequest {
 	return ApiGetZoneRecordsRequest{
 		ApiService: a,
-		ctx: ctx,
-		zoneId: zoneId,
+		ctx:        ctx,
+		zoneId:     zoneId,
 	}
 }
 
 // Execute executes the request
-//  @return GetRecordsResponse
+//
+//	@return GetRecordsResponse
 func (a *RecordsApiService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*GetRecordsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetRecordsResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetRecordsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsApiService.GetZoneRecords")
@@ -249,9 +250,9 @@ func (a *RecordsApiService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -268,8 +269,8 @@ func (a *RecordsApiService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -287,10 +288,10 @@ func (a *RecordsApiService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*
 }
 
 type ApiPostZoneRecordRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RecordsApiService
-	zoneId int32
-	record *Record
+	zoneId     int32
+	record     *Record
 }
 
 func (r ApiPostZoneRecordRequest) Record(record Record) ApiPostZoneRecordRequest {
@@ -305,26 +306,27 @@ func (r ApiPostZoneRecordRequest) Execute() (*PostOrPutRecordResponse, *http.Res
 /*
 PostZoneRecord Create a new Intelligent DNS zone record
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId The hosted zone id
- @return ApiPostZoneRecordRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param zoneId The hosted zone id
+	@return ApiPostZoneRecordRequest
 */
 func (a *RecordsApiService) PostZoneRecord(ctx context.Context, zoneId int32) ApiPostZoneRecordRequest {
 	return ApiPostZoneRecordRequest{
 		ApiService: a,
-		ctx: ctx,
-		zoneId: zoneId,
+		ctx:        ctx,
+		zoneId:     zoneId,
 	}
 }
 
 // Execute executes the request
-//  @return PostOrPutRecordResponse
+//
+//	@return PostOrPutRecordResponse
 func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*PostOrPutRecordResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PostOrPutRecordResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostOrPutRecordResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsApiService.PostZoneRecord")
@@ -385,9 +387,9 @@ func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -404,8 +406,8 @@ func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -423,11 +425,11 @@ func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*
 }
 
 type ApiPutZoneRecordRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RecordsApiService
-	zoneId int32
-	recordId int32
-	record *Record
+	zoneId     int32
+	recordId   int32
+	record     *Record
 }
 
 func (r ApiPutZoneRecordRequest) Record(record Record) ApiPutZoneRecordRequest {
@@ -442,28 +444,29 @@ func (r ApiPutZoneRecordRequest) Execute() (*PostOrPutRecordResponse, *http.Resp
 /*
 PutZoneRecord Update an Intelligent DNS zone record
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId The hosted zone id
- @param recordId The zone record id
- @return ApiPutZoneRecordRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param zoneId The hosted zone id
+	@param recordId The zone record id
+	@return ApiPutZoneRecordRequest
 */
 func (a *RecordsApiService) PutZoneRecord(ctx context.Context, zoneId int32, recordId int32) ApiPutZoneRecordRequest {
 	return ApiPutZoneRecordRequest{
 		ApiService: a,
-		ctx: ctx,
-		zoneId: zoneId,
-		recordId: recordId,
+		ctx:        ctx,
+		zoneId:     zoneId,
+		recordId:   recordId,
 	}
 }
 
 // Execute executes the request
-//  @return PostOrPutRecordResponse
+//
+//	@return PostOrPutRecordResponse
 func (a *RecordsApiService) PutZoneRecordExecute(r ApiPutZoneRecordRequest) (*PostOrPutRecordResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PostOrPutRecordResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PostOrPutRecordResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsApiService.PutZoneRecord")
@@ -528,9 +531,9 @@ func (a *RecordsApiService) PutZoneRecordExecute(r ApiPutZoneRecordRequest) (*Po
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -547,8 +550,8 @@ func (a *RecordsApiService) PutZoneRecordExecute(r ApiPutZoneRecordRequest) (*Po
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 
  - [DnsSec](docs/DnsSec.md)
  - [DnsSecDelegationSigner](docs/DnsSecDelegationSigner.md)
+ - [DnsSecDelegationSignerAlgorithmType](docs/DnsSecDelegationSignerAlgorithmType.md)
  - [DnsSecDelegationSignerDigestType](docs/DnsSecDelegationSignerDigestType.md)
  - [ErrorResponse](docs/ErrorResponse.md)
  - [ErrorsResponse](docs/ErrorsResponse.md)
@@ -103,6 +104,7 @@ Class | Method | HTTP request | Description
  - [GetZoneResponse](docs/GetZoneResponse.md)
  - [GetZonesResponse](docs/GetZonesResponse.md)
  - [GetZonesResponseLinks](docs/GetZonesResponseLinks.md)
+ - [PatchDnsSecRequest](docs/PatchDnsSecRequest.md)
  - [PostOrPutRecordResponse](docs/PostOrPutRecordResponse.md)
  - [PostOrPutZoneResponse](docs/PostOrPutZoneResponse.md)
  - [Record](docs/Record.md)

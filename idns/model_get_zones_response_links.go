@@ -20,7 +20,7 @@ var _ MappedNullable = &GetZonesResponseLinks{}
 // GetZonesResponseLinks struct for GetZonesResponseLinks
 type GetZonesResponseLinks struct {
 	Previous NullableString `json:"previous,omitempty"`
-	Next NullableString `json:"next,omitempty"`
+	Next     NullableString `json:"next,omitempty"`
 }
 
 // NewGetZonesResponseLinks instantiates a new GetZonesResponseLinks object
@@ -42,7 +42,7 @@ func NewGetZonesResponseLinksWithDefaults() *GetZonesResponseLinks {
 
 // GetPrevious returns the Previous field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetZonesResponseLinks) GetPrevious() string {
-	if o == nil || isNil(o.Previous.Get()) {
+	if o == nil || IsNil(o.Previous.Get()) {
 		var ret string
 		return ret
 	}
@@ -72,6 +72,7 @@ func (o *GetZonesResponseLinks) HasPrevious() bool {
 func (o *GetZonesResponseLinks) SetPrevious(v string) {
 	o.Previous.Set(&v)
 }
+
 // SetPreviousNil sets the value for Previous to be an explicit nil
 func (o *GetZonesResponseLinks) SetPreviousNil() {
 	o.Previous.Set(nil)
@@ -84,7 +85,7 @@ func (o *GetZonesResponseLinks) UnsetPrevious() {
 
 // GetNext returns the Next field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetZonesResponseLinks) GetNext() string {
-	if o == nil || isNil(o.Next.Get()) {
+	if o == nil || IsNil(o.Next.Get()) {
 		var ret string
 		return ret
 	}
@@ -114,6 +115,7 @@ func (o *GetZonesResponseLinks) HasNext() bool {
 func (o *GetZonesResponseLinks) SetNext(v string) {
 	o.Next.Set(&v)
 }
+
 // SetNextNil sets the value for Next to be an explicit nil
 func (o *GetZonesResponseLinks) SetNextNil() {
 	o.Next.Set(nil)
@@ -125,7 +127,7 @@ func (o *GetZonesResponseLinks) UnsetNext() {
 }
 
 func (o GetZonesResponseLinks) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +180,3 @@ func (v *NullableGetZonesResponseLinks) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
