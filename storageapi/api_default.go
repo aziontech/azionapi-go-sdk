@@ -11,7 +11,6 @@ API version: v1
 package storageapi
 
 import (
-    "fmt"
 	"bytes"
 	"context"
 	"io"
@@ -234,19 +233,13 @@ func (a *DefaultApiService) StorageVersionIdPostExecute(r ApiStorageVersionIdPos
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
-    fmt.Println(req)
-    fmt.Println(err)
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
-    fmt.Println(localVarHTTPResponse)
-    fmt.Println(err)
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    fmt.Println(string(localVarBody))
-    fmt.Println(err)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
