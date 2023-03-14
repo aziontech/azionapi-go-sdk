@@ -14,34 +14,34 @@ import (
 	"encoding/json"
 )
 
-// checks if the DnsSecDelegationSignerDigestType type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DnsSecDelegationSignerDigestType{}
+// checks if the DnsSecDelegationSignerAlgorithmType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DnsSecDelegationSignerAlgorithmType{}
 
-// DnsSecDelegationSignerDigestType struct for DnsSecDelegationSignerDigestType
-type DnsSecDelegationSignerDigestType struct {
+// DnsSecDelegationSignerAlgorithmType struct for DnsSecDelegationSignerAlgorithmType
+type DnsSecDelegationSignerAlgorithmType struct {
 	Id   *int32  `json:"id,omitempty"`
 	Slug *string `json:"slug,omitempty"`
 }
 
-// NewDnsSecDelegationSignerDigestType instantiates a new DnsSecDelegationSignerDigestType object
+// NewDnsSecDelegationSignerAlgorithmType instantiates a new DnsSecDelegationSignerAlgorithmType object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDnsSecDelegationSignerDigestType() *DnsSecDelegationSignerDigestType {
-	this := DnsSecDelegationSignerDigestType{}
+func NewDnsSecDelegationSignerAlgorithmType() *DnsSecDelegationSignerAlgorithmType {
+	this := DnsSecDelegationSignerAlgorithmType{}
 	return &this
 }
 
-// NewDnsSecDelegationSignerDigestTypeWithDefaults instantiates a new DnsSecDelegationSignerDigestType object
+// NewDnsSecDelegationSignerAlgorithmTypeWithDefaults instantiates a new DnsSecDelegationSignerAlgorithmType object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDnsSecDelegationSignerDigestTypeWithDefaults() *DnsSecDelegationSignerDigestType {
-	this := DnsSecDelegationSignerDigestType{}
+func NewDnsSecDelegationSignerAlgorithmTypeWithDefaults() *DnsSecDelegationSignerAlgorithmType {
+	this := DnsSecDelegationSignerAlgorithmType{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *DnsSecDelegationSignerDigestType) GetId() int32 {
+func (o *DnsSecDelegationSignerAlgorithmType) GetId() int32 {
 	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
@@ -51,7 +51,7 @@ func (o *DnsSecDelegationSignerDigestType) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DnsSecDelegationSignerDigestType) GetIdOk() (*int32, bool) {
+func (o *DnsSecDelegationSignerAlgorithmType) GetIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *DnsSecDelegationSignerDigestType) GetIdOk() (*int32, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *DnsSecDelegationSignerDigestType) HasId() bool {
+func (o *DnsSecDelegationSignerAlgorithmType) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -68,12 +68,12 @@ func (o *DnsSecDelegationSignerDigestType) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *DnsSecDelegationSignerDigestType) SetId(v int32) {
+func (o *DnsSecDelegationSignerAlgorithmType) SetId(v int32) {
 	o.Id = &v
 }
 
 // GetSlug returns the Slug field value if set, zero value otherwise.
-func (o *DnsSecDelegationSignerDigestType) GetSlug() string {
+func (o *DnsSecDelegationSignerAlgorithmType) GetSlug() string {
 	if o == nil || IsNil(o.Slug) {
 		var ret string
 		return ret
@@ -83,7 +83,7 @@ func (o *DnsSecDelegationSignerDigestType) GetSlug() string {
 
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DnsSecDelegationSignerDigestType) GetSlugOk() (*string, bool) {
+func (o *DnsSecDelegationSignerAlgorithmType) GetSlugOk() (*string, bool) {
 	if o == nil || IsNil(o.Slug) {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *DnsSecDelegationSignerDigestType) GetSlugOk() (*string, bool) {
 }
 
 // HasSlug returns a boolean if a field has been set.
-func (o *DnsSecDelegationSignerDigestType) HasSlug() bool {
+func (o *DnsSecDelegationSignerAlgorithmType) HasSlug() bool {
 	if o != nil && !IsNil(o.Slug) {
 		return true
 	}
@@ -100,11 +100,11 @@ func (o *DnsSecDelegationSignerDigestType) HasSlug() bool {
 }
 
 // SetSlug gets a reference to the given string and assigns it to the Slug field.
-func (o *DnsSecDelegationSignerDigestType) SetSlug(v string) {
+func (o *DnsSecDelegationSignerAlgorithmType) SetSlug(v string) {
 	o.Slug = &v
 }
 
-func (o DnsSecDelegationSignerDigestType) MarshalJSON() ([]byte, error) {
+func (o DnsSecDelegationSignerAlgorithmType) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -112,7 +112,7 @@ func (o DnsSecDelegationSignerDigestType) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DnsSecDelegationSignerDigestType) ToMap() (map[string]interface{}, error) {
+func (o DnsSecDelegationSignerAlgorithmType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -123,38 +123,38 @@ func (o DnsSecDelegationSignerDigestType) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-type NullableDnsSecDelegationSignerDigestType struct {
-	value *DnsSecDelegationSignerDigestType
+type NullableDnsSecDelegationSignerAlgorithmType struct {
+	value *DnsSecDelegationSignerAlgorithmType
 	isSet bool
 }
 
-func (v NullableDnsSecDelegationSignerDigestType) Get() *DnsSecDelegationSignerDigestType {
+func (v NullableDnsSecDelegationSignerAlgorithmType) Get() *DnsSecDelegationSignerAlgorithmType {
 	return v.value
 }
 
-func (v *NullableDnsSecDelegationSignerDigestType) Set(val *DnsSecDelegationSignerDigestType) {
+func (v *NullableDnsSecDelegationSignerAlgorithmType) Set(val *DnsSecDelegationSignerAlgorithmType) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDnsSecDelegationSignerDigestType) IsSet() bool {
+func (v NullableDnsSecDelegationSignerAlgorithmType) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDnsSecDelegationSignerDigestType) Unset() {
+func (v *NullableDnsSecDelegationSignerAlgorithmType) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDnsSecDelegationSignerDigestType(val *DnsSecDelegationSignerDigestType) *NullableDnsSecDelegationSignerDigestType {
-	return &NullableDnsSecDelegationSignerDigestType{value: val, isSet: true}
+func NewNullableDnsSecDelegationSignerAlgorithmType(val *DnsSecDelegationSignerAlgorithmType) *NullableDnsSecDelegationSignerAlgorithmType {
+	return &NullableDnsSecDelegationSignerAlgorithmType{value: val, isSet: true}
 }
 
-func (v NullableDnsSecDelegationSignerDigestType) MarshalJSON() ([]byte, error) {
+func (v NullableDnsSecDelegationSignerAlgorithmType) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDnsSecDelegationSignerDigestType) UnmarshalJSON(src []byte) error {
+func (v *NullableDnsSecDelegationSignerAlgorithmType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
