@@ -41,7 +41,7 @@ func NewErrorResponseWithDefaults() *ErrorResponse {
 
 // GetDetail returns the Detail field value if set, zero value otherwise.
 func (o *ErrorResponse) GetDetail() string {
-	if o == nil || isNil(o.Detail) {
+	if o == nil || IsNil(o.Detail) {
 		var ret string
 		return ret
 	}
@@ -51,7 +51,7 @@ func (o *ErrorResponse) GetDetail() string {
 // GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ErrorResponse) GetDetailOk() (*string, bool) {
-	if o == nil || isNil(o.Detail) {
+	if o == nil || IsNil(o.Detail) {
 		return nil, false
 	}
 	return o.Detail, true
@@ -59,7 +59,7 @@ func (o *ErrorResponse) GetDetailOk() (*string, bool) {
 
 // HasDetail returns a boolean if a field has been set.
 func (o *ErrorResponse) HasDetail() bool {
-	if o != nil && !isNil(o.Detail) {
+	if o != nil && !IsNil(o.Detail) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *ErrorResponse) SetDetail(v string) {
 }
 
 func (o ErrorResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -81,7 +81,7 @@ func (o ErrorResponse) MarshalJSON() ([]byte, error) {
 
 func (o ErrorResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Detail) {
+	if !IsNil(o.Detail) {
 		toSerialize["detail"] = o.Detail
 	}
 	return toSerialize, nil
@@ -122,5 +122,3 @@ func (v *NullableErrorResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

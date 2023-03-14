@@ -7,9 +7,6 @@ Name | Type | Description | Notes
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **DelegationSigner** | Pointer to [**DnsSecDelegationSigner**](DnsSecDelegationSigner.md) |  | [optional] 
-**AlgorithmType** | Pointer to [**DnsSecDelegationSignerDigestType**](DnsSecDelegationSignerDigestType.md) |  | [optional] 
-**Digest** | Pointer to **string** |  | [optional] 
-**KeyTag** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -104,81 +101,6 @@ SetDelegationSigner sets DelegationSigner field to given value.
 `func (o *DnsSec) HasDelegationSigner() bool`
 
 HasDelegationSigner returns a boolean if a field has been set.
-
-### GetAlgorithmType
-
-`func (o *DnsSec) GetAlgorithmType() DnsSecDelegationSignerDigestType`
-
-GetAlgorithmType returns the AlgorithmType field if non-nil, zero value otherwise.
-
-### GetAlgorithmTypeOk
-
-`func (o *DnsSec) GetAlgorithmTypeOk() (*DnsSecDelegationSignerDigestType, bool)`
-
-GetAlgorithmTypeOk returns a tuple with the AlgorithmType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAlgorithmType
-
-`func (o *DnsSec) SetAlgorithmType(v DnsSecDelegationSignerDigestType)`
-
-SetAlgorithmType sets AlgorithmType field to given value.
-
-### HasAlgorithmType
-
-`func (o *DnsSec) HasAlgorithmType() bool`
-
-HasAlgorithmType returns a boolean if a field has been set.
-
-### GetDigest
-
-`func (o *DnsSec) GetDigest() string`
-
-GetDigest returns the Digest field if non-nil, zero value otherwise.
-
-### GetDigestOk
-
-`func (o *DnsSec) GetDigestOk() (*string, bool)`
-
-GetDigestOk returns a tuple with the Digest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDigest
-
-`func (o *DnsSec) SetDigest(v string)`
-
-SetDigest sets Digest field to given value.
-
-### HasDigest
-
-`func (o *DnsSec) HasDigest() bool`
-
-HasDigest returns a boolean if a field has been set.
-
-### GetKeyTag
-
-`func (o *DnsSec) GetKeyTag() int32`
-
-GetKeyTag returns the KeyTag field if non-nil, zero value otherwise.
-
-### GetKeyTagOk
-
-`func (o *DnsSec) GetKeyTagOk() (*int32, bool)`
-
-GetKeyTagOk returns a tuple with the KeyTag field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKeyTag
-
-`func (o *DnsSec) SetKeyTag(v int32)`
-
-SetKeyTag sets KeyTag field to given value.
-
-### HasKeyTag
-
-`func (o *DnsSec) HasKeyTag() bool`
-
-HasKeyTag returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

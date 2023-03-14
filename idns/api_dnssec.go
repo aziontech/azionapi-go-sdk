@@ -13,20 +13,19 @@ package idns
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-
 // DNSSECApiService DNSSECApi service
 type DNSSECApiService service
 
 type ApiGetZoneDnsSecRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DNSSECApiService
-	zoneId int32
+	zoneId     int32
 }
 
 func (r ApiGetZoneDnsSecRequest) Execute() (*GetOrPatchDnsSecResponse, *http.Response, error) {
@@ -36,26 +35,27 @@ func (r ApiGetZoneDnsSecRequest) Execute() (*GetOrPatchDnsSecResponse, *http.Res
 /*
 GetZoneDnsSec Retrieve the DNSSEC zone status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId The hosted zone id
- @return ApiGetZoneDnsSecRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param zoneId The hosted zone id
+	@return ApiGetZoneDnsSecRequest
 */
 func (a *DNSSECApiService) GetZoneDnsSec(ctx context.Context, zoneId int32) ApiGetZoneDnsSecRequest {
 	return ApiGetZoneDnsSecRequest{
 		ApiService: a,
-		ctx: ctx,
-		zoneId: zoneId,
+		ctx:        ctx,
+		zoneId:     zoneId,
 	}
 }
 
 // Execute executes the request
-//  @return GetOrPatchDnsSecResponse
+//
+//	@return GetOrPatchDnsSecResponse
 func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*GetOrPatchDnsSecResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetOrPatchDnsSecResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetOrPatchDnsSecResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSSECApiService.GetZoneDnsSec")
@@ -114,9 +114,9 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -133,8 +133,8 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -152,14 +152,14 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 }
 
 type ApiPutZoneDnsSecRequest struct {
-	ctx context.Context
-	ApiService *DNSSECApiService
-	zoneId int32
-	dnsSec *DnsSec
+	ctx                context.Context
+	ApiService         *DNSSECApiService
+	zoneId             int32
+	patchDnsSecRequest *PatchDnsSecRequest
 }
 
-func (r ApiPutZoneDnsSecRequest) DnsSec(dnsSec DnsSec) ApiPutZoneDnsSecRequest {
-	r.dnsSec = &dnsSec
+func (r ApiPutZoneDnsSecRequest) PatchDnsSecRequest(patchDnsSecRequest PatchDnsSecRequest) ApiPutZoneDnsSecRequest {
+	r.patchDnsSecRequest = &patchDnsSecRequest
 	return r
 }
 
@@ -170,26 +170,27 @@ func (r ApiPutZoneDnsSecRequest) Execute() (*GetOrPatchDnsSecResponse, *http.Res
 /*
 PutZoneDnsSec Update the DNSSEC zone
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param zoneId The hosted zone id
- @return ApiPutZoneDnsSecRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param zoneId The hosted zone id
+	@return ApiPutZoneDnsSecRequest
 */
 func (a *DNSSECApiService) PutZoneDnsSec(ctx context.Context, zoneId int32) ApiPutZoneDnsSecRequest {
 	return ApiPutZoneDnsSecRequest{
 		ApiService: a,
-		ctx: ctx,
-		zoneId: zoneId,
+		ctx:        ctx,
+		zoneId:     zoneId,
 	}
 }
 
 // Execute executes the request
-//  @return GetOrPatchDnsSecResponse
+//
+//	@return GetOrPatchDnsSecResponse
 func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*GetOrPatchDnsSecResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetOrPatchDnsSecResponse
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetOrPatchDnsSecResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSSECApiService.PutZoneDnsSec")
@@ -225,7 +226,7 @@ func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*Get
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.dnsSec
+	localVarPostBody = r.patchDnsSecRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -250,9 +251,9 @@ func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*Get
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -269,8 +270,8 @@ func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

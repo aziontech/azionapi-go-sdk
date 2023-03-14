@@ -20,8 +20,8 @@ var _ MappedNullable = &PostOrPutRecordResponse{}
 // PostOrPutRecordResponse Object returned by create or update zone record
 type PostOrPutRecordResponse struct {
 	// The schema version
-	SchemaVersion *int32 `json:"schema_version,omitempty"`
-	Results *Record `json:"results,omitempty"`
+	SchemaVersion *int32  `json:"schema_version,omitempty"`
+	Results       *Record `json:"results,omitempty"`
 }
 
 // NewPostOrPutRecordResponse instantiates a new PostOrPutRecordResponse object
@@ -43,7 +43,7 @@ func NewPostOrPutRecordResponseWithDefaults() *PostOrPutRecordResponse {
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *PostOrPutRecordResponse) GetSchemaVersion() int32 {
-	if o == nil || isNil(o.SchemaVersion) {
+	if o == nil || IsNil(o.SchemaVersion) {
 		var ret int32
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *PostOrPutRecordResponse) GetSchemaVersion() int32 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostOrPutRecordResponse) GetSchemaVersionOk() (*int32, bool) {
-	if o == nil || isNil(o.SchemaVersion) {
+	if o == nil || IsNil(o.SchemaVersion) {
 		return nil, false
 	}
 	return o.SchemaVersion, true
@@ -61,7 +61,7 @@ func (o *PostOrPutRecordResponse) GetSchemaVersionOk() (*int32, bool) {
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *PostOrPutRecordResponse) HasSchemaVersion() bool {
-	if o != nil && !isNil(o.SchemaVersion) {
+	if o != nil && !IsNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *PostOrPutRecordResponse) SetSchemaVersion(v int32) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *PostOrPutRecordResponse) GetResults() Record {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		var ret Record
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *PostOrPutRecordResponse) GetResults() Record {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostOrPutRecordResponse) GetResultsOk() (*Record, bool) {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -93,7 +93,7 @@ func (o *PostOrPutRecordResponse) GetResultsOk() (*Record, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *PostOrPutRecordResponse) HasResults() bool {
-	if o != nil && !isNil(o.Results) {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *PostOrPutRecordResponse) SetResults(v Record) {
 }
 
 func (o PostOrPutRecordResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,10 +115,10 @@ func (o PostOrPutRecordResponse) MarshalJSON() ([]byte, error) {
 
 func (o PostOrPutRecordResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.SchemaVersion) {
+	if !IsNil(o.SchemaVersion) {
 		toSerialize["schema_version"] = o.SchemaVersion
 	}
-	if !isNil(o.Results) {
+	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
 	return toSerialize, nil
@@ -159,5 +159,3 @@ func (v *NullablePostOrPutRecordResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

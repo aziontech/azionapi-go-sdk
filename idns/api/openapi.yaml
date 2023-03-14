@@ -363,10 +363,8 @@ paths:
       requestBody:
         content:
           application/json:
-            example:
-              is_enabled: true
             schema:
-              $ref: '#/components/schemas/DnsSec'
+              $ref: '#/components/schemas/PatchDnsSecRequest'
       responses:
         "201":
           content:
@@ -669,16 +667,16 @@ components:
     DnsSec:
       example:
         is_enabled: true
-        key_tag: 9607
-        algorithm_type:
-          id: 6
-          slug: slug
+        status: ready
         delegation_signer:
+          key_tag: 12345
           digest_type:
-            id: 6
-            slug: slug
-        digest: digest
-        status: unconfigured
+            id: 13
+            slug: SHA256
+          algorithm_type:
+            id: 2
+            slug: ECDSAP256SHA256
+          digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
       properties:
         is_enabled:
           type: boolean
@@ -690,37 +688,37 @@ components:
           type: string
         delegation_signer:
           $ref: '#/components/schemas/DnsSec_delegation_signer'
-        algorithm_type:
-          $ref: '#/components/schemas/DnsSec_delegation_signer_digest_type'
-        digest:
-          type: string
-        key_tag:
-          maximum: 65535
-          minimum: 1
-          type: integer
       type: object
     GetOrPatchDnsSecResponse:
       description: Object returned by get zone DNSSEC
       example:
-        schema_version: 0
+        schema_version: 3
         results:
           is_enabled: true
-          key_tag: 9607
-          algorithm_type:
-            id: 6
-            slug: slug
+          status: ready
           delegation_signer:
+            key_tag: 12345
             digest_type:
-              id: 6
-              slug: slug
-          digest: digest
-          status: unconfigured
+              id: 13
+              slug: SHA256
+            algorithm_type:
+              id: 2
+              slug: ECDSAP256SHA256
+            digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
       properties:
         schema_version:
           description: The schema version
           type: integer
         results:
           $ref: '#/components/schemas/DnsSec'
+      type: object
+    PatchDnsSecRequest:
+      description: Data to enable or disable DNSSEC for a zone
+      example:
+        is_enabled: true
+      properties:
+        is_enabled:
+          type: boolean
       type: object
     ErrorsResponse:
       properties:
@@ -782,8 +780,18 @@ components:
       type: object
     DnsSec_delegation_signer_digest_type:
       example:
-        id: 6
-        slug: slug
+        id: 13
+        slug: SHA256
+      properties:
+        id:
+          type: integer
+        slug:
+          type: string
+      type: object
+    DnsSec_delegation_signer_algorithm_type:
+      example:
+        id: 2
+        slug: ECDSP256SHA256
       properties:
         id:
           type: integer
@@ -792,12 +800,23 @@ components:
       type: object
     DnsSec_delegation_signer:
       example:
+        key_tag: 12345
         digest_type:
-          id: 6
-          slug: slug
+          id: 13
+          slug: SHA256
+        algorithm_type:
+          id: 2
+          slug: ECDSAP256SHA256
+        digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
       properties:
+        key_tag:
+          type: integer
         digest_type:
           $ref: '#/components/schemas/DnsSec_delegation_signer_digest_type'
+        algorithm_type:
+          $ref: '#/components/schemas/DnsSec_delegation_signer_algorithm_type'
+        digest:
+          type: string
       type: object
   securitySchemes:
     tokenAuth:
