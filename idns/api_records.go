@@ -288,14 +288,14 @@ func (a *RecordsApiService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*
 }
 
 type ApiPostZoneRecordRequest struct {
-	ctx        context.Context
-	ApiService *RecordsApiService
-	zoneId     int32
-	record     *Record
+	ctx             context.Context
+	ApiService      *RecordsApiService
+	zoneId          int32
+	recordPostOrPut *RecordPostOrPut
 }
 
-func (r ApiPostZoneRecordRequest) Record(record Record) ApiPostZoneRecordRequest {
-	r.record = &record
+func (r ApiPostZoneRecordRequest) RecordPostOrPut(recordPostOrPut RecordPostOrPut) ApiPostZoneRecordRequest {
+	r.recordPostOrPut = &recordPostOrPut
 	return r
 }
 
@@ -362,7 +362,7 @@ func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.record
+	localVarPostBody = r.recordPostOrPut
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -425,15 +425,15 @@ func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*
 }
 
 type ApiPutZoneRecordRequest struct {
-	ctx        context.Context
-	ApiService *RecordsApiService
-	zoneId     int32
-	recordId   int32
-	record     *Record
+	ctx             context.Context
+	ApiService      *RecordsApiService
+	zoneId          int32
+	recordId        int32
+	recordPostOrPut *RecordPostOrPut
 }
 
-func (r ApiPutZoneRecordRequest) Record(record Record) ApiPutZoneRecordRequest {
-	r.record = &record
+func (r ApiPutZoneRecordRequest) RecordPostOrPut(recordPostOrPut RecordPostOrPut) ApiPutZoneRecordRequest {
+	r.recordPostOrPut = &recordPostOrPut
 	return r
 }
 
@@ -506,7 +506,7 @@ func (a *RecordsApiService) PutZoneRecordExecute(r ApiPutZoneRecordRequest) (*Po
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.record
+	localVarPostBody = r.recordPostOrPut
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

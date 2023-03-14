@@ -22,7 +22,7 @@ type GetRecordsResponseResults struct {
 	ZoneId     *int32  `json:"zone_id,omitempty"`
 	ZoneDomain *string `json:"zone_domain,omitempty"`
 	// Zone records collection
-	Records []Record `json:"records,omitempty"`
+	Records []RecordGet `json:"records,omitempty"`
 }
 
 // NewGetRecordsResponseResults instantiates a new GetRecordsResponseResults object
@@ -107,9 +107,9 @@ func (o *GetRecordsResponseResults) SetZoneDomain(v string) {
 }
 
 // GetRecords returns the Records field value if set, zero value otherwise.
-func (o *GetRecordsResponseResults) GetRecords() []Record {
+func (o *GetRecordsResponseResults) GetRecords() []RecordGet {
 	if o == nil || IsNil(o.Records) {
-		var ret []Record
+		var ret []RecordGet
 		return ret
 	}
 	return o.Records
@@ -117,7 +117,7 @@ func (o *GetRecordsResponseResults) GetRecords() []Record {
 
 // GetRecordsOk returns a tuple with the Records field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetRecordsResponseResults) GetRecordsOk() ([]Record, bool) {
+func (o *GetRecordsResponseResults) GetRecordsOk() ([]RecordGet, bool) {
 	if o == nil || IsNil(o.Records) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *GetRecordsResponseResults) HasRecords() bool {
 	return false
 }
 
-// SetRecords gets a reference to the given []Record and assigns it to the Records field.
-func (o *GetRecordsResponseResults) SetRecords(v []Record) {
+// SetRecords gets a reference to the given []RecordGet and assigns it to the Records field.
+func (o *GetRecordsResponseResults) SetRecords(v []RecordGet) {
 	o.Records = v
 }
 

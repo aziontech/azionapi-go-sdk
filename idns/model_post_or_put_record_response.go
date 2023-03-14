@@ -20,8 +20,8 @@ var _ MappedNullable = &PostOrPutRecordResponse{}
 // PostOrPutRecordResponse Object returned by create or update zone record
 type PostOrPutRecordResponse struct {
 	// The schema version
-	SchemaVersion *int32  `json:"schema_version,omitempty"`
-	Results       *Record `json:"results,omitempty"`
+	SchemaVersion *int32           `json:"schema_version,omitempty"`
+	Results       *RecordPostOrPut `json:"results,omitempty"`
 }
 
 // NewPostOrPutRecordResponse instantiates a new PostOrPutRecordResponse object
@@ -74,9 +74,9 @@ func (o *PostOrPutRecordResponse) SetSchemaVersion(v int32) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PostOrPutRecordResponse) GetResults() Record {
+func (o *PostOrPutRecordResponse) GetResults() RecordPostOrPut {
 	if o == nil || IsNil(o.Results) {
-		var ret Record
+		var ret RecordPostOrPut
 		return ret
 	}
 	return *o.Results
@@ -84,7 +84,7 @@ func (o *PostOrPutRecordResponse) GetResults() Record {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PostOrPutRecordResponse) GetResultsOk() (*Record, bool) {
+func (o *PostOrPutRecordResponse) GetResultsOk() (*RecordPostOrPut, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *PostOrPutRecordResponse) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given Record and assigns it to the Results field.
-func (o *PostOrPutRecordResponse) SetResults(v Record) {
+// SetResults gets a reference to the given RecordPostOrPut and assigns it to the Results field.
+func (o *PostOrPutRecordResponse) SetResults(v RecordPostOrPut) {
 	o.Results = &v
 }
 

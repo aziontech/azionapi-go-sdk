@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## PostZoneRecord
 
-> PostOrPutRecordResponse PostZoneRecord(ctx, zoneId).Record(record).Execute()
+> PostOrPutRecordResponse PostZoneRecord(ctx, zoneId).RecordPostOrPut(recordPostOrPut).Execute()
 
 Create a new Intelligent DNS zone record
 
@@ -170,11 +170,11 @@ import (
 
 func main() {
     zoneId := int32(56) // int32 | The hosted zone id
-    record := *openapiclient.NewRecord() // Record |  (optional)
+    recordPostOrPut := *openapiclient.NewRecordPostOrPut() // RecordPostOrPut |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordsApi.PostZoneRecord(context.Background(), zoneId).Record(record).Execute()
+    resp, r, err := apiClient.RecordsApi.PostZoneRecord(context.Background(), zoneId).RecordPostOrPut(recordPostOrPut).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.PostZoneRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -200,7 +200,7 @@ Other parameters are passed through a pointer to a apiPostZoneRecordRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **record** | [**Record**](Record.md) |  | 
+ **recordPostOrPut** | [**RecordPostOrPut**](RecordPostOrPut.md) |  | 
 
 ### Return type
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## PutZoneRecord
 
-> PostOrPutRecordResponse PutZoneRecord(ctx, zoneId, recordId).Record(record).Execute()
+> PostOrPutRecordResponse PutZoneRecord(ctx, zoneId, recordId).RecordPostOrPut(recordPostOrPut).Execute()
 
 Update an Intelligent DNS zone record
 
@@ -241,11 +241,11 @@ import (
 func main() {
     zoneId := int32(56) // int32 | The hosted zone id
     recordId := int32(56) // int32 | The zone record id
-    record := *openapiclient.NewRecord() // Record |  (optional)
+    recordPostOrPut := *openapiclient.NewRecordPostOrPut() // RecordPostOrPut |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordsApi.PutZoneRecord(context.Background(), zoneId, recordId).Record(record).Execute()
+    resp, r, err := apiClient.RecordsApi.PutZoneRecord(context.Background(), zoneId, recordId).RecordPostOrPut(recordPostOrPut).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.PutZoneRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **record** | [**Record**](Record.md) |  | 
+ **recordPostOrPut** | [**RecordPostOrPut**](RecordPostOrPut.md) |  | 
 
 ### Return type
 

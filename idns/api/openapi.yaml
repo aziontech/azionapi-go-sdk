@@ -212,7 +212,7 @@ paths:
               - 1.2.3.4
               - 5.6.7.8
             schema:
-              $ref: '#/components/schemas/Record'
+              $ref: '#/components/schemas/RecordPostOrPut'
       responses:
         "201":
           content:
@@ -302,7 +302,7 @@ paths:
               - 5.6.7.8
               - 1.1.2.2
             schema:
-              $ref: '#/components/schemas/Record'
+              $ref: '#/components/schemas/RecordPostOrPut'
       responses:
         "200":
           content:
@@ -363,8 +363,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              is_enabled: true
             schema:
-              $ref: '#/components/schemas/PatchDnsSecRequest'
+              $ref: '#/components/schemas/DnsSec'
       responses:
         "201":
           content:
@@ -568,7 +570,7 @@ components:
             $ref: '#/components/schemas/Zone'
           type: array
       type: object
-    Record:
+    RecordGet:
       example:
         record_id: 5
         entry: entry
@@ -581,6 +583,35 @@ components:
         policy: policy
       properties:
         record_id:
+          type: integer
+        entry:
+          type: string
+        description:
+          type: string
+        answers_list:
+          items:
+            type: string
+          type: array
+        policy:
+          type: string
+        record_type:
+          type: string
+        ttl:
+          type: integer
+      type: object
+    RecordPostOrPut:
+      example:
+        entry: entry
+        answers_list:
+        - answers_list
+        - answers_list
+        description: description
+        id: 6
+        ttl: 1
+        record_type: record_type
+        policy: policy
+      properties:
+        id:
           type: integer
         entry:
           type: string
@@ -648,13 +679,13 @@ components:
       example:
         schema_version: 0
         results:
-          record_id: 5
           entry: entry
           answers_list:
           - answers_list
           - answers_list
           description: description
-          ttl: 2
+          id: 6
+          ttl: 1
           record_type: record_type
           policy: policy
       properties:
@@ -662,21 +693,21 @@ components:
           description: The schema version
           type: integer
         results:
-          $ref: '#/components/schemas/Record'
+          $ref: '#/components/schemas/RecordPostOrPut'
       type: object
     DnsSec:
       example:
         is_enabled: true
-        status: ready
         delegation_signer:
-          key_tag: 12345
+          key_tag: 9607
           digest_type:
-            id: 13
-            slug: SHA256
+            id: 6
+            slug: slug
           algorithm_type:
-            id: 2
-            slug: ECDSAP256SHA256
-          digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
+            id: 6
+            slug: slug
+          digest: digest
+        status: unconfigured
       properties:
         is_enabled:
           type: boolean
@@ -692,33 +723,25 @@ components:
     GetOrPatchDnsSecResponse:
       description: Object returned by get zone DNSSEC
       example:
-        schema_version: 3
+        schema_version: 0
         results:
           is_enabled: true
-          status: ready
           delegation_signer:
-            key_tag: 12345
+            key_tag: 9607
             digest_type:
-              id: 13
-              slug: SHA256
+              id: 6
+              slug: slug
             algorithm_type:
-              id: 2
-              slug: ECDSAP256SHA256
-            digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
+              id: 6
+              slug: slug
+            digest: digest
+          status: unconfigured
       properties:
         schema_version:
           description: The schema version
           type: integer
         results:
           $ref: '#/components/schemas/DnsSec'
-      type: object
-    PatchDnsSecRequest:
-      description: Data to enable or disable DNSSEC for a zone
-      example:
-        is_enabled: true
-      properties:
-        is_enabled:
-          type: boolean
       type: object
     ErrorsResponse:
       properties:
@@ -775,23 +798,13 @@ components:
         records:
           description: Zone records collection
           items:
-            $ref: '#/components/schemas/Record'
+            $ref: '#/components/schemas/RecordGet'
           type: array
       type: object
     DnsSec_delegation_signer_digest_type:
       example:
-        id: 13
-        slug: SHA256
-      properties:
-        id:
-          type: integer
-        slug:
-          type: string
-      type: object
-    DnsSec_delegation_signer_algorithm_type:
-      example:
-        id: 2
-        slug: ECDSP256SHA256
+        id: 6
+        slug: slug
       properties:
         id:
           type: integer
@@ -800,23 +813,25 @@ components:
       type: object
     DnsSec_delegation_signer:
       example:
-        key_tag: 12345
+        key_tag: 9607
         digest_type:
-          id: 13
-          slug: SHA256
+          id: 6
+          slug: slug
         algorithm_type:
-          id: 2
-          slug: ECDSAP256SHA256
-        digest: 0a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f67890a1b2c3d4e5f6789
+          id: 6
+          slug: slug
+        digest: digest
       properties:
-        key_tag:
-          type: integer
         digest_type:
           $ref: '#/components/schemas/DnsSec_delegation_signer_digest_type'
         algorithm_type:
-          $ref: '#/components/schemas/DnsSec_delegation_signer_algorithm_type'
+          $ref: '#/components/schemas/DnsSec_delegation_signer_digest_type'
         digest:
           type: string
+        key_tag:
+          maximum: 65535
+          minimum: 1
+          type: integer
       type: object
   securitySchemes:
     tokenAuth:

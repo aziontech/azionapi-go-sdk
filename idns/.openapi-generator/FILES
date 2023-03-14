@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -10,7 +11,6 @@ configuration.go
 docs/DNSSECApi.md
 docs/DnsSec.md
 docs/DnsSecDelegationSigner.md
-docs/DnsSecDelegationSignerAlgorithmType.md
 docs/DnsSecDelegationSignerDigestType.md
 docs/ErrorResponse.md
 docs/ErrorsResponse.md
@@ -20,10 +20,10 @@ docs/GetRecordsResponseResults.md
 docs/GetZoneResponse.md
 docs/GetZonesResponse.md
 docs/GetZonesResponseLinks.md
-docs/PatchDnsSecRequest.md
 docs/PostOrPutRecordResponse.md
 docs/PostOrPutZoneResponse.md
-docs/Record.md
+docs/RecordGet.md
+docs/RecordPostOrPut.md
 docs/RecordsApi.md
 docs/Zone.md
 docs/ZonesApi.md
@@ -32,7 +32,6 @@ go.mod
 go.sum
 model_dns_sec.go
 model_dns_sec_delegation_signer.go
-model_dns_sec_delegation_signer_algorithm_type.go
 model_dns_sec_delegation_signer_digest_type.go
 model_error_response.go
 model_errors_response.go
@@ -42,10 +41,13 @@ model_get_records_response_results.go
 model_get_zone_response.go
 model_get_zones_response.go
 model_get_zones_response_links.go
-model_patch_dns_sec_request.go
 model_post_or_put_record_response.go
 model_post_or_put_zone_response.go
-model_record.go
+model_record_get.go
+model_record_post_or_put.go
 model_zone.go
 response.go
+test/api_dnssec_test.go
+test/api_records_test.go
+test/api_zones_test.go
 utils.go
