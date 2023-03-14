@@ -152,14 +152,14 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 }
 
 type ApiPutZoneDnsSecRequest struct {
-	ctx                context.Context
-	ApiService         *DNSSECApiService
-	zoneId             int32
-	patchDnsSecRequest *PatchDnsSecRequest
+	ctx        context.Context
+	ApiService *DNSSECApiService
+	zoneId     int32
+	dnsSec     *DnsSec
 }
 
-func (r ApiPutZoneDnsSecRequest) PatchDnsSecRequest(patchDnsSecRequest PatchDnsSecRequest) ApiPutZoneDnsSecRequest {
-	r.patchDnsSecRequest = &patchDnsSecRequest
+func (r ApiPutZoneDnsSecRequest) DnsSec(dnsSec DnsSec) ApiPutZoneDnsSecRequest {
+	r.dnsSec = &dnsSec
 	return r
 }
 
@@ -226,7 +226,7 @@ func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*Get
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchDnsSecRequest
+	localVarPostBody = r.dnsSec
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

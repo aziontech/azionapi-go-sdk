@@ -1,10 +1,10 @@
-# Record
+# RecordPostOrPut
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RecordId** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int32** |  | [optional] 
 **Entry** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **AnswersList** | Pointer to **[]string** |  | [optional] 
@@ -14,195 +14,195 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewRecord
+### NewRecordPostOrPut
 
-`func NewRecord() *Record`
+`func NewRecordPostOrPut() *RecordPostOrPut`
 
-NewRecord instantiates a new Record object
+NewRecordPostOrPut instantiates a new RecordPostOrPut object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRecordWithDefaults
+### NewRecordPostOrPutWithDefaults
 
-`func NewRecordWithDefaults() *Record`
+`func NewRecordPostOrPutWithDefaults() *RecordPostOrPut`
 
-NewRecordWithDefaults instantiates a new Record object
+NewRecordPostOrPutWithDefaults instantiates a new RecordPostOrPut object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetRecordId
+### GetId
 
-`func (o *Record) GetRecordId() int32`
+`func (o *RecordPostOrPut) GetId() int32`
 
-GetRecordId returns the RecordId field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetRecordIdOk
+### GetIdOk
 
-`func (o *Record) GetRecordIdOk() (*int32, bool)`
+`func (o *RecordPostOrPut) GetIdOk() (*int32, bool)`
 
-GetRecordIdOk returns a tuple with the RecordId field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRecordId
+### SetId
 
-`func (o *Record) SetRecordId(v int32)`
+`func (o *RecordPostOrPut) SetId(v int32)`
 
-SetRecordId sets RecordId field to given value.
+SetId sets Id field to given value.
 
-### HasRecordId
+### HasId
 
-`func (o *Record) HasRecordId() bool`
+`func (o *RecordPostOrPut) HasId() bool`
 
-HasRecordId returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
 
 ### GetEntry
 
-`func (o *Record) GetEntry() string`
+`func (o *RecordPostOrPut) GetEntry() string`
 
 GetEntry returns the Entry field if non-nil, zero value otherwise.
 
 ### GetEntryOk
 
-`func (o *Record) GetEntryOk() (*string, bool)`
+`func (o *RecordPostOrPut) GetEntryOk() (*string, bool)`
 
 GetEntryOk returns a tuple with the Entry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEntry
 
-`func (o *Record) SetEntry(v string)`
+`func (o *RecordPostOrPut) SetEntry(v string)`
 
 SetEntry sets Entry field to given value.
 
 ### HasEntry
 
-`func (o *Record) HasEntry() bool`
+`func (o *RecordPostOrPut) HasEntry() bool`
 
 HasEntry returns a boolean if a field has been set.
 
 ### GetDescription
 
-`func (o *Record) GetDescription() string`
+`func (o *RecordPostOrPut) GetDescription() string`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *Record) GetDescriptionOk() (*string, bool)`
+`func (o *RecordPostOrPut) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *Record) SetDescription(v string)`
+`func (o *RecordPostOrPut) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
 
 ### HasDescription
 
-`func (o *Record) HasDescription() bool`
+`func (o *RecordPostOrPut) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
 
 ### GetAnswersList
 
-`func (o *Record) GetAnswersList() []string`
+`func (o *RecordPostOrPut) GetAnswersList() []string`
 
 GetAnswersList returns the AnswersList field if non-nil, zero value otherwise.
 
 ### GetAnswersListOk
 
-`func (o *Record) GetAnswersListOk() (*[]string, bool)`
+`func (o *RecordPostOrPut) GetAnswersListOk() (*[]string, bool)`
 
 GetAnswersListOk returns a tuple with the AnswersList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnswersList
 
-`func (o *Record) SetAnswersList(v []string)`
+`func (o *RecordPostOrPut) SetAnswersList(v []string)`
 
 SetAnswersList sets AnswersList field to given value.
 
 ### HasAnswersList
 
-`func (o *Record) HasAnswersList() bool`
+`func (o *RecordPostOrPut) HasAnswersList() bool`
 
 HasAnswersList returns a boolean if a field has been set.
 
 ### GetPolicy
 
-`func (o *Record) GetPolicy() string`
+`func (o *RecordPostOrPut) GetPolicy() string`
 
 GetPolicy returns the Policy field if non-nil, zero value otherwise.
 
 ### GetPolicyOk
 
-`func (o *Record) GetPolicyOk() (*string, bool)`
+`func (o *RecordPostOrPut) GetPolicyOk() (*string, bool)`
 
 GetPolicyOk returns a tuple with the Policy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicy
 
-`func (o *Record) SetPolicy(v string)`
+`func (o *RecordPostOrPut) SetPolicy(v string)`
 
 SetPolicy sets Policy field to given value.
 
 ### HasPolicy
 
-`func (o *Record) HasPolicy() bool`
+`func (o *RecordPostOrPut) HasPolicy() bool`
 
 HasPolicy returns a boolean if a field has been set.
 
 ### GetRecordType
 
-`func (o *Record) GetRecordType() string`
+`func (o *RecordPostOrPut) GetRecordType() string`
 
 GetRecordType returns the RecordType field if non-nil, zero value otherwise.
 
 ### GetRecordTypeOk
 
-`func (o *Record) GetRecordTypeOk() (*string, bool)`
+`func (o *RecordPostOrPut) GetRecordTypeOk() (*string, bool)`
 
 GetRecordTypeOk returns a tuple with the RecordType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecordType
 
-`func (o *Record) SetRecordType(v string)`
+`func (o *RecordPostOrPut) SetRecordType(v string)`
 
 SetRecordType sets RecordType field to given value.
 
 ### HasRecordType
 
-`func (o *Record) HasRecordType() bool`
+`func (o *RecordPostOrPut) HasRecordType() bool`
 
 HasRecordType returns a boolean if a field has been set.
 
 ### GetTtl
 
-`func (o *Record) GetTtl() int32`
+`func (o *RecordPostOrPut) GetTtl() int32`
 
 GetTtl returns the Ttl field if non-nil, zero value otherwise.
 
 ### GetTtlOk
 
-`func (o *Record) GetTtlOk() (*int32, bool)`
+`func (o *RecordPostOrPut) GetTtlOk() (*int32, bool)`
 
 GetTtlOk returns a tuple with the Ttl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTtl
 
-`func (o *Record) SetTtl(v int32)`
+`func (o *RecordPostOrPut) SetTtl(v int32)`
 
 SetTtl sets Ttl field to given value.
 
 ### HasTtl
 
-`func (o *Record) HasTtl() bool`
+`func (o *RecordPostOrPut) HasTtl() bool`
 
 HasTtl returns a boolean if a field has been set.
 

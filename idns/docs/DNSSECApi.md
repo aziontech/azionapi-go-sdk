@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## PutZoneDnsSec
 
-> GetOrPatchDnsSecResponse PutZoneDnsSec(ctx, zoneId).PatchDnsSecRequest(patchDnsSecRequest).Execute()
+> GetOrPatchDnsSecResponse PutZoneDnsSec(ctx, zoneId).DnsSec(dnsSec).Execute()
 
 Update the DNSSEC zone
 
@@ -97,11 +97,11 @@ import (
 
 func main() {
     zoneId := int32(56) // int32 | The hosted zone id
-    patchDnsSecRequest := *openapiclient.NewPatchDnsSecRequest() // PatchDnsSecRequest |  (optional)
+    dnsSec := *openapiclient.NewDnsSec() // DnsSec |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DNSSECApi.PutZoneDnsSec(context.Background(), zoneId).PatchDnsSecRequest(patchDnsSecRequest).Execute()
+    resp, r, err := apiClient.DNSSECApi.PutZoneDnsSec(context.Background(), zoneId).DnsSec(dnsSec).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DNSSECApi.PutZoneDnsSec``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -127,7 +127,7 @@ Other parameters are passed through a pointer to a apiPutZoneDnsSecRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchDnsSecRequest** | [**PatchDnsSecRequest**](PatchDnsSecRequest.md) |  | 
+ **dnsSec** | [**DnsSec**](DnsSec.md) |  | 
 
 ### Return type
 

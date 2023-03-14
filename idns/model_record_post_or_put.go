@@ -14,12 +14,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the Record type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Record{}
+// checks if the RecordPostOrPut type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RecordPostOrPut{}
 
-// Record struct for Record
-type Record struct {
-	RecordId    *int32   `json:"record_id,omitempty"`
+// RecordPostOrPut struct for RecordPostOrPut
+type RecordPostOrPut struct {
+	Id          *int32   `json:"id,omitempty"`
 	Entry       *string  `json:"entry,omitempty"`
 	Description *string  `json:"description,omitempty"`
 	AnswersList []string `json:"answers_list,omitempty"`
@@ -28,57 +28,57 @@ type Record struct {
 	Ttl         *int32   `json:"ttl,omitempty"`
 }
 
-// NewRecord instantiates a new Record object
+// NewRecordPostOrPut instantiates a new RecordPostOrPut object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRecord() *Record {
-	this := Record{}
+func NewRecordPostOrPut() *RecordPostOrPut {
+	this := RecordPostOrPut{}
 	return &this
 }
 
-// NewRecordWithDefaults instantiates a new Record object
+// NewRecordPostOrPutWithDefaults instantiates a new RecordPostOrPut object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRecordWithDefaults() *Record {
-	this := Record{}
+func NewRecordPostOrPutWithDefaults() *RecordPostOrPut {
+	this := RecordPostOrPut{}
 	return &this
 }
 
-// GetRecordId returns the RecordId field value if set, zero value otherwise.
-func (o *Record) GetRecordId() int32 {
-	if o == nil || IsNil(o.RecordId) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *RecordPostOrPut) GetId() int32 {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
-	return *o.RecordId
+	return *o.Id
 }
 
-// GetRecordIdOk returns a tuple with the RecordId field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Record) GetRecordIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.RecordId) {
+func (o *RecordPostOrPut) GetIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.RecordId, true
+	return o.Id, true
 }
 
-// HasRecordId returns a boolean if a field has been set.
-func (o *Record) HasRecordId() bool {
-	if o != nil && !IsNil(o.RecordId) {
+// HasId returns a boolean if a field has been set.
+func (o *RecordPostOrPut) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetRecordId gets a reference to the given int32 and assigns it to the RecordId field.
-func (o *Record) SetRecordId(v int32) {
-	o.RecordId = &v
+// SetId gets a reference to the given int32 and assigns it to the Id field.
+func (o *RecordPostOrPut) SetId(v int32) {
+	o.Id = &v
 }
 
 // GetEntry returns the Entry field value if set, zero value otherwise.
-func (o *Record) GetEntry() string {
+func (o *RecordPostOrPut) GetEntry() string {
 	if o == nil || IsNil(o.Entry) {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *Record) GetEntry() string {
 
 // GetEntryOk returns a tuple with the Entry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Record) GetEntryOk() (*string, bool) {
+func (o *RecordPostOrPut) GetEntryOk() (*string, bool) {
 	if o == nil || IsNil(o.Entry) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *Record) GetEntryOk() (*string, bool) {
 }
 
 // HasEntry returns a boolean if a field has been set.
-func (o *Record) HasEntry() bool {
+func (o *RecordPostOrPut) HasEntry() bool {
 	if o != nil && !IsNil(o.Entry) {
 		return true
 	}
@@ -105,12 +105,12 @@ func (o *Record) HasEntry() bool {
 }
 
 // SetEntry gets a reference to the given string and assigns it to the Entry field.
-func (o *Record) SetEntry(v string) {
+func (o *RecordPostOrPut) SetEntry(v string) {
 	o.Entry = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Record) GetDescription() string {
+func (o *RecordPostOrPut) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -120,7 +120,7 @@ func (o *Record) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Record) GetDescriptionOk() (*string, bool) {
+func (o *RecordPostOrPut) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *Record) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *Record) HasDescription() bool {
+func (o *RecordPostOrPut) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -137,12 +137,12 @@ func (o *Record) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Record) SetDescription(v string) {
+func (o *RecordPostOrPut) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetAnswersList returns the AnswersList field value if set, zero value otherwise.
-func (o *Record) GetAnswersList() []string {
+func (o *RecordPostOrPut) GetAnswersList() []string {
 	if o == nil || IsNil(o.AnswersList) {
 		var ret []string
 		return ret
@@ -152,7 +152,7 @@ func (o *Record) GetAnswersList() []string {
 
 // GetAnswersListOk returns a tuple with the AnswersList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Record) GetAnswersListOk() ([]string, bool) {
+func (o *RecordPostOrPut) GetAnswersListOk() ([]string, bool) {
 	if o == nil || IsNil(o.AnswersList) {
 		return nil, false
 	}
@@ -160,7 +160,7 @@ func (o *Record) GetAnswersListOk() ([]string, bool) {
 }
 
 // HasAnswersList returns a boolean if a field has been set.
-func (o *Record) HasAnswersList() bool {
+func (o *RecordPostOrPut) HasAnswersList() bool {
 	if o != nil && !IsNil(o.AnswersList) {
 		return true
 	}
@@ -169,12 +169,12 @@ func (o *Record) HasAnswersList() bool {
 }
 
 // SetAnswersList gets a reference to the given []string and assigns it to the AnswersList field.
-func (o *Record) SetAnswersList(v []string) {
+func (o *RecordPostOrPut) SetAnswersList(v []string) {
 	o.AnswersList = v
 }
 
 // GetPolicy returns the Policy field value if set, zero value otherwise.
-func (o *Record) GetPolicy() string {
+func (o *RecordPostOrPut) GetPolicy() string {
 	if o == nil || IsNil(o.Policy) {
 		var ret string
 		return ret
@@ -184,7 +184,7 @@ func (o *Record) GetPolicy() string {
 
 // GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Record) GetPolicyOk() (*string, bool) {
+func (o *RecordPostOrPut) GetPolicyOk() (*string, bool) {
 	if o == nil || IsNil(o.Policy) {
 		return nil, false
 	}
@@ -192,7 +192,7 @@ func (o *Record) GetPolicyOk() (*string, bool) {
 }
 
 // HasPolicy returns a boolean if a field has been set.
-func (o *Record) HasPolicy() bool {
+func (o *RecordPostOrPut) HasPolicy() bool {
 	if o != nil && !IsNil(o.Policy) {
 		return true
 	}
@@ -201,12 +201,12 @@ func (o *Record) HasPolicy() bool {
 }
 
 // SetPolicy gets a reference to the given string and assigns it to the Policy field.
-func (o *Record) SetPolicy(v string) {
+func (o *RecordPostOrPut) SetPolicy(v string) {
 	o.Policy = &v
 }
 
 // GetRecordType returns the RecordType field value if set, zero value otherwise.
-func (o *Record) GetRecordType() string {
+func (o *RecordPostOrPut) GetRecordType() string {
 	if o == nil || IsNil(o.RecordType) {
 		var ret string
 		return ret
@@ -216,7 +216,7 @@ func (o *Record) GetRecordType() string {
 
 // GetRecordTypeOk returns a tuple with the RecordType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Record) GetRecordTypeOk() (*string, bool) {
+func (o *RecordPostOrPut) GetRecordTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.RecordType) {
 		return nil, false
 	}
@@ -224,7 +224,7 @@ func (o *Record) GetRecordTypeOk() (*string, bool) {
 }
 
 // HasRecordType returns a boolean if a field has been set.
-func (o *Record) HasRecordType() bool {
+func (o *RecordPostOrPut) HasRecordType() bool {
 	if o != nil && !IsNil(o.RecordType) {
 		return true
 	}
@@ -233,12 +233,12 @@ func (o *Record) HasRecordType() bool {
 }
 
 // SetRecordType gets a reference to the given string and assigns it to the RecordType field.
-func (o *Record) SetRecordType(v string) {
+func (o *RecordPostOrPut) SetRecordType(v string) {
 	o.RecordType = &v
 }
 
 // GetTtl returns the Ttl field value if set, zero value otherwise.
-func (o *Record) GetTtl() int32 {
+func (o *RecordPostOrPut) GetTtl() int32 {
 	if o == nil || IsNil(o.Ttl) {
 		var ret int32
 		return ret
@@ -248,7 +248,7 @@ func (o *Record) GetTtl() int32 {
 
 // GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Record) GetTtlOk() (*int32, bool) {
+func (o *RecordPostOrPut) GetTtlOk() (*int32, bool) {
 	if o == nil || IsNil(o.Ttl) {
 		return nil, false
 	}
@@ -256,7 +256,7 @@ func (o *Record) GetTtlOk() (*int32, bool) {
 }
 
 // HasTtl returns a boolean if a field has been set.
-func (o *Record) HasTtl() bool {
+func (o *RecordPostOrPut) HasTtl() bool {
 	if o != nil && !IsNil(o.Ttl) {
 		return true
 	}
@@ -265,11 +265,11 @@ func (o *Record) HasTtl() bool {
 }
 
 // SetTtl gets a reference to the given int32 and assigns it to the Ttl field.
-func (o *Record) SetTtl(v int32) {
+func (o *RecordPostOrPut) SetTtl(v int32) {
 	o.Ttl = &v
 }
 
-func (o Record) MarshalJSON() ([]byte, error) {
+func (o RecordPostOrPut) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -277,10 +277,10 @@ func (o Record) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Record) ToMap() (map[string]interface{}, error) {
+func (o RecordPostOrPut) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RecordId) {
-		toSerialize["record_id"] = o.RecordId
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Entry) {
 		toSerialize["entry"] = o.Entry
@@ -303,38 +303,38 @@ func (o Record) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableRecord struct {
-	value *Record
+type NullableRecordPostOrPut struct {
+	value *RecordPostOrPut
 	isSet bool
 }
 
-func (v NullableRecord) Get() *Record {
+func (v NullableRecordPostOrPut) Get() *RecordPostOrPut {
 	return v.value
 }
 
-func (v *NullableRecord) Set(val *Record) {
+func (v *NullableRecordPostOrPut) Set(val *RecordPostOrPut) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRecord) IsSet() bool {
+func (v NullableRecordPostOrPut) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRecord) Unset() {
+func (v *NullableRecordPostOrPut) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRecord(val *Record) *NullableRecord {
-	return &NullableRecord{value: val, isSet: true}
+func NewNullableRecordPostOrPut(val *RecordPostOrPut) *NullableRecordPostOrPut {
+	return &NullableRecordPostOrPut{value: val, isSet: true}
 }
 
-func (v NullableRecord) MarshalJSON() ([]byte, error) {
+func (v NullableRecordPostOrPut) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRecord) UnmarshalJSON(src []byte) error {
+func (v *NullableRecordPostOrPut) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

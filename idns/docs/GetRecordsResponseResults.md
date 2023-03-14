@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ZoneId** | Pointer to **int32** |  | [optional] 
 **ZoneDomain** | Pointer to **string** |  | [optional] 
-**Records** | Pointer to [**[]Record**](Record.md) | Zone records collection | [optional] 
+**Records** | Pointer to [**[]RecordGet**](RecordGet.md) | Zone records collection | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasZoneDomain returns a boolean if a field has been set.
 
 ### GetRecords
 
-`func (o *GetRecordsResponseResults) GetRecords() []Record`
+`func (o *GetRecordsResponseResults) GetRecords() []RecordGet`
 
 GetRecords returns the Records field if non-nil, zero value otherwise.
 
 ### GetRecordsOk
 
-`func (o *GetRecordsResponseResults) GetRecordsOk() (*[]Record, bool)`
+`func (o *GetRecordsResponseResults) GetRecordsOk() (*[]RecordGet, bool)`
 
 GetRecordsOk returns a tuple with the Records field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecords
 
-`func (o *GetRecordsResponseResults) SetRecords(v []Record)`
+`func (o *GetRecordsResponseResults) SetRecords(v []RecordGet)`
 
 SetRecords sets Records field to given value.
 

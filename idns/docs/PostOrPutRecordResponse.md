@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SchemaVersion** | Pointer to **int32** | The schema version | [optional] 
-**Results** | Pointer to [**Record**](Record.md) |  | [optional] 
+**Results** | Pointer to [**RecordPostOrPut**](RecordPostOrPut.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasSchemaVersion returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *PostOrPutRecordResponse) GetResults() Record`
+`func (o *PostOrPutRecordResponse) GetResults() RecordPostOrPut`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PostOrPutRecordResponse) GetResultsOk() (*Record, bool)`
+`func (o *PostOrPutRecordResponse) GetResultsOk() (*RecordPostOrPut, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PostOrPutRecordResponse) SetResults(v Record)`
+`func (o *PostOrPutRecordResponse) SetResults(v RecordPostOrPut)`
 
 SetResults sets Results field to given value.
 

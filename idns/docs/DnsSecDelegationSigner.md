@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**KeyTag** | Pointer to **int32** |  | [optional] 
 **DigestType** | Pointer to [**DnsSecDelegationSignerDigestType**](DnsSecDelegationSignerDigestType.md) |  | [optional] 
-**AlgorithmType** | Pointer to [**DnsSecDelegationSignerAlgorithmType**](DnsSecDelegationSignerAlgorithmType.md) |  | [optional] 
+**AlgorithmType** | Pointer to [**DnsSecDelegationSignerDigestType**](DnsSecDelegationSignerDigestType.md) |  | [optional] 
 **Digest** | Pointer to **string** |  | [optional] 
+**KeyTag** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewDnsSecDelegationSignerWithDefaults instantiates a new DnsSecDelegationSigner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetKeyTag
-
-`func (o *DnsSecDelegationSigner) GetKeyTag() int32`
-
-GetKeyTag returns the KeyTag field if non-nil, zero value otherwise.
-
-### GetKeyTagOk
-
-`func (o *DnsSecDelegationSigner) GetKeyTagOk() (*int32, bool)`
-
-GetKeyTagOk returns a tuple with the KeyTag field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKeyTag
-
-`func (o *DnsSecDelegationSigner) SetKeyTag(v int32)`
-
-SetKeyTag sets KeyTag field to given value.
-
-### HasKeyTag
-
-`func (o *DnsSecDelegationSigner) HasKeyTag() bool`
-
-HasKeyTag returns a boolean if a field has been set.
 
 ### GetDigestType
 
@@ -80,20 +55,20 @@ HasDigestType returns a boolean if a field has been set.
 
 ### GetAlgorithmType
 
-`func (o *DnsSecDelegationSigner) GetAlgorithmType() DnsSecDelegationSignerAlgorithmType`
+`func (o *DnsSecDelegationSigner) GetAlgorithmType() DnsSecDelegationSignerDigestType`
 
 GetAlgorithmType returns the AlgorithmType field if non-nil, zero value otherwise.
 
 ### GetAlgorithmTypeOk
 
-`func (o *DnsSecDelegationSigner) GetAlgorithmTypeOk() (*DnsSecDelegationSignerAlgorithmType, bool)`
+`func (o *DnsSecDelegationSigner) GetAlgorithmTypeOk() (*DnsSecDelegationSignerDigestType, bool)`
 
 GetAlgorithmTypeOk returns a tuple with the AlgorithmType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlgorithmType
 
-`func (o *DnsSecDelegationSigner) SetAlgorithmType(v DnsSecDelegationSignerAlgorithmType)`
+`func (o *DnsSecDelegationSigner) SetAlgorithmType(v DnsSecDelegationSignerDigestType)`
 
 SetAlgorithmType sets AlgorithmType field to given value.
 
@@ -127,6 +102,31 @@ SetDigest sets Digest field to given value.
 `func (o *DnsSecDelegationSigner) HasDigest() bool`
 
 HasDigest returns a boolean if a field has been set.
+
+### GetKeyTag
+
+`func (o *DnsSecDelegationSigner) GetKeyTag() int32`
+
+GetKeyTag returns the KeyTag field if non-nil, zero value otherwise.
+
+### GetKeyTagOk
+
+`func (o *DnsSecDelegationSigner) GetKeyTagOk() (*int32, bool)`
+
+GetKeyTagOk returns a tuple with the KeyTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyTag
+
+`func (o *DnsSecDelegationSigner) SetKeyTag(v int32)`
+
+SetKeyTag sets KeyTag field to given value.
+
+### HasKeyTag
+
+`func (o *DnsSecDelegationSigner) HasKeyTag() bool`
+
+HasKeyTag returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
