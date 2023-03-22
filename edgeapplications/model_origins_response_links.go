@@ -42,7 +42,7 @@ func NewOriginsResponseLinksWithDefaults() *OriginsResponseLinks {
 
 // GetPrevious returns the Previous field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OriginsResponseLinks) GetPrevious() string {
-	if o == nil || isNil(o.Previous.Get()) {
+	if o == nil || IsNil(o.Previous.Get()) {
 		var ret string
 		return ret
 	}
@@ -84,7 +84,7 @@ func (o *OriginsResponseLinks) UnsetPrevious() {
 
 // GetNext returns the Next field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OriginsResponseLinks) GetNext() string {
-	if o == nil || isNil(o.Next.Get()) {
+	if o == nil || IsNil(o.Next.Get()) {
 		var ret string
 		return ret
 	}

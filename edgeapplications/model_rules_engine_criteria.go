@@ -119,7 +119,7 @@ func (o *RulesEngineCriteria) SetOperator(v string) {
 
 // GetInputValue returns the InputValue field value if set, zero value otherwise.
 func (o *RulesEngineCriteria) GetInputValue() string {
-	if o == nil || isNil(o.InputValue) {
+	if o == nil || IsNil(o.InputValue) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o *RulesEngineCriteria) GetInputValue() string {
 // GetInputValueOk returns a tuple with the InputValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RulesEngineCriteria) GetInputValueOk() (*string, bool) {
-	if o == nil || isNil(o.InputValue) {
+	if o == nil || IsNil(o.InputValue) {
 		return nil, false
 	}
 	return o.InputValue, true
@@ -137,7 +137,7 @@ func (o *RulesEngineCriteria) GetInputValueOk() (*string, bool) {
 
 // HasInputValue returns a boolean if a field has been set.
 func (o *RulesEngineCriteria) HasInputValue() bool {
-	if o != nil && !isNil(o.InputValue) {
+	if o != nil && !IsNil(o.InputValue) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o RulesEngineCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize["conditional"] = o.Conditional
 	toSerialize["variable"] = o.Variable
 	toSerialize["operator"] = o.Operator
-	if !isNil(o.InputValue) {
+	if !IsNil(o.InputValue) {
 		toSerialize["input_value"] = o.InputValue
 	}
 	return toSerialize, nil

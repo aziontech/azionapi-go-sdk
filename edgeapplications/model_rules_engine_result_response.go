@@ -125,7 +125,7 @@ func (o *RulesEngineResultResponse) SetPhase(v string) {
 
 // GetBehaviors returns the Behaviors field value if set, zero value otherwise.
 func (o *RulesEngineResultResponse) GetBehaviors() []RulesEngineResultResponseBehaviors {
-	if o == nil || isNil(o.Behaviors) {
+	if o == nil || IsNil(o.Behaviors) {
 		var ret []RulesEngineResultResponseBehaviors
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *RulesEngineResultResponse) GetBehaviors() []RulesEngineResultResponseBe
 // GetBehaviorsOk returns a tuple with the Behaviors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RulesEngineResultResponse) GetBehaviorsOk() ([]RulesEngineResultResponseBehaviors, bool) {
-	if o == nil || isNil(o.Behaviors) {
+	if o == nil || IsNil(o.Behaviors) {
 		return nil, false
 	}
 	return o.Behaviors, true
@@ -143,7 +143,7 @@ func (o *RulesEngineResultResponse) GetBehaviorsOk() ([]RulesEngineResultRespons
 
 // HasBehaviors returns a boolean if a field has been set.
 func (o *RulesEngineResultResponse) HasBehaviors() bool {
-	if o != nil && !isNil(o.Behaviors) {
+	if o != nil && !IsNil(o.Behaviors) {
 		return true
 	}
 
@@ -240,7 +240,7 @@ func (o RulesEngineResultResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["phase"] = o.Phase
-	if !isNil(o.Behaviors) {
+	if !IsNil(o.Behaviors) {
 		toSerialize["behaviors"] = o.Behaviors
 	}
 	toSerialize["criteria"] = o.Criteria
