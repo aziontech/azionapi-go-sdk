@@ -21,8 +21,8 @@ var _ MappedNullable = &ApplicationPutRequest{}
 type ApplicationPutRequest struct {
 	Name string `json:"name"`
 	DeliveryProtocol *string `json:"delivery_protocol,omitempty"`
-	HttpPort []int64 `json:"http_port,omitempty"`
-	HttpsPort []int64 `json:"https_port,omitempty"`
+	HttpPort *interface{} `json:"http_port,omitempty"`
+	HttpsPort *interface{} `json:"https_port,omitempty"`
 	MinimumTlsVersion *string `json:"minimum_tls_version,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	ApplicationAcceleration *bool `json:"application_acceleration,omitempty"`
@@ -112,17 +112,17 @@ func (o *ApplicationPutRequest) SetDeliveryProtocol(v string) {
 }
 
 // GetHttpPort returns the HttpPort field value if set, zero value otherwise.
-func (o *ApplicationPutRequest) GetHttpPort() []int64 {
+func (o *ApplicationPutRequest) GetHttpPort() interface{} {
 	if o == nil || IsNil(o.HttpPort) {
-		var ret []int64
+		var ret interface{}
 		return ret
 	}
-	return o.HttpPort
+	return *o.HttpPort
 }
 
 // GetHttpPortOk returns a tuple with the HttpPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPutRequest) GetHttpPortOk() ([]int64, bool) {
+func (o *ApplicationPutRequest) GetHttpPortOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.HttpPort) {
 		return nil, false
 	}
@@ -138,23 +138,23 @@ func (o *ApplicationPutRequest) HasHttpPort() bool {
 	return false
 }
 
-// SetHttpPort gets a reference to the given []int64 and assigns it to the HttpPort field.
-func (o *ApplicationPutRequest) SetHttpPort(v []int64) {
-	o.HttpPort = v
+// SetHttpPort gets a reference to the given interface{} and assigns it to the HttpPort field.
+func (o *ApplicationPutRequest) SetHttpPort(v interface{}) {
+	o.HttpPort = &v
 }
 
 // GetHttpsPort returns the HttpsPort field value if set, zero value otherwise.
-func (o *ApplicationPutRequest) GetHttpsPort() []int64 {
+func (o *ApplicationPutRequest) GetHttpsPort() interface{} {
 	if o == nil || IsNil(o.HttpsPort) {
-		var ret []int64
+		var ret interface{}
 		return ret
 	}
-	return o.HttpsPort
+	return *o.HttpsPort
 }
 
 // GetHttpsPortOk returns a tuple with the HttpsPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPutRequest) GetHttpsPortOk() ([]int64, bool) {
+func (o *ApplicationPutRequest) GetHttpsPortOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.HttpsPort) {
 		return nil, false
 	}
@@ -170,9 +170,9 @@ func (o *ApplicationPutRequest) HasHttpsPort() bool {
 	return false
 }
 
-// SetHttpsPort gets a reference to the given []int64 and assigns it to the HttpsPort field.
-func (o *ApplicationPutRequest) SetHttpsPort(v []int64) {
-	o.HttpsPort = v
+// SetHttpsPort gets a reference to the given interface{} and assigns it to the HttpsPort field.
+func (o *ApplicationPutRequest) SetHttpsPort(v interface{}) {
+	o.HttpsPort = &v
 }
 
 // GetMinimumTlsVersion returns the MinimumTlsVersion field value if set, zero value otherwise.

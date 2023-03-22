@@ -22,7 +22,7 @@ type ApplicationUpdateResults struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
 	DeliveryProtocol string `json:"delivery_protocol"`
-	HttpPort []int64 `json:"http_port"`
+	HttpPort interface{} `json:"http_port"`
 	HttpsPort []int64 `json:"https_port"`
 	MinimumTlsVersion string `json:"minimum_tls_version"`
 	Active bool `json:"active"`
@@ -42,7 +42,7 @@ type ApplicationUpdateResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string, httpPort []int64, httpsPort []int64, minimumTlsVersion string, active bool, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationUpdateResults {
+func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string, httpPort interface{}, httpsPort []int64, minimumTlsVersion string, active bool, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationUpdateResults {
 	this := ApplicationUpdateResults{}
 	this.Id = id
 	this.Name = name
@@ -145,9 +145,9 @@ func (o *ApplicationUpdateResults) SetDeliveryProtocol(v string) {
 }
 
 // GetHttpPort returns the HttpPort field value
-func (o *ApplicationUpdateResults) GetHttpPort() []int64 {
+func (o *ApplicationUpdateResults) GetHttpPort() interface{} {
 	if o == nil {
-		var ret []int64
+		var ret interface{}
 		return ret
 	}
 
@@ -156,15 +156,15 @@ func (o *ApplicationUpdateResults) GetHttpPort() []int64 {
 
 // GetHttpPortOk returns a tuple with the HttpPort field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationUpdateResults) GetHttpPortOk() ([]int64, bool) {
+func (o *ApplicationUpdateResults) GetHttpPortOk() (*interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.HttpPort, true
+	return &o.HttpPort, true
 }
 
 // SetHttpPort sets field value
-func (o *ApplicationUpdateResults) SetHttpPort(v []int64) {
+func (o *ApplicationUpdateResults) SetHttpPort(v interface{}) {
 	o.HttpPort = v
 }
 

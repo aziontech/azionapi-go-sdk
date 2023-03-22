@@ -2085,15 +2085,9 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         https_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         minimum_tls_version:
           type: string
         application_acceleration:
@@ -2239,15 +2233,9 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         https_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         minimum_tls_version:
           type: string
         application_acceleration:
@@ -2313,15 +2301,9 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         https_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         minimum_tls_version:
           type: string
         active:
@@ -2412,10 +2394,7 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         https_port:
           items:
             format: int64
@@ -2491,15 +2470,9 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         https_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         minimum_tls_version:
           type: string
         active:

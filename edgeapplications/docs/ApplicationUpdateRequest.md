@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **DeliveryProtocol** | Pointer to **string** |  | [optional] 
-**HttpPort** | Pointer to **[]int64** |  | [optional] 
-**HttpsPort** | Pointer to **[]int64** |  | [optional] 
+**HttpPort** | Pointer to **interface{}** |  | [optional] 
+**HttpsPort** | Pointer to **interface{}** |  | [optional] 
 **MinimumTlsVersion** | Pointer to **string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **ApplicationAcceleration** | Pointer to **bool** |  | [optional] 
@@ -92,20 +92,20 @@ HasDeliveryProtocol returns a boolean if a field has been set.
 
 ### GetHttpPort
 
-`func (o *ApplicationUpdateRequest) GetHttpPort() []int64`
+`func (o *ApplicationUpdateRequest) GetHttpPort() interface{}`
 
 GetHttpPort returns the HttpPort field if non-nil, zero value otherwise.
 
 ### GetHttpPortOk
 
-`func (o *ApplicationUpdateRequest) GetHttpPortOk() (*[]int64, bool)`
+`func (o *ApplicationUpdateRequest) GetHttpPortOk() (*interface{}, bool)`
 
 GetHttpPortOk returns a tuple with the HttpPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpPort
 
-`func (o *ApplicationUpdateRequest) SetHttpPort(v []int64)`
+`func (o *ApplicationUpdateRequest) SetHttpPort(v interface{})`
 
 SetHttpPort sets HttpPort field to given value.
 
@@ -117,20 +117,20 @@ HasHttpPort returns a boolean if a field has been set.
 
 ### GetHttpsPort
 
-`func (o *ApplicationUpdateRequest) GetHttpsPort() []int64`
+`func (o *ApplicationUpdateRequest) GetHttpsPort() interface{}`
 
 GetHttpsPort returns the HttpsPort field if non-nil, zero value otherwise.
 
 ### GetHttpsPortOk
 
-`func (o *ApplicationUpdateRequest) GetHttpsPortOk() (*[]int64, bool)`
+`func (o *ApplicationUpdateRequest) GetHttpsPortOk() (*interface{}, bool)`
 
 GetHttpsPortOk returns a tuple with the HttpsPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpsPort
 
-`func (o *ApplicationUpdateRequest) SetHttpsPort(v []int64)`
+`func (o *ApplicationUpdateRequest) SetHttpsPort(v interface{})`
 
 SetHttpsPort sets HttpsPort field to given value.
 

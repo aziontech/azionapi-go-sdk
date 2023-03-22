@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Active** | **bool** |  | 
 **DeliveryProtocol** | **string** |  | 
-**HttpPort** | **[]int64** |  | 
-**HttpsPort** | **[]int64** |  | 
+**HttpPort** | **interface{}** |  | 
+**HttpsPort** | **interface{}** |  | 
 **MinimumTlsVersion** | **string** |  | 
 **ApplicationAcceleration** | **bool** |  | 
 **Caching** | **bool** |  | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationResultsCreate
 
-`func NewApplicationResultsCreate(id int64, name string, active bool, deliveryProtocol string, httpPort []int64, httpsPort []int64, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationResultsCreate`
+`func NewApplicationResultsCreate(id int64, name string, active bool, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationResultsCreate`
 
 NewApplicationResultsCreate instantiates a new ApplicationResultsCreate object
 This constructor will assign default values to properties that have it defined,
@@ -122,40 +122,40 @@ SetDeliveryProtocol sets DeliveryProtocol field to given value.
 
 ### GetHttpPort
 
-`func (o *ApplicationResultsCreate) GetHttpPort() []int64`
+`func (o *ApplicationResultsCreate) GetHttpPort() interface{}`
 
 GetHttpPort returns the HttpPort field if non-nil, zero value otherwise.
 
 ### GetHttpPortOk
 
-`func (o *ApplicationResultsCreate) GetHttpPortOk() (*[]int64, bool)`
+`func (o *ApplicationResultsCreate) GetHttpPortOk() (*interface{}, bool)`
 
 GetHttpPortOk returns a tuple with the HttpPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpPort
 
-`func (o *ApplicationResultsCreate) SetHttpPort(v []int64)`
+`func (o *ApplicationResultsCreate) SetHttpPort(v interface{})`
 
 SetHttpPort sets HttpPort field to given value.
 
 
 ### GetHttpsPort
 
-`func (o *ApplicationResultsCreate) GetHttpsPort() []int64`
+`func (o *ApplicationResultsCreate) GetHttpsPort() interface{}`
 
 GetHttpsPort returns the HttpsPort field if non-nil, zero value otherwise.
 
 ### GetHttpsPortOk
 
-`func (o *ApplicationResultsCreate) GetHttpsPortOk() (*[]int64, bool)`
+`func (o *ApplicationResultsCreate) GetHttpsPortOk() (*interface{}, bool)`
 
 GetHttpsPortOk returns a tuple with the HttpsPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpsPort
 
-`func (o *ApplicationResultsCreate) SetHttpsPort(v []int64)`
+`func (o *ApplicationResultsCreate) SetHttpsPort(v interface{})`
 
 SetHttpsPort sets HttpsPort field to given value.
 
