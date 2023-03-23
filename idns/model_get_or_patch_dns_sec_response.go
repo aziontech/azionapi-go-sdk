@@ -20,8 +20,8 @@ var _ MappedNullable = &GetOrPatchDnsSecResponse{}
 // GetOrPatchDnsSecResponse Object returned by get zone DNSSEC
 type GetOrPatchDnsSecResponse struct {
 	// The schema version
-	SchemaVersion *int32  `json:"schema_version,omitempty"`
-	Results       *DnsSec `json:"results,omitempty"`
+	SchemaVersion *int32 `json:"schema_version,omitempty"`
+	Results *DnsSec `json:"results,omitempty"`
 }
 
 // NewGetOrPatchDnsSecResponse instantiates a new GetOrPatchDnsSecResponse object
@@ -106,7 +106,7 @@ func (o *GetOrPatchDnsSecResponse) SetResults(v DnsSec) {
 }
 
 func (o GetOrPatchDnsSecResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableGetOrPatchDnsSecResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

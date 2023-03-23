@@ -19,7 +19,7 @@ var _ MappedNullable = &GetRecordsResponseResults{}
 
 // GetRecordsResponseResults struct for GetRecordsResponseResults
 type GetRecordsResponseResults struct {
-	ZoneId     *int32  `json:"zone_id,omitempty"`
+	ZoneId *int32 `json:"zone_id,omitempty"`
 	ZoneDomain *string `json:"zone_domain,omitempty"`
 	// Zone records collection
 	Records []RecordGet `json:"records,omitempty"`
@@ -139,7 +139,7 @@ func (o *GetRecordsResponseResults) SetRecords(v []RecordGet) {
 }
 
 func (o GetRecordsResponseResults) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableGetRecordsResponseResults) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

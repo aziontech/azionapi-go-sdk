@@ -20,8 +20,8 @@ var _ MappedNullable = &PostOrPutRecordResponse{}
 // PostOrPutRecordResponse Object returned by create or update zone record
 type PostOrPutRecordResponse struct {
 	// The schema version
-	SchemaVersion *int32           `json:"schema_version,omitempty"`
-	Results       *RecordPostOrPut `json:"results,omitempty"`
+	SchemaVersion *int32 `json:"schema_version,omitempty"`
+	Results *RecordPostOrPut `json:"results,omitempty"`
 }
 
 // NewPostOrPutRecordResponse instantiates a new PostOrPutRecordResponse object
@@ -106,7 +106,7 @@ func (o *PostOrPutRecordResponse) SetResults(v RecordPostOrPut) {
 }
 
 func (o PostOrPutRecordResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullablePostOrPutRecordResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

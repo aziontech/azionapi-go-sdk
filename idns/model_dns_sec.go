@@ -19,8 +19,8 @@ var _ MappedNullable = &DnsSec{}
 
 // DnsSec struct for DnsSec
 type DnsSec struct {
-	IsEnabled        *bool                   `json:"is_enabled,omitempty"`
-	Status           *string                 `json:"status,omitempty"`
+	IsEnabled *bool `json:"is_enabled,omitempty"`
+	Status *string `json:"status,omitempty"`
 	DelegationSigner *DnsSecDelegationSigner `json:"delegation_signer,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *DnsSec) SetDelegationSigner(v DnsSecDelegationSigner) {
 }
 
 func (o DnsSec) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableDnsSec) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

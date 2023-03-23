@@ -13,7 +13,6 @@ import (
 	"context"
 	"testing"
 
-	openapiclient "github.com/aziontech/azionapi-go-sdk/idns"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
