@@ -11,10 +11,11 @@ package edgeapplications
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/aziontech/azionapi-go-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func Test_edgeapplications_EdgeApplicationsCacheSettingsApiService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_edgeapplications_EdgeApplicationsCacheSettingsApiService(t *testing.T)
 
 	t.Run("Test EdgeApplicationsCacheSettingsApiService EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var cacheSettings int64
@@ -38,7 +39,7 @@ func Test_edgeapplications_EdgeApplicationsCacheSettingsApiService(t *testing.T)
 
 	t.Run("Test EdgeApplicationsCacheSettingsApiService EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var cacheSettingsId int64
@@ -53,7 +54,7 @@ func Test_edgeapplications_EdgeApplicationsCacheSettingsApiService(t *testing.T)
 
 	t.Run("Test EdgeApplicationsCacheSettingsApiService EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var cacheSettingsId int64
@@ -68,7 +69,7 @@ func Test_edgeapplications_EdgeApplicationsCacheSettingsApiService(t *testing.T)
 
 	t.Run("Test EdgeApplicationsCacheSettingsApiService EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var cacheSettings int64
@@ -83,7 +84,7 @@ func Test_edgeapplications_EdgeApplicationsCacheSettingsApiService(t *testing.T)
 
 	t.Run("Test EdgeApplicationsCacheSettingsApiService EdgeApplicationsEdgeApplicationIdCacheSettingsGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 
@@ -97,7 +98,7 @@ func Test_edgeapplications_EdgeApplicationsCacheSettingsApiService(t *testing.T)
 
 	t.Run("Test EdgeApplicationsCacheSettingsApiService EdgeApplicationsEdgeApplicationIdCacheSettingsPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 

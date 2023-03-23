@@ -1746,6 +1746,63 @@ paths:
       summary: "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules"
       tags:
       - Edge Applications > Rules Engine
+    get:
+      parameters:
+      - description: "The id of the edge application you want to get.\t"
+        explode: false
+        in: path
+        name: edge_application_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: phase
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "The id of the rule you plan to delete.\t"
+        explode: false
+        in: path
+        name: rule_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - example: application/json; version=3
+        explode: false
+        in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/RulesEngineIdResponse'
+          description: Successful response
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "422":
+          description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      security:
+      - JWT: []
+      summary: "/edge_applications/{edge_application_id}/rules_engine/{phase}/rules"
+      tags:
+      - Edge Applications > Rules Engine
     patch:
       parameters:
       - explode: false
