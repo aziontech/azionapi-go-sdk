@@ -19,13 +19,14 @@ import (
 	"strings"
 )
 
+
 // ZonesApiService ZonesApi service
 type ZonesApiService service
 
 type ApiDeleteZoneRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ZonesApiService
-	zoneId     int32
+	zoneId int32
 }
 
 func (r ApiDeleteZoneRequest) Execute() (string, *http.Response, error) {
@@ -35,27 +36,26 @@ func (r ApiDeleteZoneRequest) Execute() (string, *http.Response, error) {
 /*
 DeleteZone Remove an Intelligent DNS hosted zone
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param zoneId The hosted zone id
-	@return ApiDeleteZoneRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param zoneId The hosted zone id
+ @return ApiDeleteZoneRequest
 */
 func (a *ZonesApiService) DeleteZone(ctx context.Context, zoneId int32) ApiDeleteZoneRequest {
 	return ApiDeleteZoneRequest{
 		ApiService: a,
-		ctx:        ctx,
-		zoneId:     zoneId,
+		ctx: ctx,
+		zoneId: zoneId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *ZonesApiService) DeleteZoneExecute(r ApiDeleteZoneRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.DeleteZone")
@@ -133,8 +133,8 @@ func (a *ZonesApiService) DeleteZoneExecute(r ApiDeleteZoneRequest) (string, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -152,9 +152,9 @@ func (a *ZonesApiService) DeleteZoneExecute(r ApiDeleteZoneRequest) (string, *ht
 }
 
 type ApiGetZoneRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ZonesApiService
-	zoneId     int32
+	zoneId int32
 }
 
 func (r ApiGetZoneRequest) Execute() (*GetZoneResponse, *http.Response, error) {
@@ -164,27 +164,26 @@ func (r ApiGetZoneRequest) Execute() (*GetZoneResponse, *http.Response, error) {
 /*
 GetZone Get an Intelligent DNS hosted zone
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param zoneId The hosted zone id
-	@return ApiGetZoneRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param zoneId The hosted zone id
+ @return ApiGetZoneRequest
 */
 func (a *ZonesApiService) GetZone(ctx context.Context, zoneId int32) ApiGetZoneRequest {
 	return ApiGetZoneRequest{
 		ApiService: a,
-		ctx:        ctx,
-		zoneId:     zoneId,
+		ctx: ctx,
+		zoneId: zoneId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GetZoneResponse
+//  @return GetZoneResponse
 func (a *ZonesApiService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GetZoneResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetZoneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.GetZone")
@@ -262,8 +261,8 @@ func (a *ZonesApiService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -281,7 +280,7 @@ func (a *ZonesApiService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse,
 }
 
 type ApiGetZonesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ZonesApiService
 }
 
@@ -292,25 +291,24 @@ func (r ApiGetZonesRequest) Execute() (*GetZonesResponse, *http.Response, error)
 /*
 GetZones Get a collection of Intelligent DNS zones
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetZonesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetZonesRequest
 */
 func (a *ZonesApiService) GetZones(ctx context.Context) ApiGetZonesRequest {
 	return ApiGetZonesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GetZonesResponse
+//  @return GetZonesResponse
 func (a *ZonesApiService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GetZonesResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetZonesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.GetZones")
@@ -384,8 +382,8 @@ func (a *ZonesApiService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesRespon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -403,9 +401,9 @@ func (a *ZonesApiService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesRespon
 }
 
 type ApiPostZoneRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ZonesApiService
-	zone       *Zone
+	zone *Zone
 }
 
 func (r ApiPostZoneRequest) Zone(zone Zone) ApiPostZoneRequest {
@@ -420,25 +418,24 @@ func (r ApiPostZoneRequest) Execute() (*PostOrPutZoneResponse, *http.Response, e
 /*
 PostZone Add a new Intelligent DNS zone
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostZoneRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostZoneRequest
 */
 func (a *ZonesApiService) PostZone(ctx context.Context) ApiPostZoneRequest {
 	return ApiPostZoneRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PostOrPutZoneResponse
+//  @return PostOrPutZoneResponse
 func (a *ZonesApiService) PostZoneExecute(r ApiPostZoneRequest) (*PostOrPutZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PostOrPutZoneResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PostOrPutZoneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.PostZone")
@@ -514,8 +511,8 @@ func (a *ZonesApiService) PostZoneExecute(r ApiPostZoneRequest) (*PostOrPutZoneR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -533,10 +530,10 @@ func (a *ZonesApiService) PostZoneExecute(r ApiPostZoneRequest) (*PostOrPutZoneR
 }
 
 type ApiPutZoneRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ZonesApiService
-	zoneId     int32
-	zone       *Zone
+	zoneId int32
+	zone *Zone
 }
 
 func (r ApiPutZoneRequest) Zone(zone Zone) ApiPutZoneRequest {
@@ -551,27 +548,26 @@ func (r ApiPutZoneRequest) Execute() (*PostOrPutZoneResponse, *http.Response, er
 /*
 PutZone Update an Intelligent DNS hosted zone
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param zoneId The hosted zone id
-	@return ApiPutZoneRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param zoneId The hosted zone id
+ @return ApiPutZoneRequest
 */
 func (a *ZonesApiService) PutZone(ctx context.Context, zoneId int32) ApiPutZoneRequest {
 	return ApiPutZoneRequest{
 		ApiService: a,
-		ctx:        ctx,
-		zoneId:     zoneId,
+		ctx: ctx,
+		zoneId: zoneId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PostOrPutZoneResponse
+//  @return PostOrPutZoneResponse
 func (a *ZonesApiService) PutZoneExecute(r ApiPutZoneRequest) (*PostOrPutZoneResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PostOrPutZoneResponse
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PostOrPutZoneResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.PutZone")
@@ -651,8 +647,8 @@ func (a *ZonesApiService) PutZoneExecute(r ApiPutZoneRequest) (*PostOrPutZoneRes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

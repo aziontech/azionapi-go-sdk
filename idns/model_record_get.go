@@ -19,13 +19,14 @@ var _ MappedNullable = &RecordGet{}
 
 // RecordGet struct for RecordGet
 type RecordGet struct {
-	RecordId    *int32   `json:"record_id,omitempty"`
-	Entry       *string  `json:"entry,omitempty"`
-	Description *string  `json:"description,omitempty"`
+	RecordId *int32 `json:"record_id,omitempty"`
+	Entry *string `json:"entry,omitempty"`
+	Description *string `json:"description,omitempty"`
 	AnswersList []string `json:"answers_list,omitempty"`
-	Policy      *string  `json:"policy,omitempty"`
-	RecordType  *string  `json:"record_type,omitempty"`
-	Ttl         *int32   `json:"ttl,omitempty"`
+	Policy *string `json:"policy,omitempty"`
+	Weight *int32 `json:"weight,omitempty"`
+	RecordType *string `json:"record_type,omitempty"`
+	Ttl *int32 `json:"ttl,omitempty"`
 }
 
 // NewRecordGet instantiates a new RecordGet object
@@ -205,6 +206,38 @@ func (o *RecordGet) SetPolicy(v string) {
 	o.Policy = &v
 }
 
+// GetWeight returns the Weight field value if set, zero value otherwise.
+func (o *RecordGet) GetWeight() int32 {
+	if o == nil || IsNil(o.Weight) {
+		var ret int32
+		return ret
+	}
+	return *o.Weight
+}
+
+// GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordGet) GetWeightOk() (*int32, bool) {
+	if o == nil || IsNil(o.Weight) {
+		return nil, false
+	}
+	return o.Weight, true
+}
+
+// HasWeight returns a boolean if a field has been set.
+func (o *RecordGet) HasWeight() bool {
+	if o != nil && !IsNil(o.Weight) {
+		return true
+	}
+
+	return false
+}
+
+// SetWeight gets a reference to the given int32 and assigns it to the Weight field.
+func (o *RecordGet) SetWeight(v int32) {
+	o.Weight = &v
+}
+
 // GetRecordType returns the RecordType field value if set, zero value otherwise.
 func (o *RecordGet) GetRecordType() string {
 	if o == nil || IsNil(o.RecordType) {
@@ -270,7 +303,7 @@ func (o *RecordGet) SetTtl(v int32) {
 }
 
 func (o RecordGet) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -293,6 +326,9 @@ func (o RecordGet) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Policy) {
 		toSerialize["policy"] = o.Policy
+	}
+	if !IsNil(o.Weight) {
+		toSerialize["weight"] = o.Weight
 	}
 	if !IsNil(o.RecordType) {
 		toSerialize["record_type"] = o.RecordType
@@ -338,3 +374,5 @@ func (v *NullableRecordGet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

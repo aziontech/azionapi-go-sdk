@@ -19,7 +19,7 @@ var _ MappedNullable = &DnsSecDelegationSignerDigestType{}
 
 // DnsSecDelegationSignerDigestType struct for DnsSecDelegationSignerDigestType
 type DnsSecDelegationSignerDigestType struct {
-	Id   *int32  `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	Slug *string `json:"slug,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *DnsSecDelegationSignerDigestType) SetSlug(v string) {
 }
 
 func (o DnsSecDelegationSignerDigestType) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableDnsSecDelegationSignerDigestType) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
