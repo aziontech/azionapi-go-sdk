@@ -1916,8 +1916,10 @@ components:
           delivery_protocol: delivery_protocol
           edge_firewall: true
           caching: true
-          http_port: 5
-          https_port: 2
+          http_port:
+          - 5
+          https_port:
+          - 2
           minimum_tls_version: minimum_tls_version
           name: name
           edge_functions: true
@@ -1934,8 +1936,10 @@ components:
           delivery_protocol: delivery_protocol
           edge_firewall: true
           caching: true
-          http_port: 5
-          https_port: 2
+          http_port:
+          - 5
+          https_port:
+          - 2
           minimum_tls_version: minimum_tls_version
           name: name
           edge_functions: true
@@ -2025,8 +2029,10 @@ components:
           delivery_protocol: delivery_protocol
           edge_firewall: true
           caching: true
-          http_port: 5
-          https_port: 2
+          http_port:
+          - 5
+          https_port:
+          - 2
           minimum_tls_version: minimum_tls_version
           name: name
           edge_functions: true
@@ -2056,8 +2062,10 @@ components:
         delivery_protocol: delivery_protocol
         edge_firewall: true
         caching: true
-        http_port: 5
-        https_port: 2
+        http_port:
+        - 5
+        https_port:
+        - 2
         minimum_tls_version: minimum_tls_version
         name: name
         edge_functions: true
@@ -2077,11 +2085,9 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         https_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         minimum_tls_version:
           type: string
         application_acceleration:
@@ -2176,8 +2182,10 @@ components:
           delivery_protocol: delivery_protocol
           edge_firewall: true
           caching: true
-          http_port: 6
-          https_port: 1
+          http_port:
+          - 6
+          https_port:
+          - 1
           minimum_tls_version: minimum_tls_version
           name: name
           edge_functions: true
@@ -2205,8 +2213,10 @@ components:
         delivery_protocol: delivery_protocol
         edge_firewall: true
         caching: true
-        http_port: 6
-        https_port: 1
+        http_port:
+        - 6
+        https_port:
+        - 1
         minimum_tls_version: minimum_tls_version
         name: name
         edge_functions: true
@@ -2223,11 +2233,9 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         https_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         minimum_tls_version:
           type: string
         application_acceleration:
@@ -2278,8 +2286,10 @@ components:
         delivery_protocol: delivery_protocol
         edge_firewall: true
         caching: true
-        http_port: 0
-        https_port: 6
+        http_port:
+        - 0
+        https_port:
+        - 6
         minimum_tls_version: minimum_tls_version
         name: name
         edge_functions: true
@@ -2291,11 +2301,9 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         https_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         minimum_tls_version:
           type: string
         active:
@@ -2335,8 +2343,10 @@ components:
           delivery_protocol: delivery_protocol
           edge_firewall: true
           caching: true
-          http_port: 6
-          https_port: 1
+          http_port:
+          - 6
+          https_port:
+          - 1
           minimum_tls_version: minimum_tls_version
           name: name
           edge_functions: true
@@ -2365,8 +2375,10 @@ components:
         delivery_protocol: delivery_protocol
         edge_firewall: true
         caching: true
-        http_port: 6
-        https_port: 1
+        http_port:
+        - 6
+        https_port:
+        - 1
         minimum_tls_version: minimum_tls_version
         name: name
         edge_functions: true
@@ -2382,11 +2394,12 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         https_port:
-          format: int64
-          type: integer
+          items:
+            format: int64
+            type: integer
+          type: array
         minimum_tls_version:
           type: string
         active:
@@ -2442,8 +2455,10 @@ components:
         delivery_protocol: delivery_protocol
         edge_firewall: true
         caching: true
-        http_port: 0
-        https_port: 6
+        http_port:
+        - 0
+        https_port:
+        - 6
         minimum_tls_version: minimum_tls_version
         name: name
         edge_functions: true
@@ -2455,11 +2470,9 @@ components:
         delivery_protocol:
           type: string
         http_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         https_port:
-          format: int64
-          type: integer
+          type: "interface{}"
         minimum_tls_version:
           type: string
         active:
@@ -2501,8 +2514,10 @@ components:
           delivery_protocol: delivery_protocol
           edge_firewall: true
           caching: true
-          http_port: 6
-          https_port: 1
+          http_port:
+          - 6
+          https_port:
+          - 1
           minimum_tls_version: minimum_tls_version
           name: name
           edge_functions: true

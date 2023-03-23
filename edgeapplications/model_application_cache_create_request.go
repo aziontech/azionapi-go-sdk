@@ -83,7 +83,7 @@ func (o *ApplicationCacheCreateRequest) SetName(v string) {
 
 // GetBrowserCacheSettings returns the BrowserCacheSettings field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetBrowserCacheSettings() string {
-	if o == nil || isNil(o.BrowserCacheSettings) {
+	if o == nil || IsNil(o.BrowserCacheSettings) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *ApplicationCacheCreateRequest) GetBrowserCacheSettings() string {
 // GetBrowserCacheSettingsOk returns a tuple with the BrowserCacheSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetBrowserCacheSettingsOk() (*string, bool) {
-	if o == nil || isNil(o.BrowserCacheSettings) {
+	if o == nil || IsNil(o.BrowserCacheSettings) {
 		return nil, false
 	}
 	return o.BrowserCacheSettings, true
@@ -101,7 +101,7 @@ func (o *ApplicationCacheCreateRequest) GetBrowserCacheSettingsOk() (*string, bo
 
 // HasBrowserCacheSettings returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasBrowserCacheSettings() bool {
-	if o != nil && !isNil(o.BrowserCacheSettings) {
+	if o != nil && !IsNil(o.BrowserCacheSettings) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *ApplicationCacheCreateRequest) SetBrowserCacheSettings(v string) {
 
 // GetBrowserCacheSettingsMaximumTtl returns the BrowserCacheSettingsMaximumTtl field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetBrowserCacheSettingsMaximumTtl() int64 {
-	if o == nil || isNil(o.BrowserCacheSettingsMaximumTtl) {
+	if o == nil || IsNil(o.BrowserCacheSettingsMaximumTtl) {
 		var ret int64
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *ApplicationCacheCreateRequest) GetBrowserCacheSettingsMaximumTtl() int6
 // GetBrowserCacheSettingsMaximumTtlOk returns a tuple with the BrowserCacheSettingsMaximumTtl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetBrowserCacheSettingsMaximumTtlOk() (*int64, bool) {
-	if o == nil || isNil(o.BrowserCacheSettingsMaximumTtl) {
+	if o == nil || IsNil(o.BrowserCacheSettingsMaximumTtl) {
 		return nil, false
 	}
 	return o.BrowserCacheSettingsMaximumTtl, true
@@ -133,7 +133,7 @@ func (o *ApplicationCacheCreateRequest) GetBrowserCacheSettingsMaximumTtlOk() (*
 
 // HasBrowserCacheSettingsMaximumTtl returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasBrowserCacheSettingsMaximumTtl() bool {
-	if o != nil && !isNil(o.BrowserCacheSettingsMaximumTtl) {
+	if o != nil && !IsNil(o.BrowserCacheSettingsMaximumTtl) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *ApplicationCacheCreateRequest) SetBrowserCacheSettingsMaximumTtl(v int6
 
 // GetCdnCacheSettings returns the CdnCacheSettings field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetCdnCacheSettings() string {
-	if o == nil || isNil(o.CdnCacheSettings) {
+	if o == nil || IsNil(o.CdnCacheSettings) {
 		var ret string
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *ApplicationCacheCreateRequest) GetCdnCacheSettings() string {
 // GetCdnCacheSettingsOk returns a tuple with the CdnCacheSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetCdnCacheSettingsOk() (*string, bool) {
-	if o == nil || isNil(o.CdnCacheSettings) {
+	if o == nil || IsNil(o.CdnCacheSettings) {
 		return nil, false
 	}
 	return o.CdnCacheSettings, true
@@ -165,7 +165,7 @@ func (o *ApplicationCacheCreateRequest) GetCdnCacheSettingsOk() (*string, bool) 
 
 // HasCdnCacheSettings returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasCdnCacheSettings() bool {
-	if o != nil && !isNil(o.CdnCacheSettings) {
+	if o != nil && !IsNil(o.CdnCacheSettings) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *ApplicationCacheCreateRequest) SetCdnCacheSettings(v string) {
 
 // GetAdaptiveDeliveryAction returns the AdaptiveDeliveryAction field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryAction() string {
-	if o == nil || isNil(o.AdaptiveDeliveryAction) {
+	if o == nil || IsNil(o.AdaptiveDeliveryAction) {
 		var ret string
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryAction() string {
 // GetAdaptiveDeliveryActionOk returns a tuple with the AdaptiveDeliveryAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryActionOk() (*string, bool) {
-	if o == nil || isNil(o.AdaptiveDeliveryAction) {
+	if o == nil || IsNil(o.AdaptiveDeliveryAction) {
 		return nil, false
 	}
 	return o.AdaptiveDeliveryAction, true
@@ -197,7 +197,7 @@ func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryActionOk() (*string, 
 
 // HasAdaptiveDeliveryAction returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasAdaptiveDeliveryAction() bool {
-	if o != nil && !isNil(o.AdaptiveDeliveryAction) {
+	if o != nil && !IsNil(o.AdaptiveDeliveryAction) {
 		return true
 	}
 
@@ -211,7 +211,7 @@ func (o *ApplicationCacheCreateRequest) SetAdaptiveDeliveryAction(v string) {
 
 // GetEnableCachingForOptions returns the EnableCachingForOptions field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptions() bool {
-	if o == nil || isNil(o.EnableCachingForOptions) {
+	if o == nil || IsNil(o.EnableCachingForOptions) {
 		var ret bool
 		return ret
 	}
@@ -221,7 +221,7 @@ func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptions() bool {
 // GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptionsOk() (*bool, bool) {
-	if o == nil || isNil(o.EnableCachingForOptions) {
+	if o == nil || IsNil(o.EnableCachingForOptions) {
 		return nil, false
 	}
 	return o.EnableCachingForOptions, true
@@ -229,7 +229,7 @@ func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptionsOk() (*bool, b
 
 // HasEnableCachingForOptions returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasEnableCachingForOptions() bool {
-	if o != nil && !isNil(o.EnableCachingForOptions) {
+	if o != nil && !IsNil(o.EnableCachingForOptions) {
 		return true
 	}
 
@@ -243,7 +243,7 @@ func (o *ApplicationCacheCreateRequest) SetEnableCachingForOptions(v bool) {
 
 // GetEnableQueryStringSort returns the EnableQueryStringSort field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSort() bool {
-	if o == nil || isNil(o.EnableQueryStringSort) {
+	if o == nil || IsNil(o.EnableQueryStringSort) {
 		var ret bool
 		return ret
 	}
@@ -253,7 +253,7 @@ func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSort() bool {
 // GetEnableQueryStringSortOk returns a tuple with the EnableQueryStringSort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSortOk() (*bool, bool) {
-	if o == nil || isNil(o.EnableQueryStringSort) {
+	if o == nil || IsNil(o.EnableQueryStringSort) {
 		return nil, false
 	}
 	return o.EnableQueryStringSort, true
@@ -261,7 +261,7 @@ func (o *ApplicationCacheCreateRequest) GetEnableQueryStringSortOk() (*bool, boo
 
 // HasEnableQueryStringSort returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasEnableQueryStringSort() bool {
-	if o != nil && !isNil(o.EnableQueryStringSort) {
+	if o != nil && !IsNil(o.EnableQueryStringSort) {
 		return true
 	}
 
@@ -275,7 +275,7 @@ func (o *ApplicationCacheCreateRequest) SetEnableQueryStringSort(v bool) {
 
 // GetCdnCacheSettingsMaximumTtl returns the CdnCacheSettingsMaximumTtl field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetCdnCacheSettingsMaximumTtl() int64 {
-	if o == nil || isNil(o.CdnCacheSettingsMaximumTtl) {
+	if o == nil || IsNil(o.CdnCacheSettingsMaximumTtl) {
 		var ret int64
 		return ret
 	}
@@ -285,7 +285,7 @@ func (o *ApplicationCacheCreateRequest) GetCdnCacheSettingsMaximumTtl() int64 {
 // GetCdnCacheSettingsMaximumTtlOk returns a tuple with the CdnCacheSettingsMaximumTtl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetCdnCacheSettingsMaximumTtlOk() (*int64, bool) {
-	if o == nil || isNil(o.CdnCacheSettingsMaximumTtl) {
+	if o == nil || IsNil(o.CdnCacheSettingsMaximumTtl) {
 		return nil, false
 	}
 	return o.CdnCacheSettingsMaximumTtl, true
@@ -293,7 +293,7 @@ func (o *ApplicationCacheCreateRequest) GetCdnCacheSettingsMaximumTtlOk() (*int6
 
 // HasCdnCacheSettingsMaximumTtl returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasCdnCacheSettingsMaximumTtl() bool {
-	if o != nil && !isNil(o.CdnCacheSettingsMaximumTtl) {
+	if o != nil && !IsNil(o.CdnCacheSettingsMaximumTtl) {
 		return true
 	}
 
@@ -307,7 +307,7 @@ func (o *ApplicationCacheCreateRequest) SetCdnCacheSettingsMaximumTtl(v int64) {
 
 // GetCacheByQueryString returns the CacheByQueryString field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetCacheByQueryString() string {
-	if o == nil || isNil(o.CacheByQueryString) {
+	if o == nil || IsNil(o.CacheByQueryString) {
 		var ret string
 		return ret
 	}
@@ -317,7 +317,7 @@ func (o *ApplicationCacheCreateRequest) GetCacheByQueryString() string {
 // GetCacheByQueryStringOk returns a tuple with the CacheByQueryString field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetCacheByQueryStringOk() (*string, bool) {
-	if o == nil || isNil(o.CacheByQueryString) {
+	if o == nil || IsNil(o.CacheByQueryString) {
 		return nil, false
 	}
 	return o.CacheByQueryString, true
@@ -325,7 +325,7 @@ func (o *ApplicationCacheCreateRequest) GetCacheByQueryStringOk() (*string, bool
 
 // HasCacheByQueryString returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasCacheByQueryString() bool {
-	if o != nil && !isNil(o.CacheByQueryString) {
+	if o != nil && !IsNil(o.CacheByQueryString) {
 		return true
 	}
 
@@ -339,7 +339,7 @@ func (o *ApplicationCacheCreateRequest) SetCacheByQueryString(v string) {
 
 // GetQueryStringFields returns the QueryStringFields field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetQueryStringFields() []string {
-	if o == nil || isNil(o.QueryStringFields) {
+	if o == nil || IsNil(o.QueryStringFields) {
 		var ret []string
 		return ret
 	}
@@ -349,7 +349,7 @@ func (o *ApplicationCacheCreateRequest) GetQueryStringFields() []string {
 // GetQueryStringFieldsOk returns a tuple with the QueryStringFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetQueryStringFieldsOk() ([]string, bool) {
-	if o == nil || isNil(o.QueryStringFields) {
+	if o == nil || IsNil(o.QueryStringFields) {
 		return nil, false
 	}
 	return o.QueryStringFields, true
@@ -357,7 +357,7 @@ func (o *ApplicationCacheCreateRequest) GetQueryStringFieldsOk() ([]string, bool
 
 // HasQueryStringFields returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasQueryStringFields() bool {
-	if o != nil && !isNil(o.QueryStringFields) {
+	if o != nil && !IsNil(o.QueryStringFields) {
 		return true
 	}
 
@@ -371,7 +371,7 @@ func (o *ApplicationCacheCreateRequest) SetQueryStringFields(v []string) {
 
 // GetCacheByCookies returns the CacheByCookies field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetCacheByCookies() string {
-	if o == nil || isNil(o.CacheByCookies) {
+	if o == nil || IsNil(o.CacheByCookies) {
 		var ret string
 		return ret
 	}
@@ -381,7 +381,7 @@ func (o *ApplicationCacheCreateRequest) GetCacheByCookies() string {
 // GetCacheByCookiesOk returns a tuple with the CacheByCookies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetCacheByCookiesOk() (*string, bool) {
-	if o == nil || isNil(o.CacheByCookies) {
+	if o == nil || IsNil(o.CacheByCookies) {
 		return nil, false
 	}
 	return o.CacheByCookies, true
@@ -389,7 +389,7 @@ func (o *ApplicationCacheCreateRequest) GetCacheByCookiesOk() (*string, bool) {
 
 // HasCacheByCookies returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasCacheByCookies() bool {
-	if o != nil && !isNil(o.CacheByCookies) {
+	if o != nil && !IsNil(o.CacheByCookies) {
 		return true
 	}
 
@@ -403,7 +403,7 @@ func (o *ApplicationCacheCreateRequest) SetCacheByCookies(v string) {
 
 // GetCookieNames returns the CookieNames field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetCookieNames() []string {
-	if o == nil || isNil(o.CookieNames) {
+	if o == nil || IsNil(o.CookieNames) {
 		var ret []string
 		return ret
 	}
@@ -413,7 +413,7 @@ func (o *ApplicationCacheCreateRequest) GetCookieNames() []string {
 // GetCookieNamesOk returns a tuple with the CookieNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetCookieNamesOk() ([]string, bool) {
-	if o == nil || isNil(o.CookieNames) {
+	if o == nil || IsNil(o.CookieNames) {
 		return nil, false
 	}
 	return o.CookieNames, true
@@ -421,7 +421,7 @@ func (o *ApplicationCacheCreateRequest) GetCookieNamesOk() ([]string, bool) {
 
 // HasCookieNames returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasCookieNames() bool {
-	if o != nil && !isNil(o.CookieNames) {
+	if o != nil && !IsNil(o.CookieNames) {
 		return true
 	}
 
@@ -435,7 +435,7 @@ func (o *ApplicationCacheCreateRequest) SetCookieNames(v []string) {
 
 // GetEnableCachingForPost returns the EnableCachingForPost field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetEnableCachingForPost() bool {
-	if o == nil || isNil(o.EnableCachingForPost) {
+	if o == nil || IsNil(o.EnableCachingForPost) {
 		var ret bool
 		return ret
 	}
@@ -445,7 +445,7 @@ func (o *ApplicationCacheCreateRequest) GetEnableCachingForPost() bool {
 // GetEnableCachingForPostOk returns a tuple with the EnableCachingForPost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetEnableCachingForPostOk() (*bool, bool) {
-	if o == nil || isNil(o.EnableCachingForPost) {
+	if o == nil || IsNil(o.EnableCachingForPost) {
 		return nil, false
 	}
 	return o.EnableCachingForPost, true
@@ -453,7 +453,7 @@ func (o *ApplicationCacheCreateRequest) GetEnableCachingForPostOk() (*bool, bool
 
 // HasEnableCachingForPost returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasEnableCachingForPost() bool {
-	if o != nil && !isNil(o.EnableCachingForPost) {
+	if o != nil && !IsNil(o.EnableCachingForPost) {
 		return true
 	}
 
@@ -467,7 +467,7 @@ func (o *ApplicationCacheCreateRequest) SetEnableCachingForPost(v bool) {
 
 // GetL2CachingEnabled returns the L2CachingEnabled field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetL2CachingEnabled() bool {
-	if o == nil || isNil(o.L2CachingEnabled) {
+	if o == nil || IsNil(o.L2CachingEnabled) {
 		var ret bool
 		return ret
 	}
@@ -477,7 +477,7 @@ func (o *ApplicationCacheCreateRequest) GetL2CachingEnabled() bool {
 // GetL2CachingEnabledOk returns a tuple with the L2CachingEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetL2CachingEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.L2CachingEnabled) {
+	if o == nil || IsNil(o.L2CachingEnabled) {
 		return nil, false
 	}
 	return o.L2CachingEnabled, true
@@ -485,7 +485,7 @@ func (o *ApplicationCacheCreateRequest) GetL2CachingEnabledOk() (*bool, bool) {
 
 // HasL2CachingEnabled returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasL2CachingEnabled() bool {
-	if o != nil && !isNil(o.L2CachingEnabled) {
+	if o != nil && !IsNil(o.L2CachingEnabled) {
 		return true
 	}
 
@@ -499,7 +499,7 @@ func (o *ApplicationCacheCreateRequest) SetL2CachingEnabled(v bool) {
 
 // GetIsSliceConfigurationEnabled returns the IsSliceConfigurationEnabled field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetIsSliceConfigurationEnabled() bool {
-	if o == nil || isNil(o.IsSliceConfigurationEnabled) {
+	if o == nil || IsNil(o.IsSliceConfigurationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -509,7 +509,7 @@ func (o *ApplicationCacheCreateRequest) GetIsSliceConfigurationEnabled() bool {
 // GetIsSliceConfigurationEnabledOk returns a tuple with the IsSliceConfigurationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetIsSliceConfigurationEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.IsSliceConfigurationEnabled) {
+	if o == nil || IsNil(o.IsSliceConfigurationEnabled) {
 		return nil, false
 	}
 	return o.IsSliceConfigurationEnabled, true
@@ -517,7 +517,7 @@ func (o *ApplicationCacheCreateRequest) GetIsSliceConfigurationEnabledOk() (*boo
 
 // HasIsSliceConfigurationEnabled returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasIsSliceConfigurationEnabled() bool {
-	if o != nil && !isNil(o.IsSliceConfigurationEnabled) {
+	if o != nil && !IsNil(o.IsSliceConfigurationEnabled) {
 		return true
 	}
 
@@ -531,7 +531,7 @@ func (o *ApplicationCacheCreateRequest) SetIsSliceConfigurationEnabled(v bool) {
 
 // GetIsSliceEdgeCachingEnabled returns the IsSliceEdgeCachingEnabled field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetIsSliceEdgeCachingEnabled() bool {
-	if o == nil || isNil(o.IsSliceEdgeCachingEnabled) {
+	if o == nil || IsNil(o.IsSliceEdgeCachingEnabled) {
 		var ret bool
 		return ret
 	}
@@ -541,7 +541,7 @@ func (o *ApplicationCacheCreateRequest) GetIsSliceEdgeCachingEnabled() bool {
 // GetIsSliceEdgeCachingEnabledOk returns a tuple with the IsSliceEdgeCachingEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetIsSliceEdgeCachingEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.IsSliceEdgeCachingEnabled) {
+	if o == nil || IsNil(o.IsSliceEdgeCachingEnabled) {
 		return nil, false
 	}
 	return o.IsSliceEdgeCachingEnabled, true
@@ -549,7 +549,7 @@ func (o *ApplicationCacheCreateRequest) GetIsSliceEdgeCachingEnabledOk() (*bool,
 
 // HasIsSliceEdgeCachingEnabled returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasIsSliceEdgeCachingEnabled() bool {
-	if o != nil && !isNil(o.IsSliceEdgeCachingEnabled) {
+	if o != nil && !IsNil(o.IsSliceEdgeCachingEnabled) {
 		return true
 	}
 
@@ -563,7 +563,7 @@ func (o *ApplicationCacheCreateRequest) SetIsSliceEdgeCachingEnabled(v bool) {
 
 // GetIsSliceL2CachingEnabled returns the IsSliceL2CachingEnabled field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetIsSliceL2CachingEnabled() bool {
-	if o == nil || isNil(o.IsSliceL2CachingEnabled) {
+	if o == nil || IsNil(o.IsSliceL2CachingEnabled) {
 		var ret bool
 		return ret
 	}
@@ -573,7 +573,7 @@ func (o *ApplicationCacheCreateRequest) GetIsSliceL2CachingEnabled() bool {
 // GetIsSliceL2CachingEnabledOk returns a tuple with the IsSliceL2CachingEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetIsSliceL2CachingEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.IsSliceL2CachingEnabled) {
+	if o == nil || IsNil(o.IsSliceL2CachingEnabled) {
 		return nil, false
 	}
 	return o.IsSliceL2CachingEnabled, true
@@ -581,7 +581,7 @@ func (o *ApplicationCacheCreateRequest) GetIsSliceL2CachingEnabledOk() (*bool, b
 
 // HasIsSliceL2CachingEnabled returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasIsSliceL2CachingEnabled() bool {
-	if o != nil && !isNil(o.IsSliceL2CachingEnabled) {
+	if o != nil && !IsNil(o.IsSliceL2CachingEnabled) {
 		return true
 	}
 
@@ -595,7 +595,7 @@ func (o *ApplicationCacheCreateRequest) SetIsSliceL2CachingEnabled(v bool) {
 
 // GetSliceConfigurationRange returns the SliceConfigurationRange field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetSliceConfigurationRange() int64 {
-	if o == nil || isNil(o.SliceConfigurationRange) {
+	if o == nil || IsNil(o.SliceConfigurationRange) {
 		var ret int64
 		return ret
 	}
@@ -605,7 +605,7 @@ func (o *ApplicationCacheCreateRequest) GetSliceConfigurationRange() int64 {
 // GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCacheCreateRequest) GetSliceConfigurationRangeOk() (*int64, bool) {
-	if o == nil || isNil(o.SliceConfigurationRange) {
+	if o == nil || IsNil(o.SliceConfigurationRange) {
 		return nil, false
 	}
 	return o.SliceConfigurationRange, true
@@ -613,7 +613,7 @@ func (o *ApplicationCacheCreateRequest) GetSliceConfigurationRangeOk() (*int64, 
 
 // HasSliceConfigurationRange returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasSliceConfigurationRange() bool {
-	if o != nil && !isNil(o.SliceConfigurationRange) {
+	if o != nil && !IsNil(o.SliceConfigurationRange) {
 		return true
 	}
 
@@ -636,55 +636,55 @@ func (o ApplicationCacheCreateRequest) MarshalJSON() ([]byte, error) {
 func (o ApplicationCacheCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !isNil(o.BrowserCacheSettings) {
+	if !IsNil(o.BrowserCacheSettings) {
 		toSerialize["browser_cache_settings"] = o.BrowserCacheSettings
 	}
-	if !isNil(o.BrowserCacheSettingsMaximumTtl) {
+	if !IsNil(o.BrowserCacheSettingsMaximumTtl) {
 		toSerialize["browser_cache_settings_maximum_ttl"] = o.BrowserCacheSettingsMaximumTtl
 	}
-	if !isNil(o.CdnCacheSettings) {
+	if !IsNil(o.CdnCacheSettings) {
 		toSerialize["cdn_cache_settings"] = o.CdnCacheSettings
 	}
-	if !isNil(o.AdaptiveDeliveryAction) {
+	if !IsNil(o.AdaptiveDeliveryAction) {
 		toSerialize["adaptive_delivery_action"] = o.AdaptiveDeliveryAction
 	}
-	if !isNil(o.EnableCachingForOptions) {
+	if !IsNil(o.EnableCachingForOptions) {
 		toSerialize["enable_caching_for_options"] = o.EnableCachingForOptions
 	}
-	if !isNil(o.EnableQueryStringSort) {
+	if !IsNil(o.EnableQueryStringSort) {
 		toSerialize["enable_query_string_sort"] = o.EnableQueryStringSort
 	}
-	if !isNil(o.CdnCacheSettingsMaximumTtl) {
+	if !IsNil(o.CdnCacheSettingsMaximumTtl) {
 		toSerialize["cdn_cache_settings_maximum_ttl"] = o.CdnCacheSettingsMaximumTtl
 	}
-	if !isNil(o.CacheByQueryString) {
+	if !IsNil(o.CacheByQueryString) {
 		toSerialize["cache_by_query_string"] = o.CacheByQueryString
 	}
-	if !isNil(o.QueryStringFields) {
+	if !IsNil(o.QueryStringFields) {
 		toSerialize["query_string_fields"] = o.QueryStringFields
 	}
-	if !isNil(o.CacheByCookies) {
+	if !IsNil(o.CacheByCookies) {
 		toSerialize["cache_by_cookies"] = o.CacheByCookies
 	}
-	if !isNil(o.CookieNames) {
+	if !IsNil(o.CookieNames) {
 		toSerialize["cookie_names"] = o.CookieNames
 	}
-	if !isNil(o.EnableCachingForPost) {
+	if !IsNil(o.EnableCachingForPost) {
 		toSerialize["enable_caching_for_post"] = o.EnableCachingForPost
 	}
-	if !isNil(o.L2CachingEnabled) {
+	if !IsNil(o.L2CachingEnabled) {
 		toSerialize["l2_caching_enabled"] = o.L2CachingEnabled
 	}
-	if !isNil(o.IsSliceConfigurationEnabled) {
+	if !IsNil(o.IsSliceConfigurationEnabled) {
 		toSerialize["is_slice_configuration_enabled"] = o.IsSliceConfigurationEnabled
 	}
-	if !isNil(o.IsSliceEdgeCachingEnabled) {
+	if !IsNil(o.IsSliceEdgeCachingEnabled) {
 		toSerialize["is_slice_edge_caching_enabled"] = o.IsSliceEdgeCachingEnabled
 	}
-	if !isNil(o.IsSliceL2CachingEnabled) {
+	if !IsNil(o.IsSliceL2CachingEnabled) {
 		toSerialize["is_slice_l2_caching_enabled"] = o.IsSliceL2CachingEnabled
 	}
-	if !isNil(o.SliceConfigurationRange) {
+	if !IsNil(o.SliceConfigurationRange) {
 		toSerialize["slice_configuration_range"] = o.SliceConfigurationRange
 	}
 	return toSerialize, nil

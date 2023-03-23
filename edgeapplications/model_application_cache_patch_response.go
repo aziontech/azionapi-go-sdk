@@ -42,7 +42,7 @@ func NewApplicationCachePatchResponseWithDefaults() *ApplicationCachePatchRespon
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ApplicationCachePatchResponse) GetResults() ApplicationCacheResponseDetails {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		var ret ApplicationCacheResponseDetails
 		return ret
 	}
@@ -52,7 +52,7 @@ func (o *ApplicationCachePatchResponse) GetResults() ApplicationCacheResponseDet
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCachePatchResponse) GetResultsOk() (*ApplicationCacheResponseDetails, bool) {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -60,7 +60,7 @@ func (o *ApplicationCachePatchResponse) GetResultsOk() (*ApplicationCacheRespons
 
 // HasResults returns a boolean if a field has been set.
 func (o *ApplicationCachePatchResponse) HasResults() bool {
-	if o != nil && !isNil(o.Results) {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *ApplicationCachePatchResponse) SetResults(v ApplicationCacheResponseDet
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *ApplicationCachePatchResponse) GetSchemaVersion() int64 {
-	if o == nil || isNil(o.SchemaVersion) {
+	if o == nil || IsNil(o.SchemaVersion) {
 		var ret int64
 		return ret
 	}
@@ -84,7 +84,7 @@ func (o *ApplicationCachePatchResponse) GetSchemaVersion() int64 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationCachePatchResponse) GetSchemaVersionOk() (*int64, bool) {
-	if o == nil || isNil(o.SchemaVersion) {
+	if o == nil || IsNil(o.SchemaVersion) {
 		return nil, false
 	}
 	return o.SchemaVersion, true
@@ -92,7 +92,7 @@ func (o *ApplicationCachePatchResponse) GetSchemaVersionOk() (*int64, bool) {
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *ApplicationCachePatchResponse) HasSchemaVersion() bool {
-	if o != nil && !isNil(o.SchemaVersion) {
+	if o != nil && !IsNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -114,10 +114,10 @@ func (o ApplicationCachePatchResponse) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationCachePatchResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Results) {
+	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-	if !isNil(o.SchemaVersion) {
+	if !IsNil(o.SchemaVersion) {
 		toSerialize["schema_version"] = o.SchemaVersion
 	}
 	return toSerialize, nil

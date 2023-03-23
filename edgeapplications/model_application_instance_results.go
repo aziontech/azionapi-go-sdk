@@ -42,7 +42,7 @@ func NewApplicationInstanceResultsWithDefaults() *ApplicationInstanceResults {
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *ApplicationInstanceResults) GetSchemaVersion() int64 {
-	if o == nil || isNil(o.SchemaVersion) {
+	if o == nil || IsNil(o.SchemaVersion) {
 		var ret int64
 		return ret
 	}
@@ -52,7 +52,7 @@ func (o *ApplicationInstanceResults) GetSchemaVersion() int64 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationInstanceResults) GetSchemaVersionOk() (*int64, bool) {
-	if o == nil || isNil(o.SchemaVersion) {
+	if o == nil || IsNil(o.SchemaVersion) {
 		return nil, false
 	}
 	return o.SchemaVersion, true
@@ -60,7 +60,7 @@ func (o *ApplicationInstanceResults) GetSchemaVersionOk() (*int64, bool) {
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *ApplicationInstanceResults) HasSchemaVersion() bool {
-	if o != nil && !isNil(o.SchemaVersion) {
+	if o != nil && !IsNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *ApplicationInstanceResults) SetSchemaVersion(v int64) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ApplicationInstanceResults) GetResults() ApplicationInstancesResults {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		var ret ApplicationInstancesResults
 		return ret
 	}
@@ -84,7 +84,7 @@ func (o *ApplicationInstanceResults) GetResults() ApplicationInstancesResults {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationInstanceResults) GetResultsOk() (*ApplicationInstancesResults, bool) {
-	if o == nil || isNil(o.Results) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -92,7 +92,7 @@ func (o *ApplicationInstanceResults) GetResultsOk() (*ApplicationInstancesResult
 
 // HasResults returns a boolean if a field has been set.
 func (o *ApplicationInstanceResults) HasResults() bool {
-	if o != nil && !isNil(o.Results) {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -114,10 +114,10 @@ func (o ApplicationInstanceResults) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationInstanceResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.SchemaVersion) {
+	if !IsNil(o.SchemaVersion) {
 		toSerialize["schema_version"] = o.SchemaVersion
 	}
-	if !isNil(o.Results) {
+	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
 	return toSerialize, nil

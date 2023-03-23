@@ -24,8 +24,8 @@ type ApplicationResults struct {
 	Next *string `json:"next,omitempty"`
 	Active bool `json:"active"`
 	DeliveryProtocol string `json:"delivery_protocol"`
-	HttpPort int64 `json:"http_port"`
-	HttpsPort int64 `json:"https_port"`
+	HttpPort interface{} `json:"http_port"`
+	HttpsPort interface{} `json:"https_port"`
 	MinimumTlsVersion string `json:"minimum_tls_version"`
 	ApplicationAcceleration bool `json:"application_acceleration"`
 	Caching bool `json:"caching"`
@@ -43,7 +43,7 @@ type ApplicationResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationResults(id int64, name string, active bool, deliveryProtocol string, httpPort int64, httpsPort int64, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResults {
+func NewApplicationResults(id int64, name string, active bool, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResults {
 	this := ApplicationResults{}
 	this.Id = id
 	this.Name = name
@@ -123,7 +123,7 @@ func (o *ApplicationResults) SetName(v string) {
 
 // GetNext returns the Next field value if set, zero value otherwise.
 func (o *ApplicationResults) GetNext() string {
-	if o == nil || isNil(o.Next) {
+	if o == nil || IsNil(o.Next) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *ApplicationResults) GetNext() string {
 // GetNextOk returns a tuple with the Next field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationResults) GetNextOk() (*string, bool) {
-	if o == nil || isNil(o.Next) {
+	if o == nil || IsNil(o.Next) {
 		return nil, false
 	}
 	return o.Next, true
@@ -141,7 +141,7 @@ func (o *ApplicationResults) GetNextOk() (*string, bool) {
 
 // HasNext returns a boolean if a field has been set.
 func (o *ApplicationResults) HasNext() bool {
-	if o != nil && !isNil(o.Next) {
+	if o != nil && !IsNil(o.Next) {
 		return true
 	}
 
@@ -202,9 +202,9 @@ func (o *ApplicationResults) SetDeliveryProtocol(v string) {
 }
 
 // GetHttpPort returns the HttpPort field value
-func (o *ApplicationResults) GetHttpPort() int64 {
+func (o *ApplicationResults) GetHttpPort() interface{} {
 	if o == nil {
-		var ret int64
+		var ret interface{}
 		return ret
 	}
 
@@ -213,7 +213,7 @@ func (o *ApplicationResults) GetHttpPort() int64 {
 
 // GetHttpPortOk returns a tuple with the HttpPort field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationResults) GetHttpPortOk() (*int64, bool) {
+func (o *ApplicationResults) GetHttpPortOk() (*interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -221,14 +221,14 @@ func (o *ApplicationResults) GetHttpPortOk() (*int64, bool) {
 }
 
 // SetHttpPort sets field value
-func (o *ApplicationResults) SetHttpPort(v int64) {
+func (o *ApplicationResults) SetHttpPort(v interface{}) {
 	o.HttpPort = v
 }
 
 // GetHttpsPort returns the HttpsPort field value
-func (o *ApplicationResults) GetHttpsPort() int64 {
+func (o *ApplicationResults) GetHttpsPort() interface{} {
 	if o == nil {
-		var ret int64
+		var ret interface{}
 		return ret
 	}
 
@@ -237,7 +237,7 @@ func (o *ApplicationResults) GetHttpsPort() int64 {
 
 // GetHttpsPortOk returns a tuple with the HttpsPort field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationResults) GetHttpsPortOk() (*int64, bool) {
+func (o *ApplicationResults) GetHttpsPortOk() (*interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -245,7 +245,7 @@ func (o *ApplicationResults) GetHttpsPortOk() (*int64, bool) {
 }
 
 // SetHttpsPort sets field value
-func (o *ApplicationResults) SetHttpsPort(v int64) {
+func (o *ApplicationResults) SetHttpsPort(v interface{}) {
 	o.HttpsPort = v
 }
 
@@ -525,7 +525,7 @@ func (o ApplicationResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	if !isNil(o.Next) {
+	if !IsNil(o.Next) {
 		toSerialize["next"] = o.Next
 	}
 	toSerialize["active"] = o.Active

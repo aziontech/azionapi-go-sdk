@@ -11,11 +11,10 @@ package edgeapplications
 
 import (
 	"context"
-	"testing"
-
-	openapiclient "github.com/aziontech/azionapi-go-sdk/edgeapplications"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func Test_edgeapplications_EdgeApplicationsMainSettingsApiService(t *testing.T) {
@@ -25,7 +24,7 @@ func Test_edgeapplications_EdgeApplicationsMainSettingsApiService(t *testing.T) 
 
 	t.Run("Test EdgeApplicationsMainSettingsApiService EdgeApplicationsGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.EdgeApplicationsMainSettingsApi.EdgeApplicationsGet(context.Background()).Execute()
 
@@ -37,7 +36,7 @@ func Test_edgeapplications_EdgeApplicationsMainSettingsApiService(t *testing.T) 
 
 	t.Run("Test EdgeApplicationsMainSettingsApiService EdgeApplicationsIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -50,7 +49,7 @@ func Test_edgeapplications_EdgeApplicationsMainSettingsApiService(t *testing.T) 
 
 	t.Run("Test EdgeApplicationsMainSettingsApiService EdgeApplicationsIdGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -64,7 +63,7 @@ func Test_edgeapplications_EdgeApplicationsMainSettingsApiService(t *testing.T) 
 
 	t.Run("Test EdgeApplicationsMainSettingsApiService EdgeApplicationsIdPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -78,7 +77,7 @@ func Test_edgeapplications_EdgeApplicationsMainSettingsApiService(t *testing.T) 
 
 	t.Run("Test EdgeApplicationsMainSettingsApiService EdgeApplicationsIdPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -92,7 +91,7 @@ func Test_edgeapplications_EdgeApplicationsMainSettingsApiService(t *testing.T) 
 
 	t.Run("Test EdgeApplicationsMainSettingsApiService EdgeApplicationsPost", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.EdgeApplicationsMainSettingsApi.EdgeApplicationsPost(context.Background()).Execute()
 

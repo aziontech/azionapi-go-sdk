@@ -78,7 +78,7 @@ func (o *RulesEngineBehavior) GetTarget() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RulesEngineBehavior) GetTargetOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Target) {
+	if o == nil || IsNil(o.Target) {
 		return nil, false
 	}
 	return &o.Target, true
@@ -86,7 +86,7 @@ func (o *RulesEngineBehavior) GetTargetOk() (*interface{}, bool) {
 
 // HasTarget returns a boolean if a field has been set.
 func (o *RulesEngineBehavior) HasTarget() bool {
-	if o != nil && isNil(o.Target) {
+	if o != nil && IsNil(o.Target) {
 		return true
 	}
 

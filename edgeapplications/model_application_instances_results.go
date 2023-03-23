@@ -133,7 +133,7 @@ func (o *ApplicationInstancesResults) GetArgs() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationInstancesResults) GetArgsOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Args) {
+	if o == nil || IsNil(o.Args) {
 		return nil, false
 	}
 	return &o.Args, true
