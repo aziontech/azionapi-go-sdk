@@ -11,10 +11,10 @@ package edgeapplications
 
 import (
 	"context"
+	openapiclient "github.com/aziontech/azionapi-go-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func Test_edgeapplications_EdgeApplicationsEdgeFunctionsInstancesApiService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_edgeapplications_EdgeApplicationsEdgeFunctionsInstancesApiService(t *t
 
 	t.Run("Test EdgeApplicationsEdgeFunctionsInstancesApiService EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId string
 		var functionsInstancesId string
@@ -38,7 +38,7 @@ func Test_edgeapplications_EdgeApplicationsEdgeFunctionsInstancesApiService(t *t
 
 	t.Run("Test EdgeApplicationsEdgeFunctionsInstancesApiService EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var functionsInstancesId int64
@@ -53,7 +53,7 @@ func Test_edgeapplications_EdgeApplicationsEdgeFunctionsInstancesApiService(t *t
 
 	t.Run("Test EdgeApplicationsEdgeFunctionsInstancesApiService EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId string
 		var functionsInstancesId string
@@ -68,7 +68,7 @@ func Test_edgeapplications_EdgeApplicationsEdgeFunctionsInstancesApiService(t *t
 
 	t.Run("Test EdgeApplicationsEdgeFunctionsInstancesApiService EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesIdPut", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId string
 		var functionsInstancesId string
@@ -83,7 +83,7 @@ func Test_edgeapplications_EdgeApplicationsEdgeFunctionsInstancesApiService(t *t
 
 	t.Run("Test EdgeApplicationsEdgeFunctionsInstancesApiService EdgeApplicationsEdgeApplicationIdFunctionsInstancesGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 
@@ -97,7 +97,7 @@ func Test_edgeapplications_EdgeApplicationsEdgeFunctionsInstancesApiService(t *t
 
 	t.Run("Test EdgeApplicationsEdgeFunctionsInstancesApiService EdgeApplicationsEdgeApplicationIdFunctionsInstancesPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 

@@ -11,10 +11,10 @@ package storageapi
 
 import (
 	"context"
+	openapiclient "github.com/aziontech/azionapi-go-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func Test_storageapi_DefaultApiService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_storageapi_DefaultApiService(t *testing.T) {
 
 	t.Run("Test DefaultApiService DeleteVersion", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var versionId string
 
@@ -37,7 +37,7 @@ func Test_storageapi_DefaultApiService(t *testing.T) {
 
 	t.Run("Test DefaultApiService StorageVersionIdPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var versionId string
 

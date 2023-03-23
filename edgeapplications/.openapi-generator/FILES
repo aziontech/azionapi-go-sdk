@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -119,9 +118,4 @@ model_rules_engine_result_response_behaviors.go
 model_update_origins_request.go
 model_update_rules_engine_request.go
 response.go
-test/api_edge_applications_cache_settings_test.go
-test/api_edge_applications_edge_functions_instances_test.go
-test/api_edge_applications_main_settings_test.go
-test/api_edge_applications_origins_test.go
-test/api_edge_applications_rules_engine_test.go
 utils.go

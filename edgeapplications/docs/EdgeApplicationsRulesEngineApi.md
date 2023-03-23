@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet**](EdgeApplicationsRulesEngineApi.md#EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet) | **Get** /edge_applications/{edge_application_id}/rules_engine/{phase}/rules | /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
 [**EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost**](EdgeApplicationsRulesEngineApi.md#EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost) | **Post** /edge_applications/{edge_application_id}/rules_engine/{phase}/rules | /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
 [**EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete**](EdgeApplicationsRulesEngineApi.md#EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete) | **Delete** /edge_applications/{edge_application_id}/rules_engine/{phase}/rules/{rule_id} | /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
+[**EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet**](EdgeApplicationsRulesEngineApi.md#EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet) | **Get** /edge_applications/{edge_application_id}/rules_engine/{phase}/rules/{rule_id} | /edge_applications/{edge_application_id}/rules_engine/{phase}/rules
 [**EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch**](EdgeApplicationsRulesEngineApi.md#EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch) | **Patch** /edge_applications/{edge_application_id}/rules_engine/{phase}/rules/{rule_id} | /edge_applications/:edge_application_id:/rules_engine/:phase:/rules/:rule_id:
 [**EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut**](EdgeApplicationsRulesEngineApi.md#EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut) | **Put** /edge_applications/{edge_application_id}/rules_engine/{phase}/rules/{rule_id} | /edge_applications/:edge_application_id:/rules_engine/:phase:/rules/:rule_id:
 
@@ -242,6 +243,82 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet
+
+> RulesEngineIdResponse EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet(ctx, edgeApplicationId, phase, ruleId).Accept(accept).Execute()
+
+/edge_applications/{edge_application_id}/rules_engine/{phase}/rules
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+    edgeApplicationId := int64(789) // int64 | The id of the edge application you want to get. 
+    phase := "phase_example" // string | 
+    ruleId := int64(789) // int64 | The id of the rule you plan to delete. 
+    accept := "application/json; version=3" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet`: RulesEngineIdResponse
+    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineApi.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**edgeApplicationId** | **int64** | The id of the edge application you want to get.  | 
+**phase** | **string** |  | 
+**ruleId** | **int64** | The id of the rule you plan to delete.  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **accept** | **string** |  | 
+
+### Return type
+
+[**RulesEngineIdResponse**](RulesEngineIdResponse.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json; version=3
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

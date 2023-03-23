@@ -11,10 +11,10 @@ package edgeapplications
 
 import (
 	"context"
+	openapiclient "github.com/aziontech/azionapi-go-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func Test_edgeapplications_EdgeApplicationsOriginsApiService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_edgeapplications_EdgeApplicationsOriginsApiService(t *testing.T) {
 
 	t.Run("Test EdgeApplicationsOriginsApiService EdgeApplicationsEdgeApplicationIdOriginsGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 
@@ -38,7 +38,7 @@ func Test_edgeapplications_EdgeApplicationsOriginsApiService(t *testing.T) {
 
 	t.Run("Test EdgeApplicationsOriginsApiService EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var originKey string
@@ -52,7 +52,7 @@ func Test_edgeapplications_EdgeApplicationsOriginsApiService(t *testing.T) {
 
 	t.Run("Test EdgeApplicationsOriginsApiService EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var originKey string
@@ -67,7 +67,7 @@ func Test_edgeapplications_EdgeApplicationsOriginsApiService(t *testing.T) {
 
 	t.Run("Test EdgeApplicationsOriginsApiService EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var originKey string
@@ -82,7 +82,7 @@ func Test_edgeapplications_EdgeApplicationsOriginsApiService(t *testing.T) {
 
 	t.Run("Test EdgeApplicationsOriginsApiService EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 		var originKey string
@@ -97,7 +97,7 @@ func Test_edgeapplications_EdgeApplicationsOriginsApiService(t *testing.T) {
 
 	t.Run("Test EdgeApplicationsOriginsApiService EdgeApplicationsEdgeApplicationIdOriginsPost", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var edgeApplicationId int64
 
