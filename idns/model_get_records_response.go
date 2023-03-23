@@ -24,9 +24,9 @@ type GetRecordsResponse struct {
 	// Number of records
 	Count *int32 `json:"count,omitempty"`
 	// The total pages
-	TotalPages *int32                     `json:"total_pages,omitempty"`
-	Links      *GetZonesResponseLinks     `json:"links,omitempty"`
-	Results    *GetRecordsResponseResults `json:"results,omitempty"`
+	TotalPages *int32 `json:"total_pages,omitempty"`
+	Links *GetZonesResponseLinks `json:"links,omitempty"`
+	Results *GetRecordsResponseResults `json:"results,omitempty"`
 }
 
 // NewGetRecordsResponse instantiates a new GetRecordsResponse object
@@ -207,7 +207,7 @@ func (o *GetRecordsResponse) SetResults(v GetRecordsResponseResults) {
 }
 
 func (o GetRecordsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,3 +269,5 @@ func (v *NullableGetRecordsResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

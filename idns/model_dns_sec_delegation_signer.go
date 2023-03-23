@@ -19,10 +19,10 @@ var _ MappedNullable = &DnsSecDelegationSigner{}
 
 // DnsSecDelegationSigner struct for DnsSecDelegationSigner
 type DnsSecDelegationSigner struct {
-	DigestType    *DnsSecDelegationSignerDigestType `json:"digest_type,omitempty"`
+	DigestType *DnsSecDelegationSignerDigestType `json:"digest_type,omitempty"`
 	AlgorithmType *DnsSecDelegationSignerDigestType `json:"algorithm_type,omitempty"`
-	Digest        *string                           `json:"digest,omitempty"`
-	KeyTag        *int32                            `json:"key_tag,omitempty"`
+	Digest *string `json:"digest,omitempty"`
+	KeyTag *int32 `json:"key_tag,omitempty"`
 }
 
 // NewDnsSecDelegationSigner instantiates a new DnsSecDelegationSigner object
@@ -171,7 +171,7 @@ func (o *DnsSecDelegationSigner) SetKeyTag(v int32) {
 }
 
 func (o DnsSecDelegationSigner) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableDnsSecDelegationSigner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

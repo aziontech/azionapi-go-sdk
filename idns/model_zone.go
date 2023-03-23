@@ -26,12 +26,12 @@ type Zone struct {
 	// Hosted zone domain
 	Domain *string `json:"domain,omitempty"`
 	// If hosted zone is active
-	IsActive *bool         `json:"is_active,omitempty"`
-	Retry    NullableInt32 `json:"retry,omitempty"`
-	NxTtl    NullableInt32 `json:"nx_ttl,omitempty"`
-	SoaTtl   NullableInt32 `json:"soa_ttl,omitempty"`
-	Refresh  NullableInt32 `json:"refresh,omitempty"`
-	Expiry   NullableInt32 `json:"expiry,omitempty"`
+	IsActive *bool `json:"is_active,omitempty"`
+	Retry NullableInt32 `json:"retry,omitempty"`
+	NxTtl NullableInt32 `json:"nx_ttl,omitempty"`
+	SoaTtl NullableInt32 `json:"soa_ttl,omitempty"`
+	Refresh NullableInt32 `json:"refresh,omitempty"`
+	Expiry NullableInt32 `json:"expiry,omitempty"`
 	// List of nameservers
 	Nameservers []string `json:"nameservers,omitempty"`
 }
@@ -213,7 +213,6 @@ func (o *Zone) HasRetry() bool {
 func (o *Zone) SetRetry(v int32) {
 	o.Retry.Set(&v)
 }
-
 // SetRetryNil sets the value for Retry to be an explicit nil
 func (o *Zone) SetRetryNil() {
 	o.Retry.Set(nil)
@@ -256,7 +255,6 @@ func (o *Zone) HasNxTtl() bool {
 func (o *Zone) SetNxTtl(v int32) {
 	o.NxTtl.Set(&v)
 }
-
 // SetNxTtlNil sets the value for NxTtl to be an explicit nil
 func (o *Zone) SetNxTtlNil() {
 	o.NxTtl.Set(nil)
@@ -299,7 +297,6 @@ func (o *Zone) HasSoaTtl() bool {
 func (o *Zone) SetSoaTtl(v int32) {
 	o.SoaTtl.Set(&v)
 }
-
 // SetSoaTtlNil sets the value for SoaTtl to be an explicit nil
 func (o *Zone) SetSoaTtlNil() {
 	o.SoaTtl.Set(nil)
@@ -342,7 +339,6 @@ func (o *Zone) HasRefresh() bool {
 func (o *Zone) SetRefresh(v int32) {
 	o.Refresh.Set(&v)
 }
-
 // SetRefreshNil sets the value for Refresh to be an explicit nil
 func (o *Zone) SetRefreshNil() {
 	o.Refresh.Set(nil)
@@ -385,7 +381,6 @@ func (o *Zone) HasExpiry() bool {
 func (o *Zone) SetExpiry(v int32) {
 	o.Expiry.Set(&v)
 }
-
 // SetExpiryNil sets the value for Expiry to be an explicit nil
 func (o *Zone) SetExpiryNil() {
 	o.Expiry.Set(nil)
@@ -430,7 +425,7 @@ func (o *Zone) SetNameservers(v []string) {
 }
 
 func (o Zone) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -507,3 +502,5 @@ func (v *NullableZone) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
