@@ -2453,10 +2453,7 @@ components:
         http_port:
           type: "interface{}"
         https_port:
-          items:
-            format: int64
-            type: integer
-          type: array
+          type: "interface{}"
         minimum_tls_version:
           type: string
         active:
