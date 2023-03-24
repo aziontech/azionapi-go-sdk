@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **DeliveryProtocol** | **string** |  | 
 **HttpPort** | **interface{}** |  | 
-**HttpsPort** | **[]int64** |  | 
+**HttpsPort** | **interface{}** |  | 
 **MinimumTlsVersion** | **string** |  | 
 **Active** | **bool** |  | 
 **ApplicationAcceleration** | **bool** |  | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationUpdateResults
 
-`func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string, httpPort interface{}, httpsPort []int64, minimumTlsVersion string, active bool, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationUpdateResults`
+`func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, active bool, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationUpdateResults`
 
 NewApplicationUpdateResults instantiates a new ApplicationUpdateResults object
 This constructor will assign default values to properties that have it defined,
@@ -123,20 +123,20 @@ SetHttpPort sets HttpPort field to given value.
 
 ### GetHttpsPort
 
-`func (o *ApplicationUpdateResults) GetHttpsPort() []int64`
+`func (o *ApplicationUpdateResults) GetHttpsPort() interface{}`
 
 GetHttpsPort returns the HttpsPort field if non-nil, zero value otherwise.
 
 ### GetHttpsPortOk
 
-`func (o *ApplicationUpdateResults) GetHttpsPortOk() (*[]int64, bool)`
+`func (o *ApplicationUpdateResults) GetHttpsPortOk() (*interface{}, bool)`
 
 GetHttpsPortOk returns a tuple with the HttpsPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpsPort
 
-`func (o *ApplicationUpdateResults) SetHttpsPort(v []int64)`
+`func (o *ApplicationUpdateResults) SetHttpsPort(v interface{})`
 
 SetHttpsPort sets HttpsPort field to given value.
 
