@@ -302,6 +302,7 @@ Class | Method | HTTP request | Description
  - [ApplicationsResults](docs/ApplicationsResults.md)
  - [CreateApplicationRequest](docs/CreateApplicationRequest.md)
  - [CreateApplicationResult](docs/CreateApplicationResult.md)
+ - [CreateDeviceGroupsRequest](docs/CreateDeviceGroupsRequest.md)
  - [CreateOriginsRequest](docs/CreateOriginsRequest.md)
  - [CreateOriginsRequestAddresses](docs/CreateOriginsRequestAddresses.md)
  - [CreateRulesEngineRequest](docs/CreateRulesEngineRequest.md)
@@ -316,6 +317,7 @@ Class | Method | HTTP request | Description
  - [OriginsResponseLinks](docs/OriginsResponseLinks.md)
  - [OriginsResultResponse](docs/OriginsResultResponse.md)
  - [OriginsResultResponseAddresses](docs/OriginsResultResponseAddresses.md)
+ - [PatchDeviceGroupsRequest](docs/PatchDeviceGroupsRequest.md)
  - [PatchOriginsRequest](docs/PatchOriginsRequest.md)
  - [PatchRulesEngineRequest](docs/PatchRulesEngineRequest.md)
  - [RulesEngineBehavior](docs/RulesEngineBehavior.md)
@@ -324,6 +326,7 @@ Class | Method | HTTP request | Description
  - [RulesEngineResponse](docs/RulesEngineResponse.md)
  - [RulesEngineResultResponse](docs/RulesEngineResultResponse.md)
  - [RulesEngineResultResponseBehaviors](docs/RulesEngineResultResponseBehaviors.md)
+ - [UpdateDeviceGroupsRequest](docs/UpdateDeviceGroupsRequest.md)
  - [UpdateOriginsRequest](docs/UpdateOriginsRequest.md)
  - [UpdateRulesEngineRequest](docs/UpdateRulesEngineRequest.md)
 

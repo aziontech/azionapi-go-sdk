@@ -31,7 +31,7 @@ type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest 
 	accept *string
 }
 
-// The id of the Origin that you plan to delete.
+// The id of the Device Groups that you plan to delete.
 func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest {
 	r.accept = &accept
 	return r
@@ -149,13 +149,13 @@ type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest str
 	accept *string
 }
 
-// The id of the Origin that you plan to query.
+// The id of the Device Groups that you plan to query.
 func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest {
 	r.accept = &accept
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest) Execute() (*OriginsIdResponse, *http.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest) Execute() (*DeviceGroupsIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetExecute(r)
 }
 
@@ -177,13 +177,13 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 }
 
 // Execute executes the request
-//  @return OriginsIdResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest) (*OriginsIdResponse, *http.Response, error) {
+//  @return DeviceGroupsIdResponse
+func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OriginsIdResponse
+		localVarReturnValue  *DeviceGroupsIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet")
@@ -277,7 +277,7 @@ type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest s
 	deviceGroupId int64
 	accept *string
 	contentType *string
-	patchOriginsRequest *PatchOriginsRequest
+	patchDeviceGroupsRequest *PatchDeviceGroupsRequest
 }
 
 func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest {
@@ -291,12 +291,12 @@ func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchReques
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) PatchOriginsRequest(patchOriginsRequest PatchOriginsRequest) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest {
-	r.patchOriginsRequest = &patchOriginsRequest
+func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) PatchDeviceGroupsRequest(patchDeviceGroupsRequest PatchDeviceGroupsRequest) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest {
+	r.patchDeviceGroupsRequest = &patchDeviceGroupsRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) Execute() (*OriginsIdResponse, *http.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) Execute() (*DeviceGroupsIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchExecute(r)
 }
 
@@ -318,13 +318,13 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 }
 
 // Execute executes the request
-//  @return OriginsIdResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) (*OriginsIdResponse, *http.Response, error) {
+//  @return DeviceGroupsIdResponse
+func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OriginsIdResponse
+		localVarReturnValue  *DeviceGroupsIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch")
@@ -364,7 +364,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.patchOriginsRequest
+	localVarPostBody = r.patchDeviceGroupsRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -423,7 +423,7 @@ type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest str
 	deviceGroupId int64
 	accept *string
 	contentType *string
-	updateOriginsRequest *UpdateOriginsRequest
+	updateDeviceGroupsRequest *UpdateDeviceGroupsRequest
 }
 
 func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest {
@@ -437,12 +437,12 @@ func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest)
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) UpdateOriginsRequest(updateOriginsRequest UpdateOriginsRequest) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest {
-	r.updateOriginsRequest = &updateOriginsRequest
+func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) UpdateDeviceGroupsRequest(updateDeviceGroupsRequest UpdateDeviceGroupsRequest) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest {
+	r.updateDeviceGroupsRequest = &updateDeviceGroupsRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) Execute() (*OriginsIdResponse, *http.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) Execute() (*DeviceGroupsIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutExecute(r)
 }
 
@@ -464,13 +464,13 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 }
 
 // Execute executes the request
-//  @return OriginsIdResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) (*OriginsIdResponse, *http.Response, error) {
+//  @return DeviceGroupsIdResponse
+func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OriginsIdResponse
+		localVarReturnValue  *DeviceGroupsIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut")
@@ -510,7 +510,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.updateOriginsRequest
+	localVarPostBody = r.updateDeviceGroupsRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -737,7 +737,7 @@ type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest struct {
 	edgeApplicationId int64
 	accept *string
 	contentType *string
-	createOriginsRequest *CreateOriginsRequest
+	createDeviceGroupsRequest *CreateDeviceGroupsRequest
 }
 
 func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) Accept(accept string) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest {
@@ -751,12 +751,12 @@ func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) ContentType
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) CreateOriginsRequest(createOriginsRequest CreateOriginsRequest) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest {
-	r.createOriginsRequest = &createOriginsRequest
+func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) CreateDeviceGroupsRequest(createDeviceGroupsRequest CreateDeviceGroupsRequest) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest {
+	r.createDeviceGroupsRequest = &createDeviceGroupsRequest
 	return r
 }
 
-func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) Execute() (*OriginsIdResponse, *http.Response, error) {
+func (r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) Execute() (*DeviceGroupsIdResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsPostExecute(r)
 }
 
@@ -776,13 +776,13 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 }
 
 // Execute executes the request
-//  @return OriginsIdResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) (*OriginsIdResponse, *http.Response, error) {
+//  @return DeviceGroupsIdResponse
+func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OriginsIdResponse
+		localVarReturnValue  *DeviceGroupsIdResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost")
@@ -821,7 +821,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.createOriginsRequest
+	localVarPostBody = r.createDeviceGroupsRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

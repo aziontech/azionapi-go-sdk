@@ -2065,13 +2065,13 @@ paths:
         content:
           application/json; version=3:
             schema:
-              $ref: '#/components/schemas/CreateOriginsRequest'
+              $ref: '#/components/schemas/CreateDeviceGroupsRequest'
       responses:
         "200":
           content:
             application/json; version=3:
               schema:
-                $ref: '#/components/schemas/OriginsIdResponse'
+                $ref: '#/components/schemas/DeviceGroupsIdResponse'
           description: Successful response
         "400":
           description: Bad Request
@@ -2107,7 +2107,7 @@ paths:
           format: int64
           type: integer
         style: simple
-      - description: The id of the Origin that you plan to delete.
+      - description: The id of the Device Groups that you plan to delete.
         example: application/json; version=3
         explode: false
         in: header
@@ -2152,7 +2152,7 @@ paths:
           format: int64
           type: integer
         style: simple
-      - description: The id of the Origin that you plan to query.
+      - description: The id of the Device Groups that you plan to query.
         example: application/json; version=3
         explode: false
         in: header
@@ -2166,7 +2166,7 @@ paths:
           content:
             application/json; version=3:
               schema:
-                $ref: '#/components/schemas/OriginsIdResponse'
+                $ref: '#/components/schemas/DeviceGroupsIdResponse'
           description: Successful response
         "400":
           description: Bad Request
@@ -2227,13 +2227,13 @@ paths:
         content:
           application/json; version=3:
             schema:
-              $ref: '#/components/schemas/PatchOriginsRequest'
+              $ref: '#/components/schemas/PatchDeviceGroupsRequest'
       responses:
         "200":
           content:
             application/json; version=3:
               schema:
-                $ref: '#/components/schemas/OriginsIdResponse'
+                $ref: '#/components/schemas/DeviceGroupsIdResponse'
           description: Successful response
         "400":
           description: Bad Request
@@ -2294,13 +2294,13 @@ paths:
         content:
           application/json; version=3:
             schema:
-              $ref: '#/components/schemas/UpdateOriginsRequest'
+              $ref: '#/components/schemas/UpdateDeviceGroupsRequest'
       responses:
         "200":
           content:
             application/json; version=3:
               schema:
-                $ref: '#/components/schemas/OriginsIdResponse'
+                $ref: '#/components/schemas/DeviceGroupsIdResponse'
           description: Successful response
         "400":
           description: Bad Request
@@ -4090,6 +4090,42 @@ components:
       required:
       - results
       - schema_version
+      type: object
+    CreateDeviceGroupsRequest:
+      additionalProperties: false
+      example:
+        name: name
+        user_agent: user_agent
+      properties:
+        name:
+          type: string
+        user_agent:
+          type: string
+      required:
+      - addresses
+      - user_agent
+      type: object
+    UpdateDeviceGroupsRequest:
+      additionalProperties: false
+      example:
+        name: name
+        user_agent: user_agent
+      properties:
+        name:
+          type: string
+        user_agent:
+          type: string
+      type: object
+    PatchDeviceGroupsRequest:
+      additionalProperties: false
+      example:
+        name: name
+        user_agent: user_agent
+      properties:
+        name:
+          type: string
+        user_agent:
+          type: string
       type: object
     DeviceGroupsResultResponse:
       additionalProperties: false

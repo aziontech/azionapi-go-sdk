@@ -34,7 +34,7 @@ import (
 func main() {
     edgeApplicationId := int64(789) // int64 | 
     deviceGroupId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string | The id of the Origin that you plan to delete. (optional)
+    accept := "application/json; version=3" // string | The id of the Device Groups that you plan to delete. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **accept** | **string** | The id of the Origin that you plan to delete. | 
+ **accept** | **string** | The id of the Device Groups that you plan to delete. | 
 
 ### Return type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet
 
-> OriginsIdResponse EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet(ctx, edgeApplicationId, deviceGroupId).Accept(accept).Execute()
+> DeviceGroupsIdResponse EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet(ctx, edgeApplicationId, deviceGroupId).Accept(accept).Execute()
 
 /edge_applications/{edge_application_id}/device_groups/{device_group_id}
 
@@ -105,7 +105,7 @@ import (
 func main() {
     edgeApplicationId := int64(789) // int64 | 
     deviceGroupId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string | The id of the Origin that you plan to query. (optional)
+    accept := "application/json; version=3" // string | The id of the Device Groups that you plan to query. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -114,7 +114,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet`: OriginsIdResponse
+    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet`: DeviceGroupsIdResponse
     fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet`: %v\n", resp)
 }
 ```
@@ -137,11 +137,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **accept** | **string** | The id of the Origin that you plan to query. | 
+ **accept** | **string** | The id of the Device Groups that you plan to query. | 
 
 ### Return type
 
-[**OriginsIdResponse**](OriginsIdResponse.md)
+[**DeviceGroupsIdResponse**](DeviceGroupsIdResponse.md)
 
 ### Authorization
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch
 
-> OriginsIdResponse EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch(ctx, edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).PatchOriginsRequest(patchOriginsRequest).Execute()
+> DeviceGroupsIdResponse EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch(ctx, edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).PatchDeviceGroupsRequest(patchDeviceGroupsRequest).Execute()
 
 /edge_applications/{edge_application_id}/device_groups/{device_group_id}
 
@@ -180,16 +180,16 @@ func main() {
     deviceGroupId := int64(789) // int64 | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    patchOriginsRequest := *openapiclient.NewPatchOriginsRequest() // PatchOriginsRequest |  (optional)
+    patchDeviceGroupsRequest := *openapiclient.NewPatchDeviceGroupsRequest() // PatchDeviceGroupsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).PatchOriginsRequest(patchOriginsRequest).Execute()
+    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).PatchDeviceGroupsRequest(patchDeviceGroupsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch`: OriginsIdResponse
+    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch`: DeviceGroupsIdResponse
     fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch`: %v\n", resp)
 }
 ```
@@ -214,11 +214,11 @@ Name | Type | Description  | Notes
 
  **accept** | **string** |  | 
  **contentType** | **string** | The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json | 
- **patchOriginsRequest** | [**PatchOriginsRequest**](PatchOriginsRequest.md) |  | 
+ **patchDeviceGroupsRequest** | [**PatchDeviceGroupsRequest**](PatchDeviceGroupsRequest.md) |  | 
 
 ### Return type
 
-[**OriginsIdResponse**](OriginsIdResponse.md)
+[**DeviceGroupsIdResponse**](DeviceGroupsIdResponse.md)
 
 ### Authorization
 
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 
 ## EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut
 
-> OriginsIdResponse EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut(ctx, edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).UpdateOriginsRequest(updateOriginsRequest).Execute()
+> DeviceGroupsIdResponse EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut(ctx, edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).UpdateDeviceGroupsRequest(updateDeviceGroupsRequest).Execute()
 
 /edge_applications/{edge_application_id}/device_groups/{device_group_id}
 
@@ -257,16 +257,16 @@ func main() {
     deviceGroupId := int64(789) // int64 | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    updateOriginsRequest := *openapiclient.NewUpdateOriginsRequest("Name_example", []openapiclient.CreateOriginsRequestAddresses{*openapiclient.NewCreateOriginsRequestAddresses("Address_example")}, "HostHeader_example") // UpdateOriginsRequest |  (optional)
+    updateDeviceGroupsRequest := *openapiclient.NewUpdateDeviceGroupsRequest() // UpdateDeviceGroupsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).UpdateOriginsRequest(updateOriginsRequest).Execute()
+    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).UpdateDeviceGroupsRequest(updateDeviceGroupsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut`: OriginsIdResponse
+    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut`: DeviceGroupsIdResponse
     fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut`: %v\n", resp)
 }
 ```
@@ -291,11 +291,11 @@ Name | Type | Description  | Notes
 
  **accept** | **string** |  | 
  **contentType** | **string** | The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json | 
- **updateOriginsRequest** | [**UpdateOriginsRequest**](UpdateOriginsRequest.md) |  | 
+ **updateDeviceGroupsRequest** | [**UpdateDeviceGroupsRequest**](UpdateDeviceGroupsRequest.md) |  | 
 
 ### Return type
 
-[**OriginsIdResponse**](OriginsIdResponse.md)
+[**DeviceGroupsIdResponse**](DeviceGroupsIdResponse.md)
 
 ### Authorization
 
@@ -393,7 +393,7 @@ Name | Type | Description  | Notes
 
 ## EdgeApplicationsEdgeApplicationIdDeviceGroupsPost
 
-> OriginsIdResponse EdgeApplicationsEdgeApplicationIdDeviceGroupsPost(ctx, edgeApplicationId).Accept(accept).ContentType(contentType).CreateOriginsRequest(createOriginsRequest).Execute()
+> DeviceGroupsIdResponse EdgeApplicationsEdgeApplicationIdDeviceGroupsPost(ctx, edgeApplicationId).Accept(accept).ContentType(contentType).CreateDeviceGroupsRequest(createDeviceGroupsRequest).Execute()
 
 /edge_applications/{edge_application_id}/device_groups
 
@@ -413,16 +413,16 @@ func main() {
     edgeApplicationId := int64(789) // int64 | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    createOriginsRequest := *openapiclient.NewCreateOriginsRequest("Name_example", []openapiclient.CreateOriginsRequestAddresses{*openapiclient.NewCreateOriginsRequestAddresses("Address_example")}, "HostHeader_example") // CreateOriginsRequest |  (optional)
+    createDeviceGroupsRequest := *openapiclient.NewCreateDeviceGroupsRequest("UserAgent_example") // CreateDeviceGroupsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).CreateOriginsRequest(createOriginsRequest).Execute()
+    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).CreateDeviceGroupsRequest(createDeviceGroupsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsPost`: OriginsIdResponse
+    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsPost`: DeviceGroupsIdResponse
     fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsApi.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost`: %v\n", resp)
 }
 ```
@@ -445,11 +445,11 @@ Name | Type | Description  | Notes
 
  **accept** | **string** |  | 
  **contentType** | **string** | The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json | 
- **createOriginsRequest** | [**CreateOriginsRequest**](CreateOriginsRequest.md) |  | 
+ **createDeviceGroupsRequest** | [**CreateDeviceGroupsRequest**](CreateDeviceGroupsRequest.md) |  | 
 
 ### Return type
 
-[**OriginsIdResponse**](OriginsIdResponse.md)
+[**DeviceGroupsIdResponse**](DeviceGroupsIdResponse.md)
 
 ### Authorization
 
