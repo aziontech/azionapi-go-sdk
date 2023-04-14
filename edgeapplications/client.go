@@ -51,6 +51,8 @@ type APIClient struct {
 
 	EdgeApplicationsCacheSettingsApi *EdgeApplicationsCacheSettingsApiService
 
+	EdgeApplicationsDeviceGroupsApi *EdgeApplicationsDeviceGroupsApiService
+
 	EdgeApplicationsEdgeFunctionsInstancesApi *EdgeApplicationsEdgeFunctionsInstancesApiService
 
 	EdgeApplicationsMainSettingsApi *EdgeApplicationsMainSettingsApiService
@@ -77,6 +79,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.EdgeApplicationsCacheSettingsApi = (*EdgeApplicationsCacheSettingsApiService)(&c.common)
+	c.EdgeApplicationsDeviceGroupsApi = (*EdgeApplicationsDeviceGroupsApiService)(&c.common)
 	c.EdgeApplicationsEdgeFunctionsInstancesApi = (*EdgeApplicationsEdgeFunctionsInstancesApiService)(&c.common)
 	c.EdgeApplicationsMainSettingsApi = (*EdgeApplicationsMainSettingsApiService)(&c.common)
 	c.EdgeApplicationsOriginsApi = (*EdgeApplicationsOriginsApiService)(&c.common)
