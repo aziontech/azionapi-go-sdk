@@ -1,7 +1,7 @@
 /*
 Domain
 
-## Welcome to the Azion API!  With the following APIs you can check, remove or update existing settings, besides creating new ones.  * * *  ## Overview  The Azion API is a RESTful API, based on HTTPS requests, that allows you to integrate your systems with our platform, simply, quickly, and securely.  Here you will find instructions on how our API works and what functionality is available.  This documentation is being constantly updated. Make sure you verify if there are any updates or changes before you perform any development in your application, even if you are familiar with our API.  * * *  Both HTTPS requests and responses must be in JavaScript Object Notation (JSON) format. All HTTPS requests and responses must follow these conventions.  **Base URL**  The base URL of the API, which must be used, is:  [**https://api.azionapi.net/_**](https://api.azionapi.net/)  **HTTP Methods**  Each HTTP method defines the type of operation that will be run.  | HTTP Method | CRUD | Whole Collection (e.g. /items) | Specific Item (e.g. /items/:item_id) | | --- | --- | --- | --- | | GET | Read | It retrieves the list of items in a Collection. | It retrieves a specific item in a Collection. | | POST | Create | It creates a new item in the Collection. | \\- | | PUT | Update/Replace | It replaces a whole Collection with a new one. | It replaces an item in a Collection with a new one. | | PATCH | Update/Modify | It partially updates a Collection. | It partially updates an item in a Collection | | DELETE | Delete | It deletes a whole Collection. | It deletes an item in a Collection. |  * * *  **Status Codes**  The HTTP return code defines the status – successful or not – after the requested operation is run.  | Status Code | Meaning | | --- | --- | | 200 OK | General Status for a successful operation. | | 201 CREATED | Successfully created a collection or item, by means of POST or PUT. | | 204 NO CONTENT | Successful operation, but without any content to be return to the Body. Generally used for DELETE or PUT operations. | | 207 MULTI-STATUS | A batch of operations were triggered by a single request, which resulted in different return codes when it was run, for some of the operations. The codes are displayed in the “status” field, in the body of the response, for each sub-batch of operations for whichever are applicable. | | 400 BAD REQUEST | Request error, such as invalid parameters, missing mandatory parameters or others. | | 401 UNAUTHORIZED | Error caused by a missing HTTP Authentication header. | | 403 FORBIDDEN | User does not have the permissions to run the requested operation. | | 404 NOT FOUND | The requested resource does not exist. | | 405 METHOD NOT ALLOWED | The requested method is not applicable with the URL. | | 406 NOT ACCEPTABLE | Accept header missing from the HTTP request or the header contains formatting or the version is not supported by the API. | | 409 CONFLICT | Conflict generated in running the request, such as a request to create an already existing record. | | 429 TOO MANY REQUESTS | The request was temporarily rejected, due to exceeding the limit on operations. Wait for the time defined in the X-Ratelimit-Reset header and try again. | | 500 INTERNAL SERVER ERROR | Unintentional error, due to an unidentified failure in the request process. | | \\--- |  | | **HTTP Headers** |  |  All requests must be generated with the HTTP header specifying the desired code format for responses and the API version used. The current version of the API is 3 and the format is application/json.  ``` Accept: application/json; version=3  ```  * * *  **Rate Limit**  The limit of operations that can be run via the API is defined by 3 HTTP response headers:  *   **X-ratelimit-limit:** number of operations allowed in one time-frame; *   **X-ratelimit-remaining:** number of operations still available in one time-frame; *   **X-ratelimit-reset:** is the date and time, in IOS 8601 format, which represents the point in the future when the time-frame will be closed and when the limits will, therefore, be reset.       Example of HTTP response headers and a request:  ``` Date: Thu, 02 Nov 2017 12:30:28 GMT X-ratelimit-remaining: 199 X-ratelimit-limit: 200 X-ratelimit-reset: 2017-11-02T12:31:28.675446  ```  In the example provided, 200 operations are allowed within a 1-minute time frame. Of those, there are 199 still available, because one has already been run. The total limit will be reset after 1 minute.  When the X-ratelimit-limit is reached, or in other words, when the X-ratelimit-remaining reaches zero, the API will give the error, HTTP 429 TOO MANY REQUESTS. If your application receives this error, you will need to wait until the time defined in X-ratelimit-reset has passed, to make another request.  *   **X-ratelimit-limit by product**       The *X-ratelimit limit* variations by product are the following:  *   **Real-Time Metrics:** 20 requests per minute. *   **Real-Time Purge:** 200 requests per minute; except for the Wildcard, which is 2000 a day.       > The rate-limit values are based on the client_id.  * * *  **Optional Parameters**  In this version, it is possible to include some optional parameters as part of the GET method, which can help and modify the form in which your data will be returned.  You can combine these parameters to get the result you want.  They are:  | Parameter | Description | Accepted values: | | --- | --- | --- | | order_by | Identifies which field the return should be sorted by. The default ordering is ascending. | Depends on the fields available from the endpoint structure | | sort | Defines which ordering to be used: ascending or descending. | asc  <br>  <br>desc | | page | Identifies which page should be returned, if the return is paginated. The default value is 1. | Page number. | | page_size | Identifies how many items should be returned per page. The default value is 10. | Desired number of items. |  * * *  **Request Exemple**  You can use one parameter, or a combination. See the example below, which uses all of them in the same request.  ``` GET /domains?order_by=name&page_size=20&sort=desc&page=3 Accept: application/json; version=3 Authorization: token 2909f3932069047f4736dc87e72baaddd19c9f75  ```  * * *  # Authentication  Authentication and authorization of operations via Azion API is done through Tokens.  The first step is to create the Token through authenticating a user registered in [Real-Time Manager](https://sso.azion.com/login).  * * *  ## Encoding Username and Password in Base64  Only token creation and cancelling operations are performed through Basic Authentication, that is, with a username and password. You can create and cancel the token through the API itself, but for that you need to encode your username and password in base64.  Base64 encoding can be done from the command line on a Unix terminal:  ``` $ echo 'user@domain:password'|base64 dXNlckBkb21haW46cGFzc3dvcmQK  ```  If you do not have a Unix terminal available, you can use the free online service at [https://www.base64encode.org/](https://www.base64encode.org/)
+## Welcome to the Azion API!  With the following APIs you can check, remove or update existing settings, besides creating new ones.  * * *  ## Overview  The Azion API is a RESTful API, based on HTTPS requests, that allows you to integrate your systems with our platform, simply, quickly, and securely.  Here you will find instructions on how our API works and what functionality is available.  This documentation is being constantly updated. Make sure you verify if there are any updates or changes before you perform any development in your application, even if you are familiar with our API.  * * *  Both HTTPS requests and responses must be in JavaScript Object Notation (JSON) format. All HTTPS requests and responses must follow these conventions.  **Base URL**  The base URL of the API, which must be used, is:  [**https://api.azionapi.net/_**](https://api.azionapi.net/)  **HTTP Methods**  Each HTTP method defines the type of operation that will be run.  | HTTP Method | CRUD | Whole Collection (e.g. /items) | Specific Item (e.g. /items/:item_id) | | --- | --- | --- | --- | | GET | Read | It retrieves the list of items in a Collection. | It retrieves a specific item in a Collection. | | POST | Create | It creates a new item in the Collection. | \\- | | PUT | Update/Replace | It replaces a whole Collection with a new one. | It replaces an item in a Collection with a new one. | | PATCH | Update/Modify | It partially updates a Collection. | It partially updates an item in a Collection | | DELETE | Delete | It deletes a whole Collection. | It deletes an item in a Collection. |  * * *  **Status Codes**  The HTTP return code defines the status – successful or not – after the requested operation is run.  | Status Code | Meaning | | --- | --- | | 200 OK | General Status for a successful operation. | | 201 CREATED | Successfully created a collection or item, by means of POST or PUT. | | 204 NO CONTENT | Successful operation, but without any content to be return to the Body. Generally used for DELETE or PUT operations. | | 207 MULTI-STATUS | A batch of operations were triggered by a single request, which resulted in different return codes when it was run, for some of the operations. The codes are displayed in the “status” field, in the body of the response, for each sub-batch of operations for whichever are applicable. | | 400 BAD REQUEST | Request error, such as invalid parameters, missing mandatory parameters or others. | | 401 UNAUTHORIZED | Error caused by a missing HTTP Authentication header. | | 403 FORBIDDEN | User does not have the permissions to run the requested operation. | | 404 NOT FOUND | The requested resource does not exist. | | 405 METHOD NOT ALLOWED | The requested method is not applicable with the URL. | | 406 NOT ACCEPTABLE | Accept header missing from the HTTP request or the header contains formatting or the version is not supported by the API. | | 409 CONFLICT | Conflict generated in running the request, such as a request to create an already existing record. | | 429 TOO MANY REQUESTS | The request was temporarily rejected, due to exceeding the limit on operations. Wait for the time defined in the X-Ratelimit-Reset header and try again. | | 500 INTERNAL SERVER ERROR | Unintentional error, due to an unidentified failure in the request process. | | \\--- |  | | **HTTP Headers** |  |  All requests must be generated with the HTTP header specifying the desired code format for responses and the API version used. The current version of the API is 3 and the format is application/json.  ``` Accept: application/json; version=3  ```  * * *  **Rate Limit**  The limit of operations that can be run via the API is defined by 3 HTTP response headers:  *   **X-ratelimit-limit:** number of operations allowed in one time-frame; *   **X-ratelimit-remaining:** number of operations still available in one time-frame; *   **X-ratelimit-reset:** is the date and time, in IOS 8601 format, which represents the point in the future when the time-frame will be closed and when the limits will, therefore, be reset.       Example of HTTP response headers and a request:  ``` Date: Thu, 02 Nov 2017 12:30:28 GMT X-ratelimit-remaining: 199 X-ratelimit-limit: 200 X-ratelimit-reset: 2017-11-02T12:31:28.675446  ```  In the example provided, 200 operations are allowed within a 1-minute time frame. Of those, there are 199 still available, because one has already been run. The total limit will be reset after 1 minute.  When the X-ratelimit-limit is reached, or in other words, when the X-ratelimit-remaining reaches zero, the API will give the error, HTTP 429 TOO MANY REQUESTS. If your application receives this error, you will need to wait until the time defined in X-ratelimit-reset has passed, to make another request.  *   **X-ratelimit-limit by product**       The *X-ratelimit limit* variations by product are the following:  *   **Real-Time Metrics:** 20 requests per minute. *   **Real-Time Purge:** 200 requests per minute; except for the Wildcard, which is 2000 a day.       > The rate-limit values are based on the client_id.  * * *  **Optional Parameters**  In this version, it is possible to include some optional parameters as part of the GET method, which can help and modify the form in which your data will be returned.  You can combine these parameters to get the result you want.  They are:  | Parameter | Description | Accepted values: | | --- | --- | --- | | order_by | Identifies which field the return should be sorted by. The default ordering is ascending. | Depends on the fields available from the endpoint structure | | sort | Defines which ordering to be used: ascending or descending. | asc  <br>  <br>desc | | page | Identifies which page should be returned, if the return is paginated. The default value is 1. | Page number. | | page_size | Identifies how many items should be returned per page. The default value is 10. | Desired number of items. |  * * *  **Request Exemple**  You can use one parameter, or a combination. See the example below, which uses all of them in the same request.  ``` GET /domains?order_by=name&page_size=20&sort=desc&page=3 Accept: application/json; version=3 Authorization: token 2909f3932069047f4736dc87e72baaddd19c9f75  ```  * * *  # Authentication  Authentication and authorization of operations via Azion API is done through Tokens.  The first step is to create the Token through authenticating a user registered in [Real-Time Manager](https://sso.azion.com/login).  * * *  ## Encoding Username and Password in Base64  Only token creation and cancelling operations are performed through Basic Authentication, that is, with a username and password. You can create and cancel the token through the API itself, but for that you need to encode your username and password in base64.  Base64 encoding can be done from the command line on a Unix terminal:  ``` $ echo 'user@domain:password'|base64 dXNlckBkb21haW46cGFzc3dvcmQK  ```
 
 API version: 1.0.0
 */
@@ -13,7 +13,7 @@ package domains
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -104,10 +104,10 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*Doma
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.createDomainRequest
@@ -135,9 +135,9 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*Doma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -233,7 +233,7 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*http.Respo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -259,9 +259,9 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*http.Respo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -350,7 +350,7 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -376,9 +376,9 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -406,37 +406,7 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResp
 type ApiGetDomainsRequest struct {
 	ctx context.Context
 	ApiService *DomainsApiService
-	page *int64
-	pageSize *int64
-	filter *string
-	orderBy *string
-	sort *string
 	accept *string
-}
-
-func (r ApiGetDomainsRequest) Page(page int64) ApiGetDomainsRequest {
-	r.page = &page
-	return r
-}
-
-func (r ApiGetDomainsRequest) PageSize(pageSize int64) ApiGetDomainsRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-func (r ApiGetDomainsRequest) Filter(filter string) ApiGetDomainsRequest {
-	r.filter = &filter
-	return r
-}
-
-func (r ApiGetDomainsRequest) OrderBy(orderBy string) ApiGetDomainsRequest {
-	r.orderBy = &orderBy
-	return r
-}
-
-func (r ApiGetDomainsRequest) Sort(sort string) ApiGetDomainsRequest {
-	r.sort = &sort
-	return r
 }
 
 func (r ApiGetDomainsRequest) Accept(accept string) ApiGetDomainsRequest {
@@ -484,21 +454,6 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.page != nil {
-		parameterAddToQuery(localVarQueryParams, "page", r.page, "")
-	}
-	if r.pageSize != nil {
-		parameterAddToQuery(localVarQueryParams, "page_size", r.pageSize, "")
-	}
-	if r.filter != nil {
-		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
-	}
-	if r.orderBy != nil {
-		parameterAddToQuery(localVarQueryParams, "order_by", r.orderBy, "")
-	}
-	if r.sort != nil {
-		parameterAddToQuery(localVarQueryParams, "sort", r.sort, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -517,7 +472,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -543,9 +498,9 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -573,7 +528,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 type ApiPutDomainRequest struct {
 	ctx context.Context
 	ApiService *DomainsApiService
-	domainId string
+	id string
 	accept *string
 	contentType *string
 	putDomainRequest *PutDomainRequest
@@ -599,21 +554,21 @@ func (r ApiPutDomainRequest) Execute() (*DomainResponseWithResult, *http.Respons
 }
 
 /*
-PutDomain /domains:/:domain_id
+PutDomain /domains:/:id
 
 It overwrites all fields of a domain, while preserving the id. Optional fields not filled in will be replaced by the default values.
 
 To update only some fields in a domain, consider using the PATCH method instead of PUT.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param domainId
+ @param id
  @return ApiPutDomainRequest
 */
-func (a *DomainsApiService) PutDomain(ctx context.Context, domainId string) ApiPutDomainRequest {
+func (a *DomainsApiService) PutDomain(ctx context.Context, id string) ApiPutDomainRequest {
 	return ApiPutDomainRequest{
 		ApiService: a,
 		ctx: ctx,
-		domainId: domainId,
+		id: id,
 	}
 }
 
@@ -632,8 +587,8 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/domains/{domain_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"domain_id"+"}", url.PathEscape(parameterValueToString(r.domainId, "domainId")), -1)
+	localVarPath := localBasePath + "/domains/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -657,10 +612,10 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.putDomainRequest
@@ -688,9 +643,9 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -718,7 +673,7 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResp
 type ApiUpdateDomainRequest struct {
 	ctx context.Context
 	ApiService *DomainsApiService
-	domainId string
+	id string
 	accept *string
 	contentType *string
 	updateDomainRequest *UpdateDomainRequest
@@ -744,19 +699,19 @@ func (r ApiUpdateDomainRequest) Execute() (*DomainResponseWithResult, *http.Resp
 }
 
 /*
-UpdateDomain /domains/:domain_id
+UpdateDomain /domains/:id
 
 It updates one or more fields in a Domain, preserving the value of the fields not informed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param domainId
+ @param id
  @return ApiUpdateDomainRequest
 */
-func (a *DomainsApiService) UpdateDomain(ctx context.Context, domainId string) ApiUpdateDomainRequest {
+func (a *DomainsApiService) UpdateDomain(ctx context.Context, id string) ApiUpdateDomainRequest {
 	return ApiUpdateDomainRequest{
 		ApiService: a,
 		ctx: ctx,
-		domainId: domainId,
+		id: id,
 	}
 }
 
@@ -775,8 +730,8 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*Doma
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/domains/{domain_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"domain_id"+"}", url.PathEscape(parameterValueToString(r.domainId, "domainId")), -1)
+	localVarPath := localBasePath + "/domains/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -800,10 +755,10 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*Doma
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.updateDomainRequest
@@ -831,9 +786,9 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*Doma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

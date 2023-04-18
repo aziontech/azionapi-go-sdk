@@ -11,11 +11,10 @@ package domains
 
 import (
 	"context"
-	"testing"
-
-	openapiclient "github.com/aziontech/azionapi-go-sdk/domains"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func Test_domains_DomainsApiService(t *testing.T) {
@@ -25,7 +24,7 @@ func Test_domains_DomainsApiService(t *testing.T) {
 
 	t.Run("Test DomainsApiService CreateDomain", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DomainsApi.CreateDomain(context.Background()).Execute()
 
@@ -37,7 +36,7 @@ func Test_domains_DomainsApiService(t *testing.T) {
 
 	t.Run("Test DomainsApiService DelDomain", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -50,7 +49,7 @@ func Test_domains_DomainsApiService(t *testing.T) {
 
 	t.Run("Test DomainsApiService GetDomain", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -64,7 +63,7 @@ func Test_domains_DomainsApiService(t *testing.T) {
 
 	t.Run("Test DomainsApiService GetDomains", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.DomainsApi.GetDomains(context.Background()).Execute()
 
@@ -76,11 +75,11 @@ func Test_domains_DomainsApiService(t *testing.T) {
 
 	t.Run("Test DomainsApiService PutDomain", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		var domainId string
+		var id string
 
-		resp, httpRes, err := apiClient.DomainsApi.PutDomain(context.Background(), domainId).Execute()
+		resp, httpRes, err := apiClient.DomainsApi.PutDomain(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,11 +89,11 @@ func Test_domains_DomainsApiService(t *testing.T) {
 
 	t.Run("Test DomainsApiService UpdateDomain", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-		var domainId string
+		var id string
 
-		resp, httpRes, err := apiClient.DomainsApi.UpdateDomain(context.Background(), domainId).Execute()
+		resp, httpRes, err := apiClient.DomainsApi.UpdateDomain(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
