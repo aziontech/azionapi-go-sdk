@@ -13,7 +13,7 @@ package domains
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -104,10 +104,10 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*Doma
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.createDomainRequest
@@ -135,9 +135,9 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*Doma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -233,7 +233,7 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*http.Respo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -259,9 +259,9 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*http.Respo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -350,7 +350,7 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -376,9 +376,9 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -485,19 +485,19 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.pageSize != nil {
-		parameterAddToQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
 	}
 	if r.filter != nil {
-		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
 	}
 	if r.orderBy != nil {
-		parameterAddToQuery(localVarQueryParams, "order_by", r.orderBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_by", r.orderBy, "")
 	}
 	if r.sort != nil {
-		parameterAddToQuery(localVarQueryParams, "sort", r.sort, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -517,7 +517,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -543,9 +543,9 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -657,10 +657,10 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.putDomainRequest
@@ -688,9 +688,9 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -800,10 +800,10 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*Doma
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToQuery(localVarQueryParams, "Accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.updateDomainRequest
@@ -831,9 +831,9 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*Doma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

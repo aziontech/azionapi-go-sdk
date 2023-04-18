@@ -7,8 +7,6 @@ Name | Type | Description | Notes
 **Count** | **int64** |  | 
 **TotalPages** | **int64** |  | 
 **SchemaVersion** | **int64** |  | 
-**DomainName** | **string** |  | 
-**Environment** | **string** |  | 
 **Links** | [**DomainLinks**](DomainLinks.md) |  | 
 **Results** | [**[]DomainResults**](DomainResults.md) |  | 
 
@@ -16,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewDomainResponseWithResults
 
-`func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, domainName string, environment string, links DomainLinks, results []DomainResults, ) *DomainResponseWithResults`
+`func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, links DomainLinks, results []DomainResults, ) *DomainResponseWithResults`
 
 NewDomainResponseWithResults instantiates a new DomainResponseWithResults object
 This constructor will assign default values to properties that have it defined,
@@ -89,46 +87,6 @@ and a boolean to check if the value has been set.
 `func (o *DomainResponseWithResults) SetSchemaVersion(v int64)`
 
 SetSchemaVersion sets SchemaVersion field to given value.
-
-
-### GetDomainName
-
-`func (o *DomainResponseWithResults) GetDomainName() string`
-
-GetDomainName returns the DomainName field if non-nil, zero value otherwise.
-
-### GetDomainNameOk
-
-`func (o *DomainResponseWithResults) GetDomainNameOk() (*string, bool)`
-
-GetDomainNameOk returns a tuple with the DomainName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDomainName
-
-`func (o *DomainResponseWithResults) SetDomainName(v string)`
-
-SetDomainName sets DomainName field to given value.
-
-
-### GetEnvironment
-
-`func (o *DomainResponseWithResults) GetEnvironment() string`
-
-GetEnvironment returns the Environment field if non-nil, zero value otherwise.
-
-### GetEnvironmentOk
-
-`func (o *DomainResponseWithResults) GetEnvironmentOk() (*string, bool)`
-
-GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvironment
-
-`func (o *DomainResponseWithResults) SetEnvironment(v string)`
-
-SetEnvironment sets Environment field to given value.
 
 
 ### GetLinks

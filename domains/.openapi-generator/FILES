@@ -24,5 +24,4 @@ model_domain_results.go
 model_put_domain_request.go
 model_update_domain_request.go
 response.go
-test/api_domains_test.go
 utils.go

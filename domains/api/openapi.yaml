@@ -535,8 +535,6 @@ components:
       additionalProperties: false
       example:
         schema_version: 1
-        domain_name: domain_name
-        environment: environment
         count: 0
         links:
           next: next
@@ -575,10 +573,6 @@ components:
         schema_version:
           format: int64
           type: integer
-        domain_name:
-          type: string
-        environment:
-          type: string
         links:
           $ref: '#/components/schemas/DomainLinks'
         results:
@@ -587,8 +581,6 @@ components:
           type: array
       required:
       - count
-      - domain_name
-      - environment
       - links
       - results
       - schema_version
