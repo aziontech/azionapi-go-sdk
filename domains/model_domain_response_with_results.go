@@ -22,8 +22,6 @@ type DomainResponseWithResults struct {
 	Count int64 `json:"count"`
 	TotalPages int64 `json:"total_pages"`
 	SchemaVersion int64 `json:"schema_version"`
-	DomainName string `json:"domain_name"`
-	Environment string `json:"environment"`
 	Links DomainLinks `json:"links"`
 	Results []DomainResults `json:"results"`
 }
@@ -32,13 +30,11 @@ type DomainResponseWithResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, domainName string, environment string, links DomainLinks, results []DomainResults) *DomainResponseWithResults {
+func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, links DomainLinks, results []DomainResults) *DomainResponseWithResults {
 	this := DomainResponseWithResults{}
 	this.Count = count
 	this.TotalPages = totalPages
 	this.SchemaVersion = schemaVersion
-	this.DomainName = domainName
-	this.Environment = environment
 	this.Links = links
 	this.Results = results
 	return &this
@@ -124,54 +120,6 @@ func (o *DomainResponseWithResults) SetSchemaVersion(v int64) {
 	o.SchemaVersion = v
 }
 
-// GetDomainName returns the DomainName field value
-func (o *DomainResponseWithResults) GetDomainName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DomainName
-}
-
-// GetDomainNameOk returns a tuple with the DomainName field value
-// and a boolean to check if the value has been set.
-func (o *DomainResponseWithResults) GetDomainNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DomainName, true
-}
-
-// SetDomainName sets field value
-func (o *DomainResponseWithResults) SetDomainName(v string) {
-	o.DomainName = v
-}
-
-// GetEnvironment returns the Environment field value
-func (o *DomainResponseWithResults) GetEnvironment() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Environment
-}
-
-// GetEnvironmentOk returns a tuple with the Environment field value
-// and a boolean to check if the value has been set.
-func (o *DomainResponseWithResults) GetEnvironmentOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Environment, true
-}
-
-// SetEnvironment sets field value
-func (o *DomainResponseWithResults) SetEnvironment(v string) {
-	o.Environment = v
-}
-
 // GetLinks returns the Links field value
 func (o *DomainResponseWithResults) GetLinks() DomainLinks {
 	if o == nil {
@@ -233,8 +181,6 @@ func (o DomainResponseWithResults) ToMap() (map[string]interface{}, error) {
 	toSerialize["count"] = o.Count
 	toSerialize["total_pages"] = o.TotalPages
 	toSerialize["schema_version"] = o.SchemaVersion
-	toSerialize["domain_name"] = o.DomainName
-	toSerialize["environment"] = o.Environment
 	toSerialize["links"] = o.Links
 	toSerialize["results"] = o.Results
 	return toSerialize, nil

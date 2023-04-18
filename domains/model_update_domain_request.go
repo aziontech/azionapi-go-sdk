@@ -19,7 +19,7 @@ var _ MappedNullable = &UpdateDomainRequest{}
 
 // UpdateDomainRequest struct for UpdateDomainRequest
 type UpdateDomainRequest struct {
-	Cnames *[]string `json:"cnames,omitempty"`
+	Cnames []string `json:"cnames,omitempty"`
 	CnameAccessOnly *bool `json:"cname_access_only,omitempty"`
 	Name *string `json:"name,omitempty"`
 	IsActive *bool `json:"is_active,omitempty"`
@@ -46,25 +46,25 @@ func NewUpdateDomainRequestWithDefaults() *UpdateDomainRequest {
 
 // GetCnames returns the Cnames field value if set, zero value otherwise.
 func (o *UpdateDomainRequest) GetCnames() []string {
-	if o == nil || o.Cnames == nil {
+	if o == nil || IsNil(o.Cnames) {
 		var ret []string
 		return ret
 	}
-	return *o.Cnames
+	return o.Cnames
 }
 
 // GetCnamesOk returns a tuple with the Cnames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDomainRequest) GetCnamesOk() ([]string, bool) {
-	if o == nil || isNil(o.Cnames) {
+	if o == nil || IsNil(o.Cnames) {
 		return nil, false
 	}
-	return *o.Cnames, true
+	return o.Cnames, true
 }
 
 // HasCnames returns a boolean if a field has been set.
 func (o *UpdateDomainRequest) HasCnames() bool {
-	if o != nil && !isNil(o.Cnames) {
+	if o != nil && !IsNil(o.Cnames) {
 		return true
 	}
 
@@ -73,12 +73,12 @@ func (o *UpdateDomainRequest) HasCnames() bool {
 
 // SetCnames gets a reference to the given []string and assigns it to the Cnames field.
 func (o *UpdateDomainRequest) SetCnames(v []string) {
-	o.Cnames = &v
+	o.Cnames = v
 }
 
 // GetCnameAccessOnly returns the CnameAccessOnly field value if set, zero value otherwise.
 func (o *UpdateDomainRequest) GetCnameAccessOnly() bool {
-	if o == nil || isNil(o.CnameAccessOnly) {
+	if o == nil || IsNil(o.CnameAccessOnly) {
 		var ret bool
 		return ret
 	}
@@ -88,7 +88,7 @@ func (o *UpdateDomainRequest) GetCnameAccessOnly() bool {
 // GetCnameAccessOnlyOk returns a tuple with the CnameAccessOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDomainRequest) GetCnameAccessOnlyOk() (*bool, bool) {
-	if o == nil || isNil(o.CnameAccessOnly) {
+	if o == nil || IsNil(o.CnameAccessOnly) {
 		return nil, false
 	}
 	return o.CnameAccessOnly, true
@@ -96,7 +96,7 @@ func (o *UpdateDomainRequest) GetCnameAccessOnlyOk() (*bool, bool) {
 
 // HasCnameAccessOnly returns a boolean if a field has been set.
 func (o *UpdateDomainRequest) HasCnameAccessOnly() bool {
-	if o != nil && !isNil(o.CnameAccessOnly) {
+	if o != nil && !IsNil(o.CnameAccessOnly) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *UpdateDomainRequest) SetCnameAccessOnly(v bool) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateDomainRequest) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -120,7 +120,7 @@ func (o *UpdateDomainRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDomainRequest) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -128,7 +128,7 @@ func (o *UpdateDomainRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *UpdateDomainRequest) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *UpdateDomainRequest) SetName(v string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *UpdateDomainRequest) GetIsActive() bool {
-	if o == nil || isNil(o.IsActive) {
+	if o == nil || IsNil(o.IsActive) {
 		var ret bool
 		return ret
 	}
@@ -152,7 +152,7 @@ func (o *UpdateDomainRequest) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDomainRequest) GetIsActiveOk() (*bool, bool) {
-	if o == nil || isNil(o.IsActive) {
+	if o == nil || IsNil(o.IsActive) {
 		return nil, false
 	}
 	return o.IsActive, true
@@ -160,7 +160,7 @@ func (o *UpdateDomainRequest) GetIsActiveOk() (*bool, bool) {
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *UpdateDomainRequest) HasIsActive() bool {
-	if o != nil && !isNil(o.IsActive) {
+	if o != nil && !IsNil(o.IsActive) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *UpdateDomainRequest) SetIsActive(v bool) {
 
 // GetEdgeApplicationId returns the EdgeApplicationId field value if set, zero value otherwise.
 func (o *UpdateDomainRequest) GetEdgeApplicationId() int64 {
-	if o == nil || isNil(o.EdgeApplicationId) {
+	if o == nil || IsNil(o.EdgeApplicationId) {
 		var ret int64
 		return ret
 	}
@@ -184,7 +184,7 @@ func (o *UpdateDomainRequest) GetEdgeApplicationId() int64 {
 // GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDomainRequest) GetEdgeApplicationIdOk() (*int64, bool) {
-	if o == nil || isNil(o.EdgeApplicationId) {
+	if o == nil || IsNil(o.EdgeApplicationId) {
 		return nil, false
 	}
 	return o.EdgeApplicationId, true
@@ -192,7 +192,7 @@ func (o *UpdateDomainRequest) GetEdgeApplicationIdOk() (*int64, bool) {
 
 // HasEdgeApplicationId returns a boolean if a field has been set.
 func (o *UpdateDomainRequest) HasEdgeApplicationId() bool {
-	if o != nil && !isNil(o.EdgeApplicationId) {
+	if o != nil && !IsNil(o.EdgeApplicationId) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *UpdateDomainRequest) SetEdgeApplicationId(v int64) {
 
 // GetDigitalCertificateId returns the DigitalCertificateId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateDomainRequest) GetDigitalCertificateId() int64 {
-	if o == nil || isNil(o.DigitalCertificateId.Get()) {
+	if o == nil || IsNil(o.DigitalCertificateId.Get()) {
 		var ret int64
 		return ret
 	}
@@ -256,19 +256,19 @@ func (o UpdateDomainRequest) MarshalJSON() ([]byte, error) {
 
 func (o UpdateDomainRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Cnames) {
+	if !IsNil(o.Cnames) {
 		toSerialize["cnames"] = o.Cnames
 	}
-	if !isNil(o.CnameAccessOnly) {
+	if !IsNil(o.CnameAccessOnly) {
 		toSerialize["cname_access_only"] = o.CnameAccessOnly
 	}
-	if !isNil(o.Name) {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.IsActive) {
+	if !IsNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
 	}
-	if !isNil(o.EdgeApplicationId) {
+	if !IsNil(o.EdgeApplicationId) {
 		toSerialize["edge_application_id"] = o.EdgeApplicationId
 	}
 	if o.DigitalCertificateId.IsSet() {
