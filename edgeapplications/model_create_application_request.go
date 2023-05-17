@@ -20,6 +20,7 @@ var _ MappedNullable = &CreateApplicationRequest{}
 // CreateApplicationRequest struct for CreateApplicationRequest
 type CreateApplicationRequest struct {
 	Name string `json:"name"`
+	ApplicationAcceleration *bool `json:"application_acceleration,omitempty"`
 	DeliveryProtocol *string `json:"delivery_protocol,omitempty"`
 	OriginType *string `json:"origin_type,omitempty"`
 	Address *string `json:"address,omitempty"`
@@ -71,6 +72,38 @@ func (o *CreateApplicationRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateApplicationRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetApplicationAcceleration returns the ApplicationAcceleration field value if set, zero value otherwise.
+func (o *CreateApplicationRequest) GetApplicationAcceleration() bool {
+	if o == nil || IsNil(o.ApplicationAcceleration) {
+		var ret bool
+		return ret
+	}
+	return *o.ApplicationAcceleration
+}
+
+// GetApplicationAccelerationOk returns a tuple with the ApplicationAcceleration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateApplicationRequest) GetApplicationAccelerationOk() (*bool, bool) {
+	if o == nil || IsNil(o.ApplicationAcceleration) {
+		return nil, false
+	}
+	return o.ApplicationAcceleration, true
+}
+
+// HasApplicationAcceleration returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasApplicationAcceleration() bool {
+	if o != nil && !IsNil(o.ApplicationAcceleration) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationAcceleration gets a reference to the given bool and assigns it to the ApplicationAcceleration field.
+func (o *CreateApplicationRequest) SetApplicationAcceleration(v bool) {
+	o.ApplicationAcceleration = &v
 }
 
 // GetDeliveryProtocol returns the DeliveryProtocol field value if set, zero value otherwise.
@@ -372,6 +405,9 @@ func (o CreateApplicationRequest) MarshalJSON() ([]byte, error) {
 func (o CreateApplicationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.ApplicationAcceleration) {
+		toSerialize["application_acceleration"] = o.ApplicationAcceleration
+	}
 	if !IsNil(o.DeliveryProtocol) {
 		toSerialize["delivery_protocol"] = o.DeliveryProtocol
 	}

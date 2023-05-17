@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
+**ApplicationAcceleration** | Pointer to **bool** |  | [optional] 
 **DeliveryProtocol** | Pointer to **string** |  | [optional] 
 **OriginType** | Pointer to **string** |  | [optional] 
 **Address** | Pointer to **string** |  | [optional] 
@@ -53,6 +54,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetApplicationAcceleration
+
+`func (o *CreateApplicationRequest) GetApplicationAcceleration() bool`
+
+GetApplicationAcceleration returns the ApplicationAcceleration field if non-nil, zero value otherwise.
+
+### GetApplicationAccelerationOk
+
+`func (o *CreateApplicationRequest) GetApplicationAccelerationOk() (*bool, bool)`
+
+GetApplicationAccelerationOk returns a tuple with the ApplicationAcceleration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationAcceleration
+
+`func (o *CreateApplicationRequest) SetApplicationAcceleration(v bool)`
+
+SetApplicationAcceleration sets ApplicationAcceleration field to given value.
+
+### HasApplicationAcceleration
+
+`func (o *CreateApplicationRequest) HasApplicationAcceleration() bool`
+
+HasApplicationAcceleration returns a boolean if a field has been set.
 
 ### GetDeliveryProtocol
 

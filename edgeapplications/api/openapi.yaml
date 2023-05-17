@@ -2568,6 +2568,8 @@ components:
       properties:
         name:
           type: string
+        application_acceleration:
+          type: boolean
         delivery_protocol:
           type: string
         origin_type:
