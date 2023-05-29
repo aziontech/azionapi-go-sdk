@@ -196,7 +196,7 @@ func (a *DefaultApiService) StorageVersionIdPostExecute(r ApiStorageVersionIdPos
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/octet-stream"}
+	localVarHTTPContentTypes := []string{"b2/x-auto"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)

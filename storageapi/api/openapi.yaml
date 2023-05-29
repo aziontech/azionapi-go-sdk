@@ -30,7 +30,7 @@ paths:
         style: simple
       requestBody:
         content:
-          application/octet-stream:
+          b2/x-auto:
             schema:
               format: binary
               type: string
