@@ -372,13 +372,13 @@ components:
       type: object
     Results:
       example:
-        code: function foo() { console.log('hello world');
+        code: "function foo() { console.log('hello world');"
         last_editor: user@azion.com
         name: MyFunction
         active: true
         modified: modified
         language: javascript
-        json_args: '{"a": 1, "b": 2}'
+        json_args: "{\"a\": 1, \"b\": 2}"
         id: 5
         function_to_run: function_to_run
         reference_count: 5
@@ -423,7 +423,7 @@ components:
           active: true
           modified: modified
           language: language
-          json_args: '{}'
+          json_args: "{}"
           id: 5
           function_to_run: function_to_run
           reference_count: 5
@@ -434,7 +434,7 @@ components:
           active: true
           modified: modified
           language: language
-          json_args: '{}'
+          json_args: "{}"
           id: 5
           function_to_run: function_to_run
           reference_count: 5
@@ -503,7 +503,7 @@ components:
           active: true
           modified: modified
           language: language
-          json_args: '{}'
+          json_args: "{}"
           id: 5
           function_to_run: function_to_run
           reference_count: 5

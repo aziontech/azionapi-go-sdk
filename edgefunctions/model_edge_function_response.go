@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EdgeFunctionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EdgeFunctionResponse{}
+
 // EdgeFunctionResponse struct for EdgeFunctionResponse
 type EdgeFunctionResponse struct {
 	Results *Results `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewEdgeFunctionResponseWithDefaults() *EdgeFunctionResponse {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *EdgeFunctionResponse) GetResults() Results {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret Results
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *EdgeFunctionResponse) GetResults() Results {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EdgeFunctionResponse) GetResultsOk() (*Results, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *EdgeFunctionResponse) GetResultsOk() (*Results, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *EdgeFunctionResponse) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *EdgeFunctionResponse) SetResults(v Results) {
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *EdgeFunctionResponse) GetSchemaVersion() float32 {
-	if o == nil || o.SchemaVersion == nil {
+	if o == nil || IsNil(o.SchemaVersion) {
 		var ret float32
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *EdgeFunctionResponse) GetSchemaVersion() float32 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EdgeFunctionResponse) GetSchemaVersionOk() (*float32, bool) {
-	if o == nil || o.SchemaVersion == nil {
+	if o == nil || IsNil(o.SchemaVersion) {
 		return nil, false
 	}
 	return o.SchemaVersion, true
@@ -89,7 +92,7 @@ func (o *EdgeFunctionResponse) GetSchemaVersionOk() (*float32, bool) {
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *EdgeFunctionResponse) HasSchemaVersion() bool {
-	if o != nil && o.SchemaVersion != nil {
+	if o != nil && !IsNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *EdgeFunctionResponse) SetSchemaVersion(v float32) {
 }
 
 func (o EdgeFunctionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
-	}
-	if o.SchemaVersion != nil {
-		toSerialize["schema_version"] = o.SchemaVersion
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EdgeFunctionResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	if !IsNil(o.SchemaVersion) {
+		toSerialize["schema_version"] = o.SchemaVersion
+	}
+	return toSerialize, nil
 }
 
 type NullableEdgeFunctionResponse struct {

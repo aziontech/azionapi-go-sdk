@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchEdgeFunctionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchEdgeFunctionRequest{}
+
 // PatchEdgeFunctionRequest struct for PatchEdgeFunctionRequest
 type PatchEdgeFunctionRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchEdgeFunctionRequestWithDefaults() *PatchEdgeFunctionRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchEdgeFunctionRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchEdgeFunctionRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchEdgeFunctionRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *PatchEdgeFunctionRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchEdgeFunctionRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchEdgeFunctionRequest) SetName(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *PatchEdgeFunctionRequest) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchEdgeFunctionRequest) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchEdgeFunctionRequest) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -91,7 +94,7 @@ func (o *PatchEdgeFunctionRequest) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *PatchEdgeFunctionRequest) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchEdgeFunctionRequest) SetCode(v string) {
 
 // GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchEdgeFunctionRequest) GetJsonArgs() interface{} {
-	if o == nil  {
+	if o == nil {
 		var ret interface{}
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *PatchEdgeFunctionRequest) GetJsonArgs() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool) {
-	if o == nil || o.JsonArgs == nil {
+	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
 	return &o.JsonArgs, true
@@ -124,7 +127,7 @@ func (o *PatchEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool) {
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *PatchEdgeFunctionRequest) HasJsonArgs() bool {
-	if o != nil && o.JsonArgs != nil {
+	if o != nil && IsNil(o.JsonArgs) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *PatchEdgeFunctionRequest) SetJsonArgs(v interface{}) {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *PatchEdgeFunctionRequest) GetActive() bool {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *PatchEdgeFunctionRequest) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchEdgeFunctionRequest) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		return nil, false
 	}
 	return o.Active, true
@@ -156,7 +159,7 @@ func (o *PatchEdgeFunctionRequest) GetActiveOk() (*bool, bool) {
 
 // HasActive returns a boolean if a field has been set.
 func (o *PatchEdgeFunctionRequest) HasActive() bool {
-	if o != nil && o.Active != nil {
+	if o != nil && !IsNil(o.Active) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *PatchEdgeFunctionRequest) SetActive(v bool) {
 }
 
 func (o PatchEdgeFunctionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchEdgeFunctionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Code != nil {
+	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
 	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
-	if o.Active != nil {
+	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchEdgeFunctionRequest struct {

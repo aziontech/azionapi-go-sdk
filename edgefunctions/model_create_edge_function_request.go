@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateEdgeFunctionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateEdgeFunctionRequest{}
+
 // CreateEdgeFunctionRequest struct for CreateEdgeFunctionRequest
 type CreateEdgeFunctionRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -42,7 +45,7 @@ func NewCreateEdgeFunctionRequestWithDefaults() *CreateEdgeFunctionRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateEdgeFunctionRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *CreateEdgeFunctionRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateEdgeFunctionRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -60,7 +63,7 @@ func (o *CreateEdgeFunctionRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateEdgeFunctionRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *CreateEdgeFunctionRequest) SetName(v string) {
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *CreateEdgeFunctionRequest) GetLanguage() string {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *CreateEdgeFunctionRequest) GetLanguage() string {
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateEdgeFunctionRequest) GetLanguageOk() (*string, bool) {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		return nil, false
 	}
 	return o.Language, true
@@ -92,7 +95,7 @@ func (o *CreateEdgeFunctionRequest) GetLanguageOk() (*string, bool) {
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *CreateEdgeFunctionRequest) HasLanguage() bool {
-	if o != nil && o.Language != nil {
+	if o != nil && !IsNil(o.Language) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *CreateEdgeFunctionRequest) SetLanguage(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *CreateEdgeFunctionRequest) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *CreateEdgeFunctionRequest) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateEdgeFunctionRequest) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -124,7 +127,7 @@ func (o *CreateEdgeFunctionRequest) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *CreateEdgeFunctionRequest) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *CreateEdgeFunctionRequest) SetCode(v string) {
 
 // GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateEdgeFunctionRequest) GetJsonArgs() interface{} {
-	if o == nil  {
+	if o == nil {
 		var ret interface{}
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *CreateEdgeFunctionRequest) GetJsonArgs() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool) {
-	if o == nil || o.JsonArgs == nil {
+	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
 	return &o.JsonArgs, true
@@ -157,7 +160,7 @@ func (o *CreateEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool) {
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *CreateEdgeFunctionRequest) HasJsonArgs() bool {
-	if o != nil && o.JsonArgs != nil {
+	if o != nil && IsNil(o.JsonArgs) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *CreateEdgeFunctionRequest) SetJsonArgs(v interface{}) {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *CreateEdgeFunctionRequest) GetActive() bool {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *CreateEdgeFunctionRequest) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateEdgeFunctionRequest) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		return nil, false
 	}
 	return o.Active, true
@@ -189,7 +192,7 @@ func (o *CreateEdgeFunctionRequest) GetActiveOk() (*bool, bool) {
 
 // HasActive returns a boolean if a field has been set.
 func (o *CreateEdgeFunctionRequest) HasActive() bool {
-	if o != nil && o.Active != nil {
+	if o != nil && !IsNil(o.Active) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *CreateEdgeFunctionRequest) SetActive(v bool) {
 }
 
 func (o CreateEdgeFunctionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CreateEdgeFunctionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Language != nil {
+	if !IsNil(o.Language) {
 		toSerialize["language"] = o.Language
 	}
-	if o.Code != nil {
+	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
 	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
-	if o.Active != nil {
+	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableCreateEdgeFunctionRequest struct {

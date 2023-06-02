@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PurgeCacheKeyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PurgeCacheKeyRequest{}
+
 // PurgeCacheKeyRequest struct for PurgeCacheKeyRequest
 type PurgeCacheKeyRequest struct {
 	Urls []string `json:"urls"`
@@ -53,11 +56,11 @@ func (o *PurgeCacheKeyRequest) GetUrls() []string {
 
 // GetUrlsOk returns a tuple with the Urls field value
 // and a boolean to check if the value has been set.
-func (o *PurgeCacheKeyRequest) GetUrlsOk() (*[]string, bool) {
-	if o == nil  {
+func (o *PurgeCacheKeyRequest) GetUrlsOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Urls, true
+	return o.Urls, true
 }
 
 // SetUrls sets field value
@@ -78,7 +81,7 @@ func (o *PurgeCacheKeyRequest) GetMethod() string {
 // GetMethodOk returns a tuple with the Method field value
 // and a boolean to check if the value has been set.
 func (o *PurgeCacheKeyRequest) GetMethodOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Method, true
@@ -102,7 +105,7 @@ func (o *PurgeCacheKeyRequest) GetLayer() string {
 // GetLayerOk returns a tuple with the Layer field value
 // and a boolean to check if the value has been set.
 func (o *PurgeCacheKeyRequest) GetLayerOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Layer, true
@@ -114,17 +117,19 @@ func (o *PurgeCacheKeyRequest) SetLayer(v string) {
 }
 
 func (o PurgeCacheKeyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["urls"] = o.Urls
-	}
-	if true {
-		toSerialize["method"] = o.Method
-	}
-	if true {
-		toSerialize["layer"] = o.Layer
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PurgeCacheKeyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["urls"] = o.Urls
+	toSerialize["method"] = o.Method
+	toSerialize["layer"] = o.Layer
+	return toSerialize, nil
 }
 
 type NullablePurgeCacheKeyRequest struct {
