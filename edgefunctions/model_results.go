@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Results type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Results{}
+
 // Results struct for Results
 type Results struct {
 	Id *int64 `json:"id,omitempty"`
@@ -48,7 +51,7 @@ func NewResultsWithDefaults() *Results {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Results) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *Results) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -66,7 +69,7 @@ func (o *Results) GetIdOk() (*int64, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Results) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *Results) SetId(v int64) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Results) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *Results) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -98,7 +101,7 @@ func (o *Results) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Results) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *Results) SetName(v string) {
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *Results) GetLanguage() string {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *Results) GetLanguage() string {
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetLanguageOk() (*string, bool) {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		return nil, false
 	}
 	return o.Language, true
@@ -130,7 +133,7 @@ func (o *Results) GetLanguageOk() (*string, bool) {
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *Results) HasLanguage() bool {
-	if o != nil && o.Language != nil {
+	if o != nil && !IsNil(o.Language) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *Results) SetLanguage(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *Results) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *Results) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -162,7 +165,7 @@ func (o *Results) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *Results) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *Results) SetCode(v string) {
 
 // GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Results) GetJsonArgs() interface{} {
-	if o == nil  {
+	if o == nil {
 		var ret interface{}
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *Results) GetJsonArgs() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Results) GetJsonArgsOk() (*interface{}, bool) {
-	if o == nil || o.JsonArgs == nil {
+	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
 	return &o.JsonArgs, true
@@ -195,7 +198,7 @@ func (o *Results) GetJsonArgsOk() (*interface{}, bool) {
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *Results) HasJsonArgs() bool {
-	if o != nil && o.JsonArgs != nil {
+	if o != nil && IsNil(o.JsonArgs) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *Results) SetJsonArgs(v interface{}) {
 
 // GetFunctionToRun returns the FunctionToRun field value if set, zero value otherwise.
 func (o *Results) GetFunctionToRun() string {
-	if o == nil || o.FunctionToRun == nil {
+	if o == nil || IsNil(o.FunctionToRun) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *Results) GetFunctionToRun() string {
 // GetFunctionToRunOk returns a tuple with the FunctionToRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetFunctionToRunOk() (*string, bool) {
-	if o == nil || o.FunctionToRun == nil {
+	if o == nil || IsNil(o.FunctionToRun) {
 		return nil, false
 	}
 	return o.FunctionToRun, true
@@ -227,7 +230,7 @@ func (o *Results) GetFunctionToRunOk() (*string, bool) {
 
 // HasFunctionToRun returns a boolean if a field has been set.
 func (o *Results) HasFunctionToRun() bool {
-	if o != nil && o.FunctionToRun != nil {
+	if o != nil && !IsNil(o.FunctionToRun) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *Results) SetFunctionToRun(v string) {
 
 // GetInitiatorType returns the InitiatorType field value if set, zero value otherwise.
 func (o *Results) GetInitiatorType() string {
-	if o == nil || o.InitiatorType == nil {
+	if o == nil || IsNil(o.InitiatorType) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *Results) GetInitiatorType() string {
 // GetInitiatorTypeOk returns a tuple with the InitiatorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetInitiatorTypeOk() (*string, bool) {
-	if o == nil || o.InitiatorType == nil {
+	if o == nil || IsNil(o.InitiatorType) {
 		return nil, false
 	}
 	return o.InitiatorType, true
@@ -259,7 +262,7 @@ func (o *Results) GetInitiatorTypeOk() (*string, bool) {
 
 // HasInitiatorType returns a boolean if a field has been set.
 func (o *Results) HasInitiatorType() bool {
-	if o != nil && o.InitiatorType != nil {
+	if o != nil && !IsNil(o.InitiatorType) {
 		return true
 	}
 
@@ -273,7 +276,7 @@ func (o *Results) SetInitiatorType(v string) {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *Results) GetActive() bool {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *Results) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		return nil, false
 	}
 	return o.Active, true
@@ -291,7 +294,7 @@ func (o *Results) GetActiveOk() (*bool, bool) {
 
 // HasActive returns a boolean if a field has been set.
 func (o *Results) HasActive() bool {
-	if o != nil && o.Active != nil {
+	if o != nil && !IsNil(o.Active) {
 		return true
 	}
 
@@ -305,7 +308,7 @@ func (o *Results) SetActive(v bool) {
 
 // GetLastEditor returns the LastEditor field value if set, zero value otherwise.
 func (o *Results) GetLastEditor() string {
-	if o == nil || o.LastEditor == nil {
+	if o == nil || IsNil(o.LastEditor) {
 		var ret string
 		return ret
 	}
@@ -315,7 +318,7 @@ func (o *Results) GetLastEditor() string {
 // GetLastEditorOk returns a tuple with the LastEditor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetLastEditorOk() (*string, bool) {
-	if o == nil || o.LastEditor == nil {
+	if o == nil || IsNil(o.LastEditor) {
 		return nil, false
 	}
 	return o.LastEditor, true
@@ -323,7 +326,7 @@ func (o *Results) GetLastEditorOk() (*string, bool) {
 
 // HasLastEditor returns a boolean if a field has been set.
 func (o *Results) HasLastEditor() bool {
-	if o != nil && o.LastEditor != nil {
+	if o != nil && !IsNil(o.LastEditor) {
 		return true
 	}
 
@@ -337,7 +340,7 @@ func (o *Results) SetLastEditor(v string) {
 
 // GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Results) GetModified() string {
-	if o == nil || o.Modified == nil {
+	if o == nil || IsNil(o.Modified) {
 		var ret string
 		return ret
 	}
@@ -347,7 +350,7 @@ func (o *Results) GetModified() string {
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetModifiedOk() (*string, bool) {
-	if o == nil || o.Modified == nil {
+	if o == nil || IsNil(o.Modified) {
 		return nil, false
 	}
 	return o.Modified, true
@@ -355,7 +358,7 @@ func (o *Results) GetModifiedOk() (*string, bool) {
 
 // HasModified returns a boolean if a field has been set.
 func (o *Results) HasModified() bool {
-	if o != nil && o.Modified != nil {
+	if o != nil && !IsNil(o.Modified) {
 		return true
 	}
 
@@ -369,7 +372,7 @@ func (o *Results) SetModified(v string) {
 
 // GetReferenceCount returns the ReferenceCount field value if set, zero value otherwise.
 func (o *Results) GetReferenceCount() int64 {
-	if o == nil || o.ReferenceCount == nil {
+	if o == nil || IsNil(o.ReferenceCount) {
 		var ret int64
 		return ret
 	}
@@ -379,7 +382,7 @@ func (o *Results) GetReferenceCount() int64 {
 // GetReferenceCountOk returns a tuple with the ReferenceCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Results) GetReferenceCountOk() (*int64, bool) {
-	if o == nil || o.ReferenceCount == nil {
+	if o == nil || IsNil(o.ReferenceCount) {
 		return nil, false
 	}
 	return o.ReferenceCount, true
@@ -387,7 +390,7 @@ func (o *Results) GetReferenceCountOk() (*int64, bool) {
 
 // HasReferenceCount returns a boolean if a field has been set.
 func (o *Results) HasReferenceCount() bool {
-	if o != nil && o.ReferenceCount != nil {
+	if o != nil && !IsNil(o.ReferenceCount) {
 		return true
 	}
 
@@ -400,41 +403,49 @@ func (o *Results) SetReferenceCount(v int64) {
 }
 
 func (o Results) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Results) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Language != nil {
+	if !IsNil(o.Language) {
 		toSerialize["language"] = o.Language
 	}
-	if o.Code != nil {
+	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
 	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
-	if o.FunctionToRun != nil {
+	if !IsNil(o.FunctionToRun) {
 		toSerialize["function_to_run"] = o.FunctionToRun
 	}
-	if o.InitiatorType != nil {
+	if !IsNil(o.InitiatorType) {
 		toSerialize["initiator_type"] = o.InitiatorType
 	}
-	if o.Active != nil {
+	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	if o.LastEditor != nil {
+	if !IsNil(o.LastEditor) {
 		toSerialize["last_editor"] = o.LastEditor
 	}
-	if o.Modified != nil {
+	if !IsNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
-	if o.ReferenceCount != nil {
+	if !IsNil(o.ReferenceCount) {
 		toSerialize["reference_count"] = o.ReferenceCount
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableResults struct {

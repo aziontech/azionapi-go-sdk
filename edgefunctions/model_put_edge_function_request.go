@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PutEdgeFunctionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PutEdgeFunctionRequest{}
+
 // PutEdgeFunctionRequest struct for PutEdgeFunctionRequest
 type PutEdgeFunctionRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -43,7 +46,7 @@ func NewPutEdgeFunctionRequestWithDefaults() *PutEdgeFunctionRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PutEdgeFunctionRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *PutEdgeFunctionRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PutEdgeFunctionRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -61,7 +64,7 @@ func (o *PutEdgeFunctionRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PutEdgeFunctionRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *PutEdgeFunctionRequest) SetName(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *PutEdgeFunctionRequest) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PutEdgeFunctionRequest) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PutEdgeFunctionRequest) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -93,7 +96,7 @@ func (o *PutEdgeFunctionRequest) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *PutEdgeFunctionRequest) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *PutEdgeFunctionRequest) SetCode(v string) {
 
 // GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PutEdgeFunctionRequest) GetJsonArgs() interface{} {
-	if o == nil  {
+	if o == nil {
 		var ret interface{}
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *PutEdgeFunctionRequest) GetJsonArgs() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PutEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool) {
-	if o == nil || o.JsonArgs == nil {
+	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
 	return &o.JsonArgs, true
@@ -126,7 +129,7 @@ func (o *PutEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool) {
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *PutEdgeFunctionRequest) HasJsonArgs() bool {
-	if o != nil && o.JsonArgs != nil {
+	if o != nil && IsNil(o.JsonArgs) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *PutEdgeFunctionRequest) SetJsonArgs(v interface{}) {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *PutEdgeFunctionRequest) GetActive() bool {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *PutEdgeFunctionRequest) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PutEdgeFunctionRequest) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		return nil, false
 	}
 	return o.Active, true
@@ -158,7 +161,7 @@ func (o *PutEdgeFunctionRequest) GetActiveOk() (*bool, bool) {
 
 // HasActive returns a boolean if a field has been set.
 func (o *PutEdgeFunctionRequest) HasActive() bool {
-	if o != nil && o.Active != nil {
+	if o != nil && !IsNil(o.Active) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *PutEdgeFunctionRequest) SetActive(v bool) {
 
 // GetInitiatorType returns the InitiatorType field value if set, zero value otherwise.
 func (o *PutEdgeFunctionRequest) GetInitiatorType() string {
-	if o == nil || o.InitiatorType == nil {
+	if o == nil || IsNil(o.InitiatorType) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *PutEdgeFunctionRequest) GetInitiatorType() string {
 // GetInitiatorTypeOk returns a tuple with the InitiatorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PutEdgeFunctionRequest) GetInitiatorTypeOk() (*string, bool) {
-	if o == nil || o.InitiatorType == nil {
+	if o == nil || IsNil(o.InitiatorType) {
 		return nil, false
 	}
 	return o.InitiatorType, true
@@ -190,7 +193,7 @@ func (o *PutEdgeFunctionRequest) GetInitiatorTypeOk() (*string, bool) {
 
 // HasInitiatorType returns a boolean if a field has been set.
 func (o *PutEdgeFunctionRequest) HasInitiatorType() bool {
-	if o != nil && o.InitiatorType != nil {
+	if o != nil && !IsNil(o.InitiatorType) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *PutEdgeFunctionRequest) SetInitiatorType(v string) {
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *PutEdgeFunctionRequest) GetLanguage() string {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *PutEdgeFunctionRequest) GetLanguage() string {
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PutEdgeFunctionRequest) GetLanguageOk() (*string, bool) {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		return nil, false
 	}
 	return o.Language, true
@@ -222,7 +225,7 @@ func (o *PutEdgeFunctionRequest) GetLanguageOk() (*string, bool) {
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *PutEdgeFunctionRequest) HasLanguage() bool {
-	if o != nil && o.Language != nil {
+	if o != nil && !IsNil(o.Language) {
 		return true
 	}
 
@@ -235,26 +238,34 @@ func (o *PutEdgeFunctionRequest) SetLanguage(v string) {
 }
 
 func (o PutEdgeFunctionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PutEdgeFunctionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Code != nil {
+	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
 	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
-	if o.Active != nil {
+	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	if o.InitiatorType != nil {
+	if !IsNil(o.InitiatorType) {
 		toSerialize["initiator_type"] = o.InitiatorType
 	}
-	if o.Language != nil {
+	if !IsNil(o.Language) {
 		toSerialize["language"] = o.Language
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePutEdgeFunctionRequest struct {

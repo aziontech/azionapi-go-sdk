@@ -12,22 +12,18 @@ package realtimepurge
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io"
+	"net/http"
+	"net/url"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // RealTimePurgeApiService RealTimePurgeApi service
 type RealTimePurgeApiService service
 
 type ApiPurgeCacheKeyRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *RealTimePurgeApiService
 	accept *string
 	contentType *string
@@ -38,16 +34,18 @@ func (r ApiPurgeCacheKeyRequest) Accept(accept string) ApiPurgeCacheKeyRequest {
 	r.accept = &accept
 	return r
 }
+
 func (r ApiPurgeCacheKeyRequest) ContentType(contentType string) ApiPurgeCacheKeyRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiPurgeCacheKeyRequest) PurgeCacheKeyRequest(purgeCacheKeyRequest PurgeCacheKeyRequest) ApiPurgeCacheKeyRequest {
 	r.purgeCacheKeyRequest = &purgeCacheKeyRequest
 	return r
 }
 
-func (r ApiPurgeCacheKeyRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPurgeCacheKeyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PurgeCacheKeyExecute(r)
 }
 
@@ -62,10 +60,10 @@ method (choice): purge method, use the “delete” value for removal.
 
 Layer (choice): layer where the purge will be done. Use the value “edge_caching” (default value if not informed) to purge on the Edge Caching layer and the value “l2_caching” to purge on L2 Caching.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPurgeCacheKeyRequest
 */
-func (a *RealTimePurgeApiService) PurgeCacheKey(ctx _context.Context) ApiPurgeCacheKeyRequest {
+func (a *RealTimePurgeApiService) PurgeCacheKey(ctx context.Context) ApiPurgeCacheKeyRequest {
 	return ApiPurgeCacheKeyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -73,25 +71,23 @@ func (a *RealTimePurgeApiService) PurgeCacheKey(ctx _context.Context) ApiPurgeCa
 }
 
 // Execute executes the request
-func (a *RealTimePurgeApiService) PurgeCacheKeyExecute(r ApiPurgeCacheKeyRequest) (*_nethttp.Response, error) {
+func (a *RealTimePurgeApiService) PurgeCacheKeyExecute(r ApiPurgeCacheKeyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RealTimePurgeApiService.PurgeCacheKey")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/purge/cachekey"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -111,10 +107,10 @@ func (a *RealTimePurgeApiService) PurgeCacheKeyExecute(r ApiPurgeCacheKeyRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.purgeCacheKeyRequest
@@ -132,7 +128,7 @@ func (a *RealTimePurgeApiService) PurgeCacheKeyExecute(r ApiPurgeCacheKeyRequest
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -142,15 +138,15 @@ func (a *RealTimePurgeApiService) PurgeCacheKeyExecute(r ApiPurgeCacheKeyRequest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -161,7 +157,7 @@ func (a *RealTimePurgeApiService) PurgeCacheKeyExecute(r ApiPurgeCacheKeyRequest
 }
 
 type ApiPurgeUrlRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *RealTimePurgeApiService
 	accept *string
 	contentType *string
@@ -172,16 +168,18 @@ func (r ApiPurgeUrlRequest) Accept(accept string) ApiPurgeUrlRequest {
 	r.accept = &accept
 	return r
 }
+
 func (r ApiPurgeUrlRequest) ContentType(contentType string) ApiPurgeUrlRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiPurgeUrlRequest) PurgeUrlRequest(purgeUrlRequest PurgeUrlRequest) ApiPurgeUrlRequest {
 	r.purgeUrlRequest = &purgeUrlRequest
 	return r
 }
 
-func (r ApiPurgeUrlRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPurgeUrlRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PurgeUrlExecute(r)
 }
 
@@ -194,10 +192,10 @@ urls (array): list of up to 50 URLs to be expired from the cache, per request.
 
 method (choice): purge method, use the “delete” value for removal.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPurgeUrlRequest
 */
-func (a *RealTimePurgeApiService) PurgeUrl(ctx _context.Context) ApiPurgeUrlRequest {
+func (a *RealTimePurgeApiService) PurgeUrl(ctx context.Context) ApiPurgeUrlRequest {
 	return ApiPurgeUrlRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -205,25 +203,23 @@ func (a *RealTimePurgeApiService) PurgeUrl(ctx _context.Context) ApiPurgeUrlRequ
 }
 
 // Execute executes the request
-func (a *RealTimePurgeApiService) PurgeUrlExecute(r ApiPurgeUrlRequest) (*_nethttp.Response, error) {
+func (a *RealTimePurgeApiService) PurgeUrlExecute(r ApiPurgeUrlRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RealTimePurgeApiService.PurgeUrl")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/purge/url"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json; version=3"}
@@ -243,10 +239,10 @@ func (a *RealTimePurgeApiService) PurgeUrlExecute(r ApiPurgeUrlRequest) (*_netht
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.purgeUrlRequest
@@ -264,7 +260,7 @@ func (a *RealTimePurgeApiService) PurgeUrlExecute(r ApiPurgeUrlRequest) (*_netht
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -274,15 +270,15 @@ func (a *RealTimePurgeApiService) PurgeUrlExecute(r ApiPurgeUrlRequest) (*_netht
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -293,7 +289,7 @@ func (a *RealTimePurgeApiService) PurgeUrlExecute(r ApiPurgeUrlRequest) (*_netht
 }
 
 type ApiPurgeWildcardRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *RealTimePurgeApiService
 	accept *string
 	contentType *string
@@ -304,16 +300,18 @@ func (r ApiPurgeWildcardRequest) Accept(accept string) ApiPurgeWildcardRequest {
 	r.accept = &accept
 	return r
 }
+
 func (r ApiPurgeWildcardRequest) ContentType(contentType string) ApiPurgeWildcardRequest {
 	r.contentType = &contentType
 	return r
 }
+
 func (r ApiPurgeWildcardRequest) PurgeWildcardRequest(purgeWildcardRequest PurgeWildcardRequest) ApiPurgeWildcardRequest {
 	r.purgeWildcardRequest = &purgeWildcardRequest
 	return r
 }
 
-func (r ApiPurgeWildcardRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPurgeWildcardRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PurgeWildcardExecute(r)
 }
 
@@ -326,10 +324,10 @@ urls (array):the Wildcard URL or Wildcard Cache Key that represents the list of 
 
 method (choice): purge method, use the “delete” value for removal.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPurgeWildcardRequest
 */
-func (a *RealTimePurgeApiService) PurgeWildcard(ctx _context.Context) ApiPurgeWildcardRequest {
+func (a *RealTimePurgeApiService) PurgeWildcard(ctx context.Context) ApiPurgeWildcardRequest {
 	return ApiPurgeWildcardRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -337,25 +335,23 @@ func (a *RealTimePurgeApiService) PurgeWildcard(ctx _context.Context) ApiPurgeWi
 }
 
 // Execute executes the request
-func (a *RealTimePurgeApiService) PurgeWildcardExecute(r ApiPurgeWildcardRequest) (*_nethttp.Response, error) {
+func (a *RealTimePurgeApiService) PurgeWildcardExecute(r ApiPurgeWildcardRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RealTimePurgeApiService.PurgeWildcard")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/purge/wildcard"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -375,10 +371,10 @@ func (a *RealTimePurgeApiService) PurgeWildcardExecute(r ApiPurgeWildcardRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.purgeWildcardRequest
@@ -396,7 +392,7 @@ func (a *RealTimePurgeApiService) PurgeWildcardExecute(r ApiPurgeWildcardRequest
 			}
 		}
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
 	}
@@ -406,15 +402,15 @@ func (a *RealTimePurgeApiService) PurgeWildcardExecute(r ApiPurgeWildcardRequest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

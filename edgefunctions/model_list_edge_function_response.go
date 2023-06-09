@@ -14,13 +14,16 @@ import (
 	"encoding/json"
 )
 
+// checks if the ListEdgeFunctionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListEdgeFunctionResponse{}
+
 // ListEdgeFunctionResponse struct for ListEdgeFunctionResponse
 type ListEdgeFunctionResponse struct {
 	Count *int64 `json:"count,omitempty"`
 	TotalPages *int64 `json:"total_pages,omitempty"`
 	SchemaVersion *int64 `json:"schema_version,omitempty"`
 	Links *Links `json:"links,omitempty"`
-	Results *[]Results `json:"results,omitempty"`
+	Results []Results `json:"results,omitempty"`
 }
 
 // NewListEdgeFunctionResponse instantiates a new ListEdgeFunctionResponse object
@@ -42,7 +45,7 @@ func NewListEdgeFunctionResponseWithDefaults() *ListEdgeFunctionResponse {
 
 // GetCount returns the Count field value if set, zero value otherwise.
 func (o *ListEdgeFunctionResponse) GetCount() int64 {
-	if o == nil || o.Count == nil {
+	if o == nil || IsNil(o.Count) {
 		var ret int64
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ListEdgeFunctionResponse) GetCount() int64 {
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListEdgeFunctionResponse) GetCountOk() (*int64, bool) {
-	if o == nil || o.Count == nil {
+	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
 	return o.Count, true
@@ -60,7 +63,7 @@ func (o *ListEdgeFunctionResponse) GetCountOk() (*int64, bool) {
 
 // HasCount returns a boolean if a field has been set.
 func (o *ListEdgeFunctionResponse) HasCount() bool {
-	if o != nil && o.Count != nil {
+	if o != nil && !IsNil(o.Count) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ListEdgeFunctionResponse) SetCount(v int64) {
 
 // GetTotalPages returns the TotalPages field value if set, zero value otherwise.
 func (o *ListEdgeFunctionResponse) GetTotalPages() int64 {
-	if o == nil || o.TotalPages == nil {
+	if o == nil || IsNil(o.TotalPages) {
 		var ret int64
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ListEdgeFunctionResponse) GetTotalPages() int64 {
 // GetTotalPagesOk returns a tuple with the TotalPages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListEdgeFunctionResponse) GetTotalPagesOk() (*int64, bool) {
-	if o == nil || o.TotalPages == nil {
+	if o == nil || IsNil(o.TotalPages) {
 		return nil, false
 	}
 	return o.TotalPages, true
@@ -92,7 +95,7 @@ func (o *ListEdgeFunctionResponse) GetTotalPagesOk() (*int64, bool) {
 
 // HasTotalPages returns a boolean if a field has been set.
 func (o *ListEdgeFunctionResponse) HasTotalPages() bool {
-	if o != nil && o.TotalPages != nil {
+	if o != nil && !IsNil(o.TotalPages) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ListEdgeFunctionResponse) SetTotalPages(v int64) {
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
 func (o *ListEdgeFunctionResponse) GetSchemaVersion() int64 {
-	if o == nil || o.SchemaVersion == nil {
+	if o == nil || IsNil(o.SchemaVersion) {
 		var ret int64
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ListEdgeFunctionResponse) GetSchemaVersion() int64 {
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListEdgeFunctionResponse) GetSchemaVersionOk() (*int64, bool) {
-	if o == nil || o.SchemaVersion == nil {
+	if o == nil || IsNil(o.SchemaVersion) {
 		return nil, false
 	}
 	return o.SchemaVersion, true
@@ -124,7 +127,7 @@ func (o *ListEdgeFunctionResponse) GetSchemaVersionOk() (*int64, bool) {
 
 // HasSchemaVersion returns a boolean if a field has been set.
 func (o *ListEdgeFunctionResponse) HasSchemaVersion() bool {
-	if o != nil && o.SchemaVersion != nil {
+	if o != nil && !IsNil(o.SchemaVersion) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ListEdgeFunctionResponse) SetSchemaVersion(v int64) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ListEdgeFunctionResponse) GetLinks() Links {
-	if o == nil || o.Links == nil {
+	if o == nil || IsNil(o.Links) {
 		var ret Links
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ListEdgeFunctionResponse) GetLinks() Links {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListEdgeFunctionResponse) GetLinksOk() (*Links, bool) {
-	if o == nil || o.Links == nil {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -156,7 +159,7 @@ func (o *ListEdgeFunctionResponse) GetLinksOk() (*Links, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ListEdgeFunctionResponse) HasLinks() bool {
-	if o != nil && o.Links != nil {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -170,17 +173,17 @@ func (o *ListEdgeFunctionResponse) SetLinks(v Links) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ListEdgeFunctionResponse) GetResults() []Results {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []Results
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEdgeFunctionResponse) GetResultsOk() (*[]Results, bool) {
-	if o == nil || o.Results == nil {
+func (o *ListEdgeFunctionResponse) GetResultsOk() ([]Results, bool) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -188,7 +191,7 @@ func (o *ListEdgeFunctionResponse) GetResultsOk() (*[]Results, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *ListEdgeFunctionResponse) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -197,27 +200,35 @@ func (o *ListEdgeFunctionResponse) HasResults() bool {
 
 // SetResults gets a reference to the given []Results and assigns it to the Results field.
 func (o *ListEdgeFunctionResponse) SetResults(v []Results) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o ListEdgeFunctionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Count != nil {
-		toSerialize["count"] = o.Count
-	}
-	if o.TotalPages != nil {
-		toSerialize["total_pages"] = o.TotalPages
-	}
-	if o.SchemaVersion != nil {
-		toSerialize["schema_version"] = o.SchemaVersion
-	}
-	if o.Links != nil {
-		toSerialize["links"] = o.Links
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ListEdgeFunctionResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Count) {
+		toSerialize["count"] = o.Count
+	}
+	if !IsNil(o.TotalPages) {
+		toSerialize["total_pages"] = o.TotalPages
+	}
+	if !IsNil(o.SchemaVersion) {
+		toSerialize["schema_version"] = o.SchemaVersion
+	}
+	if !IsNil(o.Links) {
+		toSerialize["links"] = o.Links
+	}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableListEdgeFunctionResponse struct {

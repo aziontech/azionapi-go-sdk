@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -36,8 +36,8 @@ func main() {
     purgeCacheKeyRequest := *openapiclient.NewPurgeCacheKeyRequest([]string{"Urls_example"}, "Method_example", "Layer_example") // PurgeCacheKeyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RealTimePurgeApi.PurgeCacheKey(context.Background()).Accept(accept).ContentType(contentType).PurgeCacheKeyRequest(purgeCacheKeyRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.RealTimePurgeApi.PurgeCacheKey(context.Background()).Accept(accept).ContentType(contentType).PurgeCacheKeyRequest(purgeCacheKeyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RealTimePurgeApi.PurgeCacheKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -104,8 +104,8 @@ func main() {
     purgeUrlRequest := *openapiclient.NewPurgeUrlRequest([]string{"Urls_example"}, "Method_example") // PurgeUrlRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RealTimePurgeApi.PurgeUrl(context.Background()).Accept(accept).ContentType(contentType).PurgeUrlRequest(purgeUrlRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.RealTimePurgeApi.PurgeUrl(context.Background()).Accept(accept).ContentType(contentType).PurgeUrlRequest(purgeUrlRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RealTimePurgeApi.PurgeUrl``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -172,8 +172,8 @@ func main() {
     purgeWildcardRequest := *openapiclient.NewPurgeWildcardRequest([]string{"Urls_example"}, "Method_example") // PurgeWildcardRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RealTimePurgeApi.PurgeWildcard(context.Background()).Accept(accept).ContentType(contentType).PurgeWildcardRequest(purgeWildcardRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.RealTimePurgeApi.PurgeWildcard(context.Background()).Accept(accept).ContentType(contentType).PurgeWildcardRequest(purgeWildcardRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RealTimePurgeApi.PurgeWildcard``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

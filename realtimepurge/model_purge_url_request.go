@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PurgeUrlRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PurgeUrlRequest{}
+
 // PurgeUrlRequest struct for PurgeUrlRequest
 type PurgeUrlRequest struct {
 	Urls []string `json:"urls"`
@@ -51,11 +54,11 @@ func (o *PurgeUrlRequest) GetUrls() []string {
 
 // GetUrlsOk returns a tuple with the Urls field value
 // and a boolean to check if the value has been set.
-func (o *PurgeUrlRequest) GetUrlsOk() (*[]string, bool) {
-	if o == nil  {
+func (o *PurgeUrlRequest) GetUrlsOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Urls, true
+	return o.Urls, true
 }
 
 // SetUrls sets field value
@@ -76,7 +79,7 @@ func (o *PurgeUrlRequest) GetMethod() string {
 // GetMethodOk returns a tuple with the Method field value
 // and a boolean to check if the value has been set.
 func (o *PurgeUrlRequest) GetMethodOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Method, true
@@ -88,14 +91,18 @@ func (o *PurgeUrlRequest) SetMethod(v string) {
 }
 
 func (o PurgeUrlRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["urls"] = o.Urls
-	}
-	if true {
-		toSerialize["method"] = o.Method
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PurgeUrlRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["urls"] = o.Urls
+	toSerialize["method"] = o.Method
+	return toSerialize, nil
 }
 
 type NullablePurgeUrlRequest struct {
