@@ -335,7 +335,7 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-### JWT
+### tokenAuth
 
 - **Type**: API key
 - **API key parameter name**: Authorization
