@@ -87,14 +87,14 @@ info:
     \ with a username and password. You can create and cancel the token through the\
     \ API itself, but for that you need to encode your username and password in base64.\n\
     \nBase64 encoding can be done from the command line on a Unix terminal:\n\n```\n\
-    $ echo 'user@domain:password'|base64\ndXNlckBkb21haW46cGFzc3dvcmQK\n\n```\n\n\
-    If you do not have a Unix terminal available, you can use the free online service\
-    \ at [https://www.base64encode.org/](https://www.base64encode.org/)"
+    $ echo 'user@domain:password'|base64\ndXNlckBkb21haW46cGFzc3dvcmQK\n\n```"
   title: Domain
   version: 1.0.0
 servers:
 - url: https://api.azionapi.net
 - url: https://stage-api.azionapi.net
+security:
+- tokenAuth: []
 tags:
 - description: "Through My Domains API you can retrieve, create, remove or update\
     \ Domains used by Edge Applications"
@@ -105,43 +105,6 @@ paths:
       description: It returns the list of domains of an account.
       operationId: getDomains
       parameters:
-      - explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: page_size
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: order_by
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: sort
-        required: false
-        schema:
-          type: string
-        style: form
       - example: application/json; version=3
         explode: false
         in: header
@@ -165,8 +128,6 @@ paths:
           description: Unprocessable Entity
         "500":
           description: Internal Server Error
-      security:
-      - JWT: []
       summary: /domains
       tags:
       - Domains
@@ -212,8 +173,6 @@ paths:
           description: Unprocessable Entity
         "500":
           description: Internal Server Error
-      security:
-      - JWT: []
       summary: /domains
       tags:
       - Domains
@@ -251,8 +210,6 @@ paths:
           description: Unprocessable Entity
         "500":
           description: Internal Server Error
-      security:
-      - JWT: []
       summary: /domains/:id
       tags:
       - Domains
@@ -293,12 +250,9 @@ paths:
           description: Unprocessable Entity
         "500":
           description: Internal Server Error
-      security:
-      - JWT: []
       summary: /domains/:id
       tags:
       - Domains
-  /domains/{domain_id}:
     patch:
       description: "It updates one or more fields in a Domain, preserving the value\
         \ of the fields not informed."
@@ -322,7 +276,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: domain_id
+        name: id
         required: true
         schema:
           type: string
@@ -349,9 +303,7 @@ paths:
           description: Unprocessable Entity
         "500":
           description: Internal Server Error
-      security:
-      - JWT: []
-      summary: /domains/:domain_id
+      summary: /domains/:id
       tags:
       - Domains
     put:
@@ -379,7 +331,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: domain_id
+        name: id
         required: true
         schema:
           type: string
@@ -406,9 +358,7 @@ paths:
           description: Unprocessable Entity
         "500":
           description: Internal Server Error
-      security:
-      - JWT: []
-      summary: /domains:/:domain_id
+      summary: /domains:/:id
       tags:
       - Domains
 components:
@@ -660,7 +610,7 @@ components:
       - updated_at
       type: object
   securitySchemes:
-    JWT:
+    tokenAuth:
       description: |
         You must inform a token to auth.
         Usage format: `Token <TOKEN>`

@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)
+No authorization required
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)
+No authorization required
 
 ### HTTP request headers
 

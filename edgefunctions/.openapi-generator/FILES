@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -31,5 +30,4 @@ model_patch_edge_function_request.go
 model_put_edge_function_request.go
 model_results.go
 response.go
-test/api_edge_functions_test.go
 utils.go

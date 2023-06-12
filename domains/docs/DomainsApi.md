@@ -8,8 +8,8 @@ Method | HTTP request | Description
 [**DelDomain**](DomainsApi.md#DelDomain) | **Delete** /domains/{id} | /domains/:id
 [**GetDomain**](DomainsApi.md#GetDomain) | **Get** /domains/{id} | /domains/:id
 [**GetDomains**](DomainsApi.md#GetDomains) | **Get** /domains | /domains
-[**PutDomain**](DomainsApi.md#PutDomain) | **Put** /domains/{domain_id} | /domains:/:domain_id
-[**UpdateDomain**](DomainsApi.md#UpdateDomain) | **Patch** /domains/{domain_id} | /domains/:domain_id
+[**PutDomain**](DomainsApi.md#PutDomain) | **Put** /domains/{id} | /domains:/:id
+[**UpdateDomain**](DomainsApi.md#UpdateDomain) | **Patch** /domains/{id} | /domains/:id
 
 
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## GetDomains
 
-> DomainResponseWithResults GetDomains(ctx).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+> DomainResponseWithResults GetDomains(ctx).Accept(accept).Execute()
 
 /domains
 
@@ -246,16 +246,11 @@ import (
 )
 
 func main() {
-    page := int64(789) // int64 |  (optional)
-    pageSize := int64(789) // int64 |  (optional)
-    filter := "filter_example" // string |  (optional)
-    orderBy := "orderBy_example" // string |  (optional)
-    sort := "sort_example" // string |  (optional)
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DomainsApi.GetDomains(context.Background()).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+    resp, r, err := apiClient.DomainsApi.GetDomains(context.Background()).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.GetDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,11 +271,6 @@ Other parameters are passed through a pointer to a apiGetDomainsRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64** |  | 
- **pageSize** | **int64** |  | 
- **filter** | **string** |  | 
- **orderBy** | **string** |  | 
- **sort** | **string** |  | 
  **accept** | **string** |  | 
 
 ### Return type
@@ -289,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -303,9 +293,9 @@ Name | Type | Description  | Notes
 
 ## PutDomain
 
-> DomainResponseWithResult PutDomain(ctx, domainId).Accept(accept).ContentType(contentType).PutDomainRequest(putDomainRequest).Execute()
+> DomainResponseWithResult PutDomain(ctx, id).Accept(accept).ContentType(contentType).PutDomainRequest(putDomainRequest).Execute()
 
-/domains:/:domain_id
+/domains:/:id
 
 
 
@@ -322,14 +312,14 @@ import (
 )
 
 func main() {
-    domainId := "domainId_example" // string | 
+    id := "id_example" // string | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     putDomainRequest := *openapiclient.NewPutDomainRequest([]string{"Cnames_example"}, false, "Name_example", false, int64(123), NullableInt64(123)) // PutDomainRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DomainsApi.PutDomain(context.Background(), domainId).Accept(accept).ContentType(contentType).PutDomainRequest(putDomainRequest).Execute()
+    resp, r, err := apiClient.DomainsApi.PutDomain(context.Background(), id).Accept(accept).ContentType(contentType).PutDomainRequest(putDomainRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.PutDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,7 +335,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domainId** | **string** |  | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
@@ -365,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -379,9 +369,9 @@ Name | Type | Description  | Notes
 
 ## UpdateDomain
 
-> DomainResponseWithResult UpdateDomain(ctx, domainId).Accept(accept).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
+> DomainResponseWithResult UpdateDomain(ctx, id).Accept(accept).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
 
-/domains/:domain_id
+/domains/:id
 
 
 
@@ -398,14 +388,14 @@ import (
 )
 
 func main() {
-    domainId := "domainId_example" // string | 
+    id := "id_example" // string | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string |  (optional)
     updateDomainRequest := *openapiclient.NewUpdateDomainRequest() // UpdateDomainRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DomainsApi.UpdateDomain(context.Background(), domainId).Accept(accept).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
+    resp, r, err := apiClient.DomainsApi.UpdateDomain(context.Background(), id).Accept(accept).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.UpdateDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -421,7 +411,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domainId** | **string** |  | 
+**id** | **string** |  | 
 
 ### Other Parameters
 
@@ -441,7 +431,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
