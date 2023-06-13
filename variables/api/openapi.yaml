@@ -1,0 +1,413 @@
+openapi: 3.0.3
+info:
+  title: ""
+  version: 0.0.0
+servers:
+- url: /
+paths:
+  /api/schema:
+    get:
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      operationId: api_schema_retrieve
+      parameters:
+      - explode: true
+        in: query
+        name: format
+        required: false
+        schema:
+          enum:
+          - json
+          - yaml
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: lang
+        required: false
+        schema:
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                additionalProperties: {}
+                type: object
+            application/yaml:
+              schema:
+                additionalProperties: {}
+                type: object
+            application/vnd.oai.openapi+json:
+              schema:
+                additionalProperties: {}
+                type: object
+            application/json:
+              schema:
+                additionalProperties: {}
+                type: object
+          description: ""
+      security:
+      - tokenAuth: []
+      - {}
+      tags:
+      - api
+  /api/variables:
+    get:
+      description: List all user's Variables.
+      operationId: api_variables_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Variable'
+                type: array
+          description: ""
+      security:
+      - tokenAuth: []
+      tags:
+      - api
+    post:
+      description: Create a new Variable. <br><ul><li>If the attribute "secret" is
+        informed with value "true" in request payload the Variable value will be secret
+        and no longer viewable after creation.</li><li>If the attribute "secret" is
+        not informed the Variable value will be considered as not secret by default.</li></ul>
+      operationId: api_variables_create
+      requestBody:
+        content:
+          application/json:
+            examples:
+              SimpleVariableCreation:
+                summary: Simple Variable creation
+                value:
+                  key: MY_SIMPLE_VAR
+                  value: My not secret value
+              SecretVariableCreation:
+                summary: Secret Variable creation
+                value:
+                  key: MY_SECRET_VAR
+                  value: My secret value
+                  secret: true
+            schema:
+              $ref: '#/components/schemas/VariableCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VariableCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VariableCreate'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableGet'
+          description: ""
+      security:
+      - tokenAuth: []
+      tags:
+      - api
+  /api/variables/{uuid}:
+    delete:
+      description: Delete a Variable by it's UUID
+      operationId: api_variables_destroy
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+      security:
+      - tokenAuth: []
+      tags:
+      - api
+    get:
+      description: Retrieve all data for a Variable by it's UUID
+      operationId: api_variables_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variable'
+          description: ""
+      security:
+      - tokenAuth: []
+      tags:
+      - api
+    put:
+      description: Update variable attributes by it's UUID. Keep the Variable UUID
+        but overwrite all editable attributes.
+      operationId: api_variables_update
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              SimpleVariableUpdate:
+                summary: Simple Variable update
+                value:
+                  key: MY_NEW_SIMPLE_VAR_KEY
+                  value: My new not secret value
+              SecretVariableUpdate:
+                summary: Secret Variable update
+                value:
+                  key: MY_NEW_SECRET_VAR_KEY
+                  value: My new secret value
+                  secret: true
+            schema:
+              $ref: '#/components/schemas/VariableCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VariableCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VariableCreate'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableGet'
+          description: ""
+      security:
+      - tokenAuth: []
+      tags:
+      - api
+components:
+  schemas:
+    Variable:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        last_editor: last_editor
+        created_at: 2000-01-23T04:56:07.000+00:00
+        secret: true
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        value: value
+        key: key
+      properties:
+        uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        key:
+          maxLength: 100
+          type: string
+        value:
+          type: string
+        secret:
+          readOnly: true
+          type: boolean
+        last_editor:
+          readOnly: true
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - key
+      - last_editor
+      - secret
+      - updated_at
+      - uuid
+      - value
+      type: object
+    VariableCreate:
+      example:
+        secret: true
+        value: value
+        key: key
+      properties:
+        key:
+          maxLength: 100
+          type: string
+        value:
+          type: string
+        secret:
+          type: boolean
+      required:
+      - key
+      - value
+      type: object
+    VariableGet:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        last_editor: last_editor
+        created_at: 2000-01-23T04:56:07.000+00:00
+        secret: true
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        value: value
+        key: key
+      properties:
+        uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        key:
+          maxLength: 100
+          type: string
+        value:
+          description: |-
+            Given the *incoming* primitive data, return the value for this field
+            that should be validated and transformed to a native value.
+          readOnly: true
+          type: string
+        secret:
+          readOnly: true
+          type: boolean
+        last_editor:
+          readOnly: true
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - key
+      - last_editor
+      - secret
+      - updated_at
+      - uuid
+      - value
+      type: object
+  securitySchemes:
+    tokenAuth:
+      description: Token-based authentication with required prefix "Token"
+      in: header
+      name: Authorization
+      type: apiKey
