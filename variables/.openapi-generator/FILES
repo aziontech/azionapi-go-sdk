@@ -1,15 +1,14 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
-api_api.go
+api_variables.go
 client.go
 configuration.go
-docs/ApiApi.md
 docs/Variable.md
 docs/VariableCreate.md
 docs/VariableGet.md
+docs/VariablesApi.md
 git_push.sh
 go.mod
 go.sum
@@ -17,5 +16,5 @@ model_variable.go
 model_variable_create.go
 model_variable_get.go
 response.go
-test/api_api_test.go
+test/api_variables_test.go
 utils.go
