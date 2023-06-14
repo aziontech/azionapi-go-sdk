@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**DebugRules** | Pointer to **string** |  | [optional] 
+**DebugRules** | Pointer to **bool** |  | [optional] 
 **LastEditor** | Pointer to **string** |  | [optional] 
 **LastModified** | Pointer to **string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
@@ -83,20 +83,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetDebugRules
 
-`func (o *ApplicationsResults) GetDebugRules() string`
+`func (o *ApplicationsResults) GetDebugRules() bool`
 
 GetDebugRules returns the DebugRules field if non-nil, zero value otherwise.
 
 ### GetDebugRulesOk
 
-`func (o *ApplicationsResults) GetDebugRulesOk() (*string, bool)`
+`func (o *ApplicationsResults) GetDebugRulesOk() (*bool, bool)`
 
 GetDebugRulesOk returns a tuple with the DebugRules field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDebugRules
 
-`func (o *ApplicationsResults) SetDebugRules(v string)`
+`func (o *ApplicationsResults) SetDebugRules(v bool)`
 
 SetDebugRules sets DebugRules field to given value.
 
