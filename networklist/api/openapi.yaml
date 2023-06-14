@@ -1,0 +1,261 @@
+openapi: 3.0.0
+info:
+  title: Azion API
+  version: "3.0"
+servers:
+- url: https://api.azionapi.net/
+paths:
+  /network_lists:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNetworkListsResponse'
+          description: A list of Network Lists
+      summary: List all user Network Lists
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNetworkListsRequest'
+        required: true
+      responses:
+        "201":
+          description: Network Lists created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Create a Network Lists
+  /network_lists/{uuid}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkListsResponse'
+          description: A Network Lists object
+      summary: Retrieve a Network Lists set by uuid
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNetworkListsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNetworkListsResponse'
+          description: Successfully updated
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Internal Server Error
+      summary: Overwrite some Network Lists attributes
+components:
+  schemas:
+    ErrorModel:
+      properties:
+        code:
+          type: string
+      type: object
+    ErrorResponse:
+      properties:
+        detail:
+          type: string
+      type: object
+    Links:
+      example:
+        next: next
+        previous: previous
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
+      type: object
+    NetworkLists:
+      example:
+        list_type: ip_cidr
+        items_values:
+        - 192.168.0.1
+        name: Network List created using the API
+        id: 1614
+      properties:
+        id:
+          example: 1614
+          type: integer
+        name:
+          example: Network List created using the API
+          type: string
+        items_values:
+          example:
+          - 192.168.0.1
+          items:
+            type: string
+          type: array
+        list_type:
+          example: ip_cidr
+          type: string
+      type: object
+    ListNetworkListsResponse:
+      example:
+        schema_version: 1
+        count: 0
+        links:
+          next: next
+          previous: previous
+        total_pages: 6
+        results:
+        - list_type: ip_cidr
+          items_values:
+          - 192.168.0.1
+          name: Network List created using the API
+          id: 1614
+        - list_type: ip_cidr
+          items_values:
+          - 192.168.0.1
+          name: Network List created using the API
+          id: 1614
+      properties:
+        count:
+          format: int64
+          type: integer
+        total_pages:
+          format: int64
+          type: integer
+        schema_version:
+          format: int64
+          type: integer
+        links:
+          $ref: '#/components/schemas/Links'
+        results:
+          items:
+            $ref: '#/components/schemas/NetworkLists'
+          type: array
+      type: object
+    CreateNetworkListsRequest:
+      example:
+        list_type: ip_cidr
+        items_values:
+        - 192.168.0.1
+        name: Network List created using the API
+      properties:
+        name:
+          example: Network List created using the API
+          type: string
+        items_values:
+          example:
+          - 192.168.0.1
+          items:
+            type: string
+          type: array
+        list_type:
+          example: ip_cidr
+          type: string
+      type: object
+    BadRequestResponse:
+      properties:
+        name:
+          items:
+            type: string
+          type: array
+        items_values:
+          items:
+            type: string
+          type: array
+        list_type:
+          items:
+            type: string
+          type: array
+      type: object
+    NetworkListsResponse:
+      example:
+        schema_version: 0.8008281904610115
+        results:
+          list_type: ip_cidr
+          items_values:
+          - 192.168.0.1
+          name: Network List created using the API
+          id: 1614
+      properties:
+        results:
+          $ref: '#/components/schemas/NetworkLists'
+        schema_version:
+          type: number
+      type: object
+    UpdateNetworkListsRequest:
+      example:
+        list_type: ip_cidr
+        items_values:
+        - 192.168.0.1
+        name: Network List created using the API
+      properties:
+        name:
+          example: Network List created using the API
+          type: string
+        items_values:
+          example:
+          - 192.168.0.1
+          items:
+            type: string
+          type: array
+        list_type:
+          example: ip_cidr
+          type: string
+      type: object
+  securitySchemes:
+    JWT:
+      description: |
+        You must inform a token to auth.
+        Usage format: `Token <TOKEN>`
+      in: header
+      name: Authorization
+      type: apiKey
