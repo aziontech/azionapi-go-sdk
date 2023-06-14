@@ -21,8 +21,9 @@ var _ MappedNullable = &ApplicationResults{}
 type ApplicationResults struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
-	Next *string `json:"next,omitempty"`
 	Active bool `json:"active"`
+	DebugRules bool `json:"debug_rules"`
+	Http3 bool `json:"http3"`
 	DeliveryProtocol string `json:"delivery_protocol"`
 	HttpPort interface{} `json:"http_port"`
 	HttpsPort interface{} `json:"https_port"`
@@ -43,11 +44,13 @@ type ApplicationResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationResults(id int64, name string, active bool, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResults {
+func NewApplicationResults(id int64, name string, active bool, debugRules bool, http3 bool, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResults {
 	this := ApplicationResults{}
 	this.Id = id
 	this.Name = name
 	this.Active = active
+	this.DebugRules = debugRules
+	this.Http3 = http3
 	this.DeliveryProtocol = deliveryProtocol
 	this.HttpPort = httpPort
 	this.HttpsPort = httpsPort
@@ -121,38 +124,6 @@ func (o *ApplicationResults) SetName(v string) {
 	o.Name = v
 }
 
-// GetNext returns the Next field value if set, zero value otherwise.
-func (o *ApplicationResults) GetNext() string {
-	if o == nil || IsNil(o.Next) {
-		var ret string
-		return ret
-	}
-	return *o.Next
-}
-
-// GetNextOk returns a tuple with the Next field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationResults) GetNextOk() (*string, bool) {
-	if o == nil || IsNil(o.Next) {
-		return nil, false
-	}
-	return o.Next, true
-}
-
-// HasNext returns a boolean if a field has been set.
-func (o *ApplicationResults) HasNext() bool {
-	if o != nil && !IsNil(o.Next) {
-		return true
-	}
-
-	return false
-}
-
-// SetNext gets a reference to the given string and assigns it to the Next field.
-func (o *ApplicationResults) SetNext(v string) {
-	o.Next = &v
-}
-
 // GetActive returns the Active field value
 func (o *ApplicationResults) GetActive() bool {
 	if o == nil {
@@ -175,6 +146,54 @@ func (o *ApplicationResults) GetActiveOk() (*bool, bool) {
 // SetActive sets field value
 func (o *ApplicationResults) SetActive(v bool) {
 	o.Active = v
+}
+
+// GetDebugRules returns the DebugRules field value
+func (o *ApplicationResults) GetDebugRules() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.DebugRules
+}
+
+// GetDebugRulesOk returns a tuple with the DebugRules field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResults) GetDebugRulesOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DebugRules, true
+}
+
+// SetDebugRules sets field value
+func (o *ApplicationResults) SetDebugRules(v bool) {
+	o.DebugRules = v
+}
+
+// GetHttp3 returns the Http3 field value
+func (o *ApplicationResults) GetHttp3() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Http3
+}
+
+// GetHttp3Ok returns a tuple with the Http3 field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResults) GetHttp3Ok() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Http3, true
+}
+
+// SetHttp3 sets field value
+func (o *ApplicationResults) SetHttp3(v bool) {
+	o.Http3 = v
 }
 
 // GetDeliveryProtocol returns the DeliveryProtocol field value
@@ -529,10 +548,9 @@ func (o ApplicationResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Next) {
-		toSerialize["next"] = o.Next
-	}
 	toSerialize["active"] = o.Active
+	toSerialize["debug_rules"] = o.DebugRules
+	toSerialize["http3"] = o.Http3
 	toSerialize["delivery_protocol"] = o.DeliveryProtocol
 	if o.HttpPort != nil {
 		toSerialize["http_port"] = o.HttpPort

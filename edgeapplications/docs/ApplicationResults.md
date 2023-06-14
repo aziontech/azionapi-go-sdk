@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | 
 **Name** | **string** |  | 
-**Next** | Pointer to **string** |  | [optional] 
 **Active** | **bool** |  | 
+**DebugRules** | **bool** |  | 
+**Http3** | **bool** |  | 
 **DeliveryProtocol** | **string** |  | 
 **HttpPort** | **interface{}** |  | 
 **HttpsPort** | **interface{}** |  | 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationResults
 
-`func NewApplicationResults(id int64, name string, active bool, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationResults`
+`func NewApplicationResults(id int64, name string, active bool, debugRules bool, http3 bool, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationResults`
 
 NewApplicationResults instantiates a new ApplicationResults object
 This constructor will assign default values to properties that have it defined,
@@ -82,31 +83,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetNext
-
-`func (o *ApplicationResults) GetNext() string`
-
-GetNext returns the Next field if non-nil, zero value otherwise.
-
-### GetNextOk
-
-`func (o *ApplicationResults) GetNextOk() (*string, bool)`
-
-GetNextOk returns a tuple with the Next field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNext
-
-`func (o *ApplicationResults) SetNext(v string)`
-
-SetNext sets Next field to given value.
-
-### HasNext
-
-`func (o *ApplicationResults) HasNext() bool`
-
-HasNext returns a boolean if a field has been set.
-
 ### GetActive
 
 `func (o *ApplicationResults) GetActive() bool`
@@ -125,6 +101,46 @@ and a boolean to check if the value has been set.
 `func (o *ApplicationResults) SetActive(v bool)`
 
 SetActive sets Active field to given value.
+
+
+### GetDebugRules
+
+`func (o *ApplicationResults) GetDebugRules() bool`
+
+GetDebugRules returns the DebugRules field if non-nil, zero value otherwise.
+
+### GetDebugRulesOk
+
+`func (o *ApplicationResults) GetDebugRulesOk() (*bool, bool)`
+
+GetDebugRulesOk returns a tuple with the DebugRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebugRules
+
+`func (o *ApplicationResults) SetDebugRules(v bool)`
+
+SetDebugRules sets DebugRules field to given value.
+
+
+### GetHttp3
+
+`func (o *ApplicationResults) GetHttp3() bool`
+
+GetHttp3 returns the Http3 field if non-nil, zero value otherwise.
+
+### GetHttp3Ok
+
+`func (o *ApplicationResults) GetHttp3Ok() (*bool, bool)`
+
+GetHttp3Ok returns a tuple with the Http3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHttp3
+
+`func (o *ApplicationResults) SetHttp3(v bool)`
+
+SetHttp3 sets Http3 field to given value.
 
 
 ### GetDeliveryProtocol

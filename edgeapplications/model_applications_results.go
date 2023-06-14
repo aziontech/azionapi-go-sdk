@@ -21,7 +21,7 @@ var _ MappedNullable = &ApplicationsResults{}
 type ApplicationsResults struct {
 	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	DebugRules *string `json:"debug_rules,omitempty"`
+	DebugRules *bool `json:"debug_rules,omitempty"`
 	LastEditor *string `json:"last_editor,omitempty"`
 	LastModified *string `json:"last_modified,omitempty"`
 	Active *bool `json:"active,omitempty"`
@@ -110,9 +110,9 @@ func (o *ApplicationsResults) SetName(v string) {
 }
 
 // GetDebugRules returns the DebugRules field value if set, zero value otherwise.
-func (o *ApplicationsResults) GetDebugRules() string {
+func (o *ApplicationsResults) GetDebugRules() bool {
 	if o == nil || IsNil(o.DebugRules) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.DebugRules
@@ -120,7 +120,7 @@ func (o *ApplicationsResults) GetDebugRules() string {
 
 // GetDebugRulesOk returns a tuple with the DebugRules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationsResults) GetDebugRulesOk() (*string, bool) {
+func (o *ApplicationsResults) GetDebugRulesOk() (*bool, bool) {
 	if o == nil || IsNil(o.DebugRules) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *ApplicationsResults) HasDebugRules() bool {
 	return false
 }
 
-// SetDebugRules gets a reference to the given string and assigns it to the DebugRules field.
-func (o *ApplicationsResults) SetDebugRules(v string) {
+// SetDebugRules gets a reference to the given bool and assigns it to the DebugRules field.
+func (o *ApplicationsResults) SetDebugRules(v bool) {
 	o.DebugRules = &v
 }
 
