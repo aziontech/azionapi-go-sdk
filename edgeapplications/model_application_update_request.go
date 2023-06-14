@@ -21,8 +21,8 @@ var _ MappedNullable = &ApplicationUpdateRequest{}
 type ApplicationUpdateRequest struct {
 	Name *string `json:"name,omitempty"`
 	DeliveryProtocol *string `json:"delivery_protocol,omitempty"`
-	HttpPort *interface{} `json:"http_port,omitempty"`
-	HttpsPort *interface{} `json:"https_port,omitempty"`
+	HttpPort interface{} `json:"http_port,omitempty"`
+	HttpsPort interface{} `json:"https_port,omitempty"`
 	MinimumTlsVersion *string `json:"minimum_tls_version,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	ApplicationAcceleration *bool `json:"application_acceleration,omitempty"`
@@ -118,27 +118,28 @@ func (o *ApplicationUpdateRequest) SetDeliveryProtocol(v string) {
 	o.DeliveryProtocol = &v
 }
 
-// GetHttpPort returns the HttpPort field value if set, zero value otherwise.
+// GetHttpPort returns the HttpPort field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationUpdateRequest) GetHttpPort() interface{} {
-	if o == nil || IsNil(o.HttpPort) {
+	if o == nil {
 		var ret interface{}
 		return ret
 	}
-	return *o.HttpPort
+	return o.HttpPort
 }
 
 // GetHttpPortOk returns a tuple with the HttpPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationUpdateRequest) GetHttpPortOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.HttpPort) {
 		return nil, false
 	}
-	return o.HttpPort, true
+	return &o.HttpPort, true
 }
 
 // HasHttpPort returns a boolean if a field has been set.
 func (o *ApplicationUpdateRequest) HasHttpPort() bool {
-	if o != nil && !IsNil(o.HttpPort) {
+	if o != nil && IsNil(o.HttpPort) {
 		return true
 	}
 
@@ -147,30 +148,31 @@ func (o *ApplicationUpdateRequest) HasHttpPort() bool {
 
 // SetHttpPort gets a reference to the given interface{} and assigns it to the HttpPort field.
 func (o *ApplicationUpdateRequest) SetHttpPort(v interface{}) {
-	o.HttpPort = &v
+	o.HttpPort = v
 }
 
-// GetHttpsPort returns the HttpsPort field value if set, zero value otherwise.
+// GetHttpsPort returns the HttpsPort field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationUpdateRequest) GetHttpsPort() interface{} {
-	if o == nil || IsNil(o.HttpsPort) {
+	if o == nil {
 		var ret interface{}
 		return ret
 	}
-	return *o.HttpsPort
+	return o.HttpsPort
 }
 
 // GetHttpsPortOk returns a tuple with the HttpsPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationUpdateRequest) GetHttpsPortOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.HttpsPort) {
 		return nil, false
 	}
-	return o.HttpsPort, true
+	return &o.HttpsPort, true
 }
 
 // HasHttpsPort returns a boolean if a field has been set.
 func (o *ApplicationUpdateRequest) HasHttpsPort() bool {
-	if o != nil && !IsNil(o.HttpsPort) {
+	if o != nil && IsNil(o.HttpsPort) {
 		return true
 	}
 
@@ -179,7 +181,7 @@ func (o *ApplicationUpdateRequest) HasHttpsPort() bool {
 
 // SetHttpsPort gets a reference to the given interface{} and assigns it to the HttpsPort field.
 func (o *ApplicationUpdateRequest) SetHttpsPort(v interface{}) {
-	o.HttpsPort = &v
+	o.HttpsPort = v
 }
 
 // GetMinimumTlsVersion returns the MinimumTlsVersion field value if set, zero value otherwise.
@@ -582,10 +584,10 @@ func (o ApplicationUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeliveryProtocol) {
 		toSerialize["delivery_protocol"] = o.DeliveryProtocol
 	}
-	if !IsNil(o.HttpPort) {
+	if o.HttpPort != nil {
 		toSerialize["http_port"] = o.HttpPort
 	}
-	if !IsNil(o.HttpsPort) {
+	if o.HttpsPort != nil {
 		toSerialize["https_port"] = o.HttpsPort
 	}
 	if !IsNil(o.MinimumTlsVersion) {

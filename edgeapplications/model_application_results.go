@@ -202,6 +202,7 @@ func (o *ApplicationResults) SetDeliveryProtocol(v string) {
 }
 
 // GetHttpPort returns the HttpPort field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *ApplicationResults) GetHttpPort() interface{} {
 	if o == nil {
 		var ret interface{}
@@ -213,8 +214,9 @@ func (o *ApplicationResults) GetHttpPort() interface{} {
 
 // GetHttpPortOk returns a tuple with the HttpPort field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationResults) GetHttpPortOk() (*interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HttpPort) {
 		return nil, false
 	}
 	return &o.HttpPort, true
@@ -226,6 +228,7 @@ func (o *ApplicationResults) SetHttpPort(v interface{}) {
 }
 
 // GetHttpsPort returns the HttpsPort field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *ApplicationResults) GetHttpsPort() interface{} {
 	if o == nil {
 		var ret interface{}
@@ -237,8 +240,9 @@ func (o *ApplicationResults) GetHttpsPort() interface{} {
 
 // GetHttpsPortOk returns a tuple with the HttpsPort field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationResults) GetHttpsPortOk() (*interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HttpsPort) {
 		return nil, false
 	}
 	return &o.HttpsPort, true
@@ -530,8 +534,12 @@ func (o ApplicationResults) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["active"] = o.Active
 	toSerialize["delivery_protocol"] = o.DeliveryProtocol
-	toSerialize["http_port"] = o.HttpPort
-	toSerialize["https_port"] = o.HttpsPort
+	if o.HttpPort != nil {
+		toSerialize["http_port"] = o.HttpPort
+	}
+	if o.HttpsPort != nil {
+		toSerialize["https_port"] = o.HttpsPort
+	}
 	toSerialize["minimum_tls_version"] = o.MinimumTlsVersion
 	toSerialize["application_acceleration"] = o.ApplicationAcceleration
 	toSerialize["caching"] = o.Caching

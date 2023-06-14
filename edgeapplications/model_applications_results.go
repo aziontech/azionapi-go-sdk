@@ -20,18 +20,20 @@ var _ MappedNullable = &ApplicationsResults{}
 // ApplicationsResults struct for ApplicationsResults
 type ApplicationsResults struct {
 	Id *int64 `json:"id,omitempty"`
-	Next string `json:"next"`
+	Name *string `json:"name,omitempty"`
+	DebugRules *string `json:"debug_rules,omitempty"`
+	LastEditor *string `json:"last_editor,omitempty"`
+	LastModified *string `json:"last_modified,omitempty"`
 	Active *bool `json:"active,omitempty"`
-	Links *ApplicationOrigins `json:"links,omitempty"`
+	Origins []ApplicationOrigins `json:"origins,omitempty"`
 }
 
 // NewApplicationsResults instantiates a new ApplicationsResults object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationsResults(next string) *ApplicationsResults {
+func NewApplicationsResults() *ApplicationsResults {
 	this := ApplicationsResults{}
-	this.Next = next
 	return &this
 }
 
@@ -75,28 +77,132 @@ func (o *ApplicationsResults) SetId(v int64) {
 	o.Id = &v
 }
 
-// GetNext returns the Next field value
-func (o *ApplicationsResults) GetNext() string {
-	if o == nil {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *ApplicationsResults) GetName() string {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Next
+	return *o.Name
 }
 
-// GetNextOk returns a tuple with the Next field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationsResults) GetNextOk() (*string, bool) {
-	if o == nil {
+func (o *ApplicationsResults) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Next, true
+	return o.Name, true
 }
 
-// SetNext sets field value
-func (o *ApplicationsResults) SetNext(v string) {
-	o.Next = v
+// HasName returns a boolean if a field has been set.
+func (o *ApplicationsResults) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *ApplicationsResults) SetName(v string) {
+	o.Name = &v
+}
+
+// GetDebugRules returns the DebugRules field value if set, zero value otherwise.
+func (o *ApplicationsResults) GetDebugRules() string {
+	if o == nil || IsNil(o.DebugRules) {
+		var ret string
+		return ret
+	}
+	return *o.DebugRules
+}
+
+// GetDebugRulesOk returns a tuple with the DebugRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationsResults) GetDebugRulesOk() (*string, bool) {
+	if o == nil || IsNil(o.DebugRules) {
+		return nil, false
+	}
+	return o.DebugRules, true
+}
+
+// HasDebugRules returns a boolean if a field has been set.
+func (o *ApplicationsResults) HasDebugRules() bool {
+	if o != nil && !IsNil(o.DebugRules) {
+		return true
+	}
+
+	return false
+}
+
+// SetDebugRules gets a reference to the given string and assigns it to the DebugRules field.
+func (o *ApplicationsResults) SetDebugRules(v string) {
+	o.DebugRules = &v
+}
+
+// GetLastEditor returns the LastEditor field value if set, zero value otherwise.
+func (o *ApplicationsResults) GetLastEditor() string {
+	if o == nil || IsNil(o.LastEditor) {
+		var ret string
+		return ret
+	}
+	return *o.LastEditor
+}
+
+// GetLastEditorOk returns a tuple with the LastEditor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationsResults) GetLastEditorOk() (*string, bool) {
+	if o == nil || IsNil(o.LastEditor) {
+		return nil, false
+	}
+	return o.LastEditor, true
+}
+
+// HasLastEditor returns a boolean if a field has been set.
+func (o *ApplicationsResults) HasLastEditor() bool {
+	if o != nil && !IsNil(o.LastEditor) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastEditor gets a reference to the given string and assigns it to the LastEditor field.
+func (o *ApplicationsResults) SetLastEditor(v string) {
+	o.LastEditor = &v
+}
+
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
+func (o *ApplicationsResults) GetLastModified() string {
+	if o == nil || IsNil(o.LastModified) {
+		var ret string
+		return ret
+	}
+	return *o.LastModified
+}
+
+// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationsResults) GetLastModifiedOk() (*string, bool) {
+	if o == nil || IsNil(o.LastModified) {
+		return nil, false
+	}
+	return o.LastModified, true
+}
+
+// HasLastModified returns a boolean if a field has been set.
+func (o *ApplicationsResults) HasLastModified() bool {
+	if o != nil && !IsNil(o.LastModified) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
+func (o *ApplicationsResults) SetLastModified(v string) {
+	o.LastModified = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -131,36 +237,36 @@ func (o *ApplicationsResults) SetActive(v bool) {
 	o.Active = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationsResults) GetLinks() ApplicationOrigins {
-	if o == nil || IsNil(o.Links) {
-		var ret ApplicationOrigins
+// GetOrigins returns the Origins field value if set, zero value otherwise.
+func (o *ApplicationsResults) GetOrigins() []ApplicationOrigins {
+	if o == nil || IsNil(o.Origins) {
+		var ret []ApplicationOrigins
 		return ret
 	}
-	return *o.Links
+	return o.Origins
 }
 
-// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// GetOriginsOk returns a tuple with the Origins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationsResults) GetLinksOk() (*ApplicationOrigins, bool) {
-	if o == nil || IsNil(o.Links) {
+func (o *ApplicationsResults) GetOriginsOk() ([]ApplicationOrigins, bool) {
+	if o == nil || IsNil(o.Origins) {
 		return nil, false
 	}
-	return o.Links, true
+	return o.Origins, true
 }
 
-// HasLinks returns a boolean if a field has been set.
-func (o *ApplicationsResults) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+// HasOrigins returns a boolean if a field has been set.
+func (o *ApplicationsResults) HasOrigins() bool {
+	if o != nil && !IsNil(o.Origins) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ApplicationOrigins and assigns it to the Links field.
-func (o *ApplicationsResults) SetLinks(v ApplicationOrigins) {
-	o.Links = &v
+// SetOrigins gets a reference to the given []ApplicationOrigins and assigns it to the Origins field.
+func (o *ApplicationsResults) SetOrigins(v []ApplicationOrigins) {
+	o.Origins = v
 }
 
 func (o ApplicationsResults) MarshalJSON() ([]byte, error) {
@@ -176,12 +282,23 @@ func (o ApplicationsResults) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	toSerialize["next"] = o.Next
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.DebugRules) {
+		toSerialize["debug_rules"] = o.DebugRules
+	}
+	if !IsNil(o.LastEditor) {
+		toSerialize["last_editor"] = o.LastEditor
+	}
+	if !IsNil(o.LastModified) {
+		toSerialize["last_modified"] = o.LastModified
+	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	if !IsNil(o.Links) {
-		toSerialize["links"] = o.Links
+	if !IsNil(o.Origins) {
+		toSerialize["origins"] = o.Origins
 	}
 	return toSerialize, nil
 }

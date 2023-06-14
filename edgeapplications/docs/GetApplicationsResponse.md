@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **TotalPages** | **int64** |  | 
 **SchemaVersion** | **int64** |  | 
 **Links** | [**ApplicationLinks**](ApplicationLinks.md) |  | 
-**Results** | [**[]ApplicationResults**](ApplicationResults.md) |  | 
+**Results** | [**[]ApplicationsResults**](ApplicationsResults.md) |  | 
 
 ## Methods
 
 ### NewGetApplicationsResponse
 
-`func NewGetApplicationsResponse(count int64, totalPages int64, schemaVersion int64, links ApplicationLinks, results []ApplicationResults, ) *GetApplicationsResponse`
+`func NewGetApplicationsResponse(count int64, totalPages int64, schemaVersion int64, links ApplicationLinks, results []ApplicationsResults, ) *GetApplicationsResponse`
 
 NewGetApplicationsResponse instantiates a new GetApplicationsResponse object
 This constructor will assign default values to properties that have it defined,
@@ -111,20 +111,20 @@ SetLinks sets Links field to given value.
 
 ### GetResults
 
-`func (o *GetApplicationsResponse) GetResults() []ApplicationResults`
+`func (o *GetApplicationsResponse) GetResults() []ApplicationsResults`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *GetApplicationsResponse) GetResultsOk() (*[]ApplicationResults, bool)`
+`func (o *GetApplicationsResponse) GetResultsOk() (*[]ApplicationsResults, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *GetApplicationsResponse) SetResults(v []ApplicationResults)`
+`func (o *GetApplicationsResponse) SetResults(v []ApplicationsResults)`
 
 SetResults sets Results field to given value.
 
