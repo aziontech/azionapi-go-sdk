@@ -23,14 +23,14 @@ type GetApplicationsResponse struct {
 	TotalPages int64 `json:"total_pages"`
 	SchemaVersion int64 `json:"schema_version"`
 	Links ApplicationLinks `json:"links"`
-	Results []ApplicationResults `json:"results"`
+	Results []ApplicationsResults `json:"results"`
 }
 
 // NewGetApplicationsResponse instantiates a new GetApplicationsResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetApplicationsResponse(count int64, totalPages int64, schemaVersion int64, links ApplicationLinks, results []ApplicationResults) *GetApplicationsResponse {
+func NewGetApplicationsResponse(count int64, totalPages int64, schemaVersion int64, links ApplicationLinks, results []ApplicationsResults) *GetApplicationsResponse {
 	this := GetApplicationsResponse{}
 	this.Count = count
 	this.TotalPages = totalPages
@@ -145,9 +145,9 @@ func (o *GetApplicationsResponse) SetLinks(v ApplicationLinks) {
 }
 
 // GetResults returns the Results field value
-func (o *GetApplicationsResponse) GetResults() []ApplicationResults {
+func (o *GetApplicationsResponse) GetResults() []ApplicationsResults {
 	if o == nil {
-		var ret []ApplicationResults
+		var ret []ApplicationsResults
 		return ret
 	}
 
@@ -156,7 +156,7 @@ func (o *GetApplicationsResponse) GetResults() []ApplicationResults {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *GetApplicationsResponse) GetResultsOk() ([]ApplicationResults, bool) {
+func (o *GetApplicationsResponse) GetResultsOk() ([]ApplicationsResults, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -164,7 +164,7 @@ func (o *GetApplicationsResponse) GetResultsOk() ([]ApplicationResults, bool) {
 }
 
 // SetResults sets field value
-func (o *GetApplicationsResponse) SetResults(v []ApplicationResults) {
+func (o *GetApplicationsResponse) SetResults(v []ApplicationsResults) {
 	o.Results = v
 }
 

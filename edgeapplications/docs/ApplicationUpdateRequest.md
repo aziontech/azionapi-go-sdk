@@ -115,6 +115,16 @@ SetHttpPort sets HttpPort field to given value.
 
 HasHttpPort returns a boolean if a field has been set.
 
+### SetHttpPortNil
+
+`func (o *ApplicationUpdateRequest) SetHttpPortNil(b bool)`
+
+ SetHttpPortNil sets the value for HttpPort to be an explicit nil
+
+### UnsetHttpPort
+`func (o *ApplicationUpdateRequest) UnsetHttpPort()`
+
+UnsetHttpPort ensures that no value is present for HttpPort, not even an explicit nil
 ### GetHttpsPort
 
 `func (o *ApplicationUpdateRequest) GetHttpsPort() interface{}`
@@ -140,6 +150,16 @@ SetHttpsPort sets HttpsPort field to given value.
 
 HasHttpsPort returns a boolean if a field has been set.
 
+### SetHttpsPortNil
+
+`func (o *ApplicationUpdateRequest) SetHttpsPortNil(b bool)`
+
+ SetHttpsPortNil sets the value for HttpsPort to be an explicit nil
+
+### UnsetHttpsPort
+`func (o *ApplicationUpdateRequest) UnsetHttpsPort()`
+
+UnsetHttpsPort ensures that no value is present for HttpsPort, not even an explicit nil
 ### GetMinimumTlsVersion
 
 `func (o *ApplicationUpdateRequest) GetMinimumTlsVersion() string`

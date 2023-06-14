@@ -5,15 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int64** |  | [optional] 
-**Next** | **string** |  | 
+**Name** | Pointer to **string** |  | [optional] 
+**DebugRules** | Pointer to **string** |  | [optional] 
+**LastEditor** | Pointer to **string** |  | [optional] 
+**LastModified** | Pointer to **string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
-**Links** | Pointer to [**ApplicationOrigins**](ApplicationOrigins.md) |  | [optional] 
+**Origins** | Pointer to [**[]ApplicationOrigins**](ApplicationOrigins.md) |  | [optional] 
 
 ## Methods
 
 ### NewApplicationsResults
 
-`func NewApplicationsResults(next string, ) *ApplicationsResults`
+`func NewApplicationsResults() *ApplicationsResults`
 
 NewApplicationsResults instantiates a new ApplicationsResults object
 This constructor will assign default values to properties that have it defined,
@@ -53,25 +56,105 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetNext
+### GetName
 
-`func (o *ApplicationsResults) GetNext() string`
+`func (o *ApplicationsResults) GetName() string`
 
-GetNext returns the Next field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetNextOk
+### GetNameOk
 
-`func (o *ApplicationsResults) GetNextOk() (*string, bool)`
+`func (o *ApplicationsResults) GetNameOk() (*string, bool)`
 
-GetNextOk returns a tuple with the Next field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNext
+### SetName
 
-`func (o *ApplicationsResults) SetNext(v string)`
+`func (o *ApplicationsResults) SetName(v string)`
 
-SetNext sets Next field to given value.
+SetName sets Name field to given value.
 
+### HasName
+
+`func (o *ApplicationsResults) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetDebugRules
+
+`func (o *ApplicationsResults) GetDebugRules() string`
+
+GetDebugRules returns the DebugRules field if non-nil, zero value otherwise.
+
+### GetDebugRulesOk
+
+`func (o *ApplicationsResults) GetDebugRulesOk() (*string, bool)`
+
+GetDebugRulesOk returns a tuple with the DebugRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebugRules
+
+`func (o *ApplicationsResults) SetDebugRules(v string)`
+
+SetDebugRules sets DebugRules field to given value.
+
+### HasDebugRules
+
+`func (o *ApplicationsResults) HasDebugRules() bool`
+
+HasDebugRules returns a boolean if a field has been set.
+
+### GetLastEditor
+
+`func (o *ApplicationsResults) GetLastEditor() string`
+
+GetLastEditor returns the LastEditor field if non-nil, zero value otherwise.
+
+### GetLastEditorOk
+
+`func (o *ApplicationsResults) GetLastEditorOk() (*string, bool)`
+
+GetLastEditorOk returns a tuple with the LastEditor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastEditor
+
+`func (o *ApplicationsResults) SetLastEditor(v string)`
+
+SetLastEditor sets LastEditor field to given value.
+
+### HasLastEditor
+
+`func (o *ApplicationsResults) HasLastEditor() bool`
+
+HasLastEditor returns a boolean if a field has been set.
+
+### GetLastModified
+
+`func (o *ApplicationsResults) GetLastModified() string`
+
+GetLastModified returns the LastModified field if non-nil, zero value otherwise.
+
+### GetLastModifiedOk
+
+`func (o *ApplicationsResults) GetLastModifiedOk() (*string, bool)`
+
+GetLastModifiedOk returns a tuple with the LastModified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModified
+
+`func (o *ApplicationsResults) SetLastModified(v string)`
+
+SetLastModified sets LastModified field to given value.
+
+### HasLastModified
+
+`func (o *ApplicationsResults) HasLastModified() bool`
+
+HasLastModified returns a boolean if a field has been set.
 
 ### GetActive
 
@@ -98,30 +181,30 @@ SetActive sets Active field to given value.
 
 HasActive returns a boolean if a field has been set.
 
-### GetLinks
+### GetOrigins
 
-`func (o *ApplicationsResults) GetLinks() ApplicationOrigins`
+`func (o *ApplicationsResults) GetOrigins() []ApplicationOrigins`
 
-GetLinks returns the Links field if non-nil, zero value otherwise.
+GetOrigins returns the Origins field if non-nil, zero value otherwise.
 
-### GetLinksOk
+### GetOriginsOk
 
-`func (o *ApplicationsResults) GetLinksOk() (*ApplicationOrigins, bool)`
+`func (o *ApplicationsResults) GetOriginsOk() (*[]ApplicationOrigins, bool)`
 
-GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+GetOriginsOk returns a tuple with the Origins field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLinks
+### SetOrigins
 
-`func (o *ApplicationsResults) SetLinks(v ApplicationOrigins)`
+`func (o *ApplicationsResults) SetOrigins(v []ApplicationOrigins)`
 
-SetLinks sets Links field to given value.
+SetOrigins sets Origins field to given value.
 
-### HasLinks
+### HasOrigins
 
-`func (o *ApplicationsResults) HasLinks() bool`
+`func (o *ApplicationsResults) HasOrigins() bool`
 
-HasLinks returns a boolean if a field has been set.
+HasOrigins returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
