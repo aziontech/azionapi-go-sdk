@@ -406,7 +406,31 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResp
 type ApiGetDomainsRequest struct {
 	ctx context.Context
 	ApiService *DomainsApiService
+	page *int64
+	pageSize *int64
+	sort *string
+	orderBy *string
 	accept *string
+}
+
+func (r ApiGetDomainsRequest) Page(page int64) ApiGetDomainsRequest {
+	r.page = &page
+	return r
+}
+
+func (r ApiGetDomainsRequest) PageSize(pageSize int64) ApiGetDomainsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiGetDomainsRequest) Sort(sort string) ApiGetDomainsRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r ApiGetDomainsRequest) OrderBy(orderBy string) ApiGetDomainsRequest {
+	r.orderBy = &orderBy
+	return r
 }
 
 func (r ApiGetDomainsRequest) Accept(accept string) ApiGetDomainsRequest {
@@ -454,6 +478,18 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	}
+	if r.orderBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_by", r.orderBy, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## GetDomains
 
-> DomainResponseWithResults GetDomains(ctx).Accept(accept).Execute()
+> DomainResponseWithResults GetDomains(ctx).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Accept(accept).Execute()
 
 /domains
 
@@ -246,11 +246,15 @@ import (
 )
 
 func main() {
+    page := int64(789) // int64 |  (optional)
+    pageSize := int64(789) // int64 |  (optional)
+    sort := "sort_example" // string |  (optional)
+    orderBy := "orderBy_example" // string |  (optional)
     accept := "application/json; version=3" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DomainsApi.GetDomains(context.Background()).Accept(accept).Execute()
+    resp, r, err := apiClient.DomainsApi.GetDomains(context.Background()).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainsApi.GetDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -271,6 +275,10 @@ Other parameters are passed through a pointer to a apiGetDomainsRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **page** | **int64** |  | 
+ **pageSize** | **int64** |  | 
+ **sort** | **string** |  | 
+ **orderBy** | **string** |  | 
  **accept** | **string** |  | 
 
 ### Return type
