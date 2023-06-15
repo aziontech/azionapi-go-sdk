@@ -26,6 +26,9 @@ type ApplicationUpdateResults struct {
 	HttpsPort interface{} `json:"https_port"`
 	MinimumTlsVersion string `json:"minimum_tls_version"`
 	Active bool `json:"active"`
+	DebugRules bool `json:"debug_rules"`
+	Http3 bool `json:"http3"`
+	SupportedCiphers string `json:"supported_ciphers"`
 	ApplicationAcceleration bool `json:"application_acceleration"`
 	Caching bool `json:"caching"`
 	DeviceDetection bool `json:"device_detection"`
@@ -42,7 +45,7 @@ type ApplicationUpdateResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, active bool, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationUpdateResults {
+func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, active bool, debugRules bool, http3 bool, supportedCiphers string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationUpdateResults {
 	this := ApplicationUpdateResults{}
 	this.Id = id
 	this.Name = name
@@ -51,6 +54,9 @@ func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string,
 	this.HttpsPort = httpsPort
 	this.MinimumTlsVersion = minimumTlsVersion
 	this.Active = active
+	this.DebugRules = debugRules
+	this.Http3 = http3
+	this.SupportedCiphers = supportedCiphers
 	this.ApplicationAcceleration = applicationAcceleration
 	this.Caching = caching
 	this.DeviceDetection = deviceDetection
@@ -242,6 +248,78 @@ func (o *ApplicationUpdateResults) GetActiveOk() (*bool, bool) {
 // SetActive sets field value
 func (o *ApplicationUpdateResults) SetActive(v bool) {
 	o.Active = v
+}
+
+// GetDebugRules returns the DebugRules field value
+func (o *ApplicationUpdateResults) GetDebugRules() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.DebugRules
+}
+
+// GetDebugRulesOk returns a tuple with the DebugRules field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationUpdateResults) GetDebugRulesOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DebugRules, true
+}
+
+// SetDebugRules sets field value
+func (o *ApplicationUpdateResults) SetDebugRules(v bool) {
+	o.DebugRules = v
+}
+
+// GetHttp3 returns the Http3 field value
+func (o *ApplicationUpdateResults) GetHttp3() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Http3
+}
+
+// GetHttp3Ok returns a tuple with the Http3 field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationUpdateResults) GetHttp3Ok() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Http3, true
+}
+
+// SetHttp3 sets field value
+func (o *ApplicationUpdateResults) SetHttp3(v bool) {
+	o.Http3 = v
+}
+
+// GetSupportedCiphers returns the SupportedCiphers field value
+func (o *ApplicationUpdateResults) GetSupportedCiphers() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SupportedCiphers
+}
+
+// GetSupportedCiphersOk returns a tuple with the SupportedCiphers field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationUpdateResults) GetSupportedCiphersOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SupportedCiphers, true
+}
+
+// SetSupportedCiphers sets field value
+func (o *ApplicationUpdateResults) SetSupportedCiphers(v string) {
+	o.SupportedCiphers = v
 }
 
 // GetApplicationAcceleration returns the ApplicationAcceleration field value
@@ -505,6 +583,9 @@ func (o ApplicationUpdateResults) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["minimum_tls_version"] = o.MinimumTlsVersion
 	toSerialize["active"] = o.Active
+	toSerialize["debug_rules"] = o.DebugRules
+	toSerialize["http3"] = o.Http3
+	toSerialize["supported_ciphers"] = o.SupportedCiphers
 	toSerialize["application_acceleration"] = o.ApplicationAcceleration
 	toSerialize["caching"] = o.Caching
 	toSerialize["device_detection"] = o.DeviceDetection

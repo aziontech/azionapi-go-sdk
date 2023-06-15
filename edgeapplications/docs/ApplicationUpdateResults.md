@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **HttpsPort** | **interface{}** |  | 
 **MinimumTlsVersion** | **string** |  | 
 **Active** | **bool** |  | 
+**DebugRules** | **bool** |  | 
+**Http3** | **bool** |  | 
+**SupportedCiphers** | **string** |  | 
 **ApplicationAcceleration** | **bool** |  | 
 **Caching** | **bool** |  | 
 **DeviceDetection** | **bool** |  | 
@@ -26,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationUpdateResults
 
-`func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, active bool, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationUpdateResults`
+`func NewApplicationUpdateResults(id int64, name string, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, active bool, debugRules bool, http3 bool, supportedCiphers string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool, ) *ApplicationUpdateResults`
 
 NewApplicationUpdateResults instantiates a new ApplicationUpdateResults object
 This constructor will assign default values to properties that have it defined,
@@ -199,6 +202,66 @@ and a boolean to check if the value has been set.
 `func (o *ApplicationUpdateResults) SetActive(v bool)`
 
 SetActive sets Active field to given value.
+
+
+### GetDebugRules
+
+`func (o *ApplicationUpdateResults) GetDebugRules() bool`
+
+GetDebugRules returns the DebugRules field if non-nil, zero value otherwise.
+
+### GetDebugRulesOk
+
+`func (o *ApplicationUpdateResults) GetDebugRulesOk() (*bool, bool)`
+
+GetDebugRulesOk returns a tuple with the DebugRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebugRules
+
+`func (o *ApplicationUpdateResults) SetDebugRules(v bool)`
+
+SetDebugRules sets DebugRules field to given value.
+
+
+### GetHttp3
+
+`func (o *ApplicationUpdateResults) GetHttp3() bool`
+
+GetHttp3 returns the Http3 field if non-nil, zero value otherwise.
+
+### GetHttp3Ok
+
+`func (o *ApplicationUpdateResults) GetHttp3Ok() (*bool, bool)`
+
+GetHttp3Ok returns a tuple with the Http3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHttp3
+
+`func (o *ApplicationUpdateResults) SetHttp3(v bool)`
+
+SetHttp3 sets Http3 field to given value.
+
+
+### GetSupportedCiphers
+
+`func (o *ApplicationUpdateResults) GetSupportedCiphers() string`
+
+GetSupportedCiphers returns the SupportedCiphers field if non-nil, zero value otherwise.
+
+### GetSupportedCiphersOk
+
+`func (o *ApplicationUpdateResults) GetSupportedCiphersOk() (*string, bool)`
+
+GetSupportedCiphersOk returns a tuple with the SupportedCiphers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedCiphers
+
+`func (o *ApplicationUpdateResults) SetSupportedCiphers(v string)`
+
+SetSupportedCiphers sets SupportedCiphers field to given value.
 
 
 ### GetApplicationAcceleration

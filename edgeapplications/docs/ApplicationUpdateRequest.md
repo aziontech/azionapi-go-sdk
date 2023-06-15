@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **HttpsPort** | Pointer to **interface{}** |  | [optional] 
 **MinimumTlsVersion** | Pointer to **string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
+**DebugRules** | Pointer to **bool** |  | [optional] 
 **ApplicationAcceleration** | Pointer to **bool** |  | [optional] 
 **Caching** | Pointer to **bool** |  | [optional] 
 **DeviceDetection** | Pointer to **bool** |  | [optional] 
@@ -209,6 +210,31 @@ SetActive sets Active field to given value.
 `func (o *ApplicationUpdateRequest) HasActive() bool`
 
 HasActive returns a boolean if a field has been set.
+
+### GetDebugRules
+
+`func (o *ApplicationUpdateRequest) GetDebugRules() bool`
+
+GetDebugRules returns the DebugRules field if non-nil, zero value otherwise.
+
+### GetDebugRulesOk
+
+`func (o *ApplicationUpdateRequest) GetDebugRulesOk() (*bool, bool)`
+
+GetDebugRulesOk returns a tuple with the DebugRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebugRules
+
+`func (o *ApplicationUpdateRequest) SetDebugRules(v bool)`
+
+SetDebugRules sets DebugRules field to given value.
+
+### HasDebugRules
+
+`func (o *ApplicationUpdateRequest) HasDebugRules() bool`
+
+HasDebugRules returns a boolean if a field has been set.
 
 ### GetApplicationAcceleration
 
