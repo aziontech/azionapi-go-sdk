@@ -24,6 +24,7 @@ type ApplicationResults struct {
 	Active bool `json:"active"`
 	DebugRules bool `json:"debug_rules"`
 	Http3 bool `json:"http3"`
+	SupportedCiphers string `json:"supported_ciphers"`
 	DeliveryProtocol string `json:"delivery_protocol"`
 	HttpPort interface{} `json:"http_port"`
 	HttpsPort interface{} `json:"https_port"`
@@ -44,13 +45,14 @@ type ApplicationResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationResults(id int64, name string, active bool, debugRules bool, http3 bool, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResults {
+func NewApplicationResults(id int64, name string, active bool, debugRules bool, http3 bool, supportedCiphers string, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, l2Caching bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResults {
 	this := ApplicationResults{}
 	this.Id = id
 	this.Name = name
 	this.Active = active
 	this.DebugRules = debugRules
 	this.Http3 = http3
+	this.SupportedCiphers = supportedCiphers
 	this.DeliveryProtocol = deliveryProtocol
 	this.HttpPort = httpPort
 	this.HttpsPort = httpsPort
@@ -194,6 +196,30 @@ func (o *ApplicationResults) GetHttp3Ok() (*bool, bool) {
 // SetHttp3 sets field value
 func (o *ApplicationResults) SetHttp3(v bool) {
 	o.Http3 = v
+}
+
+// GetSupportedCiphers returns the SupportedCiphers field value
+func (o *ApplicationResults) GetSupportedCiphers() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SupportedCiphers
+}
+
+// GetSupportedCiphersOk returns a tuple with the SupportedCiphers field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResults) GetSupportedCiphersOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SupportedCiphers, true
+}
+
+// SetSupportedCiphers sets field value
+func (o *ApplicationResults) SetSupportedCiphers(v string) {
+	o.SupportedCiphers = v
 }
 
 // GetDeliveryProtocol returns the DeliveryProtocol field value
@@ -551,6 +577,7 @@ func (o ApplicationResults) ToMap() (map[string]interface{}, error) {
 	toSerialize["active"] = o.Active
 	toSerialize["debug_rules"] = o.DebugRules
 	toSerialize["http3"] = o.Http3
+	toSerialize["supported_ciphers"] = o.SupportedCiphers
 	toSerialize["delivery_protocol"] = o.DeliveryProtocol
 	if o.HttpPort != nil {
 		toSerialize["http_port"] = o.HttpPort

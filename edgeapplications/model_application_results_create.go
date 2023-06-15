@@ -22,6 +22,9 @@ type ApplicationResultsCreate struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
 	Active bool `json:"active"`
+	DebugRules bool `json:"debug_rules"`
+	Http3 bool `json:"http3"`
+	SupportedCiphers string `json:"supported_ciphers"`
 	DeliveryProtocol string `json:"delivery_protocol"`
 	HttpPort interface{} `json:"http_port"`
 	HttpsPort interface{} `json:"https_port"`
@@ -41,11 +44,14 @@ type ApplicationResultsCreate struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationResultsCreate(id int64, name string, active bool, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResultsCreate {
+func NewApplicationResultsCreate(id int64, name string, active bool, debugRules bool, http3 bool, supportedCiphers string, deliveryProtocol string, httpPort interface{}, httpsPort interface{}, minimumTlsVersion string, applicationAcceleration bool, caching bool, deviceDetection bool, edgeFirewall bool, edgeFunctions bool, imageOptimization bool, loadBalancer bool, rawLogs bool, webApplicationFirewall bool) *ApplicationResultsCreate {
 	this := ApplicationResultsCreate{}
 	this.Id = id
 	this.Name = name
 	this.Active = active
+	this.DebugRules = debugRules
+	this.Http3 = http3
+	this.SupportedCiphers = supportedCiphers
 	this.DeliveryProtocol = deliveryProtocol
 	this.HttpPort = httpPort
 	this.HttpsPort = httpsPort
@@ -140,6 +146,78 @@ func (o *ApplicationResultsCreate) GetActiveOk() (*bool, bool) {
 // SetActive sets field value
 func (o *ApplicationResultsCreate) SetActive(v bool) {
 	o.Active = v
+}
+
+// GetDebugRules returns the DebugRules field value
+func (o *ApplicationResultsCreate) GetDebugRules() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.DebugRules
+}
+
+// GetDebugRulesOk returns a tuple with the DebugRules field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResultsCreate) GetDebugRulesOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DebugRules, true
+}
+
+// SetDebugRules sets field value
+func (o *ApplicationResultsCreate) SetDebugRules(v bool) {
+	o.DebugRules = v
+}
+
+// GetHttp3 returns the Http3 field value
+func (o *ApplicationResultsCreate) GetHttp3() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Http3
+}
+
+// GetHttp3Ok returns a tuple with the Http3 field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResultsCreate) GetHttp3Ok() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Http3, true
+}
+
+// SetHttp3 sets field value
+func (o *ApplicationResultsCreate) SetHttp3(v bool) {
+	o.Http3 = v
+}
+
+// GetSupportedCiphers returns the SupportedCiphers field value
+func (o *ApplicationResultsCreate) GetSupportedCiphers() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SupportedCiphers
+}
+
+// GetSupportedCiphersOk returns a tuple with the SupportedCiphers field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResultsCreate) GetSupportedCiphersOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SupportedCiphers, true
+}
+
+// SetSupportedCiphers sets field value
+func (o *ApplicationResultsCreate) SetSupportedCiphers(v string) {
+	o.SupportedCiphers = v
 }
 
 // GetDeliveryProtocol returns the DeliveryProtocol field value
@@ -471,6 +549,9 @@ func (o ApplicationResultsCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["active"] = o.Active
+	toSerialize["debug_rules"] = o.DebugRules
+	toSerialize["http3"] = o.Http3
+	toSerialize["supported_ciphers"] = o.SupportedCiphers
 	toSerialize["delivery_protocol"] = o.DeliveryProtocol
 	if o.HttpPort != nil {
 		toSerialize["http_port"] = o.HttpPort

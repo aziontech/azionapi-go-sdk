@@ -25,6 +25,7 @@ type ApplicationUpdateRequest struct {
 	HttpsPort interface{} `json:"https_port,omitempty"`
 	MinimumTlsVersion *string `json:"minimum_tls_version,omitempty"`
 	Active *bool `json:"active,omitempty"`
+	DebugRules *bool `json:"debug_rules,omitempty"`
 	ApplicationAcceleration *bool `json:"application_acceleration,omitempty"`
 	Caching *bool `json:"caching,omitempty"`
 	DeviceDetection *bool `json:"device_detection,omitempty"`
@@ -246,6 +247,38 @@ func (o *ApplicationUpdateRequest) HasActive() bool {
 // SetActive gets a reference to the given bool and assigns it to the Active field.
 func (o *ApplicationUpdateRequest) SetActive(v bool) {
 	o.Active = &v
+}
+
+// GetDebugRules returns the DebugRules field value if set, zero value otherwise.
+func (o *ApplicationUpdateRequest) GetDebugRules() bool {
+	if o == nil || IsNil(o.DebugRules) {
+		var ret bool
+		return ret
+	}
+	return *o.DebugRules
+}
+
+// GetDebugRulesOk returns a tuple with the DebugRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationUpdateRequest) GetDebugRulesOk() (*bool, bool) {
+	if o == nil || IsNil(o.DebugRules) {
+		return nil, false
+	}
+	return o.DebugRules, true
+}
+
+// HasDebugRules returns a boolean if a field has been set.
+func (o *ApplicationUpdateRequest) HasDebugRules() bool {
+	if o != nil && !IsNil(o.DebugRules) {
+		return true
+	}
+
+	return false
+}
+
+// SetDebugRules gets a reference to the given bool and assigns it to the DebugRules field.
+func (o *ApplicationUpdateRequest) SetDebugRules(v bool) {
+	o.DebugRules = &v
 }
 
 // GetApplicationAcceleration returns the ApplicationAcceleration field value if set, zero value otherwise.
@@ -595,6 +628,9 @@ func (o ApplicationUpdateRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
+	}
+	if !IsNil(o.DebugRules) {
+		toSerialize["debug_rules"] = o.DebugRules
 	}
 	if !IsNil(o.ApplicationAcceleration) {
 		toSerialize["application_acceleration"] = o.ApplicationAcceleration
