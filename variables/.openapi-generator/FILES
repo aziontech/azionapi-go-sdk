@@ -16,5 +16,4 @@ model_variable.go
 model_variable_create.go
 model_variable_get.go
 response.go
-test/api_variables_test.go
 utils.go
