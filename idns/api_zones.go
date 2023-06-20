@@ -332,7 +332,7 @@ func (a *ZonesApiService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesRespon
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json; version=3"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/json; version=3"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

@@ -200,7 +200,7 @@ Other parameters are passed through a pointer to a apiGetZonesRequest struct via
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; version=3
+- **Accept**: application/json, application/json; version=3
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
