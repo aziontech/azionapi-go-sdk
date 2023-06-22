@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info:
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
+  title: Edge Functions Instances API
+  version: 2.0.0
+servers:
+- description: Production
+  url: https://api.azionapi.net
+security:
+- tokenAuth: []
+paths:
+  /edge_firewall/:edge_firewall_id:/functions_instances:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEdgeFunctionsInstancesResponse'
+          description: A list of Edge Functions Instances
+      summary: List all user Edge Functions Instances
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEdgeFunctionsInstancesRequest'
+        required: true
+      responses:
+        "201":
+          description: Edge Functions Instance created
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Create an Edge Functions Instance
+  /edge_firewall/:edge_firewall_id:/functions_instances/{uuid}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Successfully deleted
+      summary: Delete an Edge Functions Instance by uuid
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdgeFunctionsInstanceResponse'
+          description: An Edge Functions Instance object
+      summary: Retrieve an Edge Functions Instance set by uuid
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEdgeFunctionsInstanceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEdgeFunctionsInstancesResponse'
+          description: Successfully updated
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Update some Edge Functions Instance attributes
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEdgeFunctionsInstanceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEdgeFunctionsInstancesResponse'
+          description: Successfully updated
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Overwrite some Edge Functions Instance attributes
+components:
+  schemas:
+    Links:
+      example:
+        next: next
+        previous: previous
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
+      type: object
+    EdgeFunctionsInstance:
+      example:
+        edge_function: 3254
+        name: asdasdsad
+        json_args: {}
+        id: 1614
+      properties:
+        id:
+          example: 1614
+          type: integer
+        name:
+          example: asdasdsad
+          type: string
+        json_args:
+          example: {}
+          type: object
+        edge_function:
+          example: 3254
+          type: integer
+      type: object
+    ListEdgeFunctionsInstancesResponse:
+      example:
+        schema_version: 1
+        count: 0
+        links:
+          next: next
+          previous: previous
+        total_pages: 6
+        results:
+        - edge_function: 3254
+          name: asdasdsad
+          json_args: {}
+          id: 1614
+        - edge_function: 3254
+          name: asdasdsad
+          json_args: {}
+          id: 1614
+      properties:
+        count:
+          format: int64
+          type: integer
+        total_pages:
+          format: int64
+          type: integer
+        schema_version:
+          format: int64
+          type: integer
+        links:
+          $ref: '#/components/schemas/Links'
+        results:
+          items:
+            $ref: '#/components/schemas/EdgeFunctionsInstance'
+          type: array
+      type: object
+    CreateEdgeFunctionsInstancesRequest:
+      example:
+        edge_function: 13
+        name: Edge Functions Instance
+        json_args: {}
+      properties:
+        name:
+          example: Edge Functions Instance
+          type: string
+        edge_function:
+          example: 13
+          type: integer
+        json_args:
+          example: {}
+          type: object
+      type: object
+    EdgeFunctionsInstanceResponse:
+      example:
+        schema_version: 0.8008281904610115
+        results:
+          edge_function: 3254
+          name: asdasdsad
+          json_args: {}
+          id: 1614
+      properties:
+        results:
+          $ref: '#/components/schemas/EdgeFunctionsInstance'
+        schema_version:
+          type: number
+      type: object
+    UpdateEdgeFunctionsInstanceRequest:
+      $ref: '#/components/schemas/CreateEdgeFunctionsInstancesRequest'
+  securitySchemes:
+    tokenAuth:
+      description: |
+        You must inform a token to auth.
+        Usage format: `Token <TOKEN>`
+      in: header
+      name: Authorization
+      type: apiKey

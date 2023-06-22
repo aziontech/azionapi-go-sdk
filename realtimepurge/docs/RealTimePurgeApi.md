@@ -1,6 +1,6 @@
 # \RealTimePurgeApi
 
-All URIs are relative to *http://localhost:3002*
+All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

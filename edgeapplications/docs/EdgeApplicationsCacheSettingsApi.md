@@ -4,20 +4,20 @@ All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete**](EdgeApplicationsCacheSettingsApi.md#EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete) | **Delete** /edge_applications/{edge_application_id}/cache_settings/{cache_settings} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings:
+[**EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete**](EdgeApplicationsCacheSettingsApi.md#EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete) | **Delete** /edge_applications/{edge_application_id}/cache_settings/{cache_settings_id} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
 [**EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet**](EdgeApplicationsCacheSettingsApi.md#EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet) | **Get** /edge_applications/{edge_application_id}/cache_settings/{cache_settings_id} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
+[**EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch**](EdgeApplicationsCacheSettingsApi.md#EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch) | **Patch** /edge_applications/{edge_application_id}/cache_settings/{cache_settings_id} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
 [**EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut**](EdgeApplicationsCacheSettingsApi.md#EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut) | **Put** /edge_applications/{edge_application_id}/cache_settings/{cache_settings_id} | /edge_applications/:edge_application_id:/cache_settings/ca
-[**EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch**](EdgeApplicationsCacheSettingsApi.md#EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch) | **Patch** /edge_applications/{edge_application_id}/cache_settings/{cache_settings} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
 [**EdgeApplicationsEdgeApplicationIdCacheSettingsGet**](EdgeApplicationsCacheSettingsApi.md#EdgeApplicationsEdgeApplicationIdCacheSettingsGet) | **Get** /edge_applications/{edge_application_id}/cache_settings | /edge_applications/{edge_application_id}/cache_settings
 [**EdgeApplicationsEdgeApplicationIdCacheSettingsPost**](EdgeApplicationsCacheSettingsApi.md#EdgeApplicationsEdgeApplicationIdCacheSettingsPost) | **Post** /edge_applications/{edge_application_id}/cache_settings | /edge_applications/:edge_application_id:/cache_settings
 
 
 
-## EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete
+## EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete
 
-> EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete(ctx, edgeApplicationId, cacheSettings).Accept(accept).ContentType(contentType).Execute()
+> EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete(ctx, edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).Execute()
 
-/edge_applications/:edge_application_id:/cache_settings/:cache_settings:
+/edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
 
 ### Example
 
@@ -33,15 +33,15 @@ import (
 
 func main() {
     edgeApplicationId := int64(789) // int64 | 
-    cacheSettings := int64(789) // int64 | 
+    cacheSettingsId := int64(789) // int64 | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete(context.Background(), edgeApplicationId, cacheSettings).Accept(accept).ContentType(contentType).Execute()
+    r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -54,11 +54,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **edgeApplicationId** | **int64** |  | 
-**cacheSettings** | **int64** |  | 
+**cacheSettingsId** | **int64** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -159,6 +159,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch
+
+> ApplicationCachePatchResponse EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch(ctx, edgeApplicationId, cacheSettingsId).Accept(accept).ApplicationCachePatchRequest(applicationCachePatchRequest).Execute()
+
+/edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+    edgeApplicationId := int64(789) // int64 | 
+    cacheSettingsId := int64(789) // int64 | 
+    accept := "application/json; version=3" // string |  (optional)
+    applicationCachePatchRequest := *openapiclient.NewApplicationCachePatchRequest() // ApplicationCachePatchRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ApplicationCachePatchRequest(applicationCachePatchRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch`: ApplicationCachePatchResponse
+    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**edgeApplicationId** | **int64** |  | 
+**cacheSettingsId** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **accept** | **string** |  | 
+ **applicationCachePatchRequest** | [**ApplicationCachePatchRequest**](ApplicationCachePatchRequest.md) |  | 
+
+### Return type
+
+[**ApplicationCachePatchResponse**](ApplicationCachePatchResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; version=3
+- **Accept**: application/json; version=3
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut
 
 > ApplicationCachePutResponse EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(ctx, edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).ApplicationCachePutRequest(applicationCachePutRequest).Execute()
@@ -221,81 +296,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApplicationCachePutResponse**](ApplicationCachePutResponse.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json; version=3
-- **Accept**: application/json; version=3
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch
-
-> ApplicationCachePatchResponse EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch(ctx, edgeApplicationId, cacheSettings).Accept(accept).ApplicationCachePatchRequest(applicationCachePatchRequest).Execute()
-
-/edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    cacheSettings := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    applicationCachePatchRequest := *openapiclient.NewApplicationCachePatchRequest() // ApplicationCachePatchRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch(context.Background(), edgeApplicationId, cacheSettings).Accept(accept).ApplicationCachePatchRequest(applicationCachePatchRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch`: ApplicationCachePatchResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsApi.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**edgeApplicationId** | **int64** |  | 
-**cacheSettings** | **int64** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatchRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **accept** | **string** |  | 
- **applicationCachePatchRequest** | [**ApplicationCachePatchRequest**](ApplicationCachePatchRequest.md) |  | 
-
-### Return type
-
-[**ApplicationCachePatchResponse**](ApplicationCachePatchResponse.md)
 
 ### Authorization
 

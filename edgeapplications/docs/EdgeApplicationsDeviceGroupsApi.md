@@ -413,7 +413,7 @@ func main() {
     edgeApplicationId := int64(789) // int64 | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    createDeviceGroupsRequest := *openapiclient.NewCreateDeviceGroupsRequest("UserAgent_example") // CreateDeviceGroupsRequest |  (optional)
+    createDeviceGroupsRequest := *openapiclient.NewCreateDeviceGroupsRequest("UserAgent_example", "Addresses_example") // CreateDeviceGroupsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

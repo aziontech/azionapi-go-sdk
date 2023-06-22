@@ -1,6 +1,6 @@
 # \DefaultApi
 
-All URIs are relative to *http://localhost:3002*
+All URIs are relative to *http://bff.azion.net:3002*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,8 +9,8 @@ Method | HTTP request | Description
 [**GetResource**](DefaultApi.md#GetResource) | **Get** /edge_services/{serviceId}/resources/{resourceId} | Return Service Resource by ID
 [**GetResources**](DefaultApi.md#GetResources) | **Get** /edge_services/{serviceId}/resources | Return Service Resources by page
 [**GetService**](DefaultApi.md#GetService) | **Get** /edge_services/{id} | Return Service by ID
-[**GetServices**](DefaultApi.md#GetServices) | **Get** /edge_services/ | Return Services by page
-[**NewService**](DefaultApi.md#NewService) | **Post** /edge_services/ | Create Service
+[**GetServices**](DefaultApi.md#GetServices) | **Get** /edge_services | Return Services by page
+[**NewService**](DefaultApi.md#NewService) | **Post** /edge_services | Create Service
 [**PatchService**](DefaultApi.md#PatchService) | **Patch** /edge_services/{id} | Update Service by ID
 [**PatchServiceResource**](DefaultApi.md#PatchServiceResource) | **Patch** /edge_services/{serviceId}/resources/{resourceId} | Update Service Resource by ID
 [**PostResource**](DefaultApi.md#PostResource) | **Post** /edge_services/{serviceId}/resources | Create Service Resource
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## GetResources
 
-> ResourceResponseWithTotal GetResources(ctx, serviceId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Execute()
+> map[string]interface{} GetResources(ctx, serviceId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Execute()
 
 Return Service Resources by page
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetResources``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetResources`: ResourceResponseWithTotal
+    // response from `GetResources`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetResources`: %v\n", resp)
 }
 ```
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceResponseWithTotal**](ResourceResponseWithTotal.md)
+**map[string]interface{}**
 
 ### Authorization
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Active** | Pointer to **bool** |  | [optional] 
 **InitiatorType** | Pointer to **string** |  | [optional] 
 **Language** | Pointer to **string** |  | [optional] 
+**IsProprietaryCode** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -189,6 +190,31 @@ SetLanguage sets Language field to given value.
 `func (o *PutEdgeFunctionRequest) HasLanguage() bool`
 
 HasLanguage returns a boolean if a field has been set.
+
+### GetIsProprietaryCode
+
+`func (o *PutEdgeFunctionRequest) GetIsProprietaryCode() bool`
+
+GetIsProprietaryCode returns the IsProprietaryCode field if non-nil, zero value otherwise.
+
+### GetIsProprietaryCodeOk
+
+`func (o *PutEdgeFunctionRequest) GetIsProprietaryCodeOk() (*bool, bool)`
+
+GetIsProprietaryCodeOk returns a tuple with the IsProprietaryCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsProprietaryCode
+
+`func (o *PutEdgeFunctionRequest) SetIsProprietaryCode(v bool)`
+
+SetIsProprietaryCode sets IsProprietaryCode field to given value.
+
+### HasIsProprietaryCode
+
+`func (o *PutEdgeFunctionRequest) HasIsProprietaryCode() bool`
+
+HasIsProprietaryCode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

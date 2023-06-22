@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Code** | Pointer to **string** |  | [optional] 
 **JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
+**IsProprietaryCode** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -163,6 +164,31 @@ SetActive sets Active field to given value.
 `func (o *CreateEdgeFunctionRequest) HasActive() bool`
 
 HasActive returns a boolean if a field has been set.
+
+### GetIsProprietaryCode
+
+`func (o *CreateEdgeFunctionRequest) GetIsProprietaryCode() bool`
+
+GetIsProprietaryCode returns the IsProprietaryCode field if non-nil, zero value otherwise.
+
+### GetIsProprietaryCodeOk
+
+`func (o *CreateEdgeFunctionRequest) GetIsProprietaryCodeOk() (*bool, bool)`
+
+GetIsProprietaryCodeOk returns a tuple with the IsProprietaryCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsProprietaryCode
+
+`func (o *CreateEdgeFunctionRequest) SetIsProprietaryCode(v bool)`
+
+SetIsProprietaryCode sets IsProprietaryCode field to given value.
+
+### HasIsProprietaryCode
+
+`func (o *CreateEdgeFunctionRequest) HasIsProprietaryCode() bool`
+
+HasIsProprietaryCode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

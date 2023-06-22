@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **LastEditor** | Pointer to **string** |  | [optional] 
 **Modified** | Pointer to **string** |  | [optional] 
 **ReferenceCount** | Pointer to **int64** |  | [optional] 
+**IsProprietaryCode** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -319,6 +320,31 @@ SetReferenceCount sets ReferenceCount field to given value.
 `func (o *Results) HasReferenceCount() bool`
 
 HasReferenceCount returns a boolean if a field has been set.
+
+### GetIsProprietaryCode
+
+`func (o *Results) GetIsProprietaryCode() bool`
+
+GetIsProprietaryCode returns the IsProprietaryCode field if non-nil, zero value otherwise.
+
+### GetIsProprietaryCodeOk
+
+`func (o *Results) GetIsProprietaryCodeOk() (*bool, bool)`
+
+GetIsProprietaryCodeOk returns a tuple with the IsProprietaryCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsProprietaryCode
+
+`func (o *Results) SetIsProprietaryCode(v bool)`
+
+SetIsProprietaryCode sets IsProprietaryCode field to given value.
+
+### HasIsProprietaryCode
+
+`func (o *Results) HasIsProprietaryCode() bool`
+
+HasIsProprietaryCode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
