@@ -1,13 +1,11 @@
 openapi: 3.0.0
 info:
-  description: Azion Orchestration
-  title: Edgenode API
-  version: 2.0.0
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
+  title: Edge Node API
+  version: 1.0.0
 servers:
-- description: Local Dev
-  url: http://localhost:3001
-- description: Staging
-  url: https://stage-api.azion.net
 - description: Production
   url: https://api.azionapi.net
 security:

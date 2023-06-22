@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **UserAgent** | **string** |  | 
+**Addresses** | **string** |  | 
 
 ## Methods
 
 ### NewCreateDeviceGroupsRequest
 
-`func NewCreateDeviceGroupsRequest(userAgent string, ) *CreateDeviceGroupsRequest`
+`func NewCreateDeviceGroupsRequest(userAgent string, addresses string, ) *CreateDeviceGroupsRequest`
 
 NewCreateDeviceGroupsRequest instantiates a new CreateDeviceGroupsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -69,6 +70,26 @@ and a boolean to check if the value has been set.
 `func (o *CreateDeviceGroupsRequest) SetUserAgent(v string)`
 
 SetUserAgent sets UserAgent field to given value.
+
+
+### GetAddresses
+
+`func (o *CreateDeviceGroupsRequest) GetAddresses() string`
+
+GetAddresses returns the Addresses field if non-nil, zero value otherwise.
+
+### GetAddressesOk
+
+`func (o *CreateDeviceGroupsRequest) GetAddressesOk() (*string, bool)`
+
+GetAddressesOk returns a tuple with the Addresses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddresses
+
+`func (o *CreateDeviceGroupsRequest) SetAddresses(v string)`
+
+SetAddresses sets Addresses field to given value.
 
 
 

@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

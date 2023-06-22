@@ -4,8 +4,8 @@ All URIs are relative to *https://storage-api.azion.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteVersion**](DefaultApi.md#DeleteVersion) | **Delete** /storage/{version_id}/delete | 
-[**StorageVersionIdPost**](DefaultApi.md#StorageVersionIdPost) | **Post** /storage/{version_id} | 
+[**DeleteVersion**](DefaultApi.md#DeleteVersion) | **Delete** /storage/{version_id}/delete | /domains/:version_id
+[**StorageVersionIdPost**](DefaultApi.md#StorageVersionIdPost) | **Post** /storage/{version_id} | /domains/:version_id
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > DeleteVersion(ctx, versionId).Execute()
 
-
+/domains/:version_id
 
 
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -81,7 +81,7 @@ No authorization required
 
 > interface{} StorageVersionIdPost(ctx, versionId).XAzionStaticPath(xAzionStaticPath).Body(body).Execute()
 
-
+/domains/:version_id
 
 
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

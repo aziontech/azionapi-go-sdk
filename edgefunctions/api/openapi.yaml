@@ -1,15 +1,15 @@
 openapi: 3.0.0
 info:
-  description: Azion Edge Function API
-  title: Edge Function
-  version: "3.0"
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
+  title: Edge Function API
+  version: 2.0.0
 servers:
-- url: https://api.azionapi.net
-- url: https://stage-api.azionapi.net
+- description: Production
+  url: https://api.azionapi.net
 security:
 - tokenAuth: []
-tags:
-- name: edge_functions
 paths:
   /edge_functions:
     get:
@@ -53,8 +53,8 @@ paths:
                 total_pages: 1
                 schema_version: 3
                 links:
-                  previous: null
-                  next: null
+                  previous: previous
+                  next: next
                 results:
                 - id: 4184
                   name: Teste
@@ -340,11 +340,6 @@ components:
             $ref: '#/components/schemas/CreateEdgeFunctionRequest'
       required: true
   schemas:
-    ErrorModel:
-      properties:
-        code:
-          type: string
-      type: object
     ErrorResponse:
       properties:
         detail:
@@ -397,6 +392,8 @@ components:
         reference_count:
           format: int64
           type: integer
+        is_proprietary_code:
+          type: boolean
       type: object
     ListEdgeFunctionResponse:
       example:
@@ -463,6 +460,8 @@ components:
         json_args: {}
         active:
           type: boolean
+        is_proprietary_code:
+          type: boolean
       type: object
     BadRequestResponse:
       properties:
@@ -524,6 +523,8 @@ components:
           type: string
         language:
           type: string
+        is_proprietary_code:
+          type: boolean
       type: object
     PatchEdgeFunctionRequest:
       example:
@@ -538,6 +539,8 @@ components:
           type: string
         json_args: {}
         active:
+          type: boolean
+        is_proprietary_code:
           type: boolean
       type: object
   securitySchemes:

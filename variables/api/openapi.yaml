@@ -1,12 +1,15 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Variables
-  version: 0.1.0
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
+  title: Variables API
+  version: 1.0.0
 servers:
-- url: https://stage-variables.azion.com
-tags:
-- description: TDB
-  name: Variables
+- description: Stage
+  url: https://stage-variables.azion.com
+security:
+- tokenAuth: []
 paths:
   /api/variables:
     get:
@@ -23,6 +26,7 @@ paths:
           description: ""
       security:
       - tokenAuth: []
+      summary: /api/variables
       tags:
       - Variables
     post:
@@ -66,6 +70,7 @@ paths:
           description: Internal Server Error
       security:
       - tokenAuth: []
+      summary: /api/variables
       tags:
       - Variables
   /api/variables/{uuid}:
@@ -94,6 +99,7 @@ paths:
           description: Internal Server Error
       security:
       - tokenAuth: []
+      summary: /api/variables/:uuid
       tags:
       - Variables
     get:
@@ -125,6 +131,7 @@ paths:
           description: Internal Server Error
       security:
       - tokenAuth: []
+      summary: /api/variables/:uuid
       tags:
       - Variables
     put:
@@ -181,6 +188,7 @@ paths:
           description: Internal Server Error
       security:
       - tokenAuth: []
+      summary: /api/variables/:uuid
       tags:
       - Variables
 components:

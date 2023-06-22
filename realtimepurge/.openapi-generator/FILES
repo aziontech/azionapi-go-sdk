@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -17,5 +16,4 @@ model_purge_cache_key_request.go
 model_purge_url_request.go
 model_purge_wildcard_request.go
 response.go
-test/api_real_time_purge_test.go
 utils.go

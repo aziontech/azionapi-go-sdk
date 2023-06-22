@@ -1,6 +1,6 @@
 # \DefaultApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

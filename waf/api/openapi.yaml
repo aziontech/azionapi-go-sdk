@@ -1,0 +1,228 @@
+openapi: 3.0.0
+info:
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
+  title: Web Application Firewall API
+  version: 2.0.0
+servers:
+- description: Production
+  url: https://api.azionapi.net
+security:
+- tokenAuth: []
+paths:
+  /waf/{wafId}/domains:
+    get:
+      operationId: getWAFDomains
+      parameters:
+      - description: ID of WAF to return
+        explode: false
+        in: path
+        name: wafId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: searches WAF for name
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFDomains200'
+          description: successful operation
+      summary: Find domains attached to a WAF
+      tags:
+      - WAF
+  /waf/{wafId}/waf_events:
+    get:
+      operationId: getWAFEvents
+      parameters:
+      - description: ID of WAF to return
+        explode: false
+        in: path
+        name: wafId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: Last log hours since now (it must be a integer number ranging
+          between 1 and 72)
+        explode: true
+        in: query
+        name: hour_range
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Id of a network list
+        explode: true
+        in: query
+        name: network_list_id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: "Multiple domain's id (they must be separated by comma like 1233,1234)"
+        explode: true
+        in: query
+        name: domains_ids
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents200'
+          description: successful operation
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents400'
+          description: Bad request
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents404'
+          description: data not found
+        "401":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents401'
+          description: unauthorized operation
+      summary: Find WAF log events
+      tags:
+      - WAF
+components:
+  schemas:
+    WAFDomains200:
+      example:
+        schema_version: 3
+        results:
+        - id: 28852
+          name: Domain Name
+          domain: 28852f.ha.azioncdn.net
+          cnames:
+          - www.example2.io
+          - www.example.com
+        - id: 28852
+          name: Domain Name
+          domain: 28852f.ha.azioncdn.net
+          cnames:
+          - www.example2.io
+          - www.example.com
+      properties:
+        results:
+          items:
+            example:
+              id: 28852
+              name: Domain Name
+              domain: 28852f.ha.azioncdn.net
+              cnames:
+              - www.example2.io
+              - www.example.com
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    WAFEvents400:
+      properties:
+        errors:
+          items:
+            example:
+              message: Bad Request
+              error: bad_request
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    WAFEvents404:
+      properties:
+        errors:
+          items:
+            example:
+              message: Network List not found
+              error: not_found
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    WAFEvents200:
+      example:
+        schema_version: 3
+        results:
+        - hit_count: 9290
+          rule_id: 1005
+          ip_count: 217
+          match_zone: cookies
+          path_count: 798
+          matches_on: value
+          rule_description: "Possible SQL Injection attack: MySQL keyword (|) found\
+            \ in Cookies"
+        - hit_count: 9290
+          rule_id: 1005
+          ip_count: 217
+          match_zone: cookies
+          path_count: 798
+          matches_on: value
+          rule_description: "Possible SQL Injection attack: MySQL keyword (|) found\
+            \ in Cookies"
+      properties:
+        results:
+          items:
+            example:
+              hit_count: 9290
+              rule_id: 1005
+              ip_count: 217
+              match_zone: cookies
+              path_count: 798
+              matches_on: value
+              rule_description: "Possible SQL Injection attack: MySQL keyword (|)\
+                \ found in Cookies"
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    WAFEvents401:
+      properties:
+        detail:
+          example: Authentication credentials were not provided.
+          type: string
+      type: object
+  securitySchemes:
+    tokenAuth:
+      description: |
+        You must inform a token to auth.
+        Usage format: `Token <TOKEN>`
+      in: header
+      name: Authorization
+      type: apiKey

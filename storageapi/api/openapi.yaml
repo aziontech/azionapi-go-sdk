@@ -1,12 +1,13 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
   title: Storage API
-  version: v1
+  version: 1.0.0
 servers:
-- description: prod
+- description: Production
   url: https://storage-api.azion.com
-- description: stage
-  url: https://stage-storage-api.azion.com
 security:
 - tokenAuth: []
 paths:
@@ -42,6 +43,7 @@ paths:
             application/json:
               schema: {}
           description: ""
+      summary: /domains/:version_id
   /storage/{version_id}/delete:
     delete:
       description: Delete a version. A version is just um path prefix/sub-namespace
@@ -59,6 +61,7 @@ paths:
       responses:
         "204":
           description: The resource was deleted successfully.
+      summary: /domains/:version_id
 components:
   responses:
     "401":
@@ -72,9 +75,10 @@ components:
       description: Token/Personal Token has been expired or invalid
   schemas: {}
   securitySchemes:
-    authToken:
-      description: "Prefix the value with \"Token \". The final header is: Authorization:\
-        \ Token my-token-value"
+    tokenAuth:
+      description: |
+        You must inform a token to auth.
+        Usage format: `Token <TOKEN>`
       in: header
       name: Authorization
       type: apiKey
