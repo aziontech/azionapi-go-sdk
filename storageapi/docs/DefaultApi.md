@@ -4,8 +4,8 @@ All URIs are relative to *https://storage-api.azion.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteVersion**](DefaultApi.md#DeleteVersion) | **Delete** /storage/{version_id}/delete | /domains/:version_id
-[**StorageVersionIdPost**](DefaultApi.md#StorageVersionIdPost) | **Post** /storage/{version_id} | /domains/:version_id
+[**DeleteVersion**](DefaultApi.md#DeleteVersion) | **Delete** /storage/{version_id}/delete | /storage/:version_id/delete
+[**StorageVersionIdPost**](DefaultApi.md#StorageVersionIdPost) | **Post** /storage/{version_id} | /storage/:version_id
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > DeleteVersion(ctx, versionId).Execute()
 
-/domains/:version_id
+/storage/:version_id/delete
 
 
 
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 
 ## StorageVersionIdPost
 
-> interface{} StorageVersionIdPost(ctx, versionId).XAzionStaticPath(xAzionStaticPath).Body(body).Execute()
+> interface{} StorageVersionIdPost(ctx, versionId).XAzionStaticPath(xAzionStaticPath).ContentType(contentType).Body(body).Execute()
 
-/domains/:version_id
+/storage/:version_id
 
 
 
@@ -100,11 +100,12 @@ import (
 func main() {
     xAzionStaticPath := "xAzionStaticPath_example" // string | Required in order to get the path and file name. i.e.: assets/css/main.css
     versionId := "versionId_example" // string | 
+    contentType := "contentType_example" // string | The content type of the file (Example: text/plain). (optional) (default to "b2/x-auto")
     body := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.StorageVersionIdPost(context.Background(), versionId).XAzionStaticPath(xAzionStaticPath).Body(body).Execute()
+    resp, r, err := apiClient.DefaultApi.StorageVersionIdPost(context.Background(), versionId).XAzionStaticPath(xAzionStaticPath).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.StorageVersionIdPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,6 +132,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAzionStaticPath** | **string** | Required in order to get the path and file name. i.e.: assets/css/main.css | 
 
+ **contentType** | **string** | The content type of the file (Example: text/plain). | [default to &quot;b2/x-auto&quot;]
  **body** | ***os.File** |  | 
 
 ### Return type
@@ -143,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: b2/x-auto
+- **Content-Type**: application/octet-stream
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

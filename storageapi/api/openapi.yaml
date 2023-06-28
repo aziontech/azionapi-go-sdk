@@ -15,6 +15,15 @@ paths:
     post:
       description: Upload file and transfer to remote storage
       parameters:
+      - description: "The content type of the file (Example: text/plain)."
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          default: b2/x-auto
+          type: string
+        style: simple
       - description: "Required in order to get the path and file name. i.e.: assets/css/main.css"
         explode: false
         in: header
@@ -33,7 +42,7 @@ paths:
         style: simple
       requestBody:
         content:
-          b2/x-auto:
+          application/octet-stream:
             schema:
               format: binary
               type: string
@@ -43,7 +52,7 @@ paths:
             application/json:
               schema: {}
           description: ""
-      summary: /domains/:version_id
+      summary: /storage/:version_id
   /storage/{version_id}/delete:
     delete:
       description: Delete a version. A version is just um path prefix/sub-namespace
@@ -61,7 +70,7 @@ paths:
       responses:
         "204":
           description: The resource was deleted successfully.
-      summary: /domains/:version_id
+      summary: /storage/:version_id/delete
 components:
   responses:
     "401":

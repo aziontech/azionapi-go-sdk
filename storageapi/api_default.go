@@ -35,7 +35,7 @@ func (r ApiDeleteVersionRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteVersion /domains/:version_id
+DeleteVersion /storage/:version_id/delete
 
 Delete a version. A version is just um path prefix/sub-namespace for a set of files.
 
@@ -135,12 +135,19 @@ type ApiStorageVersionIdPostRequest struct {
 	ApiService *DefaultApiService
 	xAzionStaticPath *string
 	versionId string
+	contentType *string
 	body *os.File
 }
 
 // Required in order to get the path and file name. i.e.: assets/css/main.css
 func (r ApiStorageVersionIdPostRequest) XAzionStaticPath(xAzionStaticPath string) ApiStorageVersionIdPostRequest {
 	r.xAzionStaticPath = &xAzionStaticPath
+	return r
+}
+
+// The content type of the file (Example: text/plain).
+func (r ApiStorageVersionIdPostRequest) ContentType(contentType string) ApiStorageVersionIdPostRequest {
+	r.contentType = &contentType
 	return r
 }
 
@@ -154,7 +161,7 @@ func (r ApiStorageVersionIdPostRequest) Execute() (interface{}, *http.Response, 
 }
 
 /*
-StorageVersionIdPost /domains/:version_id
+StorageVersionIdPost /storage/:version_id
 
 Upload file and transfer to remote storage
 
@@ -196,7 +203,7 @@ func (a *DefaultApiService) StorageVersionIdPostExecute(r ApiStorageVersionIdPos
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"b2/x-auto"}
+	localVarHTTPContentTypes := []string{"application/octet-stream"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -211,6 +218,9 @@ func (a *DefaultApiService) StorageVersionIdPostExecute(r ApiStorageVersionIdPos
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.contentType != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Azion-Static-Path", r.xAzionStaticPath, "")
 	// body params
