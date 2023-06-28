@@ -64,7 +64,7 @@ func (r ApiEdgeApplicationsGetRequest) Accept(accept string) ApiEdgeApplications
 	return r
 }
 
-func (r ApiEdgeApplicationsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiEdgeApplicationsGetRequest) Execute() (*GetApplicationsResponse, *http.Response, error) {
 	return r.ApiService.EdgeApplicationsGetExecute(r)
 }
 
@@ -82,13 +82,13 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsGet(ctx context
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsGetExecute(r ApiEdgeApplicationsGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return GetApplicationsResponse
+func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsGetExecute(r ApiEdgeApplicationsGetRequest) (*GetApplicationsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *GetApplicationsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsApiService.EdgeApplicationsGet")

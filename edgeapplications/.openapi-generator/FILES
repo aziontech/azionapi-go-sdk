@@ -55,6 +55,7 @@ docs/EdgeApplicationsMainSettingsApi.md
 docs/EdgeApplicationsOriginsApi.md
 docs/EdgeApplicationsRulesEngineApi.md
 docs/GetApplicationResponse.md
+docs/GetApplicationsResponse.md
 docs/OriginsIdResponse.md
 docs/OriginsResponse.md
 docs/OriginsResponseLinks.md
@@ -114,6 +115,7 @@ model_device_groups_response.go
 model_device_groups_response_links.go
 model_device_groups_result_response.go
 model_get_application_response.go
+model_get_applications_response.go
 model_origins_id_response.go
 model_origins_response.go
 model_origins_response_links.go
