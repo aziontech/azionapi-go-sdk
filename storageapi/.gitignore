@@ -24,7 +24,3 @@ _testmain.go
 *.prof
 go.mod
 go.sum
-go.mod
-go.sum
-go.mod
-go.sum
