@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## EdgeApplicationsGet
 
-> map[string]interface{} EdgeApplicationsGet(ctx).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+> GetApplicationsResponse EdgeApplicationsGet(ctx).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
 
 /edge_applications
 
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsApi.EdgeApplicationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EdgeApplicationsGet`: map[string]interface{}
+    // response from `EdgeApplicationsGet`: GetApplicationsResponse
     fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsApi.EdgeApplicationsGet`: %v\n", resp)
 }
 ```
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**GetApplicationsResponse**](GetApplicationsResponse.md)
 
 ### Authorization
 
