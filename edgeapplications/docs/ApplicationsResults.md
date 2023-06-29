@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**DebugRules** | Pointer to **bool** |  | [optional] 
-**LastEditor** | Pointer to **string** |  | [optional] 
-**LastModified** | Pointer to **string** |  | [optional] 
-**Active** | Pointer to **bool** |  | [optional] 
-**Origins** | Pointer to [**[]ApplicationOrigins**](ApplicationOrigins.md) |  | [optional] 
+**Id** | **int64** |  | 
+**Name** | **string** |  | 
+**DebugRules** | **bool** |  | 
+**LastEditor** | **string** |  | 
+**LastModified** | **string** |  | 
+**Active** | **bool** |  | 
+**Origins** | [**[]ApplicationOrigins**](ApplicationOrigins.md) |  | 
 
 ## Methods
 
 ### NewApplicationsResults
 
-`func NewApplicationsResults() *ApplicationsResults`
+`func NewApplicationsResults(id int64, name string, debugRules bool, lastEditor string, lastModified string, active bool, origins []ApplicationOrigins, ) *ApplicationsResults`
 
 NewApplicationsResults instantiates a new ApplicationsResults object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +50,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ApplicationsResults) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -75,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ApplicationsResults) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDebugRules
 
@@ -100,11 +90,6 @@ and a boolean to check if the value has been set.
 
 SetDebugRules sets DebugRules field to given value.
 
-### HasDebugRules
-
-`func (o *ApplicationsResults) HasDebugRules() bool`
-
-HasDebugRules returns a boolean if a field has been set.
 
 ### GetLastEditor
 
@@ -125,11 +110,6 @@ and a boolean to check if the value has been set.
 
 SetLastEditor sets LastEditor field to given value.
 
-### HasLastEditor
-
-`func (o *ApplicationsResults) HasLastEditor() bool`
-
-HasLastEditor returns a boolean if a field has been set.
 
 ### GetLastModified
 
@@ -150,11 +130,6 @@ and a boolean to check if the value has been set.
 
 SetLastModified sets LastModified field to given value.
 
-### HasLastModified
-
-`func (o *ApplicationsResults) HasLastModified() bool`
-
-HasLastModified returns a boolean if a field has been set.
 
 ### GetActive
 
@@ -175,11 +150,6 @@ and a boolean to check if the value has been set.
 
 SetActive sets Active field to given value.
 
-### HasActive
-
-`func (o *ApplicationsResults) HasActive() bool`
-
-HasActive returns a boolean if a field has been set.
 
 ### GetOrigins
 
@@ -200,11 +170,6 @@ and a boolean to check if the value has been set.
 
 SetOrigins sets Origins field to given value.
 
-### HasOrigins
-
-`func (o *ApplicationsResults) HasOrigins() bool`
-
-HasOrigins returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
