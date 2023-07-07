@@ -28,6 +28,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListNetworkListsResponse'
           description: A list of Network Lists
+        "404":
+          description: Not Found
       summary: List all user Network Lists
     post:
       requestBody:
@@ -44,7 +46,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
+            text/html:
+              schema:
+                type: string
           description: Bad Request
+        "404":
+          description: Not Found
         "500":
           content:
             application/json:
@@ -69,6 +76,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/NetworkListsResponse'
           description: A Network Lists object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+            text/html:
+              schema:
+                type: string
+          description: Bad Request
+        "404":
+          description: Not Found
       summary: Retrieve a Network Lists set by uuid
     put:
       parameters:
@@ -97,7 +115,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
+            text/html:
+              schema:
+                type: string
           description: Bad Request
+        "404":
+          description: Not Found
         "500":
           content:
             application/json:
@@ -118,8 +141,10 @@ components:
         previous: previous
       properties:
         previous:
+          nullable: true
           type: string
         next:
+          nullable: true
           type: string
       type: object
     NetworkLists:
