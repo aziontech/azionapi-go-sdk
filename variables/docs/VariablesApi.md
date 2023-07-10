@@ -1,14 +1,14 @@
 # \VariablesApi
 
-All URIs are relative to *https://stage-variables.azion.com*
+All URIs are relative to *https://stage-api.azion.net/variables*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiVariablesCreate**](VariablesApi.md#ApiVariablesCreate) | **Post** /api/variables | /api/variables
-[**ApiVariablesDestroy**](VariablesApi.md#ApiVariablesDestroy) | **Delete** /api/variables/{uuid} | /api/variables/:uuid
-[**ApiVariablesList**](VariablesApi.md#ApiVariablesList) | **Get** /api/variables | /api/variables
-[**ApiVariablesRetrieve**](VariablesApi.md#ApiVariablesRetrieve) | **Get** /api/variables/{uuid} | /api/variables/:uuid
-[**ApiVariablesUpdate**](VariablesApi.md#ApiVariablesUpdate) | **Put** /api/variables/{uuid} | /api/variables/:uuid
+[**ApiVariablesCreate**](VariablesApi.md#ApiVariablesCreate) | **Post** /variables | /variables
+[**ApiVariablesDestroy**](VariablesApi.md#ApiVariablesDestroy) | **Delete** /variables/{uuid} | /variables/:uuid
+[**ApiVariablesList**](VariablesApi.md#ApiVariablesList) | **Get** /variables | /variables
+[**ApiVariablesRetrieve**](VariablesApi.md#ApiVariablesRetrieve) | **Get** /variables/{uuid} | /variables/:uuid
+[**ApiVariablesUpdate**](VariablesApi.md#ApiVariablesUpdate) | **Put** /variables/{uuid} | /variables/:uuid
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > VariableGet ApiVariablesCreate(ctx).VariableCreate(variableCreate).Execute()
 
-/api/variables
+/variables
 
 
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > ApiVariablesDestroy(ctx, uuid).Execute()
 
-/api/variables/:uuid
+/variables/:uuid
 
 
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 > []Variable ApiVariablesList(ctx).Execute()
 
-/api/variables
+/variables
 
 
 
@@ -211,7 +211,7 @@ Other parameters are passed through a pointer to a apiApiVariablesListRequest st
 
 > Variable ApiVariablesRetrieve(ctx, uuid).Execute()
 
-/api/variables/:uuid
+/variables/:uuid
 
 
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 > VariableGet ApiVariablesUpdate(ctx, uuid).VariableCreate(variableCreate).Execute()
 
-/api/variables/:uuid
+/variables/:uuid
 
 
 

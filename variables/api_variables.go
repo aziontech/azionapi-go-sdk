@@ -39,7 +39,7 @@ func (r ApiApiVariablesCreateRequest) Execute() (*VariableGet, *http.Response, e
 }
 
 /*
-ApiVariablesCreate /api/variables
+ApiVariablesCreate /variables
 
 Create a new Variable. <br><ul><li>If the attribute "secret" is informed with value "true" in request payload the Variable value will be secret and no longer viewable after creation.</li><li>If the attribute "secret" is not informed the Variable value will be considered as not secret by default.</li></ul>
 
@@ -68,7 +68,7 @@ func (a *VariablesApiService) ApiVariablesCreateExecute(r ApiApiVariablesCreateR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/variables"
+	localVarPath := localBasePath + "/variables"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -158,7 +158,7 @@ func (r ApiApiVariablesDestroyRequest) Execute() (*http.Response, error) {
 }
 
 /*
-ApiVariablesDestroy /api/variables/:uuid
+ApiVariablesDestroy /variables/:uuid
 
 Delete a Variable by it's UUID
 
@@ -187,7 +187,7 @@ func (a *VariablesApiService) ApiVariablesDestroyExecute(r ApiApiVariablesDestro
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/variables/{uuid}"
+	localVarPath := localBasePath + "/variables/{uuid}"
 	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -263,7 +263,7 @@ func (r ApiApiVariablesListRequest) Execute() ([]Variable, *http.Response, error
 }
 
 /*
-ApiVariablesList /api/variables
+ApiVariablesList /variables
 
 List all user's Variables.
 
@@ -292,7 +292,7 @@ func (a *VariablesApiService) ApiVariablesListExecute(r ApiApiVariablesListReque
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/variables"
+	localVarPath := localBasePath + "/variables"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -377,7 +377,7 @@ func (r ApiApiVariablesRetrieveRequest) Execute() (*Variable, *http.Response, er
 }
 
 /*
-ApiVariablesRetrieve /api/variables/:uuid
+ApiVariablesRetrieve /variables/:uuid
 
 Retrieve all data for a Variable by it's UUID
 
@@ -408,7 +408,7 @@ func (a *VariablesApiService) ApiVariablesRetrieveExecute(r ApiApiVariablesRetri
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/variables/{uuid}"
+	localVarPath := localBasePath + "/variables/{uuid}"
 	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -500,7 +500,7 @@ func (r ApiApiVariablesUpdateRequest) Execute() (*VariableGet, *http.Response, e
 }
 
 /*
-ApiVariablesUpdate /api/variables/:uuid
+ApiVariablesUpdate /variables/:uuid
 
 Update variable attributes by it's UUID. Keep the Variable UUID but overwrite all editable attributes.
 
@@ -531,7 +531,7 @@ func (a *VariablesApiService) ApiVariablesUpdateExecute(r ApiApiVariablesUpdateR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/variables/{uuid}"
+	localVarPath := localBasePath + "/variables/{uuid}"
 	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)

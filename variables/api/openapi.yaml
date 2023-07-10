@@ -7,11 +7,11 @@ info:
   version: 1.0.0
 servers:
 - description: Stage
-  url: https://stage-variables.azion.com
+  url: https://stage-api.azion.net/variables
 security:
 - tokenAuth: []
 paths:
-  /api/variables:
+  /variables:
     get:
       description: List all user's Variables.
       operationId: api_variables_list
@@ -24,9 +24,11 @@ paths:
                   $ref: '#/components/schemas/Variable'
                 type: array
           description: ""
+        "404":
+          description: Not Found
       security:
       - tokenAuth: []
-      summary: /api/variables
+      summary: /variables
       tags:
       - Variables
     post:
@@ -70,10 +72,10 @@ paths:
           description: Internal Server Error
       security:
       - tokenAuth: []
-      summary: /api/variables
+      summary: /variables
       tags:
       - Variables
-  /api/variables/{uuid}:
+  /variables/{uuid}:
     delete:
       description: Delete a Variable by it's UUID
       operationId: api_variables_destroy
@@ -99,7 +101,7 @@ paths:
           description: Internal Server Error
       security:
       - tokenAuth: []
-      summary: /api/variables/:uuid
+      summary: /variables/:uuid
       tags:
       - Variables
     get:
@@ -131,7 +133,7 @@ paths:
           description: Internal Server Error
       security:
       - tokenAuth: []
-      summary: /api/variables/:uuid
+      summary: /variables/:uuid
       tags:
       - Variables
     put:
@@ -188,7 +190,7 @@ paths:
           description: Internal Server Error
       security:
       - tokenAuth: []
-      summary: /api/variables/:uuid
+      summary: /variables/:uuid
       tags:
       - Variables
 components:
