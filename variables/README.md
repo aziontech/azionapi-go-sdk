@@ -73,15 +73,15 @@ ctx = context.WithValue(context.Background(), variables.ContextOperationServerVa
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://stage-variables.azion.com*
+All URIs are relative to *https://stage-api.azion.net/variables*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*VariablesApi* | [**ApiVariablesCreate**](docs/VariablesApi.md#apivariablescreate) | **Post** /api/variables | /api/variables
-*VariablesApi* | [**ApiVariablesDestroy**](docs/VariablesApi.md#apivariablesdestroy) | **Delete** /api/variables/{uuid} | /api/variables/:uuid
-*VariablesApi* | [**ApiVariablesList**](docs/VariablesApi.md#apivariableslist) | **Get** /api/variables | /api/variables
-*VariablesApi* | [**ApiVariablesRetrieve**](docs/VariablesApi.md#apivariablesretrieve) | **Get** /api/variables/{uuid} | /api/variables/:uuid
-*VariablesApi* | [**ApiVariablesUpdate**](docs/VariablesApi.md#apivariablesupdate) | **Put** /api/variables/{uuid} | /api/variables/:uuid
+*VariablesApi* | [**ApiVariablesCreate**](docs/VariablesApi.md#apivariablescreate) | **Post** /variables | /variables
+*VariablesApi* | [**ApiVariablesDestroy**](docs/VariablesApi.md#apivariablesdestroy) | **Delete** /variables/{uuid} | /variables/:uuid
+*VariablesApi* | [**ApiVariablesList**](docs/VariablesApi.md#apivariableslist) | **Get** /variables | /variables
+*VariablesApi* | [**ApiVariablesRetrieve**](docs/VariablesApi.md#apivariablesretrieve) | **Get** /variables/{uuid} | /variables/:uuid
+*VariablesApi* | [**ApiVariablesUpdate**](docs/VariablesApi.md#apivariablesupdate) | **Put** /variables/{uuid} | /variables/:uuid
 
 
 ## Documentation For Models
