@@ -65,6 +65,8 @@ paths:
           description: Bad Request
         "403":
           description: Forbidden
+        "404":
+          description: Not Found
         "422":
           description: Unprocessable Entity
         "500":
@@ -110,6 +112,8 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+        "409":
+          description: Conflict
         "422":
           description: Unprocessable Entity
         "500":
@@ -295,6 +299,8 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+        "405":
+          description: Method Not Allowed
         "422":
           description: Unprocessable Entity
         "500":
@@ -415,8 +421,10 @@ components:
         previous: previous
       properties:
         previous:
+          nullable: true
           type: string
         next:
+          nullable: true
           type: string
       required:
       - next
@@ -435,25 +443,31 @@ components:
         - edge_application_id: 5
           domain_name: domain_name
           environment: environment
+          mtls_trusted_ca_certificate_id: mtls_trusted_ca_certificate_id
           is_active: true
           digital_certificate_id: 2
           cname_access_only: true
           name: name
+          is_mtls_enabled: true
           id: 5
           cnames:
           - cnames
           - cnames
+          mtls_verification: mtls_verification
         - edge_application_id: 5
           domain_name: domain_name
           environment: environment
+          mtls_trusted_ca_certificate_id: mtls_trusted_ca_certificate_id
           is_active: true
           digital_certificate_id: 2
           cname_access_only: true
           name: name
+          is_mtls_enabled: true
           id: 5
           cnames:
           - cnames
           - cnames
+          mtls_verification: mtls_verification
       properties:
         count:
           format: int64
@@ -485,14 +499,17 @@ components:
           edge_application_id: 5
           domain_name: domain_name
           environment: environment
+          mtls_trusted_ca_certificate_id: mtls_trusted_ca_certificate_id
           is_active: true
           digital_certificate_id: 2
           cname_access_only: true
           name: name
+          is_mtls_enabled: true
           id: 5
           cnames:
           - cnames
           - cnames
+          mtls_verification: mtls_verification
       properties:
         schema_version:
           format: int64
@@ -509,14 +526,17 @@ components:
         edge_application_id: 5
         domain_name: domain_name
         environment: environment
+        mtls_trusted_ca_certificate_id: mtls_trusted_ca_certificate_id
         is_active: true
         digital_certificate_id: 2
         cname_access_only: true
         name: name
+        is_mtls_enabled: true
         id: 5
         cnames:
         - cnames
         - cnames
+        mtls_verification: mtls_verification
       properties:
         id:
           format: int64
@@ -542,13 +562,26 @@ components:
           type: string
         environment:
           type: string
+        is_mtls_enabled:
+          type: boolean
+        mtls_trusted_ca_certificate_id:
+          nullable: true
+          type: string
+        mtls_verification:
+          nullable: true
+          type: string
       required:
-      - content_type
+      - cname_access_only
+      - cnames
+      - digital_certificate_id
+      - domain_name
+      - edge_application_id
       - id
-      - last_editor
+      - is_active
+      - is_mtls_enabled
+      - mtls_trusted_ca_certificate_id
+      - mtls_verification
       - name
-      - type
-      - updated_at
       type: object
   securitySchemes:
     tokenAuth:

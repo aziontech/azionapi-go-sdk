@@ -6,19 +6,22 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** |  | 
 **Name** | **string** |  | 
-**Cnames** | Pointer to **[]string** |  | [optional] 
-**CnameAccessOnly** | Pointer to **bool** |  | [optional] 
-**IsActive** | Pointer to **bool** |  | [optional] 
-**EdgeApplicationId** | Pointer to **int64** |  | [optional] 
-**DigitalCertificateId** | Pointer to **NullableInt64** |  | [optional] 
-**DomainName** | Pointer to **string** |  | [optional] 
+**Cnames** | **[]string** |  | 
+**CnameAccessOnly** | **bool** |  | 
+**IsActive** | **bool** |  | 
+**EdgeApplicationId** | **int64** |  | 
+**DigitalCertificateId** | **NullableInt64** |  | 
+**DomainName** | **string** |  | 
 **Environment** | Pointer to **string** |  | [optional] 
+**IsMtlsEnabled** | **bool** |  | 
+**MtlsTrustedCaCertificateId** | **NullableString** |  | 
+**MtlsVerification** | **NullableString** |  | 
 
 ## Methods
 
 ### NewDomainResults
 
-`func NewDomainResults(id int64, name string, ) *DomainResults`
+`func NewDomainResults(id int64, name string, cnames []string, cnameAccessOnly bool, isActive bool, edgeApplicationId int64, digitalCertificateId NullableInt64, domainName string, isMtlsEnabled bool, mtlsTrustedCaCertificateId NullableString, mtlsVerification NullableString, ) *DomainResults`
 
 NewDomainResults instantiates a new DomainResults object
 This constructor will assign default values to properties that have it defined,
@@ -92,11 +95,6 @@ and a boolean to check if the value has been set.
 
 SetCnames sets Cnames field to given value.
 
-### HasCnames
-
-`func (o *DomainResults) HasCnames() bool`
-
-HasCnames returns a boolean if a field has been set.
 
 ### GetCnameAccessOnly
 
@@ -117,11 +115,6 @@ and a boolean to check if the value has been set.
 
 SetCnameAccessOnly sets CnameAccessOnly field to given value.
 
-### HasCnameAccessOnly
-
-`func (o *DomainResults) HasCnameAccessOnly() bool`
-
-HasCnameAccessOnly returns a boolean if a field has been set.
 
 ### GetIsActive
 
@@ -142,11 +135,6 @@ and a boolean to check if the value has been set.
 
 SetIsActive sets IsActive field to given value.
 
-### HasIsActive
-
-`func (o *DomainResults) HasIsActive() bool`
-
-HasIsActive returns a boolean if a field has been set.
 
 ### GetEdgeApplicationId
 
@@ -167,11 +155,6 @@ and a boolean to check if the value has been set.
 
 SetEdgeApplicationId sets EdgeApplicationId field to given value.
 
-### HasEdgeApplicationId
-
-`func (o *DomainResults) HasEdgeApplicationId() bool`
-
-HasEdgeApplicationId returns a boolean if a field has been set.
 
 ### GetDigitalCertificateId
 
@@ -192,11 +175,6 @@ and a boolean to check if the value has been set.
 
 SetDigitalCertificateId sets DigitalCertificateId field to given value.
 
-### HasDigitalCertificateId
-
-`func (o *DomainResults) HasDigitalCertificateId() bool`
-
-HasDigitalCertificateId returns a boolean if a field has been set.
 
 ### SetDigitalCertificateIdNil
 
@@ -227,11 +205,6 @@ and a boolean to check if the value has been set.
 
 SetDomainName sets DomainName field to given value.
 
-### HasDomainName
-
-`func (o *DomainResults) HasDomainName() bool`
-
-HasDomainName returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -258,6 +231,86 @@ SetEnvironment sets Environment field to given value.
 
 HasEnvironment returns a boolean if a field has been set.
 
+### GetIsMtlsEnabled
+
+`func (o *DomainResults) GetIsMtlsEnabled() bool`
+
+GetIsMtlsEnabled returns the IsMtlsEnabled field if non-nil, zero value otherwise.
+
+### GetIsMtlsEnabledOk
+
+`func (o *DomainResults) GetIsMtlsEnabledOk() (*bool, bool)`
+
+GetIsMtlsEnabledOk returns a tuple with the IsMtlsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsMtlsEnabled
+
+`func (o *DomainResults) SetIsMtlsEnabled(v bool)`
+
+SetIsMtlsEnabled sets IsMtlsEnabled field to given value.
+
+
+### GetMtlsTrustedCaCertificateId
+
+`func (o *DomainResults) GetMtlsTrustedCaCertificateId() string`
+
+GetMtlsTrustedCaCertificateId returns the MtlsTrustedCaCertificateId field if non-nil, zero value otherwise.
+
+### GetMtlsTrustedCaCertificateIdOk
+
+`func (o *DomainResults) GetMtlsTrustedCaCertificateIdOk() (*string, bool)`
+
+GetMtlsTrustedCaCertificateIdOk returns a tuple with the MtlsTrustedCaCertificateId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMtlsTrustedCaCertificateId
+
+`func (o *DomainResults) SetMtlsTrustedCaCertificateId(v string)`
+
+SetMtlsTrustedCaCertificateId sets MtlsTrustedCaCertificateId field to given value.
+
+
+### SetMtlsTrustedCaCertificateIdNil
+
+`func (o *DomainResults) SetMtlsTrustedCaCertificateIdNil(b bool)`
+
+ SetMtlsTrustedCaCertificateIdNil sets the value for MtlsTrustedCaCertificateId to be an explicit nil
+
+### UnsetMtlsTrustedCaCertificateId
+`func (o *DomainResults) UnsetMtlsTrustedCaCertificateId()`
+
+UnsetMtlsTrustedCaCertificateId ensures that no value is present for MtlsTrustedCaCertificateId, not even an explicit nil
+### GetMtlsVerification
+
+`func (o *DomainResults) GetMtlsVerification() string`
+
+GetMtlsVerification returns the MtlsVerification field if non-nil, zero value otherwise.
+
+### GetMtlsVerificationOk
+
+`func (o *DomainResults) GetMtlsVerificationOk() (*string, bool)`
+
+GetMtlsVerificationOk returns a tuple with the MtlsVerification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMtlsVerification
+
+`func (o *DomainResults) SetMtlsVerification(v string)`
+
+SetMtlsVerification sets MtlsVerification field to given value.
+
+
+### SetMtlsVerificationNil
+
+`func (o *DomainResults) SetMtlsVerificationNil(b bool)`
+
+ SetMtlsVerificationNil sets the value for MtlsVerification to be an explicit nil
+
+### UnsetMtlsVerification
+`func (o *DomainResults) UnsetMtlsVerification()`
+
+UnsetMtlsVerification ensures that no value is present for MtlsVerification, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

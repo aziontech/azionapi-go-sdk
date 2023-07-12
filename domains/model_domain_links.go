@@ -19,15 +19,15 @@ var _ MappedNullable = &DomainLinks{}
 
 // DomainLinks struct for DomainLinks
 type DomainLinks struct {
-	Previous string `json:"previous"`
-	Next string `json:"next"`
+	Previous NullableString `json:"previous"`
+	Next NullableString `json:"next"`
 }
 
 // NewDomainLinks instantiates a new DomainLinks object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainLinks(previous string, next string) *DomainLinks {
+func NewDomainLinks(previous NullableString, next NullableString) *DomainLinks {
 	this := DomainLinks{}
 	this.Previous = previous
 	this.Next = next
@@ -43,51 +43,55 @@ func NewDomainLinksWithDefaults() *DomainLinks {
 }
 
 // GetPrevious returns the Previous field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DomainLinks) GetPrevious() string {
-	if o == nil {
+	if o == nil || o.Previous.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Previous
+	return *o.Previous.Get()
 }
 
 // GetPreviousOk returns a tuple with the Previous field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DomainLinks) GetPreviousOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Previous, true
+	return o.Previous.Get(), o.Previous.IsSet()
 }
 
 // SetPrevious sets field value
 func (o *DomainLinks) SetPrevious(v string) {
-	o.Previous = v
+	o.Previous.Set(&v)
 }
 
 // GetNext returns the Next field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DomainLinks) GetNext() string {
-	if o == nil {
+	if o == nil || o.Next.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Next
+	return *o.Next.Get()
 }
 
 // GetNextOk returns a tuple with the Next field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DomainLinks) GetNextOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Next, true
+	return o.Next.Get(), o.Next.IsSet()
 }
 
 // SetNext sets field value
 func (o *DomainLinks) SetNext(v string) {
-	o.Next = v
+	o.Next.Set(&v)
 }
 
 func (o DomainLinks) MarshalJSON() ([]byte, error) {
@@ -100,8 +104,8 @@ func (o DomainLinks) MarshalJSON() ([]byte, error) {
 
 func (o DomainLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["previous"] = o.Previous
-	toSerialize["next"] = o.Next
+	toSerialize["previous"] = o.Previous.Get()
+	toSerialize["next"] = o.Next.Get()
 	return toSerialize, nil
 }
 
