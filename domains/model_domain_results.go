@@ -21,23 +21,35 @@ var _ MappedNullable = &DomainResults{}
 type DomainResults struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
-	Cnames []string `json:"cnames,omitempty"`
-	CnameAccessOnly *bool `json:"cname_access_only,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
-	EdgeApplicationId *int64 `json:"edge_application_id,omitempty"`
-	DigitalCertificateId NullableInt64 `json:"digital_certificate_id,omitempty"`
-	DomainName *string `json:"domain_name,omitempty"`
+	Cnames []string `json:"cnames"`
+	CnameAccessOnly bool `json:"cname_access_only"`
+	IsActive bool `json:"is_active"`
+	EdgeApplicationId int64 `json:"edge_application_id"`
+	DigitalCertificateId NullableInt64 `json:"digital_certificate_id"`
+	DomainName string `json:"domain_name"`
 	Environment *string `json:"environment,omitempty"`
+	IsMtlsEnabled bool `json:"is_mtls_enabled"`
+	MtlsTrustedCaCertificateId NullableString `json:"mtls_trusted_ca_certificate_id"`
+	MtlsVerification NullableString `json:"mtls_verification"`
 }
 
 // NewDomainResults instantiates a new DomainResults object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainResults(id int64, name string) *DomainResults {
+func NewDomainResults(id int64, name string, cnames []string, cnameAccessOnly bool, isActive bool, edgeApplicationId int64, digitalCertificateId NullableInt64, domainName string, isMtlsEnabled bool, mtlsTrustedCaCertificateId NullableString, mtlsVerification NullableString) *DomainResults {
 	this := DomainResults{}
 	this.Id = id
 	this.Name = name
+	this.Cnames = cnames
+	this.CnameAccessOnly = cnameAccessOnly
+	this.IsActive = isActive
+	this.EdgeApplicationId = edgeApplicationId
+	this.DigitalCertificateId = digitalCertificateId
+	this.DomainName = domainName
+	this.IsMtlsEnabled = isMtlsEnabled
+	this.MtlsTrustedCaCertificateId = mtlsTrustedCaCertificateId
+	this.MtlsVerification = mtlsVerification
 	return &this
 }
 
@@ -97,144 +109,114 @@ func (o *DomainResults) SetName(v string) {
 	o.Name = v
 }
 
-// GetCnames returns the Cnames field value if set, zero value otherwise.
+// GetCnames returns the Cnames field value
 func (o *DomainResults) GetCnames() []string {
-	if o == nil || IsNil(o.Cnames) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Cnames
 }
 
-// GetCnamesOk returns a tuple with the Cnames field value if set, nil otherwise
+// GetCnamesOk returns a tuple with the Cnames field value
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetCnamesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Cnames) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Cnames, true
 }
 
-// HasCnames returns a boolean if a field has been set.
-func (o *DomainResults) HasCnames() bool {
-	if o != nil && !IsNil(o.Cnames) {
-		return true
-	}
-
-	return false
-}
-
-// SetCnames gets a reference to the given []string and assigns it to the Cnames field.
+// SetCnames sets field value
 func (o *DomainResults) SetCnames(v []string) {
 	o.Cnames = v
 }
 
-// GetCnameAccessOnly returns the CnameAccessOnly field value if set, zero value otherwise.
+// GetCnameAccessOnly returns the CnameAccessOnly field value
 func (o *DomainResults) GetCnameAccessOnly() bool {
-	if o == nil || IsNil(o.CnameAccessOnly) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.CnameAccessOnly
+
+	return o.CnameAccessOnly
 }
 
-// GetCnameAccessOnlyOk returns a tuple with the CnameAccessOnly field value if set, nil otherwise
+// GetCnameAccessOnlyOk returns a tuple with the CnameAccessOnly field value
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetCnameAccessOnlyOk() (*bool, bool) {
-	if o == nil || IsNil(o.CnameAccessOnly) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CnameAccessOnly, true
+	return &o.CnameAccessOnly, true
 }
 
-// HasCnameAccessOnly returns a boolean if a field has been set.
-func (o *DomainResults) HasCnameAccessOnly() bool {
-	if o != nil && !IsNil(o.CnameAccessOnly) {
-		return true
-	}
-
-	return false
-}
-
-// SetCnameAccessOnly gets a reference to the given bool and assigns it to the CnameAccessOnly field.
+// SetCnameAccessOnly sets field value
 func (o *DomainResults) SetCnameAccessOnly(v bool) {
-	o.CnameAccessOnly = &v
+	o.CnameAccessOnly = v
 }
 
-// GetIsActive returns the IsActive field value if set, zero value otherwise.
+// GetIsActive returns the IsActive field value
 func (o *DomainResults) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsActive
+
+	return o.IsActive
 }
 
-// GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
+// GetIsActiveOk returns a tuple with the IsActive field value
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetIsActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsActive, true
+	return &o.IsActive, true
 }
 
-// HasIsActive returns a boolean if a field has been set.
-func (o *DomainResults) HasIsActive() bool {
-	if o != nil && !IsNil(o.IsActive) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
+// SetIsActive sets field value
 func (o *DomainResults) SetIsActive(v bool) {
-	o.IsActive = &v
+	o.IsActive = v
 }
 
-// GetEdgeApplicationId returns the EdgeApplicationId field value if set, zero value otherwise.
+// GetEdgeApplicationId returns the EdgeApplicationId field value
 func (o *DomainResults) GetEdgeApplicationId() int64 {
-	if o == nil || IsNil(o.EdgeApplicationId) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.EdgeApplicationId
+
+	return o.EdgeApplicationId
 }
 
-// GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field value if set, nil otherwise
+// GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field value
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetEdgeApplicationIdOk() (*int64, bool) {
-	if o == nil || IsNil(o.EdgeApplicationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EdgeApplicationId, true
+	return &o.EdgeApplicationId, true
 }
 
-// HasEdgeApplicationId returns a boolean if a field has been set.
-func (o *DomainResults) HasEdgeApplicationId() bool {
-	if o != nil && !IsNil(o.EdgeApplicationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetEdgeApplicationId gets a reference to the given int64 and assigns it to the EdgeApplicationId field.
+// SetEdgeApplicationId sets field value
 func (o *DomainResults) SetEdgeApplicationId(v int64) {
-	o.EdgeApplicationId = &v
+	o.EdgeApplicationId = v
 }
 
-// GetDigitalCertificateId returns the DigitalCertificateId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDigitalCertificateId returns the DigitalCertificateId field value
+// If the value is explicit nil, the zero value for int64 will be returned
 func (o *DomainResults) GetDigitalCertificateId() int64 {
-	if o == nil || IsNil(o.DigitalCertificateId.Get()) {
+	if o == nil || o.DigitalCertificateId.Get() == nil {
 		var ret int64
 		return ret
 	}
+
 	return *o.DigitalCertificateId.Get()
 }
 
-// GetDigitalCertificateIdOk returns a tuple with the DigitalCertificateId field value if set, nil otherwise
+// GetDigitalCertificateIdOk returns a tuple with the DigitalCertificateId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DomainResults) GetDigitalCertificateIdOk() (*int64, bool) {
@@ -244,59 +226,33 @@ func (o *DomainResults) GetDigitalCertificateIdOk() (*int64, bool) {
 	return o.DigitalCertificateId.Get(), o.DigitalCertificateId.IsSet()
 }
 
-// HasDigitalCertificateId returns a boolean if a field has been set.
-func (o *DomainResults) HasDigitalCertificateId() bool {
-	if o != nil && o.DigitalCertificateId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDigitalCertificateId gets a reference to the given NullableInt64 and assigns it to the DigitalCertificateId field.
+// SetDigitalCertificateId sets field value
 func (o *DomainResults) SetDigitalCertificateId(v int64) {
 	o.DigitalCertificateId.Set(&v)
 }
-// SetDigitalCertificateIdNil sets the value for DigitalCertificateId to be an explicit nil
-func (o *DomainResults) SetDigitalCertificateIdNil() {
-	o.DigitalCertificateId.Set(nil)
-}
 
-// UnsetDigitalCertificateId ensures that no value is present for DigitalCertificateId, not even an explicit nil
-func (o *DomainResults) UnsetDigitalCertificateId() {
-	o.DigitalCertificateId.Unset()
-}
-
-// GetDomainName returns the DomainName field value if set, zero value otherwise.
+// GetDomainName returns the DomainName field value
 func (o *DomainResults) GetDomainName() string {
-	if o == nil || IsNil(o.DomainName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.DomainName
+
+	return o.DomainName
 }
 
-// GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
+// GetDomainNameOk returns a tuple with the DomainName field value
 // and a boolean to check if the value has been set.
 func (o *DomainResults) GetDomainNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DomainName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DomainName, true
+	return &o.DomainName, true
 }
 
-// HasDomainName returns a boolean if a field has been set.
-func (o *DomainResults) HasDomainName() bool {
-	if o != nil && !IsNil(o.DomainName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDomainName gets a reference to the given string and assigns it to the DomainName field.
+// SetDomainName sets field value
 func (o *DomainResults) SetDomainName(v string) {
-	o.DomainName = &v
+	o.DomainName = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -331,6 +287,82 @@ func (o *DomainResults) SetEnvironment(v string) {
 	o.Environment = &v
 }
 
+// GetIsMtlsEnabled returns the IsMtlsEnabled field value
+func (o *DomainResults) GetIsMtlsEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsMtlsEnabled
+}
+
+// GetIsMtlsEnabledOk returns a tuple with the IsMtlsEnabled field value
+// and a boolean to check if the value has been set.
+func (o *DomainResults) GetIsMtlsEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsMtlsEnabled, true
+}
+
+// SetIsMtlsEnabled sets field value
+func (o *DomainResults) SetIsMtlsEnabled(v bool) {
+	o.IsMtlsEnabled = v
+}
+
+// GetMtlsTrustedCaCertificateId returns the MtlsTrustedCaCertificateId field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *DomainResults) GetMtlsTrustedCaCertificateId() string {
+	if o == nil || o.MtlsTrustedCaCertificateId.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.MtlsTrustedCaCertificateId.Get()
+}
+
+// GetMtlsTrustedCaCertificateIdOk returns a tuple with the MtlsTrustedCaCertificateId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DomainResults) GetMtlsTrustedCaCertificateIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MtlsTrustedCaCertificateId.Get(), o.MtlsTrustedCaCertificateId.IsSet()
+}
+
+// SetMtlsTrustedCaCertificateId sets field value
+func (o *DomainResults) SetMtlsTrustedCaCertificateId(v string) {
+	o.MtlsTrustedCaCertificateId.Set(&v)
+}
+
+// GetMtlsVerification returns the MtlsVerification field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *DomainResults) GetMtlsVerification() string {
+	if o == nil || o.MtlsVerification.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.MtlsVerification.Get()
+}
+
+// GetMtlsVerificationOk returns a tuple with the MtlsVerification field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DomainResults) GetMtlsVerificationOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MtlsVerification.Get(), o.MtlsVerification.IsSet()
+}
+
+// SetMtlsVerification sets field value
+func (o *DomainResults) SetMtlsVerification(v string) {
+	o.MtlsVerification.Set(&v)
+}
+
 func (o DomainResults) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -343,27 +375,18 @@ func (o DomainResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Cnames) {
-		toSerialize["cnames"] = o.Cnames
-	}
-	if !IsNil(o.CnameAccessOnly) {
-		toSerialize["cname_access_only"] = o.CnameAccessOnly
-	}
-	if !IsNil(o.IsActive) {
-		toSerialize["is_active"] = o.IsActive
-	}
-	if !IsNil(o.EdgeApplicationId) {
-		toSerialize["edge_application_id"] = o.EdgeApplicationId
-	}
-	if o.DigitalCertificateId.IsSet() {
-		toSerialize["digital_certificate_id"] = o.DigitalCertificateId.Get()
-	}
-	if !IsNil(o.DomainName) {
-		toSerialize["domain_name"] = o.DomainName
-	}
+	toSerialize["cnames"] = o.Cnames
+	toSerialize["cname_access_only"] = o.CnameAccessOnly
+	toSerialize["is_active"] = o.IsActive
+	toSerialize["edge_application_id"] = o.EdgeApplicationId
+	toSerialize["digital_certificate_id"] = o.DigitalCertificateId.Get()
+	toSerialize["domain_name"] = o.DomainName
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
+	toSerialize["is_mtls_enabled"] = o.IsMtlsEnabled
+	toSerialize["mtls_trusted_ca_certificate_id"] = o.MtlsTrustedCaCertificateId.Get()
+	toSerialize["mtls_verification"] = o.MtlsVerification.Get()
 	return toSerialize, nil
 }
 
