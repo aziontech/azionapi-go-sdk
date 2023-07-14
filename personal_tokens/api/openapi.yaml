@@ -1,0 +1,268 @@
+openapi: 3.0.3
+info:
+  description: |
+    The Personal Tokens API allows you to manage your existing personal tokens.
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
+  title: Personal Tokens - OpenAPI
+  version: 1.0.0
+externalDocs:
+  description: See the documentation on Personal Tokens for more information.
+  url: https://www.azion.com/en/documentation/products/accounts/personal-tokens/
+servers:
+- description: Production
+  url: https://api.azionapi.net
+security:
+- tokenAuth: []
+tags:
+- description: List all personal tokens
+  name: Personal Token
+paths:
+  /iam/personal_tokens:
+    get:
+      description: List all existing personal token
+      operationId: ListPersonalToken
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalTokenResponseWithResults'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Rate Limit
+        "500":
+          description: Internal Server Error
+      summary: List all existing personal token
+      tags:
+      - Personal Token
+    post:
+      description: Create a new personal token
+      operationId: CreatePersonalToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePersonalTokenRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePersonalTokenResponse'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Rate Limit
+        "500":
+          description: Internal Server Error
+      summary: Create a new personal token
+      tags:
+      - Personal Token
+  /iam/personal_tokens/{personalTokenId}:
+    delete:
+      description: Delete a personal token
+      operationId: DeletePersonalToken
+      parameters:
+      - explode: false
+        in: path
+        name: personalTokenId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Rate Limit
+        "500":
+          description: Internal Server Error
+      summary: Delete a personal token by id
+      tags:
+      - Personal Token
+    get:
+      description: Get a personal token info
+      operationId: GetPersonalToken
+      parameters:
+      - explode: false
+        in: path
+        name: personalTokenId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalTokenResponseGet'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Rate Limit
+        "500":
+          description: Internal Server Error
+      summary: Get a personal token info
+      tags:
+      - Personal Token
+components:
+  schemas:
+    PersonalTokenResponseWithResults:
+      example:
+        schema_version: 1
+        count: 0
+        links:
+          next: next
+          previous: previous
+        total_pages: 6
+        results:
+        - expires_at: 2000-01-23T04:56:07.000+00:00
+          created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - expires_at: 2000-01-23T04:56:07.000+00:00
+          created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        count:
+          format: int64
+          type: integer
+        total_pages:
+          format: int6
+          type: integer
+        schema_version:
+          format: int64
+          type: integer
+        links:
+          $ref: '#/components/schemas/PersonalTokenResponseWithResults_links'
+        results:
+          items:
+            $ref: '#/components/schemas/PersonalTokenResponseGet'
+          type: array
+      type: object
+    PersonalTokenResponseGet:
+      example:
+        expires_at: 2000-01-23T04:56:07.000+00:00
+        created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        description: description
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        uuid:
+          format: uuid
+          type: string
+        name:
+          type: string
+        created:
+          format: date-time
+          type: string
+        expires_at:
+          format: date-time
+          type: string
+        description:
+          nullable: true
+          type: string
+      type: object
+    CreatePersonalTokenRequest:
+      example:
+        expires_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        description: description
+      properties:
+        name:
+          type: string
+        expires_at:
+          format: date-time
+          type: string
+        description:
+          nullable: true
+          type: string
+      type: object
+    CreatePersonalTokenResponse:
+      example:
+        expires_at: 2000-01-23T04:56:07.000+00:00
+        user_id: 0.8008281904610115
+        created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        description: description
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        key: key
+      properties:
+        uuid:
+          format: uuid
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        user_id:
+          type: number
+        created:
+          format: date-time
+          type: string
+        expires_at:
+          format: date-time
+          type: string
+        description:
+          nullable: true
+          type: string
+      type: object
+    PersonalTokenResponseWithResults_links:
+      example:
+        next: next
+        previous: previous
+      properties:
+        next:
+          nullable: true
+          type: string
+        previous:
+          nullable: true
+          type: string
+      type: object
+  securitySchemes:
+    tokenAuth:
+      description: |
+        You must inform a token to auth.
+        Usage format: `Token <TOKEN>`
+      in: header
+      name: Authorization
+      type: apiKey
