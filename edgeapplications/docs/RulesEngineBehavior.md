@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Target** | Pointer to **interface{}** |  | [optional] 
+**Target** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -48,20 +48,20 @@ SetName sets Name field to given value.
 
 ### GetTarget
 
-`func (o *RulesEngineBehavior) GetTarget() interface{}`
+`func (o *RulesEngineBehavior) GetTarget() string`
 
 GetTarget returns the Target field if non-nil, zero value otherwise.
 
 ### GetTargetOk
 
-`func (o *RulesEngineBehavior) GetTargetOk() (*interface{}, bool)`
+`func (o *RulesEngineBehavior) GetTargetOk() (*string, bool)`
 
 GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTarget
 
-`func (o *RulesEngineBehavior) SetTarget(v interface{})`
+`func (o *RulesEngineBehavior) SetTarget(v string)`
 
 SetTarget sets Target field to given value.
 
@@ -71,16 +71,6 @@ SetTarget sets Target field to given value.
 
 HasTarget returns a boolean if a field has been set.
 
-### SetTargetNil
-
-`func (o *RulesEngineBehavior) SetTargetNil(b bool)`
-
- SetTargetNil sets the value for Target to be an explicit nil
-
-### UnsetTarget
-`func (o *RulesEngineBehavior) UnsetTarget()`
-
-UnsetTarget ensures that no value is present for Target, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

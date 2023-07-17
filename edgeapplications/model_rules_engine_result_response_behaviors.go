@@ -20,7 +20,7 @@ var _ MappedNullable = &RulesEngineResultResponseBehaviors{}
 // RulesEngineResultResponseBehaviors struct for RulesEngineResultResponseBehaviors
 type RulesEngineResultResponseBehaviors struct {
 	Name string `json:"name"`
-	Target interface{} `json:"target,omitempty"`
+	Target *string `json:"target,omitempty"`
 }
 
 // NewRulesEngineResultResponseBehaviors instantiates a new RulesEngineResultResponseBehaviors object
@@ -65,37 +65,36 @@ func (o *RulesEngineResultResponseBehaviors) SetName(v string) {
 	o.Name = v
 }
 
-// GetTarget returns the Target field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RulesEngineResultResponseBehaviors) GetTarget() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *RulesEngineResultResponseBehaviors) GetTarget() string {
+	if o == nil || IsNil(o.Target) {
+		var ret string
 		return ret
 	}
-	return o.Target
+	return *o.Target
 }
 
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RulesEngineResultResponseBehaviors) GetTargetOk() (*interface{}, bool) {
+func (o *RulesEngineResultResponseBehaviors) GetTargetOk() (*string, bool) {
 	if o == nil || IsNil(o.Target) {
 		return nil, false
 	}
-	return &o.Target, true
+	return o.Target, true
 }
 
 // HasTarget returns a boolean if a field has been set.
 func (o *RulesEngineResultResponseBehaviors) HasTarget() bool {
-	if o != nil && IsNil(o.Target) {
+	if o != nil && !IsNil(o.Target) {
 		return true
 	}
 
 	return false
 }
 
-// SetTarget gets a reference to the given interface{} and assigns it to the Target field.
-func (o *RulesEngineResultResponseBehaviors) SetTarget(v interface{}) {
-	o.Target = v
+// SetTarget gets a reference to the given string and assigns it to the Target field.
+func (o *RulesEngineResultResponseBehaviors) SetTarget(v string) {
+	o.Target = &v
 }
 
 func (o RulesEngineResultResponseBehaviors) MarshalJSON() ([]byte, error) {
@@ -109,7 +108,7 @@ func (o RulesEngineResultResponseBehaviors) MarshalJSON() ([]byte, error) {
 func (o RulesEngineResultResponseBehaviors) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if o.Target != nil {
+	if !IsNil(o.Target) {
 		toSerialize["target"] = o.Target
 	}
 	return toSerialize, nil
