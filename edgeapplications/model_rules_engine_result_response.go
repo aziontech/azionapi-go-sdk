@@ -21,6 +21,7 @@ var _ MappedNullable = &RulesEngineResultResponse{}
 type RulesEngineResultResponse struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
+	Description *string `json:"description,omitempty"`
 	Phase string `json:"phase"`
 	Behaviors []RulesEngineResultResponseBehaviors `json:"behaviors,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria"`
@@ -97,6 +98,38 @@ func (o *RulesEngineResultResponse) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *RulesEngineResultResponse) SetName(v string) {
 	o.Name = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *RulesEngineResultResponse) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RulesEngineResultResponse) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *RulesEngineResultResponse) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *RulesEngineResultResponse) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetPhase returns the Phase field value
@@ -239,6 +272,9 @@ func (o RulesEngineResultResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	toSerialize["phase"] = o.Phase
 	if !IsNil(o.Behaviors) {
 		toSerialize["behaviors"] = o.Behaviors

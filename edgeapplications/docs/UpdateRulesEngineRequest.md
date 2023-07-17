@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
+**Description** | Pointer to **string** |  | [optional] 
 **Criteria** | [**[][]RulesEngineCriteria**]([]RulesEngineCriteria.md) |  | 
 **Behaviors** | [**[]RulesEngineBehavior**](RulesEngineBehavior.md) |  | 
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetDescription
+
+`func (o *UpdateRulesEngineRequest) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *UpdateRulesEngineRequest) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *UpdateRulesEngineRequest) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *UpdateRulesEngineRequest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetCriteria
 
