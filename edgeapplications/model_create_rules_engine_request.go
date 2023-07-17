@@ -20,6 +20,7 @@ var _ MappedNullable = &CreateRulesEngineRequest{}
 // CreateRulesEngineRequest struct for CreateRulesEngineRequest
 type CreateRulesEngineRequest struct {
 	Name string `json:"name"`
+	Description *string `json:"description,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria"`
 	Behaviors []RulesEngineBehavior `json:"behaviors"`
 }
@@ -66,6 +67,38 @@ func (o *CreateRulesEngineRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateRulesEngineRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateRulesEngineRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRulesEngineRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateRulesEngineRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateRulesEngineRequest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetCriteria returns the Criteria field value
@@ -127,6 +160,9 @@ func (o CreateRulesEngineRequest) MarshalJSON() ([]byte, error) {
 func (o CreateRulesEngineRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	toSerialize["criteria"] = o.Criteria
 	toSerialize["behaviors"] = o.Behaviors
 	return toSerialize, nil
