@@ -1,0 +1,769 @@
+openapi: 3.0.0
+info:
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
+  title: Digital Certificates API
+  version: 2.0.0
+servers:
+- description: Production
+  url: https://api.azionapi.net
+security:
+- tokenAuth: []
+paths:
+  /digital_certificates:
+    get:
+      operationId: listDigitalCertificates
+      parameters:
+      - description: "Response field to order by, current options are \"name\" or\
+          \ \"id\""
+        explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          default: id
+          enum:
+          - name
+          - id
+          type: string
+        style: form
+      - description: Sorting direction
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          default: asc
+          enum:
+          - asc
+          - desc
+          type: string
+        style: form
+      - description: Searches certificate for name
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Searches for string in certificate name
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC200List'
+          description: Successful operation
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC400'
+          description: Bad Request
+        "401":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC401'
+          description: Unauthorized
+        "403":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC403'
+          description: Forbidden
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC404'
+          description: Not Found
+        "406":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC406'
+          description: Not acceptable
+      summary: List all existing digital certificates and CSRs registered to your
+        account
+      tags:
+      - Retrieve digital certificate list
+    post:
+      operationId: createCertificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCertificate_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC201'
+          description: Created
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC400'
+          description: Successful operation
+        "403":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC403'
+          description: Forbidden
+      summary: Create a new digital certificate
+      tags:
+      - Create digital certificate
+  /digital_certificates/{digital_certificate_id}:
+    delete:
+      operationId: removeDigitalCertificates
+      parameters:
+      - description: ID of certificate to delete
+        explode: false
+        in: path
+        name: digital_certificate_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC400'
+          description: Bad request
+        "403":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC403'
+          description: Forbidden
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC404'
+          description: Not Found
+        "409":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC409'
+          description: Forbidden
+      summary: Remove a digital certificate or CSR from your account
+      tags:
+      - Delete digital certificate
+    get:
+      operationId: getCertificate
+      parameters:
+      - description: ID of certificate
+        explode: false
+        in: path
+        name: digital_certificate_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC200'
+          description: Successful operation
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC400'
+          description: Bad request
+        "401":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC401'
+          description: Unauthorized operation
+        "403":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC403'
+          description: Forbidden operation
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC404'
+          description: Data not found
+        "406":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC406'
+          description: Not Acceptable
+      summary: Get more data on a specific digital certificate or CSR.
+      tags:
+      - Retrieve digital certificate by ID
+    patch:
+      operationId: updateDigitalCertificate
+      parameters:
+      - description: ID of certificate to update
+        explode: false
+        in: path
+        name: digital_certificate_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateDigitalCertificate_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC200'
+          description: Successful operation
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC400'
+          description: Bad request
+        "403":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC403'
+          description: Forbidden
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC404'
+          description: Not Found
+      summary: Change only select settings of your digital certificate or CSR.
+      tags:
+      - Update digital certificate
+    put:
+      operationId: overwriteDigitalCertificate
+      parameters:
+      - description: ID of certificate to overwrite
+        explode: false
+        in: path
+        name: digital_certificate_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCertificate_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC200'
+          description: Successful operation
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC400'
+          description: Bad request
+        "403":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC403'
+          description: Forbidden
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC404'
+          description: Not Found
+      summary: Overwrite a digital certificate with another complete digital certificate
+      tags:
+      - Overwrite digital certificate
+  /digital_certificates/csr:
+    post:
+      operationId: createCSR
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCSR_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC201'
+          description: Created
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC400'
+          description: Successful operation
+        "403":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/DC403'
+          description: Forbidden
+      summary: "Create an encrypted Certificate Request with Azion, which can then\
+        \ be sent for signing to a CA"
+      tags:
+      - Create CSR
+components:
+  schemas:
+    singleResult:
+      example:
+        id: 12345
+        name: New SSL certificate for www.mydomain.com
+        subject_name: []
+        validity: 2028-03-24 20:09:00-03:00
+        status: Active
+        certificate_type: edge_certificate
+        managed: false
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        subject_name:
+          items:
+            type: string
+          type: array
+        validity:
+          type: string
+        status:
+          type: string
+        certificate_type:
+          enum:
+          - edge_certificate
+          - trusted_ca_certificate
+          type: string
+        managed:
+          type: boolean
+      type: object
+    results:
+      example:
+      - id: 12345
+        name: New SSL certificate for www.mydomain.com
+        subject_name: []
+        validity: 2028-03-24 20:09:00-03:00
+        status: Active
+        certificate_type: edge_certificate
+        managed: false
+      - id: 1
+        name: New SSL certificate for www.mydomain.com
+        subject_name: []
+        validity: 2028-03-24 20:09:00-03:00
+        status: Active
+        certificate_type: edge_certificate
+        managed: false
+      items:
+        $ref: '#/components/schemas/results_inner'
+      type: array
+    DC200:
+      example:
+        schema_version: 3
+        result:
+          id: 12345
+          name: New SSL certificate for www.mydomain.com
+          subject_name: []
+          validity: 2028-03-24 20:09:00-03:00
+          status: Active
+          certificate_type: edge_certificate
+          managed: false
+      properties:
+        schema_version:
+          example: 3
+          type: integer
+        result:
+          $ref: '#/components/schemas/singleResult'
+      type: object
+    DC200List:
+      example:
+        schema_version: 3
+        count: 2
+        links:
+          next: next
+          previous: previous
+        total_pages: 1
+        results:
+        - - id: 12345
+            name: New SSL certificate for www.mydomain.com
+            subject_name: []
+            validity: 2028-03-24 20:09:00-03:00
+            status: Active
+            certificate_type: edge_certificate
+            managed: false
+          - id: 1
+            name: New SSL certificate for www.mydomain.com
+            subject_name: []
+            validity: 2028-03-24 20:09:00-03:00
+            status: Active
+            certificate_type: edge_certificate
+            managed: false
+        - - id: 12345
+            name: New SSL certificate for www.mydomain.com
+            subject_name: []
+            validity: 2028-03-24 20:09:00-03:00
+            status: Active
+            certificate_type: edge_certificate
+            managed: false
+          - id: 1
+            name: New SSL certificate for www.mydomain.com
+            subject_name: []
+            validity: 2028-03-24 20:09:00-03:00
+            status: Active
+            certificate_type: edge_certificate
+            managed: false
+      properties:
+        count:
+          example: 2
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+        schema_version:
+          example: 3
+          type: integer
+        links:
+          $ref: '#/components/schemas/DC200List_links'
+        results:
+          items:
+            $ref: '#/components/schemas/results'
+          properties: {}
+          type: array
+      type: object
+    DC201:
+      example:
+        schema_version: 3
+        errors:
+        - message: Bad Request
+          error: bad_request
+        - message: Bad Request
+          error: bad_request
+      properties:
+        errors:
+          items:
+            example:
+              message: Bad Request
+              error: bad_request
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    DC400:
+      properties:
+        errors:
+          items:
+            example:
+              message: Bad Request
+              error: bad_request
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    DC401:
+      properties:
+        detail:
+          example: Authentication credentials were not provided.
+          type: string
+      type: object
+    DC403:
+      properties:
+        errors:
+          items:
+            example:
+              message: Forbidden
+              error: forbidden
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    DC404:
+      properties:
+        errors:
+          items:
+            example:
+              message: Digital certificate not found
+              error: not_found
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    DC406:
+      properties:
+        errors:
+          items:
+            example:
+              message: Not acceptable
+              error: not_acceptable
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    DC409:
+      properties:
+        errors:
+          items:
+            example:
+              message: Conflict
+              error: conflict
+            properties: {}
+            type: object
+          type: array
+        schema_version:
+          example: 3
+          type: integer
+      type: object
+    createCertificate_request:
+      example:
+        name: New SSL certificate for www.mydomain.com
+        certificate: |-
+          -----BEGIN CERTIFICATE-----
+          MIIDCTCCAfGgAwIBAgIJAPpMWHKMIGuAMA0GCSqGSIb3DQEBBQUAMBsxGTAXBgNV
+          BAMMEHd3dy5teWRvbWFpbi5jb20wHhcNMTgwMzI3MjAwOTA0WhcNMjgwMzI0MjAw
+          OTA0WjAbMRkwFwYDVQQDDBB3d3cubXlkb21haW4uY29tMIIBIjANBgkqhkiG9w0B
+          AQEFAAOCAQ8AMIIBCgKCAQEAt25cziDBsHbZzZhy9BPLApPf9OmE67k9pr7VezsR
+          kIw4trY2xtJXFB7itT1p7HxbLBoL5u8FGmMKssB+XTmztmgty43ogor1KSjUgfZg
+          rpAqyXtrbSM5g+14c0VO9S0LkkePlHvul0UiblJj7K+gkvc6sZqXZY+TI1BPqeuO
+          s9A4LLCUGziyNv0qJfIL5RZm07Yy35BEBTTxUWVL2msfaUH2uPM5XN5eFC7oKN0/
+          3NuYIboRmyk+P7CDC99M8Mp/wOjiB+yVGZVTjeqGPI8nFWJl2waXkc54VvW84xQP
+          jwtid1v1KENK/ixMAAXi2cQ9gNRX+/USoneuWj5n4QUj6QIDAQABo1AwTjAdBgNV
+          HQ4EFgQU2sDgtyYMDXvw79OhdvAFqcLmcwkwHwYDVR0jBBgwFoAU2sDgtyYMDXvw
+          79OhdvAFqcLmcwkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAKzCM
+          iG67IPwJK6MIJ31N734AofnjLf+fffxNtfYmH0XGORHPYUxCxsLxXiSFgPvubWh+
+          7vLsKAm67bflMWbnxohuiOR0O/LJhLvhj6F+wgv0aDXpu581Hm8Ob/88ldbF6ND1
+          TqzVATS0WDfl+z1QBKtNdDm3Nv45IZ83ob7OhIzD9MwL6tflBPDpWOYtmBDn0xSP
+          6ra9d8oa6jK1fe2/5A7LY41acjbbNrLbFDYP7hcx02TmCfSMut+ysaZ/blay4Sbb
+          wNlt92KhJw07UEKgXXbgyXGoFQkU8V+r2AZcgt0XM9jvwTc01Sbq/gegd2GMAj3x
+          rTwkn5UNzFs56FCgNg==
+          -----END CERTIFICATE-----
+        private_key: |-
+          -----BEGIN RSA PRIVATE KEY-----
+          MIIEogIBAAKCAQB29Xrr3II5eeHr/8ttgB6uRg9bO0bS9qyhGS3QrHTYsME8/yZG
+          ULyN9FdDGPiExEHqpUVVeU1J5v3fGMXaskhXMCJIsuP5oFPQ10U7m9Kdcia4MXJZ
+          7Bea6dVxsJuL4+CbuAaEjX52f3Q30uX3XyvrUtLA9vBJbHHmVUmZ22Qza5QHXWDD
+          tAUTScEAGYfIb19BAZi8Zsz1aOniIhv91UyMKJeH/abP/
+          q4ZskXf8yYjgG1mmhi
+          4YlK1x0kYuHvcuDU4Sduf78bUKJ7uNK8wzg2NROJ8QYw+LQrPofg1+pYswZRfEcd
+          qcXtnOqTdAQjAIOKG2lCCsVF221pz9to1DwHAgMBAAECggEAYpMqx/YTB1PDbY+q
+          39MyGVG++eeV2c1E4b3+pBO0Q7e8eTIpYk0W4j7ebKBtl38V7D4FxT1eWWYLa2qY
+          0Y+4uF8PmdR7a2h66+zm1u1ZytRD15BJ5M/qA5nPIIWrb3Fmt0L4S7EAYWteP8AI
+          hkMcHsWkFPjLxtwRSj/UXKVbU+uh6NAkyQY2JnwRjPssIvEcDTLolDQ0IB5kHVMJ
+          GXFboptKAlM41yaLXcTPVHmF3Jqt9p4T1AkaVTA1CVGuMG/KGDgt5whkND67a29W
+          JFHu/RxPeBCTVgwYp6IuuXz2XylqkH4cOv1VsaXRWBjruHlp8tV2hUWW5khyYpoc
+          9xsCeQKBgQDaMTt1agDsgMhw/y5RkmEW3eFXse+NwmSx+lAnrJCaBSvtZ2VojFqq
+          GR+kJUoXxc1CgX2OtYL107yOdITPIlyjW8akPHU1hiiunmnwcXJBDPH2OeWF1OPS
+          yeQbZUI4L7h5r5+GXQJNmDJjrXmDetnG5LCIoF7MC9+m6S1zqny9OwKBgQCLkl1Y
+          XTwtM7FOE0pTC7kzbECbXTrAVg/sCALMWH9UOZ4OvSEj1z281fCfykO5WRkCD1uf
+          rlrftQhvmJdj5P3Khz1ILQnNCnVEfHm7ILAQJRWOZfqLIMwIVTX7uhHLulfwQwiT
+          NfBn2CjaNBn22jLXHlU15NJDmoma9aaivMp/pQKBgCQHmS/sTza+lVrDaJyjtVCX
+          VwyqH0qjXQlesjm67y3fyL8tIbu/4YDRIT5zweZnDVv8EgWsx3Fcg3hqmTuzCuUW
+          1JhuO1SZUMJ0+j1wHlPLlXD5YoNVAkHegMJdWC/7AVVmwMrpNOYnSbrX/
+          IbPlIKZ
+          ZOVKxhyfoVDolE7TSkHdAoGBAIouWmRFynImH4Bg8NDPZohWwJAQ+T269wCD3eFa
+          LJXChY2qCclmLCVs2lIY+nvijjPP6LJq+GVK4hM6S4gHCo0c37s5e96YYAlyA0MU
+          1brmPDVDGY3s5pPJaSzTxxKgZrfkZfT5Dg6Bn9CIjLwswvDfgxVceh+cPGhClLvB
+          lepRAoGAKT+xIeMoMkQeZruOL72AvO6raQGjY+yPbXCIFeZxwv5kb+m3UaXNaVbq
+          H5KzJESG2ALhOvyHgj8YopNsMWQuleoAYVXdODp0w3omN4a3ajjMUuV8GXDQis+a
+          Ql7R6ytpLpoc1TYx6cLwK7qGSAzB8vz9ZQkd2iYFco43E7IdABc=
+          -----END RSA PRIVATE KEY-----
+      properties:
+        name:
+          type: string
+        certificate:
+          type: string
+        private_key:
+          type: string
+        certificate_type:
+          enum:
+          - edge_certificate
+          - trusted_ca_certificate
+          type: string
+        managed:
+          type: boolean
+      required:
+      - certificate
+      - name
+      - private_key
+      type: object
+    updateDigitalCertificate_request:
+      example:
+        name: New SSL certificate for www.mydomain.com
+        private_key: |-
+          -----BEGIN RSA PRIVATE KEY-----
+          MIIEogIBAAKCAQB29Xrr3II5eeHr/8ttgB6uRg9bO0bS9qyhGS3QrHTYsME8/yZG
+          ULyN9FdDGPiExEHqpUVVeU1J5v3fGMXaskhXMCJIsuP5oFPQ10U7m9Kdcia4MXJZ
+          7Bea6dVxsJuL4+CbuAaEjX52f3Q30uX3XyvrUtLA9vBJbHHmVUmZ22Qza5QHXWDD
+          tAUTScEAGYfIb19BAZi8Zsz1aOniIhv91UyMKJeH/abP/
+          q4ZskXf8yYjgG1mmhi
+          4YlK1x0kYuHvcuDU4Sduf78bUKJ7uNK8wzg2NROJ8QYw+LQrPofg1+pYswZRfEcd
+          qcXtnOqTdAQjAIOKG2lCCsVF221pz9to1DwHAgMBAAECggEAYpMqx/YTB1PDbY+q
+          39MyGVG++eeV2c1E4b3+pBO0Q7e8eTIpYk0W4j7ebKBtl38V7D4FxT1eWWYLa2qY
+          0Y+4uF8PmdR7a2h66+zm1u1ZytRD15BJ5M/qA5nPIIWrb3Fmt0L4S7EAYWteP8AI
+          hkMcHsWkFPjLxtwRSj/UXKVbU+uh6NAkyQY2JnwRjPssIvEcDTLolDQ0IB5kHVMJ
+          GXFboptKAlM41yaLXcTPVHmF3Jqt9p4T1AkaVTA1CVGuMG/KGDgt5whkND67a29W
+          JFHu/RxPeBCTVgwYp6IuuXz2XylqkH4cOv1VsaXRWBjruHlp8tV2hUWW5khyYpoc
+          9xsCeQKBgQDaMTt1agDsgMhw/y5RkmEW3eFXse+NwmSx+lAnrJCaBSvtZ2VojFqq
+          GR+kJUoXxc1CgX2OtYL107yOdITPIlyjW8akPHU1hiiunmnwcXJBDPH2OeWF1OPS
+          yeQbZUI4L7h5r5+GXQJNmDJjrXmDetnG5LCIoF7MC9+m6S1zqny9OwKBgQCLkl1Y
+          XTwtM7FOE0pTC7kzbECbXTrAVg/sCALMWH9UOZ4OvSEj1z281fCfykO5WRkCD1uf
+          rlrftQhvmJdj5P3Khz1ILQnNCnVEfHm7ILAQJRWOZfqLIMwIVTX7uhHLulfwQwiT
+          NfBn2CjaNBn22jLXHlU15NJDmoma9aaivMp/pQKBgCQHmS/sTza+lVrDaJyjtVCX
+          VwyqH0qjXQlesjm67y3fyL8tIbu/4YDRIT5zweZnDVv8EgWsx3Fcg3hqmTuzCuUW
+          1JhuO1SZUMJ0+j1wHlPLlXD5YoNVAkHegMJdWC/7AVVmwMrpNOYnSbrX/
+          IbPlIKZ
+          ZOVKxhyfoVDolE7TSkHdAoGBAIouWmRFynImH4Bg8NDPZohWwJAQ+T269wCD3eFa
+          LJXChY2qCclmLCVs2lIY+nvijjPP6LJq+GVK4hM6S4gHCo0c37s5e96YYAlyA0MU
+          1brmPDVDGY3s5pPJaSzTxxKgZrfkZfT5Dg6Bn9CIjLwswvDfgxVceh+cPGhClLvB
+          lepRAoGAKT+xIeMoMkQeZruOL72AvO6raQGjY+yPbXCIFeZxwv5kb+m3UaXNaVbq
+          H5KzJESG2ALhOvyHgj8YopNsMWQuleoAYVXdODp0w3omN4a3ajjMUuV8GXDQis+a
+          Ql7R6ytpLpoc1TYx6cLwK7qGSAzB8vz9ZQkd2iYFco43E7IdABc=
+          -----END RSA PRIVATE KEY-----
+      properties:
+        name:
+          type: string
+        certificate:
+          type: string
+        private_key:
+          type: string
+        certificate_type:
+          enum:
+          - edge_certificate
+          - trusted_ca_certificate
+          type: string
+        managed:
+          type: boolean
+      type: object
+    createCSR_request:
+      example:
+        name: New CSR
+        common_name: example.net
+        country: US
+        state: Washington
+        locality: Seattle
+        organization: Example
+        organization_unity: IT
+        email: itdepartment@example.com
+        private_key_type: rsa_2048
+        sans:
+        - www.example.net
+        - mail.example.net
+        - support.example.net
+      properties:
+        name:
+          type: string
+        common_name:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        locality:
+          type: string
+        organization:
+          type: string
+        organization_unity:
+          type: string
+        email:
+          type: string
+        private_key_type:
+          type: string
+        sans:
+          items:
+            type: string
+          type: array
+      type: object
+    results_inner:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        subject_name:
+          items:
+            type: string
+          type: array
+        validity:
+          type: string
+        status:
+          type: string
+        certificate_type:
+          enum:
+          - edge_certificate
+          - trusted_ca_certificate
+          type: string
+        managed:
+          type: boolean
+      type: object
+    DC200List_links:
+      example:
+        next: next
+        previous: previous
+      properties:
+        previous:
+          nullable: true
+          type: string
+          example: null
+        next:
+          nullable: true
+          type: string
+          example: null
+      type: object
+  securitySchemes:
+    tokenAuth:
+      description: |
+        You must inform a token to authenticate.
+        Usage format: `Token <TOKEN>`
+      in: header
+      name: Authorization
+      type: apiKey
