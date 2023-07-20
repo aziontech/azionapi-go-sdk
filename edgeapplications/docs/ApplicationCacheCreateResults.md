@@ -19,6 +19,13 @@ Name | Type | Description | Notes
 **DeviceGroup** | **[]string** |  | 
 **EnableCachingForPost** | **bool** |  | 
 **L2CachingEnabled** | **bool** |  | 
+**IsSliceConfigurationEnabled** | Pointer to **bool** |  | [optional] 
+**IsSliceEdgeCachingEnabled** | Pointer to **bool** |  | [optional] 
+**IsSliceL2CachingEnabled** | Pointer to **bool** |  | [optional] 
+**SliceConfigurationRange** | Pointer to **int64** |  | [optional] 
+**EnableCachingForOptions** | Pointer to **bool** |  | [optional] 
+**EnableStaleCache** | Pointer to **bool** |  | [optional] 
+**L2Region** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -338,6 +345,181 @@ and a boolean to check if the value has been set.
 
 SetL2CachingEnabled sets L2CachingEnabled field to given value.
 
+
+### GetIsSliceConfigurationEnabled
+
+`func (o *ApplicationCacheCreateResults) GetIsSliceConfigurationEnabled() bool`
+
+GetIsSliceConfigurationEnabled returns the IsSliceConfigurationEnabled field if non-nil, zero value otherwise.
+
+### GetIsSliceConfigurationEnabledOk
+
+`func (o *ApplicationCacheCreateResults) GetIsSliceConfigurationEnabledOk() (*bool, bool)`
+
+GetIsSliceConfigurationEnabledOk returns a tuple with the IsSliceConfigurationEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSliceConfigurationEnabled
+
+`func (o *ApplicationCacheCreateResults) SetIsSliceConfigurationEnabled(v bool)`
+
+SetIsSliceConfigurationEnabled sets IsSliceConfigurationEnabled field to given value.
+
+### HasIsSliceConfigurationEnabled
+
+`func (o *ApplicationCacheCreateResults) HasIsSliceConfigurationEnabled() bool`
+
+HasIsSliceConfigurationEnabled returns a boolean if a field has been set.
+
+### GetIsSliceEdgeCachingEnabled
+
+`func (o *ApplicationCacheCreateResults) GetIsSliceEdgeCachingEnabled() bool`
+
+GetIsSliceEdgeCachingEnabled returns the IsSliceEdgeCachingEnabled field if non-nil, zero value otherwise.
+
+### GetIsSliceEdgeCachingEnabledOk
+
+`func (o *ApplicationCacheCreateResults) GetIsSliceEdgeCachingEnabledOk() (*bool, bool)`
+
+GetIsSliceEdgeCachingEnabledOk returns a tuple with the IsSliceEdgeCachingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSliceEdgeCachingEnabled
+
+`func (o *ApplicationCacheCreateResults) SetIsSliceEdgeCachingEnabled(v bool)`
+
+SetIsSliceEdgeCachingEnabled sets IsSliceEdgeCachingEnabled field to given value.
+
+### HasIsSliceEdgeCachingEnabled
+
+`func (o *ApplicationCacheCreateResults) HasIsSliceEdgeCachingEnabled() bool`
+
+HasIsSliceEdgeCachingEnabled returns a boolean if a field has been set.
+
+### GetIsSliceL2CachingEnabled
+
+`func (o *ApplicationCacheCreateResults) GetIsSliceL2CachingEnabled() bool`
+
+GetIsSliceL2CachingEnabled returns the IsSliceL2CachingEnabled field if non-nil, zero value otherwise.
+
+### GetIsSliceL2CachingEnabledOk
+
+`func (o *ApplicationCacheCreateResults) GetIsSliceL2CachingEnabledOk() (*bool, bool)`
+
+GetIsSliceL2CachingEnabledOk returns a tuple with the IsSliceL2CachingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSliceL2CachingEnabled
+
+`func (o *ApplicationCacheCreateResults) SetIsSliceL2CachingEnabled(v bool)`
+
+SetIsSliceL2CachingEnabled sets IsSliceL2CachingEnabled field to given value.
+
+### HasIsSliceL2CachingEnabled
+
+`func (o *ApplicationCacheCreateResults) HasIsSliceL2CachingEnabled() bool`
+
+HasIsSliceL2CachingEnabled returns a boolean if a field has been set.
+
+### GetSliceConfigurationRange
+
+`func (o *ApplicationCacheCreateResults) GetSliceConfigurationRange() int64`
+
+GetSliceConfigurationRange returns the SliceConfigurationRange field if non-nil, zero value otherwise.
+
+### GetSliceConfigurationRangeOk
+
+`func (o *ApplicationCacheCreateResults) GetSliceConfigurationRangeOk() (*int64, bool)`
+
+GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSliceConfigurationRange
+
+`func (o *ApplicationCacheCreateResults) SetSliceConfigurationRange(v int64)`
+
+SetSliceConfigurationRange sets SliceConfigurationRange field to given value.
+
+### HasSliceConfigurationRange
+
+`func (o *ApplicationCacheCreateResults) HasSliceConfigurationRange() bool`
+
+HasSliceConfigurationRange returns a boolean if a field has been set.
+
+### GetEnableCachingForOptions
+
+`func (o *ApplicationCacheCreateResults) GetEnableCachingForOptions() bool`
+
+GetEnableCachingForOptions returns the EnableCachingForOptions field if non-nil, zero value otherwise.
+
+### GetEnableCachingForOptionsOk
+
+`func (o *ApplicationCacheCreateResults) GetEnableCachingForOptionsOk() (*bool, bool)`
+
+GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableCachingForOptions
+
+`func (o *ApplicationCacheCreateResults) SetEnableCachingForOptions(v bool)`
+
+SetEnableCachingForOptions sets EnableCachingForOptions field to given value.
+
+### HasEnableCachingForOptions
+
+`func (o *ApplicationCacheCreateResults) HasEnableCachingForOptions() bool`
+
+HasEnableCachingForOptions returns a boolean if a field has been set.
+
+### GetEnableStaleCache
+
+`func (o *ApplicationCacheCreateResults) GetEnableStaleCache() bool`
+
+GetEnableStaleCache returns the EnableStaleCache field if non-nil, zero value otherwise.
+
+### GetEnableStaleCacheOk
+
+`func (o *ApplicationCacheCreateResults) GetEnableStaleCacheOk() (*bool, bool)`
+
+GetEnableStaleCacheOk returns a tuple with the EnableStaleCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableStaleCache
+
+`func (o *ApplicationCacheCreateResults) SetEnableStaleCache(v bool)`
+
+SetEnableStaleCache sets EnableStaleCache field to given value.
+
+### HasEnableStaleCache
+
+`func (o *ApplicationCacheCreateResults) HasEnableStaleCache() bool`
+
+HasEnableStaleCache returns a boolean if a field has been set.
+
+### GetL2Region
+
+`func (o *ApplicationCacheCreateResults) GetL2Region() string`
+
+GetL2Region returns the L2Region field if non-nil, zero value otherwise.
+
+### GetL2RegionOk
+
+`func (o *ApplicationCacheCreateResults) GetL2RegionOk() (*string, bool)`
+
+GetL2RegionOk returns a tuple with the L2Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetL2Region
+
+`func (o *ApplicationCacheCreateResults) SetL2Region(v string)`
+
+SetL2Region sets L2Region field to given value.
+
+### HasL2Region
+
+`func (o *ApplicationCacheCreateResults) HasL2Region() bool`
+
+HasL2Region returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

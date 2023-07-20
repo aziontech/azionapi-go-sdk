@@ -34,13 +34,16 @@ type ApplicationCacheResults struct {
 	DeviceGroup []string `json:"device_group"`
 	EnableCachingForPost bool `json:"enable_caching_for_post"`
 	L2CachingEnabled bool `json:"l2_caching_enabled"`
+	EnableCachingForOptions bool `json:"enable_caching_for_options"`
+	EnableStaleCache bool `json:"enable_stale_cache"`
+	L2Region string `json:"l2_region"`
 }
 
 // NewApplicationCacheResults instantiates a new ApplicationCacheResults object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []string, enableCachingForPost bool, l2CachingEnabled bool) *ApplicationCacheResults {
+func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []string, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region string) *ApplicationCacheResults {
 	this := ApplicationCacheResults{}
 	this.Id = id
 	this.Name = name
@@ -57,6 +60,9 @@ func NewApplicationCacheResults(id int64, name string, browserCacheSettings stri
 	this.DeviceGroup = deviceGroup
 	this.EnableCachingForPost = enableCachingForPost
 	this.L2CachingEnabled = l2CachingEnabled
+	this.EnableCachingForOptions = enableCachingForOptions
+	this.EnableStaleCache = enableStaleCache
+	this.L2Region = l2Region
 	return &this
 }
 
@@ -428,6 +434,78 @@ func (o *ApplicationCacheResults) SetL2CachingEnabled(v bool) {
 	o.L2CachingEnabled = v
 }
 
+// GetEnableCachingForOptions returns the EnableCachingForOptions field value
+func (o *ApplicationCacheResults) GetEnableCachingForOptions() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.EnableCachingForOptions
+}
+
+// GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResults) GetEnableCachingForOptionsOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnableCachingForOptions, true
+}
+
+// SetEnableCachingForOptions sets field value
+func (o *ApplicationCacheResults) SetEnableCachingForOptions(v bool) {
+	o.EnableCachingForOptions = v
+}
+
+// GetEnableStaleCache returns the EnableStaleCache field value
+func (o *ApplicationCacheResults) GetEnableStaleCache() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.EnableStaleCache
+}
+
+// GetEnableStaleCacheOk returns a tuple with the EnableStaleCache field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResults) GetEnableStaleCacheOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnableStaleCache, true
+}
+
+// SetEnableStaleCache sets field value
+func (o *ApplicationCacheResults) SetEnableStaleCache(v bool) {
+	o.EnableStaleCache = v
+}
+
+// GetL2Region returns the L2Region field value
+func (o *ApplicationCacheResults) GetL2Region() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.L2Region
+}
+
+// GetL2RegionOk returns a tuple with the L2Region field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResults) GetL2RegionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.L2Region, true
+}
+
+// SetL2Region sets field value
+func (o *ApplicationCacheResults) SetL2Region(v string) {
+	o.L2Region = v
+}
+
 func (o ApplicationCacheResults) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -453,6 +531,9 @@ func (o ApplicationCacheResults) ToMap() (map[string]interface{}, error) {
 	toSerialize["device_group"] = o.DeviceGroup
 	toSerialize["enable_caching_for_post"] = o.EnableCachingForPost
 	toSerialize["l2_caching_enabled"] = o.L2CachingEnabled
+	toSerialize["enable_caching_for_options"] = o.EnableCachingForOptions
+	toSerialize["enable_stale_cache"] = o.EnableStaleCache
+	toSerialize["l2_region"] = o.L2Region
 	return toSerialize, nil
 }
 
