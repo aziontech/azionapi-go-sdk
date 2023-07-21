@@ -19,12 +19,15 @@ Name | Type | Description | Notes
 **DeviceGroup** | **[]string** |  | 
 **EnableCachingForPost** | **bool** |  | 
 **L2CachingEnabled** | **bool** |  | 
+**EnableCachingForOptions** | **bool** |  | 
+**EnableStaleCache** | **bool** |  | 
+**L2Region** | **string** |  | 
 
 ## Methods
 
 ### NewApplicationCacheResults
 
-`func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []string, enableCachingForPost bool, l2CachingEnabled bool, ) *ApplicationCacheResults`
+`func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []string, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region string, ) *ApplicationCacheResults`
 
 NewApplicationCacheResults instantiates a new ApplicationCacheResults object
 This constructor will assign default values to properties that have it defined,
@@ -337,6 +340,66 @@ and a boolean to check if the value has been set.
 `func (o *ApplicationCacheResults) SetL2CachingEnabled(v bool)`
 
 SetL2CachingEnabled sets L2CachingEnabled field to given value.
+
+
+### GetEnableCachingForOptions
+
+`func (o *ApplicationCacheResults) GetEnableCachingForOptions() bool`
+
+GetEnableCachingForOptions returns the EnableCachingForOptions field if non-nil, zero value otherwise.
+
+### GetEnableCachingForOptionsOk
+
+`func (o *ApplicationCacheResults) GetEnableCachingForOptionsOk() (*bool, bool)`
+
+GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableCachingForOptions
+
+`func (o *ApplicationCacheResults) SetEnableCachingForOptions(v bool)`
+
+SetEnableCachingForOptions sets EnableCachingForOptions field to given value.
+
+
+### GetEnableStaleCache
+
+`func (o *ApplicationCacheResults) GetEnableStaleCache() bool`
+
+GetEnableStaleCache returns the EnableStaleCache field if non-nil, zero value otherwise.
+
+### GetEnableStaleCacheOk
+
+`func (o *ApplicationCacheResults) GetEnableStaleCacheOk() (*bool, bool)`
+
+GetEnableStaleCacheOk returns a tuple with the EnableStaleCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableStaleCache
+
+`func (o *ApplicationCacheResults) SetEnableStaleCache(v bool)`
+
+SetEnableStaleCache sets EnableStaleCache field to given value.
+
+
+### GetL2Region
+
+`func (o *ApplicationCacheResults) GetL2Region() string`
+
+GetL2Region returns the L2Region field if non-nil, zero value otherwise.
+
+### GetL2RegionOk
+
+`func (o *ApplicationCacheResults) GetL2RegionOk() (*string, bool)`
+
+GetL2RegionOk returns a tuple with the L2Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetL2Region
+
+`func (o *ApplicationCacheResults) SetL2Region(v string)`
+
+SetL2Region sets L2Region field to given value.
 
 
 
