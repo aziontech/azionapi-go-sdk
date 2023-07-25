@@ -20,6 +20,7 @@ var _ MappedNullable = &PatchRulesEngineRequest{}
 // PatchRulesEngineRequest struct for PatchRulesEngineRequest
 type PatchRulesEngineRequest struct {
 	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria,omitempty"`
 	Behaviors []RulesEngineBehavior `json:"behaviors,omitempty"`
 }
@@ -71,6 +72,38 @@ func (o *PatchRulesEngineRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchRulesEngineRequest) SetName(v string) {
 	o.Name = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *PatchRulesEngineRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchRulesEngineRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *PatchRulesEngineRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *PatchRulesEngineRequest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetCriteria returns the Criteria field value if set, zero value otherwise.
@@ -149,6 +182,9 @@ func (o PatchRulesEngineRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Criteria) {
 		toSerialize["criteria"] = o.Criteria
