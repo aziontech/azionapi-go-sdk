@@ -7,10 +7,14 @@ Name | Type | Description | Notes
 **Id** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **SubjectName** | Pointer to **[]string** |  | [optional] 
-**Validity** | Pointer to **string** |  | [optional] 
+**Issuer** | Pointer to **NullableString** |  | [optional] 
+**Validity** | Pointer to **NullableString** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **CertificateType** | Pointer to **string** |  | [optional] 
 **Managed** | Pointer to **bool** |  | [optional] 
+**Csr** | Pointer to **NullableString** |  | [optional] 
+**CertificateContent** | Pointer to **NullableString** |  | [optional] 
+**AzionInformation** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -106,6 +110,41 @@ SetSubjectName sets SubjectName field to given value.
 
 HasSubjectName returns a boolean if a field has been set.
 
+### GetIssuer
+
+`func (o *SingleResult) GetIssuer() string`
+
+GetIssuer returns the Issuer field if non-nil, zero value otherwise.
+
+### GetIssuerOk
+
+`func (o *SingleResult) GetIssuerOk() (*string, bool)`
+
+GetIssuerOk returns a tuple with the Issuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuer
+
+`func (o *SingleResult) SetIssuer(v string)`
+
+SetIssuer sets Issuer field to given value.
+
+### HasIssuer
+
+`func (o *SingleResult) HasIssuer() bool`
+
+HasIssuer returns a boolean if a field has been set.
+
+### SetIssuerNil
+
+`func (o *SingleResult) SetIssuerNil(b bool)`
+
+ SetIssuerNil sets the value for Issuer to be an explicit nil
+
+### UnsetIssuer
+`func (o *SingleResult) UnsetIssuer()`
+
+UnsetIssuer ensures that no value is present for Issuer, not even an explicit nil
 ### GetValidity
 
 `func (o *SingleResult) GetValidity() string`
@@ -131,6 +170,16 @@ SetValidity sets Validity field to given value.
 
 HasValidity returns a boolean if a field has been set.
 
+### SetValidityNil
+
+`func (o *SingleResult) SetValidityNil(b bool)`
+
+ SetValidityNil sets the value for Validity to be an explicit nil
+
+### UnsetValidity
+`func (o *SingleResult) UnsetValidity()`
+
+UnsetValidity ensures that no value is present for Validity, not even an explicit nil
 ### GetStatus
 
 `func (o *SingleResult) GetStatus() string`
@@ -205,6 +254,101 @@ SetManaged sets Managed field to given value.
 `func (o *SingleResult) HasManaged() bool`
 
 HasManaged returns a boolean if a field has been set.
+
+### GetCsr
+
+`func (o *SingleResult) GetCsr() string`
+
+GetCsr returns the Csr field if non-nil, zero value otherwise.
+
+### GetCsrOk
+
+`func (o *SingleResult) GetCsrOk() (*string, bool)`
+
+GetCsrOk returns a tuple with the Csr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCsr
+
+`func (o *SingleResult) SetCsr(v string)`
+
+SetCsr sets Csr field to given value.
+
+### HasCsr
+
+`func (o *SingleResult) HasCsr() bool`
+
+HasCsr returns a boolean if a field has been set.
+
+### SetCsrNil
+
+`func (o *SingleResult) SetCsrNil(b bool)`
+
+ SetCsrNil sets the value for Csr to be an explicit nil
+
+### UnsetCsr
+`func (o *SingleResult) UnsetCsr()`
+
+UnsetCsr ensures that no value is present for Csr, not even an explicit nil
+### GetCertificateContent
+
+`func (o *SingleResult) GetCertificateContent() string`
+
+GetCertificateContent returns the CertificateContent field if non-nil, zero value otherwise.
+
+### GetCertificateContentOk
+
+`func (o *SingleResult) GetCertificateContentOk() (*string, bool)`
+
+GetCertificateContentOk returns a tuple with the CertificateContent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateContent
+
+`func (o *SingleResult) SetCertificateContent(v string)`
+
+SetCertificateContent sets CertificateContent field to given value.
+
+### HasCertificateContent
+
+`func (o *SingleResult) HasCertificateContent() bool`
+
+HasCertificateContent returns a boolean if a field has been set.
+
+### SetCertificateContentNil
+
+`func (o *SingleResult) SetCertificateContentNil(b bool)`
+
+ SetCertificateContentNil sets the value for CertificateContent to be an explicit nil
+
+### UnsetCertificateContent
+`func (o *SingleResult) UnsetCertificateContent()`
+
+UnsetCertificateContent ensures that no value is present for CertificateContent, not even an explicit nil
+### GetAzionInformation
+
+`func (o *SingleResult) GetAzionInformation() string`
+
+GetAzionInformation returns the AzionInformation field if non-nil, zero value otherwise.
+
+### GetAzionInformationOk
+
+`func (o *SingleResult) GetAzionInformationOk() (*string, bool)`
+
+GetAzionInformationOk returns a tuple with the AzionInformation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzionInformation
+
+`func (o *SingleResult) SetAzionInformation(v string)`
+
+SetAzionInformation sets AzionInformation field to given value.
+
+### HasAzionInformation
+
+`func (o *SingleResult) HasAzionInformation() bool`
+
+HasAzionInformation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

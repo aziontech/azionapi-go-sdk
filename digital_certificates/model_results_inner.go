@@ -22,10 +22,12 @@ type ResultsInner struct {
 	Id *int32 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	SubjectName []string `json:"subject_name,omitempty"`
-	Validity *string `json:"validity,omitempty"`
+	Validity NullableString `json:"validity,omitempty"`
 	Status *string `json:"status,omitempty"`
 	CertificateType *string `json:"certificate_type,omitempty"`
 	Managed *bool `json:"managed,omitempty"`
+	Issuer NullableString `json:"issuer,omitempty"`
+	AzionInformation *string `json:"azion_information,omitempty"`
 }
 
 // NewResultsInner instantiates a new ResultsInner object
@@ -141,36 +143,46 @@ func (o *ResultsInner) SetSubjectName(v []string) {
 	o.SubjectName = v
 }
 
-// GetValidity returns the Validity field value if set, zero value otherwise.
+// GetValidity returns the Validity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResultsInner) GetValidity() string {
-	if o == nil || IsNil(o.Validity) {
+	if o == nil || IsNil(o.Validity.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Validity
+	return *o.Validity.Get()
 }
 
 // GetValidityOk returns a tuple with the Validity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResultsInner) GetValidityOk() (*string, bool) {
-	if o == nil || IsNil(o.Validity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Validity, true
+	return o.Validity.Get(), o.Validity.IsSet()
 }
 
 // HasValidity returns a boolean if a field has been set.
 func (o *ResultsInner) HasValidity() bool {
-	if o != nil && !IsNil(o.Validity) {
+	if o != nil && o.Validity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValidity gets a reference to the given string and assigns it to the Validity field.
+// SetValidity gets a reference to the given NullableString and assigns it to the Validity field.
 func (o *ResultsInner) SetValidity(v string) {
-	o.Validity = &v
+	o.Validity.Set(&v)
+}
+// SetValidityNil sets the value for Validity to be an explicit nil
+func (o *ResultsInner) SetValidityNil() {
+	o.Validity.Set(nil)
+}
+
+// UnsetValidity ensures that no value is present for Validity, not even an explicit nil
+func (o *ResultsInner) UnsetValidity() {
+	o.Validity.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -269,6 +281,80 @@ func (o *ResultsInner) SetManaged(v bool) {
 	o.Managed = &v
 }
 
+// GetIssuer returns the Issuer field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ResultsInner) GetIssuer() string {
+	if o == nil || IsNil(o.Issuer.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Issuer.Get()
+}
+
+// GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ResultsInner) GetIssuerOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Issuer.Get(), o.Issuer.IsSet()
+}
+
+// HasIssuer returns a boolean if a field has been set.
+func (o *ResultsInner) HasIssuer() bool {
+	if o != nil && o.Issuer.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuer gets a reference to the given NullableString and assigns it to the Issuer field.
+func (o *ResultsInner) SetIssuer(v string) {
+	o.Issuer.Set(&v)
+}
+// SetIssuerNil sets the value for Issuer to be an explicit nil
+func (o *ResultsInner) SetIssuerNil() {
+	o.Issuer.Set(nil)
+}
+
+// UnsetIssuer ensures that no value is present for Issuer, not even an explicit nil
+func (o *ResultsInner) UnsetIssuer() {
+	o.Issuer.Unset()
+}
+
+// GetAzionInformation returns the AzionInformation field value if set, zero value otherwise.
+func (o *ResultsInner) GetAzionInformation() string {
+	if o == nil || IsNil(o.AzionInformation) {
+		var ret string
+		return ret
+	}
+	return *o.AzionInformation
+}
+
+// GetAzionInformationOk returns a tuple with the AzionInformation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResultsInner) GetAzionInformationOk() (*string, bool) {
+	if o == nil || IsNil(o.AzionInformation) {
+		return nil, false
+	}
+	return o.AzionInformation, true
+}
+
+// HasAzionInformation returns a boolean if a field has been set.
+func (o *ResultsInner) HasAzionInformation() bool {
+	if o != nil && !IsNil(o.AzionInformation) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzionInformation gets a reference to the given string and assigns it to the AzionInformation field.
+func (o *ResultsInner) SetAzionInformation(v string) {
+	o.AzionInformation = &v
+}
+
 func (o ResultsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -288,8 +374,8 @@ func (o ResultsInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubjectName) {
 		toSerialize["subject_name"] = o.SubjectName
 	}
-	if !IsNil(o.Validity) {
-		toSerialize["validity"] = o.Validity
+	if o.Validity.IsSet() {
+		toSerialize["validity"] = o.Validity.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -299,6 +385,12 @@ func (o ResultsInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Managed) {
 		toSerialize["managed"] = o.Managed
+	}
+	if o.Issuer.IsSet() {
+		toSerialize["issuer"] = o.Issuer.Get()
+	}
+	if !IsNil(o.AzionInformation) {
+		toSerialize["azion_information"] = o.AzionInformation
 	}
 	return toSerialize, nil
 }

@@ -22,10 +22,14 @@ type SingleResult struct {
 	Id *int32 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	SubjectName []string `json:"subject_name,omitempty"`
-	Validity *string `json:"validity,omitempty"`
+	Issuer NullableString `json:"issuer,omitempty"`
+	Validity NullableString `json:"validity,omitempty"`
 	Status *string `json:"status,omitempty"`
 	CertificateType *string `json:"certificate_type,omitempty"`
 	Managed *bool `json:"managed,omitempty"`
+	Csr NullableString `json:"csr,omitempty"`
+	CertificateContent NullableString `json:"certificate_content,omitempty"`
+	AzionInformation *string `json:"azion_information,omitempty"`
 }
 
 // NewSingleResult instantiates a new SingleResult object
@@ -141,36 +145,88 @@ func (o *SingleResult) SetSubjectName(v []string) {
 	o.SubjectName = v
 }
 
-// GetValidity returns the Validity field value if set, zero value otherwise.
-func (o *SingleResult) GetValidity() string {
-	if o == nil || IsNil(o.Validity) {
+// GetIssuer returns the Issuer field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SingleResult) GetIssuer() string {
+	if o == nil || IsNil(o.Issuer.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Validity
+	return *o.Issuer.Get()
 }
 
-// GetValidityOk returns a tuple with the Validity field value if set, nil otherwise
+// GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SingleResult) GetValidityOk() (*string, bool) {
-	if o == nil || IsNil(o.Validity) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SingleResult) GetIssuerOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Validity, true
+	return o.Issuer.Get(), o.Issuer.IsSet()
 }
 
-// HasValidity returns a boolean if a field has been set.
-func (o *SingleResult) HasValidity() bool {
-	if o != nil && !IsNil(o.Validity) {
+// HasIssuer returns a boolean if a field has been set.
+func (o *SingleResult) HasIssuer() bool {
+	if o != nil && o.Issuer.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValidity gets a reference to the given string and assigns it to the Validity field.
+// SetIssuer gets a reference to the given NullableString and assigns it to the Issuer field.
+func (o *SingleResult) SetIssuer(v string) {
+	o.Issuer.Set(&v)
+}
+// SetIssuerNil sets the value for Issuer to be an explicit nil
+func (o *SingleResult) SetIssuerNil() {
+	o.Issuer.Set(nil)
+}
+
+// UnsetIssuer ensures that no value is present for Issuer, not even an explicit nil
+func (o *SingleResult) UnsetIssuer() {
+	o.Issuer.Unset()
+}
+
+// GetValidity returns the Validity field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SingleResult) GetValidity() string {
+	if o == nil || IsNil(o.Validity.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Validity.Get()
+}
+
+// GetValidityOk returns a tuple with the Validity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SingleResult) GetValidityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Validity.Get(), o.Validity.IsSet()
+}
+
+// HasValidity returns a boolean if a field has been set.
+func (o *SingleResult) HasValidity() bool {
+	if o != nil && o.Validity.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetValidity gets a reference to the given NullableString and assigns it to the Validity field.
 func (o *SingleResult) SetValidity(v string) {
-	o.Validity = &v
+	o.Validity.Set(&v)
+}
+// SetValidityNil sets the value for Validity to be an explicit nil
+func (o *SingleResult) SetValidityNil() {
+	o.Validity.Set(nil)
+}
+
+// UnsetValidity ensures that no value is present for Validity, not even an explicit nil
+func (o *SingleResult) UnsetValidity() {
+	o.Validity.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -269,6 +325,122 @@ func (o *SingleResult) SetManaged(v bool) {
 	o.Managed = &v
 }
 
+// GetCsr returns the Csr field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SingleResult) GetCsr() string {
+	if o == nil || IsNil(o.Csr.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Csr.Get()
+}
+
+// GetCsrOk returns a tuple with the Csr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SingleResult) GetCsrOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Csr.Get(), o.Csr.IsSet()
+}
+
+// HasCsr returns a boolean if a field has been set.
+func (o *SingleResult) HasCsr() bool {
+	if o != nil && o.Csr.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCsr gets a reference to the given NullableString and assigns it to the Csr field.
+func (o *SingleResult) SetCsr(v string) {
+	o.Csr.Set(&v)
+}
+// SetCsrNil sets the value for Csr to be an explicit nil
+func (o *SingleResult) SetCsrNil() {
+	o.Csr.Set(nil)
+}
+
+// UnsetCsr ensures that no value is present for Csr, not even an explicit nil
+func (o *SingleResult) UnsetCsr() {
+	o.Csr.Unset()
+}
+
+// GetCertificateContent returns the CertificateContent field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SingleResult) GetCertificateContent() string {
+	if o == nil || IsNil(o.CertificateContent.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CertificateContent.Get()
+}
+
+// GetCertificateContentOk returns a tuple with the CertificateContent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SingleResult) GetCertificateContentOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CertificateContent.Get(), o.CertificateContent.IsSet()
+}
+
+// HasCertificateContent returns a boolean if a field has been set.
+func (o *SingleResult) HasCertificateContent() bool {
+	if o != nil && o.CertificateContent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateContent gets a reference to the given NullableString and assigns it to the CertificateContent field.
+func (o *SingleResult) SetCertificateContent(v string) {
+	o.CertificateContent.Set(&v)
+}
+// SetCertificateContentNil sets the value for CertificateContent to be an explicit nil
+func (o *SingleResult) SetCertificateContentNil() {
+	o.CertificateContent.Set(nil)
+}
+
+// UnsetCertificateContent ensures that no value is present for CertificateContent, not even an explicit nil
+func (o *SingleResult) UnsetCertificateContent() {
+	o.CertificateContent.Unset()
+}
+
+// GetAzionInformation returns the AzionInformation field value if set, zero value otherwise.
+func (o *SingleResult) GetAzionInformation() string {
+	if o == nil || IsNil(o.AzionInformation) {
+		var ret string
+		return ret
+	}
+	return *o.AzionInformation
+}
+
+// GetAzionInformationOk returns a tuple with the AzionInformation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SingleResult) GetAzionInformationOk() (*string, bool) {
+	if o == nil || IsNil(o.AzionInformation) {
+		return nil, false
+	}
+	return o.AzionInformation, true
+}
+
+// HasAzionInformation returns a boolean if a field has been set.
+func (o *SingleResult) HasAzionInformation() bool {
+	if o != nil && !IsNil(o.AzionInformation) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzionInformation gets a reference to the given string and assigns it to the AzionInformation field.
+func (o *SingleResult) SetAzionInformation(v string) {
+	o.AzionInformation = &v
+}
+
 func (o SingleResult) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -288,8 +460,11 @@ func (o SingleResult) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubjectName) {
 		toSerialize["subject_name"] = o.SubjectName
 	}
-	if !IsNil(o.Validity) {
-		toSerialize["validity"] = o.Validity
+	if o.Issuer.IsSet() {
+		toSerialize["issuer"] = o.Issuer.Get()
+	}
+	if o.Validity.IsSet() {
+		toSerialize["validity"] = o.Validity.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -299,6 +474,15 @@ func (o SingleResult) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Managed) {
 		toSerialize["managed"] = o.Managed
+	}
+	if o.Csr.IsSet() {
+		toSerialize["csr"] = o.Csr.Get()
+	}
+	if o.CertificateContent.IsSet() {
+		toSerialize["certificate_content"] = o.CertificateContent.Get()
+	}
+	if !IsNil(o.AzionInformation) {
+		toSerialize["azion_information"] = o.AzionInformation
 	}
 	return toSerialize, nil
 }

@@ -23,7 +23,7 @@ type DC200List struct {
 	TotalPages *int32 `json:"total_pages,omitempty"`
 	SchemaVersion *int32 `json:"schema_version,omitempty"`
 	Links *DC200ListLinks `json:"links,omitempty"`
-	Results [][]ResultsInner `json:"results,omitempty"`
+	Results []ResultsInner `json:"results,omitempty"`
 }
 
 // NewDC200List instantiates a new DC200List object
@@ -172,9 +172,9 @@ func (o *DC200List) SetLinks(v DC200ListLinks) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DC200List) GetResults() [][]ResultsInner {
+func (o *DC200List) GetResults() []ResultsInner {
 	if o == nil || IsNil(o.Results) {
-		var ret [][]ResultsInner
+		var ret []ResultsInner
 		return ret
 	}
 	return o.Results
@@ -182,7 +182,7 @@ func (o *DC200List) GetResults() [][]ResultsInner {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DC200List) GetResultsOk() ([][]ResultsInner, bool) {
+func (o *DC200List) GetResultsOk() ([]ResultsInner, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -198,8 +198,8 @@ func (o *DC200List) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given [][]ResultsInner and assigns it to the Results field.
-func (o *DC200List) SetResults(v [][]ResultsInner) {
+// SetResults gets a reference to the given []ResultsInner and assigns it to the Results field.
+func (o *DC200List) SetResults(v []ResultsInner) {
 	o.Results = v
 }
 

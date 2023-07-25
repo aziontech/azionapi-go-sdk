@@ -363,7 +363,11 @@ components:
           items:
             type: string
           type: array
+        issuer:
+          nullable: true
+          type: string
         validity:
+          nullable: true
           type: string
         status:
           type: string
@@ -374,6 +378,14 @@ components:
           type: string
         managed:
           type: boolean
+        csr:
+          nullable: true
+          type: string
+        certificate_content:
+          nullable: true
+          type: string
+        azion_information:
+          type: string
       type: object
     results:
       example:
@@ -421,34 +433,20 @@ components:
           previous: previous
         total_pages: 1
         results:
-        - - id: 12345
-            name: New SSL certificate for www.mydomain.com
-            subject_name: []
-            validity: 2028-03-24 20:09:00-03:00
-            status: Active
-            certificate_type: edge_certificate
-            managed: false
-          - id: 1
-            name: New SSL certificate for www.mydomain.com
-            subject_name: []
-            validity: 2028-03-24 20:09:00-03:00
-            status: Active
-            certificate_type: edge_certificate
-            managed: false
-        - - id: 12345
-            name: New SSL certificate for www.mydomain.com
-            subject_name: []
-            validity: 2028-03-24 20:09:00-03:00
-            status: Active
-            certificate_type: edge_certificate
-            managed: false
-          - id: 1
-            name: New SSL certificate for www.mydomain.com
-            subject_name: []
-            validity: 2028-03-24 20:09:00-03:00
-            status: Active
-            certificate_type: edge_certificate
-            managed: false
+        - id: 12345
+          name: New SSL certificate for www.mydomain.com
+          subject_name: []
+          validity: 2028-03-24 20:09:00-03:00
+          status: Active
+          certificate_type: edge_certificate
+          managed: false
+        - id: 1
+          name: New SSL certificate for www.mydomain.com
+          subject_name: []
+          validity: 2028-03-24 20:09:00-03:00
+          status: Active
+          certificate_type: edge_certificate
+          managed: false
       properties:
         count:
           example: 2
@@ -462,9 +460,23 @@ components:
         links:
           $ref: '#/components/schemas/DC200List_links'
         results:
+          example:
+          - id: 12345
+            name: New SSL certificate for www.mydomain.com
+            subject_name: []
+            validity: 2028-03-24 20:09:00-03:00
+            status: Active
+            certificate_type: edge_certificate
+            managed: false
+          - id: 1
+            name: New SSL certificate for www.mydomain.com
+            subject_name: []
+            validity: 2028-03-24 20:09:00-03:00
+            status: Active
+            certificate_type: edge_certificate
+            managed: false
           items:
-            $ref: '#/components/schemas/results'
-          properties: {}
+            $ref: '#/components/schemas/results_inner'
           type: array
       type: object
     DC201:
@@ -734,6 +746,7 @@ components:
             type: string
           type: array
         validity:
+          nullable: true
           type: string
         status:
           type: string
@@ -744,6 +757,11 @@ components:
           type: string
         managed:
           type: boolean
+        issuer:
+          nullable: true
+          type: string
+        azion_information:
+          type: string
       type: object
     DC200List_links:
       example:
