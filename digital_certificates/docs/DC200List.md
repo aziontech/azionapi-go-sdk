@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **TotalPages** | Pointer to **int32** |  | [optional] 
 **SchemaVersion** | Pointer to **int32** |  | [optional] 
 **Links** | Pointer to [**DC200ListLinks**](DC200ListLinks.md) |  | [optional] 
-**Results** | Pointer to [**[][]ResultsInner**]([]ResultsInner.md) |  | [optional] 
+**Results** | Pointer to [**[]ResultsInner**](ResultsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *DC200List) GetResults() [][]ResultsInner`
+`func (o *DC200List) GetResults() []ResultsInner`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *DC200List) GetResultsOk() (*[][]ResultsInner, bool)`
+`func (o *DC200List) GetResultsOk() (*[]ResultsInner, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *DC200List) SetResults(v [][]ResultsInner)`
+`func (o *DC200List) SetResults(v []ResultsInner)`
 
 SetResults sets Results field to given value.
 

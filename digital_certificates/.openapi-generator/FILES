@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -53,11 +52,4 @@ model_results_inner.go
 model_single_result.go
 model_update_digital_certificate_request.go
 response.go
-test/api_create_csr_test.go
-test/api_create_digital_certificate_test.go
-test/api_delete_digital_certificate_test.go
-test/api_overwrite_digital_certificate_test.go
-test/api_retrieve_digital_certificate_by_id_test.go
-test/api_retrieve_digital_certificate_list_test.go
-test/api_update_digital_certificate_test.go
 utils.go
