@@ -20,7 +20,7 @@ var _ MappedNullable = &DC200{}
 // DC200 struct for DC200
 type DC200 struct {
 	SchemaVersion *int32 `json:"schema_version,omitempty"`
-	Result *SingleResult `json:"result,omitempty"`
+	Results *SingleResult `json:"results,omitempty"`
 }
 
 // NewDC200 instantiates a new DC200 object
@@ -72,36 +72,36 @@ func (o *DC200) SetSchemaVersion(v int32) {
 	o.SchemaVersion = &v
 }
 
-// GetResult returns the Result field value if set, zero value otherwise.
-func (o *DC200) GetResult() SingleResult {
-	if o == nil || IsNil(o.Result) {
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *DC200) GetResults() SingleResult {
+	if o == nil || IsNil(o.Results) {
 		var ret SingleResult
 		return ret
 	}
-	return *o.Result
+	return *o.Results
 }
 
-// GetResultOk returns a tuple with the Result field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DC200) GetResultOk() (*SingleResult, bool) {
-	if o == nil || IsNil(o.Result) {
+func (o *DC200) GetResultsOk() (*SingleResult, bool) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
-	return o.Result, true
+	return o.Results, true
 }
 
-// HasResult returns a boolean if a field has been set.
-func (o *DC200) HasResult() bool {
-	if o != nil && !IsNil(o.Result) {
+// HasResults returns a boolean if a field has been set.
+func (o *DC200) HasResults() bool {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
 	return false
 }
 
-// SetResult gets a reference to the given SingleResult and assigns it to the Result field.
-func (o *DC200) SetResult(v SingleResult) {
-	o.Result = &v
+// SetResults gets a reference to the given SingleResult and assigns it to the Results field.
+func (o *DC200) SetResults(v SingleResult) {
+	o.Results = &v
 }
 
 func (o DC200) MarshalJSON() ([]byte, error) {
@@ -117,8 +117,8 @@ func (o DC200) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SchemaVersion) {
 		toSerialize["schema_version"] = o.SchemaVersion
 	}
-	if !IsNil(o.Result) {
-		toSerialize["result"] = o.Result
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
 	}
 	return toSerialize, nil
 }

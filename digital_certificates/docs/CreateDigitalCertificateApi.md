@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## CreateCertificate
 
-> DC201 CreateCertificate(ctx).CreateCertificateRequest(createCertificateRequest).Execute()
+> DC200 CreateCertificate(ctx).CreateCertificateRequest(createCertificateRequest).Execute()
 
 Create a new digital certificate
 
@@ -36,7 +36,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CreateDigitalCertificateApi.CreateCertificate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCertificate`: DC201
+    // response from `CreateCertificate`: DC200
     fmt.Fprintf(os.Stdout, "Response from `CreateDigitalCertificateApi.CreateCertificate`: %v\n", resp)
 }
 ```
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DC201**](DC201.md)
+[**DC200**](DC200.md)
 
 ### Authorization
 
