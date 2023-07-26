@@ -35,6 +35,12 @@ type ApplicationCacheResponseDetails struct {
 	EnableCachingForPost bool `json:"enable_caching_for_post"`
 	EnableCachingForOptions *bool `json:"enable_caching_for_options,omitempty"`
 	L2CachingEnabled bool `json:"l2_caching_enabled"`
+	IsSliceConfigurationEnabled *bool `json:"is_slice_configuration_enabled,omitempty"`
+	IsSliceEdgeCachingEnabled *bool `json:"is_slice_edge_caching_enabled,omitempty"`
+	IsSliceL2CachingEnabled *bool `json:"is_slice_l2_caching_enabled,omitempty"`
+	SliceConfigurationRange *int64 `json:"slice_configuration_range,omitempty"`
+	EnableStaleCache *bool `json:"enable_stale_cache,omitempty"`
+	L2Region *string `json:"l2_region,omitempty"`
 }
 
 // NewApplicationCacheResponseDetails instantiates a new ApplicationCacheResponseDetails object
@@ -479,6 +485,198 @@ func (o *ApplicationCacheResponseDetails) SetL2CachingEnabled(v bool) {
 	o.L2CachingEnabled = v
 }
 
+// GetIsSliceConfigurationEnabled returns the IsSliceConfigurationEnabled field value if set, zero value otherwise.
+func (o *ApplicationCacheResponseDetails) GetIsSliceConfigurationEnabled() bool {
+	if o == nil || IsNil(o.IsSliceConfigurationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSliceConfigurationEnabled
+}
+
+// GetIsSliceConfigurationEnabledOk returns a tuple with the IsSliceConfigurationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResponseDetails) GetIsSliceConfigurationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSliceConfigurationEnabled) {
+		return nil, false
+	}
+	return o.IsSliceConfigurationEnabled, true
+}
+
+// HasIsSliceConfigurationEnabled returns a boolean if a field has been set.
+func (o *ApplicationCacheResponseDetails) HasIsSliceConfigurationEnabled() bool {
+	if o != nil && !IsNil(o.IsSliceConfigurationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSliceConfigurationEnabled gets a reference to the given bool and assigns it to the IsSliceConfigurationEnabled field.
+func (o *ApplicationCacheResponseDetails) SetIsSliceConfigurationEnabled(v bool) {
+	o.IsSliceConfigurationEnabled = &v
+}
+
+// GetIsSliceEdgeCachingEnabled returns the IsSliceEdgeCachingEnabled field value if set, zero value otherwise.
+func (o *ApplicationCacheResponseDetails) GetIsSliceEdgeCachingEnabled() bool {
+	if o == nil || IsNil(o.IsSliceEdgeCachingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSliceEdgeCachingEnabled
+}
+
+// GetIsSliceEdgeCachingEnabledOk returns a tuple with the IsSliceEdgeCachingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResponseDetails) GetIsSliceEdgeCachingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSliceEdgeCachingEnabled) {
+		return nil, false
+	}
+	return o.IsSliceEdgeCachingEnabled, true
+}
+
+// HasIsSliceEdgeCachingEnabled returns a boolean if a field has been set.
+func (o *ApplicationCacheResponseDetails) HasIsSliceEdgeCachingEnabled() bool {
+	if o != nil && !IsNil(o.IsSliceEdgeCachingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSliceEdgeCachingEnabled gets a reference to the given bool and assigns it to the IsSliceEdgeCachingEnabled field.
+func (o *ApplicationCacheResponseDetails) SetIsSliceEdgeCachingEnabled(v bool) {
+	o.IsSliceEdgeCachingEnabled = &v
+}
+
+// GetIsSliceL2CachingEnabled returns the IsSliceL2CachingEnabled field value if set, zero value otherwise.
+func (o *ApplicationCacheResponseDetails) GetIsSliceL2CachingEnabled() bool {
+	if o == nil || IsNil(o.IsSliceL2CachingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSliceL2CachingEnabled
+}
+
+// GetIsSliceL2CachingEnabledOk returns a tuple with the IsSliceL2CachingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResponseDetails) GetIsSliceL2CachingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSliceL2CachingEnabled) {
+		return nil, false
+	}
+	return o.IsSliceL2CachingEnabled, true
+}
+
+// HasIsSliceL2CachingEnabled returns a boolean if a field has been set.
+func (o *ApplicationCacheResponseDetails) HasIsSliceL2CachingEnabled() bool {
+	if o != nil && !IsNil(o.IsSliceL2CachingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSliceL2CachingEnabled gets a reference to the given bool and assigns it to the IsSliceL2CachingEnabled field.
+func (o *ApplicationCacheResponseDetails) SetIsSliceL2CachingEnabled(v bool) {
+	o.IsSliceL2CachingEnabled = &v
+}
+
+// GetSliceConfigurationRange returns the SliceConfigurationRange field value if set, zero value otherwise.
+func (o *ApplicationCacheResponseDetails) GetSliceConfigurationRange() int64 {
+	if o == nil || IsNil(o.SliceConfigurationRange) {
+		var ret int64
+		return ret
+	}
+	return *o.SliceConfigurationRange
+}
+
+// GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResponseDetails) GetSliceConfigurationRangeOk() (*int64, bool) {
+	if o == nil || IsNil(o.SliceConfigurationRange) {
+		return nil, false
+	}
+	return o.SliceConfigurationRange, true
+}
+
+// HasSliceConfigurationRange returns a boolean if a field has been set.
+func (o *ApplicationCacheResponseDetails) HasSliceConfigurationRange() bool {
+	if o != nil && !IsNil(o.SliceConfigurationRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetSliceConfigurationRange gets a reference to the given int64 and assigns it to the SliceConfigurationRange field.
+func (o *ApplicationCacheResponseDetails) SetSliceConfigurationRange(v int64) {
+	o.SliceConfigurationRange = &v
+}
+
+// GetEnableStaleCache returns the EnableStaleCache field value if set, zero value otherwise.
+func (o *ApplicationCacheResponseDetails) GetEnableStaleCache() bool {
+	if o == nil || IsNil(o.EnableStaleCache) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableStaleCache
+}
+
+// GetEnableStaleCacheOk returns a tuple with the EnableStaleCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResponseDetails) GetEnableStaleCacheOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableStaleCache) {
+		return nil, false
+	}
+	return o.EnableStaleCache, true
+}
+
+// HasEnableStaleCache returns a boolean if a field has been set.
+func (o *ApplicationCacheResponseDetails) HasEnableStaleCache() bool {
+	if o != nil && !IsNil(o.EnableStaleCache) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableStaleCache gets a reference to the given bool and assigns it to the EnableStaleCache field.
+func (o *ApplicationCacheResponseDetails) SetEnableStaleCache(v bool) {
+	o.EnableStaleCache = &v
+}
+
+// GetL2Region returns the L2Region field value if set, zero value otherwise.
+func (o *ApplicationCacheResponseDetails) GetL2Region() string {
+	if o == nil || IsNil(o.L2Region) {
+		var ret string
+		return ret
+	}
+	return *o.L2Region
+}
+
+// GetL2RegionOk returns a tuple with the L2Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheResponseDetails) GetL2RegionOk() (*string, bool) {
+	if o == nil || IsNil(o.L2Region) {
+		return nil, false
+	}
+	return o.L2Region, true
+}
+
+// HasL2Region returns a boolean if a field has been set.
+func (o *ApplicationCacheResponseDetails) HasL2Region() bool {
+	if o != nil && !IsNil(o.L2Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetL2Region gets a reference to the given string and assigns it to the L2Region field.
+func (o *ApplicationCacheResponseDetails) SetL2Region(v string) {
+	o.L2Region = &v
+}
+
 func (o ApplicationCacheResponseDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -515,6 +713,24 @@ func (o ApplicationCacheResponseDetails) ToMap() (map[string]interface{}, error)
 		toSerialize["enable_caching_for_options"] = o.EnableCachingForOptions
 	}
 	toSerialize["l2_caching_enabled"] = o.L2CachingEnabled
+	if !IsNil(o.IsSliceConfigurationEnabled) {
+		toSerialize["is_slice_configuration_enabled"] = o.IsSliceConfigurationEnabled
+	}
+	if !IsNil(o.IsSliceEdgeCachingEnabled) {
+		toSerialize["is_slice_edge_caching_enabled"] = o.IsSliceEdgeCachingEnabled
+	}
+	if !IsNil(o.IsSliceL2CachingEnabled) {
+		toSerialize["is_slice_l2_caching_enabled"] = o.IsSliceL2CachingEnabled
+	}
+	if !IsNil(o.SliceConfigurationRange) {
+		toSerialize["slice_configuration_range"] = o.SliceConfigurationRange
+	}
+	if !IsNil(o.EnableStaleCache) {
+		toSerialize["enable_stale_cache"] = o.EnableStaleCache
+	}
+	if !IsNil(o.L2Region) {
+		toSerialize["l2_region"] = o.L2Region
+	}
 	return toSerialize, nil
 }
 

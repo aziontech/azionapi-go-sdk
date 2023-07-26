@@ -14,12 +14,17 @@ Name | Type | Description | Notes
 **EnableQueryStringSort** | Pointer to **bool** |  | [optional] 
 **CacheByCookies** | Pointer to **string** |  | [optional] 
 **CookieNames** | Pointer to **[]string** |  | [optional] 
+**AdaptiveDeliveryAction** | Pointer to **string** |  | [optional] 
+**DeviceGroup** | Pointer to **[]int32** |  | [optional] 
 **EnableCachingForPost** | Pointer to **bool** |  | [optional] 
 **L2CachingEnabled** | Pointer to **bool** |  | [optional] 
 **IsSliceConfigurationEnabled** | Pointer to **bool** |  | [optional] 
 **IsSliceEdgeCachingEnabled** | Pointer to **bool** |  | [optional] 
 **IsSliceL2CachingEnabled** | Pointer to **bool** |  | [optional] 
 **SliceConfigurationRange** | Pointer to **int64** |  | [optional] 
+**EnableCachingForOptions** | Pointer to **bool** |  | [optional] 
+**EnableStaleCache** | Pointer to **bool** |  | [optional] 
+**L2Region** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -285,6 +290,56 @@ SetCookieNames sets CookieNames field to given value.
 
 HasCookieNames returns a boolean if a field has been set.
 
+### GetAdaptiveDeliveryAction
+
+`func (o *ApplicationCachePutRequest) GetAdaptiveDeliveryAction() string`
+
+GetAdaptiveDeliveryAction returns the AdaptiveDeliveryAction field if non-nil, zero value otherwise.
+
+### GetAdaptiveDeliveryActionOk
+
+`func (o *ApplicationCachePutRequest) GetAdaptiveDeliveryActionOk() (*string, bool)`
+
+GetAdaptiveDeliveryActionOk returns a tuple with the AdaptiveDeliveryAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdaptiveDeliveryAction
+
+`func (o *ApplicationCachePutRequest) SetAdaptiveDeliveryAction(v string)`
+
+SetAdaptiveDeliveryAction sets AdaptiveDeliveryAction field to given value.
+
+### HasAdaptiveDeliveryAction
+
+`func (o *ApplicationCachePutRequest) HasAdaptiveDeliveryAction() bool`
+
+HasAdaptiveDeliveryAction returns a boolean if a field has been set.
+
+### GetDeviceGroup
+
+`func (o *ApplicationCachePutRequest) GetDeviceGroup() []int32`
+
+GetDeviceGroup returns the DeviceGroup field if non-nil, zero value otherwise.
+
+### GetDeviceGroupOk
+
+`func (o *ApplicationCachePutRequest) GetDeviceGroupOk() (*[]int32, bool)`
+
+GetDeviceGroupOk returns a tuple with the DeviceGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceGroup
+
+`func (o *ApplicationCachePutRequest) SetDeviceGroup(v []int32)`
+
+SetDeviceGroup sets DeviceGroup field to given value.
+
+### HasDeviceGroup
+
+`func (o *ApplicationCachePutRequest) HasDeviceGroup() bool`
+
+HasDeviceGroup returns a boolean if a field has been set.
+
 ### GetEnableCachingForPost
 
 `func (o *ApplicationCachePutRequest) GetEnableCachingForPost() bool`
@@ -434,6 +489,81 @@ SetSliceConfigurationRange sets SliceConfigurationRange field to given value.
 `func (o *ApplicationCachePutRequest) HasSliceConfigurationRange() bool`
 
 HasSliceConfigurationRange returns a boolean if a field has been set.
+
+### GetEnableCachingForOptions
+
+`func (o *ApplicationCachePutRequest) GetEnableCachingForOptions() bool`
+
+GetEnableCachingForOptions returns the EnableCachingForOptions field if non-nil, zero value otherwise.
+
+### GetEnableCachingForOptionsOk
+
+`func (o *ApplicationCachePutRequest) GetEnableCachingForOptionsOk() (*bool, bool)`
+
+GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableCachingForOptions
+
+`func (o *ApplicationCachePutRequest) SetEnableCachingForOptions(v bool)`
+
+SetEnableCachingForOptions sets EnableCachingForOptions field to given value.
+
+### HasEnableCachingForOptions
+
+`func (o *ApplicationCachePutRequest) HasEnableCachingForOptions() bool`
+
+HasEnableCachingForOptions returns a boolean if a field has been set.
+
+### GetEnableStaleCache
+
+`func (o *ApplicationCachePutRequest) GetEnableStaleCache() bool`
+
+GetEnableStaleCache returns the EnableStaleCache field if non-nil, zero value otherwise.
+
+### GetEnableStaleCacheOk
+
+`func (o *ApplicationCachePutRequest) GetEnableStaleCacheOk() (*bool, bool)`
+
+GetEnableStaleCacheOk returns a tuple with the EnableStaleCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableStaleCache
+
+`func (o *ApplicationCachePutRequest) SetEnableStaleCache(v bool)`
+
+SetEnableStaleCache sets EnableStaleCache field to given value.
+
+### HasEnableStaleCache
+
+`func (o *ApplicationCachePutRequest) HasEnableStaleCache() bool`
+
+HasEnableStaleCache returns a boolean if a field has been set.
+
+### GetL2Region
+
+`func (o *ApplicationCachePutRequest) GetL2Region() string`
+
+GetL2Region returns the L2Region field if non-nil, zero value otherwise.
+
+### GetL2RegionOk
+
+`func (o *ApplicationCachePutRequest) GetL2RegionOk() (*string, bool)`
+
+GetL2RegionOk returns a tuple with the L2Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetL2Region
+
+`func (o *ApplicationCachePutRequest) SetL2Region(v string)`
+
+SetL2Region sets L2Region field to given value.
+
+### HasL2Region
+
+`func (o *ApplicationCachePutRequest) HasL2Region() bool`
+
+HasL2Region returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
