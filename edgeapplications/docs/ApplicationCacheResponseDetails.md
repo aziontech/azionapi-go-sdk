@@ -20,6 +20,12 @@ Name | Type | Description | Notes
 **EnableCachingForPost** | **bool** |  | 
 **EnableCachingForOptions** | Pointer to **bool** |  | [optional] 
 **L2CachingEnabled** | **bool** |  | 
+**IsSliceConfigurationEnabled** | Pointer to **bool** |  | [optional] 
+**IsSliceEdgeCachingEnabled** | Pointer to **bool** |  | [optional] 
+**IsSliceL2CachingEnabled** | Pointer to **bool** |  | [optional] 
+**SliceConfigurationRange** | Pointer to **int64** |  | [optional] 
+**EnableStaleCache** | Pointer to **bool** |  | [optional] 
+**L2Region** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -394,6 +400,156 @@ and a boolean to check if the value has been set.
 
 SetL2CachingEnabled sets L2CachingEnabled field to given value.
 
+
+### GetIsSliceConfigurationEnabled
+
+`func (o *ApplicationCacheResponseDetails) GetIsSliceConfigurationEnabled() bool`
+
+GetIsSliceConfigurationEnabled returns the IsSliceConfigurationEnabled field if non-nil, zero value otherwise.
+
+### GetIsSliceConfigurationEnabledOk
+
+`func (o *ApplicationCacheResponseDetails) GetIsSliceConfigurationEnabledOk() (*bool, bool)`
+
+GetIsSliceConfigurationEnabledOk returns a tuple with the IsSliceConfigurationEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSliceConfigurationEnabled
+
+`func (o *ApplicationCacheResponseDetails) SetIsSliceConfigurationEnabled(v bool)`
+
+SetIsSliceConfigurationEnabled sets IsSliceConfigurationEnabled field to given value.
+
+### HasIsSliceConfigurationEnabled
+
+`func (o *ApplicationCacheResponseDetails) HasIsSliceConfigurationEnabled() bool`
+
+HasIsSliceConfigurationEnabled returns a boolean if a field has been set.
+
+### GetIsSliceEdgeCachingEnabled
+
+`func (o *ApplicationCacheResponseDetails) GetIsSliceEdgeCachingEnabled() bool`
+
+GetIsSliceEdgeCachingEnabled returns the IsSliceEdgeCachingEnabled field if non-nil, zero value otherwise.
+
+### GetIsSliceEdgeCachingEnabledOk
+
+`func (o *ApplicationCacheResponseDetails) GetIsSliceEdgeCachingEnabledOk() (*bool, bool)`
+
+GetIsSliceEdgeCachingEnabledOk returns a tuple with the IsSliceEdgeCachingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSliceEdgeCachingEnabled
+
+`func (o *ApplicationCacheResponseDetails) SetIsSliceEdgeCachingEnabled(v bool)`
+
+SetIsSliceEdgeCachingEnabled sets IsSliceEdgeCachingEnabled field to given value.
+
+### HasIsSliceEdgeCachingEnabled
+
+`func (o *ApplicationCacheResponseDetails) HasIsSliceEdgeCachingEnabled() bool`
+
+HasIsSliceEdgeCachingEnabled returns a boolean if a field has been set.
+
+### GetIsSliceL2CachingEnabled
+
+`func (o *ApplicationCacheResponseDetails) GetIsSliceL2CachingEnabled() bool`
+
+GetIsSliceL2CachingEnabled returns the IsSliceL2CachingEnabled field if non-nil, zero value otherwise.
+
+### GetIsSliceL2CachingEnabledOk
+
+`func (o *ApplicationCacheResponseDetails) GetIsSliceL2CachingEnabledOk() (*bool, bool)`
+
+GetIsSliceL2CachingEnabledOk returns a tuple with the IsSliceL2CachingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSliceL2CachingEnabled
+
+`func (o *ApplicationCacheResponseDetails) SetIsSliceL2CachingEnabled(v bool)`
+
+SetIsSliceL2CachingEnabled sets IsSliceL2CachingEnabled field to given value.
+
+### HasIsSliceL2CachingEnabled
+
+`func (o *ApplicationCacheResponseDetails) HasIsSliceL2CachingEnabled() bool`
+
+HasIsSliceL2CachingEnabled returns a boolean if a field has been set.
+
+### GetSliceConfigurationRange
+
+`func (o *ApplicationCacheResponseDetails) GetSliceConfigurationRange() int64`
+
+GetSliceConfigurationRange returns the SliceConfigurationRange field if non-nil, zero value otherwise.
+
+### GetSliceConfigurationRangeOk
+
+`func (o *ApplicationCacheResponseDetails) GetSliceConfigurationRangeOk() (*int64, bool)`
+
+GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSliceConfigurationRange
+
+`func (o *ApplicationCacheResponseDetails) SetSliceConfigurationRange(v int64)`
+
+SetSliceConfigurationRange sets SliceConfigurationRange field to given value.
+
+### HasSliceConfigurationRange
+
+`func (o *ApplicationCacheResponseDetails) HasSliceConfigurationRange() bool`
+
+HasSliceConfigurationRange returns a boolean if a field has been set.
+
+### GetEnableStaleCache
+
+`func (o *ApplicationCacheResponseDetails) GetEnableStaleCache() bool`
+
+GetEnableStaleCache returns the EnableStaleCache field if non-nil, zero value otherwise.
+
+### GetEnableStaleCacheOk
+
+`func (o *ApplicationCacheResponseDetails) GetEnableStaleCacheOk() (*bool, bool)`
+
+GetEnableStaleCacheOk returns a tuple with the EnableStaleCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableStaleCache
+
+`func (o *ApplicationCacheResponseDetails) SetEnableStaleCache(v bool)`
+
+SetEnableStaleCache sets EnableStaleCache field to given value.
+
+### HasEnableStaleCache
+
+`func (o *ApplicationCacheResponseDetails) HasEnableStaleCache() bool`
+
+HasEnableStaleCache returns a boolean if a field has been set.
+
+### GetL2Region
+
+`func (o *ApplicationCacheResponseDetails) GetL2Region() string`
+
+GetL2Region returns the L2Region field if non-nil, zero value otherwise.
+
+### GetL2RegionOk
+
+`func (o *ApplicationCacheResponseDetails) GetL2RegionOk() (*string, bool)`
+
+GetL2RegionOk returns a tuple with the L2Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetL2Region
+
+`func (o *ApplicationCacheResponseDetails) SetL2Region(v string)`
+
+SetL2Region sets L2Region field to given value.
+
+### HasL2Region
+
+`func (o *ApplicationCacheResponseDetails) HasL2Region() bool`
+
+HasL2Region returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
