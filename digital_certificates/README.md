@@ -93,7 +93,6 @@ Class | Method | HTTP request | Description
  - [DC200](docs/DC200.md)
  - [DC200List](docs/DC200List.md)
  - [DC200ListLinks](docs/DC200ListLinks.md)
- - [DC201](docs/DC201.md)
  - [DC400](docs/DC400.md)
  - [DC401](docs/DC401.md)
  - [DC403](docs/DC403.md)

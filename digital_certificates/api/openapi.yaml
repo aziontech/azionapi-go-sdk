@@ -409,7 +409,7 @@ components:
     DC200:
       example:
         schema_version: 3
-        result:
+        results:
           id: 12345
           name: New SSL certificate for www.mydomain.com
           subject_name: []
@@ -421,7 +421,7 @@ components:
         schema_version:
           example: 3
           type: integer
-        result:
+        results:
           $ref: '#/components/schemas/singleResult'
       type: object
     DC200List:
@@ -480,26 +480,7 @@ components:
           type: array
       type: object
     DC201:
-      example:
-        schema_version: 3
-        errors:
-        - message: Bad Request
-          error: bad_request
-        - message: Bad Request
-          error: bad_request
-      properties:
-        errors:
-          items:
-            example:
-              message: Bad Request
-              error: bad_request
-            properties: {}
-            type: object
-          type: array
-        schema_version:
-          example: 3
-          type: integer
-      type: object
+      $ref: '#/components/schemas/DC200'
     DC400:
       properties:
         errors:

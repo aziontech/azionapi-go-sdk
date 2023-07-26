@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## CreateCSR
 
-> DC201 CreateCSR(ctx).CreateCSRRequest(createCSRRequest).Execute()
+> DC200 CreateCSR(ctx).CreateCSRRequest(createCSRRequest).Execute()
 
 Create an encrypted Certificate Request with Azion, which can then be sent for signing to a CA
 
@@ -36,7 +36,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CreateCSRApi.CreateCSR``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCSR`: DC201
+    // response from `CreateCSR`: DC200
     fmt.Fprintf(os.Stdout, "Response from `CreateCSRApi.CreateCSR`: %v\n", resp)
 }
 ```
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DC201**](DC201.md)
+[**DC200**](DC200.md)
 
 ### Authorization
 

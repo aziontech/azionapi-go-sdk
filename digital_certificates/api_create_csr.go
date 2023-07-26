@@ -33,7 +33,7 @@ func (r ApiCreateCSRRequest) CreateCSRRequest(createCSRRequest CreateCSRRequest)
 	return r
 }
 
-func (r ApiCreateCSRRequest) Execute() (*DC201, *http.Response, error) {
+func (r ApiCreateCSRRequest) Execute() (*DC200, *http.Response, error) {
 	return r.ApiService.CreateCSRExecute(r)
 }
 
@@ -51,13 +51,13 @@ func (a *CreateCSRApiService) CreateCSR(ctx context.Context) ApiCreateCSRRequest
 }
 
 // Execute executes the request
-//  @return DC201
-func (a *CreateCSRApiService) CreateCSRExecute(r ApiCreateCSRRequest) (*DC201, *http.Response, error) {
+//  @return DC200
+func (a *CreateCSRApiService) CreateCSRExecute(r ApiCreateCSRRequest) (*DC200, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DC201
+		localVarReturnValue  *DC200
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CreateCSRApiService.CreateCSR")

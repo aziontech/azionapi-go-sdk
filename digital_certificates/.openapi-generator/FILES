@@ -18,7 +18,6 @@ docs/CreateDigitalCertificateApi.md
 docs/DC200.md
 docs/DC200List.md
 docs/DC200ListLinks.md
-docs/DC201.md
 docs/DC400.md
 docs/DC401.md
 docs/DC403.md
@@ -41,7 +40,6 @@ model_create_csr_request.go
 model_dc200.go
 model_dc200_list.go
 model_dc200_list_links.go
-model_dc201.go
 model_dc400.go
 model_dc401.go
 model_dc403.go
