@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **CacheByCookies** | **string** |  | 
 **CookieNames** | **[]string** |  | 
 **AdaptiveDeliveryAction** | Pointer to **string** |  | [optional] 
-**DeviceGroup** | Pointer to **[]string** |  | [optional] 
+**DeviceGroup** | Pointer to **[]int32** |  | [optional] 
 **EnableCachingForPost** | **bool** |  | 
 **EnableCachingForOptions** | Pointer to **bool** |  | [optional] 
 **L2CachingEnabled** | **bool** |  | 
@@ -307,20 +307,20 @@ HasAdaptiveDeliveryAction returns a boolean if a field has been set.
 
 ### GetDeviceGroup
 
-`func (o *ApplicationCacheResponseDetails) GetDeviceGroup() []string`
+`func (o *ApplicationCacheResponseDetails) GetDeviceGroup() []int32`
 
 GetDeviceGroup returns the DeviceGroup field if non-nil, zero value otherwise.
 
 ### GetDeviceGroupOk
 
-`func (o *ApplicationCacheResponseDetails) GetDeviceGroupOk() (*[]string, bool)`
+`func (o *ApplicationCacheResponseDetails) GetDeviceGroupOk() (*[]int32, bool)`
 
 GetDeviceGroupOk returns a tuple with the DeviceGroup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceGroup
 
-`func (o *ApplicationCacheResponseDetails) SetDeviceGroup(v []string)`
+`func (o *ApplicationCacheResponseDetails) SetDeviceGroup(v []int32)`
 
 SetDeviceGroup sets DeviceGroup field to given value.
 

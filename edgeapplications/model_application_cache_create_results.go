@@ -31,7 +31,7 @@ type ApplicationCacheCreateResults struct {
 	CacheByCookies string `json:"cache_by_cookies"`
 	CookieNames []string `json:"cookie_names"`
 	AdaptiveDeliveryAction string `json:"adaptive_delivery_action"`
-	DeviceGroup []string `json:"device_group"`
+	DeviceGroup []int32 `json:"device_group"`
 	EnableCachingForPost bool `json:"enable_caching_for_post"`
 	L2CachingEnabled bool `json:"l2_caching_enabled"`
 	IsSliceConfigurationEnabled *bool `json:"is_slice_configuration_enabled,omitempty"`
@@ -47,7 +47,7 @@ type ApplicationCacheCreateResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationCacheCreateResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []string, enableCachingForPost bool, l2CachingEnabled bool) *ApplicationCacheCreateResults {
+func NewApplicationCacheCreateResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int32, enableCachingForPost bool, l2CachingEnabled bool) *ApplicationCacheCreateResults {
 	this := ApplicationCacheCreateResults{}
 	this.Id = id
 	this.Name = name
@@ -364,9 +364,9 @@ func (o *ApplicationCacheCreateResults) SetAdaptiveDeliveryAction(v string) {
 }
 
 // GetDeviceGroup returns the DeviceGroup field value
-func (o *ApplicationCacheCreateResults) GetDeviceGroup() []string {
+func (o *ApplicationCacheCreateResults) GetDeviceGroup() []int32 {
 	if o == nil {
-		var ret []string
+		var ret []int32
 		return ret
 	}
 
@@ -375,7 +375,7 @@ func (o *ApplicationCacheCreateResults) GetDeviceGroup() []string {
 
 // GetDeviceGroupOk returns a tuple with the DeviceGroup field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationCacheCreateResults) GetDeviceGroupOk() ([]string, bool) {
+func (o *ApplicationCacheCreateResults) GetDeviceGroupOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -383,7 +383,7 @@ func (o *ApplicationCacheCreateResults) GetDeviceGroupOk() ([]string, bool) {
 }
 
 // SetDeviceGroup sets field value
-func (o *ApplicationCacheCreateResults) SetDeviceGroup(v []string) {
+func (o *ApplicationCacheCreateResults) SetDeviceGroup(v []int32) {
 	o.DeviceGroup = v
 }
 
