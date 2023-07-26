@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 **CacheByCookies** | **string** |  | 
 **CookieNames** | **[]string** |  | 
 **AdaptiveDeliveryAction** | **string** |  | 
-**DeviceGroup** | **[]string** |  | 
+**DeviceGroup** | **[]int32** |  | 
 **EnableCachingForPost** | **bool** |  | 
 **L2CachingEnabled** | **bool** |  | 
 **IsSliceConfigurationEnabled** | Pointer to **bool** |  | [optional] 
 **IsSliceEdgeCachingEnabled** | Pointer to **bool** |  | [optional] 
 **IsSliceL2CachingEnabled** | Pointer to **bool** |  | [optional] 
-**SliceConfigurationRange** | Pointer to **bool** |  | [optional] 
+**SliceConfigurationRange** | Pointer to **int64** |  | [optional] 
 **EnableCachingForOptions** | **bool** |  | 
 **EnableStaleCache** | **bool** |  | 
 **L2Region** | **string** |  | 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationCacheResults
 
-`func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []string, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region string, ) *ApplicationCacheResults`
+`func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int32, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region string, ) *ApplicationCacheResults`
 
 NewApplicationCacheResults instantiates a new ApplicationCacheResults object
 This constructor will assign default values to properties that have it defined,
@@ -288,20 +288,20 @@ SetAdaptiveDeliveryAction sets AdaptiveDeliveryAction field to given value.
 
 ### GetDeviceGroup
 
-`func (o *ApplicationCacheResults) GetDeviceGroup() []string`
+`func (o *ApplicationCacheResults) GetDeviceGroup() []int32`
 
 GetDeviceGroup returns the DeviceGroup field if non-nil, zero value otherwise.
 
 ### GetDeviceGroupOk
 
-`func (o *ApplicationCacheResults) GetDeviceGroupOk() (*[]string, bool)`
+`func (o *ApplicationCacheResults) GetDeviceGroupOk() (*[]int32, bool)`
 
 GetDeviceGroupOk returns a tuple with the DeviceGroup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceGroup
 
-`func (o *ApplicationCacheResults) SetDeviceGroup(v []string)`
+`func (o *ApplicationCacheResults) SetDeviceGroup(v []int32)`
 
 SetDeviceGroup sets DeviceGroup field to given value.
 
@@ -423,20 +423,20 @@ HasIsSliceL2CachingEnabled returns a boolean if a field has been set.
 
 ### GetSliceConfigurationRange
 
-`func (o *ApplicationCacheResults) GetSliceConfigurationRange() bool`
+`func (o *ApplicationCacheResults) GetSliceConfigurationRange() int64`
 
 GetSliceConfigurationRange returns the SliceConfigurationRange field if non-nil, zero value otherwise.
 
 ### GetSliceConfigurationRangeOk
 
-`func (o *ApplicationCacheResults) GetSliceConfigurationRangeOk() (*bool, bool)`
+`func (o *ApplicationCacheResults) GetSliceConfigurationRangeOk() (*int64, bool)`
 
 GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSliceConfigurationRange
 
-`func (o *ApplicationCacheResults) SetSliceConfigurationRange(v bool)`
+`func (o *ApplicationCacheResults) SetSliceConfigurationRange(v int64)`
 
 SetSliceConfigurationRange sets SliceConfigurationRange field to given value.
 

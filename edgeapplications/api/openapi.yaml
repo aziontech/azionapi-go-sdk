@@ -2843,14 +2843,14 @@ components:
           - cookie_names
           adaptive_delivery_action: adaptive_delivery_action
           device_group:
-          - device_group
-          - device_group
+          - 1
+          - 2
           enable_caching_for_post: true
           l2_caching_enabled: true
           is_slice_configuration_enabled: true
           is_slice_edge_caching_enabled: true
           is_slice_l2_caching_enabled: true
-          slice_configuration_range: true
+          slice_configuration_range: 1024
           enable_caching_for_options: true
           enable_stale_cache: true
           l2_region: l2_region
@@ -2871,14 +2871,14 @@ components:
           - cookie_names
           adaptive_delivery_action: adaptive_delivery_action
           device_group:
-          - device_group
-          - device_group
+          - 1
+          - 2
           enable_caching_for_post: true
           l2_caching_enabled: true
           is_slice_configuration_enabled: true
           is_slice_edge_caching_enabled: true
           is_slice_l2_caching_enabled: true
-          slice_configuration_range: true
+          slice_configuration_range: 1024
           enable_caching_for_options: true
           enable_stale_cache: true
           l2_region: l2_region
@@ -2927,8 +2927,8 @@ components:
           - cookie_names
           adaptive_delivery_action: adaptive_delivery_action
           device_group:
-          - device_group
-          - device_group
+          - 1
+          - 2
           enable_caching_for_post: true
           l2_caching_enabled: true
           enable_caching_for_options: true
@@ -2964,14 +2964,14 @@ components:
         - cookie_names
         adaptive_delivery_action: adaptive_delivery_action
         device_group:
-        - device_group
-        - device_group
+        - 1
+        - 2
         enable_caching_for_post: true
         l2_caching_enabled: true
         is_slice_configuration_enabled: true
         is_slice_edge_caching_enabled: true
         is_slice_l2_caching_enabled: true
-        slice_configuration_range: true
+        slice_configuration_range: 1024
         enable_caching_for_options: true
         enable_stale_cache: true
         l2_region: l2_region
@@ -3009,7 +3009,7 @@ components:
           type: string
         device_group:
           items:
-            type: string
+            type: integer
           type: array
         enable_caching_for_post:
           type: boolean
@@ -3022,7 +3022,8 @@ components:
         is_slice_l2_caching_enabled:
           type: boolean
         slice_configuration_range:
-          type: boolean
+          format: int64
+          type: integer
         enable_caching_for_options:
           type: boolean
         enable_stale_cache:
@@ -3125,8 +3126,8 @@ components:
           - cookie_names
           adaptive_delivery_action: adaptive_delivery_action
           device_group:
-          - device_group
-          - device_group
+          - 1
+          - 2
           enable_caching_for_post: true
           l2_caching_enabled: true
           is_slice_configuration_enabled: true
@@ -3163,8 +3164,8 @@ components:
         - cookie_names
         adaptive_delivery_action: adaptive_delivery_action
         device_group:
-        - device_group
-        - device_group
+        - 1
+        - 2
         enable_caching_for_post: true
         l2_caching_enabled: true
         is_slice_configuration_enabled: true
@@ -3208,7 +3209,7 @@ components:
           type: string
         device_group:
           items:
-            type: string
+            type: integer
           type: array
         enable_caching_for_post:
           type: boolean
@@ -3319,8 +3320,8 @@ components:
         results:
           cache_by_cookies: cache_by_cookies
           device_group:
-          - device_group
-          - device_group
+          - 1
+          - 2
           enable_query_string_sort: true
           l2_caching_enabled: true
           browser_cache_settings: browser_cache_settings
@@ -3423,8 +3424,8 @@ components:
         results:
           cache_by_cookies: cache_by_cookies
           device_group:
-          - device_group
-          - device_group
+          - 1
+          - 2
           enable_query_string_sort: true
           l2_caching_enabled: true
           browser_cache_settings: browser_cache_settings
@@ -3454,8 +3455,8 @@ components:
       example:
         cache_by_cookies: cache_by_cookies
         device_group:
-        - device_group
-        - device_group
+        - 1
+        - 2
         enable_query_string_sort: true
         l2_caching_enabled: true
         browser_cache_settings: browser_cache_settings
@@ -3509,7 +3510,7 @@ components:
           type: string
         device_group:
           items:
-            type: string
+            type: integer
           type: array
         enable_caching_for_post:
           type: boolean
@@ -4547,7 +4548,7 @@ components:
       type: object
   securitySchemes:
     tokenAuth:
-      description: |-
+      description: |
         You must inform a token to auth.
         Usage format: `Token <TOKEN>`
       in: header

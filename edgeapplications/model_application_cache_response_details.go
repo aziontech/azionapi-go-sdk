@@ -31,7 +31,7 @@ type ApplicationCacheResponseDetails struct {
 	CacheByCookies string `json:"cache_by_cookies"`
 	CookieNames []string `json:"cookie_names"`
 	AdaptiveDeliveryAction *string `json:"adaptive_delivery_action,omitempty"`
-	DeviceGroup []string `json:"device_group,omitempty"`
+	DeviceGroup []int32 `json:"device_group,omitempty"`
 	EnableCachingForPost bool `json:"enable_caching_for_post"`
 	EnableCachingForOptions *bool `json:"enable_caching_for_options,omitempty"`
 	L2CachingEnabled bool `json:"l2_caching_enabled"`
@@ -368,9 +368,9 @@ func (o *ApplicationCacheResponseDetails) SetAdaptiveDeliveryAction(v string) {
 }
 
 // GetDeviceGroup returns the DeviceGroup field value if set, zero value otherwise.
-func (o *ApplicationCacheResponseDetails) GetDeviceGroup() []string {
+func (o *ApplicationCacheResponseDetails) GetDeviceGroup() []int32 {
 	if o == nil || IsNil(o.DeviceGroup) {
-		var ret []string
+		var ret []int32
 		return ret
 	}
 	return o.DeviceGroup
@@ -378,7 +378,7 @@ func (o *ApplicationCacheResponseDetails) GetDeviceGroup() []string {
 
 // GetDeviceGroupOk returns a tuple with the DeviceGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationCacheResponseDetails) GetDeviceGroupOk() ([]string, bool) {
+func (o *ApplicationCacheResponseDetails) GetDeviceGroupOk() ([]int32, bool) {
 	if o == nil || IsNil(o.DeviceGroup) {
 		return nil, false
 	}
@@ -394,8 +394,8 @@ func (o *ApplicationCacheResponseDetails) HasDeviceGroup() bool {
 	return false
 }
 
-// SetDeviceGroup gets a reference to the given []string and assigns it to the DeviceGroup field.
-func (o *ApplicationCacheResponseDetails) SetDeviceGroup(v []string) {
+// SetDeviceGroup gets a reference to the given []int32 and assigns it to the DeviceGroup field.
+func (o *ApplicationCacheResponseDetails) SetDeviceGroup(v []int32) {
 	o.DeviceGroup = v
 }
 

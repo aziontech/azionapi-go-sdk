@@ -31,13 +31,13 @@ type ApplicationCacheResults struct {
 	CacheByCookies string `json:"cache_by_cookies"`
 	CookieNames []string `json:"cookie_names"`
 	AdaptiveDeliveryAction string `json:"adaptive_delivery_action"`
-	DeviceGroup []string `json:"device_group"`
+	DeviceGroup []int32 `json:"device_group"`
 	EnableCachingForPost bool `json:"enable_caching_for_post"`
 	L2CachingEnabled bool `json:"l2_caching_enabled"`
 	IsSliceConfigurationEnabled *bool `json:"is_slice_configuration_enabled,omitempty"`
 	IsSliceEdgeCachingEnabled *bool `json:"is_slice_edge_caching_enabled,omitempty"`
 	IsSliceL2CachingEnabled *bool `json:"is_slice_l2_caching_enabled,omitempty"`
-	SliceConfigurationRange *bool `json:"slice_configuration_range,omitempty"`
+	SliceConfigurationRange *int64 `json:"slice_configuration_range,omitempty"`
 	EnableCachingForOptions bool `json:"enable_caching_for_options"`
 	EnableStaleCache bool `json:"enable_stale_cache"`
 	L2Region string `json:"l2_region"`
@@ -47,7 +47,7 @@ type ApplicationCacheResults struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []string, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region string) *ApplicationCacheResults {
+func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int32, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region string) *ApplicationCacheResults {
 	this := ApplicationCacheResults{}
 	this.Id = id
 	this.Name = name
@@ -367,9 +367,9 @@ func (o *ApplicationCacheResults) SetAdaptiveDeliveryAction(v string) {
 }
 
 // GetDeviceGroup returns the DeviceGroup field value
-func (o *ApplicationCacheResults) GetDeviceGroup() []string {
+func (o *ApplicationCacheResults) GetDeviceGroup() []int32 {
 	if o == nil {
-		var ret []string
+		var ret []int32
 		return ret
 	}
 
@@ -378,7 +378,7 @@ func (o *ApplicationCacheResults) GetDeviceGroup() []string {
 
 // GetDeviceGroupOk returns a tuple with the DeviceGroup field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationCacheResults) GetDeviceGroupOk() ([]string, bool) {
+func (o *ApplicationCacheResults) GetDeviceGroupOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -386,7 +386,7 @@ func (o *ApplicationCacheResults) GetDeviceGroupOk() ([]string, bool) {
 }
 
 // SetDeviceGroup sets field value
-func (o *ApplicationCacheResults) SetDeviceGroup(v []string) {
+func (o *ApplicationCacheResults) SetDeviceGroup(v []int32) {
 	o.DeviceGroup = v
 }
 
@@ -535,9 +535,9 @@ func (o *ApplicationCacheResults) SetIsSliceL2CachingEnabled(v bool) {
 }
 
 // GetSliceConfigurationRange returns the SliceConfigurationRange field value if set, zero value otherwise.
-func (o *ApplicationCacheResults) GetSliceConfigurationRange() bool {
+func (o *ApplicationCacheResults) GetSliceConfigurationRange() int64 {
 	if o == nil || IsNil(o.SliceConfigurationRange) {
-		var ret bool
+		var ret int64
 		return ret
 	}
 	return *o.SliceConfigurationRange
@@ -545,7 +545,7 @@ func (o *ApplicationCacheResults) GetSliceConfigurationRange() bool {
 
 // GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationCacheResults) GetSliceConfigurationRangeOk() (*bool, bool) {
+func (o *ApplicationCacheResults) GetSliceConfigurationRangeOk() (*int64, bool) {
 	if o == nil || IsNil(o.SliceConfigurationRange) {
 		return nil, false
 	}
@@ -561,8 +561,8 @@ func (o *ApplicationCacheResults) HasSliceConfigurationRange() bool {
 	return false
 }
 
-// SetSliceConfigurationRange gets a reference to the given bool and assigns it to the SliceConfigurationRange field.
-func (o *ApplicationCacheResults) SetSliceConfigurationRange(v bool) {
+// SetSliceConfigurationRange gets a reference to the given int64 and assigns it to the SliceConfigurationRange field.
+func (o *ApplicationCacheResults) SetSliceConfigurationRange(v int64) {
 	o.SliceConfigurationRange = &v
 }
 

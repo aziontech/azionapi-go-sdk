@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **CacheByCookies** | **string** |  | 
 **CookieNames** | **[]string** |  | 
 **AdaptiveDeliveryAction** | **string** |  | 
-**DeviceGroup** | **[]string** |  | 
+**DeviceGroup** | **[]int32** |  | 
 **EnableCachingForPost** | **bool** |  | 
 **L2CachingEnabled** | **bool** |  | 
 **IsSliceConfigurationEnabled** | Pointer to **bool** |  | [optional] 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationCacheCreateResults
 
-`func NewApplicationCacheCreateResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []string, enableCachingForPost bool, l2CachingEnabled bool, ) *ApplicationCacheCreateResults`
+`func NewApplicationCacheCreateResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int32, enableCachingForPost bool, l2CachingEnabled bool, ) *ApplicationCacheCreateResults`
 
 NewApplicationCacheCreateResults instantiates a new ApplicationCacheCreateResults object
 This constructor will assign default values to properties that have it defined,
@@ -288,20 +288,20 @@ SetAdaptiveDeliveryAction sets AdaptiveDeliveryAction field to given value.
 
 ### GetDeviceGroup
 
-`func (o *ApplicationCacheCreateResults) GetDeviceGroup() []string`
+`func (o *ApplicationCacheCreateResults) GetDeviceGroup() []int32`
 
 GetDeviceGroup returns the DeviceGroup field if non-nil, zero value otherwise.
 
 ### GetDeviceGroupOk
 
-`func (o *ApplicationCacheCreateResults) GetDeviceGroupOk() (*[]string, bool)`
+`func (o *ApplicationCacheCreateResults) GetDeviceGroupOk() (*[]int32, bool)`
 
 GetDeviceGroupOk returns a tuple with the DeviceGroup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceGroup
 
-`func (o *ApplicationCacheCreateResults) SetDeviceGroup(v []string)`
+`func (o *ApplicationCacheCreateResults) SetDeviceGroup(v []int32)`
 
 SetDeviceGroup sets DeviceGroup field to given value.
 
