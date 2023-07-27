@@ -29,8 +29,17 @@ type ApplicationCacheCreateRequest struct {
 	EnableQueryStringSort *bool `json:"enable_query_string_sort,omitempty"`
 	CacheByCookies *string `json:"cache_by_cookies,omitempty"`
 	CookieNames []string `json:"cookie_names,omitempty"`
-	UserEmail *string `json:"user_email,omitempty"`
+	AdaptiveDeliveryAction *string `json:"adaptive_delivery_action,omitempty"`
+	DeviceGroup []int32 `json:"device_group,omitempty"`
+	EnableCachingForPost *bool `json:"enable_caching_for_post,omitempty"`
 	L2CachingEnabled *bool `json:"l2_caching_enabled,omitempty"`
+	IsSliceConfigurationEnabled *bool `json:"is_slice_configuration_enabled,omitempty"`
+	IsSliceEdgeCachingEnabled *bool `json:"is_slice_edge_caching_enabled,omitempty"`
+	IsSliceL2CachingEnabled *bool `json:"is_slice_l2_caching_enabled,omitempty"`
+	SliceConfigurationRange *int64 `json:"slice_configuration_range,omitempty"`
+	EnableCachingForOptions *bool `json:"enable_caching_for_options,omitempty"`
+	EnableStaleCache *bool `json:"enable_stale_cache,omitempty"`
+	L2Region *string `json:"l2_region,omitempty"`
 }
 
 // NewApplicationCacheCreateRequest instantiates a new ApplicationCacheCreateRequest object
@@ -235,9 +244,9 @@ func (o *ApplicationCacheCreateRequest) SetCacheByQueryString(v string) {
 	o.CacheByQueryString = &v
 }
 
-// GetQueryStringFields returns the QueryStringFields field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetQueryStringFields returns the QueryStringFields field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetQueryStringFields() []string {
-	if o == nil {
+	if o == nil || IsNil(o.QueryStringFields) {
 		var ret []string
 		return ret
 	}
@@ -246,7 +255,6 @@ func (o *ApplicationCacheCreateRequest) GetQueryStringFields() []string {
 
 // GetQueryStringFieldsOk returns a tuple with the QueryStringFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationCacheCreateRequest) GetQueryStringFieldsOk() ([]string, bool) {
 	if o == nil || IsNil(o.QueryStringFields) {
 		return nil, false
@@ -256,7 +264,7 @@ func (o *ApplicationCacheCreateRequest) GetQueryStringFieldsOk() ([]string, bool
 
 // HasQueryStringFields returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasQueryStringFields() bool {
-	if o != nil && IsNil(o.QueryStringFields) {
+	if o != nil && !IsNil(o.QueryStringFields) {
 		return true
 	}
 
@@ -332,9 +340,9 @@ func (o *ApplicationCacheCreateRequest) SetCacheByCookies(v string) {
 	o.CacheByCookies = &v
 }
 
-// GetCookieNames returns the CookieNames field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCookieNames returns the CookieNames field value if set, zero value otherwise.
 func (o *ApplicationCacheCreateRequest) GetCookieNames() []string {
-	if o == nil {
+	if o == nil || IsNil(o.CookieNames) {
 		var ret []string
 		return ret
 	}
@@ -343,7 +351,6 @@ func (o *ApplicationCacheCreateRequest) GetCookieNames() []string {
 
 // GetCookieNamesOk returns a tuple with the CookieNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationCacheCreateRequest) GetCookieNamesOk() ([]string, bool) {
 	if o == nil || IsNil(o.CookieNames) {
 		return nil, false
@@ -353,7 +360,7 @@ func (o *ApplicationCacheCreateRequest) GetCookieNamesOk() ([]string, bool) {
 
 // HasCookieNames returns a boolean if a field has been set.
 func (o *ApplicationCacheCreateRequest) HasCookieNames() bool {
-	if o != nil && IsNil(o.CookieNames) {
+	if o != nil && !IsNil(o.CookieNames) {
 		return true
 	}
 
@@ -365,36 +372,100 @@ func (o *ApplicationCacheCreateRequest) SetCookieNames(v []string) {
 	o.CookieNames = v
 }
 
-// GetUserEmail returns the UserEmail field value if set, zero value otherwise.
-func (o *ApplicationCacheCreateRequest) GetUserEmail() string {
-	if o == nil || IsNil(o.UserEmail) {
+// GetAdaptiveDeliveryAction returns the AdaptiveDeliveryAction field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryAction() string {
+	if o == nil || IsNil(o.AdaptiveDeliveryAction) {
 		var ret string
 		return ret
 	}
-	return *o.UserEmail
+	return *o.AdaptiveDeliveryAction
 }
 
-// GetUserEmailOk returns a tuple with the UserEmail field value if set, nil otherwise
+// GetAdaptiveDeliveryActionOk returns a tuple with the AdaptiveDeliveryAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationCacheCreateRequest) GetUserEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.UserEmail) {
+func (o *ApplicationCacheCreateRequest) GetAdaptiveDeliveryActionOk() (*string, bool) {
+	if o == nil || IsNil(o.AdaptiveDeliveryAction) {
 		return nil, false
 	}
-	return o.UserEmail, true
+	return o.AdaptiveDeliveryAction, true
 }
 
-// HasUserEmail returns a boolean if a field has been set.
-func (o *ApplicationCacheCreateRequest) HasUserEmail() bool {
-	if o != nil && !IsNil(o.UserEmail) {
+// HasAdaptiveDeliveryAction returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasAdaptiveDeliveryAction() bool {
+	if o != nil && !IsNil(o.AdaptiveDeliveryAction) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserEmail gets a reference to the given string and assigns it to the UserEmail field.
-func (o *ApplicationCacheCreateRequest) SetUserEmail(v string) {
-	o.UserEmail = &v
+// SetAdaptiveDeliveryAction gets a reference to the given string and assigns it to the AdaptiveDeliveryAction field.
+func (o *ApplicationCacheCreateRequest) SetAdaptiveDeliveryAction(v string) {
+	o.AdaptiveDeliveryAction = &v
+}
+
+// GetDeviceGroup returns the DeviceGroup field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetDeviceGroup() []int32 {
+	if o == nil || IsNil(o.DeviceGroup) {
+		var ret []int32
+		return ret
+	}
+	return o.DeviceGroup
+}
+
+// GetDeviceGroupOk returns a tuple with the DeviceGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetDeviceGroupOk() ([]int32, bool) {
+	if o == nil || IsNil(o.DeviceGroup) {
+		return nil, false
+	}
+	return o.DeviceGroup, true
+}
+
+// HasDeviceGroup returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasDeviceGroup() bool {
+	if o != nil && !IsNil(o.DeviceGroup) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceGroup gets a reference to the given []int32 and assigns it to the DeviceGroup field.
+func (o *ApplicationCacheCreateRequest) SetDeviceGroup(v []int32) {
+	o.DeviceGroup = v
+}
+
+// GetEnableCachingForPost returns the EnableCachingForPost field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetEnableCachingForPost() bool {
+	if o == nil || IsNil(o.EnableCachingForPost) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableCachingForPost
+}
+
+// GetEnableCachingForPostOk returns a tuple with the EnableCachingForPost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetEnableCachingForPostOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableCachingForPost) {
+		return nil, false
+	}
+	return o.EnableCachingForPost, true
+}
+
+// HasEnableCachingForPost returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasEnableCachingForPost() bool {
+	if o != nil && !IsNil(o.EnableCachingForPost) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableCachingForPost gets a reference to the given bool and assigns it to the EnableCachingForPost field.
+func (o *ApplicationCacheCreateRequest) SetEnableCachingForPost(v bool) {
+	o.EnableCachingForPost = &v
 }
 
 // GetL2CachingEnabled returns the L2CachingEnabled field value if set, zero value otherwise.
@@ -429,6 +500,230 @@ func (o *ApplicationCacheCreateRequest) SetL2CachingEnabled(v bool) {
 	o.L2CachingEnabled = &v
 }
 
+// GetIsSliceConfigurationEnabled returns the IsSliceConfigurationEnabled field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetIsSliceConfigurationEnabled() bool {
+	if o == nil || IsNil(o.IsSliceConfigurationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSliceConfigurationEnabled
+}
+
+// GetIsSliceConfigurationEnabledOk returns a tuple with the IsSliceConfigurationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetIsSliceConfigurationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSliceConfigurationEnabled) {
+		return nil, false
+	}
+	return o.IsSliceConfigurationEnabled, true
+}
+
+// HasIsSliceConfigurationEnabled returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasIsSliceConfigurationEnabled() bool {
+	if o != nil && !IsNil(o.IsSliceConfigurationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSliceConfigurationEnabled gets a reference to the given bool and assigns it to the IsSliceConfigurationEnabled field.
+func (o *ApplicationCacheCreateRequest) SetIsSliceConfigurationEnabled(v bool) {
+	o.IsSliceConfigurationEnabled = &v
+}
+
+// GetIsSliceEdgeCachingEnabled returns the IsSliceEdgeCachingEnabled field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetIsSliceEdgeCachingEnabled() bool {
+	if o == nil || IsNil(o.IsSliceEdgeCachingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSliceEdgeCachingEnabled
+}
+
+// GetIsSliceEdgeCachingEnabledOk returns a tuple with the IsSliceEdgeCachingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetIsSliceEdgeCachingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSliceEdgeCachingEnabled) {
+		return nil, false
+	}
+	return o.IsSliceEdgeCachingEnabled, true
+}
+
+// HasIsSliceEdgeCachingEnabled returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasIsSliceEdgeCachingEnabled() bool {
+	if o != nil && !IsNil(o.IsSliceEdgeCachingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSliceEdgeCachingEnabled gets a reference to the given bool and assigns it to the IsSliceEdgeCachingEnabled field.
+func (o *ApplicationCacheCreateRequest) SetIsSliceEdgeCachingEnabled(v bool) {
+	o.IsSliceEdgeCachingEnabled = &v
+}
+
+// GetIsSliceL2CachingEnabled returns the IsSliceL2CachingEnabled field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetIsSliceL2CachingEnabled() bool {
+	if o == nil || IsNil(o.IsSliceL2CachingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSliceL2CachingEnabled
+}
+
+// GetIsSliceL2CachingEnabledOk returns a tuple with the IsSliceL2CachingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetIsSliceL2CachingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSliceL2CachingEnabled) {
+		return nil, false
+	}
+	return o.IsSliceL2CachingEnabled, true
+}
+
+// HasIsSliceL2CachingEnabled returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasIsSliceL2CachingEnabled() bool {
+	if o != nil && !IsNil(o.IsSliceL2CachingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSliceL2CachingEnabled gets a reference to the given bool and assigns it to the IsSliceL2CachingEnabled field.
+func (o *ApplicationCacheCreateRequest) SetIsSliceL2CachingEnabled(v bool) {
+	o.IsSliceL2CachingEnabled = &v
+}
+
+// GetSliceConfigurationRange returns the SliceConfigurationRange field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetSliceConfigurationRange() int64 {
+	if o == nil || IsNil(o.SliceConfigurationRange) {
+		var ret int64
+		return ret
+	}
+	return *o.SliceConfigurationRange
+}
+
+// GetSliceConfigurationRangeOk returns a tuple with the SliceConfigurationRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetSliceConfigurationRangeOk() (*int64, bool) {
+	if o == nil || IsNil(o.SliceConfigurationRange) {
+		return nil, false
+	}
+	return o.SliceConfigurationRange, true
+}
+
+// HasSliceConfigurationRange returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasSliceConfigurationRange() bool {
+	if o != nil && !IsNil(o.SliceConfigurationRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetSliceConfigurationRange gets a reference to the given int64 and assigns it to the SliceConfigurationRange field.
+func (o *ApplicationCacheCreateRequest) SetSliceConfigurationRange(v int64) {
+	o.SliceConfigurationRange = &v
+}
+
+// GetEnableCachingForOptions returns the EnableCachingForOptions field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptions() bool {
+	if o == nil || IsNil(o.EnableCachingForOptions) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableCachingForOptions
+}
+
+// GetEnableCachingForOptionsOk returns a tuple with the EnableCachingForOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetEnableCachingForOptionsOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableCachingForOptions) {
+		return nil, false
+	}
+	return o.EnableCachingForOptions, true
+}
+
+// HasEnableCachingForOptions returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasEnableCachingForOptions() bool {
+	if o != nil && !IsNil(o.EnableCachingForOptions) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableCachingForOptions gets a reference to the given bool and assigns it to the EnableCachingForOptions field.
+func (o *ApplicationCacheCreateRequest) SetEnableCachingForOptions(v bool) {
+	o.EnableCachingForOptions = &v
+}
+
+// GetEnableStaleCache returns the EnableStaleCache field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetEnableStaleCache() bool {
+	if o == nil || IsNil(o.EnableStaleCache) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableStaleCache
+}
+
+// GetEnableStaleCacheOk returns a tuple with the EnableStaleCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetEnableStaleCacheOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableStaleCache) {
+		return nil, false
+	}
+	return o.EnableStaleCache, true
+}
+
+// HasEnableStaleCache returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasEnableStaleCache() bool {
+	if o != nil && !IsNil(o.EnableStaleCache) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableStaleCache gets a reference to the given bool and assigns it to the EnableStaleCache field.
+func (o *ApplicationCacheCreateRequest) SetEnableStaleCache(v bool) {
+	o.EnableStaleCache = &v
+}
+
+// GetL2Region returns the L2Region field value if set, zero value otherwise.
+func (o *ApplicationCacheCreateRequest) GetL2Region() string {
+	if o == nil || IsNil(o.L2Region) {
+		var ret string
+		return ret
+	}
+	return *o.L2Region
+}
+
+// GetL2RegionOk returns a tuple with the L2Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationCacheCreateRequest) GetL2RegionOk() (*string, bool) {
+	if o == nil || IsNil(o.L2Region) {
+		return nil, false
+	}
+	return o.L2Region, true
+}
+
+// HasL2Region returns a boolean if a field has been set.
+func (o *ApplicationCacheCreateRequest) HasL2Region() bool {
+	if o != nil && !IsNil(o.L2Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetL2Region gets a reference to the given string and assigns it to the L2Region field.
+func (o *ApplicationCacheCreateRequest) SetL2Region(v string) {
+	o.L2Region = &v
+}
+
 func (o ApplicationCacheCreateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -455,7 +750,7 @@ func (o ApplicationCacheCreateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CacheByQueryString) {
 		toSerialize["cache_by_query_string"] = o.CacheByQueryString
 	}
-	if o.QueryStringFields != nil {
+	if !IsNil(o.QueryStringFields) {
 		toSerialize["query_string_fields"] = o.QueryStringFields
 	}
 	if !IsNil(o.EnableQueryStringSort) {
@@ -464,14 +759,41 @@ func (o ApplicationCacheCreateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CacheByCookies) {
 		toSerialize["cache_by_cookies"] = o.CacheByCookies
 	}
-	if o.CookieNames != nil {
+	if !IsNil(o.CookieNames) {
 		toSerialize["cookie_names"] = o.CookieNames
 	}
-	if !IsNil(o.UserEmail) {
-		toSerialize["user_email"] = o.UserEmail
+	if !IsNil(o.AdaptiveDeliveryAction) {
+		toSerialize["adaptive_delivery_action"] = o.AdaptiveDeliveryAction
+	}
+	if !IsNil(o.DeviceGroup) {
+		toSerialize["device_group"] = o.DeviceGroup
+	}
+	if !IsNil(o.EnableCachingForPost) {
+		toSerialize["enable_caching_for_post"] = o.EnableCachingForPost
 	}
 	if !IsNil(o.L2CachingEnabled) {
 		toSerialize["l2_caching_enabled"] = o.L2CachingEnabled
+	}
+	if !IsNil(o.IsSliceConfigurationEnabled) {
+		toSerialize["is_slice_configuration_enabled"] = o.IsSliceConfigurationEnabled
+	}
+	if !IsNil(o.IsSliceEdgeCachingEnabled) {
+		toSerialize["is_slice_edge_caching_enabled"] = o.IsSliceEdgeCachingEnabled
+	}
+	if !IsNil(o.IsSliceL2CachingEnabled) {
+		toSerialize["is_slice_l2_caching_enabled"] = o.IsSliceL2CachingEnabled
+	}
+	if !IsNil(o.SliceConfigurationRange) {
+		toSerialize["slice_configuration_range"] = o.SliceConfigurationRange
+	}
+	if !IsNil(o.EnableCachingForOptions) {
+		toSerialize["enable_caching_for_options"] = o.EnableCachingForOptions
+	}
+	if !IsNil(o.EnableStaleCache) {
+		toSerialize["enable_stale_cache"] = o.EnableStaleCache
+	}
+	if !IsNil(o.L2Region) {
+		toSerialize["l2_region"] = o.L2Region
 	}
 	return toSerialize, nil
 }
