@@ -20,7 +20,7 @@ var _ MappedNullable = &RulesEngineBehavior{}
 // RulesEngineBehavior struct for RulesEngineBehavior
 type RulesEngineBehavior struct {
 	Name string `json:"name"`
-	Target *string `json:"target,omitempty"`
+	Target *RulesEngineBehaviorTarget `json:"target,omitempty"`
 }
 
 // NewRulesEngineBehavior instantiates a new RulesEngineBehavior object
@@ -66,9 +66,9 @@ func (o *RulesEngineBehavior) SetName(v string) {
 }
 
 // GetTarget returns the Target field value if set, zero value otherwise.
-func (o *RulesEngineBehavior) GetTarget() string {
+func (o *RulesEngineBehavior) GetTarget() RulesEngineBehaviorTarget {
 	if o == nil || IsNil(o.Target) {
-		var ret string
+		var ret RulesEngineBehaviorTarget
 		return ret
 	}
 	return *o.Target
@@ -76,7 +76,7 @@ func (o *RulesEngineBehavior) GetTarget() string {
 
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RulesEngineBehavior) GetTargetOk() (*string, bool) {
+func (o *RulesEngineBehavior) GetTargetOk() (*RulesEngineBehaviorTarget, bool) {
 	if o == nil || IsNil(o.Target) {
 		return nil, false
 	}
@@ -92,8 +92,8 @@ func (o *RulesEngineBehavior) HasTarget() bool {
 	return false
 }
 
-// SetTarget gets a reference to the given string and assigns it to the Target field.
-func (o *RulesEngineBehavior) SetTarget(v string) {
+// SetTarget gets a reference to the given RulesEngineBehaviorTarget and assigns it to the Target field.
+func (o *RulesEngineBehavior) SetTarget(v RulesEngineBehaviorTarget) {
 	o.Target = &v
 }
 

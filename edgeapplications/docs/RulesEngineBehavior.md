@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Target** | Pointer to **string** |  | [optional] 
+**Target** | Pointer to [**RulesEngineBehaviorTarget**](RulesEngineBehaviorTarget.md) |  | [optional] 
 
 ## Methods
 
@@ -48,20 +48,20 @@ SetName sets Name field to given value.
 
 ### GetTarget
 
-`func (o *RulesEngineBehavior) GetTarget() string`
+`func (o *RulesEngineBehavior) GetTarget() RulesEngineBehaviorTarget`
 
 GetTarget returns the Target field if non-nil, zero value otherwise.
 
 ### GetTargetOk
 
-`func (o *RulesEngineBehavior) GetTargetOk() (*string, bool)`
+`func (o *RulesEngineBehavior) GetTargetOk() (*RulesEngineBehaviorTarget, bool)`
 
 GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTarget
 
-`func (o *RulesEngineBehavior) SetTarget(v string)`
+`func (o *RulesEngineBehavior) SetTarget(v RulesEngineBehaviorTarget)`
 
 SetTarget sets Target field to given value.
 
