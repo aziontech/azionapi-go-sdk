@@ -166,6 +166,8 @@ Class | Method | HTTP request | Description
  - [PatchOriginsRequest](docs/PatchOriginsRequest.md)
  - [PatchRulesEngineRequest](docs/PatchRulesEngineRequest.md)
  - [RulesEngineBehavior](docs/RulesEngineBehavior.md)
+ - [RulesEngineBehaviorTarget](docs/RulesEngineBehaviorTarget.md)
+ - [RulesEngineBehaviorTargetOneOf](docs/RulesEngineBehaviorTargetOneOf.md)
  - [RulesEngineCriteria](docs/RulesEngineCriteria.md)
  - [RulesEngineIdResponse](docs/RulesEngineIdResponse.md)
  - [RulesEngineResponse](docs/RulesEngineResponse.md)

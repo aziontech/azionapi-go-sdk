@@ -4426,7 +4426,7 @@ components:
         name:
           type: string
         target:
-          type: string
+          $ref: '#/components/schemas/RulesEngineBehavior_target'
       required:
       - name
       type: object
@@ -4623,6 +4623,20 @@ components:
       required:
       - name
       type: object
+    RulesEngineBehavior_target_oneOf:
+      properties:
+        captured_array:
+          type: string
+        subject:
+          type: string
+        regex:
+          type: string
+      type: object
+    RulesEngineBehavior_target:
+      oneOf:
+      - type: string
+      - type: number
+      - $ref: '#/components/schemas/RulesEngineBehavior_target_oneOf'
   securitySchemes:
     tokenAuth:
       description: |
