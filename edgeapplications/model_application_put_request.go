@@ -35,6 +35,9 @@ type ApplicationPutRequest struct {
 	LoadBalancer *bool `json:"load_balancer,omitempty"`
 	RawLogs *bool `json:"raw_logs,omitempty"`
 	WebApplicationFirewall *bool `json:"web_application_firewall,omitempty"`
+	DebugRules *bool `json:"debug_rules,omitempty"`
+	Http3 *bool `json:"http3,omitempty"`
+	SupportedCiphers *string `json:"supported_ciphers,omitempty"`
 }
 
 // NewApplicationPutRequest instantiates a new ApplicationPutRequest object
@@ -561,6 +564,102 @@ func (o *ApplicationPutRequest) SetWebApplicationFirewall(v bool) {
 	o.WebApplicationFirewall = &v
 }
 
+// GetDebugRules returns the DebugRules field value if set, zero value otherwise.
+func (o *ApplicationPutRequest) GetDebugRules() bool {
+	if o == nil || IsNil(o.DebugRules) {
+		var ret bool
+		return ret
+	}
+	return *o.DebugRules
+}
+
+// GetDebugRulesOk returns a tuple with the DebugRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationPutRequest) GetDebugRulesOk() (*bool, bool) {
+	if o == nil || IsNil(o.DebugRules) {
+		return nil, false
+	}
+	return o.DebugRules, true
+}
+
+// HasDebugRules returns a boolean if a field has been set.
+func (o *ApplicationPutRequest) HasDebugRules() bool {
+	if o != nil && !IsNil(o.DebugRules) {
+		return true
+	}
+
+	return false
+}
+
+// SetDebugRules gets a reference to the given bool and assigns it to the DebugRules field.
+func (o *ApplicationPutRequest) SetDebugRules(v bool) {
+	o.DebugRules = &v
+}
+
+// GetHttp3 returns the Http3 field value if set, zero value otherwise.
+func (o *ApplicationPutRequest) GetHttp3() bool {
+	if o == nil || IsNil(o.Http3) {
+		var ret bool
+		return ret
+	}
+	return *o.Http3
+}
+
+// GetHttp3Ok returns a tuple with the Http3 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationPutRequest) GetHttp3Ok() (*bool, bool) {
+	if o == nil || IsNil(o.Http3) {
+		return nil, false
+	}
+	return o.Http3, true
+}
+
+// HasHttp3 returns a boolean if a field has been set.
+func (o *ApplicationPutRequest) HasHttp3() bool {
+	if o != nil && !IsNil(o.Http3) {
+		return true
+	}
+
+	return false
+}
+
+// SetHttp3 gets a reference to the given bool and assigns it to the Http3 field.
+func (o *ApplicationPutRequest) SetHttp3(v bool) {
+	o.Http3 = &v
+}
+
+// GetSupportedCiphers returns the SupportedCiphers field value if set, zero value otherwise.
+func (o *ApplicationPutRequest) GetSupportedCiphers() string {
+	if o == nil || IsNil(o.SupportedCiphers) {
+		var ret string
+		return ret
+	}
+	return *o.SupportedCiphers
+}
+
+// GetSupportedCiphersOk returns a tuple with the SupportedCiphers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationPutRequest) GetSupportedCiphersOk() (*string, bool) {
+	if o == nil || IsNil(o.SupportedCiphers) {
+		return nil, false
+	}
+	return o.SupportedCiphers, true
+}
+
+// HasSupportedCiphers returns a boolean if a field has been set.
+func (o *ApplicationPutRequest) HasSupportedCiphers() bool {
+	if o != nil && !IsNil(o.SupportedCiphers) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportedCiphers gets a reference to the given string and assigns it to the SupportedCiphers field.
+func (o *ApplicationPutRequest) SetSupportedCiphers(v string) {
+	o.SupportedCiphers = &v
+}
+
 func (o ApplicationPutRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -616,6 +715,15 @@ func (o ApplicationPutRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.WebApplicationFirewall) {
 		toSerialize["web_application_firewall"] = o.WebApplicationFirewall
+	}
+	if !IsNil(o.DebugRules) {
+		toSerialize["debug_rules"] = o.DebugRules
+	}
+	if !IsNil(o.Http3) {
+		toSerialize["http3"] = o.Http3
+	}
+	if !IsNil(o.SupportedCiphers) {
+		toSerialize["supported_ciphers"] = o.SupportedCiphers
 	}
 	return toSerialize, nil
 }

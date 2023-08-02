@@ -20,6 +20,9 @@ Name | Type | Description | Notes
 **LoadBalancer** | Pointer to **bool** |  | [optional] 
 **RawLogs** | Pointer to **bool** |  | [optional] 
 **WebApplicationFirewall** | Pointer to **bool** |  | [optional] 
+**DebugRules** | Pointer to **bool** |  | [optional] 
+**Http3** | Pointer to **bool** |  | [optional] 
+**SupportedCiphers** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -454,6 +457,81 @@ SetWebApplicationFirewall sets WebApplicationFirewall field to given value.
 `func (o *ApplicationPutRequest) HasWebApplicationFirewall() bool`
 
 HasWebApplicationFirewall returns a boolean if a field has been set.
+
+### GetDebugRules
+
+`func (o *ApplicationPutRequest) GetDebugRules() bool`
+
+GetDebugRules returns the DebugRules field if non-nil, zero value otherwise.
+
+### GetDebugRulesOk
+
+`func (o *ApplicationPutRequest) GetDebugRulesOk() (*bool, bool)`
+
+GetDebugRulesOk returns a tuple with the DebugRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebugRules
+
+`func (o *ApplicationPutRequest) SetDebugRules(v bool)`
+
+SetDebugRules sets DebugRules field to given value.
+
+### HasDebugRules
+
+`func (o *ApplicationPutRequest) HasDebugRules() bool`
+
+HasDebugRules returns a boolean if a field has been set.
+
+### GetHttp3
+
+`func (o *ApplicationPutRequest) GetHttp3() bool`
+
+GetHttp3 returns the Http3 field if non-nil, zero value otherwise.
+
+### GetHttp3Ok
+
+`func (o *ApplicationPutRequest) GetHttp3Ok() (*bool, bool)`
+
+GetHttp3Ok returns a tuple with the Http3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHttp3
+
+`func (o *ApplicationPutRequest) SetHttp3(v bool)`
+
+SetHttp3 sets Http3 field to given value.
+
+### HasHttp3
+
+`func (o *ApplicationPutRequest) HasHttp3() bool`
+
+HasHttp3 returns a boolean if a field has been set.
+
+### GetSupportedCiphers
+
+`func (o *ApplicationPutRequest) GetSupportedCiphers() string`
+
+GetSupportedCiphers returns the SupportedCiphers field if non-nil, zero value otherwise.
+
+### GetSupportedCiphersOk
+
+`func (o *ApplicationPutRequest) GetSupportedCiphersOk() (*string, bool)`
+
+GetSupportedCiphersOk returns a tuple with the SupportedCiphers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedCiphers
+
+`func (o *ApplicationPutRequest) SetSupportedCiphers(v string)`
+
+SetSupportedCiphers sets SupportedCiphers field to given value.
+
+### HasSupportedCiphers
+
+`func (o *ApplicationPutRequest) HasSupportedCiphers() bool`
+
+HasSupportedCiphers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
