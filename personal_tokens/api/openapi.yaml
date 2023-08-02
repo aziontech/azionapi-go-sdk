@@ -8,7 +8,7 @@ info:
   title: Personal Tokens - OpenAPI
   version: 1.0.0
 externalDocs:
-  description: See the documentation on Personal Tokens for more information.
+  description: See the documentation of Personal Tokens for more information.
   url: https://www.azion.com/en/documentation/products/accounts/personal-tokens/
 servers:
 - description: Production
@@ -60,7 +60,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePersonalTokenResponse'
-          description: Successful operation
+          description: Created successfully
         "400":
           description: Bad Request
         "401":
