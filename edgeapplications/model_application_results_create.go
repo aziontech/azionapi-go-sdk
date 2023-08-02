@@ -38,6 +38,7 @@ type ApplicationResultsCreate struct {
 	LoadBalancer bool `json:"load_balancer"`
 	RawLogs bool `json:"raw_logs"`
 	WebApplicationFirewall bool `json:"web_application_firewall"`
+	L2Caching *bool `json:"l2_caching,omitempty"`
 }
 
 // NewApplicationResultsCreate instantiates a new ApplicationResultsCreate object
@@ -536,6 +537,38 @@ func (o *ApplicationResultsCreate) SetWebApplicationFirewall(v bool) {
 	o.WebApplicationFirewall = v
 }
 
+// GetL2Caching returns the L2Caching field value if set, zero value otherwise.
+func (o *ApplicationResultsCreate) GetL2Caching() bool {
+	if o == nil || IsNil(o.L2Caching) {
+		var ret bool
+		return ret
+	}
+	return *o.L2Caching
+}
+
+// GetL2CachingOk returns a tuple with the L2Caching field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResultsCreate) GetL2CachingOk() (*bool, bool) {
+	if o == nil || IsNil(o.L2Caching) {
+		return nil, false
+	}
+	return o.L2Caching, true
+}
+
+// HasL2Caching returns a boolean if a field has been set.
+func (o *ApplicationResultsCreate) HasL2Caching() bool {
+	if o != nil && !IsNil(o.L2Caching) {
+		return true
+	}
+
+	return false
+}
+
+// SetL2Caching gets a reference to the given bool and assigns it to the L2Caching field.
+func (o *ApplicationResultsCreate) SetL2Caching(v bool) {
+	o.L2Caching = &v
+}
+
 func (o ApplicationResultsCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -569,6 +602,9 @@ func (o ApplicationResultsCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize["load_balancer"] = o.LoadBalancer
 	toSerialize["raw_logs"] = o.RawLogs
 	toSerialize["web_application_firewall"] = o.WebApplicationFirewall
+	if !IsNil(o.L2Caching) {
+		toSerialize["l2_caching"] = o.L2Caching
+	}
 	return toSerialize, nil
 }
 

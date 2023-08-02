@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **LoadBalancer** | **bool** |  | 
 **RawLogs** | **bool** |  | 
 **WebApplicationFirewall** | **bool** |  | 
+**L2Caching** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -442,6 +443,31 @@ and a boolean to check if the value has been set.
 
 SetWebApplicationFirewall sets WebApplicationFirewall field to given value.
 
+
+### GetL2Caching
+
+`func (o *ApplicationResultsCreate) GetL2Caching() bool`
+
+GetL2Caching returns the L2Caching field if non-nil, zero value otherwise.
+
+### GetL2CachingOk
+
+`func (o *ApplicationResultsCreate) GetL2CachingOk() (*bool, bool)`
+
+GetL2CachingOk returns a tuple with the L2Caching field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetL2Caching
+
+`func (o *ApplicationResultsCreate) SetL2Caching(v bool)`
+
+SetL2Caching sets L2Caching field to given value.
+
+### HasL2Caching
+
+`func (o *ApplicationResultsCreate) HasL2Caching() bool`
+
+HasL2Caching returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

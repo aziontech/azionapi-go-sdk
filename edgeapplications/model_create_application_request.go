@@ -30,6 +30,12 @@ type CreateApplicationRequest struct {
 	CdnCacheSettings *string `json:"cdn_cache_settings,omitempty"`
 	BrowserCacheSettingsMaximumTtl *int64 `json:"browser_cache_settings_maximum_ttl,omitempty"`
 	CdnCacheSettingsMaximumTtl *int64 `json:"cdn_cache_settings_maximum_ttl,omitempty"`
+	DebugRules *bool `json:"debug_rules,omitempty"`
+	SupportedCiphers *string `json:"supported_ciphers,omitempty"`
+	HttpPort interface{} `json:"http_port,omitempty"`
+	HttpsPort interface{} `json:"https_port,omitempty"`
+	L2Caching *bool `json:"l2_caching,omitempty"`
+	Http3 *bool `json:"http3,omitempty"`
 }
 
 // NewCreateApplicationRequest instantiates a new CreateApplicationRequest object
@@ -394,6 +400,200 @@ func (o *CreateApplicationRequest) SetCdnCacheSettingsMaximumTtl(v int64) {
 	o.CdnCacheSettingsMaximumTtl = &v
 }
 
+// GetDebugRules returns the DebugRules field value if set, zero value otherwise.
+func (o *CreateApplicationRequest) GetDebugRules() bool {
+	if o == nil || IsNil(o.DebugRules) {
+		var ret bool
+		return ret
+	}
+	return *o.DebugRules
+}
+
+// GetDebugRulesOk returns a tuple with the DebugRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateApplicationRequest) GetDebugRulesOk() (*bool, bool) {
+	if o == nil || IsNil(o.DebugRules) {
+		return nil, false
+	}
+	return o.DebugRules, true
+}
+
+// HasDebugRules returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasDebugRules() bool {
+	if o != nil && !IsNil(o.DebugRules) {
+		return true
+	}
+
+	return false
+}
+
+// SetDebugRules gets a reference to the given bool and assigns it to the DebugRules field.
+func (o *CreateApplicationRequest) SetDebugRules(v bool) {
+	o.DebugRules = &v
+}
+
+// GetSupportedCiphers returns the SupportedCiphers field value if set, zero value otherwise.
+func (o *CreateApplicationRequest) GetSupportedCiphers() string {
+	if o == nil || IsNil(o.SupportedCiphers) {
+		var ret string
+		return ret
+	}
+	return *o.SupportedCiphers
+}
+
+// GetSupportedCiphersOk returns a tuple with the SupportedCiphers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateApplicationRequest) GetSupportedCiphersOk() (*string, bool) {
+	if o == nil || IsNil(o.SupportedCiphers) {
+		return nil, false
+	}
+	return o.SupportedCiphers, true
+}
+
+// HasSupportedCiphers returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasSupportedCiphers() bool {
+	if o != nil && !IsNil(o.SupportedCiphers) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportedCiphers gets a reference to the given string and assigns it to the SupportedCiphers field.
+func (o *CreateApplicationRequest) SetSupportedCiphers(v string) {
+	o.SupportedCiphers = &v
+}
+
+// GetHttpPort returns the HttpPort field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateApplicationRequest) GetHttpPort() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.HttpPort
+}
+
+// GetHttpPortOk returns a tuple with the HttpPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateApplicationRequest) GetHttpPortOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.HttpPort) {
+		return nil, false
+	}
+	return &o.HttpPort, true
+}
+
+// HasHttpPort returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasHttpPort() bool {
+	if o != nil && IsNil(o.HttpPort) {
+		return true
+	}
+
+	return false
+}
+
+// SetHttpPort gets a reference to the given interface{} and assigns it to the HttpPort field.
+func (o *CreateApplicationRequest) SetHttpPort(v interface{}) {
+	o.HttpPort = v
+}
+
+// GetHttpsPort returns the HttpsPort field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateApplicationRequest) GetHttpsPort() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.HttpsPort
+}
+
+// GetHttpsPortOk returns a tuple with the HttpsPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateApplicationRequest) GetHttpsPortOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.HttpsPort) {
+		return nil, false
+	}
+	return &o.HttpsPort, true
+}
+
+// HasHttpsPort returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasHttpsPort() bool {
+	if o != nil && IsNil(o.HttpsPort) {
+		return true
+	}
+
+	return false
+}
+
+// SetHttpsPort gets a reference to the given interface{} and assigns it to the HttpsPort field.
+func (o *CreateApplicationRequest) SetHttpsPort(v interface{}) {
+	o.HttpsPort = v
+}
+
+// GetL2Caching returns the L2Caching field value if set, zero value otherwise.
+func (o *CreateApplicationRequest) GetL2Caching() bool {
+	if o == nil || IsNil(o.L2Caching) {
+		var ret bool
+		return ret
+	}
+	return *o.L2Caching
+}
+
+// GetL2CachingOk returns a tuple with the L2Caching field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateApplicationRequest) GetL2CachingOk() (*bool, bool) {
+	if o == nil || IsNil(o.L2Caching) {
+		return nil, false
+	}
+	return o.L2Caching, true
+}
+
+// HasL2Caching returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasL2Caching() bool {
+	if o != nil && !IsNil(o.L2Caching) {
+		return true
+	}
+
+	return false
+}
+
+// SetL2Caching gets a reference to the given bool and assigns it to the L2Caching field.
+func (o *CreateApplicationRequest) SetL2Caching(v bool) {
+	o.L2Caching = &v
+}
+
+// GetHttp3 returns the Http3 field value if set, zero value otherwise.
+func (o *CreateApplicationRequest) GetHttp3() bool {
+	if o == nil || IsNil(o.Http3) {
+		var ret bool
+		return ret
+	}
+	return *o.Http3
+}
+
+// GetHttp3Ok returns a tuple with the Http3 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateApplicationRequest) GetHttp3Ok() (*bool, bool) {
+	if o == nil || IsNil(o.Http3) {
+		return nil, false
+	}
+	return o.Http3, true
+}
+
+// HasHttp3 returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasHttp3() bool {
+	if o != nil && !IsNil(o.Http3) {
+		return true
+	}
+
+	return false
+}
+
+// SetHttp3 gets a reference to the given bool and assigns it to the Http3 field.
+func (o *CreateApplicationRequest) SetHttp3(v bool) {
+	o.Http3 = &v
+}
+
 func (o CreateApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -434,6 +634,24 @@ func (o CreateApplicationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CdnCacheSettingsMaximumTtl) {
 		toSerialize["cdn_cache_settings_maximum_ttl"] = o.CdnCacheSettingsMaximumTtl
+	}
+	if !IsNil(o.DebugRules) {
+		toSerialize["debug_rules"] = o.DebugRules
+	}
+	if !IsNil(o.SupportedCiphers) {
+		toSerialize["supported_ciphers"] = o.SupportedCiphers
+	}
+	if o.HttpPort != nil {
+		toSerialize["http_port"] = o.HttpPort
+	}
+	if o.HttpsPort != nil {
+		toSerialize["https_port"] = o.HttpsPort
+	}
+	if !IsNil(o.L2Caching) {
+		toSerialize["l2_caching"] = o.L2Caching
+	}
+	if !IsNil(o.Http3) {
+		toSerialize["http3"] = o.Http3
 	}
 	return toSerialize, nil
 }

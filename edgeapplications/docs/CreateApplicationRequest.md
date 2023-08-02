@@ -15,6 +15,12 @@ Name | Type | Description | Notes
 **CdnCacheSettings** | Pointer to **string** |  | [optional] 
 **BrowserCacheSettingsMaximumTtl** | Pointer to **int64** |  | [optional] 
 **CdnCacheSettingsMaximumTtl** | Pointer to **int64** |  | [optional] 
+**DebugRules** | Pointer to **bool** |  | [optional] 
+**SupportedCiphers** | Pointer to **string** |  | [optional] 
+**HttpPort** | Pointer to **interface{}** |  | [optional] 
+**HttpsPort** | Pointer to **interface{}** |  | [optional] 
+**L2Caching** | Pointer to **bool** |  | [optional] 
+**Http3** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -304,6 +310,176 @@ SetCdnCacheSettingsMaximumTtl sets CdnCacheSettingsMaximumTtl field to given val
 `func (o *CreateApplicationRequest) HasCdnCacheSettingsMaximumTtl() bool`
 
 HasCdnCacheSettingsMaximumTtl returns a boolean if a field has been set.
+
+### GetDebugRules
+
+`func (o *CreateApplicationRequest) GetDebugRules() bool`
+
+GetDebugRules returns the DebugRules field if non-nil, zero value otherwise.
+
+### GetDebugRulesOk
+
+`func (o *CreateApplicationRequest) GetDebugRulesOk() (*bool, bool)`
+
+GetDebugRulesOk returns a tuple with the DebugRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDebugRules
+
+`func (o *CreateApplicationRequest) SetDebugRules(v bool)`
+
+SetDebugRules sets DebugRules field to given value.
+
+### HasDebugRules
+
+`func (o *CreateApplicationRequest) HasDebugRules() bool`
+
+HasDebugRules returns a boolean if a field has been set.
+
+### GetSupportedCiphers
+
+`func (o *CreateApplicationRequest) GetSupportedCiphers() string`
+
+GetSupportedCiphers returns the SupportedCiphers field if non-nil, zero value otherwise.
+
+### GetSupportedCiphersOk
+
+`func (o *CreateApplicationRequest) GetSupportedCiphersOk() (*string, bool)`
+
+GetSupportedCiphersOk returns a tuple with the SupportedCiphers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedCiphers
+
+`func (o *CreateApplicationRequest) SetSupportedCiphers(v string)`
+
+SetSupportedCiphers sets SupportedCiphers field to given value.
+
+### HasSupportedCiphers
+
+`func (o *CreateApplicationRequest) HasSupportedCiphers() bool`
+
+HasSupportedCiphers returns a boolean if a field has been set.
+
+### GetHttpPort
+
+`func (o *CreateApplicationRequest) GetHttpPort() interface{}`
+
+GetHttpPort returns the HttpPort field if non-nil, zero value otherwise.
+
+### GetHttpPortOk
+
+`func (o *CreateApplicationRequest) GetHttpPortOk() (*interface{}, bool)`
+
+GetHttpPortOk returns a tuple with the HttpPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHttpPort
+
+`func (o *CreateApplicationRequest) SetHttpPort(v interface{})`
+
+SetHttpPort sets HttpPort field to given value.
+
+### HasHttpPort
+
+`func (o *CreateApplicationRequest) HasHttpPort() bool`
+
+HasHttpPort returns a boolean if a field has been set.
+
+### SetHttpPortNil
+
+`func (o *CreateApplicationRequest) SetHttpPortNil(b bool)`
+
+ SetHttpPortNil sets the value for HttpPort to be an explicit nil
+
+### UnsetHttpPort
+`func (o *CreateApplicationRequest) UnsetHttpPort()`
+
+UnsetHttpPort ensures that no value is present for HttpPort, not even an explicit nil
+### GetHttpsPort
+
+`func (o *CreateApplicationRequest) GetHttpsPort() interface{}`
+
+GetHttpsPort returns the HttpsPort field if non-nil, zero value otherwise.
+
+### GetHttpsPortOk
+
+`func (o *CreateApplicationRequest) GetHttpsPortOk() (*interface{}, bool)`
+
+GetHttpsPortOk returns a tuple with the HttpsPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHttpsPort
+
+`func (o *CreateApplicationRequest) SetHttpsPort(v interface{})`
+
+SetHttpsPort sets HttpsPort field to given value.
+
+### HasHttpsPort
+
+`func (o *CreateApplicationRequest) HasHttpsPort() bool`
+
+HasHttpsPort returns a boolean if a field has been set.
+
+### SetHttpsPortNil
+
+`func (o *CreateApplicationRequest) SetHttpsPortNil(b bool)`
+
+ SetHttpsPortNil sets the value for HttpsPort to be an explicit nil
+
+### UnsetHttpsPort
+`func (o *CreateApplicationRequest) UnsetHttpsPort()`
+
+UnsetHttpsPort ensures that no value is present for HttpsPort, not even an explicit nil
+### GetL2Caching
+
+`func (o *CreateApplicationRequest) GetL2Caching() bool`
+
+GetL2Caching returns the L2Caching field if non-nil, zero value otherwise.
+
+### GetL2CachingOk
+
+`func (o *CreateApplicationRequest) GetL2CachingOk() (*bool, bool)`
+
+GetL2CachingOk returns a tuple with the L2Caching field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetL2Caching
+
+`func (o *CreateApplicationRequest) SetL2Caching(v bool)`
+
+SetL2Caching sets L2Caching field to given value.
+
+### HasL2Caching
+
+`func (o *CreateApplicationRequest) HasL2Caching() bool`
+
+HasL2Caching returns a boolean if a field has been set.
+
+### GetHttp3
+
+`func (o *CreateApplicationRequest) GetHttp3() bool`
+
+GetHttp3 returns the Http3 field if non-nil, zero value otherwise.
+
+### GetHttp3Ok
+
+`func (o *CreateApplicationRequest) GetHttp3Ok() (*bool, bool)`
+
+GetHttp3Ok returns a tuple with the Http3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHttp3
+
+`func (o *CreateApplicationRequest) SetHttp3(v bool)`
+
+SetHttp3 sets Http3 field to given value.
+
+### HasHttp3
+
+`func (o *CreateApplicationRequest) HasHttp3() bool`
+
+HasHttp3 returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
