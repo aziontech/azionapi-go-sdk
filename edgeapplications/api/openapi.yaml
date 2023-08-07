@@ -115,12 +115,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateApplicationResult'
           description: Successful response
+        "201":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/CreateApplicationResult'
+          description: Successful response
         "400":
           description: Bad Request
         "403":
           description: Forbidden
         "404":
           description: Not Found
+        "415":
+          description: Unsupported Media Type
         "422":
           description: Unprocessable Entity
         "500":
@@ -249,6 +257,8 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+        "405":
+          description: Method Not Allowed
         "422":
           description: Unprocessable Entity
         "500":
@@ -306,6 +316,8 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+        "405":
+          description: Method Not Allowed
         "422":
           description: Unprocessable Entity
         "500":
@@ -958,6 +970,8 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+        "405":
+          description: Method Not Allowed
         "422":
           description: Unprocessable Entity
         "500":
@@ -1023,6 +1037,8 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+        "405":
+          description: Method Not Allowed
         "422":
           description: Unprocessable Entity
         "500":
@@ -1932,6 +1948,8 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+        "415":
+          description: Unsupported Media Type
         "422":
           description: Unprocessable Entity
         "500":
@@ -2195,6 +2213,12 @@ components:
           items:
             $ref: '#/components/schemas/ApplicationsResults'
           type: array
+        next:
+          nullable: true
+          type: string
+        previous:
+          nullable: true
+          type: string
       required:
       - count
       - links
@@ -2256,9 +2280,6 @@ components:
           type: string
         origin_id:
           type: string
-      required:
-      - next
-      - previous
       type: object
     GetApplicationResponse:
       additionalProperties: false
@@ -2432,8 +2453,6 @@ components:
           type: boolean
         http3:
           type: boolean
-        minimum_tls_version:
-          type: string
       required:
       - name
       type: object
@@ -3016,6 +3035,7 @@ components:
         query_string_fields:
           items:
             type: string
+          nullable: true
           type: array
         enable_query_string_sort:
           type: boolean
@@ -3023,7 +3043,9 @@ components:
           type: string
         cookie_names:
           items:
+            nullable: true
             type: string
+          nullable: true
           type: array
         adaptive_delivery_action:
           type: string
@@ -3049,6 +3071,7 @@ components:
         enable_stale_cache:
           type: boolean
         l2_region:
+          nullable: true
           type: string
       required:
       - adaptive_delivery_action
@@ -3614,6 +3637,7 @@ components:
         enable_stale_cache:
           type: boolean
         l2_region:
+          nullable: true
           type: string
       required:
       - browser_cache_settings

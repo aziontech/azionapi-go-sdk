@@ -25,13 +25,13 @@ Name | Type | Description | Notes
 **SliceConfigurationRange** | Pointer to **int64** |  | [optional] 
 **EnableCachingForOptions** | **bool** |  | 
 **EnableStaleCache** | **bool** |  | 
-**L2Region** | **string** |  | 
+**L2Region** | **NullableString** |  | 
 
 ## Methods
 
 ### NewApplicationCacheResults
 
-`func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int32, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region string, ) *ApplicationCacheResults`
+`func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []*string, adaptiveDeliveryAction string, deviceGroup []int32, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region NullableString, ) *ApplicationCacheResults`
 
 NewApplicationCacheResults instantiates a new ApplicationCacheResults object
 This constructor will assign default values to properties that have it defined,
@@ -206,6 +206,16 @@ and a boolean to check if the value has been set.
 SetQueryStringFields sets QueryStringFields field to given value.
 
 
+### SetQueryStringFieldsNil
+
+`func (o *ApplicationCacheResults) SetQueryStringFieldsNil(b bool)`
+
+ SetQueryStringFieldsNil sets the value for QueryStringFields to be an explicit nil
+
+### UnsetQueryStringFields
+`func (o *ApplicationCacheResults) UnsetQueryStringFields()`
+
+UnsetQueryStringFields ensures that no value is present for QueryStringFields, not even an explicit nil
 ### GetEnableQueryStringSort
 
 `func (o *ApplicationCacheResults) GetEnableQueryStringSort() bool`
@@ -248,24 +258,34 @@ SetCacheByCookies sets CacheByCookies field to given value.
 
 ### GetCookieNames
 
-`func (o *ApplicationCacheResults) GetCookieNames() []string`
+`func (o *ApplicationCacheResults) GetCookieNames() []*string`
 
 GetCookieNames returns the CookieNames field if non-nil, zero value otherwise.
 
 ### GetCookieNamesOk
 
-`func (o *ApplicationCacheResults) GetCookieNamesOk() (*[]string, bool)`
+`func (o *ApplicationCacheResults) GetCookieNamesOk() (*[]*string, bool)`
 
 GetCookieNamesOk returns a tuple with the CookieNames field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCookieNames
 
-`func (o *ApplicationCacheResults) SetCookieNames(v []string)`
+`func (o *ApplicationCacheResults) SetCookieNames(v []*string)`
 
 SetCookieNames sets CookieNames field to given value.
 
 
+### SetCookieNamesNil
+
+`func (o *ApplicationCacheResults) SetCookieNamesNil(b bool)`
+
+ SetCookieNamesNil sets the value for CookieNames to be an explicit nil
+
+### UnsetCookieNames
+`func (o *ApplicationCacheResults) UnsetCookieNames()`
+
+UnsetCookieNames ensures that no value is present for CookieNames, not even an explicit nil
 ### GetAdaptiveDeliveryAction
 
 `func (o *ApplicationCacheResults) GetAdaptiveDeliveryAction() string`
@@ -506,6 +526,16 @@ and a boolean to check if the value has been set.
 SetL2Region sets L2Region field to given value.
 
 
+### SetL2RegionNil
+
+`func (o *ApplicationCacheResults) SetL2RegionNil(b bool)`
+
+ SetL2RegionNil sets the value for L2Region to be an explicit nil
+
+### UnsetL2Region
+`func (o *ApplicationCacheResults) UnsetL2Region()`
+
+UnsetL2Region ensures that no value is present for L2Region, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -40,7 +40,7 @@ type ApplicationCacheResponseDetails struct {
 	IsSliceL2CachingEnabled *bool `json:"is_slice_l2_caching_enabled,omitempty"`
 	SliceConfigurationRange *int64 `json:"slice_configuration_range,omitempty"`
 	EnableStaleCache *bool `json:"enable_stale_cache,omitempty"`
-	L2Region *string `json:"l2_region,omitempty"`
+	L2Region NullableString `json:"l2_region,omitempty"`
 }
 
 // NewApplicationCacheResponseDetails instantiates a new ApplicationCacheResponseDetails object
@@ -645,36 +645,46 @@ func (o *ApplicationCacheResponseDetails) SetEnableStaleCache(v bool) {
 	o.EnableStaleCache = &v
 }
 
-// GetL2Region returns the L2Region field value if set, zero value otherwise.
+// GetL2Region returns the L2Region field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationCacheResponseDetails) GetL2Region() string {
-	if o == nil || IsNil(o.L2Region) {
+	if o == nil || IsNil(o.L2Region.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.L2Region
+	return *o.L2Region.Get()
 }
 
 // GetL2RegionOk returns a tuple with the L2Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationCacheResponseDetails) GetL2RegionOk() (*string, bool) {
-	if o == nil || IsNil(o.L2Region) {
+	if o == nil {
 		return nil, false
 	}
-	return o.L2Region, true
+	return o.L2Region.Get(), o.L2Region.IsSet()
 }
 
 // HasL2Region returns a boolean if a field has been set.
 func (o *ApplicationCacheResponseDetails) HasL2Region() bool {
-	if o != nil && !IsNil(o.L2Region) {
+	if o != nil && o.L2Region.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetL2Region gets a reference to the given string and assigns it to the L2Region field.
+// SetL2Region gets a reference to the given NullableString and assigns it to the L2Region field.
 func (o *ApplicationCacheResponseDetails) SetL2Region(v string) {
-	o.L2Region = &v
+	o.L2Region.Set(&v)
+}
+// SetL2RegionNil sets the value for L2Region to be an explicit nil
+func (o *ApplicationCacheResponseDetails) SetL2RegionNil() {
+	o.L2Region.Set(nil)
+}
+
+// UnsetL2Region ensures that no value is present for L2Region, not even an explicit nil
+func (o *ApplicationCacheResponseDetails) UnsetL2Region() {
+	o.L2Region.Unset()
 }
 
 func (o ApplicationCacheResponseDetails) MarshalJSON() ([]byte, error) {
@@ -728,8 +738,8 @@ func (o ApplicationCacheResponseDetails) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.EnableStaleCache) {
 		toSerialize["enable_stale_cache"] = o.EnableStaleCache
 	}
-	if !IsNil(o.L2Region) {
-		toSerialize["l2_region"] = o.L2Region
+	if o.L2Region.IsSet() {
+		toSerialize["l2_region"] = o.L2Region.Get()
 	}
 	return toSerialize, nil
 }

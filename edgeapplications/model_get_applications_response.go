@@ -24,6 +24,8 @@ type GetApplicationsResponse struct {
 	SchemaVersion int64 `json:"schema_version"`
 	Links ApplicationLinks `json:"links"`
 	Results []ApplicationsResults `json:"results"`
+	Next NullableString `json:"next,omitempty"`
+	Previous NullableString `json:"previous,omitempty"`
 }
 
 // NewGetApplicationsResponse instantiates a new GetApplicationsResponse object
@@ -168,6 +170,90 @@ func (o *GetApplicationsResponse) SetResults(v []ApplicationsResults) {
 	o.Results = v
 }
 
+// GetNext returns the Next field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetApplicationsResponse) GetNext() string {
+	if o == nil || IsNil(o.Next.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Next.Get()
+}
+
+// GetNextOk returns a tuple with the Next field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetApplicationsResponse) GetNextOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Next.Get(), o.Next.IsSet()
+}
+
+// HasNext returns a boolean if a field has been set.
+func (o *GetApplicationsResponse) HasNext() bool {
+	if o != nil && o.Next.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNext gets a reference to the given NullableString and assigns it to the Next field.
+func (o *GetApplicationsResponse) SetNext(v string) {
+	o.Next.Set(&v)
+}
+// SetNextNil sets the value for Next to be an explicit nil
+func (o *GetApplicationsResponse) SetNextNil() {
+	o.Next.Set(nil)
+}
+
+// UnsetNext ensures that no value is present for Next, not even an explicit nil
+func (o *GetApplicationsResponse) UnsetNext() {
+	o.Next.Unset()
+}
+
+// GetPrevious returns the Previous field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetApplicationsResponse) GetPrevious() string {
+	if o == nil || IsNil(o.Previous.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Previous.Get()
+}
+
+// GetPreviousOk returns a tuple with the Previous field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetApplicationsResponse) GetPreviousOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Previous.Get(), o.Previous.IsSet()
+}
+
+// HasPrevious returns a boolean if a field has been set.
+func (o *GetApplicationsResponse) HasPrevious() bool {
+	if o != nil && o.Previous.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrevious gets a reference to the given NullableString and assigns it to the Previous field.
+func (o *GetApplicationsResponse) SetPrevious(v string) {
+	o.Previous.Set(&v)
+}
+// SetPreviousNil sets the value for Previous to be an explicit nil
+func (o *GetApplicationsResponse) SetPreviousNil() {
+	o.Previous.Set(nil)
+}
+
+// UnsetPrevious ensures that no value is present for Previous, not even an explicit nil
+func (o *GetApplicationsResponse) UnsetPrevious() {
+	o.Previous.Unset()
+}
+
 func (o GetApplicationsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -183,6 +269,12 @@ func (o GetApplicationsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["schema_version"] = o.SchemaVersion
 	toSerialize["links"] = o.Links
 	toSerialize["results"] = o.Results
+	if o.Next.IsSet() {
+		toSerialize["next"] = o.Next.Get()
+	}
+	if o.Previous.IsSet() {
+		toSerialize["previous"] = o.Previous.Get()
+	}
 	return toSerialize, nil
 }
 

@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **IsSliceL2CachingEnabled** | Pointer to **bool** |  | [optional] 
 **SliceConfigurationRange** | Pointer to **int64** |  | [optional] 
 **EnableStaleCache** | Pointer to **bool** |  | [optional] 
-**L2Region** | Pointer to **string** |  | [optional] 
+**L2Region** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -551,6 +551,16 @@ SetL2Region sets L2Region field to given value.
 
 HasL2Region returns a boolean if a field has been set.
 
+### SetL2RegionNil
+
+`func (o *ApplicationCacheResponseDetails) SetL2RegionNil(b bool)`
+
+ SetL2RegionNil sets the value for L2Region to be an explicit nil
+
+### UnsetL2Region
+`func (o *ApplicationCacheResponseDetails) UnsetL2Region()`
+
+UnsetL2Region ensures that no value is present for L2Region, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
