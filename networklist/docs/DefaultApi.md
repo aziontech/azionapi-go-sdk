@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## NetworkListsGet
 
-> ListNetworkListsResponse NetworkListsGet(ctx).Page(page).Execute()
+> ListNetworkListsResponse NetworkListsGet(ctx).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
 
 List all user Network Lists
 
@@ -31,10 +31,13 @@ import (
 
 func main() {
     page := int32(56) // int32 |  (optional)
+    pageSize := int32(56) // int32 |  (optional)
+    sort := "sort_example" // string |  (optional)
+    orderBy := "orderBy_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.NetworkListsGet(context.Background()).Page(page).Execute()
+    resp, r, err := apiClient.DefaultApi.NetworkListsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,6 +59,9 @@ Other parameters are passed through a pointer to a apiNetworkListsGetRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int32** |  | 
+ **pageSize** | **int32** |  | 
+ **sort** | **string** |  | 
+ **orderBy** | **string** |  | 
 
 ### Return type
 
@@ -77,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## NetworkListsPost
 
-> NetworkListsPost(ctx).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
+> NetworkListsResponse NetworkListsPost(ctx).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
 
 Create a Network Lists
 
@@ -98,11 +104,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DefaultApi.NetworkListsPost(context.Background()).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
+    resp, r, err := apiClient.DefaultApi.NetworkListsPost(context.Background()).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `NetworkListsPost`: NetworkListsResponse
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.NetworkListsPost`: %v\n", resp)
 }
 ```
 
@@ -121,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**NetworkListsResponse**](NetworkListsResponse.md)
 
 ### Authorization
 
@@ -139,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## NetworkListsUuidGet
 
-> NetworkListsResponse NetworkListsUuidGet(ctx, uuid).Execute()
+> NetworkListUuidResponse NetworkListsUuidGet(ctx, uuid).Execute()
 
 Retrieve a Network Lists set by uuid
 
@@ -165,7 +173,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsUuidGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `NetworkListsUuidGet`: NetworkListsResponse
+    // response from `NetworkListsUuidGet`: NetworkListUuidResponse
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.NetworkListsUuidGet`: %v\n", resp)
 }
 ```
@@ -189,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NetworkListsResponse**](NetworkListsResponse.md)
+[**NetworkListUuidResponse**](NetworkListUuidResponse.md)
 
 ### Authorization
 
@@ -207,7 +215,7 @@ Name | Type | Description  | Notes
 
 ## NetworkListsUuidPut
 
-> ListNetworkListsResponse NetworkListsUuidPut(ctx, uuid).UpdateNetworkListsRequest(updateNetworkListsRequest).Execute()
+> NetworkListsResponse NetworkListsUuidPut(ctx, uuid).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
 
 Overwrite some Network Lists attributes
 
@@ -225,16 +233,16 @@ import (
 
 func main() {
     uuid := "uuid_example" // string | 
-    updateNetworkListsRequest := *openapiclient.NewUpdateNetworkListsRequest() // UpdateNetworkListsRequest | 
+    createNetworkListsRequest := *openapiclient.NewCreateNetworkListsRequest() // CreateNetworkListsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.NetworkListsUuidPut(context.Background(), uuid).UpdateNetworkListsRequest(updateNetworkListsRequest).Execute()
+    resp, r, err := apiClient.DefaultApi.NetworkListsUuidPut(context.Background(), uuid).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsUuidPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `NetworkListsUuidPut`: ListNetworkListsResponse
+    // response from `NetworkListsUuidPut`: NetworkListsResponse
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.NetworkListsUuidPut`: %v\n", resp)
 }
 ```
@@ -255,11 +263,11 @@ Other parameters are passed through a pointer to a apiNetworkListsUuidPutRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateNetworkListsRequest** | [**UpdateNetworkListsRequest**](UpdateNetworkListsRequest.md) |  | 
+ **createNetworkListsRequest** | [**CreateNetworkListsRequest**](CreateNetworkListsRequest.md) |  | 
 
 ### Return type
 
-[**ListNetworkListsResponse**](ListNetworkListsResponse.md)
+[**NetworkListsResponse**](NetworkListsResponse.md)
 
 ### Authorization
 

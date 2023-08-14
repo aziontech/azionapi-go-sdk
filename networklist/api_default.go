@@ -27,10 +27,28 @@ type ApiNetworkListsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
 	page *int32
+	pageSize *int32
+	sort *string
+	orderBy *string
 }
 
 func (r ApiNetworkListsGetRequest) Page(page int32) ApiNetworkListsGetRequest {
 	r.page = &page
+	return r
+}
+
+func (r ApiNetworkListsGetRequest) PageSize(pageSize int32) ApiNetworkListsGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiNetworkListsGetRequest) Sort(sort string) ApiNetworkListsGetRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r ApiNetworkListsGetRequest) OrderBy(orderBy string) ApiNetworkListsGetRequest {
+	r.orderBy = &orderBy
 	return r
 }
 
@@ -74,6 +92,15 @@ func (a *DefaultApiService) NetworkListsGetExecute(r ApiNetworkListsGetRequest) 
 
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	}
+	if r.orderBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_by", r.orderBy, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -154,7 +181,7 @@ func (r ApiNetworkListsPostRequest) CreateNetworkListsRequest(createNetworkLists
 	return r
 }
 
-func (r ApiNetworkListsPostRequest) Execute() (*http.Response, error) {
+func (r ApiNetworkListsPostRequest) Execute() (*NetworkListsResponse, *http.Response, error) {
 	return r.ApiService.NetworkListsPostExecute(r)
 }
 
@@ -172,16 +199,18 @@ func (a *DefaultApiService) NetworkListsPost(ctx context.Context) ApiNetworkList
 }
 
 // Execute executes the request
-func (a *DefaultApiService) NetworkListsPostExecute(r ApiNetworkListsPostRequest) (*http.Response, error) {
+//  @return NetworkListsResponse
+func (a *DefaultApiService) NetworkListsPostExecute(r ApiNetworkListsPostRequest) (*NetworkListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *NetworkListsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NetworkListsPost")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/network_lists"
@@ -190,7 +219,7 @@ func (a *DefaultApiService) NetworkListsPostExecute(r ApiNetworkListsPostRequest
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.createNetworkListsRequest == nil {
-		return nil, reportError("createNetworkListsRequest is required and must be specified")
+		return localVarReturnValue, nil, reportError("createNetworkListsRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -228,19 +257,19 @@ func (a *DefaultApiService) NetworkListsPostExecute(r ApiNetworkListsPostRequest
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -253,26 +282,35 @@ func (a *DefaultApiService) NetworkListsPostExecute(r ApiNetworkListsPostRequest
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorModel
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiNetworkListsUuidGetRequest struct {
@@ -281,7 +319,7 @@ type ApiNetworkListsUuidGetRequest struct {
 	uuid string
 }
 
-func (r ApiNetworkListsUuidGetRequest) Execute() (*NetworkListsResponse, *http.Response, error) {
+func (r ApiNetworkListsUuidGetRequest) Execute() (*NetworkListUuidResponse, *http.Response, error) {
 	return r.ApiService.NetworkListsUuidGetExecute(r)
 }
 
@@ -301,13 +339,13 @@ func (a *DefaultApiService) NetworkListsUuidGet(ctx context.Context, uuid string
 }
 
 // Execute executes the request
-//  @return NetworkListsResponse
-func (a *DefaultApiService) NetworkListsUuidGetExecute(r ApiNetworkListsUuidGetRequest) (*NetworkListsResponse, *http.Response, error) {
+//  @return NetworkListUuidResponse
+func (a *DefaultApiService) NetworkListsUuidGetExecute(r ApiNetworkListsUuidGetRequest) (*NetworkListUuidResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *NetworkListsResponse
+		localVarReturnValue  *NetworkListUuidResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NetworkListsUuidGet")
@@ -405,15 +443,15 @@ type ApiNetworkListsUuidPutRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
 	uuid string
-	updateNetworkListsRequest *UpdateNetworkListsRequest
+	createNetworkListsRequest *CreateNetworkListsRequest
 }
 
-func (r ApiNetworkListsUuidPutRequest) UpdateNetworkListsRequest(updateNetworkListsRequest UpdateNetworkListsRequest) ApiNetworkListsUuidPutRequest {
-	r.updateNetworkListsRequest = &updateNetworkListsRequest
+func (r ApiNetworkListsUuidPutRequest) CreateNetworkListsRequest(createNetworkListsRequest CreateNetworkListsRequest) ApiNetworkListsUuidPutRequest {
+	r.createNetworkListsRequest = &createNetworkListsRequest
 	return r
 }
 
-func (r ApiNetworkListsUuidPutRequest) Execute() (*ListNetworkListsResponse, *http.Response, error) {
+func (r ApiNetworkListsUuidPutRequest) Execute() (*NetworkListsResponse, *http.Response, error) {
 	return r.ApiService.NetworkListsUuidPutExecute(r)
 }
 
@@ -433,13 +471,13 @@ func (a *DefaultApiService) NetworkListsUuidPut(ctx context.Context, uuid string
 }
 
 // Execute executes the request
-//  @return ListNetworkListsResponse
-func (a *DefaultApiService) NetworkListsUuidPutExecute(r ApiNetworkListsUuidPutRequest) (*ListNetworkListsResponse, *http.Response, error) {
+//  @return NetworkListsResponse
+func (a *DefaultApiService) NetworkListsUuidPutExecute(r ApiNetworkListsUuidPutRequest) (*NetworkListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListNetworkListsResponse
+		localVarReturnValue  *NetworkListsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NetworkListsUuidPut")
@@ -453,8 +491,8 @@ func (a *DefaultApiService) NetworkListsUuidPutExecute(r ApiNetworkListsUuidPutR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateNetworkListsRequest == nil {
-		return localVarReturnValue, nil, reportError("updateNetworkListsRequest is required and must be specified")
+	if r.createNetworkListsRequest == nil {
+		return localVarReturnValue, nil, reportError("createNetworkListsRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -475,7 +513,7 @@ func (a *DefaultApiService) NetworkListsUuidPutExecute(r ApiNetworkListsUuidPutR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateNetworkListsRequest
+	localVarPostBody = r.createNetworkListsRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

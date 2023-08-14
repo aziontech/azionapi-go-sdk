@@ -1,4 +1,4 @@
-# NetworkLists
+# NetworkListResponseEntry
 
 ## Properties
 
@@ -9,202 +9,176 @@ Name | Type | Description | Notes
 **LastModified** | Pointer to **string** |  | [optional] 
 **ListType** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**CountryList** | Pointer to **[]string** |  | [optional] 
-**IpList** | Pointer to **[]string** |  | [optional] 
+**ItemsValues** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
-### NewNetworkLists
+### NewNetworkListResponseEntry
 
-`func NewNetworkLists() *NetworkLists`
+`func NewNetworkListResponseEntry() *NetworkListResponseEntry`
 
-NewNetworkLists instantiates a new NetworkLists object
+NewNetworkListResponseEntry instantiates a new NetworkListResponseEntry object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewNetworkListsWithDefaults
+### NewNetworkListResponseEntryWithDefaults
 
-`func NewNetworkListsWithDefaults() *NetworkLists`
+`func NewNetworkListResponseEntryWithDefaults() *NetworkListResponseEntry`
 
-NewNetworkListsWithDefaults instantiates a new NetworkLists object
+NewNetworkListResponseEntryWithDefaults instantiates a new NetworkListResponseEntry object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *NetworkLists) GetId() int64`
+`func (o *NetworkListResponseEntry) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *NetworkLists) GetIdOk() (*int64, bool)`
+`func (o *NetworkListResponseEntry) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *NetworkLists) SetId(v int64)`
+`func (o *NetworkListResponseEntry) SetId(v int64)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *NetworkLists) HasId() bool`
+`func (o *NetworkListResponseEntry) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetLastEditor
 
-`func (o *NetworkLists) GetLastEditor() string`
+`func (o *NetworkListResponseEntry) GetLastEditor() string`
 
 GetLastEditor returns the LastEditor field if non-nil, zero value otherwise.
 
 ### GetLastEditorOk
 
-`func (o *NetworkLists) GetLastEditorOk() (*string, bool)`
+`func (o *NetworkListResponseEntry) GetLastEditorOk() (*string, bool)`
 
 GetLastEditorOk returns a tuple with the LastEditor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastEditor
 
-`func (o *NetworkLists) SetLastEditor(v string)`
+`func (o *NetworkListResponseEntry) SetLastEditor(v string)`
 
 SetLastEditor sets LastEditor field to given value.
 
 ### HasLastEditor
 
-`func (o *NetworkLists) HasLastEditor() bool`
+`func (o *NetworkListResponseEntry) HasLastEditor() bool`
 
 HasLastEditor returns a boolean if a field has been set.
 
 ### GetLastModified
 
-`func (o *NetworkLists) GetLastModified() string`
+`func (o *NetworkListResponseEntry) GetLastModified() string`
 
 GetLastModified returns the LastModified field if non-nil, zero value otherwise.
 
 ### GetLastModifiedOk
 
-`func (o *NetworkLists) GetLastModifiedOk() (*string, bool)`
+`func (o *NetworkListResponseEntry) GetLastModifiedOk() (*string, bool)`
 
 GetLastModifiedOk returns a tuple with the LastModified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastModified
 
-`func (o *NetworkLists) SetLastModified(v string)`
+`func (o *NetworkListResponseEntry) SetLastModified(v string)`
 
 SetLastModified sets LastModified field to given value.
 
 ### HasLastModified
 
-`func (o *NetworkLists) HasLastModified() bool`
+`func (o *NetworkListResponseEntry) HasLastModified() bool`
 
 HasLastModified returns a boolean if a field has been set.
 
 ### GetListType
 
-`func (o *NetworkLists) GetListType() string`
+`func (o *NetworkListResponseEntry) GetListType() string`
 
 GetListType returns the ListType field if non-nil, zero value otherwise.
 
 ### GetListTypeOk
 
-`func (o *NetworkLists) GetListTypeOk() (*string, bool)`
+`func (o *NetworkListResponseEntry) GetListTypeOk() (*string, bool)`
 
 GetListTypeOk returns a tuple with the ListType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetListType
 
-`func (o *NetworkLists) SetListType(v string)`
+`func (o *NetworkListResponseEntry) SetListType(v string)`
 
 SetListType sets ListType field to given value.
 
 ### HasListType
 
-`func (o *NetworkLists) HasListType() bool`
+`func (o *NetworkListResponseEntry) HasListType() bool`
 
 HasListType returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *NetworkLists) GetName() string`
+`func (o *NetworkListResponseEntry) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *NetworkLists) GetNameOk() (*string, bool)`
+`func (o *NetworkListResponseEntry) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *NetworkLists) SetName(v string)`
+`func (o *NetworkListResponseEntry) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *NetworkLists) HasName() bool`
+`func (o *NetworkListResponseEntry) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
-### GetCountryList
+### GetItemsValues
 
-`func (o *NetworkLists) GetCountryList() []string`
+`func (o *NetworkListResponseEntry) GetItemsValues() []string`
 
-GetCountryList returns the CountryList field if non-nil, zero value otherwise.
+GetItemsValues returns the ItemsValues field if non-nil, zero value otherwise.
 
-### GetCountryListOk
+### GetItemsValuesOk
 
-`func (o *NetworkLists) GetCountryListOk() (*[]string, bool)`
+`func (o *NetworkListResponseEntry) GetItemsValuesOk() (*[]string, bool)`
 
-GetCountryListOk returns a tuple with the CountryList field if it's non-nil, zero value otherwise
+GetItemsValuesOk returns a tuple with the ItemsValues field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCountryList
+### SetItemsValues
 
-`func (o *NetworkLists) SetCountryList(v []string)`
+`func (o *NetworkListResponseEntry) SetItemsValues(v []string)`
 
-SetCountryList sets CountryList field to given value.
+SetItemsValues sets ItemsValues field to given value.
 
-### HasCountryList
+### HasItemsValues
 
-`func (o *NetworkLists) HasCountryList() bool`
+`func (o *NetworkListResponseEntry) HasItemsValues() bool`
 
-HasCountryList returns a boolean if a field has been set.
-
-### GetIpList
-
-`func (o *NetworkLists) GetIpList() []string`
-
-GetIpList returns the IpList field if non-nil, zero value otherwise.
-
-### GetIpListOk
-
-`func (o *NetworkLists) GetIpListOk() (*[]string, bool)`
-
-GetIpListOk returns a tuple with the IpList field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpList
-
-`func (o *NetworkLists) SetIpList(v []string)`
-
-SetIpList sets IpList field to given value.
-
-### HasIpList
-
-`func (o *NetworkLists) HasIpList() bool`
-
-HasIpList returns a boolean if a field has been set.
+HasItemsValues returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
