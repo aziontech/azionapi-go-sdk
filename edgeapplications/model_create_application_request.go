@@ -36,7 +36,6 @@ type CreateApplicationRequest struct {
 	HttpsPort interface{} `json:"https_port,omitempty"`
 	L2Caching *bool `json:"l2_caching,omitempty"`
 	Http3 *bool `json:"http3,omitempty"`
-	MinimumTlsVersion *string `json:"minimum_tls_version,omitempty"`
 }
 
 // NewCreateApplicationRequest instantiates a new CreateApplicationRequest object
@@ -595,38 +594,6 @@ func (o *CreateApplicationRequest) SetHttp3(v bool) {
 	o.Http3 = &v
 }
 
-// GetMinimumTlsVersion returns the MinimumTlsVersion field value if set, zero value otherwise.
-func (o *CreateApplicationRequest) GetMinimumTlsVersion() string {
-	if o == nil || IsNil(o.MinimumTlsVersion) {
-		var ret string
-		return ret
-	}
-	return *o.MinimumTlsVersion
-}
-
-// GetMinimumTlsVersionOk returns a tuple with the MinimumTlsVersion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateApplicationRequest) GetMinimumTlsVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.MinimumTlsVersion) {
-		return nil, false
-	}
-	return o.MinimumTlsVersion, true
-}
-
-// HasMinimumTlsVersion returns a boolean if a field has been set.
-func (o *CreateApplicationRequest) HasMinimumTlsVersion() bool {
-	if o != nil && !IsNil(o.MinimumTlsVersion) {
-		return true
-	}
-
-	return false
-}
-
-// SetMinimumTlsVersion gets a reference to the given string and assigns it to the MinimumTlsVersion field.
-func (o *CreateApplicationRequest) SetMinimumTlsVersion(v string) {
-	o.MinimumTlsVersion = &v
-}
-
 func (o CreateApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -685,9 +652,6 @@ func (o CreateApplicationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Http3) {
 		toSerialize["http3"] = o.Http3
-	}
-	if !IsNil(o.MinimumTlsVersion) {
-		toSerialize["minimum_tls_version"] = o.MinimumTlsVersion
 	}
 	return toSerialize, nil
 }

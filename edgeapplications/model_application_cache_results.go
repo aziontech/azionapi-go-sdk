@@ -29,7 +29,7 @@ type ApplicationCacheResults struct {
 	QueryStringFields []string `json:"query_string_fields"`
 	EnableQueryStringSort bool `json:"enable_query_string_sort"`
 	CacheByCookies string `json:"cache_by_cookies"`
-	CookieNames []string `json:"cookie_names"`
+	CookieNames []*string `json:"cookie_names"`
 	AdaptiveDeliveryAction string `json:"adaptive_delivery_action"`
 	DeviceGroup []int32 `json:"device_group"`
 	EnableCachingForPost bool `json:"enable_caching_for_post"`
@@ -40,14 +40,14 @@ type ApplicationCacheResults struct {
 	SliceConfigurationRange *int64 `json:"slice_configuration_range,omitempty"`
 	EnableCachingForOptions bool `json:"enable_caching_for_options"`
 	EnableStaleCache bool `json:"enable_stale_cache"`
-	L2Region string `json:"l2_region"`
+	L2Region NullableString `json:"l2_region"`
 }
 
 // NewApplicationCacheResults instantiates a new ApplicationCacheResults object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []string, adaptiveDeliveryAction string, deviceGroup []int32, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region string) *ApplicationCacheResults {
+func NewApplicationCacheResults(id int64, name string, browserCacheSettings string, browserCacheSettingsMaximumTtl int64, cdnCacheSettings string, cdnCacheSettingsMaximumTtl int64, cacheByQueryString string, queryStringFields []string, enableQueryStringSort bool, cacheByCookies string, cookieNames []*string, adaptiveDeliveryAction string, deviceGroup []int32, enableCachingForPost bool, l2CachingEnabled bool, enableCachingForOptions bool, enableStaleCache bool, l2Region NullableString) *ApplicationCacheResults {
 	this := ApplicationCacheResults{}
 	this.Id = id
 	this.Name = name
@@ -247,6 +247,7 @@ func (o *ApplicationCacheResults) SetCacheByQueryString(v string) {
 }
 
 // GetQueryStringFields returns the QueryStringFields field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *ApplicationCacheResults) GetQueryStringFields() []string {
 	if o == nil {
 		var ret []string
@@ -258,8 +259,9 @@ func (o *ApplicationCacheResults) GetQueryStringFields() []string {
 
 // GetQueryStringFieldsOk returns a tuple with the QueryStringFields field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationCacheResults) GetQueryStringFieldsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.QueryStringFields) {
 		return nil, false
 	}
 	return o.QueryStringFields, true
@@ -319,9 +321,10 @@ func (o *ApplicationCacheResults) SetCacheByCookies(v string) {
 }
 
 // GetCookieNames returns the CookieNames field value
-func (o *ApplicationCacheResults) GetCookieNames() []string {
+// If the value is explicit nil, the zero value for []*string will be returned
+func (o *ApplicationCacheResults) GetCookieNames() []*string {
 	if o == nil {
-		var ret []string
+		var ret []*string
 		return ret
 	}
 
@@ -330,15 +333,16 @@ func (o *ApplicationCacheResults) GetCookieNames() []string {
 
 // GetCookieNamesOk returns a tuple with the CookieNames field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationCacheResults) GetCookieNamesOk() ([]string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationCacheResults) GetCookieNamesOk() ([]*string, bool) {
+	if o == nil || IsNil(o.CookieNames) {
 		return nil, false
 	}
 	return o.CookieNames, true
 }
 
 // SetCookieNames sets field value
-func (o *ApplicationCacheResults) SetCookieNames(v []string) {
+func (o *ApplicationCacheResults) SetCookieNames(v []*string) {
 	o.CookieNames = v
 }
 
@@ -615,27 +619,29 @@ func (o *ApplicationCacheResults) SetEnableStaleCache(v bool) {
 }
 
 // GetL2Region returns the L2Region field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ApplicationCacheResults) GetL2Region() string {
-	if o == nil {
+	if o == nil || o.L2Region.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.L2Region
+	return *o.L2Region.Get()
 }
 
 // GetL2RegionOk returns a tuple with the L2Region field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationCacheResults) GetL2RegionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.L2Region, true
+	return o.L2Region.Get(), o.L2Region.IsSet()
 }
 
 // SetL2Region sets field value
 func (o *ApplicationCacheResults) SetL2Region(v string) {
-	o.L2Region = v
+	o.L2Region.Set(&v)
 }
 
 func (o ApplicationCacheResults) MarshalJSON() ([]byte, error) {
@@ -655,10 +661,14 @@ func (o ApplicationCacheResults) ToMap() (map[string]interface{}, error) {
 	toSerialize["cdn_cache_settings"] = o.CdnCacheSettings
 	toSerialize["cdn_cache_settings_maximum_ttl"] = o.CdnCacheSettingsMaximumTtl
 	toSerialize["cache_by_query_string"] = o.CacheByQueryString
-	toSerialize["query_string_fields"] = o.QueryStringFields
+	if o.QueryStringFields != nil {
+		toSerialize["query_string_fields"] = o.QueryStringFields
+	}
 	toSerialize["enable_query_string_sort"] = o.EnableQueryStringSort
 	toSerialize["cache_by_cookies"] = o.CacheByCookies
-	toSerialize["cookie_names"] = o.CookieNames
+	if o.CookieNames != nil {
+		toSerialize["cookie_names"] = o.CookieNames
+	}
 	toSerialize["adaptive_delivery_action"] = o.AdaptiveDeliveryAction
 	toSerialize["device_group"] = o.DeviceGroup
 	toSerialize["enable_caching_for_post"] = o.EnableCachingForPost
@@ -677,7 +687,7 @@ func (o ApplicationCacheResults) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["enable_caching_for_options"] = o.EnableCachingForOptions
 	toSerialize["enable_stale_cache"] = o.EnableStaleCache
-	toSerialize["l2_region"] = o.L2Region
+	toSerialize["l2_region"] = o.L2Region.Get()
 	return toSerialize, nil
 }
 
