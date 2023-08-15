@@ -11,9 +11,11 @@ docs/DefaultApi.md
 docs/ErrorModel.md
 docs/Links.md
 docs/ListNetworkListsResponse.md
+docs/NetworkListResponseEntry.md
+docs/NetworkListUuidResponse.md
+docs/NetworkListUuidResponseEntry.md
 docs/NetworkLists.md
 docs/NetworkListsResponse.md
-docs/UpdateNetworkListsRequest.md
 git_push.sh
 go.mod
 go.sum
@@ -22,8 +24,10 @@ model_create_network_lists_request.go
 model_error_model.go
 model_links.go
 model_list_network_lists_response.go
+model_network_list_response_entry.go
+model_network_list_uuid_response.go
+model_network_list_uuid_response_entry.go
 model_network_lists.go
 model_network_lists_response.go
-model_update_network_lists_request.go
 response.go
 utils.go

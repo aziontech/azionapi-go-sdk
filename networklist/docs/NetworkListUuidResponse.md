@@ -1,78 +1,78 @@
-# NetworkListsResponse
+# NetworkListUuidResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**NetworkListResponseEntry**](NetworkListResponseEntry.md) |  | [optional] 
-**SchemaVersion** | Pointer to **float32** |  | [optional] 
+**Results** | Pointer to [**NetworkListUuidResponseEntry**](NetworkListUuidResponseEntry.md) |  | [optional] 
+**SchemaVersion** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
-### NewNetworkListsResponse
+### NewNetworkListUuidResponse
 
-`func NewNetworkListsResponse() *NetworkListsResponse`
+`func NewNetworkListUuidResponse() *NetworkListUuidResponse`
 
-NewNetworkListsResponse instantiates a new NetworkListsResponse object
+NewNetworkListUuidResponse instantiates a new NetworkListUuidResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewNetworkListsResponseWithDefaults
+### NewNetworkListUuidResponseWithDefaults
 
-`func NewNetworkListsResponseWithDefaults() *NetworkListsResponse`
+`func NewNetworkListUuidResponseWithDefaults() *NetworkListUuidResponse`
 
-NewNetworkListsResponseWithDefaults instantiates a new NetworkListsResponse object
+NewNetworkListUuidResponseWithDefaults instantiates a new NetworkListUuidResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *NetworkListsResponse) GetResults() NetworkListResponseEntry`
+`func (o *NetworkListUuidResponse) GetResults() NetworkListUuidResponseEntry`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *NetworkListsResponse) GetResultsOk() (*NetworkListResponseEntry, bool)`
+`func (o *NetworkListUuidResponse) GetResultsOk() (*NetworkListUuidResponseEntry, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *NetworkListsResponse) SetResults(v NetworkListResponseEntry)`
+`func (o *NetworkListUuidResponse) SetResults(v NetworkListUuidResponseEntry)`
 
 SetResults sets Results field to given value.
 
 ### HasResults
 
-`func (o *NetworkListsResponse) HasResults() bool`
+`func (o *NetworkListUuidResponse) HasResults() bool`
 
 HasResults returns a boolean if a field has been set.
 
 ### GetSchemaVersion
 
-`func (o *NetworkListsResponse) GetSchemaVersion() float32`
+`func (o *NetworkListUuidResponse) GetSchemaVersion() int64`
 
 GetSchemaVersion returns the SchemaVersion field if non-nil, zero value otherwise.
 
 ### GetSchemaVersionOk
 
-`func (o *NetworkListsResponse) GetSchemaVersionOk() (*float32, bool)`
+`func (o *NetworkListUuidResponse) GetSchemaVersionOk() (*int64, bool)`
 
 GetSchemaVersionOk returns a tuple with the SchemaVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchemaVersion
 
-`func (o *NetworkListsResponse) SetSchemaVersion(v float32)`
+`func (o *NetworkListUuidResponse) SetSchemaVersion(v int64)`
 
 SetSchemaVersion sets SchemaVersion field to given value.
 
 ### HasSchemaVersion
 
-`func (o *NetworkListsResponse) HasSchemaVersion() bool`
+`func (o *NetworkListUuidResponse) HasSchemaVersion() bool`
 
 HasSchemaVersion returns a boolean if a field has been set.
 

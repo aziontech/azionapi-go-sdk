@@ -14,39 +14,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the NetworkLists type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NetworkLists{}
+// checks if the NetworkListResponseEntry type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NetworkListResponseEntry{}
 
-// NetworkLists struct for NetworkLists
-type NetworkLists struct {
+// NetworkListResponseEntry struct for NetworkListResponseEntry
+type NetworkListResponseEntry struct {
 	Id *int64 `json:"id,omitempty"`
 	LastEditor *string `json:"last_editor,omitempty"`
 	LastModified *string `json:"last_modified,omitempty"`
 	ListType *string `json:"list_type,omitempty"`
 	Name *string `json:"name,omitempty"`
-	CountryList []string `json:"country_list,omitempty"`
-	IpList []string `json:"ip_list,omitempty"`
+	ItemsValues []string `json:"items_values,omitempty"`
 }
 
-// NewNetworkLists instantiates a new NetworkLists object
+// NewNetworkListResponseEntry instantiates a new NetworkListResponseEntry object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNetworkLists() *NetworkLists {
-	this := NetworkLists{}
+func NewNetworkListResponseEntry() *NetworkListResponseEntry {
+	this := NetworkListResponseEntry{}
 	return &this
 }
 
-// NewNetworkListsWithDefaults instantiates a new NetworkLists object
+// NewNetworkListResponseEntryWithDefaults instantiates a new NetworkListResponseEntry object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewNetworkListsWithDefaults() *NetworkLists {
-	this := NetworkLists{}
+func NewNetworkListResponseEntryWithDefaults() *NetworkListResponseEntry {
+	this := NetworkListResponseEntry{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *NetworkLists) GetId() int64 {
+func (o *NetworkListResponseEntry) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
 		var ret int64
 		return ret
@@ -56,7 +55,7 @@ func (o *NetworkLists) GetId() int64 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkLists) GetIdOk() (*int64, bool) {
+func (o *NetworkListResponseEntry) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -64,7 +63,7 @@ func (o *NetworkLists) GetIdOk() (*int64, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *NetworkLists) HasId() bool {
+func (o *NetworkListResponseEntry) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -73,12 +72,12 @@ func (o *NetworkLists) HasId() bool {
 }
 
 // SetId gets a reference to the given int64 and assigns it to the Id field.
-func (o *NetworkLists) SetId(v int64) {
+func (o *NetworkListResponseEntry) SetId(v int64) {
 	o.Id = &v
 }
 
 // GetLastEditor returns the LastEditor field value if set, zero value otherwise.
-func (o *NetworkLists) GetLastEditor() string {
+func (o *NetworkListResponseEntry) GetLastEditor() string {
 	if o == nil || IsNil(o.LastEditor) {
 		var ret string
 		return ret
@@ -88,7 +87,7 @@ func (o *NetworkLists) GetLastEditor() string {
 
 // GetLastEditorOk returns a tuple with the LastEditor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkLists) GetLastEditorOk() (*string, bool) {
+func (o *NetworkListResponseEntry) GetLastEditorOk() (*string, bool) {
 	if o == nil || IsNil(o.LastEditor) {
 		return nil, false
 	}
@@ -96,7 +95,7 @@ func (o *NetworkLists) GetLastEditorOk() (*string, bool) {
 }
 
 // HasLastEditor returns a boolean if a field has been set.
-func (o *NetworkLists) HasLastEditor() bool {
+func (o *NetworkListResponseEntry) HasLastEditor() bool {
 	if o != nil && !IsNil(o.LastEditor) {
 		return true
 	}
@@ -105,12 +104,12 @@ func (o *NetworkLists) HasLastEditor() bool {
 }
 
 // SetLastEditor gets a reference to the given string and assigns it to the LastEditor field.
-func (o *NetworkLists) SetLastEditor(v string) {
+func (o *NetworkListResponseEntry) SetLastEditor(v string) {
 	o.LastEditor = &v
 }
 
 // GetLastModified returns the LastModified field value if set, zero value otherwise.
-func (o *NetworkLists) GetLastModified() string {
+func (o *NetworkListResponseEntry) GetLastModified() string {
 	if o == nil || IsNil(o.LastModified) {
 		var ret string
 		return ret
@@ -120,7 +119,7 @@ func (o *NetworkLists) GetLastModified() string {
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkLists) GetLastModifiedOk() (*string, bool) {
+func (o *NetworkListResponseEntry) GetLastModifiedOk() (*string, bool) {
 	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
@@ -128,7 +127,7 @@ func (o *NetworkLists) GetLastModifiedOk() (*string, bool) {
 }
 
 // HasLastModified returns a boolean if a field has been set.
-func (o *NetworkLists) HasLastModified() bool {
+func (o *NetworkListResponseEntry) HasLastModified() bool {
 	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
@@ -137,12 +136,12 @@ func (o *NetworkLists) HasLastModified() bool {
 }
 
 // SetLastModified gets a reference to the given string and assigns it to the LastModified field.
-func (o *NetworkLists) SetLastModified(v string) {
+func (o *NetworkListResponseEntry) SetLastModified(v string) {
 	o.LastModified = &v
 }
 
 // GetListType returns the ListType field value if set, zero value otherwise.
-func (o *NetworkLists) GetListType() string {
+func (o *NetworkListResponseEntry) GetListType() string {
 	if o == nil || IsNil(o.ListType) {
 		var ret string
 		return ret
@@ -152,7 +151,7 @@ func (o *NetworkLists) GetListType() string {
 
 // GetListTypeOk returns a tuple with the ListType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkLists) GetListTypeOk() (*string, bool) {
+func (o *NetworkListResponseEntry) GetListTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ListType) {
 		return nil, false
 	}
@@ -160,7 +159,7 @@ func (o *NetworkLists) GetListTypeOk() (*string, bool) {
 }
 
 // HasListType returns a boolean if a field has been set.
-func (o *NetworkLists) HasListType() bool {
+func (o *NetworkListResponseEntry) HasListType() bool {
 	if o != nil && !IsNil(o.ListType) {
 		return true
 	}
@@ -169,12 +168,12 @@ func (o *NetworkLists) HasListType() bool {
 }
 
 // SetListType gets a reference to the given string and assigns it to the ListType field.
-func (o *NetworkLists) SetListType(v string) {
+func (o *NetworkListResponseEntry) SetListType(v string) {
 	o.ListType = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *NetworkLists) GetName() string {
+func (o *NetworkListResponseEntry) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -184,7 +183,7 @@ func (o *NetworkLists) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkLists) GetNameOk() (*string, bool) {
+func (o *NetworkListResponseEntry) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -192,7 +191,7 @@ func (o *NetworkLists) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *NetworkLists) HasName() bool {
+func (o *NetworkListResponseEntry) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -201,75 +200,43 @@ func (o *NetworkLists) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *NetworkLists) SetName(v string) {
+func (o *NetworkListResponseEntry) SetName(v string) {
 	o.Name = &v
 }
 
-// GetCountryList returns the CountryList field value if set, zero value otherwise.
-func (o *NetworkLists) GetCountryList() []string {
-	if o == nil || IsNil(o.CountryList) {
+// GetItemsValues returns the ItemsValues field value if set, zero value otherwise.
+func (o *NetworkListResponseEntry) GetItemsValues() []string {
+	if o == nil || IsNil(o.ItemsValues) {
 		var ret []string
 		return ret
 	}
-	return o.CountryList
+	return o.ItemsValues
 }
 
-// GetCountryListOk returns a tuple with the CountryList field value if set, nil otherwise
+// GetItemsValuesOk returns a tuple with the ItemsValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkLists) GetCountryListOk() ([]string, bool) {
-	if o == nil || IsNil(o.CountryList) {
+func (o *NetworkListResponseEntry) GetItemsValuesOk() ([]string, bool) {
+	if o == nil || IsNil(o.ItemsValues) {
 		return nil, false
 	}
-	return o.CountryList, true
+	return o.ItemsValues, true
 }
 
-// HasCountryList returns a boolean if a field has been set.
-func (o *NetworkLists) HasCountryList() bool {
-	if o != nil && !IsNil(o.CountryList) {
+// HasItemsValues returns a boolean if a field has been set.
+func (o *NetworkListResponseEntry) HasItemsValues() bool {
+	if o != nil && !IsNil(o.ItemsValues) {
 		return true
 	}
 
 	return false
 }
 
-// SetCountryList gets a reference to the given []string and assigns it to the CountryList field.
-func (o *NetworkLists) SetCountryList(v []string) {
-	o.CountryList = v
+// SetItemsValues gets a reference to the given []string and assigns it to the ItemsValues field.
+func (o *NetworkListResponseEntry) SetItemsValues(v []string) {
+	o.ItemsValues = v
 }
 
-// GetIpList returns the IpList field value if set, zero value otherwise.
-func (o *NetworkLists) GetIpList() []string {
-	if o == nil || IsNil(o.IpList) {
-		var ret []string
-		return ret
-	}
-	return o.IpList
-}
-
-// GetIpListOk returns a tuple with the IpList field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NetworkLists) GetIpListOk() ([]string, bool) {
-	if o == nil || IsNil(o.IpList) {
-		return nil, false
-	}
-	return o.IpList, true
-}
-
-// HasIpList returns a boolean if a field has been set.
-func (o *NetworkLists) HasIpList() bool {
-	if o != nil && !IsNil(o.IpList) {
-		return true
-	}
-
-	return false
-}
-
-// SetIpList gets a reference to the given []string and assigns it to the IpList field.
-func (o *NetworkLists) SetIpList(v []string) {
-	o.IpList = v
-}
-
-func (o NetworkLists) MarshalJSON() ([]byte, error) {
+func (o NetworkListResponseEntry) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -277,7 +244,7 @@ func (o NetworkLists) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o NetworkLists) ToMap() (map[string]interface{}, error) {
+func (o NetworkListResponseEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -294,47 +261,44 @@ func (o NetworkLists) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.CountryList) {
-		toSerialize["country_list"] = o.CountryList
-	}
-	if !IsNil(o.IpList) {
-		toSerialize["ip_list"] = o.IpList
+	if !IsNil(o.ItemsValues) {
+		toSerialize["items_values"] = o.ItemsValues
 	}
 	return toSerialize, nil
 }
 
-type NullableNetworkLists struct {
-	value *NetworkLists
+type NullableNetworkListResponseEntry struct {
+	value *NetworkListResponseEntry
 	isSet bool
 }
 
-func (v NullableNetworkLists) Get() *NetworkLists {
+func (v NullableNetworkListResponseEntry) Get() *NetworkListResponseEntry {
 	return v.value
 }
 
-func (v *NullableNetworkLists) Set(val *NetworkLists) {
+func (v *NullableNetworkListResponseEntry) Set(val *NetworkListResponseEntry) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableNetworkLists) IsSet() bool {
+func (v NullableNetworkListResponseEntry) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableNetworkLists) Unset() {
+func (v *NullableNetworkListResponseEntry) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableNetworkLists(val *NetworkLists) *NullableNetworkLists {
-	return &NullableNetworkLists{value: val, isSet: true}
+func NewNullableNetworkListResponseEntry(val *NetworkListResponseEntry) *NullableNetworkListResponseEntry {
+	return &NullableNetworkListResponseEntry{value: val, isSet: true}
 }
 
-func (v NullableNetworkLists) MarshalJSON() ([]byte, error) {
+func (v NullableNetworkListResponseEntry) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableNetworkLists) UnmarshalJSON(src []byte) error {
+func (v *NullableNetworkListResponseEntry) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -21,6 +21,27 @@ paths:
         schema:
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -40,7 +61,11 @@ paths:
         required: true
       responses:
         "201":
-          description: Network Lists created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkListsResponse'
+          description: A Network Lists object
         "400":
           content:
             application/json:
@@ -74,7 +99,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NetworkListsResponse'
+                $ref: '#/components/schemas/NetworkListUuidResponse'
           description: A Network Lists object
         "400":
           content:
@@ -101,14 +126,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateNetworkListsRequest'
+              $ref: '#/components/schemas/CreateNetworkListsRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListNetworkListsResponse'
+                $ref: '#/components/schemas/NetworkListsResponse'
           description: Successfully updated
         "400":
           content:
@@ -150,26 +175,42 @@ components:
     NetworkLists:
       example:
         list_type: ip_cidr
-        items_values:
-        - 192.168.0.1
+        last_editor: Azion
         name: Network List created using the API
         id: 1614
+        country_list:
+        - country_list
+        - country_list
+        ip_list:
+        - 192.168.0.1
+        last_modified: 2023-08-10T05:00:07.893747Z
       properties:
         id:
           example: 1614
+          format: int64
           type: integer
+        last_editor:
+          example: Azion
+          type: string
+        last_modified:
+          example: 2023-08-10T05:00:07.893747Z
+          type: string
+        list_type:
+          example: ip_cidr
+          type: string
         name:
           example: Network List created using the API
           type: string
-        items_values:
+        country_list:
+          items:
+            type: string
+          type: array
+        ip_list:
           example:
           - 192.168.0.1
           items:
             type: string
           type: array
-        list_type:
-          example: ip_cidr
-          type: string
       type: object
     ListNetworkListsResponse:
       example:
@@ -181,15 +222,25 @@ components:
         total_pages: 6
         results:
         - list_type: ip_cidr
-          items_values:
-          - 192.168.0.1
+          last_editor: Azion
           name: Network List created using the API
           id: 1614
+          country_list:
+          - country_list
+          - country_list
+          ip_list:
+          - 192.168.0.1
+          last_modified: 2023-08-10T05:00:07.893747Z
         - list_type: ip_cidr
-          items_values:
-          - 192.168.0.1
+          last_editor: Azion
           name: Network List created using the API
           id: 1614
+          country_list:
+          - country_list
+          - country_list
+          ip_list:
+          - 192.168.0.1
+          last_modified: 2023-08-10T05:00:07.893747Z
       properties:
         count:
           format: int64
@@ -205,6 +256,67 @@ components:
         results:
           items:
             $ref: '#/components/schemas/NetworkLists'
+          type: array
+      type: object
+    NetworkListResponseEntry:
+      example:
+        list_type: ip_cidr
+        items_values:
+        - 192.168.0.1
+        last_editor: Azion
+        name: Network List created using the API
+        id: 1614
+        last_modified: 2023-08-10T05:00:07.893747Z
+      properties:
+        id:
+          example: 1614
+          format: int64
+          type: integer
+        last_editor:
+          example: Azion
+          type: string
+        last_modified:
+          example: 2023-08-10T05:00:07.893747Z
+          type: string
+        list_type:
+          example: ip_cidr
+          type: string
+        name:
+          example: Network List created using the API
+          type: string
+        items_values:
+          example:
+          - 192.168.0.1
+          items:
+            type: string
+          type: array
+      type: object
+    NetworkListUuidResponseEntry:
+      example:
+        list_type: ip_cidr
+        items_values:
+        - 192.168.0.1
+        last_editor: Azion
+        name: Network List created using the API
+        last_modified: 2023-08-10T05:00:07.893747Z
+      properties:
+        last_editor:
+          example: Azion
+          type: string
+        last_modified:
+          example: 2023-08-10T05:00:07.893747Z
+          type: string
+        list_type:
+          example: ip_cidr
+          type: string
+        name:
+          example: Network List created using the API
+          type: string
+        items_values:
+          example:
+          - 192.168.0.1
+          items:
+            type: string
           type: array
       type: object
     CreateNetworkListsRequest:
@@ -224,6 +336,10 @@ components:
             type: string
           type: array
         list_type:
+          enum:
+          - ip_cidr
+          - asn
+          - countries
           example: ip_cidr
           type: string
       type: object
@@ -244,42 +360,43 @@ components:
       type: object
     NetworkListsResponse:
       example:
-        schema_version: 0.8008281904610115
+        schema_version: 3
         results:
           list_type: ip_cidr
           items_values:
           - 192.168.0.1
+          last_editor: Azion
           name: Network List created using the API
           id: 1614
+          last_modified: 2023-08-10T05:00:07.893747Z
       properties:
         results:
-          $ref: '#/components/schemas/NetworkLists'
+          $ref: '#/components/schemas/NetworkListResponseEntry'
         schema_version:
+          example: 3
           type: number
       type: object
-    UpdateNetworkListsRequest:
+    NetworkListUuidResponse:
       example:
-        list_type: ip_cidr
-        items_values:
-        - 192.168.0.1
-        name: Network List created using the API
-      properties:
-        name:
-          example: Network List created using the API
-          type: string
-        items_values:
-          example:
+        schema_version: 3
+        results:
+          list_type: ip_cidr
+          items_values:
           - 192.168.0.1
-          items:
-            type: string
-          type: array
-        list_type:
-          example: ip_cidr
-          type: string
+          last_editor: Azion
+          name: Network List created using the API
+          last_modified: 2023-08-10T05:00:07.893747Z
+      properties:
+        results:
+          $ref: '#/components/schemas/NetworkListUuidResponseEntry'
+        schema_version:
+          example: 3
+          format: int64
+          type: integer
       type: object
   securitySchemes:
     tokenAuth:
-      description: |
+      description: |-
         You must inform a token to auth.
         Usage format: `Token <TOKEN>`
       in: header

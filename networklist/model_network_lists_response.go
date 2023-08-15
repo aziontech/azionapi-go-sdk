@@ -19,7 +19,7 @@ var _ MappedNullable = &NetworkListsResponse{}
 
 // NetworkListsResponse struct for NetworkListsResponse
 type NetworkListsResponse struct {
-	Results *NetworkLists `json:"results,omitempty"`
+	Results *NetworkListResponseEntry `json:"results,omitempty"`
 	SchemaVersion *float32 `json:"schema_version,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewNetworkListsResponseWithDefaults() *NetworkListsResponse {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *NetworkListsResponse) GetResults() NetworkLists {
+func (o *NetworkListsResponse) GetResults() NetworkListResponseEntry {
 	if o == nil || IsNil(o.Results) {
-		var ret NetworkLists
+		var ret NetworkListResponseEntry
 		return ret
 	}
 	return *o.Results
@@ -51,7 +51,7 @@ func (o *NetworkListsResponse) GetResults() NetworkLists {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkListsResponse) GetResultsOk() (*NetworkLists, bool) {
+func (o *NetworkListsResponse) GetResultsOk() (*NetworkListResponseEntry, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *NetworkListsResponse) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given NetworkLists and assigns it to the Results field.
-func (o *NetworkListsResponse) SetResults(v NetworkLists) {
+// SetResults gets a reference to the given NetworkListResponseEntry and assigns it to the Results field.
+func (o *NetworkListsResponse) SetResults(v NetworkListResponseEntry) {
 	o.Results = &v
 }
 
