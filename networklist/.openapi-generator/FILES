@@ -14,6 +14,8 @@ docs/ListNetworkListsResponse.md
 docs/NetworkListResponseEntry.md
 docs/NetworkListUuidResponse.md
 docs/NetworkListUuidResponseEntry.md
+docs/NetworkListUuidResponseEntryInt.md
+docs/NetworkListUuidResponseEntryString.md
 docs/NetworkLists.md
 docs/NetworkListsResponse.md
 git_push.sh
@@ -27,6 +29,8 @@ model_list_network_lists_response.go
 model_network_list_response_entry.go
 model_network_list_uuid_response.go
 model_network_list_uuid_response_entry.go
+model_network_list_uuid_response_entry_int.go
+model_network_list_uuid_response_entry_string.go
 model_network_lists.go
 model_network_lists_response.go
 response.go
