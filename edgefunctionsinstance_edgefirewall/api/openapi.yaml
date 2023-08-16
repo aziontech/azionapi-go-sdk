@@ -49,6 +49,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListEdgeFunctionsInstancesResponse'
           description: A list of Edge Functions Instances
+        "404":
+          description: Not Found
       summary: List all user Edge Functions Instances
     post:
       requestBody:
@@ -62,6 +64,8 @@ paths:
           description: Edge Functions Instance created
         "400":
           description: Bad Request
+        "404":
+          description: Not Found
         "500":
           description: Internal Server Error
       summary: Create an Edge Functions Instance
@@ -78,6 +82,10 @@ paths:
       responses:
         "204":
           description: Successfully deleted
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
       summary: Delete an Edge Functions Instance by uuid
     get:
       parameters:
@@ -95,6 +103,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdgeFunctionsInstanceResponse'
           description: An Edge Functions Instance object
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
       summary: Retrieve an Edge Functions Instance set by uuid
     patch:
       parameters:
@@ -120,6 +132,8 @@ paths:
           description: Successfully updated
         "400":
           description: Bad Request
+        "404":
+          description: Not Found
         "500":
           description: Internal Server Error
       summary: Update some Edge Functions Instance attributes
@@ -147,6 +161,8 @@ paths:
           description: Successfully updated
         "400":
           description: Bad Request
+        "404":
+          description: Not Found
         "500":
           description: Internal Server Error
       summary: Overwrite some Edge Functions Instance attributes
