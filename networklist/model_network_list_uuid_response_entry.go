@@ -12,223 +12,101 @@ package networklist
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the NetworkListUuidResponseEntry type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NetworkListUuidResponseEntry{}
-
-// NetworkListUuidResponseEntry struct for NetworkListUuidResponseEntry
+// NetworkListUuidResponseEntry - struct for NetworkListUuidResponseEntry
 type NetworkListUuidResponseEntry struct {
-	LastEditor *string `json:"last_editor,omitempty"`
-	LastModified *string `json:"last_modified,omitempty"`
-	ListType *string `json:"list_type,omitempty"`
-	Name *string `json:"name,omitempty"`
-	ItemsValues []string `json:"items_values,omitempty"`
+	NetworkListUuidResponseEntryInt *NetworkListUuidResponseEntryInt
+	NetworkListUuidResponseEntryString *NetworkListUuidResponseEntryString
 }
 
-// NewNetworkListUuidResponseEntry instantiates a new NetworkListUuidResponseEntry object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewNetworkListUuidResponseEntry() *NetworkListUuidResponseEntry {
-	this := NetworkListUuidResponseEntry{}
-	return &this
-}
-
-// NewNetworkListUuidResponseEntryWithDefaults instantiates a new NetworkListUuidResponseEntry object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewNetworkListUuidResponseEntryWithDefaults() *NetworkListUuidResponseEntry {
-	this := NetworkListUuidResponseEntry{}
-	return &this
-}
-
-// GetLastEditor returns the LastEditor field value if set, zero value otherwise.
-func (o *NetworkListUuidResponseEntry) GetLastEditor() string {
-	if o == nil || IsNil(o.LastEditor) {
-		var ret string
-		return ret
+// NetworkListUuidResponseEntryIntAsNetworkListUuidResponseEntry is a convenience function that returns NetworkListUuidResponseEntryInt wrapped in NetworkListUuidResponseEntry
+func NetworkListUuidResponseEntryIntAsNetworkListUuidResponseEntry(v *NetworkListUuidResponseEntryInt) NetworkListUuidResponseEntry {
+	return NetworkListUuidResponseEntry{
+		NetworkListUuidResponseEntryInt: v,
 	}
-	return *o.LastEditor
 }
 
-// GetLastEditorOk returns a tuple with the LastEditor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NetworkListUuidResponseEntry) GetLastEditorOk() (*string, bool) {
-	if o == nil || IsNil(o.LastEditor) {
-		return nil, false
+// NetworkListUuidResponseEntryStringAsNetworkListUuidResponseEntry is a convenience function that returns NetworkListUuidResponseEntryString wrapped in NetworkListUuidResponseEntry
+func NetworkListUuidResponseEntryStringAsNetworkListUuidResponseEntry(v *NetworkListUuidResponseEntryString) NetworkListUuidResponseEntry {
+	return NetworkListUuidResponseEntry{
+		NetworkListUuidResponseEntryString: v,
 	}
-	return o.LastEditor, true
 }
 
-// HasLastEditor returns a boolean if a field has been set.
-func (o *NetworkListUuidResponseEntry) HasLastEditor() bool {
-	if o != nil && !IsNil(o.LastEditor) {
-		return true
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *NetworkListUuidResponseEntry) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into NetworkListUuidResponseEntryInt
+	err = newStrictDecoder(data).Decode(&dst.NetworkListUuidResponseEntryInt)
+	if err == nil {
+		jsonNetworkListUuidResponseEntryInt, _ := json.Marshal(dst.NetworkListUuidResponseEntryInt)
+		if string(jsonNetworkListUuidResponseEntryInt) == "{}" { // empty struct
+			dst.NetworkListUuidResponseEntryInt = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.NetworkListUuidResponseEntryInt = nil
 	}
 
-	return false
-}
-
-// SetLastEditor gets a reference to the given string and assigns it to the LastEditor field.
-func (o *NetworkListUuidResponseEntry) SetLastEditor(v string) {
-	o.LastEditor = &v
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise.
-func (o *NetworkListUuidResponseEntry) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified) {
-		var ret string
-		return ret
-	}
-	return *o.LastModified
-}
-
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NetworkListUuidResponseEntry) GetLastModifiedOk() (*string, bool) {
-	if o == nil || IsNil(o.LastModified) {
-		return nil, false
-	}
-	return o.LastModified, true
-}
-
-// HasLastModified returns a boolean if a field has been set.
-func (o *NetworkListUuidResponseEntry) HasLastModified() bool {
-	if o != nil && !IsNil(o.LastModified) {
-		return true
+	// try to unmarshal data into NetworkListUuidResponseEntryString
+	err = newStrictDecoder(data).Decode(&dst.NetworkListUuidResponseEntryString)
+	if err == nil {
+		jsonNetworkListUuidResponseEntryString, _ := json.Marshal(dst.NetworkListUuidResponseEntryString)
+		if string(jsonNetworkListUuidResponseEntryString) == "{}" { // empty struct
+			dst.NetworkListUuidResponseEntryString = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.NetworkListUuidResponseEntryString = nil
 	}
 
-	return false
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.NetworkListUuidResponseEntryInt = nil
+		dst.NetworkListUuidResponseEntryString = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(NetworkListUuidResponseEntry)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(NetworkListUuidResponseEntry)")
+	}
 }
 
-// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
-func (o *NetworkListUuidResponseEntry) SetLastModified(v string) {
-	o.LastModified = &v
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src NetworkListUuidResponseEntry) MarshalJSON() ([]byte, error) {
+	if src.NetworkListUuidResponseEntryInt != nil {
+		return json.Marshal(&src.NetworkListUuidResponseEntryInt)
+	}
+
+	if src.NetworkListUuidResponseEntryString != nil {
+		return json.Marshal(&src.NetworkListUuidResponseEntryString)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-// GetListType returns the ListType field value if set, zero value otherwise.
-func (o *NetworkListUuidResponseEntry) GetListType() string {
-	if o == nil || IsNil(o.ListType) {
-		var ret string
-		return ret
+// Get the actual instance
+func (obj *NetworkListUuidResponseEntry) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
 	}
-	return *o.ListType
-}
-
-// GetListTypeOk returns a tuple with the ListType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NetworkListUuidResponseEntry) GetListTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ListType) {
-		return nil, false
-	}
-	return o.ListType, true
-}
-
-// HasListType returns a boolean if a field has been set.
-func (o *NetworkListUuidResponseEntry) HasListType() bool {
-	if o != nil && !IsNil(o.ListType) {
-		return true
+	if obj.NetworkListUuidResponseEntryInt != nil {
+		return obj.NetworkListUuidResponseEntryInt
 	}
 
-	return false
-}
-
-// SetListType gets a reference to the given string and assigns it to the ListType field.
-func (o *NetworkListUuidResponseEntry) SetListType(v string) {
-	o.ListType = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *NetworkListUuidResponseEntry) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NetworkListUuidResponseEntry) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *NetworkListUuidResponseEntry) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
+	if obj.NetworkListUuidResponseEntryString != nil {
+		return obj.NetworkListUuidResponseEntryString
 	}
 
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *NetworkListUuidResponseEntry) SetName(v string) {
-	o.Name = &v
-}
-
-// GetItemsValues returns the ItemsValues field value if set, zero value otherwise.
-func (o *NetworkListUuidResponseEntry) GetItemsValues() []string {
-	if o == nil || IsNil(o.ItemsValues) {
-		var ret []string
-		return ret
-	}
-	return o.ItemsValues
-}
-
-// GetItemsValuesOk returns a tuple with the ItemsValues field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NetworkListUuidResponseEntry) GetItemsValuesOk() ([]string, bool) {
-	if o == nil || IsNil(o.ItemsValues) {
-		return nil, false
-	}
-	return o.ItemsValues, true
-}
-
-// HasItemsValues returns a boolean if a field has been set.
-func (o *NetworkListUuidResponseEntry) HasItemsValues() bool {
-	if o != nil && !IsNil(o.ItemsValues) {
-		return true
-	}
-
-	return false
-}
-
-// SetItemsValues gets a reference to the given []string and assigns it to the ItemsValues field.
-func (o *NetworkListUuidResponseEntry) SetItemsValues(v []string) {
-	o.ItemsValues = v
-}
-
-func (o NetworkListUuidResponseEntry) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o NetworkListUuidResponseEntry) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.LastEditor) {
-		toSerialize["last_editor"] = o.LastEditor
-	}
-	if !IsNil(o.LastModified) {
-		toSerialize["last_modified"] = o.LastModified
-	}
-	if !IsNil(o.ListType) {
-		toSerialize["list_type"] = o.ListType
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.ItemsValues) {
-		toSerialize["items_values"] = o.ItemsValues
-	}
-	return toSerialize, nil
+	// all schemas are nil
+	return nil
 }
 
 type NullableNetworkListUuidResponseEntry struct {

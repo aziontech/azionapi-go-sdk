@@ -49,6 +49,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListNetworkListsResponse'
           description: A list of Network Lists
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+            text/html:
+              schema:
+                type: string
+          description: Bad Request
         "404":
           description: Not Found
       summary: List all user Network Lists
@@ -292,13 +301,10 @@ components:
           type: array
       type: object
     NetworkListUuidResponseEntry:
-      example:
-        list_type: ip_cidr
-        items_values:
-        - 192.168.0.1
-        last_editor: Azion
-        name: Network List created using the API
-        last_modified: 2023-08-10T05:00:07.893747Z
+      oneOf:
+      - $ref: '#/components/schemas/NetworkListUuidResponseEntryString'
+      - $ref: '#/components/schemas/NetworkListUuidResponseEntryInt'
+    NetworkListUuidResponseEntryString:
       properties:
         last_editor:
           example: Azion
@@ -317,6 +323,27 @@ components:
           - 192.168.0.1
           items:
             type: string
+          type: array
+      type: object
+    NetworkListUuidResponseEntryInt:
+      properties:
+        last_editor:
+          example: Azion
+          type: string
+        last_modified:
+          example: 2023-08-10T05:00:07.893747Z
+          type: string
+        list_type:
+          example: asn
+          type: string
+        name:
+          example: Network List created using the API
+          type: string
+        items_values:
+          example:
+          - 1234
+          items:
+            type: integer
           type: array
       type: object
     CreateNetworkListsRequest:
@@ -379,13 +406,7 @@ components:
     NetworkListUuidResponse:
       example:
         schema_version: 3
-        results:
-          list_type: ip_cidr
-          items_values:
-          - 192.168.0.1
-          last_editor: Azion
-          name: Network List created using the API
-          last_modified: 2023-08-10T05:00:07.893747Z
+        results: null
       properties:
         results:
           $ref: '#/components/schemas/NetworkListUuidResponseEntry'

@@ -93,6 +93,8 @@ Class | Method | HTTP request | Description
  - [NetworkListResponseEntry](docs/NetworkListResponseEntry.md)
  - [NetworkListUuidResponse](docs/NetworkListUuidResponse.md)
  - [NetworkListUuidResponseEntry](docs/NetworkListUuidResponseEntry.md)
+ - [NetworkListUuidResponseEntryInt](docs/NetworkListUuidResponseEntryInt.md)
+ - [NetworkListUuidResponseEntryString](docs/NetworkListUuidResponseEntryString.md)
  - [NetworkLists](docs/NetworkLists.md)
  - [NetworkListsResponse](docs/NetworkListsResponse.md)
 
