@@ -52,6 +52,13 @@ paths:
             application/json:
               schema: {}
           description: ""
+        "400":
+          description: Bad request
+        "404":
+          content:
+            application/json:
+              schema: {}
+          description: Resource not found
       summary: /storage/:version_id
   /storage/{version_id}/delete:
     delete:
@@ -70,6 +77,13 @@ paths:
       responses:
         "204":
           description: The resource was deleted successfully.
+        "400":
+          description: Bad request
+        "404":
+          content:
+            application/json:
+              schema: {}
+          description: Resource not found
       summary: /storage/:version_id/delete
 components:
   responses:
