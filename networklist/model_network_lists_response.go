@@ -20,7 +20,7 @@ var _ MappedNullable = &NetworkListsResponse{}
 // NetworkListsResponse struct for NetworkListsResponse
 type NetworkListsResponse struct {
 	Results *NetworkListResponseEntry `json:"results,omitempty"`
-	SchemaVersion *float32 `json:"schema_version,omitempty"`
+	SchemaVersion *int64 `json:"schema_version,omitempty"`
 }
 
 // NewNetworkListsResponse instantiates a new NetworkListsResponse object
@@ -73,9 +73,9 @@ func (o *NetworkListsResponse) SetResults(v NetworkListResponseEntry) {
 }
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
-func (o *NetworkListsResponse) GetSchemaVersion() float32 {
+func (o *NetworkListsResponse) GetSchemaVersion() int64 {
 	if o == nil || IsNil(o.SchemaVersion) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.SchemaVersion
@@ -83,7 +83,7 @@ func (o *NetworkListsResponse) GetSchemaVersion() float32 {
 
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkListsResponse) GetSchemaVersionOk() (*float32, bool) {
+func (o *NetworkListsResponse) GetSchemaVersionOk() (*int64, bool) {
 	if o == nil || IsNil(o.SchemaVersion) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *NetworkListsResponse) HasSchemaVersion() bool {
 	return false
 }
 
-// SetSchemaVersion gets a reference to the given float32 and assigns it to the SchemaVersion field.
-func (o *NetworkListsResponse) SetSchemaVersion(v float32) {
+// SetSchemaVersion gets a reference to the given int64 and assigns it to the SchemaVersion field.
+func (o *NetworkListsResponse) SetSchemaVersion(v int64) {
 	o.SchemaVersion = &v
 }
 

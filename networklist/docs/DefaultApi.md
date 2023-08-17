@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**NetworkListsGet**](DefaultApi.md#NetworkListsGet) | **Get** /network_lists | List all user Network Lists
 [**NetworkListsPost**](DefaultApi.md#NetworkListsPost) | **Post** /network_lists | Create a Network Lists
+[**NetworkListsUuidDelete**](DefaultApi.md#NetworkListsUuidDelete) | **Delete** /network_lists/{uuid} | Delete a Network Lists set by uuid
 [**NetworkListsUuidGet**](DefaultApi.md#NetworkListsUuidGet) | **Get** /network_lists/{uuid} | Retrieve a Network Lists set by uuid
 [**NetworkListsUuidPut**](DefaultApi.md#NetworkListsUuidPut) | **Put** /network_lists/{uuid} | Overwrite some Network Lists attributes
 
@@ -139,6 +140,74 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## NetworkListsUuidDelete
+
+> NetworkListsUuidDelete(ctx, uuid).Accept(accept).Execute()
+
+Delete a Network Lists set by uuid
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+    uuid := "uuid_example" // string | The id of the networkList to be deleted. 
+    accept := "application/json; version=3" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.DefaultApi.NetworkListsUuidDelete(context.Background(), uuid).Accept(accept).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsUuidDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | The id of the networkList to be deleted.  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiNetworkListsUuidDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **accept** | **string** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
