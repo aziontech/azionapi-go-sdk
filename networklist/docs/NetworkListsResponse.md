@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Results** | Pointer to [**NetworkListResponseEntry**](NetworkListResponseEntry.md) |  | [optional] 
-**SchemaVersion** | Pointer to **float32** |  | [optional] 
+**SchemaVersion** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasResults returns a boolean if a field has been set.
 
 ### GetSchemaVersion
 
-`func (o *NetworkListsResponse) GetSchemaVersion() float32`
+`func (o *NetworkListsResponse) GetSchemaVersion() int64`
 
 GetSchemaVersion returns the SchemaVersion field if non-nil, zero value otherwise.
 
 ### GetSchemaVersionOk
 
-`func (o *NetworkListsResponse) GetSchemaVersionOk() (*float32, bool)`
+`func (o *NetworkListsResponse) GetSchemaVersionOk() (*int64, bool)`
 
 GetSchemaVersionOk returns a tuple with the SchemaVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchemaVersion
 
-`func (o *NetworkListsResponse) SetSchemaVersion(v float32)`
+`func (o *NetworkListsResponse) SetSchemaVersion(v int64)`
 
 SetSchemaVersion sets SchemaVersion field to given value.
 

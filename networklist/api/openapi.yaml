@@ -94,6 +94,38 @@ paths:
           description: Internal Server Error
       summary: Create a Network Lists
   /network_lists/{uuid}:
+    delete:
+      parameters:
+      - example: application/json; version=3
+        explode: false
+        in: header
+        name: Accept
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: "The id of the networkList to be deleted.\t"
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "422":
+          description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      summary: Delete a Network Lists set by uuid
     get:
       parameters:
       - explode: false
@@ -401,7 +433,8 @@ components:
           $ref: '#/components/schemas/NetworkListResponseEntry'
         schema_version:
           example: 3
-          type: number
+          format: int64
+          type: integer
       type: object
     NetworkListUuidResponse:
       example:
