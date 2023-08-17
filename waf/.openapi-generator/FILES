@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -21,5 +20,4 @@ model_waf_events400.go
 model_waf_events401.go
 model_waf_events404.go
 response.go
-test/api_waf_test.go
 utils.go
