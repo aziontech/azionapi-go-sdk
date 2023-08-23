@@ -1,0 +1,1081 @@
+openapi: 3.0.3
+info:
+  description: |
+    The Data Streaming API allows you to manage your existing data streamings and templates.
+    Data Streaming allows you to feed your stream processing, SIEM, and big data platforms with the event logs from your applications on Azion in real time.
+  license:
+    name: MIT
+    url: https://github.com/aziontech/azionapi-openapi/blob/main/LICENSE.md
+  title: Data Streaming - OpenAPI
+  version: 1.0.0
+externalDocs:
+  description: See the documentation of Data Streaming for more information.
+  url: https://www.azion.com/en/documentation/products/data-streaming/
+servers:
+- description: Production
+  url: https://api.azionapi.net
+security:
+- tokenAuth: []
+tags:
+- name: Data Streaming
+paths:
+  /data_streaming/streamings:
+    get:
+      description: "Use the GET method to list all data streamings, both active and\
+        \ inactive, and its properties."
+      operationId: ListDataStreamings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStreamingResponseWithResults'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: List all exist data streamings
+      tags:
+      - Data Streaming
+    post:
+      description: ""
+      operationId: CreateNewDataStreaming
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNewDataStreaming_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNewDataStreaming_201_response'
+          description: Created successfully
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: Create a new data streaming
+      tags:
+      - Data Streaming
+  /data_streaming/domains:
+    get:
+      description: Use the GET method to list all available domains that can be used
+        on Data Streaming operations.
+      operationId: ListDataStreaming
+      parameters:
+      - description: Domain's name in data streaming
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: streaming_id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: selected
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStreamingsDomainResponse'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: List all domains used on data streaming
+      tags:
+      - Data Streaming Domain
+  /data_streaming/streamings/{data_streaming_id}:
+    delete:
+      description: |
+        Use the DELETE method to remove a data streaming from your account.
+      operationId: DeleteDataStreamingById
+      parameters:
+      - explode: false
+        in: path
+        name: data_streaming_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: Delete data streaming
+      tags:
+      - Data Streaming
+    get:
+      description: Use the GET method and add the data streaming's ID to the URI of
+        the request to get more data on a specific data streaming.
+      operationId: ListDataStreamingById
+      parameters:
+      - explode: false
+        in: path
+        name: data_streaming_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStreamingsById'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: Get expecific data streaming by Data Streaming ID
+      tags:
+      - Data Streaming
+    patch:
+      description: |
+        Use the PATCH method to change only select settings of your data streaming.
+      operationId: EditDataStreamingById
+      parameters:
+      - explode: false
+        in: path
+        name: data_streaming_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNewDataStreaming_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNewDataStreaming_201_response'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: Edit data streaming
+      tags:
+      - Data Streaming
+    put:
+      description: |
+        Use the PUT method to overwrite the data streaming. Although  you can change a single property using the PUT method, you must pass all fields for the request to be completed.
+      operationId: OverwriteDataStreamingById
+      parameters:
+      - explode: false
+        in: path
+        name: data_streaming_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNewDataStreaming_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNewDataStreaming_201_response'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "409":
+          description: Conflict
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: Overwrite data streaming
+      tags:
+      - Data Streaming
+  /data_streaming/templates:
+    get:
+      description: |
+        Use the GET method to list all global templates that can be used on Data Streaming operations.
+
+        **Note:** Customized templates won't be listed.
+      operationId: ListDataStreamingTemplates
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateResults'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: List all global Templates that can be used on Data Streaming operations
+      tags:
+      - Data Streaming Templates
+  /data_streaming/templates/{template_id}:
+    get:
+      description: Use the GET method and add the data streaming's ID to the URI of
+        the request to get more data on a specific data streaming global template.
+      operationId: GetDataStramingTemplateById
+      parameters:
+      - explode: false
+        in: path
+        name: template_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateResultById'
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Internal Server Error
+      summary: Get an global Template info by template ID
+      tags:
+      - Data Streaming Templates
+components:
+  schemas:
+    DataStreamingPostBody:
+      properties:
+        name:
+          type: string
+        template_id:
+          description: |
+            Options:
+             * `2` - Edge Applications Event Collector
+             * `4` - WAF Event Collector
+             * `86` - Edge Functions Event Collector
+             * `184` - Edge Applications + WAF Event Collector
+             * `251` - Activity History Collector
+          enum:
+          - 2
+          - 4
+          - 86
+          - 184
+          - 251
+          type: integer
+        data_source:
+          description: |
+            Options:
+             * `http` - Edge Applications (default)
+             * `waf` - WAF Events
+             * `cells_console` - Edge Functions
+             * `rtm_activity` - Activity History
+          enum:
+          - http
+          - waf
+          - cells_console
+          - rtm_activity
+          nullable: true
+          type: string
+        active:
+          default: true
+          nullable: true
+          type: boolean
+        endpoint:
+          description: |
+            Options' examples:
+             - `Standard HTTP/HTTPS POST` - { "endpoint_type": "standard", "url": "http://example.com", "log_line_separator": "\n", "payload_format": "$dataset", "max_size": 1000024 }
+             - `Apache Kafka` - { "endpoint_type": "kafka", "kafka_topic": "example_topic", "bootstrap_servers": "kafka-server.com:9092,kafka-server-2.com:9092", "use_tls":true }
+             - `Simple Storage Service (S3)` - { "endpoint_type": "s3", "access_key": "MYACCESSKEY", "region": "us-east-1", "object_key_prefix": "my_prefix_", "bucket_name": "bucket_example", "content_type": "plain/text", "host_url": "http://aws-host.com", "secret_key": "MYSECRETKEY" }
+             - `Google BigQuery` - { "endpoint_type": "big_query", "dataset_id": "my_dataset", "project_id": "my_project", "table_id": "my_table", "service_account_key": "{ "service_account_key": "key_content" }" }
+             - `Elasticsearch` - { “endpoint_type”: "elasticsearch", “url”: “http://elasticsearch.com”, “api_key”: “XYZ_API_KEY” }
+             - `AWS Kinesis Data Firehose` -  { "endpoint_type": "aws_kinesis_firehose", "access_key": "MYACCESSKEY", "stream_name": "my_stream_name", "region": "us-east-1", "secret_key": "MYSECRETKEY" }
+             - `Datadog` - { "endpoint_type": "datadog", "url": "https://http-intake.logs.datadoghq.com/v1/input", "api_key": "MYAPIKEY" }
+             - `IBM QRadar` - { "endpoint_type": "qradar", "url": "http://137.15.824.10:14440” }
+             - `Azure Monitor` - { "endpoint_type": "azure_monitor", "log_type": "myLogType", "shared_key": "mysharedkey", "time_generated_field": "timeGeneratedField", "workspace_id": "anfhw-123sd-466gcs"}
+             - `Azure Blob Storage` - { "endpoint_type": "azure_blob_storage", "storage_account": "mystorageaccount", "container_name": "log_container", "blob_sas_token": "fd56e23e1f12efe" }
+             - `Splunk` - { "endpoint_type": "splunk", "url": "https://inputs.splunk-client.splunkcloud.com:1337/services/collector", "api_key": "MYAPIKEY" }
+          format: json
+          type: string
+        domains_ids:
+          description: |
+            Note:
+             * Field not used with the rtm_activity data source.
+          items:
+            type: integer
+          minItems: 1
+          type: array
+        all_domains:
+          default: false
+          description: |
+            Note:
+             * Field not used with the rtm_activity data source.
+          nullable: true
+          type: boolean
+        sampling_percentage:
+          description: |
+            Note:
+             * `Range` - From 0 to 100.
+             * `To use:` [Contact the sales team](https://www.azion.com/en/contact-sales/) to activate this feature in your account.
+          maximum: 100
+          minimum: 0
+          nullable: true
+          type: integer
+      type: object
+    StandardDataStreamingPostBody:
+      properties:
+        name:
+          type: string
+        template_id:
+          description: |
+            Options:
+             * `2` - Edge Applications Event Collector
+             * `4` - WAF Event Collector
+             * `86` - Edge Functions Event Collector
+             * `184` - Edge Applications + WAF Event Collector
+             * `251` - Activity History Collector
+          enum:
+          - 2
+          - 4
+          - 86
+          - 184
+          - 251
+          type: integer
+        data_source:
+          description: |
+            Options:
+             * `http` - Edge Applications (default)
+             * `waf` - WAF Events
+             * `cells_console` - Edge Functions
+             * `rtm_activity` - Activity History
+          enum:
+          - http
+          - waf
+          - cells_console
+          - rtm_activity
+          nullable: true
+          type: string
+        active:
+          default: true
+          nullable: true
+          type: boolean
+        endpoint:
+          $ref: '#/components/schemas/DataStreamingEndpointTypeStandard'
+        domains_ids:
+          description: |
+            Note:
+             * Field not used with the rtm_activity data source.
+          items:
+            type: integer
+          minItems: 1
+          type: array
+        all_domains:
+          default: false
+          description: |
+            Note:
+             * Field not used with the rtm_activity data source.
+          nullable: true
+          type: boolean
+      type: object
+    CustomDataStreamingPostBody:
+      properties:
+        name:
+          type: string
+        data_source:
+          description: "Options:\n * `http` - Edge Applications (default)\n * `waf`\
+            \ - WAF Events\n * `cells_console` - Edge Functions\n * `rtm_activity`\
+            \ - Activity History\n \n"
+          enum:
+          - http
+          - waf
+          - cells_console
+          - rtm_activity
+          nullable: true
+          type: string
+        template_model:
+          description: "Note:\n * Add all variables and values that will be used to\
+            \ stream according to the data source you choose to use.  \n * All data\
+            \ streaming [variables can be found on the reference documentation](https://www.azion.com/en/documentation/products/data-streaming/#selecting-data-sources).\n\
+            \ \n"
+          type: string
+        active:
+          default: true
+          nullable: true
+          type: boolean
+      type: object
+    CreateDataStreamingResponse:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PostDataStreamingResponse'
+          type: array
+        schema_version:
+          type: number
+      type: object
+    CreateCustomDataStreamingResponse:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PostCustomDataStreamingResponse'
+          type: array
+        schema_version:
+          type: number
+      type: object
+    PostDataStreamingResponse:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        template_id:
+          description: |
+            Options:
+             * `2` - Edge Applications Event Collector
+             * `4` - WAF Event Collector
+             * `86` - Edge Functions Event Collector
+             * `184` - Edge Applications + WAF Event Collector
+             * `251` - Activity History Collector
+          enum:
+          - 2
+          - 4
+          - 86
+          - 184
+          - 251
+          type: integer
+        data_source:
+          description: |
+            Options:
+             * `http` - Edge Applications
+             * `waf` - WAF Events
+             * `cells_console` - Edge Functions
+             * `rtm_activity` - Activity History
+          enum:
+          - http
+          - waf
+          - cells_console
+          - rtm_activity
+          type: string
+        active:
+          type: boolean
+        endpoint:
+          items:
+            $ref: '#/components/schemas/PostDataStreamingResponse_endpoint_inner'
+          type: array
+        all_domains:
+          description: |
+            Note:
+             * Field not used with the rtm_activity data source.
+          nullable: true
+          type: boolean
+      type: object
+    PostCustomDataStreamingResponse:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        data_source:
+          description: "Options:\n * `http` - Edge Applications\n * `waf` - WAF Events\n\
+            \ * `cells_console` - Edge Functions\n * `rtm_activity` - Activity History\n\
+            \ \n"
+          enum:
+          - http
+          - waf
+          - cells_console
+          - rtm_activity
+          type: string
+        template_model:
+          description: "Note:\n * Add all variables and values that will be used to\
+            \ stream according to the data source you choose to use.  \n"
+          example: "\"{\\\"custom_template_field\\\":\\\"$custom_value\\\", \\\"status\\\
+            \":\\\"$status\\\"}\"\n \n"
+          type: string
+        active:
+          type: boolean
+        endpoint:
+          format: json
+          type: string
+        all_domains:
+          description: |
+            Note:
+             * Field not used with the rtm_activity data source.
+          nullable: true
+          type: boolean
+      type: object
+    Endpoint_Default:
+      properties:
+        endpoint_type:
+          example: standard
+          type: string
+        url:
+          format: uri
+          type: string
+        log_line_separator:
+          type: string
+        payload_format:
+          type: string
+        max_size:
+          type: integer
+        headers:
+          items:
+            additionalProperties:
+              type: string
+            example:
+              additional_header: additional_header_value
+            type: object
+          maximum: 5
+          type: array
+      type: object
+    Endpoint_Kafka:
+      properties:
+        endpoint_type:
+          example: kafka
+          type: string
+        kafka_topic:
+          type: string
+        bootstrap_servers:
+          type: string
+        use_tls:
+          type: boolean
+      type: object
+    Endpoinrt_S3:
+      properties:
+        endpoint_type:
+          example: s3
+          type: string
+        access_key:
+          type: string
+        region:
+          type: string
+        object_key_prefix:
+          type: string
+        bucket_name:
+          type: string
+        content_type:
+          type: string
+        host_url:
+          format: uri
+          type: string
+        secret_key:
+          type: string
+      type: object
+    Endpoint_Google_BigQuery:
+      properties:
+        endpoint_type:
+          example: big_query
+          type: string
+        dataset_id:
+          type: string
+        project_id:
+          type: string
+        table_id:
+          type: string
+        service_account_key:
+          $ref: '#/components/schemas/Endpoint_Google_BigQuery_service_account_key'
+      type: object
+    Endpoint_Elasticsearch:
+      properties:
+        endpoint_type:
+          example: elasticsearch
+          type: string
+        url:
+          format: uri
+          type: string
+        api_key:
+          format: string
+      type: object
+    Endpoint_AWS_Kinesis_Firehose:
+      properties:
+        endpoint_type:
+          example: aws_kinesis_firehose
+          type: string
+        access_key:
+          type: string
+        stream_name:
+          type: string
+        region:
+          type: string
+        secret_key:
+          type: string
+      type: object
+    Endpoint_Datadog:
+      properties:
+        endpoint_type:
+          example: datadog
+          type: string
+        url:
+          format: uri
+          type: string
+        api_key:
+          format: string
+      type: object
+    Endpoint_IBM_QRadar:
+      properties:
+        endpoint_type:
+          example: qradar
+          type: string
+        url:
+          format: uri
+          type: string
+      type: object
+    Endpoint_Azure_Monitor:
+      properties:
+        endpoint_type:
+          example: azure_monitor
+          type: string
+        log_type:
+          type: string
+        shared_key:
+          type: string
+        time_generated_field:
+          type: string
+        workspace_id:
+          pattern: "[a-zA-Z0-9]{5}-[a-zA-Z0-9]{5}-[a-zA-Z0-9]{6}"
+          type: string
+      type: object
+    Endpoint_Azure_Blob_Storage:
+      properties:
+        endpoint_type:
+          example: azure_blob_storage
+          type: string
+        storage_account:
+          type: string
+        container_name:
+          type: string
+        blob_sas_token:
+          pattern: "[a-zA-Z0-9]{15}"
+          type: string
+      type: object
+    Endpoint_Splunk:
+      properties:
+        endpoint_type:
+          example: splunk
+          type: string
+        url:
+          format: uri
+          type: string
+        api_key:
+          type: string
+      type: object
+    DataStreamingResponseWithResults:
+      example:
+        schema_version: 0.8008281904610115
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/DataStreamingResponseWithResults_results_inner'
+          type: array
+        schema_version:
+          type: number
+      type: object
+    DataStreamingResponseGetResultTypeDatadogDTS:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        template_id:
+          type: integer
+        data_source:
+          type: string
+        active:
+          type: boolean
+        endpoint:
+          $ref: '#/components/schemas/DataStreamingEndpointTypeDatadogDTS'
+        all_domains:
+          type: boolean
+      type: object
+    DataStreamingEndpointTypeDatadogDTS:
+      properties:
+        endpoint_type:
+          type: string
+        url:
+          format: uri
+          type: string
+        api_key:
+          type: string
+      type: object
+    DataStreamingResponseGetResultTypeKafka:
+      example:
+        endpoint:
+          use_tls: true
+          endpoint_type: endpoint_type
+          kafka_topic: kafka_topic
+          bootstrap_servers: bootstrap_servers
+        name: name
+        active: true
+        all_domains: true
+        template_id: 6
+        id: 0
+        data_source: data_source
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        template_id:
+          type: integer
+        data_source:
+          type: string
+        active:
+          type: boolean
+        endpoint:
+          $ref: '#/components/schemas/DataStreamingEndpointTypeKafka'
+        all_domains:
+          type: boolean
+      type: object
+    DataStreamingEndpointTypeKafka:
+      example:
+        use_tls: true
+        endpoint_type: endpoint_type
+        kafka_topic: kafka_topic
+        bootstrap_servers: bootstrap_servers
+      properties:
+        endpoint_type:
+          type: string
+        use_tls:
+          type: boolean
+        kafka_topic:
+          type: string
+        bootstrap_servers:
+          type: string
+      type: object
+    DataStreamingResponseGetResultTypeStandard:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        template_id:
+          type: integer
+        data_source:
+          type: string
+        active:
+          type: boolean
+        endpoint:
+          $ref: '#/components/schemas/DataStreamingEndpointTypeStandard'
+        all_domains:
+          type: boolean
+      type: object
+    DataStreamingEndpointTypeStandard:
+      properties:
+        endpoint_type:
+          type: string
+        url:
+          format: uri
+          type: string
+        log_line_separator:
+          type: string
+        payload_format:
+          type: string
+        max_size:
+          type: integer
+        headers:
+          $ref: '#/components/schemas/DataStreamingEndpointTypeStandardHeadersExample'
+      type: object
+    DataStreamingEndpointTypeStandardHeadersExample:
+      properties:
+        header-name-1:
+          nullable: true
+          type: string
+        header-name-2:
+          nullable: true
+          type: string
+        header-name-3:
+          nullable: true
+          type: string
+      type: object
+    DataStreamingResponseGetResultTypeCustom:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        data_source:
+          type: string
+        active:
+          type: boolean
+        endpoint:
+          $ref: '#/components/schemas/DataStreamingEndpointTypeKafka'
+        all_domains:
+          type: boolean
+        template_model:
+          type: string
+      type: object
+    DataStreamingsDomainResponse:
+      example:
+        schema_version: 1.4658129805029452
+        count: 0
+        links:
+          next: next
+          previous: previous
+        total_pages: 6
+        results:
+        - domain_id: 5
+          name: name
+          selected: true
+        - domain_id: 5
+          name: name
+          selected: true
+      properties:
+        count:
+          type: integer
+        total_pages:
+          type: integer
+        schema_version:
+          type: number
+        links:
+          $ref: '#/components/schemas/DataStreamingsDomainResponseLinks'
+        results:
+          items:
+            $ref: '#/components/schemas/DataStreamingsDomainResult'
+          type: array
+      type: object
+    DataStreamingsDomainResponseLinks:
+      example:
+        next: next
+        previous: previous
+      properties:
+        previous:
+          nullable: true
+          type: string
+        next:
+          nullable: true
+          type: string
+      type: object
+    DataStreamingsDomainResult:
+      example:
+        domain_id: 5
+        name: name
+        selected: true
+      properties:
+        domain_id:
+          type: integer
+        name:
+          type: string
+        selected:
+          nullable: true
+          type: boolean
+      type: object
+    DataStreamingsById:
+      example:
+        schema_version: 1.4658129805029452
+        results:
+          endpoint:
+            use_tls: true
+            endpoint_type: endpoint_type
+            kafka_topic: kafka_topic
+            bootstrap_servers: bootstrap_servers
+          name: name
+          active: true
+          all_domains: true
+          template_id: 6
+          id: 0
+          data_source: data_source
+      properties:
+        results:
+          $ref: '#/components/schemas/DataStreamingResponseGetResultTypeKafka'
+        schema_version:
+          type: number
+      type: object
+    TemplateResults:
+      example:
+        schema_version: 6.027456183070403
+        results:
+        - name: name
+          id: 0
+          template_model: template_model
+        - name: name
+          id: 0
+          template_model: template_model
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/Template'
+          type: array
+        schema_version:
+          type: number
+      type: object
+    TemplateResultById:
+      example:
+        schema_version: 0.8008281904610115
+        results:
+          name: name
+          id: 0
+          template_model: template_model
+      properties:
+        results:
+          $ref: '#/components/schemas/Template'
+        schema_version:
+          type: number
+      type: object
+    Template:
+      example:
+        name: name
+        id: 0
+        template_model: template_model
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        template_model:
+          type: string
+      type: object
+    CreateNewDataStreaming_request:
+      oneOf:
+      - $ref: '#/components/schemas/DataStreamingPostBody'
+      - $ref: '#/components/schemas/StandardDataStreamingPostBody'
+      - $ref: '#/components/schemas/CustomDataStreamingPostBody'
+    CreateNewDataStreaming_201_response:
+      oneOf:
+      - $ref: '#/components/schemas/CreateDataStreamingResponse'
+      - $ref: '#/components/schemas/CreateCustomDataStreamingResponse'
+    PostDataStreamingResponse_endpoint_inner:
+      oneOf:
+      - $ref: '#/components/schemas/Endpoint_Default'
+      - $ref: '#/components/schemas/Endpoint_Kafka'
+      - $ref: '#/components/schemas/Endpoinrt_S3'
+      - $ref: '#/components/schemas/Endpoint_Google_BigQuery'
+      - $ref: '#/components/schemas/Endpoint_Elasticsearch'
+      - $ref: '#/components/schemas/Endpoint_AWS_Kinesis_Firehose'
+      - $ref: '#/components/schemas/Endpoint_Datadog'
+      - $ref: '#/components/schemas/Endpoint_IBM_QRadar'
+      - $ref: '#/components/schemas/Endpoint_Azure_Monitor'
+      - $ref: '#/components/schemas/Endpoint_Azure_Blob_Storage'
+      - $ref: '#/components/schemas/Endpoint_Splunk'
+    Endpoint_Google_BigQuery_service_account_key:
+      properties:
+        service_account_key:
+          type: string
+      type: object
+    DataStreamingResponseWithResults_results_inner:
+      anyOf:
+      - $ref: '#/components/schemas/DataStreamingResponseGetResultTypeDatadogDTS'
+      - $ref: '#/components/schemas/DataStreamingResponseGetResultTypeKafka'
+      - $ref: '#/components/schemas/DataStreamingResponseGetResultTypeStandard'
+      - $ref: '#/components/schemas/DataStreamingResponseGetResultTypeCustom'
+  securitySchemes:
+    tokenAuth:
+      description: |
+        You must inform a token to auth.
+        Usage format: `Token <TOKEN>`
+      in: header
+      name: Authorization
+      type: apiKey
