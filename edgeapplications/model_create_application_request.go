@@ -36,6 +36,7 @@ type CreateApplicationRequest struct {
 	HttpsPort interface{} `json:"https_port,omitempty"`
 	L2Caching *bool `json:"l2_caching,omitempty"`
 	Http3 *bool `json:"http3,omitempty"`
+	Websocket *bool `json:"websocket,omitempty"`
 }
 
 // NewCreateApplicationRequest instantiates a new CreateApplicationRequest object
@@ -594,6 +595,38 @@ func (o *CreateApplicationRequest) SetHttp3(v bool) {
 	o.Http3 = &v
 }
 
+// GetWebsocket returns the Websocket field value if set, zero value otherwise.
+func (o *CreateApplicationRequest) GetWebsocket() bool {
+	if o == nil || IsNil(o.Websocket) {
+		var ret bool
+		return ret
+	}
+	return *o.Websocket
+}
+
+// GetWebsocketOk returns a tuple with the Websocket field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateApplicationRequest) GetWebsocketOk() (*bool, bool) {
+	if o == nil || IsNil(o.Websocket) {
+		return nil, false
+	}
+	return o.Websocket, true
+}
+
+// HasWebsocket returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasWebsocket() bool {
+	if o != nil && !IsNil(o.Websocket) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsocket gets a reference to the given bool and assigns it to the Websocket field.
+func (o *CreateApplicationRequest) SetWebsocket(v bool) {
+	o.Websocket = &v
+}
+
 func (o CreateApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -652,6 +685,9 @@ func (o CreateApplicationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Http3) {
 		toSerialize["http3"] = o.Http3
+	}
+	if !IsNil(o.Websocket) {
+		toSerialize["websocket"] = o.Websocket
 	}
 	return toSerialize, nil
 }

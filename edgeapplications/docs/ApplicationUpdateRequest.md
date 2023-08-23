@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **LoadBalancer** | Pointer to **bool** |  | [optional] 
 **RawLogs** | Pointer to **bool** |  | [optional] 
 **WebApplicationFirewall** | Pointer to **bool** |  | [optional] 
+**Websocket** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -485,6 +486,31 @@ SetWebApplicationFirewall sets WebApplicationFirewall field to given value.
 `func (o *ApplicationUpdateRequest) HasWebApplicationFirewall() bool`
 
 HasWebApplicationFirewall returns a boolean if a field has been set.
+
+### GetWebsocket
+
+`func (o *ApplicationUpdateRequest) GetWebsocket() bool`
+
+GetWebsocket returns the Websocket field if non-nil, zero value otherwise.
+
+### GetWebsocketOk
+
+`func (o *ApplicationUpdateRequest) GetWebsocketOk() (*bool, bool)`
+
+GetWebsocketOk returns a tuple with the Websocket field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebsocket
+
+`func (o *ApplicationUpdateRequest) SetWebsocket(v bool)`
+
+SetWebsocket sets Websocket field to given value.
+
+### HasWebsocket
+
+`func (o *ApplicationUpdateRequest) HasWebsocket() bool`
+
+HasWebsocket returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -36,6 +36,7 @@ type ApplicationUpdateRequest struct {
 	LoadBalancer *bool `json:"load_balancer,omitempty"`
 	RawLogs *bool `json:"raw_logs,omitempty"`
 	WebApplicationFirewall *bool `json:"web_application_firewall,omitempty"`
+	Websocket *bool `json:"websocket,omitempty"`
 }
 
 // NewApplicationUpdateRequest instantiates a new ApplicationUpdateRequest object
@@ -601,6 +602,38 @@ func (o *ApplicationUpdateRequest) SetWebApplicationFirewall(v bool) {
 	o.WebApplicationFirewall = &v
 }
 
+// GetWebsocket returns the Websocket field value if set, zero value otherwise.
+func (o *ApplicationUpdateRequest) GetWebsocket() bool {
+	if o == nil || IsNil(o.Websocket) {
+		var ret bool
+		return ret
+	}
+	return *o.Websocket
+}
+
+// GetWebsocketOk returns a tuple with the Websocket field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationUpdateRequest) GetWebsocketOk() (*bool, bool) {
+	if o == nil || IsNil(o.Websocket) {
+		return nil, false
+	}
+	return o.Websocket, true
+}
+
+// HasWebsocket returns a boolean if a field has been set.
+func (o *ApplicationUpdateRequest) HasWebsocket() bool {
+	if o != nil && !IsNil(o.Websocket) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsocket gets a reference to the given bool and assigns it to the Websocket field.
+func (o *ApplicationUpdateRequest) SetWebsocket(v bool) {
+	o.Websocket = &v
+}
+
 func (o ApplicationUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -661,6 +694,9 @@ func (o ApplicationUpdateRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.WebApplicationFirewall) {
 		toSerialize["web_application_firewall"] = o.WebApplicationFirewall
+	}
+	if !IsNil(o.Websocket) {
+		toSerialize["websocket"] = o.Websocket
 	}
 	return toSerialize, nil
 }

@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **WebApplicationFirewall** | Pointer to **bool** |  | [optional] 
 **DebugRules** | Pointer to **bool** |  | [optional] 
 **Http3** | Pointer to **bool** |  | [optional] 
+**Websocket** | Pointer to **bool** |  | [optional] 
 **SupportedCiphers** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -507,6 +508,31 @@ SetHttp3 sets Http3 field to given value.
 `func (o *ApplicationPutRequest) HasHttp3() bool`
 
 HasHttp3 returns a boolean if a field has been set.
+
+### GetWebsocket
+
+`func (o *ApplicationPutRequest) GetWebsocket() bool`
+
+GetWebsocket returns the Websocket field if non-nil, zero value otherwise.
+
+### GetWebsocketOk
+
+`func (o *ApplicationPutRequest) GetWebsocketOk() (*bool, bool)`
+
+GetWebsocketOk returns a tuple with the Websocket field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebsocket
+
+`func (o *ApplicationPutRequest) SetWebsocket(v bool)`
+
+SetWebsocket sets Websocket field to given value.
+
+### HasWebsocket
+
+`func (o *ApplicationPutRequest) HasWebsocket() bool`
+
+HasWebsocket returns a boolean if a field has been set.
 
 ### GetSupportedCiphers
 

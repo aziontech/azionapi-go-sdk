@@ -37,6 +37,7 @@ type ApplicationPutRequest struct {
 	WebApplicationFirewall *bool `json:"web_application_firewall,omitempty"`
 	DebugRules *bool `json:"debug_rules,omitempty"`
 	Http3 *bool `json:"http3,omitempty"`
+	Websocket *bool `json:"websocket,omitempty"`
 	SupportedCiphers *string `json:"supported_ciphers,omitempty"`
 }
 
@@ -628,6 +629,38 @@ func (o *ApplicationPutRequest) SetHttp3(v bool) {
 	o.Http3 = &v
 }
 
+// GetWebsocket returns the Websocket field value if set, zero value otherwise.
+func (o *ApplicationPutRequest) GetWebsocket() bool {
+	if o == nil || IsNil(o.Websocket) {
+		var ret bool
+		return ret
+	}
+	return *o.Websocket
+}
+
+// GetWebsocketOk returns a tuple with the Websocket field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationPutRequest) GetWebsocketOk() (*bool, bool) {
+	if o == nil || IsNil(o.Websocket) {
+		return nil, false
+	}
+	return o.Websocket, true
+}
+
+// HasWebsocket returns a boolean if a field has been set.
+func (o *ApplicationPutRequest) HasWebsocket() bool {
+	if o != nil && !IsNil(o.Websocket) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsocket gets a reference to the given bool and assigns it to the Websocket field.
+func (o *ApplicationPutRequest) SetWebsocket(v bool) {
+	o.Websocket = &v
+}
+
 // GetSupportedCiphers returns the SupportedCiphers field value if set, zero value otherwise.
 func (o *ApplicationPutRequest) GetSupportedCiphers() string {
 	if o == nil || IsNil(o.SupportedCiphers) {
@@ -721,6 +754,9 @@ func (o ApplicationPutRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Http3) {
 		toSerialize["http3"] = o.Http3
+	}
+	if !IsNil(o.Websocket) {
+		toSerialize["websocket"] = o.Websocket
 	}
 	if !IsNil(o.SupportedCiphers) {
 		toSerialize["supported_ciphers"] = o.SupportedCiphers
