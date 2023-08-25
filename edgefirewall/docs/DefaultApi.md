@@ -32,8 +32,8 @@ import (
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional)
-    pageSize := int32(56) // int32 |  (optional)
+    page := int64(789) // int64 |  (optional)
+    pageSize := int64(789) // int64 |  (optional)
     sort := "sort_example" // string |  (optional)
     orderBy := "orderBy_example" // string |  (optional)
 
@@ -60,8 +60,8 @@ Other parameters are passed through a pointer to a apiEdgeFirewallGetRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | 
- **pageSize** | **int32** |  | 
+ **page** | **int64** |  | 
+ **pageSize** | **int64** |  | 
  **sort** | **string** |  | 
  **orderBy** | **string** |  | 
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## EdgeFirewallPost
 
-> EdgeFirewallPost(ctx).CreateEdgeFirewallRequest(createEdgeFirewallRequest).Execute()
+> EdgeFirewallResponse EdgeFirewallPost(ctx).CreateEdgeFirewallRequest(createEdgeFirewallRequest).Execute()
 
 Create a edge firewall
 
@@ -106,11 +106,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DefaultApi.EdgeFirewallPost(context.Background()).CreateEdgeFirewallRequest(createEdgeFirewallRequest).Execute()
+    resp, r, err := apiClient.DefaultApi.EdgeFirewallPost(context.Background()).CreateEdgeFirewallRequest(createEdgeFirewallRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.EdgeFirewallPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `EdgeFirewallPost`: EdgeFirewallResponse
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.EdgeFirewallPost`: %v\n", resp)
 }
 ```
 
@@ -129,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EdgeFirewallResponse**](EdgeFirewallResponse.md)
 
 ### Authorization
 
@@ -138,7 +140,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -281,7 +283,7 @@ Name | Type | Description  | Notes
 
 ## EdgeFirewallUuidPatch
 
-> ListEdgeFirewallResponse EdgeFirewallUuidPatch(ctx, uuid).Body(body).Execute()
+> EdgeFirewallResponse EdgeFirewallUuidPatch(ctx, uuid).UpdateEdgeFirewallRequest(updateEdgeFirewallRequest).Execute()
 
 Update some edge firewall attributes, like \"active\"
 
@@ -299,16 +301,16 @@ import (
 
 func main() {
     uuid := "uuid_example" // string | 
-    body := ListEdgeFirewallResponse(987) // ListEdgeFirewallResponse | 
+    updateEdgeFirewallRequest := *openapiclient.NewUpdateEdgeFirewallRequest() // UpdateEdgeFirewallRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.EdgeFirewallUuidPatch(context.Background(), uuid).Body(body).Execute()
+    resp, r, err := apiClient.DefaultApi.EdgeFirewallUuidPatch(context.Background(), uuid).UpdateEdgeFirewallRequest(updateEdgeFirewallRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.EdgeFirewallUuidPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EdgeFirewallUuidPatch`: ListEdgeFirewallResponse
+    // response from `EdgeFirewallUuidPatch`: EdgeFirewallResponse
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.EdgeFirewallUuidPatch`: %v\n", resp)
 }
 ```
@@ -329,11 +331,11 @@ Other parameters are passed through a pointer to a apiEdgeFirewallUuidPatchReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **ListEdgeFirewallResponse** |  | 
+ **updateEdgeFirewallRequest** | [**UpdateEdgeFirewallRequest**](UpdateEdgeFirewallRequest.md) |  | 
 
 ### Return type
 
-[**ListEdgeFirewallResponse**](ListEdgeFirewallResponse.md)
+[**EdgeFirewallResponse**](EdgeFirewallResponse.md)
 
 ### Authorization
 
@@ -351,7 +353,7 @@ Name | Type | Description  | Notes
 
 ## EdgeFirewallUuidPut
 
-> ListEdgeFirewallResponse EdgeFirewallUuidPut(ctx, uuid).Body(body).Execute()
+> EdgeFirewallResponse EdgeFirewallUuidPut(ctx, uuid).UpdateEdgeFirewallRequest(updateEdgeFirewallRequest).Execute()
 
 Overwrite some edge firewall attributes, like \"active\"
 
@@ -369,16 +371,16 @@ import (
 
 func main() {
     uuid := "uuid_example" // string | 
-    body := ListEdgeFirewallResponse(987) // ListEdgeFirewallResponse | 
+    updateEdgeFirewallRequest := *openapiclient.NewUpdateEdgeFirewallRequest() // UpdateEdgeFirewallRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.EdgeFirewallUuidPut(context.Background(), uuid).Body(body).Execute()
+    resp, r, err := apiClient.DefaultApi.EdgeFirewallUuidPut(context.Background(), uuid).UpdateEdgeFirewallRequest(updateEdgeFirewallRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.EdgeFirewallUuidPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EdgeFirewallUuidPut`: ListEdgeFirewallResponse
+    // response from `EdgeFirewallUuidPut`: EdgeFirewallResponse
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.EdgeFirewallUuidPut`: %v\n", resp)
 }
 ```
@@ -399,11 +401,11 @@ Other parameters are passed through a pointer to a apiEdgeFirewallUuidPutRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **ListEdgeFirewallResponse** |  | 
+ **updateEdgeFirewallRequest** | [**UpdateEdgeFirewallRequest**](UpdateEdgeFirewallRequest.md) |  | 
 
 ### Return type
 
-[**ListEdgeFirewallResponse**](ListEdgeFirewallResponse.md)
+[**EdgeFirewallResponse**](EdgeFirewallResponse.md)
 
 ### Authorization
 

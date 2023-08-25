@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -12,6 +11,7 @@ docs/EdgeFirewall.md
 docs/EdgeFirewallResponse.md
 docs/Links.md
 docs/ListEdgeFirewallResponse.md
+docs/UpdateEdgeFirewallRequest.md
 git_push.sh
 go.mod
 go.sum
@@ -20,6 +20,6 @@ model_edge_firewall.go
 model_edge_firewall_response.go
 model_links.go
 model_list_edge_firewall_response.go
+model_update_edge_firewall_request.go
 response.go
-test/api_default_test.go
 utils.go

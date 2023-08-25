@@ -19,6 +19,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - explode: true
@@ -26,6 +27,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - explode: true
@@ -49,6 +51,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListEdgeFirewallResponse'
           description: A list of edge firewalls
+        "404":
+          description: Not found
       summary: List all user edge firewall
     post:
       requestBody:
@@ -59,9 +63,13 @@ paths:
         required: true
       responses:
         "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdgeFirewallResponse'
           description: Edge firewall created
         "400":
-          description: Internal Server Error
+          description: Bad Request
         "500":
           description: Internal Server Error
       summary: Create a edge firewall
@@ -78,6 +86,10 @@ paths:
       responses:
         "204":
           description: Successfully deleted
+        "400":
+          description: Bad Request
+        "404":
+          description: Not found
       summary: Delete an edge firewall by uuid
     get:
       parameters:
@@ -95,6 +107,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdgeFirewallResponse'
           description: An edge firewall object
+        "400":
+          description: Bad Request
+        "404":
+          description: Not found
       summary: Retrieve an edge firewall set by uuid
     patch:
       parameters:
@@ -116,10 +132,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListEdgeFirewallResponse'
+                $ref: '#/components/schemas/EdgeFirewallResponse'
           description: Successfully updated
         "400":
           description: Bad Request
+        "404":
+          description: Not found
         "500":
           description: Internal Server Error
       summary: "Update some edge firewall attributes, like \"active\""
@@ -143,10 +161,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListEdgeFirewallResponse'
+                $ref: '#/components/schemas/EdgeFirewallResponse'
           description: Successfully updated
         "400":
           description: Bad Request
+        "404":
+          description: Not found
         "500":
           description: Internal Server Error
       summary: "Overwrite some edge firewall attributes, like \"active\""
@@ -158,8 +178,10 @@ components:
         previous: previous
       properties:
         previous:
+          nullable: true
           type: string
         next:
+          nullable: true
           type: string
       type: object
     EdgeFirewall:
@@ -198,6 +220,7 @@ components:
           type: boolean
         domains:
           items:
+            format: int64
             type: integer
           type: array
       type: object
@@ -266,6 +289,7 @@ components:
           type: string
         domains:
           items:
+            format: int64
             type: integer
           type: array
         is_active:
@@ -300,7 +324,32 @@ components:
           type: number
       type: object
     UpdateEdgeFirewallRequest:
-      $ref: '#/components/schemas/ListEdgeFirewallResponse'
+      example:
+        is_active: true
+        name: name
+        waf_enabled: true
+        domains:
+        - 0
+        - 0
+        network_protection_enabled: true
+        edge_functions_enabled: true
+      properties:
+        name:
+          type: string
+        domains:
+          items:
+            format: int64
+            type: integer
+          type: array
+        is_active:
+          type: boolean
+        edge_functions_enabled:
+          type: boolean
+        network_protection_enabled:
+          type: boolean
+        waf_enabled:
+          type: boolean
+      type: object
   securitySchemes:
     tokenAuth:
       description: |
