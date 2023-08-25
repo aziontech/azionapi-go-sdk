@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateEdgeFirewallRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateEdgeFirewallRequest{}
+// checks if the UpdateEdgeFirewallRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateEdgeFirewallRequest{}
 
-// CreateEdgeFirewallRequest struct for CreateEdgeFirewallRequest
-type CreateEdgeFirewallRequest struct {
+// UpdateEdgeFirewallRequest struct for UpdateEdgeFirewallRequest
+type UpdateEdgeFirewallRequest struct {
 	Name *string `json:"name,omitempty"`
 	Domains []int64 `json:"domains,omitempty"`
 	IsActive *bool `json:"is_active,omitempty"`
@@ -27,25 +27,25 @@ type CreateEdgeFirewallRequest struct {
 	WafEnabled *bool `json:"waf_enabled,omitempty"`
 }
 
-// NewCreateEdgeFirewallRequest instantiates a new CreateEdgeFirewallRequest object
+// NewUpdateEdgeFirewallRequest instantiates a new UpdateEdgeFirewallRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateEdgeFirewallRequest() *CreateEdgeFirewallRequest {
-	this := CreateEdgeFirewallRequest{}
+func NewUpdateEdgeFirewallRequest() *UpdateEdgeFirewallRequest {
+	this := UpdateEdgeFirewallRequest{}
 	return &this
 }
 
-// NewCreateEdgeFirewallRequestWithDefaults instantiates a new CreateEdgeFirewallRequest object
+// NewUpdateEdgeFirewallRequestWithDefaults instantiates a new UpdateEdgeFirewallRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateEdgeFirewallRequestWithDefaults() *CreateEdgeFirewallRequest {
-	this := CreateEdgeFirewallRequest{}
+func NewUpdateEdgeFirewallRequestWithDefaults() *UpdateEdgeFirewallRequest {
+	this := UpdateEdgeFirewallRequest{}
 	return &this
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *CreateEdgeFirewallRequest) GetName() string {
+func (o *UpdateEdgeFirewallRequest) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -55,7 +55,7 @@ func (o *CreateEdgeFirewallRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFirewallRequest) GetNameOk() (*string, bool) {
+func (o *UpdateEdgeFirewallRequest) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *CreateEdgeFirewallRequest) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *CreateEdgeFirewallRequest) HasName() bool {
+func (o *UpdateEdgeFirewallRequest) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -72,12 +72,12 @@ func (o *CreateEdgeFirewallRequest) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CreateEdgeFirewallRequest) SetName(v string) {
+func (o *UpdateEdgeFirewallRequest) SetName(v string) {
 	o.Name = &v
 }
 
 // GetDomains returns the Domains field value if set, zero value otherwise.
-func (o *CreateEdgeFirewallRequest) GetDomains() []int64 {
+func (o *UpdateEdgeFirewallRequest) GetDomains() []int64 {
 	if o == nil || IsNil(o.Domains) {
 		var ret []int64
 		return ret
@@ -87,7 +87,7 @@ func (o *CreateEdgeFirewallRequest) GetDomains() []int64 {
 
 // GetDomainsOk returns a tuple with the Domains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFirewallRequest) GetDomainsOk() ([]int64, bool) {
+func (o *UpdateEdgeFirewallRequest) GetDomainsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.Domains) {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *CreateEdgeFirewallRequest) GetDomainsOk() ([]int64, bool) {
 }
 
 // HasDomains returns a boolean if a field has been set.
-func (o *CreateEdgeFirewallRequest) HasDomains() bool {
+func (o *UpdateEdgeFirewallRequest) HasDomains() bool {
 	if o != nil && !IsNil(o.Domains) {
 		return true
 	}
@@ -104,12 +104,12 @@ func (o *CreateEdgeFirewallRequest) HasDomains() bool {
 }
 
 // SetDomains gets a reference to the given []int64 and assigns it to the Domains field.
-func (o *CreateEdgeFirewallRequest) SetDomains(v []int64) {
+func (o *UpdateEdgeFirewallRequest) SetDomains(v []int64) {
 	o.Domains = v
 }
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
-func (o *CreateEdgeFirewallRequest) GetIsActive() bool {
+func (o *UpdateEdgeFirewallRequest) GetIsActive() bool {
 	if o == nil || IsNil(o.IsActive) {
 		var ret bool
 		return ret
@@ -119,7 +119,7 @@ func (o *CreateEdgeFirewallRequest) GetIsActive() bool {
 
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFirewallRequest) GetIsActiveOk() (*bool, bool) {
+func (o *UpdateEdgeFirewallRequest) GetIsActiveOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsActive) {
 		return nil, false
 	}
@@ -127,7 +127,7 @@ func (o *CreateEdgeFirewallRequest) GetIsActiveOk() (*bool, bool) {
 }
 
 // HasIsActive returns a boolean if a field has been set.
-func (o *CreateEdgeFirewallRequest) HasIsActive() bool {
+func (o *UpdateEdgeFirewallRequest) HasIsActive() bool {
 	if o != nil && !IsNil(o.IsActive) {
 		return true
 	}
@@ -136,12 +136,12 @@ func (o *CreateEdgeFirewallRequest) HasIsActive() bool {
 }
 
 // SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
-func (o *CreateEdgeFirewallRequest) SetIsActive(v bool) {
+func (o *UpdateEdgeFirewallRequest) SetIsActive(v bool) {
 	o.IsActive = &v
 }
 
 // GetEdgeFunctionsEnabled returns the EdgeFunctionsEnabled field value if set, zero value otherwise.
-func (o *CreateEdgeFirewallRequest) GetEdgeFunctionsEnabled() bool {
+func (o *UpdateEdgeFirewallRequest) GetEdgeFunctionsEnabled() bool {
 	if o == nil || IsNil(o.EdgeFunctionsEnabled) {
 		var ret bool
 		return ret
@@ -151,7 +151,7 @@ func (o *CreateEdgeFirewallRequest) GetEdgeFunctionsEnabled() bool {
 
 // GetEdgeFunctionsEnabledOk returns a tuple with the EdgeFunctionsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFirewallRequest) GetEdgeFunctionsEnabledOk() (*bool, bool) {
+func (o *UpdateEdgeFirewallRequest) GetEdgeFunctionsEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.EdgeFunctionsEnabled) {
 		return nil, false
 	}
@@ -159,7 +159,7 @@ func (o *CreateEdgeFirewallRequest) GetEdgeFunctionsEnabledOk() (*bool, bool) {
 }
 
 // HasEdgeFunctionsEnabled returns a boolean if a field has been set.
-func (o *CreateEdgeFirewallRequest) HasEdgeFunctionsEnabled() bool {
+func (o *UpdateEdgeFirewallRequest) HasEdgeFunctionsEnabled() bool {
 	if o != nil && !IsNil(o.EdgeFunctionsEnabled) {
 		return true
 	}
@@ -168,12 +168,12 @@ func (o *CreateEdgeFirewallRequest) HasEdgeFunctionsEnabled() bool {
 }
 
 // SetEdgeFunctionsEnabled gets a reference to the given bool and assigns it to the EdgeFunctionsEnabled field.
-func (o *CreateEdgeFirewallRequest) SetEdgeFunctionsEnabled(v bool) {
+func (o *UpdateEdgeFirewallRequest) SetEdgeFunctionsEnabled(v bool) {
 	o.EdgeFunctionsEnabled = &v
 }
 
 // GetNetworkProtectionEnabled returns the NetworkProtectionEnabled field value if set, zero value otherwise.
-func (o *CreateEdgeFirewallRequest) GetNetworkProtectionEnabled() bool {
+func (o *UpdateEdgeFirewallRequest) GetNetworkProtectionEnabled() bool {
 	if o == nil || IsNil(o.NetworkProtectionEnabled) {
 		var ret bool
 		return ret
@@ -183,7 +183,7 @@ func (o *CreateEdgeFirewallRequest) GetNetworkProtectionEnabled() bool {
 
 // GetNetworkProtectionEnabledOk returns a tuple with the NetworkProtectionEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFirewallRequest) GetNetworkProtectionEnabledOk() (*bool, bool) {
+func (o *UpdateEdgeFirewallRequest) GetNetworkProtectionEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.NetworkProtectionEnabled) {
 		return nil, false
 	}
@@ -191,7 +191,7 @@ func (o *CreateEdgeFirewallRequest) GetNetworkProtectionEnabledOk() (*bool, bool
 }
 
 // HasNetworkProtectionEnabled returns a boolean if a field has been set.
-func (o *CreateEdgeFirewallRequest) HasNetworkProtectionEnabled() bool {
+func (o *UpdateEdgeFirewallRequest) HasNetworkProtectionEnabled() bool {
 	if o != nil && !IsNil(o.NetworkProtectionEnabled) {
 		return true
 	}
@@ -200,12 +200,12 @@ func (o *CreateEdgeFirewallRequest) HasNetworkProtectionEnabled() bool {
 }
 
 // SetNetworkProtectionEnabled gets a reference to the given bool and assigns it to the NetworkProtectionEnabled field.
-func (o *CreateEdgeFirewallRequest) SetNetworkProtectionEnabled(v bool) {
+func (o *UpdateEdgeFirewallRequest) SetNetworkProtectionEnabled(v bool) {
 	o.NetworkProtectionEnabled = &v
 }
 
 // GetWafEnabled returns the WafEnabled field value if set, zero value otherwise.
-func (o *CreateEdgeFirewallRequest) GetWafEnabled() bool {
+func (o *UpdateEdgeFirewallRequest) GetWafEnabled() bool {
 	if o == nil || IsNil(o.WafEnabled) {
 		var ret bool
 		return ret
@@ -215,7 +215,7 @@ func (o *CreateEdgeFirewallRequest) GetWafEnabled() bool {
 
 // GetWafEnabledOk returns a tuple with the WafEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFirewallRequest) GetWafEnabledOk() (*bool, bool) {
+func (o *UpdateEdgeFirewallRequest) GetWafEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.WafEnabled) {
 		return nil, false
 	}
@@ -223,7 +223,7 @@ func (o *CreateEdgeFirewallRequest) GetWafEnabledOk() (*bool, bool) {
 }
 
 // HasWafEnabled returns a boolean if a field has been set.
-func (o *CreateEdgeFirewallRequest) HasWafEnabled() bool {
+func (o *UpdateEdgeFirewallRequest) HasWafEnabled() bool {
 	if o != nil && !IsNil(o.WafEnabled) {
 		return true
 	}
@@ -232,11 +232,11 @@ func (o *CreateEdgeFirewallRequest) HasWafEnabled() bool {
 }
 
 // SetWafEnabled gets a reference to the given bool and assigns it to the WafEnabled field.
-func (o *CreateEdgeFirewallRequest) SetWafEnabled(v bool) {
+func (o *UpdateEdgeFirewallRequest) SetWafEnabled(v bool) {
 	o.WafEnabled = &v
 }
 
-func (o CreateEdgeFirewallRequest) MarshalJSON() ([]byte, error) {
+func (o UpdateEdgeFirewallRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -244,7 +244,7 @@ func (o CreateEdgeFirewallRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CreateEdgeFirewallRequest) ToMap() (map[string]interface{}, error) {
+func (o UpdateEdgeFirewallRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -267,38 +267,38 @@ func (o CreateEdgeFirewallRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCreateEdgeFirewallRequest struct {
-	value *CreateEdgeFirewallRequest
+type NullableUpdateEdgeFirewallRequest struct {
+	value *UpdateEdgeFirewallRequest
 	isSet bool
 }
 
-func (v NullableCreateEdgeFirewallRequest) Get() *CreateEdgeFirewallRequest {
+func (v NullableUpdateEdgeFirewallRequest) Get() *UpdateEdgeFirewallRequest {
 	return v.value
 }
 
-func (v *NullableCreateEdgeFirewallRequest) Set(val *CreateEdgeFirewallRequest) {
+func (v *NullableUpdateEdgeFirewallRequest) Set(val *UpdateEdgeFirewallRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateEdgeFirewallRequest) IsSet() bool {
+func (v NullableUpdateEdgeFirewallRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateEdgeFirewallRequest) Unset() {
+func (v *NullableUpdateEdgeFirewallRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateEdgeFirewallRequest(val *CreateEdgeFirewallRequest) *NullableCreateEdgeFirewallRequest {
-	return &NullableCreateEdgeFirewallRequest{value: val, isSet: true}
+func NewNullableUpdateEdgeFirewallRequest(val *UpdateEdgeFirewallRequest) *NullableUpdateEdgeFirewallRequest {
+	return &NullableUpdateEdgeFirewallRequest{value: val, isSet: true}
 }
 
-func (v NullableCreateEdgeFirewallRequest) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateEdgeFirewallRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateEdgeFirewallRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateEdgeFirewallRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

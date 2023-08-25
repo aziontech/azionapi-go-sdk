@@ -28,7 +28,7 @@ type EdgeFirewall struct {
 	NetworkProtectionEnabled *bool `json:"network_protection_enabled,omitempty"`
 	WafEnabled *bool `json:"waf_enabled,omitempty"`
 	DebugRules *bool `json:"debug_rules,omitempty"`
-	Domains []int32 `json:"domains,omitempty"`
+	Domains []int64 `json:"domains,omitempty"`
 }
 
 // NewEdgeFirewall instantiates a new EdgeFirewall object
@@ -337,9 +337,9 @@ func (o *EdgeFirewall) SetDebugRules(v bool) {
 }
 
 // GetDomains returns the Domains field value if set, zero value otherwise.
-func (o *EdgeFirewall) GetDomains() []int32 {
+func (o *EdgeFirewall) GetDomains() []int64 {
 	if o == nil || IsNil(o.Domains) {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.Domains
@@ -347,7 +347,7 @@ func (o *EdgeFirewall) GetDomains() []int32 {
 
 // GetDomainsOk returns a tuple with the Domains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeFirewall) GetDomainsOk() ([]int32, bool) {
+func (o *EdgeFirewall) GetDomainsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.Domains) {
 		return nil, false
 	}
@@ -363,8 +363,8 @@ func (o *EdgeFirewall) HasDomains() bool {
 	return false
 }
 
-// SetDomains gets a reference to the given []int32 and assigns it to the Domains field.
-func (o *EdgeFirewall) SetDomains(v []int32) {
+// SetDomains gets a reference to the given []int64 and assigns it to the Domains field.
+func (o *EdgeFirewall) SetDomains(v []int64) {
 	o.Domains = v
 }
 

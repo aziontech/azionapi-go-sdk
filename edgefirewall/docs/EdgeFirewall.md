@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **NetworkProtectionEnabled** | Pointer to **bool** |  | [optional] 
 **WafEnabled** | Pointer to **bool** |  | [optional] 
 **DebugRules** | Pointer to **bool** |  | [optional] 
-**Domains** | Pointer to **[]int32** |  | [optional] 
+**Domains** | Pointer to **[]int64** |  | [optional] 
 
 ## Methods
 
@@ -261,20 +261,20 @@ HasDebugRules returns a boolean if a field has been set.
 
 ### GetDomains
 
-`func (o *EdgeFirewall) GetDomains() []int32`
+`func (o *EdgeFirewall) GetDomains() []int64`
 
 GetDomains returns the Domains field if non-nil, zero value otherwise.
 
 ### GetDomainsOk
 
-`func (o *EdgeFirewall) GetDomainsOk() (*[]int32, bool)`
+`func (o *EdgeFirewall) GetDomainsOk() (*[]int64, bool)`
 
 GetDomainsOk returns a tuple with the Domains field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDomains
 
-`func (o *EdgeFirewall) SetDomains(v []int32)`
+`func (o *EdgeFirewall) SetDomains(v []int64)`
 
 SetDomains sets Domains field to given value.
 

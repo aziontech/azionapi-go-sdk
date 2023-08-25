@@ -26,18 +26,18 @@ type DefaultApiService service
 type ApiEdgeFirewallGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *string
 	orderBy *string
 }
 
-func (r ApiEdgeFirewallGetRequest) Page(page int32) ApiEdgeFirewallGetRequest {
+func (r ApiEdgeFirewallGetRequest) Page(page int64) ApiEdgeFirewallGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiEdgeFirewallGetRequest) PageSize(pageSize int32) ApiEdgeFirewallGetRequest {
+func (r ApiEdgeFirewallGetRequest) PageSize(pageSize int64) ApiEdgeFirewallGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -181,7 +181,7 @@ func (r ApiEdgeFirewallPostRequest) CreateEdgeFirewallRequest(createEdgeFirewall
 	return r
 }
 
-func (r ApiEdgeFirewallPostRequest) Execute() (*http.Response, error) {
+func (r ApiEdgeFirewallPostRequest) Execute() (*EdgeFirewallResponse, *http.Response, error) {
 	return r.ApiService.EdgeFirewallPostExecute(r)
 }
 
@@ -199,16 +199,18 @@ func (a *DefaultApiService) EdgeFirewallPost(ctx context.Context) ApiEdgeFirewal
 }
 
 // Execute executes the request
-func (a *DefaultApiService) EdgeFirewallPostExecute(r ApiEdgeFirewallPostRequest) (*http.Response, error) {
+//  @return EdgeFirewallResponse
+func (a *DefaultApiService) EdgeFirewallPostExecute(r ApiEdgeFirewallPostRequest) (*EdgeFirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EdgeFirewallResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallPost")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_firewall"
@@ -217,7 +219,7 @@ func (a *DefaultApiService) EdgeFirewallPostExecute(r ApiEdgeFirewallPostRequest
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.createEdgeFirewallRequest == nil {
-		return nil, reportError("createEdgeFirewallRequest is required and must be specified")
+		return localVarReturnValue, nil, reportError("createEdgeFirewallRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -230,7 +232,7 @@ func (a *DefaultApiService) EdgeFirewallPostExecute(r ApiEdgeFirewallPostRequest
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -255,19 +257,19 @@ func (a *DefaultApiService) EdgeFirewallPostExecute(r ApiEdgeFirewallPostRequest
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -275,10 +277,19 @@ func (a *DefaultApiService) EdgeFirewallPostExecute(r ApiEdgeFirewallPostRequest
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiEdgeFirewallUuidDeleteRequest struct {
@@ -504,15 +515,15 @@ type ApiEdgeFirewallUuidPatchRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
 	uuid string
-	body *ListEdgeFirewallResponse
+	updateEdgeFirewallRequest *UpdateEdgeFirewallRequest
 }
 
-func (r ApiEdgeFirewallUuidPatchRequest) Body(body ListEdgeFirewallResponse) ApiEdgeFirewallUuidPatchRequest {
-	r.body = &body
+func (r ApiEdgeFirewallUuidPatchRequest) UpdateEdgeFirewallRequest(updateEdgeFirewallRequest UpdateEdgeFirewallRequest) ApiEdgeFirewallUuidPatchRequest {
+	r.updateEdgeFirewallRequest = &updateEdgeFirewallRequest
 	return r
 }
 
-func (r ApiEdgeFirewallUuidPatchRequest) Execute() (*ListEdgeFirewallResponse, *http.Response, error) {
+func (r ApiEdgeFirewallUuidPatchRequest) Execute() (*EdgeFirewallResponse, *http.Response, error) {
 	return r.ApiService.EdgeFirewallUuidPatchExecute(r)
 }
 
@@ -532,13 +543,13 @@ func (a *DefaultApiService) EdgeFirewallUuidPatch(ctx context.Context, uuid stri
 }
 
 // Execute executes the request
-//  @return ListEdgeFirewallResponse
-func (a *DefaultApiService) EdgeFirewallUuidPatchExecute(r ApiEdgeFirewallUuidPatchRequest) (*ListEdgeFirewallResponse, *http.Response, error) {
+//  @return EdgeFirewallResponse
+func (a *DefaultApiService) EdgeFirewallUuidPatchExecute(r ApiEdgeFirewallUuidPatchRequest) (*EdgeFirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListEdgeFirewallResponse
+		localVarReturnValue  *EdgeFirewallResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallUuidPatch")
@@ -552,8 +563,8 @@ func (a *DefaultApiService) EdgeFirewallUuidPatchExecute(r ApiEdgeFirewallUuidPa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.body == nil {
-		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	if r.updateEdgeFirewallRequest == nil {
+		return localVarReturnValue, nil, reportError("updateEdgeFirewallRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -574,7 +585,7 @@ func (a *DefaultApiService) EdgeFirewallUuidPatchExecute(r ApiEdgeFirewallUuidPa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.updateEdgeFirewallRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -630,15 +641,15 @@ type ApiEdgeFirewallUuidPutRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
 	uuid string
-	body *ListEdgeFirewallResponse
+	updateEdgeFirewallRequest *UpdateEdgeFirewallRequest
 }
 
-func (r ApiEdgeFirewallUuidPutRequest) Body(body ListEdgeFirewallResponse) ApiEdgeFirewallUuidPutRequest {
-	r.body = &body
+func (r ApiEdgeFirewallUuidPutRequest) UpdateEdgeFirewallRequest(updateEdgeFirewallRequest UpdateEdgeFirewallRequest) ApiEdgeFirewallUuidPutRequest {
+	r.updateEdgeFirewallRequest = &updateEdgeFirewallRequest
 	return r
 }
 
-func (r ApiEdgeFirewallUuidPutRequest) Execute() (*ListEdgeFirewallResponse, *http.Response, error) {
+func (r ApiEdgeFirewallUuidPutRequest) Execute() (*EdgeFirewallResponse, *http.Response, error) {
 	return r.ApiService.EdgeFirewallUuidPutExecute(r)
 }
 
@@ -658,13 +669,13 @@ func (a *DefaultApiService) EdgeFirewallUuidPut(ctx context.Context, uuid string
 }
 
 // Execute executes the request
-//  @return ListEdgeFirewallResponse
-func (a *DefaultApiService) EdgeFirewallUuidPutExecute(r ApiEdgeFirewallUuidPutRequest) (*ListEdgeFirewallResponse, *http.Response, error) {
+//  @return EdgeFirewallResponse
+func (a *DefaultApiService) EdgeFirewallUuidPutExecute(r ApiEdgeFirewallUuidPutRequest) (*EdgeFirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListEdgeFirewallResponse
+		localVarReturnValue  *EdgeFirewallResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallUuidPut")
@@ -678,8 +689,8 @@ func (a *DefaultApiService) EdgeFirewallUuidPutExecute(r ApiEdgeFirewallUuidPutR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.body == nil {
-		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	if r.updateEdgeFirewallRequest == nil {
+		return localVarReturnValue, nil, reportError("updateEdgeFirewallRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -700,7 +711,7 @@ func (a *DefaultApiService) EdgeFirewallUuidPutExecute(r ApiEdgeFirewallUuidPutR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.updateEdgeFirewallRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

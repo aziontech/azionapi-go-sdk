@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
  - [EdgeFirewallResponse](docs/EdgeFirewallResponse.md)
  - [Links](docs/Links.md)
  - [ListEdgeFirewallResponse](docs/ListEdgeFirewallResponse.md)
+ - [UpdateEdgeFirewallRequest](docs/UpdateEdgeFirewallRequest.md)
 
 
 ## Documentation For Authorization
