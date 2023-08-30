@@ -6,8 +6,8 @@ info:
   title: Variables API
   version: 1.0.0
 servers:
-- description: Stage
-  url: https://stage-api.azion.net/variables
+- description: Production
+  url: https://api.azionapi.net/variables
 security:
 - tokenAuth: []
 paths:
