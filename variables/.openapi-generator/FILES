@@ -8,7 +8,7 @@ configuration.go
 docs/Variable.md
 docs/VariableCreate.md
 docs/VariableGet.md
-docs/VariablesApi.md
+docs/VariablesAPI.md
 git_push.sh
 go.mod
 go.sum

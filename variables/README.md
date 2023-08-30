@@ -73,15 +73,15 @@ ctx = context.WithValue(context.Background(), variables.ContextOperationServerVa
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://stage-api.azion.net/variables*
+All URIs are relative to *https://api.azionapi.net/variables*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*VariablesApi* | [**ApiVariablesCreate**](docs/VariablesApi.md#apivariablescreate) | **Post** /variables | /variables
-*VariablesApi* | [**ApiVariablesDestroy**](docs/VariablesApi.md#apivariablesdestroy) | **Delete** /variables/{uuid} | /variables/:uuid
-*VariablesApi* | [**ApiVariablesList**](docs/VariablesApi.md#apivariableslist) | **Get** /variables | /variables
-*VariablesApi* | [**ApiVariablesRetrieve**](docs/VariablesApi.md#apivariablesretrieve) | **Get** /variables/{uuid} | /variables/:uuid
-*VariablesApi* | [**ApiVariablesUpdate**](docs/VariablesApi.md#apivariablesupdate) | **Put** /variables/{uuid} | /variables/:uuid
+*VariablesAPI* | [**ApiVariablesCreate**](docs/VariablesAPI.md#apivariablescreate) | **Post** /variables | /variables
+*VariablesAPI* | [**ApiVariablesDestroy**](docs/VariablesAPI.md#apivariablesdestroy) | **Delete** /variables/{uuid} | /variables/:uuid
+*VariablesAPI* | [**ApiVariablesList**](docs/VariablesAPI.md#apivariableslist) | **Get** /variables | /variables
+*VariablesAPI* | [**ApiVariablesRetrieve**](docs/VariablesAPI.md#apivariablesretrieve) | **Get** /variables/{uuid} | /variables/:uuid
+*VariablesAPI* | [**ApiVariablesUpdate**](docs/VariablesAPI.md#apivariablesupdate) | **Put** /variables/{uuid} | /variables/:uuid
 
 
 ## Documentation For Models
@@ -102,6 +102,19 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods

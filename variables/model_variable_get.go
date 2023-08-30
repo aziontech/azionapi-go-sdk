@@ -232,11 +232,11 @@ func (o VariableGet) MarshalJSON() ([]byte, error) {
 
 func (o VariableGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: uuid is readOnly
+	toSerialize["uuid"] = o.Uuid
 	toSerialize["key"] = o.Key
-	// skip: value is readOnly
-	// skip: secret is readOnly
-	// skip: last_editor is readOnly
+	toSerialize["value"] = o.Value
+	toSerialize["secret"] = o.Secret
+	toSerialize["last_editor"] = o.LastEditor
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil

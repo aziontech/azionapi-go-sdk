@@ -93,8 +93,8 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://stage-api.azion.net/variables",
-				Description: "Stage",
+				URL: "https://api.azionapi.net/variables",
+				Description: "Production",
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{

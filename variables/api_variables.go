@@ -20,12 +20,12 @@ import (
 )
 
 
-// VariablesApiService VariablesApi service
-type VariablesApiService service
+// VariablesAPIService VariablesAPI service
+type VariablesAPIService service
 
 type ApiApiVariablesCreateRequest struct {
 	ctx context.Context
-	ApiService *VariablesApiService
+	ApiService *VariablesAPIService
 	variableCreate *VariableCreate
 }
 
@@ -46,7 +46,7 @@ Create a new Variable. <br><ul><li>If the attribute "secret" is informed with va
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiVariablesCreateRequest
 */
-func (a *VariablesApiService) ApiVariablesCreate(ctx context.Context) ApiApiVariablesCreateRequest {
+func (a *VariablesAPIService) ApiVariablesCreate(ctx context.Context) ApiApiVariablesCreateRequest {
 	return ApiApiVariablesCreateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *VariablesApiService) ApiVariablesCreate(ctx context.Context) ApiApiVari
 
 // Execute executes the request
 //  @return VariableGet
-func (a *VariablesApiService) ApiVariablesCreateExecute(r ApiApiVariablesCreateRequest) (*VariableGet, *http.Response, error) {
+func (a *VariablesAPIService) ApiVariablesCreateExecute(r ApiApiVariablesCreateRequest) (*VariableGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *VariablesApiService) ApiVariablesCreateExecute(r ApiApiVariablesCreateR
 		localVarReturnValue  *VariableGet
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesApiService.ApiVariablesCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesAPIService.ApiVariablesCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -149,7 +149,7 @@ func (a *VariablesApiService) ApiVariablesCreateExecute(r ApiApiVariablesCreateR
 
 type ApiApiVariablesDestroyRequest struct {
 	ctx context.Context
-	ApiService *VariablesApiService
+	ApiService *VariablesAPIService
 	uuid string
 }
 
@@ -166,7 +166,7 @@ Delete a Variable by it's UUID
  @param uuid
  @return ApiApiVariablesDestroyRequest
 */
-func (a *VariablesApiService) ApiVariablesDestroy(ctx context.Context, uuid string) ApiApiVariablesDestroyRequest {
+func (a *VariablesAPIService) ApiVariablesDestroy(ctx context.Context, uuid string) ApiApiVariablesDestroyRequest {
 	return ApiApiVariablesDestroyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -175,14 +175,14 @@ func (a *VariablesApiService) ApiVariablesDestroy(ctx context.Context, uuid stri
 }
 
 // Execute executes the request
-func (a *VariablesApiService) ApiVariablesDestroyExecute(r ApiApiVariablesDestroyRequest) (*http.Response, error) {
+func (a *VariablesAPIService) ApiVariablesDestroyExecute(r ApiApiVariablesDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesApiService.ApiVariablesDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesAPIService.ApiVariablesDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -255,7 +255,7 @@ func (a *VariablesApiService) ApiVariablesDestroyExecute(r ApiApiVariablesDestro
 
 type ApiApiVariablesListRequest struct {
 	ctx context.Context
-	ApiService *VariablesApiService
+	ApiService *VariablesAPIService
 }
 
 func (r ApiApiVariablesListRequest) Execute() ([]Variable, *http.Response, error) {
@@ -270,7 +270,7 @@ List all user's Variables.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiApiVariablesListRequest
 */
-func (a *VariablesApiService) ApiVariablesList(ctx context.Context) ApiApiVariablesListRequest {
+func (a *VariablesAPIService) ApiVariablesList(ctx context.Context) ApiApiVariablesListRequest {
 	return ApiApiVariablesListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -279,7 +279,7 @@ func (a *VariablesApiService) ApiVariablesList(ctx context.Context) ApiApiVariab
 
 // Execute executes the request
 //  @return []Variable
-func (a *VariablesApiService) ApiVariablesListExecute(r ApiApiVariablesListRequest) ([]Variable, *http.Response, error) {
+func (a *VariablesAPIService) ApiVariablesListExecute(r ApiApiVariablesListRequest) ([]Variable, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -287,7 +287,7 @@ func (a *VariablesApiService) ApiVariablesListExecute(r ApiApiVariablesListReque
 		localVarReturnValue  []Variable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesApiService.ApiVariablesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesAPIService.ApiVariablesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -368,7 +368,7 @@ func (a *VariablesApiService) ApiVariablesListExecute(r ApiApiVariablesListReque
 
 type ApiApiVariablesRetrieveRequest struct {
 	ctx context.Context
-	ApiService *VariablesApiService
+	ApiService *VariablesAPIService
 	uuid string
 }
 
@@ -385,7 +385,7 @@ Retrieve all data for a Variable by it's UUID
  @param uuid
  @return ApiApiVariablesRetrieveRequest
 */
-func (a *VariablesApiService) ApiVariablesRetrieve(ctx context.Context, uuid string) ApiApiVariablesRetrieveRequest {
+func (a *VariablesAPIService) ApiVariablesRetrieve(ctx context.Context, uuid string) ApiApiVariablesRetrieveRequest {
 	return ApiApiVariablesRetrieveRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -395,7 +395,7 @@ func (a *VariablesApiService) ApiVariablesRetrieve(ctx context.Context, uuid str
 
 // Execute executes the request
 //  @return Variable
-func (a *VariablesApiService) ApiVariablesRetrieveExecute(r ApiApiVariablesRetrieveRequest) (*Variable, *http.Response, error) {
+func (a *VariablesAPIService) ApiVariablesRetrieveExecute(r ApiApiVariablesRetrieveRequest) (*Variable, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -403,7 +403,7 @@ func (a *VariablesApiService) ApiVariablesRetrieveExecute(r ApiApiVariablesRetri
 		localVarReturnValue  *Variable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesApiService.ApiVariablesRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesAPIService.ApiVariablesRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -485,7 +485,7 @@ func (a *VariablesApiService) ApiVariablesRetrieveExecute(r ApiApiVariablesRetri
 
 type ApiApiVariablesUpdateRequest struct {
 	ctx context.Context
-	ApiService *VariablesApiService
+	ApiService *VariablesAPIService
 	uuid string
 	variableCreate *VariableCreate
 }
@@ -508,7 +508,7 @@ Update variable attributes by it's UUID. Keep the Variable UUID but overwrite al
  @param uuid
  @return ApiApiVariablesUpdateRequest
 */
-func (a *VariablesApiService) ApiVariablesUpdate(ctx context.Context, uuid string) ApiApiVariablesUpdateRequest {
+func (a *VariablesAPIService) ApiVariablesUpdate(ctx context.Context, uuid string) ApiApiVariablesUpdateRequest {
 	return ApiApiVariablesUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -518,7 +518,7 @@ func (a *VariablesApiService) ApiVariablesUpdate(ctx context.Context, uuid strin
 
 // Execute executes the request
 //  @return VariableGet
-func (a *VariablesApiService) ApiVariablesUpdateExecute(r ApiApiVariablesUpdateRequest) (*VariableGet, *http.Response, error) {
+func (a *VariablesAPIService) ApiVariablesUpdateExecute(r ApiApiVariablesUpdateRequest) (*VariableGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -526,7 +526,7 @@ func (a *VariablesApiService) ApiVariablesUpdateExecute(r ApiApiVariablesUpdateR
 		localVarReturnValue  *VariableGet
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesApiService.ApiVariablesUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VariablesAPIService.ApiVariablesUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
