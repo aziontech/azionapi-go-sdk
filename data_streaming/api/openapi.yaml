@@ -49,7 +49,7 @@ paths:
       tags:
       - Data Streaming
     post:
-      description: ""
+      description: Create a new data streaming.
       operationId: CreateNewDataStreaming
       requestBody:
         content:
@@ -358,6 +358,7 @@ paths:
 components:
   schemas:
     DataStreamingPostBody:
+      additionalProperties: false
       properties:
         name:
           type: string
@@ -436,6 +437,7 @@ components:
           type: integer
       type: object
     StandardDataStreamingPostBody:
+      additionalProperties: false
       properties:
         name:
           type: string
@@ -491,6 +493,7 @@ components:
           type: boolean
       type: object
     CustomDataStreamingPostBody:
+      additionalProperties: false
       properties:
         name:
           type: string

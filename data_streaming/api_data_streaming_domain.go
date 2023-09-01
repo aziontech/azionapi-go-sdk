@@ -19,12 +19,12 @@ import (
 )
 
 
-// DataStreamingDomainApiService DataStreamingDomainApi service
-type DataStreamingDomainApiService service
+// DataStreamingDomainAPIService DataStreamingDomainAPI service
+type DataStreamingDomainAPIService service
 
 type ApiListDataStreamingRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingDomainApiService
+	ApiService *DataStreamingDomainAPIService
 	name *string
 	streamingId *int64
 	selected *bool
@@ -58,7 +58,7 @@ Use the GET method to list all available domains that can be used on Data Stream
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDataStreamingRequest
 */
-func (a *DataStreamingDomainApiService) ListDataStreaming(ctx context.Context) ApiListDataStreamingRequest {
+func (a *DataStreamingDomainAPIService) ListDataStreaming(ctx context.Context) ApiListDataStreamingRequest {
 	return ApiListDataStreamingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -67,7 +67,7 @@ func (a *DataStreamingDomainApiService) ListDataStreaming(ctx context.Context) A
 
 // Execute executes the request
 //  @return DataStreamingsDomainResponse
-func (a *DataStreamingDomainApiService) ListDataStreamingExecute(r ApiListDataStreamingRequest) (*DataStreamingsDomainResponse, *http.Response, error) {
+func (a *DataStreamingDomainAPIService) ListDataStreamingExecute(r ApiListDataStreamingRequest) (*DataStreamingsDomainResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -75,7 +75,7 @@ func (a *DataStreamingDomainApiService) ListDataStreamingExecute(r ApiListDataSt
 		localVarReturnValue  *DataStreamingsDomainResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingDomainApiService.ListDataStreaming")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingDomainAPIService.ListDataStreaming")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

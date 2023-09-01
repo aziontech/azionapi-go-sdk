@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -13,8 +12,8 @@ docs/CreateDataStreamingResponse.md
 docs/CreateNewDataStreaming201Response.md
 docs/CreateNewDataStreamingRequest.md
 docs/CustomDataStreamingPostBody.md
-docs/DataStreamingApi.md
-docs/DataStreamingDomainApi.md
+docs/DataStreamingAPI.md
+docs/DataStreamingDomainAPI.md
 docs/DataStreamingEndpointTypeDatadogDTS.md
 docs/DataStreamingEndpointTypeKafka.md
 docs/DataStreamingEndpointTypeStandard.md
@@ -26,7 +25,7 @@ docs/DataStreamingResponseGetResultTypeKafka.md
 docs/DataStreamingResponseGetResultTypeStandard.md
 docs/DataStreamingResponseWithResults.md
 docs/DataStreamingResponseWithResultsResultsInner.md
-docs/DataStreamingTemplatesApi.md
+docs/DataStreamingTemplatesAPI.md
 docs/DataStreamingsById.md
 docs/DataStreamingsDomainResponse.md
 docs/DataStreamingsDomainResponseLinks.md
@@ -93,7 +92,4 @@ model_template.go
 model_template_result_by_id.go
 model_template_results.go
 response.go
-test/api_data_streaming_domain_test.go
-test/api_data_streaming_templates_test.go
-test/api_data_streaming_test.go
 utils.go

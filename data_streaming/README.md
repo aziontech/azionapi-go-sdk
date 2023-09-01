@@ -79,15 +79,15 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DataStreamingApi* | [**CreateNewDataStreaming**](docs/DataStreamingApi.md#createnewdatastreaming) | **Post** /data_streaming/streamings | Create a new data streaming
-*DataStreamingApi* | [**DeleteDataStreamingById**](docs/DataStreamingApi.md#deletedatastreamingbyid) | **Delete** /data_streaming/streamings/{data_streaming_id} | Delete data streaming
-*DataStreamingApi* | [**EditDataStreamingById**](docs/DataStreamingApi.md#editdatastreamingbyid) | **Patch** /data_streaming/streamings/{data_streaming_id} | Edit data streaming
-*DataStreamingApi* | [**ListDataStreamingById**](docs/DataStreamingApi.md#listdatastreamingbyid) | **Get** /data_streaming/streamings/{data_streaming_id} | Get expecific data streaming by Data Streaming ID
-*DataStreamingApi* | [**ListDataStreamings**](docs/DataStreamingApi.md#listdatastreamings) | **Get** /data_streaming/streamings | List all exist data streamings
-*DataStreamingApi* | [**OverwriteDataStreamingById**](docs/DataStreamingApi.md#overwritedatastreamingbyid) | **Put** /data_streaming/streamings/{data_streaming_id} | Overwrite data streaming
-*DataStreamingDomainApi* | [**ListDataStreaming**](docs/DataStreamingDomainApi.md#listdatastreaming) | **Get** /data_streaming/domains | List all domains used on data streaming
-*DataStreamingTemplatesApi* | [**GetDataStramingTemplateById**](docs/DataStreamingTemplatesApi.md#getdatastramingtemplatebyid) | **Get** /data_streaming/templates/{template_id} | Get an global Template info by template ID
-*DataStreamingTemplatesApi* | [**ListDataStreamingTemplates**](docs/DataStreamingTemplatesApi.md#listdatastreamingtemplates) | **Get** /data_streaming/templates | List all global Templates that can be used on Data Streaming operations
+*DataStreamingAPI* | [**CreateNewDataStreaming**](docs/DataStreamingAPI.md#createnewdatastreaming) | **Post** /data_streaming/streamings | Create a new data streaming
+*DataStreamingAPI* | [**DeleteDataStreamingById**](docs/DataStreamingAPI.md#deletedatastreamingbyid) | **Delete** /data_streaming/streamings/{data_streaming_id} | Delete data streaming
+*DataStreamingAPI* | [**EditDataStreamingById**](docs/DataStreamingAPI.md#editdatastreamingbyid) | **Patch** /data_streaming/streamings/{data_streaming_id} | Edit data streaming
+*DataStreamingAPI* | [**ListDataStreamingById**](docs/DataStreamingAPI.md#listdatastreamingbyid) | **Get** /data_streaming/streamings/{data_streaming_id} | Get expecific data streaming by Data Streaming ID
+*DataStreamingAPI* | [**ListDataStreamings**](docs/DataStreamingAPI.md#listdatastreamings) | **Get** /data_streaming/streamings | List all exist data streamings
+*DataStreamingAPI* | [**OverwriteDataStreamingById**](docs/DataStreamingAPI.md#overwritedatastreamingbyid) | **Put** /data_streaming/streamings/{data_streaming_id} | Overwrite data streaming
+*DataStreamingDomainAPI* | [**ListDataStreaming**](docs/DataStreamingDomainAPI.md#listdatastreaming) | **Get** /data_streaming/domains | List all domains used on data streaming
+*DataStreamingTemplatesAPI* | [**GetDataStramingTemplateById**](docs/DataStreamingTemplatesAPI.md#getdatastramingtemplatebyid) | **Get** /data_streaming/templates/{template_id} | Get an global Template info by template ID
+*DataStreamingTemplatesAPI* | [**ListDataStreamingTemplates**](docs/DataStreamingTemplatesAPI.md#listdatastreamingtemplates) | **Get** /data_streaming/templates | List all global Templates that can be used on Data Streaming operations
 
 
 ## Documentation For Models
@@ -144,6 +144,19 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods
