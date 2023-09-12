@@ -20,12 +20,12 @@ import (
 )
 
 
-// EdgeApplicationsMainSettingsApiService EdgeApplicationsMainSettingsApi service
-type EdgeApplicationsMainSettingsApiService service
+// EdgeApplicationsMainSettingsAPIService EdgeApplicationsMainSettingsAPI service
+type EdgeApplicationsMainSettingsAPIService service
 
 type ApiEdgeApplicationsGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsMainSettingsApiService
+	ApiService *EdgeApplicationsMainSettingsAPIService
 	page *int64
 	pageSize *int64
 	filter *string
@@ -74,7 +74,7 @@ EdgeApplicationsGet /edge_applications
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEdgeApplicationsGetRequest
 */
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsGet(ctx context.Context) ApiEdgeApplicationsGetRequest {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsGet(ctx context.Context) ApiEdgeApplicationsGetRequest {
 	return ApiEdgeApplicationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -83,7 +83,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsGet(ctx context
 
 // Execute executes the request
 //  @return GetApplicationsResponse
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsGetExecute(r ApiEdgeApplicationsGetRequest) (*GetApplicationsResponse, *http.Response, error) {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsGetExecute(r ApiEdgeApplicationsGetRequest) (*GetApplicationsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -91,7 +91,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsGetExecute(r Ap
 		localVarReturnValue  *GetApplicationsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsApiService.EdgeApplicationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsAPIService.EdgeApplicationsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -190,7 +190,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsGetExecute(r Ap
 
 type ApiEdgeApplicationsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsMainSettingsApiService
+	ApiService *EdgeApplicationsMainSettingsAPIService
 	id string
 	accept *string
 }
@@ -211,7 +211,7 @@ EdgeApplicationsIdDelete /edge_applications/:id
  @param id The id of the edge application that you plan to delete.
  @return ApiEdgeApplicationsIdDeleteRequest
 */
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdDelete(ctx context.Context, id string) ApiEdgeApplicationsIdDeleteRequest {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsIdDelete(ctx context.Context, id string) ApiEdgeApplicationsIdDeleteRequest {
 	return ApiEdgeApplicationsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -220,14 +220,14 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdDelete(ctx co
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdDeleteExecute(r ApiEdgeApplicationsIdDeleteRequest) (*http.Response, error) {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsIdDeleteExecute(r ApiEdgeApplicationsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsApiService.EdgeApplicationsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsAPIService.EdgeApplicationsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -303,7 +303,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdDeleteExecute
 
 type ApiEdgeApplicationsIdGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsMainSettingsApiService
+	ApiService *EdgeApplicationsMainSettingsAPIService
 	id string
 	accept *string
 }
@@ -324,7 +324,7 @@ EdgeApplicationsIdGet /edge_applications/:id
  @param id
  @return ApiEdgeApplicationsIdGetRequest
 */
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdGet(ctx context.Context, id string) ApiEdgeApplicationsIdGetRequest {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsIdGet(ctx context.Context, id string) ApiEdgeApplicationsIdGetRequest {
 	return ApiEdgeApplicationsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -334,7 +334,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdGet(ctx conte
 
 // Execute executes the request
 //  @return GetApplicationResponse
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdGetExecute(r ApiEdgeApplicationsIdGetRequest) (*GetApplicationResponse, *http.Response, error) {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsIdGetExecute(r ApiEdgeApplicationsIdGetRequest) (*GetApplicationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -342,7 +342,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdGetExecute(r 
 		localVarReturnValue  *GetApplicationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsApiService.EdgeApplicationsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsAPIService.EdgeApplicationsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -427,7 +427,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdGetExecute(r 
 
 type ApiEdgeApplicationsIdPatchRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsMainSettingsApiService
+	ApiService *EdgeApplicationsMainSettingsAPIService
 	id string
 	accept *string
 	contentType *string
@@ -461,7 +461,7 @@ EdgeApplicationsIdPatch /edge_applications/:id
  @param id
  @return ApiEdgeApplicationsIdPatchRequest
 */
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPatch(ctx context.Context, id string) ApiEdgeApplicationsIdPatchRequest {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsIdPatch(ctx context.Context, id string) ApiEdgeApplicationsIdPatchRequest {
 	return ApiEdgeApplicationsIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -471,7 +471,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPatch(ctx con
 
 // Execute executes the request
 //  @return ApplicationUpdateResponse
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPatchExecute(r ApiEdgeApplicationsIdPatchRequest) (*ApplicationUpdateResponse, *http.Response, error) {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsIdPatchExecute(r ApiEdgeApplicationsIdPatchRequest) (*ApplicationUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -479,7 +479,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPatchExecute(
 		localVarReturnValue  *ApplicationUpdateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsApiService.EdgeApplicationsIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsAPIService.EdgeApplicationsIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -569,7 +569,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPatchExecute(
 
 type ApiEdgeApplicationsIdPutRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsMainSettingsApiService
+	ApiService *EdgeApplicationsMainSettingsAPIService
 	id string
 	accept *string
 	contentType *string
@@ -603,7 +603,7 @@ EdgeApplicationsIdPut /edge_applications/:id
  @param id The Id of the edge application to be overwritten. 
  @return ApiEdgeApplicationsIdPutRequest
 */
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPut(ctx context.Context, id string) ApiEdgeApplicationsIdPutRequest {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsIdPut(ctx context.Context, id string) ApiEdgeApplicationsIdPutRequest {
 	return ApiEdgeApplicationsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -613,7 +613,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPut(ctx conte
 
 // Execute executes the request
 //  @return ApplicationPutResult
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPutExecute(r ApiEdgeApplicationsIdPutRequest) (*ApplicationPutResult, *http.Response, error) {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsIdPutExecute(r ApiEdgeApplicationsIdPutRequest) (*ApplicationPutResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -621,7 +621,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPutExecute(r 
 		localVarReturnValue  *ApplicationPutResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsApiService.EdgeApplicationsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsAPIService.EdgeApplicationsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -711,7 +711,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsIdPutExecute(r 
 
 type ApiEdgeApplicationsPostRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsMainSettingsApiService
+	ApiService *EdgeApplicationsMainSettingsAPIService
 	accept *string
 	contentType *string
 	createApplicationRequest *CreateApplicationRequest
@@ -743,7 +743,7 @@ EdgeApplicationsPost /edge_applications
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEdgeApplicationsPostRequest
 */
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsPost(ctx context.Context) ApiEdgeApplicationsPostRequest {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsPost(ctx context.Context) ApiEdgeApplicationsPostRequest {
 	return ApiEdgeApplicationsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -752,7 +752,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsPost(ctx contex
 
 // Execute executes the request
 //  @return CreateApplicationResult
-func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsPostExecute(r ApiEdgeApplicationsPostRequest) (*CreateApplicationResult, *http.Response, error) {
+func (a *EdgeApplicationsMainSettingsAPIService) EdgeApplicationsPostExecute(r ApiEdgeApplicationsPostRequest) (*CreateApplicationResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -760,7 +760,7 @@ func (a *EdgeApplicationsMainSettingsApiService) EdgeApplicationsPostExecute(r A
 		localVarReturnValue  *CreateApplicationResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsApiService.EdgeApplicationsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsMainSettingsAPIService.EdgeApplicationsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

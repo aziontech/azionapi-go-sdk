@@ -20,12 +20,12 @@ import (
 )
 
 
-// EdgeApplicationsDeviceGroupsApiService EdgeApplicationsDeviceGroupsApi service
-type EdgeApplicationsDeviceGroupsApiService service
+// EdgeApplicationsDeviceGroupsAPIService EdgeApplicationsDeviceGroupsAPI service
+type EdgeApplicationsDeviceGroupsAPIService service
 
 type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsDeviceGroupsApiService
+	ApiService *EdgeApplicationsDeviceGroupsAPIService
 	edgeApplicationId int64
 	deviceGroupId int64
 	accept *string
@@ -49,7 +49,7 @@ EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete /edge_applicati
  @param deviceGroupId
  @return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest
 */
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete(ctx context.Context, edgeApplicationId int64, deviceGroupId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete(ctx context.Context, edgeApplicationId int64, deviceGroupId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,14 +59,14 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest) (*http.Response, error) {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsAPIService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -143,7 +143,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsDeviceGroupsApiService
+	ApiService *EdgeApplicationsDeviceGroupsAPIService
 	edgeApplicationId int64
 	deviceGroupId int64
 	accept *string
@@ -167,7 +167,7 @@ EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet /edge_applications
  @param deviceGroupId
  @return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest
 */
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet(ctx context.Context, edgeApplicationId int64, deviceGroupId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet(ctx context.Context, edgeApplicationId int64, deviceGroupId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -178,7 +178,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 // Execute executes the request
 //  @return DeviceGroupsIdResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGetRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -186,7 +186,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 		localVarReturnValue  *DeviceGroupsIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsAPIService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -272,7 +272,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsDeviceGroupsApiService
+	ApiService *EdgeApplicationsDeviceGroupsAPIService
 	edgeApplicationId int64
 	deviceGroupId int64
 	accept *string
@@ -308,7 +308,7 @@ EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch /edge_applicatio
  @param deviceGroupId
  @return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest
 */
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch(ctx context.Context, edgeApplicationId int64, deviceGroupId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch(ctx context.Context, edgeApplicationId int64, deviceGroupId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -319,7 +319,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 // Execute executes the request
 //  @return DeviceGroupsIdResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatchRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -327,7 +327,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 		localVarReturnValue  *DeviceGroupsIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsAPIService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -418,7 +418,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsDeviceGroupsApiService
+	ApiService *EdgeApplicationsDeviceGroupsAPIService
 	edgeApplicationId int64
 	deviceGroupId int64
 	accept *string
@@ -454,7 +454,7 @@ EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut /edge_applications
  @param deviceGroupId
  @return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest
 */
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut(ctx context.Context, edgeApplicationId int64, deviceGroupId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut(ctx context.Context, edgeApplicationId int64, deviceGroupId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -465,7 +465,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 // Execute executes the request
 //  @return DeviceGroupsIdResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPutRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -473,7 +473,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 		localVarReturnValue  *DeviceGroupsIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsAPIService.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -564,7 +564,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsDeviceGroupsApiService
+	ApiService *EdgeApplicationsDeviceGroupsAPIService
 	edgeApplicationId int64
 	page *int64
 	pageSize *int64
@@ -615,7 +615,7 @@ EdgeApplicationsEdgeApplicationIdDeviceGroupsGet /edge_applications/{edge_applic
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsGetRequest
 */
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsGetRequest {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -625,7 +625,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 // Execute executes the request
 //  @return DeviceGroupsResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsGetRequest) (*DeviceGroupsResponse, *http.Response, error) {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsGetRequest) (*DeviceGroupsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -633,7 +633,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 		localVarReturnValue  *DeviceGroupsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsAPIService.EdgeApplicationsEdgeApplicationIdDeviceGroupsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -733,7 +733,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 type ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsDeviceGroupsApiService
+	ApiService *EdgeApplicationsDeviceGroupsAPIService
 	edgeApplicationId int64
 	accept *string
 	contentType *string
@@ -767,7 +767,7 @@ EdgeApplicationsEdgeApplicationIdDeviceGroupsPost /edge_applications/{edge_appli
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest
 */
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -777,7 +777,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 
 // Execute executes the request
 //  @return DeviceGroupsIdResponse
-func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplicationIdDeviceGroupsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsDeviceGroupsAPIService) EdgeApplicationsEdgeApplicationIdDeviceGroupsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdDeviceGroupsPostRequest) (*DeviceGroupsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -785,7 +785,7 @@ func (a *EdgeApplicationsDeviceGroupsApiService) EdgeApplicationsEdgeApplication
 		localVarReturnValue  *DeviceGroupsIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsApiService.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsDeviceGroupsAPIService.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

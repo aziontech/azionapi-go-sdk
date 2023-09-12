@@ -20,12 +20,12 @@ import (
 )
 
 
-// EdgeApplicationsOriginsApiService EdgeApplicationsOriginsApi service
-type EdgeApplicationsOriginsApiService service
+// EdgeApplicationsOriginsAPIService EdgeApplicationsOriginsAPI service
+type EdgeApplicationsOriginsAPIService service
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsOriginsApiService
+	ApiService *EdgeApplicationsOriginsAPIService
 	edgeApplicationId int64
 	page *int64
 	pageSize *int64
@@ -76,7 +76,7 @@ EdgeApplicationsEdgeApplicationIdOriginsGet /edge_applications/{edge_application
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -86,7 +86,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) (*OriginsResponse, *http.Response, error) {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsGetRequest) (*OriginsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -94,7 +94,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarReturnValue  *OriginsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsAPIService.EdgeApplicationsEdgeApplicationIdOriginsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -194,7 +194,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsOriginsApiService
+	ApiService *EdgeApplicationsOriginsAPIService
 	edgeApplicationId int64
 	originKey string
 	accept *string
@@ -218,7 +218,7 @@ EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete /edge_applications/{edge
  @param originKey
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -228,14 +228,14 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest) (*http.Response, error) {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsAPIService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -312,7 +312,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsOriginsApiService
+	ApiService *EdgeApplicationsOriginsAPIService
 	edgeApplicationId int64
 	originKey string
 	accept *string
@@ -336,7 +336,7 @@ EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet /edge_applications/{edge_ap
  @param originKey
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -347,7 +347,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsIdResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest) (*OriginsIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyGetRequest) (*OriginsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -355,7 +355,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarReturnValue  *OriginsIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsAPIService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -441,7 +441,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsOriginsApiService
+	ApiService *EdgeApplicationsOriginsAPIService
 	edgeApplicationId int64
 	originKey string
 	accept *string
@@ -477,7 +477,7 @@ EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch /edge_applications/:edge_
  @param originKey
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -488,7 +488,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsIdResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) (*OriginsIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatchRequest) (*OriginsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -496,7 +496,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarReturnValue  *OriginsIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsAPIService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -587,7 +587,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsOriginsApiService
+	ApiService *EdgeApplicationsOriginsAPIService
 	edgeApplicationId int64
 	originKey string
 	accept *string
@@ -623,7 +623,7 @@ EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut /edge_applications/{edge_ap
  @param originKey
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut(ctx context.Context, edgeApplicationId int64, originKey string) ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -634,7 +634,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsIdResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) (*OriginsIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsOriginKeyPutRequest) (*OriginsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -642,7 +642,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarReturnValue  *OriginsIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsAPIService.EdgeApplicationsEdgeApplicationIdOriginsOriginKeyPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -733,7 +733,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 type ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsOriginsApiService
+	ApiService *EdgeApplicationsOriginsAPIService
 	edgeApplicationId int64
 	accept *string
 	contentType *string
@@ -767,7 +767,7 @@ EdgeApplicationsEdgeApplicationIdOriginsPost /edge_applications/{edge_applicatio
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest
 */
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -777,7 +777,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 
 // Execute executes the request
 //  @return OriginsIdResponse
-func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOriginsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) (*OriginsIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsOriginsAPIService) EdgeApplicationsEdgeApplicationIdOriginsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdOriginsPostRequest) (*OriginsIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -785,7 +785,7 @@ func (a *EdgeApplicationsOriginsApiService) EdgeApplicationsEdgeApplicationIdOri
 		localVarReturnValue  *OriginsIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsApiService.EdgeApplicationsEdgeApplicationIdOriginsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsOriginsAPIService.EdgeApplicationsEdgeApplicationIdOriginsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

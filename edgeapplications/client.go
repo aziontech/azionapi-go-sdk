@@ -49,17 +49,17 @@ type APIClient struct {
 
 	// API Services
 
-	EdgeApplicationsCacheSettingsApi *EdgeApplicationsCacheSettingsApiService
+	EdgeApplicationsCacheSettingsAPI *EdgeApplicationsCacheSettingsAPIService
 
-	EdgeApplicationsDeviceGroupsApi *EdgeApplicationsDeviceGroupsApiService
+	EdgeApplicationsDeviceGroupsAPI *EdgeApplicationsDeviceGroupsAPIService
 
-	EdgeApplicationsEdgeFunctionsInstancesApi *EdgeApplicationsEdgeFunctionsInstancesApiService
+	EdgeApplicationsEdgeFunctionsInstancesAPI *EdgeApplicationsEdgeFunctionsInstancesAPIService
 
-	EdgeApplicationsMainSettingsApi *EdgeApplicationsMainSettingsApiService
+	EdgeApplicationsMainSettingsAPI *EdgeApplicationsMainSettingsAPIService
 
-	EdgeApplicationsOriginsApi *EdgeApplicationsOriginsApiService
+	EdgeApplicationsOriginsAPI *EdgeApplicationsOriginsAPIService
 
-	EdgeApplicationsRulesEngineApi *EdgeApplicationsRulesEngineApiService
+	EdgeApplicationsRulesEngineAPI *EdgeApplicationsRulesEngineAPIService
 }
 
 type service struct {
@@ -78,12 +78,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.EdgeApplicationsCacheSettingsApi = (*EdgeApplicationsCacheSettingsApiService)(&c.common)
-	c.EdgeApplicationsDeviceGroupsApi = (*EdgeApplicationsDeviceGroupsApiService)(&c.common)
-	c.EdgeApplicationsEdgeFunctionsInstancesApi = (*EdgeApplicationsEdgeFunctionsInstancesApiService)(&c.common)
-	c.EdgeApplicationsMainSettingsApi = (*EdgeApplicationsMainSettingsApiService)(&c.common)
-	c.EdgeApplicationsOriginsApi = (*EdgeApplicationsOriginsApiService)(&c.common)
-	c.EdgeApplicationsRulesEngineApi = (*EdgeApplicationsRulesEngineApiService)(&c.common)
+	c.EdgeApplicationsCacheSettingsAPI = (*EdgeApplicationsCacheSettingsAPIService)(&c.common)
+	c.EdgeApplicationsDeviceGroupsAPI = (*EdgeApplicationsDeviceGroupsAPIService)(&c.common)
+	c.EdgeApplicationsEdgeFunctionsInstancesAPI = (*EdgeApplicationsEdgeFunctionsInstancesAPIService)(&c.common)
+	c.EdgeApplicationsMainSettingsAPI = (*EdgeApplicationsMainSettingsAPIService)(&c.common)
+	c.EdgeApplicationsOriginsAPI = (*EdgeApplicationsOriginsAPIService)(&c.common)
+	c.EdgeApplicationsRulesEngineAPI = (*EdgeApplicationsRulesEngineAPIService)(&c.common)
 
 	return c
 }
@@ -451,6 +451,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = f.Seek(0, io.SeekStart)
+		err = os.Remove(f.Name())
 		return
 	}
 	if f, ok := v.(**os.File); ok {
@@ -463,6 +464,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = (*f).Seek(0, io.SeekStart)
+		err = os.Remove((*f).Name())
 		return
 	}
 	if xmlCheck.MatchString(contentType) {
@@ -539,7 +541,11 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	} else if jsonCheck.MatchString(contentType) {
 		err = json.NewEncoder(bodyBuf).Encode(body)
 	} else if xmlCheck.MatchString(contentType) {
-		err = xml.NewEncoder(bodyBuf).Encode(body)
+		var bs []byte
+		bs, err = xml.Marshal(body)
+		if err == nil {
+			bodyBuf.Write(bs)
+		}
 	}
 
 	if err != nil {

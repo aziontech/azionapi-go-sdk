@@ -20,12 +20,12 @@ import (
 )
 
 
-// EdgeApplicationsCacheSettingsApiService EdgeApplicationsCacheSettingsApi service
-type EdgeApplicationsCacheSettingsApiService service
+// EdgeApplicationsCacheSettingsAPIService EdgeApplicationsCacheSettingsAPI service
+type EdgeApplicationsCacheSettingsAPIService service
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsCacheSettingsApiService
+	ApiService *EdgeApplicationsCacheSettingsAPIService
 	edgeApplicationId int64
 	cacheSettingsId int64
 	accept *string
@@ -55,7 +55,7 @@ EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete /edge_applic
  @param cacheSettingsId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteRequest {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -65,14 +65,14 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteRequest) (*http.Response, error) {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsAPIService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -152,7 +152,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsCacheSettingsApiService
+	ApiService *EdgeApplicationsCacheSettingsAPIService
 	edgeApplicationId int64
 	cacheSettingsId int64
 	accept *string
@@ -175,7 +175,7 @@ EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet /edge_applicati
  @param cacheSettingsId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -186,7 +186,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCacheGetOneResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest) (*ApplicationCacheGetOneResponse, *http.Response, error) {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGetRequest) (*ApplicationCacheGetOneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -194,7 +194,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarReturnValue  *ApplicationCacheGetOneResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsAPIService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -280,7 +280,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsCacheSettingsApiService
+	ApiService *EdgeApplicationsCacheSettingsAPIService
 	edgeApplicationId int64
 	cacheSettingsId int64
 	accept *string
@@ -309,7 +309,7 @@ EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch /edge_applica
  @param cacheSettingsId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchRequest {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -320,7 +320,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCachePatchResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchRequest) (*ApplicationCachePatchResponse, *http.Response, error) {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatchRequest) (*ApplicationCachePatchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -328,7 +328,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarReturnValue  *ApplicationCachePatchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsAPIService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -416,7 +416,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsCacheSettingsApiService
+	ApiService *EdgeApplicationsCacheSettingsAPIService
 	edgeApplicationId int64
 	cacheSettingsId int64
 	accept *string
@@ -452,7 +452,7 @@ EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut /edge_applicati
  @param cacheSettingsId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(ctx context.Context, edgeApplicationId int64, cacheSettingsId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -463,7 +463,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCachePutResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest) (*ApplicationCachePutResponse, *http.Response, error) {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPutRequest) (*ApplicationCachePutResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -471,7 +471,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarReturnValue  *ApplicationCachePutResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsAPIService.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -562,7 +562,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsCacheSettingsApiService
+	ApiService *EdgeApplicationsCacheSettingsAPIService
 	edgeApplicationId int64
 	page *int64
 	pageSize *int64
@@ -613,7 +613,7 @@ EdgeApplicationsEdgeApplicationIdCacheSettingsGet /edge_applications/{edge_appli
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsGet(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -623,7 +623,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCacheGetResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) (*ApplicationCacheGetResponse, *http.Response, error) {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsGetExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsGetRequest) (*ApplicationCacheGetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -631,7 +631,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarReturnValue  *ApplicationCacheGetResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsAPIService.EdgeApplicationsEdgeApplicationIdCacheSettingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -731,7 +731,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 type ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsCacheSettingsApiService
+	ApiService *EdgeApplicationsCacheSettingsAPIService
 	edgeApplicationId int64
 	accept *string
 	contentType *string
@@ -765,7 +765,7 @@ EdgeApplicationsEdgeApplicationIdCacheSettingsPost /edge_applications/:edge_appl
  @param edgeApplicationId
  @return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest
 */
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsPost(ctx context.Context, edgeApplicationId int64) ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -775,7 +775,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 
 // Execute executes the request
 //  @return ApplicationCacheCreateResponse
-func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicationIdCacheSettingsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) (*ApplicationCacheCreateResponse, *http.Response, error) {
+func (a *EdgeApplicationsCacheSettingsAPIService) EdgeApplicationsEdgeApplicationIdCacheSettingsPostExecute(r ApiEdgeApplicationsEdgeApplicationIdCacheSettingsPostRequest) (*ApplicationCacheCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -783,7 +783,7 @@ func (a *EdgeApplicationsCacheSettingsApiService) EdgeApplicationsEdgeApplicatio
 		localVarReturnValue  *ApplicationCacheCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsApiService.EdgeApplicationsEdgeApplicationIdCacheSettingsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsCacheSettingsAPIService.EdgeApplicationsEdgeApplicationIdCacheSettingsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
