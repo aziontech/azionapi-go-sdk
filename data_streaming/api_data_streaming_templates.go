@@ -20,12 +20,12 @@ import (
 )
 
 
-// DataStreamingTemplatesApiService DataStreamingTemplatesApi service
-type DataStreamingTemplatesApiService service
+// DataStreamingTemplatesAPIService DataStreamingTemplatesAPI service
+type DataStreamingTemplatesAPIService service
 
 type ApiGetDataStramingTemplateByIdRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingTemplatesApiService
+	ApiService *DataStreamingTemplatesAPIService
 	templateId int32
 }
 
@@ -42,7 +42,7 @@ Use the GET method and add the data streaming's ID to the URI of the request to 
  @param templateId
  @return ApiGetDataStramingTemplateByIdRequest
 */
-func (a *DataStreamingTemplatesApiService) GetDataStramingTemplateById(ctx context.Context, templateId int32) ApiGetDataStramingTemplateByIdRequest {
+func (a *DataStreamingTemplatesAPIService) GetDataStramingTemplateById(ctx context.Context, templateId int32) ApiGetDataStramingTemplateByIdRequest {
 	return ApiGetDataStramingTemplateByIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,7 +52,7 @@ func (a *DataStreamingTemplatesApiService) GetDataStramingTemplateById(ctx conte
 
 // Execute executes the request
 //  @return TemplateResultById
-func (a *DataStreamingTemplatesApiService) GetDataStramingTemplateByIdExecute(r ApiGetDataStramingTemplateByIdRequest) (*TemplateResultById, *http.Response, error) {
+func (a *DataStreamingTemplatesAPIService) GetDataStramingTemplateByIdExecute(r ApiGetDataStramingTemplateByIdRequest) (*TemplateResultById, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -60,7 +60,7 @@ func (a *DataStreamingTemplatesApiService) GetDataStramingTemplateByIdExecute(r 
 		localVarReturnValue  *TemplateResultById
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingTemplatesApiService.GetDataStramingTemplateById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingTemplatesAPIService.GetDataStramingTemplateById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -142,7 +142,7 @@ func (a *DataStreamingTemplatesApiService) GetDataStramingTemplateByIdExecute(r 
 
 type ApiListDataStreamingTemplatesRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingTemplatesApiService
+	ApiService *DataStreamingTemplatesAPIService
 }
 
 func (r ApiListDataStreamingTemplatesRequest) Execute() (*TemplateResults, *http.Response, error) {
@@ -160,7 +160,7 @@ Use the GET method to list all global templates that can be used on Data Streami
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDataStreamingTemplatesRequest
 */
-func (a *DataStreamingTemplatesApiService) ListDataStreamingTemplates(ctx context.Context) ApiListDataStreamingTemplatesRequest {
+func (a *DataStreamingTemplatesAPIService) ListDataStreamingTemplates(ctx context.Context) ApiListDataStreamingTemplatesRequest {
 	return ApiListDataStreamingTemplatesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -169,7 +169,7 @@ func (a *DataStreamingTemplatesApiService) ListDataStreamingTemplates(ctx contex
 
 // Execute executes the request
 //  @return TemplateResults
-func (a *DataStreamingTemplatesApiService) ListDataStreamingTemplatesExecute(r ApiListDataStreamingTemplatesRequest) (*TemplateResults, *http.Response, error) {
+func (a *DataStreamingTemplatesAPIService) ListDataStreamingTemplatesExecute(r ApiListDataStreamingTemplatesRequest) (*TemplateResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -177,7 +177,7 @@ func (a *DataStreamingTemplatesApiService) ListDataStreamingTemplatesExecute(r A
 		localVarReturnValue  *TemplateResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingTemplatesApiService.ListDataStreamingTemplates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingTemplatesAPIService.ListDataStreamingTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

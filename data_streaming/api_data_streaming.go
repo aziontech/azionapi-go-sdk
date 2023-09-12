@@ -20,12 +20,12 @@ import (
 )
 
 
-// DataStreamingApiService DataStreamingApi service
-type DataStreamingApiService service
+// DataStreamingAPIService DataStreamingAPI service
+type DataStreamingAPIService service
 
 type ApiCreateNewDataStreamingRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingApiService
+	ApiService *DataStreamingAPIService
 	createNewDataStreamingRequest *CreateNewDataStreamingRequest
 }
 
@@ -41,12 +41,12 @@ func (r ApiCreateNewDataStreamingRequest) Execute() (*CreateNewDataStreaming201R
 /*
 CreateNewDataStreaming Create a new data streaming
 
-
+Create a new data streaming.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNewDataStreamingRequest
 */
-func (a *DataStreamingApiService) CreateNewDataStreaming(ctx context.Context) ApiCreateNewDataStreamingRequest {
+func (a *DataStreamingAPIService) CreateNewDataStreaming(ctx context.Context) ApiCreateNewDataStreamingRequest {
 	return ApiCreateNewDataStreamingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *DataStreamingApiService) CreateNewDataStreaming(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return CreateNewDataStreaming201Response
-func (a *DataStreamingApiService) CreateNewDataStreamingExecute(r ApiCreateNewDataStreamingRequest) (*CreateNewDataStreaming201Response, *http.Response, error) {
+func (a *DataStreamingAPIService) CreateNewDataStreamingExecute(r ApiCreateNewDataStreamingRequest) (*CreateNewDataStreaming201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *DataStreamingApiService) CreateNewDataStreamingExecute(r ApiCreateNewDa
 		localVarReturnValue  *CreateNewDataStreaming201Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingApiService.CreateNewDataStreaming")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingAPIService.CreateNewDataStreaming")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -149,7 +149,7 @@ func (a *DataStreamingApiService) CreateNewDataStreamingExecute(r ApiCreateNewDa
 
 type ApiDeleteDataStreamingByIdRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingApiService
+	ApiService *DataStreamingAPIService
 	dataStreamingId int32
 }
 
@@ -167,7 +167,7 @@ Use the DELETE method to remove a data streaming from your account.
  @param dataStreamingId
  @return ApiDeleteDataStreamingByIdRequest
 */
-func (a *DataStreamingApiService) DeleteDataStreamingById(ctx context.Context, dataStreamingId int32) ApiDeleteDataStreamingByIdRequest {
+func (a *DataStreamingAPIService) DeleteDataStreamingById(ctx context.Context, dataStreamingId int32) ApiDeleteDataStreamingByIdRequest {
 	return ApiDeleteDataStreamingByIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -176,14 +176,14 @@ func (a *DataStreamingApiService) DeleteDataStreamingById(ctx context.Context, d
 }
 
 // Execute executes the request
-func (a *DataStreamingApiService) DeleteDataStreamingByIdExecute(r ApiDeleteDataStreamingByIdRequest) (*http.Response, error) {
+func (a *DataStreamingAPIService) DeleteDataStreamingByIdExecute(r ApiDeleteDataStreamingByIdRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingApiService.DeleteDataStreamingById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingAPIService.DeleteDataStreamingById")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -256,7 +256,7 @@ func (a *DataStreamingApiService) DeleteDataStreamingByIdExecute(r ApiDeleteData
 
 type ApiEditDataStreamingByIdRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingApiService
+	ApiService *DataStreamingAPIService
 	dataStreamingId int32
 	createNewDataStreamingRequest *CreateNewDataStreamingRequest
 }
@@ -280,7 +280,7 @@ Use the PATCH method to change only select settings of your data streaming.
  @param dataStreamingId
  @return ApiEditDataStreamingByIdRequest
 */
-func (a *DataStreamingApiService) EditDataStreamingById(ctx context.Context, dataStreamingId int32) ApiEditDataStreamingByIdRequest {
+func (a *DataStreamingAPIService) EditDataStreamingById(ctx context.Context, dataStreamingId int32) ApiEditDataStreamingByIdRequest {
 	return ApiEditDataStreamingByIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -290,7 +290,7 @@ func (a *DataStreamingApiService) EditDataStreamingById(ctx context.Context, dat
 
 // Execute executes the request
 //  @return CreateNewDataStreaming201Response
-func (a *DataStreamingApiService) EditDataStreamingByIdExecute(r ApiEditDataStreamingByIdRequest) (*CreateNewDataStreaming201Response, *http.Response, error) {
+func (a *DataStreamingAPIService) EditDataStreamingByIdExecute(r ApiEditDataStreamingByIdRequest) (*CreateNewDataStreaming201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -298,7 +298,7 @@ func (a *DataStreamingApiService) EditDataStreamingByIdExecute(r ApiEditDataStre
 		localVarReturnValue  *CreateNewDataStreaming201Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingApiService.EditDataStreamingById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingAPIService.EditDataStreamingById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -385,7 +385,7 @@ func (a *DataStreamingApiService) EditDataStreamingByIdExecute(r ApiEditDataStre
 
 type ApiListDataStreamingByIdRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingApiService
+	ApiService *DataStreamingAPIService
 	dataStreamingId int32
 }
 
@@ -402,7 +402,7 @@ Use the GET method and add the data streaming's ID to the URI of the request to 
  @param dataStreamingId
  @return ApiListDataStreamingByIdRequest
 */
-func (a *DataStreamingApiService) ListDataStreamingById(ctx context.Context, dataStreamingId int32) ApiListDataStreamingByIdRequest {
+func (a *DataStreamingAPIService) ListDataStreamingById(ctx context.Context, dataStreamingId int32) ApiListDataStreamingByIdRequest {
 	return ApiListDataStreamingByIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -412,7 +412,7 @@ func (a *DataStreamingApiService) ListDataStreamingById(ctx context.Context, dat
 
 // Execute executes the request
 //  @return DataStreamingsById
-func (a *DataStreamingApiService) ListDataStreamingByIdExecute(r ApiListDataStreamingByIdRequest) (*DataStreamingsById, *http.Response, error) {
+func (a *DataStreamingAPIService) ListDataStreamingByIdExecute(r ApiListDataStreamingByIdRequest) (*DataStreamingsById, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -420,7 +420,7 @@ func (a *DataStreamingApiService) ListDataStreamingByIdExecute(r ApiListDataStre
 		localVarReturnValue  *DataStreamingsById
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingApiService.ListDataStreamingById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingAPIService.ListDataStreamingById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -502,7 +502,7 @@ func (a *DataStreamingApiService) ListDataStreamingByIdExecute(r ApiListDataStre
 
 type ApiListDataStreamingsRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingApiService
+	ApiService *DataStreamingAPIService
 }
 
 func (r ApiListDataStreamingsRequest) Execute() (*DataStreamingResponseWithResults, *http.Response, error) {
@@ -517,7 +517,7 @@ Use the GET method to list all data streamings, both active and inactive, and it
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDataStreamingsRequest
 */
-func (a *DataStreamingApiService) ListDataStreamings(ctx context.Context) ApiListDataStreamingsRequest {
+func (a *DataStreamingAPIService) ListDataStreamings(ctx context.Context) ApiListDataStreamingsRequest {
 	return ApiListDataStreamingsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -526,7 +526,7 @@ func (a *DataStreamingApiService) ListDataStreamings(ctx context.Context) ApiLis
 
 // Execute executes the request
 //  @return DataStreamingResponseWithResults
-func (a *DataStreamingApiService) ListDataStreamingsExecute(r ApiListDataStreamingsRequest) (*DataStreamingResponseWithResults, *http.Response, error) {
+func (a *DataStreamingAPIService) ListDataStreamingsExecute(r ApiListDataStreamingsRequest) (*DataStreamingResponseWithResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -534,7 +534,7 @@ func (a *DataStreamingApiService) ListDataStreamingsExecute(r ApiListDataStreami
 		localVarReturnValue  *DataStreamingResponseWithResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingApiService.ListDataStreamings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingAPIService.ListDataStreamings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -615,7 +615,7 @@ func (a *DataStreamingApiService) ListDataStreamingsExecute(r ApiListDataStreami
 
 type ApiOverwriteDataStreamingByIdRequest struct {
 	ctx context.Context
-	ApiService *DataStreamingApiService
+	ApiService *DataStreamingAPIService
 	dataStreamingId int32
 	createNewDataStreamingRequest *CreateNewDataStreamingRequest
 }
@@ -639,7 +639,7 @@ Use the PUT method to overwrite the data streaming. Although  you can change a s
  @param dataStreamingId
  @return ApiOverwriteDataStreamingByIdRequest
 */
-func (a *DataStreamingApiService) OverwriteDataStreamingById(ctx context.Context, dataStreamingId int32) ApiOverwriteDataStreamingByIdRequest {
+func (a *DataStreamingAPIService) OverwriteDataStreamingById(ctx context.Context, dataStreamingId int32) ApiOverwriteDataStreamingByIdRequest {
 	return ApiOverwriteDataStreamingByIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -649,7 +649,7 @@ func (a *DataStreamingApiService) OverwriteDataStreamingById(ctx context.Context
 
 // Execute executes the request
 //  @return CreateNewDataStreaming201Response
-func (a *DataStreamingApiService) OverwriteDataStreamingByIdExecute(r ApiOverwriteDataStreamingByIdRequest) (*CreateNewDataStreaming201Response, *http.Response, error) {
+func (a *DataStreamingAPIService) OverwriteDataStreamingByIdExecute(r ApiOverwriteDataStreamingByIdRequest) (*CreateNewDataStreaming201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -657,7 +657,7 @@ func (a *DataStreamingApiService) OverwriteDataStreamingByIdExecute(r ApiOverwri
 		localVarReturnValue  *CreateNewDataStreaming201Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingApiService.OverwriteDataStreamingById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataStreamingAPIService.OverwriteDataStreamingById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
