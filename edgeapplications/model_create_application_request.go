@@ -24,6 +24,7 @@ type CreateApplicationRequest struct {
 	DeliveryProtocol *string `json:"delivery_protocol,omitempty"`
 	OriginType *string `json:"origin_type,omitempty"`
 	Address *string `json:"address,omitempty"`
+	MinimumTlsVersion *string `json:"minimum_tls_version,omitempty"`
 	OriginProtocolPolicy *string `json:"origin_protocol_policy,omitempty"`
 	HostHeader *string `json:"host_header,omitempty"`
 	BrowserCacheSettings *string `json:"browser_cache_settings,omitempty"`
@@ -207,6 +208,38 @@ func (o *CreateApplicationRequest) HasAddress() bool {
 // SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *CreateApplicationRequest) SetAddress(v string) {
 	o.Address = &v
+}
+
+// GetMinimumTlsVersion returns the MinimumTlsVersion field value if set, zero value otherwise.
+func (o *CreateApplicationRequest) GetMinimumTlsVersion() string {
+	if o == nil || IsNil(o.MinimumTlsVersion) {
+		var ret string
+		return ret
+	}
+	return *o.MinimumTlsVersion
+}
+
+// GetMinimumTlsVersionOk returns a tuple with the MinimumTlsVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateApplicationRequest) GetMinimumTlsVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.MinimumTlsVersion) {
+		return nil, false
+	}
+	return o.MinimumTlsVersion, true
+}
+
+// HasMinimumTlsVersion returns a boolean if a field has been set.
+func (o *CreateApplicationRequest) HasMinimumTlsVersion() bool {
+	if o != nil && !IsNil(o.MinimumTlsVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetMinimumTlsVersion gets a reference to the given string and assigns it to the MinimumTlsVersion field.
+func (o *CreateApplicationRequest) SetMinimumTlsVersion(v string) {
+	o.MinimumTlsVersion = &v
 }
 
 // GetOriginProtocolPolicy returns the OriginProtocolPolicy field value if set, zero value otherwise.
@@ -649,6 +682,9 @@ func (o CreateApplicationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
+	}
+	if !IsNil(o.MinimumTlsVersion) {
+		toSerialize["minimum_tls_version"] = o.MinimumTlsVersion
 	}
 	if !IsNil(o.OriginProtocolPolicy) {
 		toSerialize["origin_protocol_policy"] = o.OriginProtocolPolicy

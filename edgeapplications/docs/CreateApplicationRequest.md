@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DeliveryProtocol** | Pointer to **string** |  | [optional] 
 **OriginType** | Pointer to **string** |  | [optional] 
 **Address** | Pointer to **string** |  | [optional] 
+**MinimumTlsVersion** | Pointer to **string** |  | [optional] 
 **OriginProtocolPolicy** | Pointer to **string** |  | [optional] 
 **HostHeader** | Pointer to **string** |  | [optional] 
 **BrowserCacheSettings** | Pointer to **string** |  | [optional] 
@@ -161,6 +162,31 @@ SetAddress sets Address field to given value.
 `func (o *CreateApplicationRequest) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetMinimumTlsVersion
+
+`func (o *CreateApplicationRequest) GetMinimumTlsVersion() string`
+
+GetMinimumTlsVersion returns the MinimumTlsVersion field if non-nil, zero value otherwise.
+
+### GetMinimumTlsVersionOk
+
+`func (o *CreateApplicationRequest) GetMinimumTlsVersionOk() (*string, bool)`
+
+GetMinimumTlsVersionOk returns a tuple with the MinimumTlsVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinimumTlsVersion
+
+`func (o *CreateApplicationRequest) SetMinimumTlsVersion(v string)`
+
+SetMinimumTlsVersion sets MinimumTlsVersion field to given value.
+
+### HasMinimumTlsVersion
+
+`func (o *CreateApplicationRequest) HasMinimumTlsVersion() bool`
+
+HasMinimumTlsVersion returns a boolean if a field has been set.
 
 ### GetOriginProtocolPolicy
 

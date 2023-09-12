@@ -20,12 +20,12 @@ import (
 )
 
 
-// EdgeApplicationsRulesEngineApiService EdgeApplicationsRulesEngineApi service
-type EdgeApplicationsRulesEngineApiService service
+// EdgeApplicationsRulesEngineAPIService EdgeApplicationsRulesEngineAPI service
+type EdgeApplicationsRulesEngineAPIService service
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsRulesEngineApiService
+	ApiService *EdgeApplicationsRulesEngineAPIService
 	edgeApplicationId int64
 	phase string
 	page *int64
@@ -78,7 +78,7 @@ EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet /edge_applications/{ed
  @param phase
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet(ctx context.Context, edgeApplicationId int64, phase string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet(ctx context.Context, edgeApplicationId int64, phase string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -89,7 +89,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) (*RulesEngineResponse, *http.Response, error) {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGetRequest) (*RulesEngineResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -97,7 +97,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarReturnValue  *RulesEngineResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineAPIService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -198,7 +198,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsRulesEngineApiService
+	ApiService *EdgeApplicationsRulesEngineAPIService
 	edgeApplicationId int64
 	phase string
 	accept *string
@@ -262,7 +262,7 @@ Check below the list of behaviors that can be applied:
  @param phase
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost(ctx context.Context, edgeApplicationId int64, phase string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost(ctx context.Context, edgeApplicationId int64, phase string) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -273,7 +273,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineIdResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) (*RulesEngineIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPostRequest) (*RulesEngineIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -281,7 +281,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarReturnValue  *RulesEngineIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineAPIService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -372,7 +372,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsRulesEngineApiService
+	ApiService *EdgeApplicationsRulesEngineAPIService
 	edgeApplicationId int64
 	phase string
 	ruleId int64
@@ -397,7 +397,7 @@ EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete /edge_applica
  @param ruleId The id of the rule you plan to delete. 
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -408,14 +408,14 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 }
 
 // Execute executes the request
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest) (*http.Response, error) {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineAPIService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -493,7 +493,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsRulesEngineApiService
+	ApiService *EdgeApplicationsRulesEngineAPIService
 	edgeApplicationId int64
 	phase string
 	ruleId int64
@@ -518,7 +518,7 @@ EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet /edge_applicatio
  @param ruleId The id of the rule you plan to delete. 
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetRequest {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -530,7 +530,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineIdResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetRequest) (*RulesEngineIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGetRequest) (*RulesEngineIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -538,7 +538,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarReturnValue  *RulesEngineIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineAPIService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -625,7 +625,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsRulesEngineApiService
+	ApiService *EdgeApplicationsRulesEngineAPIService
 	edgeApplicationId int64
 	phase string
 	ruleId int64
@@ -663,7 +663,7 @@ EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch /edge_applicat
  @param ruleId
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -675,7 +675,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineIdResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest) (*RulesEngineIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatchRequest) (*RulesEngineIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -683,7 +683,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarReturnValue  *RulesEngineIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineAPIService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -775,7 +775,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 type ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest struct {
 	ctx context.Context
-	ApiService *EdgeApplicationsRulesEngineApiService
+	ApiService *EdgeApplicationsRulesEngineAPIService
 	edgeApplicationId int64
 	phase string
 	ruleId int64
@@ -813,7 +813,7 @@ EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut /edge_applicatio
  @param ruleId
  @return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest
 */
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut(ctx context.Context, edgeApplicationId int64, phase string, ruleId int64) ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest {
 	return ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -825,7 +825,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 
 // Execute executes the request
 //  @return RulesEngineIdResponse
-func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest) (*RulesEngineIdResponse, *http.Response, error) {
+func (a *EdgeApplicationsRulesEngineAPIService) EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutExecute(r ApiEdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPutRequest) (*RulesEngineIdResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -833,7 +833,7 @@ func (a *EdgeApplicationsRulesEngineApiService) EdgeApplicationsEdgeApplicationI
 		localVarReturnValue  *RulesEngineIdResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineApiService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeApplicationsRulesEngineAPIService.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
