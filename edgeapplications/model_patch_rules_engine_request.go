@@ -22,7 +22,7 @@ type PatchRulesEngineRequest struct {
 	Name *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria,omitempty"`
-	Behaviors []RulesEngineBehavior `json:"behaviors,omitempty"`
+	Behaviors []RulesEngineBehaviorEntry `json:"behaviors,omitempty"`
 }
 
 // NewPatchRulesEngineRequest instantiates a new PatchRulesEngineRequest object
@@ -139,9 +139,9 @@ func (o *PatchRulesEngineRequest) SetCriteria(v [][]RulesEngineCriteria) {
 }
 
 // GetBehaviors returns the Behaviors field value if set, zero value otherwise.
-func (o *PatchRulesEngineRequest) GetBehaviors() []RulesEngineBehavior {
+func (o *PatchRulesEngineRequest) GetBehaviors() []RulesEngineBehaviorEntry {
 	if o == nil || IsNil(o.Behaviors) {
-		var ret []RulesEngineBehavior
+		var ret []RulesEngineBehaviorEntry
 		return ret
 	}
 	return o.Behaviors
@@ -149,7 +149,7 @@ func (o *PatchRulesEngineRequest) GetBehaviors() []RulesEngineBehavior {
 
 // GetBehaviorsOk returns a tuple with the Behaviors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchRulesEngineRequest) GetBehaviorsOk() ([]RulesEngineBehavior, bool) {
+func (o *PatchRulesEngineRequest) GetBehaviorsOk() ([]RulesEngineBehaviorEntry, bool) {
 	if o == nil || IsNil(o.Behaviors) {
 		return nil, false
 	}
@@ -165,8 +165,8 @@ func (o *PatchRulesEngineRequest) HasBehaviors() bool {
 	return false
 }
 
-// SetBehaviors gets a reference to the given []RulesEngineBehavior and assigns it to the Behaviors field.
-func (o *PatchRulesEngineRequest) SetBehaviors(v []RulesEngineBehavior) {
+// SetBehaviors gets a reference to the given []RulesEngineBehaviorEntry and assigns it to the Behaviors field.
+func (o *PatchRulesEngineRequest) SetBehaviors(v []RulesEngineBehaviorEntry) {
 	o.Behaviors = v
 }
 

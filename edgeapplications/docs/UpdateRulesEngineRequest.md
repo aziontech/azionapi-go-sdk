@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Criteria** | [**[][]RulesEngineCriteria**]([]RulesEngineCriteria.md) |  | 
-**Behaviors** | [**[]RulesEngineBehavior**](RulesEngineBehavior.md) |  | 
+**Behaviors** | [**[]RulesEngineBehaviorEntry**](RulesEngineBehaviorEntry.md) |  | 
 
 ## Methods
 
 ### NewUpdateRulesEngineRequest
 
-`func NewUpdateRulesEngineRequest(name string, criteria [][]RulesEngineCriteria, behaviors []RulesEngineBehavior, ) *UpdateRulesEngineRequest`
+`func NewUpdateRulesEngineRequest(name string, criteria [][]RulesEngineCriteria, behaviors []RulesEngineBehaviorEntry, ) *UpdateRulesEngineRequest`
 
 NewUpdateRulesEngineRequest instantiates a new UpdateRulesEngineRequest object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ SetCriteria sets Criteria field to given value.
 
 ### GetBehaviors
 
-`func (o *UpdateRulesEngineRequest) GetBehaviors() []RulesEngineBehavior`
+`func (o *UpdateRulesEngineRequest) GetBehaviors() []RulesEngineBehaviorEntry`
 
 GetBehaviors returns the Behaviors field if non-nil, zero value otherwise.
 
 ### GetBehaviorsOk
 
-`func (o *UpdateRulesEngineRequest) GetBehaviorsOk() (*[]RulesEngineBehavior, bool)`
+`func (o *UpdateRulesEngineRequest) GetBehaviorsOk() (*[]RulesEngineBehaviorEntry, bool)`
 
 GetBehaviorsOk returns a tuple with the Behaviors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBehaviors
 
-`func (o *UpdateRulesEngineRequest) SetBehaviors(v []RulesEngineBehavior)`
+`func (o *UpdateRulesEngineRequest) SetBehaviors(v []RulesEngineBehaviorEntry)`
 
 SetBehaviors sets Behaviors field to given value.
 

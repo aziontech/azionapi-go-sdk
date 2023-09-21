@@ -22,14 +22,14 @@ type CreateRulesEngineRequest struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria"`
-	Behaviors []RulesEngineBehavior `json:"behaviors"`
+	Behaviors []RulesEngineBehaviorEntry `json:"behaviors"`
 }
 
 // NewCreateRulesEngineRequest instantiates a new CreateRulesEngineRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRulesEngineRequest(name string, criteria [][]RulesEngineCriteria, behaviors []RulesEngineBehavior) *CreateRulesEngineRequest {
+func NewCreateRulesEngineRequest(name string, criteria [][]RulesEngineCriteria, behaviors []RulesEngineBehaviorEntry) *CreateRulesEngineRequest {
 	this := CreateRulesEngineRequest{}
 	this.Name = name
 	this.Criteria = criteria
@@ -126,9 +126,9 @@ func (o *CreateRulesEngineRequest) SetCriteria(v [][]RulesEngineCriteria) {
 }
 
 // GetBehaviors returns the Behaviors field value
-func (o *CreateRulesEngineRequest) GetBehaviors() []RulesEngineBehavior {
+func (o *CreateRulesEngineRequest) GetBehaviors() []RulesEngineBehaviorEntry {
 	if o == nil {
-		var ret []RulesEngineBehavior
+		var ret []RulesEngineBehaviorEntry
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *CreateRulesEngineRequest) GetBehaviors() []RulesEngineBehavior {
 
 // GetBehaviorsOk returns a tuple with the Behaviors field value
 // and a boolean to check if the value has been set.
-func (o *CreateRulesEngineRequest) GetBehaviorsOk() ([]RulesEngineBehavior, bool) {
+func (o *CreateRulesEngineRequest) GetBehaviorsOk() ([]RulesEngineBehaviorEntry, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *CreateRulesEngineRequest) GetBehaviorsOk() ([]RulesEngineBehavior, bool
 }
 
 // SetBehaviors sets field value
-func (o *CreateRulesEngineRequest) SetBehaviors(v []RulesEngineBehavior) {
+func (o *CreateRulesEngineRequest) SetBehaviors(v []RulesEngineBehaviorEntry) {
 	o.Behaviors = v
 }
 
