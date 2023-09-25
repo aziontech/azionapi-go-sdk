@@ -73,7 +73,7 @@ ctx = context.WithValue(context.Background(), variables.ContextOperationServerVa
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.azionapi.net/variables*
+All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

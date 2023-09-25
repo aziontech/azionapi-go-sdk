@@ -93,7 +93,7 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://api.azionapi.net/variables",
+				URL: "https://api.azionapi.net",
 				Description: "Production",
 			},
 		},
