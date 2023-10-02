@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Errors** | Pointer to **[]map[string]interface{}** |  | [optional] 
-**SchemaVersion** | Pointer to **int32** |  | [optional] 
+**SchemaVersion** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasErrors returns a boolean if a field has been set.
 
 ### GetSchemaVersion
 
-`func (o *WAFEvents404) GetSchemaVersion() int32`
+`func (o *WAFEvents404) GetSchemaVersion() int64`
 
 GetSchemaVersion returns the SchemaVersion field if non-nil, zero value otherwise.
 
 ### GetSchemaVersionOk
 
-`func (o *WAFEvents404) GetSchemaVersionOk() (*int32, bool)`
+`func (o *WAFEvents404) GetSchemaVersionOk() (*int64, bool)`
 
 GetSchemaVersionOk returns a tuple with the SchemaVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchemaVersion
 
-`func (o *WAFEvents404) SetSchemaVersion(v int32)`
+`func (o *WAFEvents404) SetSchemaVersion(v int64)`
 
 SetSchemaVersion sets SchemaVersion field to given value.
 

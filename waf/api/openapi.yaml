@@ -11,6 +11,52 @@ servers:
 security:
 - tokenAuth: []
 paths:
+  /waf:
+    get:
+      operationId: listAllWAF
+      parameters:
+      - description: "Identifies which page should be returned, if the return is paginated."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          format: int64
+          type: integer
+        style: form
+      - description: Identifies how many items should be returned per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 10
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFList200'
+          description: successful operation
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents400'
+          description: Bad request
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents404'
+          description: data not found
+      summary: List all Web Application Firewalls (WAFs) created in an account
+      tags:
+      - WAF
   /waf/{wafId}/domains:
     get:
       operationId: getWAFDomains
@@ -51,7 +97,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WAFEvents404'
           description: data not found
-      summary: Find domains attached to a WAF
+      summary: List all domains attached to a Web Application Firewall (WAF) in an
+        account.
       tags:
       - WAF
   /waf/{wafId}/waf_events:
@@ -124,8 +171,392 @@ paths:
       summary: Find WAF log events
       tags:
       - WAF
+  /waf/rulesets:
+    get:
+      operationId: listAllWAFRulesets
+      parameters:
+      - description: Identifies which property the return should be sorted by.
+        explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          default: name
+          enum:
+          - id
+          - name
+          - mode
+          - active
+          - sql_injection
+          - sql_injection_sensitivity
+          - remote_file_inclusion
+          - remote_file_inclusion_sensitivity
+          - directory_traversal
+          - directory_traversal_sensitivity
+          - cross_site_scripting
+          - cross_site_scripting_sensitivity
+          - evading_tricks
+          - evading_tricks_sensitivity
+          - file_upload
+          - file_upload_sensitivity
+          - unwanted_access
+          - unwanted_access_sensitivity
+          - identified_attack
+          - identified_attack_sensitivity
+          type: string
+        style: form
+      - description: Defines whether objects are shown in ascending or descending
+          order depending on the value set in order_by.
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          default: asc
+          enum:
+          - asc
+          - desc
+          type: string
+        style: form
+      - description: "Identifies which page should be returned, if the return is paginated."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          format: int64
+          type: integer
+        style: form
+      - description: Identifies how many items should be returned per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 10
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFList200'
+          description: successful operation
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents400'
+          description: Bad request
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents404'
+          description: data not found
+      summary: list all Rule Sets associated to a Web Application Firewall (WAF) in
+        an account.
+      tags:
+      - WAF
+    post:
+      operationId: createNewWAFRuleset
+      requestBody:
+        content:
+          application/json; version=3:
+            schema:
+              $ref: '#/components/schemas/createNewWAFRuleset_request'
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/SingleWAF'
+          description: Successful response
+        "201":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/SingleWAF'
+          description: Successful response
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "415":
+          description: Unsupported Media Type
+        "422":
+          description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      summary: Create a new WAF Rule Set in an account.
+      tags:
+      - WAF
+  /waf/rulesets/{waf_rule_set_id}:
+    delete:
+      operationId: deleteWAFRuleset
+      parameters:
+      - explode: false
+        in: path
+        name: waf_rule_set_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+        "422":
+          description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      summary: "Remove an WAF Rule Set from an account. Warning: this action cannot\
+        \ be undone."
+      tags:
+      - WAF
+    get:
+      operationId: getWAFRuleset
+      parameters:
+      - description: ID of WAF Ruleset to return
+        explode: false
+        in: path
+        name: waf_rule_set_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFSingle200'
+          description: successful operation
+        "400":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents400'
+          description: Bad request
+        "404":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/WAFEvents404'
+          description: data not found
+      summary: List a specific Rule Set associated to a Web Application Firewall (WAF)
+        in an account.
+      tags:
+      - WAF
+    patch:
+      operationId: updateWAFRuleset
+      parameters:
+      - explode: false
+        in: path
+        name: waf_rule_set_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json; version=3:
+            schema:
+              $ref: '#/components/schemas/SingleWAF'
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/SingleWAF'
+          description: Successful response
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+        "422":
+          description: Unprocessable Entity
+        "500":
+          description: Internal Server Error
+      summary: Change only select settings of a WAF Rule Set
+      tags:
+      - WAF
 components:
   schemas:
+    WAFSensitivityChoices:
+      enum:
+      - lowest
+      - low
+      - medium
+      - high
+      - highest
+      type: string
+    SingleWAF:
+      example:
+        id: 28852
+        name: Waf Name
+        mode: counting
+        active: true
+        sql_injection: true
+        sql_injection_sensitivity: medium
+        remote_file_inclusion: true
+        remote_file_inclusion_sensitivity: medium
+        directory_traversal: true
+        directory_traversal_sensitivity: medium
+        cross_site_scripting: true
+        cross_site_scripting_sensitivity: medium
+        evading_tricks: true
+        evading_tricks_sensitivity: medium
+        file_upload: true
+        file_upload_sensitivity: medium
+        unwanted_access: true
+        unwanted_access_sensitivity: medium
+        identified_attack: true
+        identified_attack_sensitivity: medium
+        bypass_addresses: []
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          description: Identification name for WAF Rule Set.
+          type: string
+        mode:
+          enum:
+          - blocking
+          - counting
+          type: string
+        active:
+          type: boolean
+        sql_injection:
+          type: boolean
+        sql_injection_sensitivity:
+          $ref: '#/components/schemas/WAFSensitivityChoices'
+        remote_file_inclusion:
+          type: boolean
+        remote_file_inclusion_sensitivity:
+          $ref: '#/components/schemas/WAFSensitivityChoices'
+        directory_traversal:
+          type: boolean
+        directory_traversal_sensitivity:
+          $ref: '#/components/schemas/WAFSensitivityChoices'
+        cross_site_scripting:
+          type: boolean
+        cross_site_scripting_sensitivity:
+          $ref: '#/components/schemas/WAFSensitivityChoices'
+        evading_tricks:
+          type: boolean
+        evading_tricks_sensitivity:
+          $ref: '#/components/schemas/WAFSensitivityChoices'
+        file_upload:
+          type: boolean
+        file_upload_sensitivity:
+          $ref: '#/components/schemas/WAFSensitivityChoices'
+        unwanted_access:
+          type: boolean
+        unwanted_access_sensitivity:
+          $ref: '#/components/schemas/WAFSensitivityChoices'
+        identified_attack:
+          type: boolean
+        identified_attack_sensitivity:
+          $ref: '#/components/schemas/WAFSensitivityChoices'
+        bypass_addresses:
+          items:
+            format: ipv4
+            type: string
+          type: array
+      type: object
+    WAFSingle200:
+      example:
+        schema_version: 3
+        results:
+          id: 28852
+          name: Waf Name
+          mode: counting
+          active: true
+          sql_injection: true
+          sql_injection_sensitivity: medium
+          remote_file_inclusion: true
+          remote_file_inclusion_sensitivity: medium
+          directory_traversal: true
+          directory_traversal_sensitivity: medium
+          cross_site_scripting: true
+          cross_site_scripting_sensitivity: medium
+          evading_tricks: true
+          evading_tricks_sensitivity: medium
+          file_upload: true
+          file_upload_sensitivity: medium
+          unwanted_access: true
+          unwanted_access_sensitivity: medium
+          identified_attack: true
+          identified_attack_sensitivity: medium
+          bypass_addresses: []
+      properties:
+        results:
+          $ref: '#/components/schemas/SingleWAF'
+        schema_version:
+          example: 3
+          format: int64
+          type: integer
+      type: object
+    WAFList200:
+      example:
+        schema_version: 3
+        count: 0
+        links:
+          id: 28852
+          name: Waf Name
+          mode: counting
+          active: true
+          sql_injection: true
+          sql_injection_sensitivity: medium
+          remote_file_inclusion: true
+          remote_file_inclusion_sensitivity: medium
+          directory_traversal: true
+          directory_traversal_sensitivity: medium
+          cross_site_scripting: true
+          cross_site_scripting_sensitivity: medium
+          evading_tricks: true
+          evading_tricks_sensitivity: medium
+          file_upload: true
+          file_upload_sensitivity: medium
+          unwanted_access: true
+          unwanted_access_sensitivity: medium
+          identified_attack: true
+          identified_attack_sensitivity: medium
+          bypass_addresses: []
+        total_pages: 6
+      properties:
+        count:
+          format: int64
+          type: integer
+        total_pages:
+          format: int64
+          type: integer
+        links:
+          $ref: '#/components/schemas/SingleWAF'
+        schema_version:
+          example: 3
+          format: int64
+          type: integer
+      type: object
     WAFDomains200:
       example:
         schema_version: 3
@@ -157,6 +588,7 @@ components:
           type: array
         schema_version:
           example: 3
+          format: int64
           type: integer
       type: object
     WAFEvents400:
@@ -171,6 +603,7 @@ components:
           type: array
         schema_version:
           example: 3
+          format: int64
           type: integer
       type: object
     WAFEvents404:
@@ -185,6 +618,7 @@ components:
           type: array
         schema_version:
           example: 3
+          format: int64
           type: integer
       type: object
     WAFEvents200:
@@ -224,6 +658,7 @@ components:
           type: array
         schema_version:
           example: 3
+          format: int64
           type: integer
       type: object
     WAFEvents401:
@@ -232,6 +667,30 @@ components:
           example: Authentication credentials were not provided.
           type: string
       type: object
+    createNewWAFRuleset_request:
+      allOf:
+      - $ref: '#/components/schemas/SingleWAF'
+      - required:
+        - active
+        - bypass_addresses
+        - cross_site_scripting
+        - cross_site_scripting_sensitivity
+        - directory_traversal
+        - directory_traversal_sensitivity
+        - evading_tricks
+        - evading_tricks_sensitivity
+        - file_upload
+        - file_upload_sensitivity
+        - identified_attack
+        - identified_attack_sensitivity
+        - mode
+        - name
+        - remote_file_inclusion
+        - remote_file_inclusion_sensitivity
+        - sql_injection
+        - sql_injection_sensitivity
+        - unwanted_access
+        - unwanted_access_sensitivity
   securitySchemes:
     tokenAuth:
       description: |

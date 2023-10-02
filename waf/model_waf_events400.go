@@ -20,7 +20,7 @@ var _ MappedNullable = &WAFEvents400{}
 // WAFEvents400 struct for WAFEvents400
 type WAFEvents400 struct {
 	Errors []map[string]interface{} `json:"errors,omitempty"`
-	SchemaVersion *int32 `json:"schema_version,omitempty"`
+	SchemaVersion *int64 `json:"schema_version,omitempty"`
 }
 
 // NewWAFEvents400 instantiates a new WAFEvents400 object
@@ -73,9 +73,9 @@ func (o *WAFEvents400) SetErrors(v []map[string]interface{}) {
 }
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
-func (o *WAFEvents400) GetSchemaVersion() int32 {
+func (o *WAFEvents400) GetSchemaVersion() int64 {
 	if o == nil || IsNil(o.SchemaVersion) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SchemaVersion
@@ -83,7 +83,7 @@ func (o *WAFEvents400) GetSchemaVersion() int32 {
 
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WAFEvents400) GetSchemaVersionOk() (*int32, bool) {
+func (o *WAFEvents400) GetSchemaVersionOk() (*int64, bool) {
 	if o == nil || IsNil(o.SchemaVersion) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *WAFEvents400) HasSchemaVersion() bool {
 	return false
 }
 
-// SetSchemaVersion gets a reference to the given int32 and assigns it to the SchemaVersion field.
-func (o *WAFEvents400) SetSchemaVersion(v int32) {
+// SetSchemaVersion gets a reference to the given int64 and assigns it to the SchemaVersion field.
+func (o *WAFEvents400) SetSchemaVersion(v int64) {
 	o.SchemaVersion = &v
 }
 

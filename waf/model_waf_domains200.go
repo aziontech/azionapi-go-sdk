@@ -20,7 +20,7 @@ var _ MappedNullable = &WAFDomains200{}
 // WAFDomains200 struct for WAFDomains200
 type WAFDomains200 struct {
 	Results []map[string]interface{} `json:"results,omitempty"`
-	SchemaVersion *int32 `json:"schema_version,omitempty"`
+	SchemaVersion *int64 `json:"schema_version,omitempty"`
 }
 
 // NewWAFDomains200 instantiates a new WAFDomains200 object
@@ -73,9 +73,9 @@ func (o *WAFDomains200) SetResults(v []map[string]interface{}) {
 }
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
-func (o *WAFDomains200) GetSchemaVersion() int32 {
+func (o *WAFDomains200) GetSchemaVersion() int64 {
 	if o == nil || IsNil(o.SchemaVersion) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SchemaVersion
@@ -83,7 +83,7 @@ func (o *WAFDomains200) GetSchemaVersion() int32 {
 
 // GetSchemaVersionOk returns a tuple with the SchemaVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WAFDomains200) GetSchemaVersionOk() (*int32, bool) {
+func (o *WAFDomains200) GetSchemaVersionOk() (*int64, bool) {
 	if o == nil || IsNil(o.SchemaVersion) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *WAFDomains200) HasSchemaVersion() bool {
 	return false
 }
 
-// SetSchemaVersion gets a reference to the given int32 and assigns it to the SchemaVersion field.
-func (o *WAFDomains200) SetSchemaVersion(v int32) {
+// SetSchemaVersion gets a reference to the given int64 and assigns it to the SchemaVersion field.
+func (o *WAFDomains200) SetSchemaVersion(v int64) {
 	o.SchemaVersion = &v
 }
 
