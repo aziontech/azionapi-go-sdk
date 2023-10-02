@@ -77,17 +77,28 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*WAFApi* | [**GetWAFDomains**](docs/WAFApi.md#getwafdomains) | **Get** /waf/{wafId}/domains | Find domains attached to a WAF
-*WAFApi* | [**GetWAFEvents**](docs/WAFApi.md#getwafevents) | **Get** /waf/{wafId}/waf_events | Find WAF log events
+*WAFAPI* | [**CreateNewWAFRuleset**](docs/WAFAPI.md#createnewwafruleset) | **Post** /waf/rulesets | Create a new WAF Rule Set in an account.
+*WAFAPI* | [**DeleteWAFRuleset**](docs/WAFAPI.md#deletewafruleset) | **Delete** /waf/rulesets/{waf_rule_set_id} | Remove an WAF Rule Set from an account. Warning: this action cannot be undone.
+*WAFAPI* | [**GetWAFDomains**](docs/WAFAPI.md#getwafdomains) | **Get** /waf/{wafId}/domains | List all domains attached to a Web Application Firewall (WAF) in an account.
+*WAFAPI* | [**GetWAFEvents**](docs/WAFAPI.md#getwafevents) | **Get** /waf/{wafId}/waf_events | Find WAF log events
+*WAFAPI* | [**GetWAFRuleset**](docs/WAFAPI.md#getwafruleset) | **Get** /waf/rulesets/{waf_rule_set_id} | List a specific Rule Set associated to a Web Application Firewall (WAF) in an account.
+*WAFAPI* | [**ListAllWAF**](docs/WAFAPI.md#listallwaf) | **Get** /waf | List all Web Application Firewalls (WAFs) created in an account
+*WAFAPI* | [**ListAllWAFRulesets**](docs/WAFAPI.md#listallwafrulesets) | **Get** /waf/rulesets | list all Rule Sets associated to a Web Application Firewall (WAF) in an account.
+*WAFAPI* | [**UpdateWAFRuleset**](docs/WAFAPI.md#updatewafruleset) | **Patch** /waf/rulesets/{waf_rule_set_id} | Change only select settings of a WAF Rule Set
 
 
 ## Documentation For Models
 
+ - [CreateNewWAFRulesetRequest](docs/CreateNewWAFRulesetRequest.md)
+ - [SingleWAF](docs/SingleWAF.md)
  - [WAFDomains200](docs/WAFDomains200.md)
  - [WAFEvents200](docs/WAFEvents200.md)
  - [WAFEvents400](docs/WAFEvents400.md)
  - [WAFEvents401](docs/WAFEvents401.md)
  - [WAFEvents404](docs/WAFEvents404.md)
+ - [WAFList200](docs/WAFList200.md)
+ - [WAFSensitivityChoices](docs/WAFSensitivityChoices.md)
+ - [WAFSingle200](docs/WAFSingle200.md)
 
 
 ## Documentation For Authorization
@@ -101,6 +112,19 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods

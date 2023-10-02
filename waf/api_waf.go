@@ -20,12 +20,235 @@ import (
 )
 
 
-// WAFApiService WAFApi service
-type WAFApiService service
+// WAFAPIService WAFAPI service
+type WAFAPIService service
+
+type ApiCreateNewWAFRulesetRequest struct {
+	ctx context.Context
+	ApiService *WAFAPIService
+	createNewWAFRulesetRequest *CreateNewWAFRulesetRequest
+}
+
+func (r ApiCreateNewWAFRulesetRequest) CreateNewWAFRulesetRequest(createNewWAFRulesetRequest CreateNewWAFRulesetRequest) ApiCreateNewWAFRulesetRequest {
+	r.createNewWAFRulesetRequest = &createNewWAFRulesetRequest
+	return r
+}
+
+func (r ApiCreateNewWAFRulesetRequest) Execute() (*SingleWAF, *http.Response, error) {
+	return r.ApiService.CreateNewWAFRulesetExecute(r)
+}
+
+/*
+CreateNewWAFRuleset Create a new WAF Rule Set in an account.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateNewWAFRulesetRequest
+*/
+func (a *WAFAPIService) CreateNewWAFRuleset(ctx context.Context) ApiCreateNewWAFRulesetRequest {
+	return ApiCreateNewWAFRulesetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return SingleWAF
+func (a *WAFAPIService) CreateNewWAFRulesetExecute(r ApiCreateNewWAFRulesetRequest) (*SingleWAF, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SingleWAF
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFAPIService.CreateNewWAFRuleset")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/waf/rulesets"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json; version=3"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json; version=3"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createNewWAFRulesetRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteWAFRulesetRequest struct {
+	ctx context.Context
+	ApiService *WAFAPIService
+	wafRuleSetId string
+}
+
+func (r ApiDeleteWAFRulesetRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteWAFRulesetExecute(r)
+}
+
+/*
+DeleteWAFRuleset Remove an WAF Rule Set from an account. Warning: this action cannot be undone.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param wafRuleSetId
+ @return ApiDeleteWAFRulesetRequest
+*/
+func (a *WAFAPIService) DeleteWAFRuleset(ctx context.Context, wafRuleSetId string) ApiDeleteWAFRulesetRequest {
+	return ApiDeleteWAFRulesetRequest{
+		ApiService: a,
+		ctx: ctx,
+		wafRuleSetId: wafRuleSetId,
+	}
+}
+
+// Execute executes the request
+func (a *WAFAPIService) DeleteWAFRulesetExecute(r ApiDeleteWAFRulesetRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFAPIService.DeleteWAFRuleset")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/waf/rulesets/{waf_rule_set_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"waf_rule_set_id"+"}", url.PathEscape(parameterValueToString(r.wafRuleSetId, "wafRuleSetId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
 
 type ApiGetWAFDomainsRequest struct {
 	ctx context.Context
-	ApiService *WAFApiService
+	ApiService *WAFAPIService
 	wafId int64
 	name *string
 }
@@ -41,13 +264,13 @@ func (r ApiGetWAFDomainsRequest) Execute() (*WAFDomains200, *http.Response, erro
 }
 
 /*
-GetWAFDomains Find domains attached to a WAF
+GetWAFDomains List all domains attached to a Web Application Firewall (WAF) in an account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param wafId ID of WAF to return
  @return ApiGetWAFDomainsRequest
 */
-func (a *WAFApiService) GetWAFDomains(ctx context.Context, wafId int64) ApiGetWAFDomainsRequest {
+func (a *WAFAPIService) GetWAFDomains(ctx context.Context, wafId int64) ApiGetWAFDomainsRequest {
 	return ApiGetWAFDomainsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +280,7 @@ func (a *WAFApiService) GetWAFDomains(ctx context.Context, wafId int64) ApiGetWA
 
 // Execute executes the request
 //  @return WAFDomains200
-func (a *WAFApiService) GetWAFDomainsExecute(r ApiGetWAFDomainsRequest) (*WAFDomains200, *http.Response, error) {
+func (a *WAFAPIService) GetWAFDomainsExecute(r ApiGetWAFDomainsRequest) (*WAFDomains200, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -65,7 +288,7 @@ func (a *WAFApiService) GetWAFDomainsExecute(r ApiGetWAFDomainsRequest) (*WAFDom
 		localVarReturnValue  *WAFDomains200
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFApiService.GetWAFDomains")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFAPIService.GetWAFDomains")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -171,7 +394,7 @@ func (a *WAFApiService) GetWAFDomainsExecute(r ApiGetWAFDomainsRequest) (*WAFDom
 
 type ApiGetWAFEventsRequest struct {
 	ctx context.Context
-	ApiService *WAFApiService
+	ApiService *WAFAPIService
 	wafId int64
 	hourRange *int64
 	domainsIds *string
@@ -207,7 +430,7 @@ GetWAFEvents Find WAF log events
  @param wafId ID of WAF to return
  @return ApiGetWAFEventsRequest
 */
-func (a *WAFApiService) GetWAFEvents(ctx context.Context, wafId int64) ApiGetWAFEventsRequest {
+func (a *WAFAPIService) GetWAFEvents(ctx context.Context, wafId int64) ApiGetWAFEventsRequest {
 	return ApiGetWAFEventsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -217,7 +440,7 @@ func (a *WAFApiService) GetWAFEvents(ctx context.Context, wafId int64) ApiGetWAF
 
 // Execute executes the request
 //  @return WAFEvents200
-func (a *WAFApiService) GetWAFEventsExecute(r ApiGetWAFEventsRequest) (*WAFEvents200, *http.Response, error) {
+func (a *WAFAPIService) GetWAFEventsExecute(r ApiGetWAFEventsRequest) (*WAFEvents200, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -225,7 +448,7 @@ func (a *WAFApiService) GetWAFEventsExecute(r ApiGetWAFEventsRequest) (*WAFEvent
 		localVarReturnValue  *WAFEvents200
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFApiService.GetWAFEvents")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFAPIService.GetWAFEvents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -333,6 +556,607 @@ func (a *WAFApiService) GetWAFEventsExecute(r ApiGetWAFEventsRequest) (*WAFEvent
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetWAFRulesetRequest struct {
+	ctx context.Context
+	ApiService *WAFAPIService
+	wafRuleSetId int64
+}
+
+func (r ApiGetWAFRulesetRequest) Execute() (*WAFSingle200, *http.Response, error) {
+	return r.ApiService.GetWAFRulesetExecute(r)
+}
+
+/*
+GetWAFRuleset List a specific Rule Set associated to a Web Application Firewall (WAF) in an account.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param wafRuleSetId ID of WAF Ruleset to return
+ @return ApiGetWAFRulesetRequest
+*/
+func (a *WAFAPIService) GetWAFRuleset(ctx context.Context, wafRuleSetId int64) ApiGetWAFRulesetRequest {
+	return ApiGetWAFRulesetRequest{
+		ApiService: a,
+		ctx: ctx,
+		wafRuleSetId: wafRuleSetId,
+	}
+}
+
+// Execute executes the request
+//  @return WAFSingle200
+func (a *WAFAPIService) GetWAFRulesetExecute(r ApiGetWAFRulesetRequest) (*WAFSingle200, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WAFSingle200
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFAPIService.GetWAFRuleset")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/waf/rulesets/{waf_rule_set_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"waf_rule_set_id"+"}", url.PathEscape(parameterValueToString(r.wafRuleSetId, "wafRuleSetId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json; version=3"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v WAFEvents400
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v WAFEvents404
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListAllWAFRequest struct {
+	ctx context.Context
+	ApiService *WAFAPIService
+	page *int64
+	pageSize *int64
+}
+
+// Identifies which page should be returned, if the return is paginated.
+func (r ApiListAllWAFRequest) Page(page int64) ApiListAllWAFRequest {
+	r.page = &page
+	return r
+}
+
+// Identifies how many items should be returned per page.
+func (r ApiListAllWAFRequest) PageSize(pageSize int64) ApiListAllWAFRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiListAllWAFRequest) Execute() (*WAFList200, *http.Response, error) {
+	return r.ApiService.ListAllWAFExecute(r)
+}
+
+/*
+ListAllWAF List all Web Application Firewalls (WAFs) created in an account
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAllWAFRequest
+*/
+func (a *WAFAPIService) ListAllWAF(ctx context.Context) ApiListAllWAFRequest {
+	return ApiListAllWAFRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return WAFList200
+func (a *WAFAPIService) ListAllWAFExecute(r ApiListAllWAFRequest) (*WAFList200, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WAFList200
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFAPIService.ListAllWAF")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/waf"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 1
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 10
+		r.pageSize = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json; version=3"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v WAFEvents400
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v WAFEvents404
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListAllWAFRulesetsRequest struct {
+	ctx context.Context
+	ApiService *WAFAPIService
+	orderBy *string
+	sort *string
+	page *int64
+	pageSize *int64
+}
+
+// Identifies which property the return should be sorted by.
+func (r ApiListAllWAFRulesetsRequest) OrderBy(orderBy string) ApiListAllWAFRulesetsRequest {
+	r.orderBy = &orderBy
+	return r
+}
+
+// Defines whether objects are shown in ascending or descending order depending on the value set in order_by.
+func (r ApiListAllWAFRulesetsRequest) Sort(sort string) ApiListAllWAFRulesetsRequest {
+	r.sort = &sort
+	return r
+}
+
+// Identifies which page should be returned, if the return is paginated.
+func (r ApiListAllWAFRulesetsRequest) Page(page int64) ApiListAllWAFRulesetsRequest {
+	r.page = &page
+	return r
+}
+
+// Identifies how many items should be returned per page.
+func (r ApiListAllWAFRulesetsRequest) PageSize(pageSize int64) ApiListAllWAFRulesetsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiListAllWAFRulesetsRequest) Execute() (*WAFList200, *http.Response, error) {
+	return r.ApiService.ListAllWAFRulesetsExecute(r)
+}
+
+/*
+ListAllWAFRulesets list all Rule Sets associated to a Web Application Firewall (WAF) in an account.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAllWAFRulesetsRequest
+*/
+func (a *WAFAPIService) ListAllWAFRulesets(ctx context.Context) ApiListAllWAFRulesetsRequest {
+	return ApiListAllWAFRulesetsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return WAFList200
+func (a *WAFAPIService) ListAllWAFRulesetsExecute(r ApiListAllWAFRulesetsRequest) (*WAFList200, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WAFList200
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFAPIService.ListAllWAFRulesets")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/waf/rulesets"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.orderBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_by", r.orderBy, "")
+	} else {
+		var defaultValue string = "name"
+		r.orderBy = &defaultValue
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "asc"
+		r.sort = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 1
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 10
+		r.pageSize = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json; version=3"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v WAFEvents400
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v WAFEvents404
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateWAFRulesetRequest struct {
+	ctx context.Context
+	ApiService *WAFAPIService
+	wafRuleSetId string
+	singleWAF *SingleWAF
+}
+
+func (r ApiUpdateWAFRulesetRequest) SingleWAF(singleWAF SingleWAF) ApiUpdateWAFRulesetRequest {
+	r.singleWAF = &singleWAF
+	return r
+}
+
+func (r ApiUpdateWAFRulesetRequest) Execute() (*SingleWAF, *http.Response, error) {
+	return r.ApiService.UpdateWAFRulesetExecute(r)
+}
+
+/*
+UpdateWAFRuleset Change only select settings of a WAF Rule Set
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param wafRuleSetId
+ @return ApiUpdateWAFRulesetRequest
+*/
+func (a *WAFAPIService) UpdateWAFRuleset(ctx context.Context, wafRuleSetId string) ApiUpdateWAFRulesetRequest {
+	return ApiUpdateWAFRulesetRequest{
+		ApiService: a,
+		ctx: ctx,
+		wafRuleSetId: wafRuleSetId,
+	}
+}
+
+// Execute executes the request
+//  @return SingleWAF
+func (a *WAFAPIService) UpdateWAFRulesetExecute(r ApiUpdateWAFRulesetRequest) (*SingleWAF, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SingleWAF
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WAFAPIService.UpdateWAFRuleset")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/waf/rulesets/{waf_rule_set_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"waf_rule_set_id"+"}", url.PathEscape(parameterValueToString(r.wafRuleSetId, "wafRuleSetId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json; version=3"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json; version=3"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.singleWAF
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
