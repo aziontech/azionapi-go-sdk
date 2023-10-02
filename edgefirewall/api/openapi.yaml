@@ -170,7 +170,309 @@ paths:
         "500":
           description: Internal Server Error
       summary: "Overwrite some edge firewall attributes, like \"active\""
+  /edge_firewall/{edge_firewall_id}/rules_engine:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: edge_firewall_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/RuleSetResponseAll'
+          description: List all rule sets.
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: List all rule sets.
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: edge_firewall_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json; version=3:
+            schema:
+              $ref: '#/components/schemas/CreateRuleSetRequest'
+      responses:
+        "201":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/RuleSetResponse'
+          description: Create rule set.
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: Create rule set.
+  /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: edge_firewall_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: rule_set_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Delete rule set.
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: Delete rule set.
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: edge_firewall_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: rule_set_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          format: int64
+          minimum: 1
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 10
+          format: int64
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/RuleSetResult'
+          description: Retrieve rule set by ID.
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Retrieve rule set by ID.
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: edge_firewall_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: rule_set_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json; version=3:
+            schema:
+              $ref: '#/components/schemas/CreateRuleSetRequest'
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/RuleSetResult'
+          description: Edit rule set.
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: Edit rule set.
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: edge_firewall_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: rule_set_id
+        required: true
+        schema:
+          format: int64
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json; version=3:
+            schema:
+              $ref: '#/components/schemas/CreateRuleSetRequest'
+      responses:
+        "200":
+          content:
+            application/json; version=3:
+              schema:
+                $ref: '#/components/schemas/RuleSetResult'
+          description: Overwrite rule set.
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: Overwrite rule set
 components:
+  parameters:
+    edge_firewall_id:
+      explode: false
+      in: path
+      name: edge_firewall_id
+      required: true
+      schema:
+        format: int64
+        minimum: 1
+        type: integer
+      style: simple
+    rule_set_id:
+      explode: false
+      in: path
+      name: rule_set_id
+      required: true
+      schema:
+        format: int64
+        minimum: 1
+        type: integer
+      style: simple
+    order_by:
+      explode: true
+      in: query
+      name: order_by
+      required: false
+      schema:
+        type: string
+      style: form
+    sort:
+      explode: true
+      in: query
+      name: sort
+      required: false
+      schema:
+        enum:
+        - ASC
+        - DESC
+        type: string
+      style: form
+    page:
+      explode: true
+      in: query
+      name: page
+      required: false
+      schema:
+        default: 1
+        format: int64
+        minimum: 1
+        type: integer
+      style: form
+    page_size:
+      explode: true
+      in: query
+      name: page_size
+      required: false
+      schema:
+        default: 10
+        format: int64
+        minimum: 1
+        type: integer
+      style: form
   schemas:
     Links:
       example:
@@ -349,6 +651,425 @@ components:
           type: boolean
         waf_enabled:
           type: boolean
+      type: object
+    Behaviors:
+      example:
+        name: deny
+        target: target
+      properties:
+        name:
+          enum:
+          - deny
+          - drop
+          - set_rate_limit
+          - set_waf_ruleset
+          - run_function
+          - tag_event
+          type: string
+        target:
+          type: string
+    Variables:
+      enum:
+      - header_accept
+      - header_accept_encoding
+      - header_accept_language
+      - header_cookie
+      - header_origin
+      - header_referer
+      - header_user_agent
+      - host
+      - network
+      - request_args
+      - request_method
+      - request_uri
+      - scheme
+      - client_certificate_validation
+      type: string
+    Conditionals:
+      enum:
+      - if
+      - and
+      - or
+      type: string
+    SSLVerificationStatusOperators:
+      enum:
+      - is_equal
+      - is_not_equal
+      type: string
+    SSLVerificationStatusArguments:
+      enum:
+      - SUCCESS
+      - CERTIFICATE_VERIFICATION_ERROR
+      - MISSING_CLIENT_CERTIFICATE
+      type: string
+    SSLVerificationStatusCriteria:
+      example:
+        conditional: null
+        variable: null
+        input_value: null
+        operator: null
+      properties:
+        variable:
+          $ref: '#/components/schemas/Variables'
+        operator:
+          $ref: '#/components/schemas/SSLVerificationStatusOperators'
+        conditional:
+          $ref: '#/components/schemas/Conditionals'
+        input_value:
+          $ref: '#/components/schemas/SSLVerificationStatusArguments'
+      type: object
+    RuleSetResult:
+      example:
+        schema_version: 1
+        results:
+          is_active: true
+          behaviors:
+          - name: deny
+            target: target
+          - name: deny
+            target: target
+          criteria:
+          - - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+            - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+          - - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+            - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+          last_editor: last_editor
+          name: name
+          description: description
+          id: 1
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          order: 0
+      properties:
+        results:
+          $ref: '#/components/schemas/RuleSetResult_results'
+        schema_version:
+          minimum: 1
+          type: integer
+      type: object
+    RuleSetResultAll:
+      example:
+        is_active: true
+        behaviors:
+        - name: deny
+          target: target
+        - name: deny
+          target: target
+        criteria:
+        - - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+          - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+        - - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+          - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+        last_editor: last_editor
+        name: name
+        description: description
+        id: 1
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        order: 0
+      properties:
+        id:
+          format: int64
+          minimum: 1
+          type: integer
+        last_editor:
+          format: email
+          type: string
+        last_modified:
+          format: date-time
+          type: string
+        name:
+          type: string
+        is_active:
+          type: boolean
+        description:
+          type: string
+        behaviors:
+          items:
+            $ref: '#/components/schemas/Behaviors'
+          type: array
+        criteria:
+          items:
+            items:
+              $ref: '#/components/schemas/SSLVerificationStatusCriteria'
+            type: array
+          type: array
+        order:
+          minimum: 0
+          type: integer
+      type: object
+    CreateRuleSetRequest:
+      example:
+        is_active: true
+        behaviors:
+        - name: deny
+          target: target
+        - name: deny
+          target: target
+        criteria:
+        - - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+          - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+        - - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+          - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+        name: name
+      properties:
+        name:
+          type: string
+        is_active:
+          type: boolean
+        behaviors:
+          items:
+            $ref: '#/components/schemas/Behaviors'
+          type: array
+        criteria:
+          items:
+            items:
+              $ref: '#/components/schemas/SSLVerificationStatusCriteria'
+            type: array
+          type: array
+      type: object
+    RuleSetResponse:
+      example:
+        is_active: true
+        behaviors:
+        - name: deny
+          target: target
+        - name: deny
+          target: target
+        criteria:
+        - - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+          - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+        - - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+          - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+        last_editor: last_editor
+        name: name
+        id: 1
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        order: 1
+      properties:
+        name:
+          type: string
+        is_active:
+          type: boolean
+        behaviors:
+          items:
+            $ref: '#/components/schemas/Behaviors'
+          type: array
+        criteria:
+          items:
+            items:
+              $ref: '#/components/schemas/SSLVerificationStatusCriteria'
+            type: array
+          type: array
+        last_modified:
+          format: date-time
+          type: string
+        last_editor:
+          format: email
+          type: string
+        id:
+          format: int64
+          minimum: 1
+          type: integer
+        order:
+          format: int64
+          minimum: 1
+          type: integer
+      type: object
+    RuleSetResponseAll:
+      example:
+        schema_version: 1
+        count: 0
+        links:
+          next: next
+          previous: previous
+        total_pages: 0
+        results:
+        - is_active: true
+          behaviors:
+          - name: deny
+            target: target
+          - name: deny
+            target: target
+          criteria:
+          - - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+            - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+          - - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+            - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+          last_editor: last_editor
+          name: name
+          description: description
+          id: 1
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          order: 0
+        - is_active: true
+          behaviors:
+          - name: deny
+            target: target
+          - name: deny
+            target: target
+          criteria:
+          - - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+            - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+          - - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+            - conditional: null
+              variable: null
+              input_value: null
+              operator: null
+          last_editor: last_editor
+          name: name
+          description: description
+          id: 1
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          order: 0
+      properties:
+        count:
+          format: int64
+          minimum: 0
+          type: integer
+        total_pages:
+          format: int64
+          minimum: 0
+          type: integer
+        schema_version:
+          default: 3
+          format: int32
+          type: integer
+        links:
+          $ref: '#/components/schemas/Links'
+        results:
+          items:
+            $ref: '#/components/schemas/RuleSetResultAll'
+          type: array
+      type: object
+    RuleSetResult_results:
+      example:
+        is_active: true
+        behaviors:
+        - name: deny
+          target: target
+        - name: deny
+          target: target
+        criteria:
+        - - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+          - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+        - - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+          - conditional: null
+            variable: null
+            input_value: null
+            operator: null
+        last_editor: last_editor
+        name: name
+        description: description
+        id: 1
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        order: 0
+      properties:
+        id:
+          format: int64
+          minimum: 1
+          type: integer
+        last_editor:
+          format: email
+          type: string
+        last_modified:
+          format: date-time
+          type: string
+        name:
+          type: string
+        is_active:
+          type: boolean
+        description:
+          type: string
+        behaviors:
+          items:
+            $ref: '#/components/schemas/Behaviors'
+          type: array
+        criteria:
+          items:
+            items:
+              $ref: '#/components/schemas/SSLVerificationStatusCriteria'
+            type: array
+          type: array
+        order:
+          minimum: 0
+          type: integer
       type: object
   securitySchemes:
     tokenAuth:

@@ -77,22 +77,40 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**EdgeFirewallGet**](docs/DefaultApi.md#edgefirewallget) | **Get** /edge_firewall | List all user edge firewall
-*DefaultApi* | [**EdgeFirewallPost**](docs/DefaultApi.md#edgefirewallpost) | **Post** /edge_firewall | Create a edge firewall
-*DefaultApi* | [**EdgeFirewallUuidDelete**](docs/DefaultApi.md#edgefirewalluuiddelete) | **Delete** /edge_firewall/{uuid} | Delete an edge firewall by uuid
-*DefaultApi* | [**EdgeFirewallUuidGet**](docs/DefaultApi.md#edgefirewalluuidget) | **Get** /edge_firewall/{uuid} | Retrieve an edge firewall set by uuid
-*DefaultApi* | [**EdgeFirewallUuidPatch**](docs/DefaultApi.md#edgefirewalluuidpatch) | **Patch** /edge_firewall/{uuid} | Update some edge firewall attributes, like \&quot;active\&quot;
-*DefaultApi* | [**EdgeFirewallUuidPut**](docs/DefaultApi.md#edgefirewalluuidput) | **Put** /edge_firewall/{uuid} | Overwrite some edge firewall attributes, like \&quot;active\&quot;
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdRulesEngineGet**](docs/DefaultAPI.md#edgefirewalledgefirewallidrulesengineget) | **Get** /edge_firewall/{edge_firewall_id}/rules_engine | List all rule sets.
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdRulesEnginePost**](docs/DefaultAPI.md#edgefirewalledgefirewallidrulesenginepost) | **Post** /edge_firewall/{edge_firewall_id}/rules_engine | Create rule set.
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdRulesEngineRuleSetIdDelete**](docs/DefaultAPI.md#edgefirewalledgefirewallidrulesenginerulesetiddelete) | **Delete** /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id} | Delete rule set.
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdRulesEngineRuleSetIdGet**](docs/DefaultAPI.md#edgefirewalledgefirewallidrulesenginerulesetidget) | **Get** /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id} | Retrieve rule set by ID.
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdRulesEngineRuleSetIdPatch**](docs/DefaultAPI.md#edgefirewalledgefirewallidrulesenginerulesetidpatch) | **Patch** /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id} | Edit rule set.
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdRulesEngineRuleSetIdPut**](docs/DefaultAPI.md#edgefirewalledgefirewallidrulesenginerulesetidput) | **Put** /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id} | Overwrite rule set
+*DefaultAPI* | [**EdgeFirewallGet**](docs/DefaultAPI.md#edgefirewallget) | **Get** /edge_firewall | List all user edge firewall
+*DefaultAPI* | [**EdgeFirewallPost**](docs/DefaultAPI.md#edgefirewallpost) | **Post** /edge_firewall | Create a edge firewall
+*DefaultAPI* | [**EdgeFirewallUuidDelete**](docs/DefaultAPI.md#edgefirewalluuiddelete) | **Delete** /edge_firewall/{uuid} | Delete an edge firewall by uuid
+*DefaultAPI* | [**EdgeFirewallUuidGet**](docs/DefaultAPI.md#edgefirewalluuidget) | **Get** /edge_firewall/{uuid} | Retrieve an edge firewall set by uuid
+*DefaultAPI* | [**EdgeFirewallUuidPatch**](docs/DefaultAPI.md#edgefirewalluuidpatch) | **Patch** /edge_firewall/{uuid} | Update some edge firewall attributes, like \&quot;active\&quot;
+*DefaultAPI* | [**EdgeFirewallUuidPut**](docs/DefaultAPI.md#edgefirewalluuidput) | **Put** /edge_firewall/{uuid} | Overwrite some edge firewall attributes, like \&quot;active\&quot;
 
 
 ## Documentation For Models
 
+ - [Behaviors](docs/Behaviors.md)
+ - [Conditionals](docs/Conditionals.md)
  - [CreateEdgeFirewallRequest](docs/CreateEdgeFirewallRequest.md)
+ - [CreateRuleSetRequest](docs/CreateRuleSetRequest.md)
  - [EdgeFirewall](docs/EdgeFirewall.md)
  - [EdgeFirewallResponse](docs/EdgeFirewallResponse.md)
  - [Links](docs/Links.md)
  - [ListEdgeFirewallResponse](docs/ListEdgeFirewallResponse.md)
+ - [RuleSetResponse](docs/RuleSetResponse.md)
+ - [RuleSetResponseAll](docs/RuleSetResponseAll.md)
+ - [RuleSetResult](docs/RuleSetResult.md)
+ - [RuleSetResultAll](docs/RuleSetResultAll.md)
+ - [RuleSetResultResults](docs/RuleSetResultResults.md)
+ - [SSLVerificationStatusArguments](docs/SSLVerificationStatusArguments.md)
+ - [SSLVerificationStatusCriteria](docs/SSLVerificationStatusCriteria.md)
+ - [SSLVerificationStatusOperators](docs/SSLVerificationStatusOperators.md)
  - [UpdateEdgeFirewallRequest](docs/UpdateEdgeFirewallRequest.md)
+ - [Variables](docs/Variables.md)
 
 
 ## Documentation For Authorization
@@ -106,6 +124,19 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods
