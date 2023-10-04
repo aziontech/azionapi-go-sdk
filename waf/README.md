@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CreateNewWAFRulesetRequest](docs/CreateNewWAFRulesetRequest.md)
+ - [Links](docs/Links.md)
  - [SingleWAF](docs/SingleWAF.md)
  - [WAFDomains200](docs/WAFDomains200.md)
  - [WAFEvents200](docs/WAFEvents200.md)

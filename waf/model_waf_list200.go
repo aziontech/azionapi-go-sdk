@@ -21,7 +21,8 @@ var _ MappedNullable = &WAFList200{}
 type WAFList200 struct {
 	Count *int64 `json:"count,omitempty"`
 	TotalPages *int64 `json:"total_pages,omitempty"`
-	Links *SingleWAF `json:"links,omitempty"`
+	Links *Links `json:"links,omitempty"`
+	Results []SingleWAF `json:"results,omitempty"`
 	SchemaVersion *int64 `json:"schema_version,omitempty"`
 }
 
@@ -107,9 +108,9 @@ func (o *WAFList200) SetTotalPages(v int64) {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *WAFList200) GetLinks() SingleWAF {
+func (o *WAFList200) GetLinks() Links {
 	if o == nil || IsNil(o.Links) {
-		var ret SingleWAF
+		var ret Links
 		return ret
 	}
 	return *o.Links
@@ -117,7 +118,7 @@ func (o *WAFList200) GetLinks() SingleWAF {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WAFList200) GetLinksOk() (*SingleWAF, bool) {
+func (o *WAFList200) GetLinksOk() (*Links, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -133,9 +134,41 @@ func (o *WAFList200) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given SingleWAF and assigns it to the Links field.
-func (o *WAFList200) SetLinks(v SingleWAF) {
+// SetLinks gets a reference to the given Links and assigns it to the Links field.
+func (o *WAFList200) SetLinks(v Links) {
 	o.Links = &v
+}
+
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *WAFList200) GetResults() []SingleWAF {
+	if o == nil || IsNil(o.Results) {
+		var ret []SingleWAF
+		return ret
+	}
+	return o.Results
+}
+
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WAFList200) GetResultsOk() ([]SingleWAF, bool) {
+	if o == nil || IsNil(o.Results) {
+		return nil, false
+	}
+	return o.Results, true
+}
+
+// HasResults returns a boolean if a field has been set.
+func (o *WAFList200) HasResults() bool {
+	if o != nil && !IsNil(o.Results) {
+		return true
+	}
+
+	return false
+}
+
+// SetResults gets a reference to the given []SingleWAF and assigns it to the Results field.
+func (o *WAFList200) SetResults(v []SingleWAF) {
+	o.Results = v
 }
 
 // GetSchemaVersion returns the SchemaVersion field value if set, zero value otherwise.
@@ -188,6 +221,9 @@ func (o WAFList200) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Links) {
 		toSerialize["links"] = o.Links
+	}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
 	}
 	if !IsNil(o.SchemaVersion) {
 		toSerialize["schema_version"] = o.SchemaVersion

@@ -6,6 +6,7 @@ api_waf.go
 client.go
 configuration.go
 docs/CreateNewWAFRulesetRequest.md
+docs/Links.md
 docs/SingleWAF.md
 docs/WAFAPI.md
 docs/WAFDomains200.md
@@ -20,6 +21,7 @@ git_push.sh
 go.mod
 go.sum
 model_create_new_waf_ruleset_request.go
+model_links.go
 model_single_waf.go
 model_waf_domains200.go
 model_waf_events200.go

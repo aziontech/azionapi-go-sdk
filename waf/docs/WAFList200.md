@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Count** | Pointer to **int64** |  | [optional] 
 **TotalPages** | Pointer to **int64** |  | [optional] 
-**Links** | Pointer to [**SingleWAF**](SingleWAF.md) |  | [optional] 
+**Links** | Pointer to [**Links**](Links.md) |  | [optional] 
+**Results** | Pointer to [**[]SingleWAF**](SingleWAF.md) |  | [optional] 
 **SchemaVersion** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -80,20 +81,20 @@ HasTotalPages returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *WAFList200) GetLinks() SingleWAF`
+`func (o *WAFList200) GetLinks() Links`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *WAFList200) GetLinksOk() (*SingleWAF, bool)`
+`func (o *WAFList200) GetLinksOk() (*Links, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *WAFList200) SetLinks(v SingleWAF)`
+`func (o *WAFList200) SetLinks(v Links)`
 
 SetLinks sets Links field to given value.
 
@@ -102,6 +103,31 @@ SetLinks sets Links field to given value.
 `func (o *WAFList200) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### GetResults
+
+`func (o *WAFList200) GetResults() []SingleWAF`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *WAFList200) GetResultsOk() (*[]SingleWAF, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *WAFList200) SetResults(v []SingleWAF)`
+
+SetResults sets Results field to given value.
+
+### HasResults
+
+`func (o *WAFList200) HasResults() bool`
+
+HasResults returns a boolean if a field has been set.
 
 ### GetSchemaVersion
 

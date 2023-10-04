@@ -408,6 +408,18 @@ components:
       - high
       - highest
       type: string
+    Links:
+      example:
+        next: next
+        previous: previous
+      properties:
+        previous:
+          nullable: true
+          type: string
+        next:
+          nullable: true
+          type: string
+      type: object
     SingleWAF:
       example:
         id: 28852
@@ -521,7 +533,11 @@ components:
         schema_version: 3
         count: 0
         links:
-          id: 28852
+          next: next
+          previous: previous
+        total_pages: 6
+        results:
+        - id: 28852
           name: Waf Name
           mode: counting
           active: true
@@ -542,7 +558,27 @@ components:
           identified_attack: true
           identified_attack_sensitivity: medium
           bypass_addresses: []
-        total_pages: 6
+        - id: 28852
+          name: Waf Name
+          mode: counting
+          active: true
+          sql_injection: true
+          sql_injection_sensitivity: medium
+          remote_file_inclusion: true
+          remote_file_inclusion_sensitivity: medium
+          directory_traversal: true
+          directory_traversal_sensitivity: medium
+          cross_site_scripting: true
+          cross_site_scripting_sensitivity: medium
+          evading_tricks: true
+          evading_tricks_sensitivity: medium
+          file_upload: true
+          file_upload_sensitivity: medium
+          unwanted_access: true
+          unwanted_access_sensitivity: medium
+          identified_attack: true
+          identified_attack_sensitivity: medium
+          bypass_addresses: []
       properties:
         count:
           format: int64
@@ -551,7 +587,11 @@ components:
           format: int64
           type: integer
         links:
-          $ref: '#/components/schemas/SingleWAF'
+          $ref: '#/components/schemas/Links'
+        results:
+          items:
+            $ref: '#/components/schemas/SingleWAF'
+          type: array
         schema_version:
           example: 3
           format: int64
