@@ -256,6 +256,8 @@ paths:
           description: Bad Request
         "403":
           description: Forbidden
+        "404":
+          description: Not found
         "500":
           description: Internal Server Error
       summary: Delete rule set.
@@ -368,6 +370,8 @@ paths:
           description: Bad Request
         "403":
           description: Forbidden
+        "404":
+          description: Not found
         "500":
           description: Internal Server Error
       summary: Edit rule set.
@@ -407,6 +411,8 @@ paths:
           description: Bad Request
         "403":
           description: Forbidden
+        "404":
+          description: Not found
         "500":
           description: Internal Server Error
       summary: Overwrite rule set
