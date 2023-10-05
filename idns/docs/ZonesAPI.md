@@ -1,14 +1,14 @@
-# \ZonesApi
+# \ZonesAPI
 
 All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteZone**](ZonesApi.md#DeleteZone) | **Delete** /intelligent_dns/{zone_id} | Remove an Intelligent DNS hosted zone
-[**GetZone**](ZonesApi.md#GetZone) | **Get** /intelligent_dns/{zone_id} | Get an Intelligent DNS hosted zone
-[**GetZones**](ZonesApi.md#GetZones) | **Get** /intelligent_dns | Get a collection of Intelligent DNS zones
-[**PostZone**](ZonesApi.md#PostZone) | **Post** /intelligent_dns | Add a new Intelligent DNS zone
-[**PutZone**](ZonesApi.md#PutZone) | **Put** /intelligent_dns/{zone_id} | Update an Intelligent DNS hosted zone
+[**DeleteZone**](ZonesAPI.md#DeleteZone) | **Delete** /intelligent_dns/{zone_id} | Remove an Intelligent DNS hosted zone
+[**GetZone**](ZonesAPI.md#GetZone) | **Get** /intelligent_dns/{zone_id} | Get an Intelligent DNS hosted zone
+[**GetZones**](ZonesAPI.md#GetZones) | **Get** /intelligent_dns | Get a collection of Intelligent DNS zones
+[**PostZone**](ZonesAPI.md#PostZone) | **Post** /intelligent_dns | Add a new Intelligent DNS zone
+[**PutZone**](ZonesAPI.md#PutZone) | **Put** /intelligent_dns/{zone_id} | Update an Intelligent DNS hosted zone
 
 
 
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ZonesApi.DeleteZone(context.Background(), zoneId).Execute()
+    resp, r, err := apiClient.ZonesAPI.DeleteZone(context.Background(), zoneId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.DeleteZone``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZonesAPI.DeleteZone``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteZone`: string
-    fmt.Fprintf(os.Stdout, "Response from `ZonesApi.DeleteZone`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ZonesAPI.DeleteZone`: %v\n", resp)
 }
 ```
 
@@ -103,13 +103,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ZonesApi.GetZone(context.Background(), zoneId).Execute()
+    resp, r, err := apiClient.ZonesAPI.GetZone(context.Background(), zoneId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.GetZone``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZonesAPI.GetZone``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetZone`: GetZoneResponse
-    fmt.Fprintf(os.Stdout, "Response from `ZonesApi.GetZone`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ZonesAPI.GetZone`: %v\n", resp)
 }
 ```
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## GetZones
 
-> GetZonesResponse GetZones(ctx).Execute()
+> GetZonesResponse GetZones(ctx).OrderBy(orderBy).Sort(sort).Page(page).PageSize(pageSize).Execute()
 
 Get a collection of Intelligent DNS zones
 
@@ -167,27 +167,38 @@ import (
 )
 
 func main() {
+    orderBy := "orderBy_example" // string | Identifies which property the return should be sorted by. (optional) (default to "name")
+    sort := "sort_example" // string | Defines whether objects are shown in ascending or descending order depending on the value set in order_by. (optional) (default to "asc")
+    page := int64(789) // int64 | Identifies which page should be returned, if the return is paginated. (optional) (default to 1)
+    pageSize := int64(789) // int64 | Identifies how many items should be returned per page. (optional) (default to 10)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ZonesApi.GetZones(context.Background()).Execute()
+    resp, r, err := apiClient.ZonesAPI.GetZones(context.Background()).OrderBy(orderBy).Sort(sort).Page(page).PageSize(pageSize).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.GetZones``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZonesAPI.GetZones``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetZones`: GetZonesResponse
-    fmt.Fprintf(os.Stdout, "Response from `ZonesApi.GetZones`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ZonesAPI.GetZones`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetZonesRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderBy** | **string** | Identifies which property the return should be sorted by. | [default to &quot;name&quot;]
+ **sort** | **string** | Defines whether objects are shown in ascending or descending order depending on the value set in order_by. | [default to &quot;asc&quot;]
+ **page** | **int64** | Identifies which page should be returned, if the return is paginated. | [default to 1]
+ **pageSize** | **int64** | Identifies how many items should be returned per page. | [default to 10]
 
 ### Return type
 
@@ -230,13 +241,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ZonesApi.PostZone(context.Background()).Zone(zone).Execute()
+    resp, r, err := apiClient.ZonesAPI.PostZone(context.Background()).Zone(zone).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.PostZone``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZonesAPI.PostZone``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PostZone`: PostOrPutZoneResponse
-    fmt.Fprintf(os.Stdout, "Response from `ZonesApi.PostZone`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ZonesAPI.PostZone`: %v\n", resp)
 }
 ```
 
@@ -295,13 +306,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ZonesApi.PutZone(context.Background(), zoneId).Zone(zone).Execute()
+    resp, r, err := apiClient.ZonesAPI.PutZone(context.Background(), zoneId).Zone(zone).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.PutZone``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZonesAPI.PutZone``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutZone`: PostOrPutZoneResponse
-    fmt.Fprintf(os.Stdout, "Response from `ZonesApi.PutZone`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ZonesAPI.PutZone`: %v\n", resp)
 }
 ```
 

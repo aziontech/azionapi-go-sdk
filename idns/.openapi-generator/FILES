@@ -7,7 +7,7 @@ api_records.go
 api_zones.go
 client.go
 configuration.go
-docs/DNSSECApi.md
+docs/DNSSECAPI.md
 docs/DnsSec.md
 docs/DnsSecDelegationSigner.md
 docs/DnsSecDelegationSignerDigestType.md
@@ -23,9 +23,9 @@ docs/PostOrPutRecordResponse.md
 docs/PostOrPutZoneResponse.md
 docs/RecordGet.md
 docs/RecordPostOrPut.md
-docs/RecordsApi.md
+docs/RecordsAPI.md
 docs/Zone.md
-docs/ZonesApi.md
+docs/ZonesAPI.md
 git_push.sh
 go.mod
 go.sum

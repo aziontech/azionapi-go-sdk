@@ -20,12 +20,12 @@ import (
 )
 
 
-// DNSSECApiService DNSSECApi service
-type DNSSECApiService service
+// DNSSECAPIService DNSSECAPI service
+type DNSSECAPIService service
 
 type ApiGetZoneDnsSecRequest struct {
 	ctx context.Context
-	ApiService *DNSSECApiService
+	ApiService *DNSSECAPIService
 	zoneId int32
 }
 
@@ -40,7 +40,7 @@ GetZoneDnsSec Retrieve the DNSSEC zone status
  @param zoneId The hosted zone id
  @return ApiGetZoneDnsSecRequest
 */
-func (a *DNSSECApiService) GetZoneDnsSec(ctx context.Context, zoneId int32) ApiGetZoneDnsSecRequest {
+func (a *DNSSECAPIService) GetZoneDnsSec(ctx context.Context, zoneId int32) ApiGetZoneDnsSecRequest {
 	return ApiGetZoneDnsSecRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -50,7 +50,7 @@ func (a *DNSSECApiService) GetZoneDnsSec(ctx context.Context, zoneId int32) ApiG
 
 // Execute executes the request
 //  @return GetOrPatchDnsSecResponse
-func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*GetOrPatchDnsSecResponse, *http.Response, error) {
+func (a *DNSSECAPIService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*GetOrPatchDnsSecResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -58,7 +58,7 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 		localVarReturnValue  *GetOrPatchDnsSecResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSSECApiService.GetZoneDnsSec")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSSECAPIService.GetZoneDnsSec")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -175,7 +175,7 @@ func (a *DNSSECApiService) GetZoneDnsSecExecute(r ApiGetZoneDnsSecRequest) (*Get
 
 type ApiPutZoneDnsSecRequest struct {
 	ctx context.Context
-	ApiService *DNSSECApiService
+	ApiService *DNSSECAPIService
 	zoneId int32
 	dnsSec *DnsSec
 }
@@ -196,7 +196,7 @@ PutZoneDnsSec Update the DNSSEC zone
  @param zoneId The hosted zone id
  @return ApiPutZoneDnsSecRequest
 */
-func (a *DNSSECApiService) PutZoneDnsSec(ctx context.Context, zoneId int32) ApiPutZoneDnsSecRequest {
+func (a *DNSSECAPIService) PutZoneDnsSec(ctx context.Context, zoneId int32) ApiPutZoneDnsSecRequest {
 	return ApiPutZoneDnsSecRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -206,7 +206,7 @@ func (a *DNSSECApiService) PutZoneDnsSec(ctx context.Context, zoneId int32) ApiP
 
 // Execute executes the request
 //  @return GetOrPatchDnsSecResponse
-func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*GetOrPatchDnsSecResponse, *http.Response, error) {
+func (a *DNSSECAPIService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*GetOrPatchDnsSecResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -214,7 +214,7 @@ func (a *DNSSECApiService) PutZoneDnsSecExecute(r ApiPutZoneDnsSecRequest) (*Get
 		localVarReturnValue  *GetOrPatchDnsSecResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSSECApiService.PutZoneDnsSec")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSSECAPIService.PutZoneDnsSec")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

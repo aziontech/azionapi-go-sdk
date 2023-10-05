@@ -49,11 +49,11 @@ type APIClient struct {
 
 	// API Services
 
-	DNSSECApi *DNSSECApiService
+	DNSSECAPI *DNSSECAPIService
 
-	RecordsApi *RecordsApiService
+	RecordsAPI *RecordsAPIService
 
-	ZonesApi *ZonesApiService
+	ZonesAPI *ZonesAPIService
 }
 
 type service struct {
@@ -72,9 +72,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.DNSSECApi = (*DNSSECApiService)(&c.common)
-	c.RecordsApi = (*RecordsApiService)(&c.common)
-	c.ZonesApi = (*ZonesApiService)(&c.common)
+	c.DNSSECAPI = (*DNSSECAPIService)(&c.common)
+	c.RecordsAPI = (*RecordsAPIService)(&c.common)
+	c.ZonesAPI = (*ZonesAPIService)(&c.common)
 
 	return c
 }
@@ -442,6 +442,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = f.Seek(0, io.SeekStart)
+		err = os.Remove(f.Name())
 		return
 	}
 	if f, ok := v.(**os.File); ok {
@@ -454,6 +455,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = (*f).Seek(0, io.SeekStart)
+		err = os.Remove((*f).Name())
 		return
 	}
 	if xmlCheck.MatchString(contentType) {
@@ -530,7 +532,11 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	} else if jsonCheck.MatchString(contentType) {
 		err = json.NewEncoder(bodyBuf).Encode(body)
 	} else if xmlCheck.MatchString(contentType) {
-		err = xml.NewEncoder(bodyBuf).Encode(body)
+		var bs []byte
+		bs, err = xml.Marshal(body)
+		if err == nil {
+			bodyBuf.Write(bs)
+		}
 	}
 
 	if err != nil {

@@ -1,11 +1,11 @@
-# \DNSSECApi
+# \DNSSECAPI
 
 All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetZoneDnsSec**](DNSSECApi.md#GetZoneDnsSec) | **Get** /intelligent_dns/{zone_id}/dnssec | Retrieve the DNSSEC zone status
-[**PutZoneDnsSec**](DNSSECApi.md#PutZoneDnsSec) | **Patch** /intelligent_dns/{zone_id}/dnssec | Update the DNSSEC zone
+[**GetZoneDnsSec**](DNSSECAPI.md#GetZoneDnsSec) | **Get** /intelligent_dns/{zone_id}/dnssec | Retrieve the DNSSEC zone status
+[**PutZoneDnsSec**](DNSSECAPI.md#PutZoneDnsSec) | **Patch** /intelligent_dns/{zone_id}/dnssec | Update the DNSSEC zone
 
 
 
@@ -32,13 +32,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DNSSECApi.GetZoneDnsSec(context.Background(), zoneId).Execute()
+    resp, r, err := apiClient.DNSSECAPI.GetZoneDnsSec(context.Background(), zoneId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DNSSECApi.GetZoneDnsSec``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DNSSECAPI.GetZoneDnsSec``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetZoneDnsSec`: GetOrPatchDnsSecResponse
-    fmt.Fprintf(os.Stdout, "Response from `DNSSECApi.GetZoneDnsSec`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DNSSECAPI.GetZoneDnsSec`: %v\n", resp)
 }
 ```
 
@@ -101,13 +101,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DNSSECApi.PutZoneDnsSec(context.Background(), zoneId).DnsSec(dnsSec).Execute()
+    resp, r, err := apiClient.DNSSECAPI.PutZoneDnsSec(context.Background(), zoneId).DnsSec(dnsSec).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DNSSECApi.PutZoneDnsSec``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DNSSECAPI.PutZoneDnsSec``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutZoneDnsSec`: GetOrPatchDnsSecResponse
-    fmt.Fprintf(os.Stdout, "Response from `DNSSECApi.PutZoneDnsSec`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DNSSECAPI.PutZoneDnsSec`: %v\n", resp)
 }
 ```
 

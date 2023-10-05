@@ -1,13 +1,13 @@
-# \RecordsApi
+# \RecordsAPI
 
 All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteZoneRecord**](RecordsApi.md#DeleteZoneRecord) | **Delete** /intelligent_dns/{zone_id}/records/{record_id} | Remove an Intelligent DNS zone record
-[**GetZoneRecords**](RecordsApi.md#GetZoneRecords) | **Get** /intelligent_dns/{zone_id}/records | Get a collection of Intelligent DNS zone records
-[**PostZoneRecord**](RecordsApi.md#PostZoneRecord) | **Post** /intelligent_dns/{zone_id}/records | Create a new Intelligent DNS zone record
-[**PutZoneRecord**](RecordsApi.md#PutZoneRecord) | **Put** /intelligent_dns/{zone_id}/records/{record_id} | Update an Intelligent DNS zone record
+[**DeleteZoneRecord**](RecordsAPI.md#DeleteZoneRecord) | **Delete** /intelligent_dns/{zone_id}/records/{record_id} | Remove an Intelligent DNS zone record
+[**GetZoneRecords**](RecordsAPI.md#GetZoneRecords) | **Get** /intelligent_dns/{zone_id}/records | Get a collection of Intelligent DNS zone records
+[**PostZoneRecord**](RecordsAPI.md#PostZoneRecord) | **Post** /intelligent_dns/{zone_id}/records | Create a new Intelligent DNS zone record
+[**PutZoneRecord**](RecordsAPI.md#PutZoneRecord) | **Put** /intelligent_dns/{zone_id}/records/{record_id} | Update an Intelligent DNS zone record
 
 
 
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordsApi.DeleteZoneRecord(context.Background(), zoneId, recordId).Execute()
+    resp, r, err := apiClient.RecordsAPI.DeleteZoneRecord(context.Background(), zoneId, recordId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.DeleteZoneRecord``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RecordsAPI.DeleteZoneRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteZoneRecord`: string
-    fmt.Fprintf(os.Stdout, "Response from `RecordsApi.DeleteZoneRecord`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RecordsAPI.DeleteZoneRecord`: %v\n", resp)
 }
 ```
 
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordsApi.GetZoneRecords(context.Background(), zoneId).Execute()
+    resp, r, err := apiClient.RecordsAPI.GetZoneRecords(context.Background(), zoneId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.GetZoneRecords``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RecordsAPI.GetZoneRecords``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetZoneRecords`: GetRecordsResponse
-    fmt.Fprintf(os.Stdout, "Response from `RecordsApi.GetZoneRecords`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RecordsAPI.GetZoneRecords`: %v\n", resp)
 }
 ```
 
@@ -174,13 +174,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordsApi.PostZoneRecord(context.Background(), zoneId).RecordPostOrPut(recordPostOrPut).Execute()
+    resp, r, err := apiClient.RecordsAPI.PostZoneRecord(context.Background(), zoneId).RecordPostOrPut(recordPostOrPut).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.PostZoneRecord``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RecordsAPI.PostZoneRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PostZoneRecord`: PostOrPutRecordResponse
-    fmt.Fprintf(os.Stdout, "Response from `RecordsApi.PostZoneRecord`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RecordsAPI.PostZoneRecord`: %v\n", resp)
 }
 ```
 
@@ -245,13 +245,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordsApi.PutZoneRecord(context.Background(), zoneId, recordId).RecordPostOrPut(recordPostOrPut).Execute()
+    resp, r, err := apiClient.RecordsAPI.PutZoneRecord(context.Background(), zoneId, recordId).RecordPostOrPut(recordPostOrPut).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.PutZoneRecord``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RecordsAPI.PutZoneRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutZoneRecord`: PostOrPutRecordResponse
-    fmt.Fprintf(os.Stdout, "Response from `RecordsApi.PutZoneRecord`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RecordsAPI.PutZoneRecord`: %v\n", resp)
 }
 ```
 
