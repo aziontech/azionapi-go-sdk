@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## GetZoneRecords
 
-> GetRecordsResponse GetZoneRecords(ctx, zoneId).Execute()
+> GetRecordsResponse GetZoneRecords(ctx, zoneId).Page(page).PageSize(pageSize).Execute()
 
 Get a collection of Intelligent DNS zone records
 
@@ -102,10 +102,12 @@ import (
 
 func main() {
     zoneId := int32(56) // int32 | The hosted zone id
+    page := int64(789) // int64 | Identifies which page should be returned, if the return is paginated. (optional) (default to 1)
+    pageSize := int64(789) // int64 | Identifies how many items should be returned per page. (optional) (default to 10)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RecordsAPI.GetZoneRecords(context.Background(), zoneId).Execute()
+    resp, r, err := apiClient.RecordsAPI.GetZoneRecords(context.Background(), zoneId).Page(page).PageSize(pageSize).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RecordsAPI.GetZoneRecords``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,6 +133,8 @@ Other parameters are passed through a pointer to a apiGetZoneRecordsRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **page** | **int64** | Identifies which page should be returned, if the return is paginated. | [default to 1]
+ **pageSize** | **int64** | Identifies how many items should be returned per page. | [default to 10]
 
 ### Return type
 

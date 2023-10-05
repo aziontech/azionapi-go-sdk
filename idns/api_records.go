@@ -162,6 +162,20 @@ type ApiGetZoneRecordsRequest struct {
 	ctx context.Context
 	ApiService *RecordsAPIService
 	zoneId int32
+	page *int64
+	pageSize *int64
+}
+
+// Identifies which page should be returned, if the return is paginated.
+func (r ApiGetZoneRecordsRequest) Page(page int64) ApiGetZoneRecordsRequest {
+	r.page = &page
+	return r
+}
+
+// Identifies how many items should be returned per page.
+func (r ApiGetZoneRecordsRequest) PageSize(pageSize int64) ApiGetZoneRecordsRequest {
+	r.pageSize = &pageSize
+	return r
 }
 
 func (r ApiGetZoneRecordsRequest) Execute() (*GetRecordsResponse, *http.Response, error) {
@@ -208,6 +222,18 @@ func (a *RecordsAPIService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*
 		return localVarReturnValue, nil, reportError("zoneId must be greater than 1")
 	}
 
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 1
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 10
+		r.pageSize = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
