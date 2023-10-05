@@ -219,6 +219,26 @@ paths:
           minimum: 1
           type: integer
         style: simple
+      - description: "Identifies which page should be returned, if the return is paginated."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          format: int64
+          type: integer
+        style: form
+      - description: Identifies how many items should be returned per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 10
+          format: int64
+          type: integer
+        style: form
       responses:
         "200":
           content:
