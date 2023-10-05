@@ -77,17 +77,17 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DNSSECApi* | [**GetZoneDnsSec**](docs/DNSSECApi.md#getzonednssec) | **Get** /intelligent_dns/{zone_id}/dnssec | Retrieve the DNSSEC zone status
-*DNSSECApi* | [**PutZoneDnsSec**](docs/DNSSECApi.md#putzonednssec) | **Patch** /intelligent_dns/{zone_id}/dnssec | Update the DNSSEC zone
-*RecordsApi* | [**DeleteZoneRecord**](docs/RecordsApi.md#deletezonerecord) | **Delete** /intelligent_dns/{zone_id}/records/{record_id} | Remove an Intelligent DNS zone record
-*RecordsApi* | [**GetZoneRecords**](docs/RecordsApi.md#getzonerecords) | **Get** /intelligent_dns/{zone_id}/records | Get a collection of Intelligent DNS zone records
-*RecordsApi* | [**PostZoneRecord**](docs/RecordsApi.md#postzonerecord) | **Post** /intelligent_dns/{zone_id}/records | Create a new Intelligent DNS zone record
-*RecordsApi* | [**PutZoneRecord**](docs/RecordsApi.md#putzonerecord) | **Put** /intelligent_dns/{zone_id}/records/{record_id} | Update an Intelligent DNS zone record
-*ZonesApi* | [**DeleteZone**](docs/ZonesApi.md#deletezone) | **Delete** /intelligent_dns/{zone_id} | Remove an Intelligent DNS hosted zone
-*ZonesApi* | [**GetZone**](docs/ZonesApi.md#getzone) | **Get** /intelligent_dns/{zone_id} | Get an Intelligent DNS hosted zone
-*ZonesApi* | [**GetZones**](docs/ZonesApi.md#getzones) | **Get** /intelligent_dns | Get a collection of Intelligent DNS zones
-*ZonesApi* | [**PostZone**](docs/ZonesApi.md#postzone) | **Post** /intelligent_dns | Add a new Intelligent DNS zone
-*ZonesApi* | [**PutZone**](docs/ZonesApi.md#putzone) | **Put** /intelligent_dns/{zone_id} | Update an Intelligent DNS hosted zone
+*DNSSECAPI* | [**GetZoneDnsSec**](docs/DNSSECAPI.md#getzonednssec) | **Get** /intelligent_dns/{zone_id}/dnssec | Retrieve the DNSSEC zone status
+*DNSSECAPI* | [**PutZoneDnsSec**](docs/DNSSECAPI.md#putzonednssec) | **Patch** /intelligent_dns/{zone_id}/dnssec | Update the DNSSEC zone
+*RecordsAPI* | [**DeleteZoneRecord**](docs/RecordsAPI.md#deletezonerecord) | **Delete** /intelligent_dns/{zone_id}/records/{record_id} | Remove an Intelligent DNS zone record
+*RecordsAPI* | [**GetZoneRecords**](docs/RecordsAPI.md#getzonerecords) | **Get** /intelligent_dns/{zone_id}/records | Get a collection of Intelligent DNS zone records
+*RecordsAPI* | [**PostZoneRecord**](docs/RecordsAPI.md#postzonerecord) | **Post** /intelligent_dns/{zone_id}/records | Create a new Intelligent DNS zone record
+*RecordsAPI* | [**PutZoneRecord**](docs/RecordsAPI.md#putzonerecord) | **Put** /intelligent_dns/{zone_id}/records/{record_id} | Update an Intelligent DNS zone record
+*ZonesAPI* | [**DeleteZone**](docs/ZonesAPI.md#deletezone) | **Delete** /intelligent_dns/{zone_id} | Remove an Intelligent DNS hosted zone
+*ZonesAPI* | [**GetZone**](docs/ZonesAPI.md#getzone) | **Get** /intelligent_dns/{zone_id} | Get an Intelligent DNS hosted zone
+*ZonesAPI* | [**GetZones**](docs/ZonesAPI.md#getzones) | **Get** /intelligent_dns | Get a collection of Intelligent DNS zones
+*ZonesAPI* | [**PostZone**](docs/ZonesAPI.md#postzone) | **Post** /intelligent_dns | Add a new Intelligent DNS zone
+*ZonesAPI* | [**PutZone**](docs/ZonesAPI.md#putzone) | **Put** /intelligent_dns/{zone_id} | Update an Intelligent DNS hosted zone
 
 
 ## Documentation For Models
@@ -121,6 +121,19 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods

@@ -20,12 +20,12 @@ import (
 )
 
 
-// RecordsApiService RecordsApi service
-type RecordsApiService service
+// RecordsAPIService RecordsAPI service
+type RecordsAPIService service
 
 type ApiDeleteZoneRecordRequest struct {
 	ctx context.Context
-	ApiService *RecordsApiService
+	ApiService *RecordsAPIService
 	zoneId int32
 	recordId int32
 }
@@ -42,7 +42,7 @@ DeleteZoneRecord Remove an Intelligent DNS zone record
  @param recordId The zone record id
  @return ApiDeleteZoneRecordRequest
 */
-func (a *RecordsApiService) DeleteZoneRecord(ctx context.Context, zoneId int32, recordId int32) ApiDeleteZoneRecordRequest {
+func (a *RecordsAPIService) DeleteZoneRecord(ctx context.Context, zoneId int32, recordId int32) ApiDeleteZoneRecordRequest {
 	return ApiDeleteZoneRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -53,7 +53,7 @@ func (a *RecordsApiService) DeleteZoneRecord(ctx context.Context, zoneId int32, 
 
 // Execute executes the request
 //  @return string
-func (a *RecordsApiService) DeleteZoneRecordExecute(r ApiDeleteZoneRecordRequest) (string, *http.Response, error) {
+func (a *RecordsAPIService) DeleteZoneRecordExecute(r ApiDeleteZoneRecordRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -61,7 +61,7 @@ func (a *RecordsApiService) DeleteZoneRecordExecute(r ApiDeleteZoneRecordRequest
 		localVarReturnValue  string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsApiService.DeleteZoneRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.DeleteZoneRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -160,7 +160,7 @@ func (a *RecordsApiService) DeleteZoneRecordExecute(r ApiDeleteZoneRecordRequest
 
 type ApiGetZoneRecordsRequest struct {
 	ctx context.Context
-	ApiService *RecordsApiService
+	ApiService *RecordsAPIService
 	zoneId int32
 }
 
@@ -175,7 +175,7 @@ GetZoneRecords Get a collection of Intelligent DNS zone records
  @param zoneId The hosted zone id
  @return ApiGetZoneRecordsRequest
 */
-func (a *RecordsApiService) GetZoneRecords(ctx context.Context, zoneId int32) ApiGetZoneRecordsRequest {
+func (a *RecordsAPIService) GetZoneRecords(ctx context.Context, zoneId int32) ApiGetZoneRecordsRequest {
 	return ApiGetZoneRecordsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -185,7 +185,7 @@ func (a *RecordsApiService) GetZoneRecords(ctx context.Context, zoneId int32) Ap
 
 // Execute executes the request
 //  @return GetRecordsResponse
-func (a *RecordsApiService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*GetRecordsResponse, *http.Response, error) {
+func (a *RecordsAPIService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*GetRecordsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -193,7 +193,7 @@ func (a *RecordsApiService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*
 		localVarReturnValue  *GetRecordsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsApiService.GetZoneRecords")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.GetZoneRecords")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -299,7 +299,7 @@ func (a *RecordsApiService) GetZoneRecordsExecute(r ApiGetZoneRecordsRequest) (*
 
 type ApiPostZoneRecordRequest struct {
 	ctx context.Context
-	ApiService *RecordsApiService
+	ApiService *RecordsAPIService
 	zoneId int32
 	recordPostOrPut *RecordPostOrPut
 }
@@ -320,7 +320,7 @@ PostZoneRecord Create a new Intelligent DNS zone record
  @param zoneId The hosted zone id
  @return ApiPostZoneRecordRequest
 */
-func (a *RecordsApiService) PostZoneRecord(ctx context.Context, zoneId int32) ApiPostZoneRecordRequest {
+func (a *RecordsAPIService) PostZoneRecord(ctx context.Context, zoneId int32) ApiPostZoneRecordRequest {
 	return ApiPostZoneRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -330,7 +330,7 @@ func (a *RecordsApiService) PostZoneRecord(ctx context.Context, zoneId int32) Ap
 
 // Execute executes the request
 //  @return PostOrPutRecordResponse
-func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*PostOrPutRecordResponse, *http.Response, error) {
+func (a *RecordsAPIService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*PostOrPutRecordResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -338,7 +338,7 @@ func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*
 		localVarReturnValue  *PostOrPutRecordResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsApiService.PostZoneRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.PostZoneRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -446,7 +446,7 @@ func (a *RecordsApiService) PostZoneRecordExecute(r ApiPostZoneRecordRequest) (*
 
 type ApiPutZoneRecordRequest struct {
 	ctx context.Context
-	ApiService *RecordsApiService
+	ApiService *RecordsAPIService
 	zoneId int32
 	recordId int32
 	recordPostOrPut *RecordPostOrPut
@@ -469,7 +469,7 @@ PutZoneRecord Update an Intelligent DNS zone record
  @param recordId The zone record id
  @return ApiPutZoneRecordRequest
 */
-func (a *RecordsApiService) PutZoneRecord(ctx context.Context, zoneId int32, recordId int32) ApiPutZoneRecordRequest {
+func (a *RecordsAPIService) PutZoneRecord(ctx context.Context, zoneId int32, recordId int32) ApiPutZoneRecordRequest {
 	return ApiPutZoneRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -480,7 +480,7 @@ func (a *RecordsApiService) PutZoneRecord(ctx context.Context, zoneId int32, rec
 
 // Execute executes the request
 //  @return PostOrPutRecordResponse
-func (a *RecordsApiService) PutZoneRecordExecute(r ApiPutZoneRecordRequest) (*PostOrPutRecordResponse, *http.Response, error) {
+func (a *RecordsAPIService) PutZoneRecordExecute(r ApiPutZoneRecordRequest) (*PostOrPutRecordResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -488,7 +488,7 @@ func (a *RecordsApiService) PutZoneRecordExecute(r ApiPutZoneRecordRequest) (*Po
 		localVarReturnValue  *PostOrPutRecordResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsApiService.PutZoneRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RecordsAPIService.PutZoneRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

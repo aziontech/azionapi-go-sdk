@@ -20,12 +20,12 @@ import (
 )
 
 
-// ZonesApiService ZonesApi service
-type ZonesApiService service
+// ZonesAPIService ZonesAPI service
+type ZonesAPIService service
 
 type ApiDeleteZoneRequest struct {
 	ctx context.Context
-	ApiService *ZonesApiService
+	ApiService *ZonesAPIService
 	zoneId int32
 }
 
@@ -40,7 +40,7 @@ DeleteZone Remove an Intelligent DNS hosted zone
  @param zoneId The hosted zone id
  @return ApiDeleteZoneRequest
 */
-func (a *ZonesApiService) DeleteZone(ctx context.Context, zoneId int32) ApiDeleteZoneRequest {
+func (a *ZonesAPIService) DeleteZone(ctx context.Context, zoneId int32) ApiDeleteZoneRequest {
 	return ApiDeleteZoneRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -50,7 +50,7 @@ func (a *ZonesApiService) DeleteZone(ctx context.Context, zoneId int32) ApiDelet
 
 // Execute executes the request
 //  @return string
-func (a *ZonesApiService) DeleteZoneExecute(r ApiDeleteZoneRequest) (string, *http.Response, error) {
+func (a *ZonesAPIService) DeleteZoneExecute(r ApiDeleteZoneRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -58,7 +58,7 @@ func (a *ZonesApiService) DeleteZoneExecute(r ApiDeleteZoneRequest) (string, *ht
 		localVarReturnValue  string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.DeleteZone")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesAPIService.DeleteZone")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -153,7 +153,7 @@ func (a *ZonesApiService) DeleteZoneExecute(r ApiDeleteZoneRequest) (string, *ht
 
 type ApiGetZoneRequest struct {
 	ctx context.Context
-	ApiService *ZonesApiService
+	ApiService *ZonesAPIService
 	zoneId int32
 }
 
@@ -168,7 +168,7 @@ GetZone Get an Intelligent DNS hosted zone
  @param zoneId The hosted zone id
  @return ApiGetZoneRequest
 */
-func (a *ZonesApiService) GetZone(ctx context.Context, zoneId int32) ApiGetZoneRequest {
+func (a *ZonesAPIService) GetZone(ctx context.Context, zoneId int32) ApiGetZoneRequest {
 	return ApiGetZoneRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -178,7 +178,7 @@ func (a *ZonesApiService) GetZone(ctx context.Context, zoneId int32) ApiGetZoneR
 
 // Execute executes the request
 //  @return GetZoneResponse
-func (a *ZonesApiService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse, *http.Response, error) {
+func (a *ZonesAPIService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -186,7 +186,7 @@ func (a *ZonesApiService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse,
 		localVarReturnValue  *GetZoneResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.GetZone")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesAPIService.GetZone")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -281,7 +281,35 @@ func (a *ZonesApiService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse,
 
 type ApiGetZonesRequest struct {
 	ctx context.Context
-	ApiService *ZonesApiService
+	ApiService *ZonesAPIService
+	orderBy *string
+	sort *string
+	page *int64
+	pageSize *int64
+}
+
+// Identifies which property the return should be sorted by.
+func (r ApiGetZonesRequest) OrderBy(orderBy string) ApiGetZonesRequest {
+	r.orderBy = &orderBy
+	return r
+}
+
+// Defines whether objects are shown in ascending or descending order depending on the value set in order_by.
+func (r ApiGetZonesRequest) Sort(sort string) ApiGetZonesRequest {
+	r.sort = &sort
+	return r
+}
+
+// Identifies which page should be returned, if the return is paginated.
+func (r ApiGetZonesRequest) Page(page int64) ApiGetZonesRequest {
+	r.page = &page
+	return r
+}
+
+// Identifies how many items should be returned per page.
+func (r ApiGetZonesRequest) PageSize(pageSize int64) ApiGetZonesRequest {
+	r.pageSize = &pageSize
+	return r
 }
 
 func (r ApiGetZonesRequest) Execute() (*GetZonesResponse, *http.Response, error) {
@@ -294,7 +322,7 @@ GetZones Get a collection of Intelligent DNS zones
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetZonesRequest
 */
-func (a *ZonesApiService) GetZones(ctx context.Context) ApiGetZonesRequest {
+func (a *ZonesAPIService) GetZones(ctx context.Context) ApiGetZonesRequest {
 	return ApiGetZonesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -303,7 +331,7 @@ func (a *ZonesApiService) GetZones(ctx context.Context) ApiGetZonesRequest {
 
 // Execute executes the request
 //  @return GetZonesResponse
-func (a *ZonesApiService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesResponse, *http.Response, error) {
+func (a *ZonesAPIService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -311,7 +339,7 @@ func (a *ZonesApiService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesRespon
 		localVarReturnValue  *GetZonesResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.GetZones")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesAPIService.GetZones")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -322,6 +350,30 @@ func (a *ZonesApiService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesRespon
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.orderBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_by", r.orderBy, "")
+	} else {
+		var defaultValue string = "name"
+		r.orderBy = &defaultValue
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "asc"
+		r.sort = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 1
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 10
+		r.pageSize = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -402,7 +454,7 @@ func (a *ZonesApiService) GetZonesExecute(r ApiGetZonesRequest) (*GetZonesRespon
 
 type ApiPostZoneRequest struct {
 	ctx context.Context
-	ApiService *ZonesApiService
+	ApiService *ZonesAPIService
 	zone *Zone
 }
 
@@ -421,7 +473,7 @@ PostZone Add a new Intelligent DNS zone
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostZoneRequest
 */
-func (a *ZonesApiService) PostZone(ctx context.Context) ApiPostZoneRequest {
+func (a *ZonesAPIService) PostZone(ctx context.Context) ApiPostZoneRequest {
 	return ApiPostZoneRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -430,7 +482,7 @@ func (a *ZonesApiService) PostZone(ctx context.Context) ApiPostZoneRequest {
 
 // Execute executes the request
 //  @return PostOrPutZoneResponse
-func (a *ZonesApiService) PostZoneExecute(r ApiPostZoneRequest) (*PostOrPutZoneResponse, *http.Response, error) {
+func (a *ZonesAPIService) PostZoneExecute(r ApiPostZoneRequest) (*PostOrPutZoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -438,7 +490,7 @@ func (a *ZonesApiService) PostZoneExecute(r ApiPostZoneRequest) (*PostOrPutZoneR
 		localVarReturnValue  *PostOrPutZoneResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.PostZone")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesAPIService.PostZone")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -542,7 +594,7 @@ func (a *ZonesApiService) PostZoneExecute(r ApiPostZoneRequest) (*PostOrPutZoneR
 
 type ApiPutZoneRequest struct {
 	ctx context.Context
-	ApiService *ZonesApiService
+	ApiService *ZonesAPIService
 	zoneId int32
 	zone *Zone
 }
@@ -563,7 +615,7 @@ PutZone Update an Intelligent DNS hosted zone
  @param zoneId The hosted zone id
  @return ApiPutZoneRequest
 */
-func (a *ZonesApiService) PutZone(ctx context.Context, zoneId int32) ApiPutZoneRequest {
+func (a *ZonesAPIService) PutZone(ctx context.Context, zoneId int32) ApiPutZoneRequest {
 	return ApiPutZoneRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -573,7 +625,7 @@ func (a *ZonesApiService) PutZone(ctx context.Context, zoneId int32) ApiPutZoneR
 
 // Execute executes the request
 //  @return PostOrPutZoneResponse
-func (a *ZonesApiService) PutZoneExecute(r ApiPutZoneRequest) (*PostOrPutZoneResponse, *http.Response, error) {
+func (a *ZonesAPIService) PutZoneExecute(r ApiPutZoneRequest) (*PostOrPutZoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -581,7 +633,7 @@ func (a *ZonesApiService) PutZoneExecute(r ApiPutZoneRequest) (*PostOrPutZoneRes
 		localVarReturnValue  *PostOrPutZoneResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.PutZone")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesAPIService.PutZone")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
