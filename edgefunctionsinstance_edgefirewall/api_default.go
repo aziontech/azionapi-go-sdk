@@ -20,24 +20,24 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
 type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
-	page *int32
-	pageSize *int32
+	ApiService *DefaultAPIService
+	page *int64
+	pageSize *int64
 	sort *string
 	orderBy *string
 }
 
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest) Page(page int32) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest {
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest) Page(page int64) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest) PageSize(pageSize int32) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest {
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest) PageSize(pageSize int64) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -62,7 +62,7 @@ EdgeFirewallEdgeFirewallIdFunctionsInstancesGet List all user Edge Functions Ins
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest
 */
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGet(ctx context.Context) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGet(ctx context.Context) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest {
 	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,7 +71,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGet(ctx 
 
 // Execute executes the request
 //  @return ListEdgeFunctionsInstancesResponse
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGetExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest) (*ListEdgeFunctionsInstancesResponse, *http.Response, error) {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGetExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest) (*ListEdgeFunctionsInstancesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -79,7 +79,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGetExecu
 		localVarReturnValue  *ListEdgeFunctionsInstancesResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -172,7 +172,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGetExecu
 
 type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	createEdgeFunctionsInstancesRequest *CreateEdgeFunctionsInstancesRequest
 }
 
@@ -181,7 +181,7 @@ func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest) CreateEdgeFu
 	return r
 }
 
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest) Execute() (*http.Response, error) {
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
 	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExecute(r)
 }
 
@@ -191,7 +191,7 @@ EdgeFirewallEdgeFirewallIdFunctionsInstancesPost Create an Edge Functions Instan
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest
 */
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPost(ctx context.Context) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPost(ctx context.Context) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest {
 	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -199,16 +199,18 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPost(ctx
 }
 
 // Execute executes the request
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest) (*http.Response, error) {
+//  @return EdgeFunctionsInstanceResponse
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EdgeFunctionsInstanceResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesPost")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/edge_firewall/:edge_firewall_id:/functions_instances"
@@ -217,7 +219,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExec
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.createEdgeFunctionsInstancesRequest == nil {
-		return nil, reportError("createEdgeFunctionsInstancesRequest is required and must be specified")
+		return localVarReturnValue, nil, reportError("createEdgeFunctionsInstancesRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -230,7 +232,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExec
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -255,19 +257,19 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExec
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -275,15 +277,24 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExec
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	uuid string
 }
 
@@ -298,7 +309,7 @@ EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete Delete an Edge Functions 
  @param uuid
  @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest
 */
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest {
 	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -307,14 +318,14 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDele
 }
 
 // Execute executes the request
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest) (*http.Response, error) {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -387,7 +398,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDele
 
 type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	uuid string
 }
 
@@ -402,7 +413,7 @@ EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet Retrieve an Edge Functions I
  @param uuid
  @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest
 */
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest {
 	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -412,7 +423,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet(
 
 // Execute executes the request
 //  @return EdgeFunctionsInstanceResponse
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -420,7 +431,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetE
 		localVarReturnValue  *EdgeFunctionsInstanceResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -502,7 +513,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetE
 
 type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	uuid string
 	body *CreateEdgeFunctionsInstancesRequest
 }
@@ -512,7 +523,7 @@ func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest) Body(bo
 	return r
 }
 
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest) Execute() (*ListEdgeFunctionsInstancesResponse, *http.Response, error) {
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
 	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchExecute(r)
 }
 
@@ -523,7 +534,7 @@ EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch Update some Edge Functions
  @param uuid
  @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest
 */
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest {
 	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -532,16 +543,16 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatc
 }
 
 // Execute executes the request
-//  @return ListEdgeFunctionsInstancesResponse
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest) (*ListEdgeFunctionsInstancesResponse, *http.Response, error) {
+//  @return EdgeFunctionsInstanceResponse
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListEdgeFunctionsInstancesResponse
+		localVarReturnValue  *EdgeFunctionsInstanceResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -628,7 +639,7 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatc
 
 type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	uuid string
 	body *CreateEdgeFunctionsInstancesRequest
 }
@@ -638,7 +649,7 @@ func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest) Body(body
 	return r
 }
 
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest) Execute() (*ListEdgeFunctionsInstancesResponse, *http.Response, error) {
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
 	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutExecute(r)
 }
 
@@ -649,7 +660,7 @@ EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut Overwrite some Edge Function
  @param uuid
  @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest
 */
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest {
 	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -658,16 +669,16 @@ func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut(
 }
 
 // Execute executes the request
-//  @return ListEdgeFunctionsInstancesResponse
-func (a *DefaultApiService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest) (*ListEdgeFunctionsInstancesResponse, *http.Response, error) {
+//  @return EdgeFunctionsInstanceResponse
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListEdgeFunctionsInstancesResponse
+		localVarReturnValue  *EdgeFunctionsInstanceResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

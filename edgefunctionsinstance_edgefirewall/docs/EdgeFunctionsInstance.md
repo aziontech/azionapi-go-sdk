@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**JsonArgs** | Pointer to **map[string]interface{}** |  | [optional] 
-**EdgeFunction** | Pointer to **int32** |  | [optional] 
+**LastEditor** | Pointer to **string** |  | [optional] 
+**LastModified** | Pointer to **string** |  | [optional] 
+**JsonArgs** | Pointer to **interface{}** |  | [optional] 
+**EdgeFunction** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -30,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *EdgeFunctionsInstance) GetId() int32`
+`func (o *EdgeFunctionsInstance) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *EdgeFunctionsInstance) GetIdOk() (*int32, bool)`
+`func (o *EdgeFunctionsInstance) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *EdgeFunctionsInstance) SetId(v int32)`
+`func (o *EdgeFunctionsInstance) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -78,22 +80,72 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### GetLastEditor
+
+`func (o *EdgeFunctionsInstance) GetLastEditor() string`
+
+GetLastEditor returns the LastEditor field if non-nil, zero value otherwise.
+
+### GetLastEditorOk
+
+`func (o *EdgeFunctionsInstance) GetLastEditorOk() (*string, bool)`
+
+GetLastEditorOk returns a tuple with the LastEditor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastEditor
+
+`func (o *EdgeFunctionsInstance) SetLastEditor(v string)`
+
+SetLastEditor sets LastEditor field to given value.
+
+### HasLastEditor
+
+`func (o *EdgeFunctionsInstance) HasLastEditor() bool`
+
+HasLastEditor returns a boolean if a field has been set.
+
+### GetLastModified
+
+`func (o *EdgeFunctionsInstance) GetLastModified() string`
+
+GetLastModified returns the LastModified field if non-nil, zero value otherwise.
+
+### GetLastModifiedOk
+
+`func (o *EdgeFunctionsInstance) GetLastModifiedOk() (*string, bool)`
+
+GetLastModifiedOk returns a tuple with the LastModified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModified
+
+`func (o *EdgeFunctionsInstance) SetLastModified(v string)`
+
+SetLastModified sets LastModified field to given value.
+
+### HasLastModified
+
+`func (o *EdgeFunctionsInstance) HasLastModified() bool`
+
+HasLastModified returns a boolean if a field has been set.
+
 ### GetJsonArgs
 
-`func (o *EdgeFunctionsInstance) GetJsonArgs() map[string]interface{}`
+`func (o *EdgeFunctionsInstance) GetJsonArgs() interface{}`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *EdgeFunctionsInstance) GetJsonArgsOk() (*map[string]interface{}, bool)`
+`func (o *EdgeFunctionsInstance) GetJsonArgsOk() (*interface{}, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *EdgeFunctionsInstance) SetJsonArgs(v map[string]interface{})`
+`func (o *EdgeFunctionsInstance) SetJsonArgs(v interface{})`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -103,22 +155,32 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
+### SetJsonArgsNil
+
+`func (o *EdgeFunctionsInstance) SetJsonArgsNil(b bool)`
+
+ SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
+
+### UnsetJsonArgs
+`func (o *EdgeFunctionsInstance) UnsetJsonArgs()`
+
+UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetEdgeFunction
 
-`func (o *EdgeFunctionsInstance) GetEdgeFunction() int32`
+`func (o *EdgeFunctionsInstance) GetEdgeFunction() int64`
 
 GetEdgeFunction returns the EdgeFunction field if non-nil, zero value otherwise.
 
 ### GetEdgeFunctionOk
 
-`func (o *EdgeFunctionsInstance) GetEdgeFunctionOk() (*int32, bool)`
+`func (o *EdgeFunctionsInstance) GetEdgeFunctionOk() (*int64, bool)`
 
 GetEdgeFunctionOk returns a tuple with the EdgeFunction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEdgeFunction
 
-`func (o *EdgeFunctionsInstance) SetEdgeFunction(v int32)`
+`func (o *EdgeFunctionsInstance) SetEdgeFunction(v int64)`
 
 SetEdgeFunction sets EdgeFunction field to given value.
 

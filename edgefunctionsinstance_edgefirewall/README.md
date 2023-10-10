@@ -77,12 +77,12 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesGet**](docs/DefaultApi.md#edgefirewalledgefirewallidfunctionsinstancesget) | **Get** /edge_firewall/:edge_firewall_id:/functions_instances | List all user Edge Functions Instances
-*DefaultApi* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesPost**](docs/DefaultApi.md#edgefirewalledgefirewallidfunctionsinstancespost) | **Post** /edge_firewall/:edge_firewall_id:/functions_instances | Create an Edge Functions Instance
-*DefaultApi* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete**](docs/DefaultApi.md#edgefirewalledgefirewallidfunctionsinstancesuuiddelete) | **Delete** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Delete an Edge Functions Instance by uuid
-*DefaultApi* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet**](docs/DefaultApi.md#edgefirewalledgefirewallidfunctionsinstancesuuidget) | **Get** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Retrieve an Edge Functions Instance set by uuid
-*DefaultApi* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch**](docs/DefaultApi.md#edgefirewalledgefirewallidfunctionsinstancesuuidpatch) | **Patch** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Update some Edge Functions Instance attributes
-*DefaultApi* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut**](docs/DefaultApi.md#edgefirewalledgefirewallidfunctionsinstancesuuidput) | **Put** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Overwrite some Edge Functions Instance attributes
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesGet**](docs/DefaultAPI.md#edgefirewalledgefirewallidfunctionsinstancesget) | **Get** /edge_firewall/:edge_firewall_id:/functions_instances | List all user Edge Functions Instances
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesPost**](docs/DefaultAPI.md#edgefirewalledgefirewallidfunctionsinstancespost) | **Post** /edge_firewall/:edge_firewall_id:/functions_instances | Create an Edge Functions Instance
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete**](docs/DefaultAPI.md#edgefirewalledgefirewallidfunctionsinstancesuuiddelete) | **Delete** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Delete an Edge Functions Instance by uuid
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet**](docs/DefaultAPI.md#edgefirewalledgefirewallidfunctionsinstancesuuidget) | **Get** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Retrieve an Edge Functions Instance set by uuid
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch**](docs/DefaultAPI.md#edgefirewalledgefirewallidfunctionsinstancesuuidpatch) | **Patch** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Update some Edge Functions Instance attributes
+*DefaultAPI* | [**EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut**](docs/DefaultAPI.md#edgefirewalledgefirewallidfunctionsinstancesuuidput) | **Put** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Overwrite some Edge Functions Instance attributes
 
 
 ## Documentation For Models
@@ -105,6 +105,19 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods
