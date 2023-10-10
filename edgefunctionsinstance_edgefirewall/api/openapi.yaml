@@ -19,6 +19,7 @@ paths:
         name: page
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - explode: true
@@ -26,6 +27,7 @@ paths:
         name: page_size
         required: false
         schema:
+          format: int64
           type: integer
         style: form
       - explode: true
@@ -49,6 +51,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListEdgeFunctionsInstancesResponse'
           description: A list of Edge Functions Instances
+        "400":
+          description: Bad Request
         "404":
           description: Not Found
       summary: List all user Edge Functions Instances
@@ -61,6 +65,10 @@ paths:
         required: true
       responses:
         "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdgeFunctionsInstanceResponse'
           description: Edge Functions Instance created
         "400":
           description: Bad Request
@@ -128,7 +136,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListEdgeFunctionsInstancesResponse'
+                $ref: '#/components/schemas/EdgeFunctionsInstanceResponse'
           description: Successfully updated
         "400":
           description: Bad Request
@@ -157,7 +165,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListEdgeFunctionsInstancesResponse'
+                $ref: '#/components/schemas/EdgeFunctionsInstanceResponse'
           description: Successfully updated
         "400":
           description: Bad Request
@@ -181,21 +189,22 @@ components:
     EdgeFunctionsInstance:
       example:
         edge_function: 3254
-        name: asdasdsad
+        name: New Edge Function Instance
         json_args: {}
         id: 1614
       properties:
         id:
-          example: 1614
+          format: int64
           type: integer
         name:
-          example: asdasdsad
           type: string
-        json_args:
-          example: {}
-          type: object
+        last_editor:
+          type: string
+        last_modified:
+          type: string
+        json_args: {}
         edge_function:
-          example: 3254
+          format: int64
           type: integer
       type: object
     ListEdgeFunctionsInstancesResponse:
@@ -208,11 +217,11 @@ components:
         total_pages: 6
         results:
         - edge_function: 3254
-          name: asdasdsad
+          name: New Edge Function Instance
           json_args: {}
           id: 1614
         - edge_function: 3254
-          name: asdasdsad
+          name: New Edge Function Instance
           json_args: {}
           id: 1614
       properties:
@@ -234,26 +243,24 @@ components:
       type: object
     CreateEdgeFunctionsInstancesRequest:
       example:
-        edge_function: 13
+        edge_function: 0
         name: Edge Functions Instance
-        json_args: {}
+        json_args: ""
       properties:
         name:
           example: Edge Functions Instance
           type: string
         edge_function:
-          example: 13
+          format: int64
           type: integer
-        json_args:
-          example: {}
-          type: object
+        json_args: {}
       type: object
     EdgeFunctionsInstanceResponse:
       example:
         schema_version: 0.8008281904610115
         results:
           edge_function: 3254
-          name: asdasdsad
+          name: New Edge Function Instance
           json_args: {}
           id: 1614
       properties:

@@ -6,7 +6,7 @@ api_default.go
 client.go
 configuration.go
 docs/CreateEdgeFunctionsInstancesRequest.md
-docs/DefaultApi.md
+docs/DefaultAPI.md
 docs/EdgeFunctionsInstance.md
 docs/EdgeFunctionsInstanceResponse.md
 docs/Links.md

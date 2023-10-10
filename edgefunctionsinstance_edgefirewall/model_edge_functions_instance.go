@@ -19,10 +19,12 @@ var _ MappedNullable = &EdgeFunctionsInstance{}
 
 // EdgeFunctionsInstance struct for EdgeFunctionsInstance
 type EdgeFunctionsInstance struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	JsonArgs map[string]interface{} `json:"json_args,omitempty"`
-	EdgeFunction *int32 `json:"edge_function,omitempty"`
+	LastEditor *string `json:"last_editor,omitempty"`
+	LastModified *string `json:"last_modified,omitempty"`
+	JsonArgs interface{} `json:"json_args,omitempty"`
+	EdgeFunction *int64 `json:"edge_function,omitempty"`
 }
 
 // NewEdgeFunctionsInstance instantiates a new EdgeFunctionsInstance object
@@ -43,9 +45,9 @@ func NewEdgeFunctionsInstanceWithDefaults() *EdgeFunctionsInstance {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *EdgeFunctionsInstance) GetId() int32 {
+func (o *EdgeFunctionsInstance) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -53,7 +55,7 @@ func (o *EdgeFunctionsInstance) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeFunctionsInstance) GetIdOk() (*int32, bool) {
+func (o *EdgeFunctionsInstance) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -69,8 +71,8 @@ func (o *EdgeFunctionsInstance) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *EdgeFunctionsInstance) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *EdgeFunctionsInstance) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -106,10 +108,74 @@ func (o *EdgeFunctionsInstance) SetName(v string) {
 	o.Name = &v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
-func (o *EdgeFunctionsInstance) GetJsonArgs() map[string]interface{} {
-	if o == nil || IsNil(o.JsonArgs) {
-		var ret map[string]interface{}
+// GetLastEditor returns the LastEditor field value if set, zero value otherwise.
+func (o *EdgeFunctionsInstance) GetLastEditor() string {
+	if o == nil || IsNil(o.LastEditor) {
+		var ret string
+		return ret
+	}
+	return *o.LastEditor
+}
+
+// GetLastEditorOk returns a tuple with the LastEditor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EdgeFunctionsInstance) GetLastEditorOk() (*string, bool) {
+	if o == nil || IsNil(o.LastEditor) {
+		return nil, false
+	}
+	return o.LastEditor, true
+}
+
+// HasLastEditor returns a boolean if a field has been set.
+func (o *EdgeFunctionsInstance) HasLastEditor() bool {
+	if o != nil && !IsNil(o.LastEditor) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastEditor gets a reference to the given string and assigns it to the LastEditor field.
+func (o *EdgeFunctionsInstance) SetLastEditor(v string) {
+	o.LastEditor = &v
+}
+
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
+func (o *EdgeFunctionsInstance) GetLastModified() string {
+	if o == nil || IsNil(o.LastModified) {
+		var ret string
+		return ret
+	}
+	return *o.LastModified
+}
+
+// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EdgeFunctionsInstance) GetLastModifiedOk() (*string, bool) {
+	if o == nil || IsNil(o.LastModified) {
+		return nil, false
+	}
+	return o.LastModified, true
+}
+
+// HasLastModified returns a boolean if a field has been set.
+func (o *EdgeFunctionsInstance) HasLastModified() bool {
+	if o != nil && !IsNil(o.LastModified) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
+func (o *EdgeFunctionsInstance) SetLastModified(v string) {
+	o.LastModified = &v
+}
+
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EdgeFunctionsInstance) GetJsonArgs() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.JsonArgs
@@ -117,31 +183,32 @@ func (o *EdgeFunctionsInstance) GetJsonArgs() map[string]interface{} {
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeFunctionsInstance) GetJsonArgsOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EdgeFunctionsInstance) GetJsonArgsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.JsonArgs, true
+	return &o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *EdgeFunctionsInstance) HasJsonArgs() bool {
-	if o != nil && !IsNil(o.JsonArgs) {
+	if o != nil && IsNil(o.JsonArgs) {
 		return true
 	}
 
 	return false
 }
 
-// SetJsonArgs gets a reference to the given map[string]interface{} and assigns it to the JsonArgs field.
-func (o *EdgeFunctionsInstance) SetJsonArgs(v map[string]interface{}) {
+// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
+func (o *EdgeFunctionsInstance) SetJsonArgs(v interface{}) {
 	o.JsonArgs = v
 }
 
 // GetEdgeFunction returns the EdgeFunction field value if set, zero value otherwise.
-func (o *EdgeFunctionsInstance) GetEdgeFunction() int32 {
+func (o *EdgeFunctionsInstance) GetEdgeFunction() int64 {
 	if o == nil || IsNil(o.EdgeFunction) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.EdgeFunction
@@ -149,7 +216,7 @@ func (o *EdgeFunctionsInstance) GetEdgeFunction() int32 {
 
 // GetEdgeFunctionOk returns a tuple with the EdgeFunction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EdgeFunctionsInstance) GetEdgeFunctionOk() (*int32, bool) {
+func (o *EdgeFunctionsInstance) GetEdgeFunctionOk() (*int64, bool) {
 	if o == nil || IsNil(o.EdgeFunction) {
 		return nil, false
 	}
@@ -165,8 +232,8 @@ func (o *EdgeFunctionsInstance) HasEdgeFunction() bool {
 	return false
 }
 
-// SetEdgeFunction gets a reference to the given int32 and assigns it to the EdgeFunction field.
-func (o *EdgeFunctionsInstance) SetEdgeFunction(v int32) {
+// SetEdgeFunction gets a reference to the given int64 and assigns it to the EdgeFunction field.
+func (o *EdgeFunctionsInstance) SetEdgeFunction(v int64) {
 	o.EdgeFunction = &v
 }
 
@@ -186,7 +253,13 @@ func (o EdgeFunctionsInstance) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.JsonArgs) {
+	if !IsNil(o.LastEditor) {
+		toSerialize["last_editor"] = o.LastEditor
+	}
+	if !IsNil(o.LastModified) {
+		toSerialize["last_modified"] = o.LastModified
+	}
+	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	if !IsNil(o.EdgeFunction) {

@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateEdgeFunctionsInstancesRequest{}
 // CreateEdgeFunctionsInstancesRequest struct for CreateEdgeFunctionsInstancesRequest
 type CreateEdgeFunctionsInstancesRequest struct {
 	Name *string `json:"name,omitempty"`
-	EdgeFunction *int32 `json:"edge_function,omitempty"`
-	JsonArgs map[string]interface{} `json:"json_args,omitempty"`
+	EdgeFunction *int64 `json:"edge_function,omitempty"`
+	JsonArgs interface{} `json:"json_args,omitempty"`
 }
 
 // NewCreateEdgeFunctionsInstancesRequest instantiates a new CreateEdgeFunctionsInstancesRequest object
@@ -74,9 +74,9 @@ func (o *CreateEdgeFunctionsInstancesRequest) SetName(v string) {
 }
 
 // GetEdgeFunction returns the EdgeFunction field value if set, zero value otherwise.
-func (o *CreateEdgeFunctionsInstancesRequest) GetEdgeFunction() int32 {
+func (o *CreateEdgeFunctionsInstancesRequest) GetEdgeFunction() int64 {
 	if o == nil || IsNil(o.EdgeFunction) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.EdgeFunction
@@ -84,7 +84,7 @@ func (o *CreateEdgeFunctionsInstancesRequest) GetEdgeFunction() int32 {
 
 // GetEdgeFunctionOk returns a tuple with the EdgeFunction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFunctionsInstancesRequest) GetEdgeFunctionOk() (*int32, bool) {
+func (o *CreateEdgeFunctionsInstancesRequest) GetEdgeFunctionOk() (*int64, bool) {
 	if o == nil || IsNil(o.EdgeFunction) {
 		return nil, false
 	}
@@ -100,15 +100,15 @@ func (o *CreateEdgeFunctionsInstancesRequest) HasEdgeFunction() bool {
 	return false
 }
 
-// SetEdgeFunction gets a reference to the given int32 and assigns it to the EdgeFunction field.
-func (o *CreateEdgeFunctionsInstancesRequest) SetEdgeFunction(v int32) {
+// SetEdgeFunction gets a reference to the given int64 and assigns it to the EdgeFunction field.
+func (o *CreateEdgeFunctionsInstancesRequest) SetEdgeFunction(v int64) {
 	o.EdgeFunction = &v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
-func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgs() map[string]interface{} {
-	if o == nil || IsNil(o.JsonArgs) {
-		var ret map[string]interface{}
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgs() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.JsonArgs
@@ -116,24 +116,25 @@ func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgs() map[string]interface
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgsOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.JsonArgs, true
+	return &o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *CreateEdgeFunctionsInstancesRequest) HasJsonArgs() bool {
-	if o != nil && !IsNil(o.JsonArgs) {
+	if o != nil && IsNil(o.JsonArgs) {
 		return true
 	}
 
 	return false
 }
 
-// SetJsonArgs gets a reference to the given map[string]interface{} and assigns it to the JsonArgs field.
-func (o *CreateEdgeFunctionsInstancesRequest) SetJsonArgs(v map[string]interface{}) {
+// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
+func (o *CreateEdgeFunctionsInstancesRequest) SetJsonArgs(v interface{}) {
 	o.JsonArgs = v
 }
 
@@ -153,7 +154,7 @@ func (o CreateEdgeFunctionsInstancesRequest) ToMap() (map[string]interface{}, er
 	if !IsNil(o.EdgeFunction) {
 		toSerialize["edge_function"] = o.EdgeFunction
 	}
-	if !IsNil(o.JsonArgs) {
+	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	return toSerialize, nil
