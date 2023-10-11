@@ -11,9 +11,17 @@ servers:
 security:
 - tokenAuth: []
 paths:
-  /edge_firewall/:edge_firewall_id:/functions_instances:
+  /edge_firewall/{edge_firewall_id}/functions_instances:
     get:
       parameters:
+      - explode: false
+        in: path
+        name: edge_firewall_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
       - explode: true
         in: query
         name: page
@@ -57,6 +65,15 @@ paths:
           description: Not Found
       summary: List all user Edge Functions Instances
     post:
+      parameters:
+      - explode: false
+        in: path
+        name: edge_firewall_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
       requestBody:
         content:
           application/json:
@@ -77,15 +94,24 @@ paths:
         "500":
           description: Internal Server Error
       summary: Create an Edge Functions Instance
-  /edge_firewall/:edge_firewall_id:/functions_instances/{uuid}:
+  /edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}:
     delete:
       parameters:
       - explode: false
         in: path
-        name: uuid
+        name: edge_firewall_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: edge_function_instance_id
+        required: true
+        schema:
+          format: int64
+          type: integer
         style: simple
       responses:
         "204":
@@ -99,10 +125,19 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: uuid
+        name: edge_firewall_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: edge_function_instance_id
+        required: true
+        schema:
+          format: int64
+          type: integer
         style: simple
       responses:
         "200":
@@ -120,10 +155,19 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: uuid
+        name: edge_firewall_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: edge_function_instance_id
+        required: true
+        schema:
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
@@ -149,10 +193,19 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: uuid
+        name: edge_firewall_id
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: edge_function_instance_id
+        required: true
+        schema:
+          format: int64
+          type: integer
         style: simple
       requestBody:
         content:
