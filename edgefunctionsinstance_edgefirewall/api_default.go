@@ -23,9 +23,497 @@ import (
 // DefaultAPIService DefaultAPI service
 type DefaultAPIService service
 
+type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	edgeFirewallId int64
+	edgeFunctionInstanceId int64
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteExecute(r)
+}
+
+/*
+EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete Delete an Edge Functions Instance by uuid
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param edgeFirewallId
+ @param edgeFunctionInstanceId
+ @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest
+*/
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete(ctx context.Context, edgeFirewallId int64, edgeFunctionInstanceId int64) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest {
+	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		edgeFirewallId: edgeFirewallId,
+		edgeFunctionInstanceId: edgeFunctionInstanceId,
+	}
+}
+
+// Execute executes the request
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_firewall_id"+"}", url.PathEscape(parameterValueToString(r.edgeFirewallId, "edgeFirewallId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_function_instance_id"+"}", url.PathEscape(parameterValueToString(r.edgeFunctionInstanceId, "edgeFunctionInstanceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	edgeFirewallId int64
+	edgeFunctionInstanceId int64
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
+	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetExecute(r)
+}
+
+/*
+EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet Retrieve an Edge Functions Instance set by uuid
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param edgeFirewallId
+ @param edgeFunctionInstanceId
+ @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest
+*/
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet(ctx context.Context, edgeFirewallId int64, edgeFunctionInstanceId int64) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest {
+	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		edgeFirewallId: edgeFirewallId,
+		edgeFunctionInstanceId: edgeFunctionInstanceId,
+	}
+}
+
+// Execute executes the request
+//  @return EdgeFunctionsInstanceResponse
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EdgeFunctionsInstanceResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_firewall_id"+"}", url.PathEscape(parameterValueToString(r.edgeFirewallId, "edgeFirewallId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_function_instance_id"+"}", url.PathEscape(parameterValueToString(r.edgeFunctionInstanceId, "edgeFunctionInstanceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	edgeFirewallId int64
+	edgeFunctionInstanceId int64
+	body *CreateEdgeFunctionsInstancesRequest
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest) Body(body CreateEdgeFunctionsInstancesRequest) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
+	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchExecute(r)
+}
+
+/*
+EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch Update some Edge Functions Instance attributes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param edgeFirewallId
+ @param edgeFunctionInstanceId
+ @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest
+*/
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch(ctx context.Context, edgeFirewallId int64, edgeFunctionInstanceId int64) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest {
+	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest{
+		ApiService: a,
+		ctx: ctx,
+		edgeFirewallId: edgeFirewallId,
+		edgeFunctionInstanceId: edgeFunctionInstanceId,
+	}
+}
+
+// Execute executes the request
+//  @return EdgeFunctionsInstanceResponse
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EdgeFunctionsInstanceResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_firewall_id"+"}", url.PathEscape(parameterValueToString(r.edgeFirewallId, "edgeFirewallId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_function_instance_id"+"}", url.PathEscape(parameterValueToString(r.edgeFunctionInstanceId, "edgeFunctionInstanceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	edgeFirewallId int64
+	edgeFunctionInstanceId int64
+	body *CreateEdgeFunctionsInstancesRequest
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest) Body(body CreateEdgeFunctionsInstancesRequest) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
+	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutExecute(r)
+}
+
+/*
+EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut Overwrite some Edge Functions Instance attributes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param edgeFirewallId
+ @param edgeFunctionInstanceId
+ @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest
+*/
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut(ctx context.Context, edgeFirewallId int64, edgeFunctionInstanceId int64) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest {
+	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		edgeFirewallId: edgeFirewallId,
+		edgeFunctionInstanceId: edgeFunctionInstanceId,
+	}
+}
+
+// Execute executes the request
+//  @return EdgeFunctionsInstanceResponse
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EdgeFunctionsInstanceResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_firewall_id"+"}", url.PathEscape(parameterValueToString(r.edgeFirewallId, "edgeFirewallId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_function_instance_id"+"}", url.PathEscape(parameterValueToString(r.edgeFunctionInstanceId, "edgeFunctionInstanceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
+	edgeFirewallId int64
 	page *int64
 	pageSize *int64
 	sort *string
@@ -60,12 +548,14 @@ func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest) Execute() (*L
 EdgeFirewallEdgeFirewallIdFunctionsInstancesGet List all user Edge Functions Instances
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param edgeFirewallId
  @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest
 */
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGet(ctx context.Context) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGet(ctx context.Context, edgeFirewallId int64) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest {
 	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest{
 		ApiService: a,
 		ctx: ctx,
+		edgeFirewallId: edgeFirewallId,
 	}
 }
 
@@ -84,7 +574,8 @@ func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGetExecu
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/:edge_firewall_id:/functions_instances"
+	localVarPath := localBasePath + "/edge_firewall/{edge_firewall_id}/functions_instances"
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_firewall_id"+"}", url.PathEscape(parameterValueToString(r.edgeFirewallId, "edgeFirewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -173,6 +664,7 @@ func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesGetExecu
 type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
+	edgeFirewallId int64
 	createEdgeFunctionsInstancesRequest *CreateEdgeFunctionsInstancesRequest
 }
 
@@ -189,12 +681,14 @@ func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest) Execute() (*
 EdgeFirewallEdgeFirewallIdFunctionsInstancesPost Create an Edge Functions Instance
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param edgeFirewallId
  @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest
 */
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPost(ctx context.Context) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest {
+func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPost(ctx context.Context, edgeFirewallId int64) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest {
 	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest{
 		ApiService: a,
 		ctx: ctx,
+		edgeFirewallId: edgeFirewallId,
 	}
 }
 
@@ -213,7 +707,8 @@ func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExec
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/edge_firewall/:edge_firewall_id:/functions_instances"
+	localVarPath := localBasePath + "/edge_firewall/{edge_firewall_id}/functions_instances"
+	localVarPath = strings.Replace(localVarPath, "{"+"edge_firewall_id"+"}", url.PathEscape(parameterValueToString(r.edgeFirewallId, "edgeFirewallId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -241,477 +736,6 @@ func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesPostExec
 	}
 	// body params
 	localVarPostBody = r.createEdgeFunctionsInstancesRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["tokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	uuid string
-}
-
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteExecute(r)
-}
-
-/*
-EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete Delete an Edge Functions Instance by uuid
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid
- @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest
-*/
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest {
-	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
-	}
-}
-
-// Execute executes the request
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["tokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	uuid string
-}
-
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
-	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetExecute(r)
-}
-
-/*
-EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet Retrieve an Edge Functions Instance set by uuid
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid
- @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest
-*/
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest {
-	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
-	}
-}
-
-// Execute executes the request
-//  @return EdgeFunctionsInstanceResponse
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EdgeFunctionsInstanceResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["tokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	uuid string
-	body *CreateEdgeFunctionsInstancesRequest
-}
-
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest) Body(body CreateEdgeFunctionsInstancesRequest) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
-	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchExecute(r)
-}
-
-/*
-EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch Update some Edge Functions Instance attributes
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid
- @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest
-*/
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest {
-	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest{
-		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
-	}
-}
-
-// Execute executes the request
-//  @return EdgeFunctionsInstanceResponse
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EdgeFunctionsInstanceResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.body == nil {
-		return localVarReturnValue, nil, reportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["tokenAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest struct {
-	ctx context.Context
-	ApiService *DefaultAPIService
-	uuid string
-	body *CreateEdgeFunctionsInstancesRequest
-}
-
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest) Body(body CreateEdgeFunctionsInstancesRequest) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest) Execute() (*EdgeFunctionsInstanceResponse, *http.Response, error) {
-	return r.ApiService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutExecute(r)
-}
-
-/*
-EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut Overwrite some Edge Functions Instance attributes
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param uuid
- @return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest
-*/
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut(ctx context.Context, uuid string) ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest {
-	return ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		uuid: uuid,
-	}
-}
-
-// Execute executes the request
-//  @return EdgeFunctionsInstanceResponse
-func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutExecute(r ApiEdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest) (*EdgeFunctionsInstanceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EdgeFunctionsInstanceResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EdgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.body == nil {
-		return localVarReturnValue, nil, reportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
