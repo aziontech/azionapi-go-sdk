@@ -57,14 +57,14 @@ paths:
       summary: List all Web Application Firewalls (WAFs) created in an account
       tags:
       - WAF
-  /waf/{wafId}/domains:
+  /waf/{waf_id}/domains:
     get:
       operationId: getWAFDomains
       parameters:
       - description: ID of WAF to return
         explode: false
         in: path
-        name: wafId
+        name: waf_id
         required: true
         schema:
           format: int64
@@ -101,14 +101,14 @@ paths:
         account.
       tags:
       - WAF
-  /waf/{wafId}/waf_events:
+  /waf/{waf_id}/waf_events:
     get:
       operationId: getWAFEvents
       parameters:
       - description: ID of WAF to return
         explode: false
         in: path
-        name: wafId
+        name: waf_id
         required: true
         schema:
           format: int64
@@ -140,6 +140,35 @@ paths:
         required: true
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          default: asc
+          enum:
+          - asc
+          - desc
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 10
+          format: int64
+          type: integer
         style: form
       responses:
         "200":
@@ -597,9 +626,35 @@ components:
           format: int64
           type: integer
       type: object
+    WAFDomainList200:
+      example:
+        id: 28852
+        name: Domain Name
+        domain: 28852f.ha.azioncdn.net
+        cnames:
+        - www.example2.io
+        - www.example.com
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        domain:
+          type: string
+        cnames:
+          items:
+            type: string
+          type: array
+      type: object
     WAFDomains200:
       example:
         schema_version: 3
+        count: 0
+        links:
+          next: next
+          previous: previous
+        total_pages: 6
         results:
         - id: 28852
           name: Domain Name
@@ -614,17 +669,17 @@ components:
           - www.example2.io
           - www.example.com
       properties:
+        count:
+          format: int64
+          type: integer
+        total_pages:
+          format: int64
+          type: integer
+        links:
+          $ref: '#/components/schemas/Links'
         results:
           items:
-            example:
-              id: 28852
-              name: Domain Name
-              domain: 28852f.ha.azioncdn.net
-              cnames:
-              - www.example2.io
-              - www.example.com
-            properties: {}
-            type: object
+            $ref: '#/components/schemas/WAFDomainList200'
           type: array
         schema_version:
           example: 3
@@ -665,36 +720,38 @@ components:
       example:
         schema_version: 3
         results:
-        - hit_count: 9290
-          rule_id: 1005
-          ip_count: 217
-          match_zone: cookies
-          path_count: 798
-          matches_on: value
-          rule_description: "Possible SQL Injection attack: MySQL keyword (|) found\
-            \ in Cookies"
-        - hit_count: 9290
-          rule_id: 1005
-          ip_count: 217
-          match_zone: cookies
-          path_count: 798
-          matches_on: value
-          rule_description: "Possible SQL Injection attack: MySQL keyword (|) found\
-            \ in Cookies"
+        - rule_id: 1
+          country_count: 0
+          top_10_ips:
+          - top_10_ips
+          - top_10_ips
+          match_zone: path
+          path_count: 5
+          rule_description: rule_description
+          matches_on: name
+          top_10_countries:
+          - top_10_countries
+          - top_10_countries
+          hit_count: 6
+          ip_count: 5
+        - rule_id: 1
+          country_count: 0
+          top_10_ips:
+          - top_10_ips
+          - top_10_ips
+          match_zone: path
+          path_count: 5
+          rule_description: rule_description
+          matches_on: name
+          top_10_countries:
+          - top_10_countries
+          - top_10_countries
+          hit_count: 6
+          ip_count: 5
       properties:
         results:
           items:
-            example:
-              hit_count: 9290
-              rule_id: 1005
-              ip_count: 217
-              match_zone: cookies
-              path_count: 798
-              matches_on: value
-              rule_description: "Possible SQL Injection attack: MySQL keyword (|)\
-                \ found in Cookies"
-            properties: {}
-            type: object
+            $ref: '#/components/schemas/WAFEvents200_results_inner'
           type: array
         schema_version:
           example: 3
@@ -731,6 +788,64 @@ components:
         - sql_injection_sensitivity
         - unwanted_access
         - unwanted_access_sensitivity
+    WAFEvents200_results_inner:
+      example:
+        rule_id: 1
+        country_count: 0
+        top_10_ips:
+        - top_10_ips
+        - top_10_ips
+        match_zone: path
+        path_count: 5
+        rule_description: rule_description
+        matches_on: name
+        top_10_countries:
+        - top_10_countries
+        - top_10_countries
+        hit_count: 6
+        ip_count: 5
+      properties:
+        country_count:
+          format: int64
+          type: integer
+        top_10_countries:
+          items:
+            type: string
+          type: array
+        top_10_ips:
+          items:
+            type: string
+          type: array
+        hit_count:
+          format: int64
+          type: integer
+        rule_id:
+          format: int64
+          type: integer
+        ip_count:
+          format: int64
+          type: integer
+        match_zone:
+          enum:
+          - path
+          - query_string
+          - request_header
+          - request_body
+          - raw_body
+          - file_name
+          - cookie
+          type: string
+        path_count:
+          format: int64
+          type: integer
+        matches_on:
+          enum:
+          - name
+          - value
+          type: string
+        rule_description:
+          type: string
+      type: object
   securitySchemes:
     tokenAuth:
       description: |

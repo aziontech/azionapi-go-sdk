@@ -19,7 +19,7 @@ var _ MappedNullable = &WAFEvents200{}
 
 // WAFEvents200 struct for WAFEvents200
 type WAFEvents200 struct {
-	Results []map[string]interface{} `json:"results,omitempty"`
+	Results []WAFEvents200ResultsInner `json:"results,omitempty"`
 	SchemaVersion *int64 `json:"schema_version,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewWAFEvents200WithDefaults() *WAFEvents200 {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *WAFEvents200) GetResults() []map[string]interface{} {
+func (o *WAFEvents200) GetResults() []WAFEvents200ResultsInner {
 	if o == nil || IsNil(o.Results) {
-		var ret []map[string]interface{}
+		var ret []WAFEvents200ResultsInner
 		return ret
 	}
 	return o.Results
@@ -51,7 +51,7 @@ func (o *WAFEvents200) GetResults() []map[string]interface{} {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WAFEvents200) GetResultsOk() ([]map[string]interface{}, bool) {
+func (o *WAFEvents200) GetResultsOk() ([]WAFEvents200ResultsInner, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *WAFEvents200) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []map[string]interface{} and assigns it to the Results field.
-func (o *WAFEvents200) SetResults(v []map[string]interface{}) {
+// SetResults gets a reference to the given []WAFEvents200ResultsInner and assigns it to the Results field.
+func (o *WAFEvents200) SetResults(v []WAFEvents200ResultsInner) {
 	o.Results = v
 }
 

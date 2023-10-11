@@ -9,8 +9,10 @@ docs/CreateNewWAFRulesetRequest.md
 docs/Links.md
 docs/SingleWAF.md
 docs/WAFAPI.md
+docs/WAFDomainList200.md
 docs/WAFDomains200.md
 docs/WAFEvents200.md
+docs/WAFEvents200ResultsInner.md
 docs/WAFEvents400.md
 docs/WAFEvents401.md
 docs/WAFEvents404.md
@@ -23,8 +25,10 @@ go.sum
 model_create_new_waf_ruleset_request.go
 model_links.go
 model_single_waf.go
+model_waf_domain_list200.go
 model_waf_domains200.go
 model_waf_events200.go
+model_waf_events200_results_inner.go
 model_waf_events400.go
 model_waf_events401.go
 model_waf_events404.go

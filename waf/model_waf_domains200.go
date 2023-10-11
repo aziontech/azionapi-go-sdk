@@ -19,7 +19,10 @@ var _ MappedNullable = &WAFDomains200{}
 
 // WAFDomains200 struct for WAFDomains200
 type WAFDomains200 struct {
-	Results []map[string]interface{} `json:"results,omitempty"`
+	Count *int64 `json:"count,omitempty"`
+	TotalPages *int64 `json:"total_pages,omitempty"`
+	Links *Links `json:"links,omitempty"`
+	Results []WAFDomainList200 `json:"results,omitempty"`
 	SchemaVersion *int64 `json:"schema_version,omitempty"`
 }
 
@@ -40,10 +43,106 @@ func NewWAFDomains200WithDefaults() *WAFDomains200 {
 	return &this
 }
 
+// GetCount returns the Count field value if set, zero value otherwise.
+func (o *WAFDomains200) GetCount() int64 {
+	if o == nil || IsNil(o.Count) {
+		var ret int64
+		return ret
+	}
+	return *o.Count
+}
+
+// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WAFDomains200) GetCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.Count) {
+		return nil, false
+	}
+	return o.Count, true
+}
+
+// HasCount returns a boolean if a field has been set.
+func (o *WAFDomains200) HasCount() bool {
+	if o != nil && !IsNil(o.Count) {
+		return true
+	}
+
+	return false
+}
+
+// SetCount gets a reference to the given int64 and assigns it to the Count field.
+func (o *WAFDomains200) SetCount(v int64) {
+	o.Count = &v
+}
+
+// GetTotalPages returns the TotalPages field value if set, zero value otherwise.
+func (o *WAFDomains200) GetTotalPages() int64 {
+	if o == nil || IsNil(o.TotalPages) {
+		var ret int64
+		return ret
+	}
+	return *o.TotalPages
+}
+
+// GetTotalPagesOk returns a tuple with the TotalPages field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WAFDomains200) GetTotalPagesOk() (*int64, bool) {
+	if o == nil || IsNil(o.TotalPages) {
+		return nil, false
+	}
+	return o.TotalPages, true
+}
+
+// HasTotalPages returns a boolean if a field has been set.
+func (o *WAFDomains200) HasTotalPages() bool {
+	if o != nil && !IsNil(o.TotalPages) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalPages gets a reference to the given int64 and assigns it to the TotalPages field.
+func (o *WAFDomains200) SetTotalPages(v int64) {
+	o.TotalPages = &v
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *WAFDomains200) GetLinks() Links {
+	if o == nil || IsNil(o.Links) {
+		var ret Links
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WAFDomains200) GetLinksOk() (*Links, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *WAFDomains200) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given Links and assigns it to the Links field.
+func (o *WAFDomains200) SetLinks(v Links) {
+	o.Links = &v
+}
+
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *WAFDomains200) GetResults() []map[string]interface{} {
+func (o *WAFDomains200) GetResults() []WAFDomainList200 {
 	if o == nil || IsNil(o.Results) {
-		var ret []map[string]interface{}
+		var ret []WAFDomainList200
 		return ret
 	}
 	return o.Results
@@ -51,7 +150,7 @@ func (o *WAFDomains200) GetResults() []map[string]interface{} {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WAFDomains200) GetResultsOk() ([]map[string]interface{}, bool) {
+func (o *WAFDomains200) GetResultsOk() ([]WAFDomainList200, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -67,8 +166,8 @@ func (o *WAFDomains200) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []map[string]interface{} and assigns it to the Results field.
-func (o *WAFDomains200) SetResults(v []map[string]interface{}) {
+// SetResults gets a reference to the given []WAFDomainList200 and assigns it to the Results field.
+func (o *WAFDomains200) SetResults(v []WAFDomainList200) {
 	o.Results = v
 }
 
@@ -114,6 +213,15 @@ func (o WAFDomains200) MarshalJSON() ([]byte, error) {
 
 func (o WAFDomains200) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Count) {
+		toSerialize["count"] = o.Count
+	}
+	if !IsNil(o.TotalPages) {
+		toSerialize["total_pages"] = o.TotalPages
+	}
+	if !IsNil(o.Links) {
+		toSerialize["links"] = o.Links
+	}
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
