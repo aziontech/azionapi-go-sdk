@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateNewWAFRuleset**](WAFAPI.md#CreateNewWAFRuleset) | **Post** /waf/rulesets | Create a new WAF Rule Set in an account.
 [**DeleteWAFRuleset**](WAFAPI.md#DeleteWAFRuleset) | **Delete** /waf/rulesets/{waf_rule_set_id} | Remove an WAF Rule Set from an account. Warning: this action cannot be undone.
-[**GetWAFDomains**](WAFAPI.md#GetWAFDomains) | **Get** /waf/{wafId}/domains | List all domains attached to a Web Application Firewall (WAF) in an account.
-[**GetWAFEvents**](WAFAPI.md#GetWAFEvents) | **Get** /waf/{wafId}/waf_events | Find WAF log events
+[**GetWAFDomains**](WAFAPI.md#GetWAFDomains) | **Get** /waf/{waf_id}/domains | List all domains attached to a Web Application Firewall (WAF) in an account.
+[**GetWAFEvents**](WAFAPI.md#GetWAFEvents) | **Get** /waf/{waf_id}/waf_events | Find WAF log events
 [**GetWAFRuleset**](WAFAPI.md#GetWAFRuleset) | **Get** /waf/rulesets/{waf_rule_set_id} | List a specific Rule Set associated to a Web Application Firewall (WAF) in an account.
 [**ListAllWAF**](WAFAPI.md#ListAllWAF) | **Get** /waf | List all Web Application Firewalls (WAFs) created in an account
 [**ListAllWAFRulesets**](WAFAPI.md#ListAllWAFRulesets) | **Get** /waf/rulesets | list all Rule Sets associated to a Web Application Firewall (WAF) in an account.
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ## GetWAFEvents
 
-> WAFEvents200 GetWAFEvents(ctx, wafId).HourRange(hourRange).DomainsIds(domainsIds).NetworkListId(networkListId).Execute()
+> WAFEvents200 GetWAFEvents(ctx, wafId).HourRange(hourRange).DomainsIds(domainsIds).NetworkListId(networkListId).Sort(sort).Page(page).PageSize(pageSize).Execute()
 
 Find WAF log events
 
@@ -238,10 +238,13 @@ func main() {
     hourRange := int64(789) // int64 | Last log hours since now (it must be a integer number ranging between 1 and 72)
     domainsIds := "domainsIds_example" // string | Multiple domain's id (they must be separated by comma like 1233,1234)
     networkListId := int64(789) // int64 | Id of a network list (optional)
+    sort := "sort_example" // string |  (optional) (default to "asc")
+    page := int64(789) // int64 |  (optional) (default to 1)
+    pageSize := int64(789) // int64 |  (optional) (default to 10)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WAFAPI.GetWAFEvents(context.Background(), wafId).HourRange(hourRange).DomainsIds(domainsIds).NetworkListId(networkListId).Execute()
+    resp, r, err := apiClient.WAFAPI.GetWAFEvents(context.Background(), wafId).HourRange(hourRange).DomainsIds(domainsIds).NetworkListId(networkListId).Sort(sort).Page(page).PageSize(pageSize).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WAFAPI.GetWAFEvents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -270,6 +273,9 @@ Name | Type | Description  | Notes
  **hourRange** | **int64** | Last log hours since now (it must be a integer number ranging between 1 and 72) | 
  **domainsIds** | **string** | Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | 
  **networkListId** | **int64** | Id of a network list | 
+ **sort** | **string** |  | [default to &quot;asc&quot;]
+ **page** | **int64** |  | [default to 1]
+ **pageSize** | **int64** |  | [default to 10]
 
 ### Return type
 

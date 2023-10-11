@@ -293,8 +293,8 @@ func (a *WAFAPIService) GetWAFDomainsExecute(r ApiGetWAFDomainsRequest) (*WAFDom
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/waf/{wafId}/domains"
-	localVarPath = strings.Replace(localVarPath, "{"+"wafId"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
+	localVarPath := localBasePath + "/waf/{waf_id}/domains"
+	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -399,6 +399,9 @@ type ApiGetWAFEventsRequest struct {
 	hourRange *int64
 	domainsIds *string
 	networkListId *int64
+	sort *string
+	page *int64
+	pageSize *int64
 }
 
 // Last log hours since now (it must be a integer number ranging between 1 and 72)
@@ -416,6 +419,21 @@ func (r ApiGetWAFEventsRequest) DomainsIds(domainsIds string) ApiGetWAFEventsReq
 // Id of a network list
 func (r ApiGetWAFEventsRequest) NetworkListId(networkListId int64) ApiGetWAFEventsRequest {
 	r.networkListId = &networkListId
+	return r
+}
+
+func (r ApiGetWAFEventsRequest) Sort(sort string) ApiGetWAFEventsRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r ApiGetWAFEventsRequest) Page(page int64) ApiGetWAFEventsRequest {
+	r.page = &page
+	return r
+}
+
+func (r ApiGetWAFEventsRequest) PageSize(pageSize int64) ApiGetWAFEventsRequest {
+	r.pageSize = &pageSize
 	return r
 }
 
@@ -453,8 +471,8 @@ func (a *WAFAPIService) GetWAFEventsExecute(r ApiGetWAFEventsRequest) (*WAFEvent
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/waf/{wafId}/waf_events"
-	localVarPath = strings.Replace(localVarPath, "{"+"wafId"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
+	localVarPath := localBasePath + "/waf/{waf_id}/waf_events"
+	localVarPath = strings.Replace(localVarPath, "{"+"waf_id"+"}", url.PathEscape(parameterValueToString(r.wafId, "wafId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -471,6 +489,24 @@ func (a *WAFAPIService) GetWAFEventsExecute(r ApiGetWAFEventsRequest) (*WAFEvent
 		parameterAddToHeaderOrQuery(localVarQueryParams, "network_list_id", r.networkListId, "")
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "domains_ids", r.domainsIds, "")
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "asc"
+		r.sort = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 1
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 10
+		r.pageSize = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

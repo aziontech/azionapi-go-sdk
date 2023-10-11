@@ -79,8 +79,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *WAFAPI* | [**CreateNewWAFRuleset**](docs/WAFAPI.md#createnewwafruleset) | **Post** /waf/rulesets | Create a new WAF Rule Set in an account.
 *WAFAPI* | [**DeleteWAFRuleset**](docs/WAFAPI.md#deletewafruleset) | **Delete** /waf/rulesets/{waf_rule_set_id} | Remove an WAF Rule Set from an account. Warning: this action cannot be undone.
-*WAFAPI* | [**GetWAFDomains**](docs/WAFAPI.md#getwafdomains) | **Get** /waf/{wafId}/domains | List all domains attached to a Web Application Firewall (WAF) in an account.
-*WAFAPI* | [**GetWAFEvents**](docs/WAFAPI.md#getwafevents) | **Get** /waf/{wafId}/waf_events | Find WAF log events
+*WAFAPI* | [**GetWAFDomains**](docs/WAFAPI.md#getwafdomains) | **Get** /waf/{waf_id}/domains | List all domains attached to a Web Application Firewall (WAF) in an account.
+*WAFAPI* | [**GetWAFEvents**](docs/WAFAPI.md#getwafevents) | **Get** /waf/{waf_id}/waf_events | Find WAF log events
 *WAFAPI* | [**GetWAFRuleset**](docs/WAFAPI.md#getwafruleset) | **Get** /waf/rulesets/{waf_rule_set_id} | List a specific Rule Set associated to a Web Application Firewall (WAF) in an account.
 *WAFAPI* | [**ListAllWAF**](docs/WAFAPI.md#listallwaf) | **Get** /waf | List all Web Application Firewalls (WAFs) created in an account
 *WAFAPI* | [**ListAllWAFRulesets**](docs/WAFAPI.md#listallwafrulesets) | **Get** /waf/rulesets | list all Rule Sets associated to a Web Application Firewall (WAF) in an account.
@@ -92,8 +92,10 @@ Class | Method | HTTP request | Description
  - [CreateNewWAFRulesetRequest](docs/CreateNewWAFRulesetRequest.md)
  - [Links](docs/Links.md)
  - [SingleWAF](docs/SingleWAF.md)
+ - [WAFDomainList200](docs/WAFDomainList200.md)
  - [WAFDomains200](docs/WAFDomains200.md)
  - [WAFEvents200](docs/WAFEvents200.md)
+ - [WAFEvents200ResultsInner](docs/WAFEvents200ResultsInner.md)
  - [WAFEvents400](docs/WAFEvents400.md)
  - [WAFEvents401](docs/WAFEvents401.md)
  - [WAFEvents404](docs/WAFEvents404.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**Results** | Pointer to [**[]WAFEvents200ResultsInner**](WAFEvents200ResultsInner.md) |  | [optional] 
 **SchemaVersion** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *WAFEvents200) GetResults() []map[string]interface{}`
+`func (o *WAFEvents200) GetResults() []WAFEvents200ResultsInner`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *WAFEvents200) GetResultsOk() (*[]map[string]interface{}, bool)`
+`func (o *WAFEvents200) GetResultsOk() (*[]WAFEvents200ResultsInner, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *WAFEvents200) SetResults(v []map[string]interface{})`
+`func (o *WAFEvents200) SetResults(v []WAFEvents200ResultsInner)`
 
 SetResults sets Results field to given value.
 
