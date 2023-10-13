@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## EdgeFirewallEdgeFirewallIdRulesEngineGet
 
-> RuleSetResponseAll EdgeFirewallEdgeFirewallIdRulesEngineGet(ctx, edgeFirewallId).Execute()
+> RuleSetResponseAll EdgeFirewallEdgeFirewallIdRulesEngineGet(ctx, edgeFirewallId).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
 
 List all rule sets.
 
@@ -39,10 +39,14 @@ import (
 
 func main() {
     edgeFirewallId := int64(789) // int64 | 
+    page := int64(789) // int64 |  (optional)
+    pageSize := int64(789) // int64 |  (optional)
+    sort := "sort_example" // string |  (optional)
+    orderBy := "orderBy_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdRulesEngineGet(context.Background(), edgeFirewallId).Execute()
+    resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdRulesEngineGet(context.Background(), edgeFirewallId).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdRulesEngineGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,6 +72,10 @@ Other parameters are passed through a pointer to a apiEdgeFirewallEdgeFirewallId
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **page** | **int64** |  | 
+ **pageSize** | **int64** |  | 
+ **sort** | **string** |  | 
+ **orderBy** | **string** |  | 
 
 ### Return type
 

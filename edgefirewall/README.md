@@ -94,11 +94,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Behaviors](docs/Behaviors.md)
+ - [BehaviorsArgument](docs/BehaviorsArgument.md)
  - [Conditionals](docs/Conditionals.md)
  - [CreateEdgeFirewallRequest](docs/CreateEdgeFirewallRequest.md)
  - [CreateRuleSetRequest](docs/CreateRuleSetRequest.md)
  - [EdgeFirewall](docs/EdgeFirewall.md)
  - [EdgeFirewallResponse](docs/EdgeFirewallResponse.md)
+ - [GenericBehaviorDetails](docs/GenericBehaviorDetails.md)
  - [Links](docs/Links.md)
  - [ListEdgeFirewallResponse](docs/ListEdgeFirewallResponse.md)
  - [RuleSetResponse](docs/RuleSetResponse.md)
@@ -109,6 +111,8 @@ Class | Method | HTTP request | Description
  - [SSLVerificationStatusArguments](docs/SSLVerificationStatusArguments.md)
  - [SSLVerificationStatusCriteria](docs/SSLVerificationStatusCriteria.md)
  - [SSLVerificationStatusOperators](docs/SSLVerificationStatusOperators.md)
+ - [SetRateLimitDetails](docs/SetRateLimitDetails.md)
+ - [SetWAFRuleSetDetails](docs/SetWAFRuleSetDetails.md)
  - [UpdateEdgeFirewallRequest](docs/UpdateEdgeFirewallRequest.md)
  - [Variables](docs/Variables.md)
 

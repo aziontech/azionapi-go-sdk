@@ -27,6 +27,30 @@ type ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
 	edgeFirewallId int64
+	page *int64
+	pageSize *int64
+	sort *string
+	orderBy *string
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest) Page(page int64) ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest) PageSize(pageSize int64) ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest) Sort(sort string) ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest) OrderBy(orderBy string) ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest {
+	r.orderBy = &orderBy
+	return r
 }
 
 func (r ApiEdgeFirewallEdgeFirewallIdRulesEngineGetRequest) Execute() (*RuleSetResponseAll, *http.Response, error) {
@@ -73,6 +97,18 @@ func (a *DefaultAPIService) EdgeFirewallEdgeFirewallIdRulesEngineGetExecute(r Ap
 		return localVarReturnValue, nil, reportError("edgeFirewallId must be greater than 1")
 	}
 
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	}
+	if r.orderBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_by", r.orderBy, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
