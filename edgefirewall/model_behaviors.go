@@ -20,7 +20,7 @@ var _ MappedNullable = &Behaviors{}
 // Behaviors struct for Behaviors
 type Behaviors struct {
 	Name *string `json:"name,omitempty"`
-	Target *string `json:"target,omitempty"`
+	Argument *BehaviorsArgument `json:"argument,omitempty"`
 }
 
 // NewBehaviors instantiates a new Behaviors object
@@ -72,36 +72,36 @@ func (o *Behaviors) SetName(v string) {
 	o.Name = &v
 }
 
-// GetTarget returns the Target field value if set, zero value otherwise.
-func (o *Behaviors) GetTarget() string {
-	if o == nil || IsNil(o.Target) {
-		var ret string
+// GetArgument returns the Argument field value if set, zero value otherwise.
+func (o *Behaviors) GetArgument() BehaviorsArgument {
+	if o == nil || IsNil(o.Argument) {
+		var ret BehaviorsArgument
 		return ret
 	}
-	return *o.Target
+	return *o.Argument
 }
 
-// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// GetArgumentOk returns a tuple with the Argument field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Behaviors) GetTargetOk() (*string, bool) {
-	if o == nil || IsNil(o.Target) {
+func (o *Behaviors) GetArgumentOk() (*BehaviorsArgument, bool) {
+	if o == nil || IsNil(o.Argument) {
 		return nil, false
 	}
-	return o.Target, true
+	return o.Argument, true
 }
 
-// HasTarget returns a boolean if a field has been set.
-func (o *Behaviors) HasTarget() bool {
-	if o != nil && !IsNil(o.Target) {
+// HasArgument returns a boolean if a field has been set.
+func (o *Behaviors) HasArgument() bool {
+	if o != nil && !IsNil(o.Argument) {
 		return true
 	}
 
 	return false
 }
 
-// SetTarget gets a reference to the given string and assigns it to the Target field.
-func (o *Behaviors) SetTarget(v string) {
-	o.Target = &v
+// SetArgument gets a reference to the given BehaviorsArgument and assigns it to the Argument field.
+func (o *Behaviors) SetArgument(v BehaviorsArgument) {
+	o.Argument = &v
 }
 
 func (o Behaviors) MarshalJSON() ([]byte, error) {
@@ -117,8 +117,8 @@ func (o Behaviors) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Target) {
-		toSerialize["target"] = o.Target
+	if !IsNil(o.Argument) {
+		toSerialize["argument"] = o.Argument
 	}
 	return toSerialize, nil
 }

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Target** | Pointer to **string** |  | [optional] 
+**Argument** | Pointer to [**BehaviorsArgument**](BehaviorsArgument.md) |  | [optional] 
 
 ## Methods
 
@@ -51,30 +51,30 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetTarget
+### GetArgument
 
-`func (o *Behaviors) GetTarget() string`
+`func (o *Behaviors) GetArgument() BehaviorsArgument`
 
-GetTarget returns the Target field if non-nil, zero value otherwise.
+GetArgument returns the Argument field if non-nil, zero value otherwise.
 
-### GetTargetOk
+### GetArgumentOk
 
-`func (o *Behaviors) GetTargetOk() (*string, bool)`
+`func (o *Behaviors) GetArgumentOk() (*BehaviorsArgument, bool)`
 
-GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
+GetArgumentOk returns a tuple with the Argument field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTarget
+### SetArgument
 
-`func (o *Behaviors) SetTarget(v string)`
+`func (o *Behaviors) SetArgument(v BehaviorsArgument)`
 
-SetTarget sets Target field to given value.
+SetArgument sets Argument field to given value.
 
-### HasTarget
+### HasArgument
 
-`func (o *Behaviors) HasTarget() bool`
+`func (o *Behaviors) HasArgument() bool`
 
-HasTarget returns a boolean if a field has been set.
+HasArgument returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
