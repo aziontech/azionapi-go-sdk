@@ -20,8 +20,8 @@ var _ MappedNullable = &WAFEvents200ResultsInner{}
 // WAFEvents200ResultsInner struct for WAFEvents200ResultsInner
 type WAFEvents200ResultsInner struct {
 	CountryCount *int64 `json:"country_count,omitempty"`
-	Top10Countries []string `json:"top_10_countries,omitempty"`
-	Top10Ips []string `json:"top_10_ips,omitempty"`
+	Top10Countries []WAFEvents200ResultsInnerTop10CountriesInner `json:"top_10_countries,omitempty"`
+	Top10Ips []WAFEvents200ResultsInnerTop10CountriesInner `json:"top_10_ips,omitempty"`
 	HitCount *int64 `json:"hit_count,omitempty"`
 	RuleId *int64 `json:"rule_id,omitempty"`
 	IpCount *int64 `json:"ip_count,omitempty"`
@@ -81,9 +81,9 @@ func (o *WAFEvents200ResultsInner) SetCountryCount(v int64) {
 }
 
 // GetTop10Countries returns the Top10Countries field value if set, zero value otherwise.
-func (o *WAFEvents200ResultsInner) GetTop10Countries() []string {
+func (o *WAFEvents200ResultsInner) GetTop10Countries() []WAFEvents200ResultsInnerTop10CountriesInner {
 	if o == nil || IsNil(o.Top10Countries) {
-		var ret []string
+		var ret []WAFEvents200ResultsInnerTop10CountriesInner
 		return ret
 	}
 	return o.Top10Countries
@@ -91,7 +91,7 @@ func (o *WAFEvents200ResultsInner) GetTop10Countries() []string {
 
 // GetTop10CountriesOk returns a tuple with the Top10Countries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WAFEvents200ResultsInner) GetTop10CountriesOk() ([]string, bool) {
+func (o *WAFEvents200ResultsInner) GetTop10CountriesOk() ([]WAFEvents200ResultsInnerTop10CountriesInner, bool) {
 	if o == nil || IsNil(o.Top10Countries) {
 		return nil, false
 	}
@@ -107,15 +107,15 @@ func (o *WAFEvents200ResultsInner) HasTop10Countries() bool {
 	return false
 }
 
-// SetTop10Countries gets a reference to the given []string and assigns it to the Top10Countries field.
-func (o *WAFEvents200ResultsInner) SetTop10Countries(v []string) {
+// SetTop10Countries gets a reference to the given []WAFEvents200ResultsInnerTop10CountriesInner and assigns it to the Top10Countries field.
+func (o *WAFEvents200ResultsInner) SetTop10Countries(v []WAFEvents200ResultsInnerTop10CountriesInner) {
 	o.Top10Countries = v
 }
 
 // GetTop10Ips returns the Top10Ips field value if set, zero value otherwise.
-func (o *WAFEvents200ResultsInner) GetTop10Ips() []string {
+func (o *WAFEvents200ResultsInner) GetTop10Ips() []WAFEvents200ResultsInnerTop10CountriesInner {
 	if o == nil || IsNil(o.Top10Ips) {
-		var ret []string
+		var ret []WAFEvents200ResultsInnerTop10CountriesInner
 		return ret
 	}
 	return o.Top10Ips
@@ -123,7 +123,7 @@ func (o *WAFEvents200ResultsInner) GetTop10Ips() []string {
 
 // GetTop10IpsOk returns a tuple with the Top10Ips field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WAFEvents200ResultsInner) GetTop10IpsOk() ([]string, bool) {
+func (o *WAFEvents200ResultsInner) GetTop10IpsOk() ([]WAFEvents200ResultsInnerTop10CountriesInner, bool) {
 	if o == nil || IsNil(o.Top10Ips) {
 		return nil, false
 	}
@@ -139,8 +139,8 @@ func (o *WAFEvents200ResultsInner) HasTop10Ips() bool {
 	return false
 }
 
-// SetTop10Ips gets a reference to the given []string and assigns it to the Top10Ips field.
-func (o *WAFEvents200ResultsInner) SetTop10Ips(v []string) {
+// SetTop10Ips gets a reference to the given []WAFEvents200ResultsInnerTop10CountriesInner and assigns it to the Top10Ips field.
+func (o *WAFEvents200ResultsInner) SetTop10Ips(v []WAFEvents200ResultsInnerTop10CountriesInner) {
 	o.Top10Ips = v
 }
 

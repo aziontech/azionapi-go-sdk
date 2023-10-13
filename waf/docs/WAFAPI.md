@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## GetWAFDomains
 
-> WAFDomains200 GetWAFDomains(ctx, wafId).Name(name).Execute()
+> WAFDomains200 GetWAFDomains(ctx, wafId).Name(name).Page(page).PageSize(pageSize).Execute()
 
 List all domains attached to a Web Application Firewall (WAF) in an account.
 
@@ -166,10 +166,12 @@ import (
 func main() {
     wafId := int64(789) // int64 | ID of WAF to return
     name := "name_example" // string | searches WAF for name (optional)
+    page := int64(789) // int64 | Identifies which page should be returned, if the return is paginated. (optional) (default to 1)
+    pageSize := int64(789) // int64 | Identifies how many items should be returned per page. (optional) (default to 10)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WAFAPI.GetWAFDomains(context.Background(), wafId).Name(name).Execute()
+    resp, r, err := apiClient.WAFAPI.GetWAFDomains(context.Background(), wafId).Name(name).Page(page).PageSize(pageSize).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WAFAPI.GetWAFDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -196,6 +198,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **name** | **string** | searches WAF for name | 
+ **page** | **int64** | Identifies which page should be returned, if the return is paginated. | [default to 1]
+ **pageSize** | **int64** | Identifies how many items should be returned per page. | [default to 10]
 
 ### Return type
 
@@ -217,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## GetWAFEvents
 
-> WAFEvents200 GetWAFEvents(ctx, wafId).HourRange(hourRange).DomainsIds(domainsIds).NetworkListId(networkListId).Sort(sort).Page(page).PageSize(pageSize).Execute()
+> WAFEvents200 GetWAFEvents(ctx, wafId).HourRange(hourRange).DomainsIds(domainsIds).NetworkListId(networkListId).Sort(sort).Execute()
 
 Find WAF log events
 
@@ -236,15 +240,13 @@ import (
 func main() {
     wafId := int64(789) // int64 | ID of WAF to return
     hourRange := int64(789) // int64 | Last log hours since now (it must be a integer number ranging between 1 and 72)
-    domainsIds := "domainsIds_example" // string | Multiple domain's id (they must be separated by comma like 1233,1234)
+    domainsIds := []int64{int64(123)} // []int64 | Multiple domain's id (they must be separated by comma like 1233,1234)
     networkListId := int64(789) // int64 | Id of a network list (optional)
     sort := "sort_example" // string |  (optional) (default to "asc")
-    page := int64(789) // int64 |  (optional) (default to 1)
-    pageSize := int64(789) // int64 |  (optional) (default to 10)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WAFAPI.GetWAFEvents(context.Background(), wafId).HourRange(hourRange).DomainsIds(domainsIds).NetworkListId(networkListId).Sort(sort).Page(page).PageSize(pageSize).Execute()
+    resp, r, err := apiClient.WAFAPI.GetWAFEvents(context.Background(), wafId).HourRange(hourRange).DomainsIds(domainsIds).NetworkListId(networkListId).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WAFAPI.GetWAFEvents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -271,11 +273,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **hourRange** | **int64** | Last log hours since now (it must be a integer number ranging between 1 and 72) | 
- **domainsIds** | **string** | Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | 
+ **domainsIds** | **[]int64** | Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | 
  **networkListId** | **int64** | Id of a network list | 
  **sort** | **string** |  | [default to &quot;asc&quot;]
- **page** | **int64** |  | [default to 1]
- **pageSize** | **int64** |  | [default to 10]
 
 ### Return type
 

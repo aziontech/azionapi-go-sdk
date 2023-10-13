@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CountryCount** | Pointer to **int64** |  | [optional] 
-**Top10Countries** | Pointer to **[]string** |  | [optional] 
-**Top10Ips** | Pointer to **[]string** |  | [optional] 
+**Top10Countries** | Pointer to [**[]WAFEvents200ResultsInnerTop10CountriesInner**](WAFEvents200ResultsInnerTop10CountriesInner.md) |  | [optional] 
+**Top10Ips** | Pointer to [**[]WAFEvents200ResultsInnerTop10CountriesInner**](WAFEvents200ResultsInnerTop10CountriesInner.md) |  | [optional] 
 **HitCount** | Pointer to **int64** |  | [optional] 
 **RuleId** | Pointer to **int64** |  | [optional] 
 **IpCount** | Pointer to **int64** |  | [optional] 
@@ -61,20 +61,20 @@ HasCountryCount returns a boolean if a field has been set.
 
 ### GetTop10Countries
 
-`func (o *WAFEvents200ResultsInner) GetTop10Countries() []string`
+`func (o *WAFEvents200ResultsInner) GetTop10Countries() []WAFEvents200ResultsInnerTop10CountriesInner`
 
 GetTop10Countries returns the Top10Countries field if non-nil, zero value otherwise.
 
 ### GetTop10CountriesOk
 
-`func (o *WAFEvents200ResultsInner) GetTop10CountriesOk() (*[]string, bool)`
+`func (o *WAFEvents200ResultsInner) GetTop10CountriesOk() (*[]WAFEvents200ResultsInnerTop10CountriesInner, bool)`
 
 GetTop10CountriesOk returns a tuple with the Top10Countries field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTop10Countries
 
-`func (o *WAFEvents200ResultsInner) SetTop10Countries(v []string)`
+`func (o *WAFEvents200ResultsInner) SetTop10Countries(v []WAFEvents200ResultsInnerTop10CountriesInner)`
 
 SetTop10Countries sets Top10Countries field to given value.
 
@@ -86,20 +86,20 @@ HasTop10Countries returns a boolean if a field has been set.
 
 ### GetTop10Ips
 
-`func (o *WAFEvents200ResultsInner) GetTop10Ips() []string`
+`func (o *WAFEvents200ResultsInner) GetTop10Ips() []WAFEvents200ResultsInnerTop10CountriesInner`
 
 GetTop10Ips returns the Top10Ips field if non-nil, zero value otherwise.
 
 ### GetTop10IpsOk
 
-`func (o *WAFEvents200ResultsInner) GetTop10IpsOk() (*[]string, bool)`
+`func (o *WAFEvents200ResultsInner) GetTop10IpsOk() (*[]WAFEvents200ResultsInnerTop10CountriesInner, bool)`
 
 GetTop10IpsOk returns a tuple with the Top10Ips field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTop10Ips
 
-`func (o *WAFEvents200ResultsInner) SetTop10Ips(v []string)`
+`func (o *WAFEvents200ResultsInner) SetTop10Ips(v []WAFEvents200ResultsInnerTop10CountriesInner)`
 
 SetTop10Ips sets Top10Ips field to given value.
 

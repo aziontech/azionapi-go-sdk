@@ -80,6 +80,26 @@ paths:
         schema:
           type: string
         style: form
+      - description: "Identifies which page should be returned, if the return is paginated."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          format: int64
+          type: integer
+        style: form
+      - description: Identifies how many items should be returned per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          default: 10
+          format: int64
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -143,7 +163,10 @@ paths:
         name: domains_ids
         required: true
         schema:
-          type: string
+          items:
+            format: int64
+            type: integer
+          type: array
         style: form
       - explode: true
         in: query
@@ -155,24 +178,6 @@ paths:
           - asc
           - desc
           type: string
-        style: form
-      - explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          default: 1
-          format: int64
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: page_size
-        required: false
-        schema:
-          default: 10
-          format: int64
-          type: integer
         style: form
       responses:
         "200":
@@ -733,29 +738,29 @@ components:
         - rule_id: 1
           country_count: 0
           top_10_ips:
-          - top_10_ips
-          - top_10_ips
+          - null
+          - null
           match_zone: path
           path_count: 5
           rule_description: rule_description
           matches_on: name
           top_10_countries:
-          - top_10_countries
-          - top_10_countries
+          - null
+          - null
           hit_count: 6
           ip_count: 5
         - rule_id: 1
           country_count: 0
           top_10_ips:
-          - top_10_ips
-          - top_10_ips
+          - null
+          - null
           match_zone: path
           path_count: 5
           rule_description: rule_description
           matches_on: name
           top_10_countries:
-          - top_10_countries
-          - top_10_countries
+          - null
+          - null
           hit_count: 6
           ip_count: 5
       properties:
@@ -798,20 +803,25 @@ components:
         - sql_injection_sensitivity
         - unwanted_access
         - unwanted_access_sensitivity
+    WAFEvents200_results_inner_top_10_countries_inner:
+      oneOf:
+      - type: string
+      - format: int64
+        type: integer
     WAFEvents200_results_inner:
       example:
         rule_id: 1
         country_count: 0
         top_10_ips:
-        - top_10_ips
-        - top_10_ips
+        - null
+        - null
         match_zone: path
         path_count: 5
         rule_description: rule_description
         matches_on: name
         top_10_countries:
-        - top_10_countries
-        - top_10_countries
+        - null
+        - null
         hit_count: 6
         ip_count: 5
       properties:
@@ -820,11 +830,11 @@ components:
           type: integer
         top_10_countries:
           items:
-            type: string
+            $ref: '#/components/schemas/WAFEvents200_results_inner_top_10_countries_inner'
           type: array
         top_10_ips:
           items:
-            type: string
+            $ref: '#/components/schemas/WAFEvents200_results_inner_top_10_countries_inner'
           type: array
         hit_count:
           format: int64
