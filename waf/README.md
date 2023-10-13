@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
  - [WAFDomains200](docs/WAFDomains200.md)
  - [WAFEvents200](docs/WAFEvents200.md)
  - [WAFEvents200ResultsInner](docs/WAFEvents200ResultsInner.md)
+ - [WAFEvents200ResultsInnerTop10CountriesInner](docs/WAFEvents200ResultsInnerTop10CountriesInner.md)
  - [WAFEvents400](docs/WAFEvents400.md)
  - [WAFEvents401](docs/WAFEvents401.md)
  - [WAFEvents404](docs/WAFEvents404.md)
