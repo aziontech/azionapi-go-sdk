@@ -12,115 +12,221 @@ package edgefirewall
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the Behaviors type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Behaviors{}
-
-// Behaviors struct for Behaviors
+// Behaviors - struct for Behaviors
 type Behaviors struct {
-	Name *string `json:"name,omitempty"`
-	Argument *BehaviorsArgument `json:"argument,omitempty"`
+	NullArgumentBehavior *NullArgumentBehavior
+	SetCustomResponse *SetCustomResponse
+	SetRateLimitBehavior *SetRateLimitBehavior
+	SetWAFRuleSetAndWafModeBehavior *SetWAFRuleSetAndWafModeBehavior
+	SetWAFRuleSetBehavior *SetWAFRuleSetBehavior
+	SimpleArgumentBehavior *SimpleArgumentBehavior
 }
 
-// NewBehaviors instantiates a new Behaviors object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewBehaviors() *Behaviors {
-	this := Behaviors{}
-	return &this
-}
-
-// NewBehaviorsWithDefaults instantiates a new Behaviors object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewBehaviorsWithDefaults() *Behaviors {
-	this := Behaviors{}
-	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Behaviors) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
+// NullArgumentBehaviorAsBehaviors is a convenience function that returns NullArgumentBehavior wrapped in Behaviors
+func NullArgumentBehaviorAsBehaviors(v *NullArgumentBehavior) Behaviors {
+	return Behaviors{
+		NullArgumentBehavior: v,
 	}
-	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Behaviors) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
+// SetCustomResponseAsBehaviors is a convenience function that returns SetCustomResponse wrapped in Behaviors
+func SetCustomResponseAsBehaviors(v *SetCustomResponse) Behaviors {
+	return Behaviors{
+		SetCustomResponse: v,
 	}
-	return o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Behaviors) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
+// SetRateLimitBehaviorAsBehaviors is a convenience function that returns SetRateLimitBehavior wrapped in Behaviors
+func SetRateLimitBehaviorAsBehaviors(v *SetRateLimitBehavior) Behaviors {
+	return Behaviors{
+		SetRateLimitBehavior: v,
 	}
-
-	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Behaviors) SetName(v string) {
-	o.Name = &v
-}
-
-// GetArgument returns the Argument field value if set, zero value otherwise.
-func (o *Behaviors) GetArgument() BehaviorsArgument {
-	if o == nil || IsNil(o.Argument) {
-		var ret BehaviorsArgument
-		return ret
+// SetWAFRuleSetAndWafModeBehaviorAsBehaviors is a convenience function that returns SetWAFRuleSetAndWafModeBehavior wrapped in Behaviors
+func SetWAFRuleSetAndWafModeBehaviorAsBehaviors(v *SetWAFRuleSetAndWafModeBehavior) Behaviors {
+	return Behaviors{
+		SetWAFRuleSetAndWafModeBehavior: v,
 	}
-	return *o.Argument
 }
 
-// GetArgumentOk returns a tuple with the Argument field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Behaviors) GetArgumentOk() (*BehaviorsArgument, bool) {
-	if o == nil || IsNil(o.Argument) {
-		return nil, false
+// SetWAFRuleSetBehaviorAsBehaviors is a convenience function that returns SetWAFRuleSetBehavior wrapped in Behaviors
+func SetWAFRuleSetBehaviorAsBehaviors(v *SetWAFRuleSetBehavior) Behaviors {
+	return Behaviors{
+		SetWAFRuleSetBehavior: v,
 	}
-	return o.Argument, true
 }
 
-// HasArgument returns a boolean if a field has been set.
-func (o *Behaviors) HasArgument() bool {
-	if o != nil && !IsNil(o.Argument) {
-		return true
+// SimpleArgumentBehaviorAsBehaviors is a convenience function that returns SimpleArgumentBehavior wrapped in Behaviors
+func SimpleArgumentBehaviorAsBehaviors(v *SimpleArgumentBehavior) Behaviors {
+	return Behaviors{
+		SimpleArgumentBehavior: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *Behaviors) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into NullArgumentBehavior
+	err = newStrictDecoder(data).Decode(&dst.NullArgumentBehavior)
+	if err == nil {
+		jsonNullArgumentBehavior, _ := json.Marshal(dst.NullArgumentBehavior)
+		if string(jsonNullArgumentBehavior) == "{}" { // empty struct
+			dst.NullArgumentBehavior = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.NullArgumentBehavior = nil
 	}
 
-	return false
+	// try to unmarshal data into SetCustomResponse
+	err = newStrictDecoder(data).Decode(&dst.SetCustomResponse)
+	if err == nil {
+		jsonSetCustomResponse, _ := json.Marshal(dst.SetCustomResponse)
+		if string(jsonSetCustomResponse) == "{}" { // empty struct
+			dst.SetCustomResponse = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.SetCustomResponse = nil
+	}
+
+	// try to unmarshal data into SetRateLimitBehavior
+	err = newStrictDecoder(data).Decode(&dst.SetRateLimitBehavior)
+	if err == nil {
+		jsonSetRateLimitBehavior, _ := json.Marshal(dst.SetRateLimitBehavior)
+		if string(jsonSetRateLimitBehavior) == "{}" { // empty struct
+			dst.SetRateLimitBehavior = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.SetRateLimitBehavior = nil
+	}
+
+	// try to unmarshal data into SetWAFRuleSetAndWafModeBehavior
+	err = newStrictDecoder(data).Decode(&dst.SetWAFRuleSetAndWafModeBehavior)
+	if err == nil {
+		jsonSetWAFRuleSetAndWafModeBehavior, _ := json.Marshal(dst.SetWAFRuleSetAndWafModeBehavior)
+		if string(jsonSetWAFRuleSetAndWafModeBehavior) == "{}" { // empty struct
+			dst.SetWAFRuleSetAndWafModeBehavior = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.SetWAFRuleSetAndWafModeBehavior = nil
+	}
+
+	// try to unmarshal data into SetWAFRuleSetBehavior
+	err = newStrictDecoder(data).Decode(&dst.SetWAFRuleSetBehavior)
+	if err == nil {
+		jsonSetWAFRuleSetBehavior, _ := json.Marshal(dst.SetWAFRuleSetBehavior)
+		if string(jsonSetWAFRuleSetBehavior) == "{}" { // empty struct
+			dst.SetWAFRuleSetBehavior = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.SetWAFRuleSetBehavior = nil
+	}
+
+	// try to unmarshal data into SimpleArgumentBehavior
+	err = newStrictDecoder(data).Decode(&dst.SimpleArgumentBehavior)
+	if err == nil {
+		jsonSimpleArgumentBehavior, _ := json.Marshal(dst.SimpleArgumentBehavior)
+		if string(jsonSimpleArgumentBehavior) == "{}" { // empty struct
+			dst.SimpleArgumentBehavior = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.SimpleArgumentBehavior = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.NullArgumentBehavior = nil
+		dst.SetCustomResponse = nil
+		dst.SetRateLimitBehavior = nil
+		dst.SetWAFRuleSetAndWafModeBehavior = nil
+		dst.SetWAFRuleSetBehavior = nil
+		dst.SimpleArgumentBehavior = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(Behaviors)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(Behaviors)")
+	}
 }
 
-// SetArgument gets a reference to the given BehaviorsArgument and assigns it to the Argument field.
-func (o *Behaviors) SetArgument(v BehaviorsArgument) {
-	o.Argument = &v
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src Behaviors) MarshalJSON() ([]byte, error) {
+	if src.NullArgumentBehavior != nil {
+		return json.Marshal(&src.NullArgumentBehavior)
+	}
+
+	if src.SetCustomResponse != nil {
+		return json.Marshal(&src.SetCustomResponse)
+	}
+
+	if src.SetRateLimitBehavior != nil {
+		return json.Marshal(&src.SetRateLimitBehavior)
+	}
+
+	if src.SetWAFRuleSetAndWafModeBehavior != nil {
+		return json.Marshal(&src.SetWAFRuleSetAndWafModeBehavior)
+	}
+
+	if src.SetWAFRuleSetBehavior != nil {
+		return json.Marshal(&src.SetWAFRuleSetBehavior)
+	}
+
+	if src.SimpleArgumentBehavior != nil {
+		return json.Marshal(&src.SimpleArgumentBehavior)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-func (o Behaviors) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+// Get the actual instance
+func (obj *Behaviors) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
 	}
-	return json.Marshal(toSerialize)
-}
+	if obj.NullArgumentBehavior != nil {
+		return obj.NullArgumentBehavior
+	}
 
-func (o Behaviors) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if obj.SetCustomResponse != nil {
+		return obj.SetCustomResponse
 	}
-	if !IsNil(o.Argument) {
-		toSerialize["argument"] = o.Argument
+
+	if obj.SetRateLimitBehavior != nil {
+		return obj.SetRateLimitBehavior
 	}
-	return toSerialize, nil
+
+	if obj.SetWAFRuleSetAndWafModeBehavior != nil {
+		return obj.SetWAFRuleSetAndWafModeBehavior
+	}
+
+	if obj.SetWAFRuleSetBehavior != nil {
+		return obj.SetWAFRuleSetBehavior
+	}
+
+	if obj.SimpleArgumentBehavior != nil {
+		return obj.SimpleArgumentBehavior
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableBehaviors struct {
