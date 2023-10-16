@@ -1,4 +1,4 @@
-# Behaviors
+# SetCustomResponse
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewBehaviors
+### NewSetCustomResponse
 
-`func NewBehaviors() *Behaviors`
+`func NewSetCustomResponse() *SetCustomResponse`
 
-NewBehaviors instantiates a new Behaviors object
+NewSetCustomResponse instantiates a new SetCustomResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewBehaviorsWithDefaults
+### NewSetCustomResponseWithDefaults
 
-`func NewBehaviorsWithDefaults() *Behaviors`
+`func NewSetCustomResponseWithDefaults() *SetCustomResponse`
 
-NewBehaviorsWithDefaults instantiates a new Behaviors object
+NewSetCustomResponseWithDefaults instantiates a new SetCustomResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *Behaviors) GetName() string`
+`func (o *SetCustomResponse) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Behaviors) GetNameOk() (*string, bool)`
+`func (o *SetCustomResponse) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Behaviors) SetName(v string)`
+`func (o *SetCustomResponse) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *Behaviors) HasName() bool`
+`func (o *SetCustomResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetArgument
 
-`func (o *Behaviors) GetArgument() SetCustomResponseArgument`
+`func (o *SetCustomResponse) GetArgument() SetCustomResponseArgument`
 
 GetArgument returns the Argument field if non-nil, zero value otherwise.
 
 ### GetArgumentOk
 
-`func (o *Behaviors) GetArgumentOk() (*SetCustomResponseArgument, bool)`
+`func (o *SetCustomResponse) GetArgumentOk() (*SetCustomResponseArgument, bool)`
 
 GetArgumentOk returns a tuple with the Argument field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArgument
 
-`func (o *Behaviors) SetArgument(v SetCustomResponseArgument)`
+`func (o *SetCustomResponse) SetArgument(v SetCustomResponseArgument)`
 
 SetArgument sets Argument field to given value.
 
 ### HasArgument
 
-`func (o *Behaviors) HasArgument() bool`
+`func (o *SetCustomResponse) HasArgument() bool`
 
 HasArgument returns a boolean if a field has been set.
 

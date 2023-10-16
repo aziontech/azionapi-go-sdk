@@ -1,78 +1,78 @@
-# Behaviors
+# SetWAFRuleSetBehavior
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Argument** | Pointer to [**SetCustomResponseArgument**](SetCustomResponseArgument.md) |  | [optional] 
+**Argument** | Pointer to [**SetWAFRuleSetBehaviorArgument**](SetWAFRuleSetBehaviorArgument.md) |  | [optional] 
 
 ## Methods
 
-### NewBehaviors
+### NewSetWAFRuleSetBehavior
 
-`func NewBehaviors() *Behaviors`
+`func NewSetWAFRuleSetBehavior() *SetWAFRuleSetBehavior`
 
-NewBehaviors instantiates a new Behaviors object
+NewSetWAFRuleSetBehavior instantiates a new SetWAFRuleSetBehavior object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewBehaviorsWithDefaults
+### NewSetWAFRuleSetBehaviorWithDefaults
 
-`func NewBehaviorsWithDefaults() *Behaviors`
+`func NewSetWAFRuleSetBehaviorWithDefaults() *SetWAFRuleSetBehavior`
 
-NewBehaviorsWithDefaults instantiates a new Behaviors object
+NewSetWAFRuleSetBehaviorWithDefaults instantiates a new SetWAFRuleSetBehavior object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *Behaviors) GetName() string`
+`func (o *SetWAFRuleSetBehavior) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Behaviors) GetNameOk() (*string, bool)`
+`func (o *SetWAFRuleSetBehavior) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Behaviors) SetName(v string)`
+`func (o *SetWAFRuleSetBehavior) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *Behaviors) HasName() bool`
+`func (o *SetWAFRuleSetBehavior) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetArgument
 
-`func (o *Behaviors) GetArgument() SetCustomResponseArgument`
+`func (o *SetWAFRuleSetBehavior) GetArgument() SetWAFRuleSetBehaviorArgument`
 
 GetArgument returns the Argument field if non-nil, zero value otherwise.
 
 ### GetArgumentOk
 
-`func (o *Behaviors) GetArgumentOk() (*SetCustomResponseArgument, bool)`
+`func (o *SetWAFRuleSetBehavior) GetArgumentOk() (*SetWAFRuleSetBehaviorArgument, bool)`
 
 GetArgumentOk returns a tuple with the Argument field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArgument
 
-`func (o *Behaviors) SetArgument(v SetCustomResponseArgument)`
+`func (o *SetWAFRuleSetBehavior) SetArgument(v SetWAFRuleSetBehaviorArgument)`
 
 SetArgument sets Argument field to given value.
 
 ### HasArgument
 
-`func (o *Behaviors) HasArgument() bool`
+`func (o *SetWAFRuleSetBehavior) HasArgument() bool`
 
 HasArgument returns a boolean if a field has been set.
 
