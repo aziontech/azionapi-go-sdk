@@ -8,7 +8,7 @@ configuration.go
 docs/BadRequestResponse.md
 docs/CreateEdgeFunctionRequest.md
 docs/EdgeFunctionResponse.md
-docs/EdgeFunctionsApi.md
+docs/EdgeFunctionsAPI.md
 docs/ErrorResponse.md
 docs/Links.md
 docs/ListEdgeFunctionResponse.md

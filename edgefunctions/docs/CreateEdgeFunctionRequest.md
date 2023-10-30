@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Language** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
 **JsonArgs** | Pointer to **interface{}** |  | [optional] 
+**InitiatorType** | Pointer to **string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **IsProprietaryCode** | Pointer to **bool** |  | [optional] 
 
@@ -140,6 +141,31 @@ HasJsonArgs returns a boolean if a field has been set.
 `func (o *CreateEdgeFunctionRequest) UnsetJsonArgs()`
 
 UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
+### GetInitiatorType
+
+`func (o *CreateEdgeFunctionRequest) GetInitiatorType() string`
+
+GetInitiatorType returns the InitiatorType field if non-nil, zero value otherwise.
+
+### GetInitiatorTypeOk
+
+`func (o *CreateEdgeFunctionRequest) GetInitiatorTypeOk() (*string, bool)`
+
+GetInitiatorTypeOk returns a tuple with the InitiatorType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInitiatorType
+
+`func (o *CreateEdgeFunctionRequest) SetInitiatorType(v string)`
+
+SetInitiatorType sets InitiatorType field to given value.
+
+### HasInitiatorType
+
+`func (o *CreateEdgeFunctionRequest) HasInitiatorType() bool`
+
+HasInitiatorType returns a boolean if a field has been set.
+
 ### GetActive
 
 `func (o *CreateEdgeFunctionRequest) GetActive() bool`
