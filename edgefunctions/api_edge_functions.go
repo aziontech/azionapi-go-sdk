@@ -20,12 +20,12 @@ import (
 )
 
 
-// EdgeFunctionsApiService EdgeFunctionsApi service
-type EdgeFunctionsApiService service
+// EdgeFunctionsAPIService EdgeFunctionsAPI service
+type EdgeFunctionsAPIService service
 
 type ApiEdgeFunctionsGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeFunctionsApiService
+	ApiService *EdgeFunctionsAPIService
 	page *int64
 	pageSize *int64
 	sort *string
@@ -62,7 +62,7 @@ EdgeFunctionsGet edge_functions
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEdgeFunctionsGetRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsGet(ctx context.Context) ApiEdgeFunctionsGetRequest {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsGet(ctx context.Context) ApiEdgeFunctionsGetRequest {
 	return ApiEdgeFunctionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,7 +71,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsGet(ctx context.Context) ApiEdgeF
 
 // Execute executes the request
 //  @return ListEdgeFunctionResponse
-func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetRequest) (*ListEdgeFunctionResponse, *http.Response, error) {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetRequest) (*ListEdgeFunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -79,7 +79,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetR
 		localVarReturnValue  *ListEdgeFunctionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsAPIService.EdgeFunctionsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -155,6 +155,17 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 			var v ErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -180,7 +191,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsGetExecute(r ApiEdgeFunctionsGetR
 
 type ApiEdgeFunctionsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EdgeFunctionsApiService
+	ApiService *EdgeFunctionsAPIService
 	id int64
 }
 
@@ -195,7 +206,7 @@ EdgeFunctionsIdDelete edge_functions
  @param id
  @return ApiEdgeFunctionsIdDeleteRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdDelete(ctx context.Context, id int64) ApiEdgeFunctionsIdDeleteRequest {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsIdDelete(ctx context.Context, id int64) ApiEdgeFunctionsIdDeleteRequest {
 	return ApiEdgeFunctionsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -204,14 +215,14 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdDelete(ctx context.Context, id 
 }
 
 // Execute executes the request
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdDeleteExecute(r ApiEdgeFunctionsIdDeleteRequest) (*http.Response, error) {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsIdDeleteExecute(r ApiEdgeFunctionsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsAPIService.EdgeFunctionsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -292,7 +303,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdDeleteExecute(r ApiEdgeFunction
 
 type ApiEdgeFunctionsIdGetRequest struct {
 	ctx context.Context
-	ApiService *EdgeFunctionsApiService
+	ApiService *EdgeFunctionsAPIService
 	id int64
 }
 
@@ -307,7 +318,7 @@ EdgeFunctionsIdGet edge_functions
  @param id
  @return ApiEdgeFunctionsIdGetRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdGet(ctx context.Context, id int64) ApiEdgeFunctionsIdGetRequest {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsIdGet(ctx context.Context, id int64) ApiEdgeFunctionsIdGetRequest {
 	return ApiEdgeFunctionsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -317,7 +328,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdGet(ctx context.Context, id int
 
 // Execute executes the request
 //  @return EdgeFunctionResponse
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsIdGetRequest) (*EdgeFunctionResponse, *http.Response, error) {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsIdGetRequest) (*EdgeFunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -325,7 +336,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsId
 		localVarReturnValue  *EdgeFunctionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsAPIService.EdgeFunctionsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -390,6 +401,17 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsId
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 			var v ErrorResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -415,7 +437,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdGetExecute(r ApiEdgeFunctionsId
 
 type ApiEdgeFunctionsIdPatchRequest struct {
 	ctx context.Context
-	ApiService *EdgeFunctionsApiService
+	ApiService *EdgeFunctionsAPIService
 	id int64
 	patchEdgeFunctionRequest *PatchEdgeFunctionRequest
 }
@@ -436,7 +458,7 @@ EdgeFunctionsIdPatch edge_functions
  @param id
  @return ApiEdgeFunctionsIdPatchRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdPatch(ctx context.Context, id int64) ApiEdgeFunctionsIdPatchRequest {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsIdPatch(ctx context.Context, id int64) ApiEdgeFunctionsIdPatchRequest {
 	return ApiEdgeFunctionsIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -446,7 +468,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPatch(ctx context.Context, id i
 
 // Execute executes the request
 //  @return EdgeFunctionResponse
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdPatchExecute(r ApiEdgeFunctionsIdPatchRequest) (*EdgeFunctionResponse, *http.Response, error) {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsIdPatchExecute(r ApiEdgeFunctionsIdPatchRequest) (*EdgeFunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -454,7 +476,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPatchExecute(r ApiEdgeFunctions
 		localVarReturnValue  *EdgeFunctionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsAPIService.EdgeFunctionsIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -560,7 +582,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPatchExecute(r ApiEdgeFunctions
 
 type ApiEdgeFunctionsIdPutRequest struct {
 	ctx context.Context
-	ApiService *EdgeFunctionsApiService
+	ApiService *EdgeFunctionsAPIService
 	id int64
 	putEdgeFunctionRequest *PutEdgeFunctionRequest
 }
@@ -581,7 +603,7 @@ EdgeFunctionsIdPut edge_functions
  @param id
  @return ApiEdgeFunctionsIdPutRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdPut(ctx context.Context, id int64) ApiEdgeFunctionsIdPutRequest {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsIdPut(ctx context.Context, id int64) ApiEdgeFunctionsIdPutRequest {
 	return ApiEdgeFunctionsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -591,7 +613,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPut(ctx context.Context, id int
 
 // Execute executes the request
 //  @return EdgeFunctionResponse
-func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsIdPutRequest) (*EdgeFunctionResponse, *http.Response, error) {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsIdPutRequest) (*EdgeFunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -599,7 +621,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsId
 		localVarReturnValue  *EdgeFunctionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsAPIService.EdgeFunctionsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -705,7 +727,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsIdPutExecute(r ApiEdgeFunctionsId
 
 type ApiEdgeFunctionsPostRequest struct {
 	ctx context.Context
-	ApiService *EdgeFunctionsApiService
+	ApiService *EdgeFunctionsAPIService
 	createEdgeFunctionRequest *CreateEdgeFunctionRequest
 }
 
@@ -724,7 +746,7 @@ EdgeFunctionsPost edge_functions
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEdgeFunctionsPostRequest
 */
-func (a *EdgeFunctionsApiService) EdgeFunctionsPost(ctx context.Context) ApiEdgeFunctionsPostRequest {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsPost(ctx context.Context) ApiEdgeFunctionsPostRequest {
 	return ApiEdgeFunctionsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -733,7 +755,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsPost(ctx context.Context) ApiEdge
 
 // Execute executes the request
 //  @return EdgeFunctionResponse
-func (a *EdgeFunctionsApiService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPostRequest) (*EdgeFunctionResponse, *http.Response, error) {
+func (a *EdgeFunctionsAPIService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPostRequest) (*EdgeFunctionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -741,7 +763,7 @@ func (a *EdgeFunctionsApiService) EdgeFunctionsPostExecute(r ApiEdgeFunctionsPos
 		localVarReturnValue  *EdgeFunctionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsApiService.EdgeFunctionsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EdgeFunctionsAPIService.EdgeFunctionsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

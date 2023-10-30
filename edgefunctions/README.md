@@ -77,12 +77,12 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EdgeFunctionsApi* | [**EdgeFunctionsGet**](docs/EdgeFunctionsApi.md#edgefunctionsget) | **Get** /edge_functions | edge_functions
-*EdgeFunctionsApi* | [**EdgeFunctionsIdDelete**](docs/EdgeFunctionsApi.md#edgefunctionsiddelete) | **Delete** /edge_functions/{id} | edge_functions
-*EdgeFunctionsApi* | [**EdgeFunctionsIdGet**](docs/EdgeFunctionsApi.md#edgefunctionsidget) | **Get** /edge_functions/{id} | edge_functions
-*EdgeFunctionsApi* | [**EdgeFunctionsIdPatch**](docs/EdgeFunctionsApi.md#edgefunctionsidpatch) | **Patch** /edge_functions/{id} | edge_functions
-*EdgeFunctionsApi* | [**EdgeFunctionsIdPut**](docs/EdgeFunctionsApi.md#edgefunctionsidput) | **Put** /edge_functions/{id} | edge_functions
-*EdgeFunctionsApi* | [**EdgeFunctionsPost**](docs/EdgeFunctionsApi.md#edgefunctionspost) | **Post** /edge_functions | edge_functions
+*EdgeFunctionsAPI* | [**EdgeFunctionsGet**](docs/EdgeFunctionsAPI.md#edgefunctionsget) | **Get** /edge_functions | edge_functions
+*EdgeFunctionsAPI* | [**EdgeFunctionsIdDelete**](docs/EdgeFunctionsAPI.md#edgefunctionsiddelete) | **Delete** /edge_functions/{id} | edge_functions
+*EdgeFunctionsAPI* | [**EdgeFunctionsIdGet**](docs/EdgeFunctionsAPI.md#edgefunctionsidget) | **Get** /edge_functions/{id} | edge_functions
+*EdgeFunctionsAPI* | [**EdgeFunctionsIdPatch**](docs/EdgeFunctionsAPI.md#edgefunctionsidpatch) | **Patch** /edge_functions/{id} | edge_functions
+*EdgeFunctionsAPI* | [**EdgeFunctionsIdPut**](docs/EdgeFunctionsAPI.md#edgefunctionsidput) | **Put** /edge_functions/{id} | edge_functions
+*EdgeFunctionsAPI* | [**EdgeFunctionsPost**](docs/EdgeFunctionsAPI.md#edgefunctionspost) | **Post** /edge_functions | edge_functions
 
 
 ## Documentation For Models
@@ -109,6 +109,19 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods

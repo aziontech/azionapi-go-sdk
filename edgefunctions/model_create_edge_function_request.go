@@ -23,6 +23,7 @@ type CreateEdgeFunctionRequest struct {
 	Language *string `json:"language,omitempty"`
 	Code *string `json:"code,omitempty"`
 	JsonArgs interface{} `json:"json_args,omitempty"`
+	InitiatorType *string `json:"initiator_type,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	IsProprietaryCode *bool `json:"is_proprietary_code,omitempty"`
 }
@@ -173,6 +174,38 @@ func (o *CreateEdgeFunctionRequest) SetJsonArgs(v interface{}) {
 	o.JsonArgs = v
 }
 
+// GetInitiatorType returns the InitiatorType field value if set, zero value otherwise.
+func (o *CreateEdgeFunctionRequest) GetInitiatorType() string {
+	if o == nil || IsNil(o.InitiatorType) {
+		var ret string
+		return ret
+	}
+	return *o.InitiatorType
+}
+
+// GetInitiatorTypeOk returns a tuple with the InitiatorType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateEdgeFunctionRequest) GetInitiatorTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.InitiatorType) {
+		return nil, false
+	}
+	return o.InitiatorType, true
+}
+
+// HasInitiatorType returns a boolean if a field has been set.
+func (o *CreateEdgeFunctionRequest) HasInitiatorType() bool {
+	if o != nil && !IsNil(o.InitiatorType) {
+		return true
+	}
+
+	return false
+}
+
+// SetInitiatorType gets a reference to the given string and assigns it to the InitiatorType field.
+func (o *CreateEdgeFunctionRequest) SetInitiatorType(v string) {
+	o.InitiatorType = &v
+}
+
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *CreateEdgeFunctionRequest) GetActive() bool {
 	if o == nil || IsNil(o.Active) {
@@ -258,6 +291,9 @@ func (o CreateEdgeFunctionRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.JsonArgs != nil {
 		toSerialize["json_args"] = o.JsonArgs
+	}
+	if !IsNil(o.InitiatorType) {
+		toSerialize["initiator_type"] = o.InitiatorType
 	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active
