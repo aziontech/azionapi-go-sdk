@@ -61,6 +61,8 @@ paths:
           description: A list of Edge Functions Instances
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not Found
       summary: List all user Edge Functions Instances
@@ -89,6 +91,8 @@ paths:
           description: Edge Functions Instance created
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not Found
         "500":
@@ -118,6 +122,8 @@ paths:
           description: Successfully deleted
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not Found
       summary: Delete an Edge Functions Instance by uuid
@@ -148,6 +154,8 @@ paths:
           description: An Edge Functions Instance object
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not Found
       summary: Retrieve an Edge Functions Instance set by uuid
@@ -184,6 +192,8 @@ paths:
           description: Successfully updated
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not Found
         "500":
@@ -222,6 +232,8 @@ paths:
           description: Successfully updated
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not Found
         "500":

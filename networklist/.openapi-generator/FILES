@@ -7,7 +7,7 @@ client.go
 configuration.go
 docs/BadRequestResponse.md
 docs/CreateNetworkListsRequest.md
-docs/DefaultApi.md
+docs/DefaultAPI.md
 docs/ErrorModel.md
 docs/Links.md
 docs/ListNetworkListsResponse.md

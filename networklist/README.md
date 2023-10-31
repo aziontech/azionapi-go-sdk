@@ -77,11 +77,11 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**NetworkListsGet**](docs/DefaultApi.md#networklistsget) | **Get** /network_lists | List all user Network Lists
-*DefaultApi* | [**NetworkListsPost**](docs/DefaultApi.md#networklistspost) | **Post** /network_lists | Create a Network Lists
-*DefaultApi* | [**NetworkListsUuidDelete**](docs/DefaultApi.md#networklistsuuiddelete) | **Delete** /network_lists/{uuid} | Delete a Network Lists set by uuid
-*DefaultApi* | [**NetworkListsUuidGet**](docs/DefaultApi.md#networklistsuuidget) | **Get** /network_lists/{uuid} | Retrieve a Network Lists set by uuid
-*DefaultApi* | [**NetworkListsUuidPut**](docs/DefaultApi.md#networklistsuuidput) | **Put** /network_lists/{uuid} | Overwrite some Network Lists attributes
+*DefaultAPI* | [**NetworkListsGet**](docs/DefaultAPI.md#networklistsget) | **Get** /network_lists | List all user Network Lists
+*DefaultAPI* | [**NetworkListsPost**](docs/DefaultAPI.md#networklistspost) | **Post** /network_lists | Create a Network Lists
+*DefaultAPI* | [**NetworkListsUuidDelete**](docs/DefaultAPI.md#networklistsuuiddelete) | **Delete** /network_lists/{uuid} | Delete a Network Lists set by uuid
+*DefaultAPI* | [**NetworkListsUuidGet**](docs/DefaultAPI.md#networklistsuuidget) | **Get** /network_lists/{uuid} | Retrieve a Network Lists set by uuid
+*DefaultAPI* | [**NetworkListsUuidPut**](docs/DefaultAPI.md#networklistsuuidput) | **Put** /network_lists/{uuid} | Overwrite some Network Lists attributes
 
 
 ## Documentation For Models
@@ -111,6 +111,19 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods

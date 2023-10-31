@@ -51,6 +51,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListEdgeFirewallResponse'
           description: A list of edge firewalls
+        "403":
+          description: Forbidden
         "404":
           description: Not found
       summary: List all user edge firewall
@@ -70,6 +72,8 @@ paths:
           description: Edge firewall created
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "500":
           description: Internal Server Error
       summary: Create a edge firewall
@@ -88,6 +92,8 @@ paths:
           description: Successfully deleted
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not found
       summary: Delete an edge firewall by uuid
@@ -109,6 +115,8 @@ paths:
           description: An edge firewall object
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not found
       summary: Retrieve an edge firewall set by uuid
@@ -136,6 +144,8 @@ paths:
           description: Successfully updated
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not found
         "500":
@@ -165,6 +175,8 @@ paths:
           description: Successfully updated
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
         "404":
           description: Not found
         "500":
