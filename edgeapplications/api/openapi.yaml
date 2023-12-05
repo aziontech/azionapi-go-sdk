@@ -4494,9 +4494,12 @@ components:
         target:
           type: object
           properties:
-          - captured_array: string
-          - subject: string
-          - regex: string
+            captured_array:
+              type: string
+            subject:
+              type: string
+            regex:
+              type: string
       properties:
         name:
           type: string

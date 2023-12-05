@@ -20,12 +20,12 @@ import (
 )
 
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+// DefaultAPIService DefaultAPI service
+type DefaultAPIService service
 
 type ApiNetworkListsGetRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	page *int32
 	pageSize *int32
 	sort *string
@@ -62,7 +62,7 @@ NetworkListsGet List all user Network Lists
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiNetworkListsGetRequest
 */
-func (a *DefaultApiService) NetworkListsGet(ctx context.Context) ApiNetworkListsGetRequest {
+func (a *DefaultAPIService) NetworkListsGet(ctx context.Context) ApiNetworkListsGetRequest {
 	return ApiNetworkListsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,7 +71,7 @@ func (a *DefaultApiService) NetworkListsGet(ctx context.Context) ApiNetworkLists
 
 // Execute executes the request
 //  @return ListNetworkListsResponse
-func (a *DefaultApiService) NetworkListsGetExecute(r ApiNetworkListsGetRequest) (*ListNetworkListsResponse, *http.Response, error) {
+func (a *DefaultAPIService) NetworkListsGetExecute(r ApiNetworkListsGetRequest) (*ListNetworkListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -79,7 +79,7 @@ func (a *DefaultApiService) NetworkListsGetExecute(r ApiNetworkListsGetRequest) 
 		localVarReturnValue  *ListNetworkListsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NetworkListsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.NetworkListsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -183,7 +183,7 @@ func (a *DefaultApiService) NetworkListsGetExecute(r ApiNetworkListsGetRequest) 
 
 type ApiNetworkListsPostRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	createNetworkListsRequest *CreateNetworkListsRequest
 }
 
@@ -202,7 +202,7 @@ NetworkListsPost Create a Network Lists
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiNetworkListsPostRequest
 */
-func (a *DefaultApiService) NetworkListsPost(ctx context.Context) ApiNetworkListsPostRequest {
+func (a *DefaultAPIService) NetworkListsPost(ctx context.Context) ApiNetworkListsPostRequest {
 	return ApiNetworkListsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -211,7 +211,7 @@ func (a *DefaultApiService) NetworkListsPost(ctx context.Context) ApiNetworkList
 
 // Execute executes the request
 //  @return NetworkListsResponse
-func (a *DefaultApiService) NetworkListsPostExecute(r ApiNetworkListsPostRequest) (*NetworkListsResponse, *http.Response, error) {
+func (a *DefaultAPIService) NetworkListsPostExecute(r ApiNetworkListsPostRequest) (*NetworkListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -219,7 +219,7 @@ func (a *DefaultApiService) NetworkListsPostExecute(r ApiNetworkListsPostRequest
 		localVarReturnValue  *NetworkListsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NetworkListsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.NetworkListsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -326,7 +326,7 @@ func (a *DefaultApiService) NetworkListsPostExecute(r ApiNetworkListsPostRequest
 
 type ApiNetworkListsUuidDeleteRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	uuid string
 	accept *string
 }
@@ -347,7 +347,7 @@ NetworkListsUuidDelete Delete a Network Lists set by uuid
  @param uuid The id of the networkList to be deleted. 
  @return ApiNetworkListsUuidDeleteRequest
 */
-func (a *DefaultApiService) NetworkListsUuidDelete(ctx context.Context, uuid string) ApiNetworkListsUuidDeleteRequest {
+func (a *DefaultAPIService) NetworkListsUuidDelete(ctx context.Context, uuid string) ApiNetworkListsUuidDeleteRequest {
 	return ApiNetworkListsUuidDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -356,14 +356,14 @@ func (a *DefaultApiService) NetworkListsUuidDelete(ctx context.Context, uuid str
 }
 
 // Execute executes the request
-func (a *DefaultApiService) NetworkListsUuidDeleteExecute(r ApiNetworkListsUuidDeleteRequest) (*http.Response, error) {
+func (a *DefaultAPIService) NetworkListsUuidDeleteExecute(r ApiNetworkListsUuidDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NetworkListsUuidDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.NetworkListsUuidDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -439,7 +439,7 @@ func (a *DefaultApiService) NetworkListsUuidDeleteExecute(r ApiNetworkListsUuidD
 
 type ApiNetworkListsUuidGetRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	uuid string
 }
 
@@ -454,7 +454,7 @@ NetworkListsUuidGet Retrieve a Network Lists set by uuid
  @param uuid
  @return ApiNetworkListsUuidGetRequest
 */
-func (a *DefaultApiService) NetworkListsUuidGet(ctx context.Context, uuid string) ApiNetworkListsUuidGetRequest {
+func (a *DefaultAPIService) NetworkListsUuidGet(ctx context.Context, uuid string) ApiNetworkListsUuidGetRequest {
 	return ApiNetworkListsUuidGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -464,7 +464,7 @@ func (a *DefaultApiService) NetworkListsUuidGet(ctx context.Context, uuid string
 
 // Execute executes the request
 //  @return NetworkListUuidResponse
-func (a *DefaultApiService) NetworkListsUuidGetExecute(r ApiNetworkListsUuidGetRequest) (*NetworkListUuidResponse, *http.Response, error) {
+func (a *DefaultAPIService) NetworkListsUuidGetExecute(r ApiNetworkListsUuidGetRequest) (*NetworkListUuidResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -472,7 +472,7 @@ func (a *DefaultApiService) NetworkListsUuidGetExecute(r ApiNetworkListsUuidGetR
 		localVarReturnValue  *NetworkListUuidResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NetworkListsUuidGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.NetworkListsUuidGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -565,7 +565,7 @@ func (a *DefaultApiService) NetworkListsUuidGetExecute(r ApiNetworkListsUuidGetR
 
 type ApiNetworkListsUuidPutRequest struct {
 	ctx context.Context
-	ApiService *DefaultApiService
+	ApiService *DefaultAPIService
 	uuid string
 	createNetworkListsRequest *CreateNetworkListsRequest
 }
@@ -586,7 +586,7 @@ NetworkListsUuidPut Overwrite some Network Lists attributes
  @param uuid
  @return ApiNetworkListsUuidPutRequest
 */
-func (a *DefaultApiService) NetworkListsUuidPut(ctx context.Context, uuid string) ApiNetworkListsUuidPutRequest {
+func (a *DefaultAPIService) NetworkListsUuidPut(ctx context.Context, uuid string) ApiNetworkListsUuidPutRequest {
 	return ApiNetworkListsUuidPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -596,7 +596,7 @@ func (a *DefaultApiService) NetworkListsUuidPut(ctx context.Context, uuid string
 
 // Execute executes the request
 //  @return NetworkListsResponse
-func (a *DefaultApiService) NetworkListsUuidPutExecute(r ApiNetworkListsUuidPutRequest) (*NetworkListsResponse, *http.Response, error) {
+func (a *DefaultAPIService) NetworkListsUuidPutExecute(r ApiNetworkListsUuidPutRequest) (*NetworkListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -604,7 +604,7 @@ func (a *DefaultApiService) NetworkListsUuidPutExecute(r ApiNetworkListsUuidPutR
 		localVarReturnValue  *NetworkListsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.NetworkListsUuidPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.NetworkListsUuidPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
