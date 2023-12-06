@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationCacheResults type satisfies the MappedNullable interface at compile time
@@ -42,6 +43,8 @@ type ApplicationCacheResults struct {
 	EnableStaleCache bool `json:"enable_stale_cache"`
 	L2Region NullableString `json:"l2_region"`
 }
+
+type _ApplicationCacheResults ApplicationCacheResults
 
 // NewApplicationCacheResults instantiates a new ApplicationCacheResults object
 // This constructor will assign default values to properties that have it defined,
@@ -689,6 +692,58 @@ func (o ApplicationCacheResults) ToMap() (map[string]interface{}, error) {
 	toSerialize["enable_stale_cache"] = o.EnableStaleCache
 	toSerialize["l2_region"] = o.L2Region.Get()
 	return toSerialize, nil
+}
+
+func (o *ApplicationCacheResults) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"browser_cache_settings",
+		"browser_cache_settings_maximum_ttl",
+		"cdn_cache_settings",
+		"cdn_cache_settings_maximum_ttl",
+		"cache_by_query_string",
+		"query_string_fields",
+		"enable_query_string_sort",
+		"cache_by_cookies",
+		"cookie_names",
+		"adaptive_delivery_action",
+		"device_group",
+		"enable_caching_for_post",
+		"l2_caching_enabled",
+		"enable_caching_for_options",
+		"enable_stale_cache",
+		"l2_region",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationCacheResults := _ApplicationCacheResults{}
+
+	err = json.Unmarshal(bytes, &varApplicationCacheResults)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationCacheResults(varApplicationCacheResults)
+
+	return err
 }
 
 type NullableApplicationCacheResults struct {

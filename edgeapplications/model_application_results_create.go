@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationResultsCreate type satisfies the MappedNullable interface at compile time
@@ -40,6 +41,8 @@ type ApplicationResultsCreate struct {
 	WebApplicationFirewall bool `json:"web_application_firewall"`
 	L2Caching *bool `json:"l2_caching,omitempty"`
 }
+
+type _ApplicationResultsCreate ApplicationResultsCreate
 
 // NewApplicationResultsCreate instantiates a new ApplicationResultsCreate object
 // This constructor will assign default values to properties that have it defined,
@@ -606,6 +609,59 @@ func (o ApplicationResultsCreate) ToMap() (map[string]interface{}, error) {
 		toSerialize["l2_caching"] = o.L2Caching
 	}
 	return toSerialize, nil
+}
+
+func (o *ApplicationResultsCreate) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"active",
+		"debug_rules",
+		"http3",
+		"supported_ciphers",
+		"delivery_protocol",
+		"http_port",
+		"https_port",
+		"minimum_tls_version",
+		"application_acceleration",
+		"caching",
+		"device_detection",
+		"edge_firewall",
+		"edge_functions",
+		"image_optimization",
+		"load_balancer",
+		"raw_logs",
+		"web_application_firewall",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationResultsCreate := _ApplicationResultsCreate{}
+
+	err = json.Unmarshal(bytes, &varApplicationResultsCreate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationResultsCreate(varApplicationResultsCreate)
+
+	return err
 }
 
 type NullableApplicationResultsCreate struct {

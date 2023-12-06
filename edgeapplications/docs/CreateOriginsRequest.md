@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **HmacRegionName** | Pointer to **string** |  | [optional] 
 **HmacAccessKey** | Pointer to **string** |  | [optional] 
 **HmacSecretKey** | Pointer to **string** |  | [optional] 
+**Bucket** | Pointer to **string** |  | [optional] 
+**Prefix** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -268,6 +270,56 @@ SetHmacSecretKey sets HmacSecretKey field to given value.
 `func (o *CreateOriginsRequest) HasHmacSecretKey() bool`
 
 HasHmacSecretKey returns a boolean if a field has been set.
+
+### GetBucket
+
+`func (o *CreateOriginsRequest) GetBucket() string`
+
+GetBucket returns the Bucket field if non-nil, zero value otherwise.
+
+### GetBucketOk
+
+`func (o *CreateOriginsRequest) GetBucketOk() (*string, bool)`
+
+GetBucketOk returns a tuple with the Bucket field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBucket
+
+`func (o *CreateOriginsRequest) SetBucket(v string)`
+
+SetBucket sets Bucket field to given value.
+
+### HasBucket
+
+`func (o *CreateOriginsRequest) HasBucket() bool`
+
+HasBucket returns a boolean if a field has been set.
+
+### GetPrefix
+
+`func (o *CreateOriginsRequest) GetPrefix() string`
+
+GetPrefix returns the Prefix field if non-nil, zero value otherwise.
+
+### GetPrefixOk
+
+`func (o *CreateOriginsRequest) GetPrefixOk() (*string, bool)`
+
+GetPrefixOk returns a tuple with the Prefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrefix
+
+`func (o *CreateOriginsRequest) SetPrefix(v string)`
+
+SetPrefix sets Prefix field to given value.
+
+### HasPrefix
+
+`func (o *CreateOriginsRequest) HasPrefix() bool`
+
+HasPrefix returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationLinks type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type ApplicationLinks struct {
 	Previous NullableString `json:"previous"`
 	Next NullableString `json:"next"`
 }
+
+type _ApplicationLinks ApplicationLinks
 
 // NewApplicationLinks instantiates a new ApplicationLinks object
 // This constructor will assign default values to properties that have it defined,
@@ -107,6 +110,42 @@ func (o ApplicationLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize["previous"] = o.Previous.Get()
 	toSerialize["next"] = o.Next.Get()
 	return toSerialize, nil
+}
+
+func (o *ApplicationLinks) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"previous",
+		"next",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationLinks := _ApplicationLinks{}
+
+	err = json.Unmarshal(bytes, &varApplicationLinks)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationLinks(varApplicationLinks)
+
+	return err
 }
 
 type NullableApplicationLinks struct {

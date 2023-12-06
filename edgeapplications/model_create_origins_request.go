@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the CreateOriginsRequest type satisfies the MappedNullable interface at compile time
@@ -29,7 +30,11 @@ type CreateOriginsRequest struct {
 	HmacRegionName *string `json:"hmac_region_name,omitempty"`
 	HmacAccessKey *string `json:"hmac_access_key,omitempty"`
 	HmacSecretKey *string `json:"hmac_secret_key,omitempty"`
+	Bucket *string `json:"bucket,omitempty"`
+	Prefix *string `json:"prefix,omitempty"`
 }
+
+type _CreateOriginsRequest CreateOriginsRequest
 
 // NewCreateOriginsRequest instantiates a new CreateOriginsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -347,6 +352,70 @@ func (o *CreateOriginsRequest) SetHmacSecretKey(v string) {
 	o.HmacSecretKey = &v
 }
 
+// GetBucket returns the Bucket field value if set, zero value otherwise.
+func (o *CreateOriginsRequest) GetBucket() string {
+	if o == nil || IsNil(o.Bucket) {
+		var ret string
+		return ret
+	}
+	return *o.Bucket
+}
+
+// GetBucketOk returns a tuple with the Bucket field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOriginsRequest) GetBucketOk() (*string, bool) {
+	if o == nil || IsNil(o.Bucket) {
+		return nil, false
+	}
+	return o.Bucket, true
+}
+
+// HasBucket returns a boolean if a field has been set.
+func (o *CreateOriginsRequest) HasBucket() bool {
+	if o != nil && !IsNil(o.Bucket) {
+		return true
+	}
+
+	return false
+}
+
+// SetBucket gets a reference to the given string and assigns it to the Bucket field.
+func (o *CreateOriginsRequest) SetBucket(v string) {
+	o.Bucket = &v
+}
+
+// GetPrefix returns the Prefix field value if set, zero value otherwise.
+func (o *CreateOriginsRequest) GetPrefix() string {
+	if o == nil || IsNil(o.Prefix) {
+		var ret string
+		return ret
+	}
+	return *o.Prefix
+}
+
+// GetPrefixOk returns a tuple with the Prefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOriginsRequest) GetPrefixOk() (*string, bool) {
+	if o == nil || IsNil(o.Prefix) {
+		return nil, false
+	}
+	return o.Prefix, true
+}
+
+// HasPrefix returns a boolean if a field has been set.
+func (o *CreateOriginsRequest) HasPrefix() bool {
+	if o != nil && !IsNil(o.Prefix) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrefix gets a reference to the given string and assigns it to the Prefix field.
+func (o *CreateOriginsRequest) SetPrefix(v string) {
+	o.Prefix = &v
+}
+
 func (o CreateOriginsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -381,7 +450,50 @@ func (o CreateOriginsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HmacSecretKey) {
 		toSerialize["hmac_secret_key"] = o.HmacSecretKey
 	}
+	if !IsNil(o.Bucket) {
+		toSerialize["bucket"] = o.Bucket
+	}
+	if !IsNil(o.Prefix) {
+		toSerialize["prefix"] = o.Prefix
+	}
 	return toSerialize, nil
+}
+
+func (o *CreateOriginsRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"addresses",
+		"host_header",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCreateOriginsRequest := _CreateOriginsRequest{}
+
+	err = json.Unmarshal(bytes, &varCreateOriginsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateOriginsRequest(varCreateOriginsRequest)
+
+	return err
 }
 
 type NullableCreateOriginsRequest struct {

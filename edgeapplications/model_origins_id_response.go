@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the OriginsIdResponse type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type OriginsIdResponse struct {
 	Results OriginsResultResponse `json:"results"`
 	SchemaVersion int64 `json:"schema_version"`
 }
+
+type _OriginsIdResponse OriginsIdResponse
 
 // NewOriginsIdResponse instantiates a new OriginsIdResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +106,42 @@ func (o OriginsIdResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["results"] = o.Results
 	toSerialize["schema_version"] = o.SchemaVersion
 	return toSerialize, nil
+}
+
+func (o *OriginsIdResponse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"results",
+		"schema_version",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOriginsIdResponse := _OriginsIdResponse{}
+
+	err = json.Unmarshal(bytes, &varOriginsIdResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OriginsIdResponse(varOriginsIdResponse)
+
+	return err
 }
 
 type NullableOriginsIdResponse struct {

@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationPutInstanceRequest type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,8 @@ type ApplicationPutInstanceRequest struct {
 	EdgeFunctionId int64 `json:"edge_function_id"`
 	Args interface{} `json:"args"`
 }
+
+type _ApplicationPutInstanceRequest ApplicationPutInstanceRequest
 
 // NewApplicationPutInstanceRequest instantiates a new ApplicationPutInstanceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -134,6 +137,43 @@ func (o ApplicationPutInstanceRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["args"] = o.Args
 	}
 	return toSerialize, nil
+}
+
+func (o *ApplicationPutInstanceRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"edge_function_id",
+		"args",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationPutInstanceRequest := _ApplicationPutInstanceRequest{}
+
+	err = json.Unmarshal(bytes, &varApplicationPutInstanceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationPutInstanceRequest(varApplicationPutInstanceRequest)
+
+	return err
 }
 
 type NullableApplicationPutInstanceRequest struct {

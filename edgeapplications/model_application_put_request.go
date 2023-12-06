@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationPutRequest type satisfies the MappedNullable interface at compile time
@@ -40,6 +41,8 @@ type ApplicationPutRequest struct {
 	Websocket *bool `json:"websocket,omitempty"`
 	SupportedCiphers *string `json:"supported_ciphers,omitempty"`
 }
+
+type _ApplicationPutRequest ApplicationPutRequest
 
 // NewApplicationPutRequest instantiates a new ApplicationPutRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -762,6 +765,41 @@ func (o ApplicationPutRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["supported_ciphers"] = o.SupportedCiphers
 	}
 	return toSerialize, nil
+}
+
+func (o *ApplicationPutRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationPutRequest := _ApplicationPutRequest{}
+
+	err = json.Unmarshal(bytes, &varApplicationPutRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationPutRequest(varApplicationPutRequest)
+
+	return err
 }
 
 type NullableApplicationPutRequest struct {

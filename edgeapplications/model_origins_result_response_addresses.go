@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the OriginsResultResponseAddresses type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,8 @@ type OriginsResultResponseAddresses struct {
 	ServerRole string `json:"server_role"`
 	IsActive bool `json:"is_active"`
 }
+
+type _OriginsResultResponseAddresses OriginsResultResponseAddresses
 
 // NewOriginsResultResponseAddresses instantiates a new OriginsResultResponseAddresses object
 // This constructor will assign default values to properties that have it defined,
@@ -159,6 +162,44 @@ func (o OriginsResultResponseAddresses) ToMap() (map[string]interface{}, error) 
 	toSerialize["server_role"] = o.ServerRole
 	toSerialize["is_active"] = o.IsActive
 	return toSerialize, nil
+}
+
+func (o *OriginsResultResponseAddresses) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"address",
+		"weight",
+		"server_role",
+		"is_active",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOriginsResultResponseAddresses := _OriginsResultResponseAddresses{}
+
+	err = json.Unmarshal(bytes, &varOriginsResultResponseAddresses)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OriginsResultResponseAddresses(varOriginsResultResponseAddresses)
+
+	return err
 }
 
 type NullableOriginsResultResponseAddresses struct {

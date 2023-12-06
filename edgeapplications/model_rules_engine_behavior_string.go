@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the RulesEngineBehaviorString type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type RulesEngineBehaviorString struct {
 	Name string `json:"name"`
 	Target string `json:"target"`
 }
+
+type _RulesEngineBehaviorString RulesEngineBehaviorString
 
 // NewRulesEngineBehaviorString instantiates a new RulesEngineBehaviorString object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +106,42 @@ func (o RulesEngineBehaviorString) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["target"] = o.Target
 	return toSerialize, nil
+}
+
+func (o *RulesEngineBehaviorString) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"target",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRulesEngineBehaviorString := _RulesEngineBehaviorString{}
+
+	err = json.Unmarshal(bytes, &varRulesEngineBehaviorString)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RulesEngineBehaviorString(varRulesEngineBehaviorString)
+
+	return err
 }
 
 type NullableRulesEngineBehaviorString struct {

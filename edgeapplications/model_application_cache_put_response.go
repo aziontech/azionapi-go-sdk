@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationCachePutResponse type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type ApplicationCachePutResponse struct {
 	Results ApplicationCacheResponseDetails `json:"results"`
 	SchemaVersion int64 `json:"schema_version"`
 }
+
+type _ApplicationCachePutResponse ApplicationCachePutResponse
 
 // NewApplicationCachePutResponse instantiates a new ApplicationCachePutResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +106,42 @@ func (o ApplicationCachePutResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["results"] = o.Results
 	toSerialize["schema_version"] = o.SchemaVersion
 	return toSerialize, nil
+}
+
+func (o *ApplicationCachePutResponse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"results",
+		"schema_version",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationCachePutResponse := _ApplicationCachePutResponse{}
+
+	err = json.Unmarshal(bytes, &varApplicationCachePutResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationCachePutResponse(varApplicationCachePutResponse)
+
+	return err
 }
 
 type NullableApplicationCachePutResponse struct {
