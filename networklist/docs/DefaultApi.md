@@ -1,14 +1,14 @@
-# \DefaultApi
+# \DefaultAPI
 
 All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NetworkListsGet**](DefaultApi.md#NetworkListsGet) | **Get** /network_lists | List all user Network Lists
-[**NetworkListsPost**](DefaultApi.md#NetworkListsPost) | **Post** /network_lists | Create a Network Lists
-[**NetworkListsUuidDelete**](DefaultApi.md#NetworkListsUuidDelete) | **Delete** /network_lists/{uuid} | Delete a Network Lists set by uuid
-[**NetworkListsUuidGet**](DefaultApi.md#NetworkListsUuidGet) | **Get** /network_lists/{uuid} | Retrieve a Network Lists set by uuid
-[**NetworkListsUuidPut**](DefaultApi.md#NetworkListsUuidPut) | **Put** /network_lists/{uuid} | Overwrite some Network Lists attributes
+[**NetworkListsGet**](DefaultAPI.md#NetworkListsGet) | **Get** /network_lists | List all user Network Lists
+[**NetworkListsPost**](DefaultAPI.md#NetworkListsPost) | **Post** /network_lists | Create a Network Lists
+[**NetworkListsUuidDelete**](DefaultAPI.md#NetworkListsUuidDelete) | **Delete** /network_lists/{uuid} | Delete a Network Lists set by uuid
+[**NetworkListsUuidGet**](DefaultAPI.md#NetworkListsUuidGet) | **Get** /network_lists/{uuid} | Retrieve a Network Lists set by uuid
+[**NetworkListsUuidPut**](DefaultAPI.md#NetworkListsUuidPut) | **Put** /network_lists/{uuid} | Overwrite some Network Lists attributes
 
 
 
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.NetworkListsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
+    resp, r, err := apiClient.DefaultAPI.NetworkListsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.NetworkListsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `NetworkListsGet`: ListNetworkListsResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.NetworkListsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.NetworkListsGet`: %v\n", resp)
 }
 ```
 
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.NetworkListsPost(context.Background()).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
+    resp, r, err := apiClient.DefaultAPI.NetworkListsPost(context.Background()).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.NetworkListsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `NetworkListsPost`: NetworkListsResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.NetworkListsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.NetworkListsPost`: %v\n", resp)
 }
 ```
 
@@ -170,9 +170,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DefaultApi.NetworkListsUuidDelete(context.Background(), uuid).Accept(accept).Execute()
+    r, err := apiClient.DefaultAPI.NetworkListsUuidDelete(context.Background(), uuid).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsUuidDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.NetworkListsUuidDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -237,13 +237,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.NetworkListsUuidGet(context.Background(), uuid).Execute()
+    resp, r, err := apiClient.DefaultAPI.NetworkListsUuidGet(context.Background(), uuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsUuidGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.NetworkListsUuidGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `NetworkListsUuidGet`: NetworkListUuidResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.NetworkListsUuidGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.NetworkListsUuidGet`: %v\n", resp)
 }
 ```
 
@@ -306,13 +306,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.NetworkListsUuidPut(context.Background(), uuid).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
+    resp, r, err := apiClient.DefaultAPI.NetworkListsUuidPut(context.Background(), uuid).CreateNetworkListsRequest(createNetworkListsRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.NetworkListsUuidPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.NetworkListsUuidPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `NetworkListsUuidPut`: NetworkListsResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.NetworkListsUuidPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.NetworkListsUuidPut`: %v\n", resp)
 }
 ```
 
