@@ -27,7 +27,6 @@ type ApplicationPutRequest struct {
 	MinimumTlsVersion *string `json:"minimum_tls_version,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	ApplicationAcceleration *bool `json:"application_acceleration,omitempty"`
-	Caching *bool `json:"caching,omitempty"`
 	DeviceDetection *bool `json:"device_detection,omitempty"`
 	EdgeFirewall *bool `json:"edge_firewall,omitempty"`
 	EdgeFunctions *bool `json:"edge_functions,omitempty"`
@@ -278,38 +277,6 @@ func (o *ApplicationPutRequest) HasApplicationAcceleration() bool {
 // SetApplicationAcceleration gets a reference to the given bool and assigns it to the ApplicationAcceleration field.
 func (o *ApplicationPutRequest) SetApplicationAcceleration(v bool) {
 	o.ApplicationAcceleration = &v
-}
-
-// GetCaching returns the Caching field value if set, zero value otherwise.
-func (o *ApplicationPutRequest) GetCaching() bool {
-	if o == nil || IsNil(o.Caching) {
-		var ret bool
-		return ret
-	}
-	return *o.Caching
-}
-
-// GetCachingOk returns a tuple with the Caching field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationPutRequest) GetCachingOk() (*bool, bool) {
-	if o == nil || IsNil(o.Caching) {
-		return nil, false
-	}
-	return o.Caching, true
-}
-
-// HasCaching returns a boolean if a field has been set.
-func (o *ApplicationPutRequest) HasCaching() bool {
-	if o != nil && !IsNil(o.Caching) {
-		return true
-	}
-
-	return false
-}
-
-// SetCaching gets a reference to the given bool and assigns it to the Caching field.
-func (o *ApplicationPutRequest) SetCaching(v bool) {
-	o.Caching = &v
 }
 
 // GetDeviceDetection returns the DeviceDetection field value if set, zero value otherwise.
@@ -724,9 +691,6 @@ func (o ApplicationPutRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ApplicationAcceleration) {
 		toSerialize["application_acceleration"] = o.ApplicationAcceleration
-	}
-	if !IsNil(o.Caching) {
-		toSerialize["caching"] = o.Caching
 	}
 	if !IsNil(o.DeviceDetection) {
 		toSerialize["device_detection"] = o.DeviceDetection

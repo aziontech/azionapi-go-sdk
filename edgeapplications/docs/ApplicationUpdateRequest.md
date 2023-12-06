@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **Active** | Pointer to **bool** |  | [optional] 
 **DebugRules** | Pointer to **bool** |  | [optional] 
 **ApplicationAcceleration** | Pointer to **bool** |  | [optional] 
-**Caching** | Pointer to **bool** |  | [optional] 
 **DeviceDetection** | Pointer to **bool** |  | [optional] 
 **EdgeFirewall** | Pointer to **bool** |  | [optional] 
 **EdgeFunctions** | Pointer to **bool** |  | [optional] 
@@ -261,31 +260,6 @@ SetApplicationAcceleration sets ApplicationAcceleration field to given value.
 `func (o *ApplicationUpdateRequest) HasApplicationAcceleration() bool`
 
 HasApplicationAcceleration returns a boolean if a field has been set.
-
-### GetCaching
-
-`func (o *ApplicationUpdateRequest) GetCaching() bool`
-
-GetCaching returns the Caching field if non-nil, zero value otherwise.
-
-### GetCachingOk
-
-`func (o *ApplicationUpdateRequest) GetCachingOk() (*bool, bool)`
-
-GetCachingOk returns a tuple with the Caching field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCaching
-
-`func (o *ApplicationUpdateRequest) SetCaching(v bool)`
-
-SetCaching sets Caching field to given value.
-
-### HasCaching
-
-`func (o *ApplicationUpdateRequest) HasCaching() bool`
-
-HasCaching returns a boolean if a field has been set.
 
 ### GetDeviceDetection
 
