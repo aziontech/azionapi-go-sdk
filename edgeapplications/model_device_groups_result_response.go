@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the DeviceGroupsResultResponse type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,8 @@ type DeviceGroupsResultResponse struct {
 	Name string `json:"name"`
 	UserAgent string `json:"user_agent"`
 }
+
+type _DeviceGroupsResultResponse DeviceGroupsResultResponse
 
 // NewDeviceGroupsResultResponse instantiates a new DeviceGroupsResultResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -139,6 +142,42 @@ func (o DeviceGroupsResultResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["user_agent"] = o.UserAgent
 	return toSerialize, nil
+}
+
+func (o *DeviceGroupsResultResponse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"user_agent",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceGroupsResultResponse := _DeviceGroupsResultResponse{}
+
+	err = json.Unmarshal(bytes, &varDeviceGroupsResultResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceGroupsResultResponse(varDeviceGroupsResultResponse)
+
+	return err
 }
 
 type NullableDeviceGroupsResultResponse struct {

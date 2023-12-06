@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the RulesEngineCriteria type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,8 @@ type RulesEngineCriteria struct {
 	Operator string `json:"operator"`
 	InputValue *string `json:"input_value,omitempty"`
 }
+
+type _RulesEngineCriteria RulesEngineCriteria
 
 // NewRulesEngineCriteria instantiates a new RulesEngineCriteria object
 // This constructor will assign default values to properties that have it defined,
@@ -166,6 +169,43 @@ func (o RulesEngineCriteria) ToMap() (map[string]interface{}, error) {
 		toSerialize["input_value"] = o.InputValue
 	}
 	return toSerialize, nil
+}
+
+func (o *RulesEngineCriteria) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"conditional",
+		"variable",
+		"operator",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRulesEngineCriteria := _RulesEngineCriteria{}
+
+	err = json.Unmarshal(bytes, &varRulesEngineCriteria)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RulesEngineCriteria(varRulesEngineCriteria)
+
+	return err
 }
 
 type NullableRulesEngineCriteria struct {

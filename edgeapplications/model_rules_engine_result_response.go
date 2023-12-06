@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the RulesEngineResultResponse type satisfies the MappedNullable interface at compile time
@@ -28,6 +29,8 @@ type RulesEngineResultResponse struct {
 	IsActive bool `json:"is_active"`
 	Order int64 `json:"order"`
 }
+
+type _RulesEngineResultResponse RulesEngineResultResponse
 
 // NewRulesEngineResultResponse instantiates a new RulesEngineResultResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -283,6 +286,46 @@ func (o RulesEngineResultResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["is_active"] = o.IsActive
 	toSerialize["order"] = o.Order
 	return toSerialize, nil
+}
+
+func (o *RulesEngineResultResponse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"phase",
+		"criteria",
+		"is_active",
+		"order",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRulesEngineResultResponse := _RulesEngineResultResponse{}
+
+	err = json.Unmarshal(bytes, &varRulesEngineResultResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RulesEngineResultResponse(varRulesEngineResultResponse)
+
+	return err
 }
 
 type NullableRulesEngineResultResponse struct {

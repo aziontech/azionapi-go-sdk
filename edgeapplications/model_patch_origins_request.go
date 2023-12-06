@@ -29,6 +29,8 @@ type PatchOriginsRequest struct {
 	HmacRegionName *string `json:"hmac_region_name,omitempty"`
 	HmacAccessKey *string `json:"hmac_access_key,omitempty"`
 	HmacSecretKey *string `json:"hmac_secret_key,omitempty"`
+	Bucket *string `json:"bucket,omitempty"`
+	Prefix *string `json:"prefix,omitempty"`
 }
 
 // NewPatchOriginsRequest instantiates a new PatchOriginsRequest object
@@ -368,6 +370,70 @@ func (o *PatchOriginsRequest) SetHmacSecretKey(v string) {
 	o.HmacSecretKey = &v
 }
 
+// GetBucket returns the Bucket field value if set, zero value otherwise.
+func (o *PatchOriginsRequest) GetBucket() string {
+	if o == nil || IsNil(o.Bucket) {
+		var ret string
+		return ret
+	}
+	return *o.Bucket
+}
+
+// GetBucketOk returns a tuple with the Bucket field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchOriginsRequest) GetBucketOk() (*string, bool) {
+	if o == nil || IsNil(o.Bucket) {
+		return nil, false
+	}
+	return o.Bucket, true
+}
+
+// HasBucket returns a boolean if a field has been set.
+func (o *PatchOriginsRequest) HasBucket() bool {
+	if o != nil && !IsNil(o.Bucket) {
+		return true
+	}
+
+	return false
+}
+
+// SetBucket gets a reference to the given string and assigns it to the Bucket field.
+func (o *PatchOriginsRequest) SetBucket(v string) {
+	o.Bucket = &v
+}
+
+// GetPrefix returns the Prefix field value if set, zero value otherwise.
+func (o *PatchOriginsRequest) GetPrefix() string {
+	if o == nil || IsNil(o.Prefix) {
+		var ret string
+		return ret
+	}
+	return *o.Prefix
+}
+
+// GetPrefixOk returns a tuple with the Prefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchOriginsRequest) GetPrefixOk() (*string, bool) {
+	if o == nil || IsNil(o.Prefix) {
+		return nil, false
+	}
+	return o.Prefix, true
+}
+
+// HasPrefix returns a boolean if a field has been set.
+func (o *PatchOriginsRequest) HasPrefix() bool {
+	if o != nil && !IsNil(o.Prefix) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrefix gets a reference to the given string and assigns it to the Prefix field.
+func (o *PatchOriginsRequest) SetPrefix(v string) {
+	o.Prefix = &v
+}
+
 func (o PatchOriginsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -407,6 +473,12 @@ func (o PatchOriginsRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HmacSecretKey) {
 		toSerialize["hmac_secret_key"] = o.HmacSecretKey
+	}
+	if !IsNil(o.Bucket) {
+		toSerialize["bucket"] = o.Bucket
+	}
+	if !IsNil(o.Prefix) {
+		toSerialize["prefix"] = o.Prefix
 	}
 	return toSerialize, nil
 }

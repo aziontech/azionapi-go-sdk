@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationResults type satisfies the MappedNullable interface at compile time
@@ -40,6 +41,8 @@ type ApplicationResults struct {
 	RawLogs bool `json:"raw_logs"`
 	WebApplicationFirewall bool `json:"web_application_firewall"`
 }
+
+type _ApplicationResults ApplicationResults
 
 // NewApplicationResults instantiates a new ApplicationResults object
 // This constructor will assign default values to properties that have it defined,
@@ -597,6 +600,60 @@ func (o ApplicationResults) ToMap() (map[string]interface{}, error) {
 	toSerialize["raw_logs"] = o.RawLogs
 	toSerialize["web_application_firewall"] = o.WebApplicationFirewall
 	return toSerialize, nil
+}
+
+func (o *ApplicationResults) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"active",
+		"debug_rules",
+		"http3",
+		"supported_ciphers",
+		"delivery_protocol",
+		"http_port",
+		"https_port",
+		"minimum_tls_version",
+		"application_acceleration",
+		"caching",
+		"device_detection",
+		"edge_firewall",
+		"edge_functions",
+		"image_optimization",
+		"l2_caching",
+		"load_balancer",
+		"raw_logs",
+		"web_application_firewall",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationResults := _ApplicationResults{}
+
+	err = json.Unmarshal(bytes, &varApplicationResults)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationResults(varApplicationResults)
+
+	return err
 }
 
 type NullableApplicationResults struct {
