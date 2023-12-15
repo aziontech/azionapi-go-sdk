@@ -13,7 +13,7 @@ paths:
   /v4/storage/buckets:
     get:
       description: ""
-      operationId: api_v1_storage_buckets_list
+      operationId: storage_api_buckets_list
       parameters:
       - description: A page number within the paginated result set.
         explode: true
@@ -52,12 +52,12 @@ paths:
           description: Forbidden
       security:
       - tokenAuth: []
-      summary: /v4/storage/buckets
+      summary: List buckets
       tags:
-      - buckets
+      - storage
     post:
       description: ""
-      operationId: api_v1_storage_buckets_create
+      operationId: storage_api_buckets_create
       requestBody:
         content:
           application/json:
@@ -97,27 +97,43 @@ paths:
           description: ""
       security:
       - tokenAuth: []
-      summary: /v4/storage/buckets
+      summary: Create a new bucket
       tags:
-      - buckets
-  /v4/storage/buckets/{name}:
-    delete:
+      - storage
+  /v4/storage/buckets/{bucket_name}/objects:
+    get:
       description: ""
-      operationId: api_v1_storage_buckets_destroy
+      operationId: storage_api_buckets_objects_list
       parameters:
       - explode: false
         in: path
-        name: name
+        name: bucket_name
         required: true
         schema:
           type: string
         style: simple
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDeleteBucket'
+                $ref: '#/components/schemas/PaginatedBucketObjectList'
           description: ""
         "400":
           description: Bad Request
@@ -131,39 +147,242 @@ paths:
           description: Unauthorized
         "403":
           description: Forbidden
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseBucket'
-          description: ""
       security:
       - tokenAuth: []
-      summary: /v4/storage/buckets/:name
+      summary: List buckets objects
       tags:
-      - buckets
-    patch:
-      description: ""
-      operationId: api_v1_storage_buckets_partial_update
+      - storage
+  /v4/storage/buckets/{bucket_name}/objects/{object_key}:
+    delete:
+      description: Delete an object key from bucket
+      operationId: storage_api_buckets_objects_destroy
       parameters:
       - explode: false
         in: path
-        name: name
+        name: bucket_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: object_key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessObjectOperation'
+          description: ""
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - tokenAuth: []
+      summary: Delete object key
+      tags:
+      - storage
+    get:
+      description: Download the object key from bucket.
+      operationId: storage_api_buckets_objects_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: bucket_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: object_key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: ""
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - tokenAuth: []
+      summary: Download object
+      tags:
+      - storage
+    post:
+      description: Create a new object key in the bucket.
+      operationId: storage_api_buckets_objects_create
+      parameters:
+      - explode: false
+        in: path
+        name: bucket_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: object_key
         required: true
         schema:
           type: string
         style: simple
       requestBody:
         content:
-          application/json:
+          application/octet-stream:
             schema:
-              $ref: '#/components/schemas/PatchedBucket'
-          application/x-www-form-urlencoded:
+              additionalProperties: {}
+              description: Unspecified request body
+              type: object
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessObjectOperation'
+          description: ""
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - tokenAuth: []
+      summary: Create new object key
+      tags:
+      - storage
+    put:
+      description: Update the object key from bucket.
+      operationId: storage_api_buckets_objects_update
+      parameters:
+      - explode: false
+        in: path
+        name: bucket_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: object_key
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/octet-stream:
             schema:
-              $ref: '#/components/schemas/PatchedBucket'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedBucket'
+              additionalProperties: {}
+              description: Unspecified request body
+              type: object
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessObjectOperation'
+          description: ""
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - tokenAuth: []
+      summary: Update the object key
+      tags:
+      - storage
+  /v4/storage/buckets/{name}:
+    delete:
+      description: ""
+      operationId: storage_api_buckets_destroy
+      parameters:
+      - explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessBucketOperation'
+          description: ""
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "406":
+          description: Not Acceptable
+        "429":
+          description: Too Many Requests
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - tokenAuth: []
+      summary: Delete a bucket
+      tags:
+      - storage
+    patch:
+      description: ""
+      operationId: storage_api_buckets_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -191,9 +410,9 @@ paths:
           description: ""
       security:
       - tokenAuth: []
-      summary: /v4/storage/buckets/:name
+      summary: Update bucket info
       tags:
-      - buckets
+      - storage
 components:
   schemas:
     Bucket:
@@ -227,12 +446,47 @@ components:
       - edge_access
       - name
       type: object
+    BucketObject:
+      example:
+        size: 0
+        etag: etag
+        last_modified: 2000-01-23T04:56:07.000+00:00
+        key: key
+      properties:
+        key:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        size:
+          readOnly: true
+          type: integer
+        etag:
+          readOnly: true
+          type: string
+      required:
+      - etag
+      - key
+      - last_modified
+      - size
+      type: object
     EdgeAccessEnum:
       enum:
       - read_only
       - read_write
       - restricted
       type: string
+    ObjectResponseData:
+      example:
+        object_key: object_key
+      properties:
+        object_key:
+          type: string
+      required:
+      - object_key
+      type: object
     PaginatedBucketList:
       example:
         next: http://api.example.org/accounts/?page=4
@@ -262,18 +516,38 @@ components:
             $ref: '#/components/schemas/Bucket'
           type: array
       type: object
-    PatchedBucket:
+    PaginatedBucketObjectList:
       example:
-        edge_access: null
-        name: name
+        next: http://api.example.org/accounts/?page=4
+        previous: http://api.example.org/accounts/?page=2
+        count: 123
+        results:
+        - size: 0
+          etag: etag
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          key: key
+        - size: 0
+          etag: etag
+          last_modified: 2000-01-23T04:56:07.000+00:00
+          key: key
       properties:
-        name:
-          maxLength: 63
-          minLength: 6
-          readOnly: true
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          nullable: true
           type: string
-        edge_access:
-          $ref: '#/components/schemas/EdgeAccessEnum'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/BucketObject'
+          type: array
       type: object
     ResponseBucket:
       example:
@@ -290,28 +564,43 @@ components:
       - data
       - state
       type: object
-    ResponseDeleteBucket:
-      example:
-        data: null
-        state: null
-      properties:
-        state:
-          $ref: '#/components/schemas/StateEnum'
-        data:
-          $ref: '#/components/schemas/ResponseDeleteBucket_data'
-      required:
-      - data
-      - state
-      type: object
     StateEnum:
       enum:
       - pending
       - executed
       type: string
-    ResponseDeleteBucket_data:
-      allOf:
-      - $ref: '#/components/schemas/Bucket'
-      nullable: true
+    SuccessBucketOperation:
+      example:
+        data:
+          edge_access: null
+          name: name
+        state: ""
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/StateEnum'
+          title: BucketStateEnum
+        data:
+          $ref: '#/components/schemas/Bucket'
+      required:
+      - data
+      - state
+      type: object
+    SuccessObjectOperation:
+      example:
+        data:
+          object_key: object_key
+        state: ""
+      properties:
+        state:
+          allOf:
+          - $ref: '#/components/schemas/StateEnum'
+          title: ObjectStateEnum
+        data:
+          $ref: '#/components/schemas/ObjectResponseData'
+      required:
+      - data
+      - state
       type: object
   securitySchemes:
     tokenAuth:

@@ -77,23 +77,30 @@ All URIs are relative to *https://api.azion.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BucketsAPI* | [**ApiV1StorageBucketsCreate**](docs/BucketsAPI.md#apiv1storagebucketscreate) | **Post** /v4/storage/buckets | /v4/storage/buckets
-*BucketsAPI* | [**ApiV1StorageBucketsDestroy**](docs/BucketsAPI.md#apiv1storagebucketsdestroy) | **Delete** /v4/storage/buckets/{name} | /v4/storage/buckets/:name
-*BucketsAPI* | [**ApiV1StorageBucketsList**](docs/BucketsAPI.md#apiv1storagebucketslist) | **Get** /v4/storage/buckets | /v4/storage/buckets
-*BucketsAPI* | [**ApiV1StorageBucketsPartialUpdate**](docs/BucketsAPI.md#apiv1storagebucketspartialupdate) | **Patch** /v4/storage/buckets/{name} | /v4/storage/buckets/:name
+*StorageAPI* | [**StorageApiBucketsCreate**](docs/StorageAPI.md#storageapibucketscreate) | **Post** /v4/storage/buckets | Create a new bucket
+*StorageAPI* | [**StorageApiBucketsDestroy**](docs/StorageAPI.md#storageapibucketsdestroy) | **Delete** /v4/storage/buckets/{name} | Delete a bucket
+*StorageAPI* | [**StorageApiBucketsList**](docs/StorageAPI.md#storageapibucketslist) | **Get** /v4/storage/buckets | List buckets
+*StorageAPI* | [**StorageApiBucketsObjectsCreate**](docs/StorageAPI.md#storageapibucketsobjectscreate) | **Post** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Create new object key
+*StorageAPI* | [**StorageApiBucketsObjectsDestroy**](docs/StorageAPI.md#storageapibucketsobjectsdestroy) | **Delete** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Delete object key
+*StorageAPI* | [**StorageApiBucketsObjectsList**](docs/StorageAPI.md#storageapibucketsobjectslist) | **Get** /v4/storage/buckets/{bucket_name}/objects | List buckets objects
+*StorageAPI* | [**StorageApiBucketsObjectsRetrieve**](docs/StorageAPI.md#storageapibucketsobjectsretrieve) | **Get** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Download object
+*StorageAPI* | [**StorageApiBucketsObjectsUpdate**](docs/StorageAPI.md#storageapibucketsobjectsupdate) | **Put** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Update the object key
+*StorageAPI* | [**StorageApiBucketsPartialUpdate**](docs/StorageAPI.md#storageapibucketspartialupdate) | **Patch** /v4/storage/buckets/{name} | Update bucket info
 
 
 ## Documentation For Models
 
  - [Bucket](docs/Bucket.md)
  - [BucketCreate](docs/BucketCreate.md)
+ - [BucketObject](docs/BucketObject.md)
  - [EdgeAccessEnum](docs/EdgeAccessEnum.md)
+ - [ObjectResponseData](docs/ObjectResponseData.md)
  - [PaginatedBucketList](docs/PaginatedBucketList.md)
- - [PatchedBucket](docs/PatchedBucket.md)
+ - [PaginatedBucketObjectList](docs/PaginatedBucketObjectList.md)
  - [ResponseBucket](docs/ResponseBucket.md)
- - [ResponseDeleteBucket](docs/ResponseDeleteBucket.md)
- - [ResponseDeleteBucketData](docs/ResponseDeleteBucketData.md)
  - [StateEnum](docs/StateEnum.md)
+ - [SuccessBucketOperation](docs/SuccessBucketOperation.md)
+ - [SuccessObjectOperation](docs/SuccessObjectOperation.md)
 
 
 ## Documentation For Authorization
