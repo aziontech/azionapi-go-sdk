@@ -413,7 +413,7 @@ func main() {
     edgeApplicationId := int64(789) // int64 | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    createOriginsRequest := *openapiclient.NewCreateOriginsRequest("Name_example", []openapiclient.CreateOriginsRequestAddresses{*openapiclient.NewCreateOriginsRequestAddresses("Address_example")}, "HostHeader_example") // CreateOriginsRequest |  (optional)
+    createOriginsRequest := *openapiclient.NewCreateOriginsRequest("Name_example") // CreateOriginsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
