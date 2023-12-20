@@ -22,9 +22,9 @@ var _ MappedNullable = &UpdateOriginsRequest{}
 type UpdateOriginsRequest struct {
 	Name string `json:"name"`
 	OriginType *string `json:"origin_type,omitempty"`
-	Addresses []CreateOriginsRequestAddresses `json:"addresses"`
+	Addresses []CreateOriginsRequestAddresses `json:"addresses,omitempty"`
 	OriginProtocolPolicy *string `json:"origin_protocol_policy,omitempty"`
-	HostHeader string `json:"host_header"`
+	HostHeader *string `json:"host_header,omitempty"`
 	OriginPath *string `json:"origin_path,omitempty"`
 	HmacAuthentication *bool `json:"hmac_authentication,omitempty"`
 	HmacRegionName *string `json:"hmac_region_name,omitempty"`
@@ -40,11 +40,9 @@ type _UpdateOriginsRequest UpdateOriginsRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateOriginsRequest(name string, addresses []CreateOriginsRequestAddresses, hostHeader string) *UpdateOriginsRequest {
+func NewUpdateOriginsRequest(name string) *UpdateOriginsRequest {
 	this := UpdateOriginsRequest{}
 	this.Name = name
-	this.Addresses = addresses
-	this.HostHeader = hostHeader
 	return &this
 }
 
@@ -112,26 +110,34 @@ func (o *UpdateOriginsRequest) SetOriginType(v string) {
 	o.OriginType = &v
 }
 
-// GetAddresses returns the Addresses field value
+// GetAddresses returns the Addresses field value if set, zero value otherwise.
 func (o *UpdateOriginsRequest) GetAddresses() []CreateOriginsRequestAddresses {
-	if o == nil {
+	if o == nil || IsNil(o.Addresses) {
 		var ret []CreateOriginsRequestAddresses
 		return ret
 	}
-
 	return o.Addresses
 }
 
-// GetAddressesOk returns a tuple with the Addresses field value
+// GetAddressesOk returns a tuple with the Addresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateOriginsRequest) GetAddressesOk() ([]CreateOriginsRequestAddresses, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Addresses) {
 		return nil, false
 	}
 	return o.Addresses, true
 }
 
-// SetAddresses sets field value
+// HasAddresses returns a boolean if a field has been set.
+func (o *UpdateOriginsRequest) HasAddresses() bool {
+	if o != nil && !IsNil(o.Addresses) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddresses gets a reference to the given []CreateOriginsRequestAddresses and assigns it to the Addresses field.
 func (o *UpdateOriginsRequest) SetAddresses(v []CreateOriginsRequestAddresses) {
 	o.Addresses = v
 }
@@ -168,28 +174,36 @@ func (o *UpdateOriginsRequest) SetOriginProtocolPolicy(v string) {
 	o.OriginProtocolPolicy = &v
 }
 
-// GetHostHeader returns the HostHeader field value
+// GetHostHeader returns the HostHeader field value if set, zero value otherwise.
 func (o *UpdateOriginsRequest) GetHostHeader() string {
-	if o == nil {
+	if o == nil || IsNil(o.HostHeader) {
 		var ret string
 		return ret
 	}
-
-	return o.HostHeader
+	return *o.HostHeader
 }
 
-// GetHostHeaderOk returns a tuple with the HostHeader field value
+// GetHostHeaderOk returns a tuple with the HostHeader field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateOriginsRequest) GetHostHeaderOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HostHeader) {
 		return nil, false
 	}
-	return &o.HostHeader, true
+	return o.HostHeader, true
 }
 
-// SetHostHeader sets field value
+// HasHostHeader returns a boolean if a field has been set.
+func (o *UpdateOriginsRequest) HasHostHeader() bool {
+	if o != nil && !IsNil(o.HostHeader) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostHeader gets a reference to the given string and assigns it to the HostHeader field.
 func (o *UpdateOriginsRequest) SetHostHeader(v string) {
-	o.HostHeader = v
+	o.HostHeader = &v
 }
 
 // GetOriginPath returns the OriginPath field value if set, zero value otherwise.
@@ -430,11 +444,15 @@ func (o UpdateOriginsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OriginType) {
 		toSerialize["origin_type"] = o.OriginType
 	}
-	toSerialize["addresses"] = o.Addresses
+	if !IsNil(o.Addresses) {
+		toSerialize["addresses"] = o.Addresses
+	}
 	if !IsNil(o.OriginProtocolPolicy) {
 		toSerialize["origin_protocol_policy"] = o.OriginProtocolPolicy
 	}
-	toSerialize["host_header"] = o.HostHeader
+	if !IsNil(o.HostHeader) {
+		toSerialize["host_header"] = o.HostHeader
+	}
 	if !IsNil(o.OriginPath) {
 		toSerialize["origin_path"] = o.OriginPath
 	}
@@ -465,8 +483,6 @@ func (o *UpdateOriginsRequest) UnmarshalJSON(bytes []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"addresses",
-		"host_header",
 	}
 
 	allProperties := make(map[string]interface{})

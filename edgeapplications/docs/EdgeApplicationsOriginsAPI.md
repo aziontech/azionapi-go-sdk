@@ -337,7 +337,7 @@ func main() {
     originKey := "originKey_example" // string | 
     accept := "application/json; version=3" // string |  (optional)
     contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    updateOriginsRequest := *openapiclient.NewUpdateOriginsRequest("Name_example", []openapiclient.CreateOriginsRequestAddresses{*openapiclient.NewCreateOriginsRequestAddresses("Address_example")}, "HostHeader_example") // UpdateOriginsRequest |  (optional)
+    updateOriginsRequest := *openapiclient.NewUpdateOriginsRequest("Name_example") // UpdateOriginsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
