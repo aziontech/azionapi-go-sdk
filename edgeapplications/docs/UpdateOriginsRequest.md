@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **OriginType** | Pointer to **string** |  | [optional] 
-**Addresses** | [**[]CreateOriginsRequestAddresses**](CreateOriginsRequestAddresses.md) |  | 
+**Addresses** | Pointer to [**[]CreateOriginsRequestAddresses**](CreateOriginsRequestAddresses.md) |  | [optional] 
 **OriginProtocolPolicy** | Pointer to **string** |  | [optional] 
-**HostHeader** | **string** |  | 
+**HostHeader** | Pointer to **string** |  | [optional] 
 **OriginPath** | Pointer to **string** |  | [optional] 
 **HmacAuthentication** | Pointer to **bool** |  | [optional] 
 **HmacRegionName** | Pointer to **string** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateOriginsRequest
 
-`func NewUpdateOriginsRequest(name string, addresses []CreateOriginsRequestAddresses, hostHeader string, ) *UpdateOriginsRequest`
+`func NewUpdateOriginsRequest(name string, ) *UpdateOriginsRequest`
 
 NewUpdateOriginsRequest instantiates a new UpdateOriginsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -100,6 +100,11 @@ and a boolean to check if the value has been set.
 
 SetAddresses sets Addresses field to given value.
 
+### HasAddresses
+
+`func (o *UpdateOriginsRequest) HasAddresses() bool`
+
+HasAddresses returns a boolean if a field has been set.
 
 ### GetOriginProtocolPolicy
 
@@ -145,6 +150,11 @@ and a boolean to check if the value has been set.
 
 SetHostHeader sets HostHeader field to given value.
 
+### HasHostHeader
+
+`func (o *UpdateOriginsRequest) HasHostHeader() bool`
+
+HasHostHeader returns a boolean if a field has been set.
 
 ### GetOriginPath
 

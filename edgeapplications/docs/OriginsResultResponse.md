@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OriginId** | **int64** |  | 
-**OriginKey** | **string** |  | 
+**OriginId** | Pointer to **int64** |  | [optional] 
+**OriginKey** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
-**OriginType** | **string** |  | 
-**Addresses** | [**[]OriginsResultResponseAddresses**](OriginsResultResponseAddresses.md) |  | 
-**OriginProtocolPolicy** | **string** |  | 
-**IsOriginRedirectionEnabled** | **bool** |  | 
-**HostHeader** | **string** |  | 
-**Method** | **string** |  | 
-**OriginPath** | **string** |  | 
-**ConnectionTimeout** | **int64** |  | 
-**TimeoutBetweenBytes** | **int64** |  | 
-**HmacAuthentication** | **bool** |  | 
-**HmacRegionName** | **string** |  | 
-**HmacAccessKey** | **string** |  | 
-**HmacSecretKey** | **string** |  | 
+**OriginType** | Pointer to **string** |  | [optional] 
+**Addresses** | Pointer to [**[]OriginsResultResponseAddresses**](OriginsResultResponseAddresses.md) |  | [optional] 
+**OriginProtocolPolicy** | Pointer to **string** |  | [optional] 
+**IsOriginRedirectionEnabled** | Pointer to **bool** |  | [optional] 
+**HostHeader** | Pointer to **string** |  | [optional] 
+**Method** | Pointer to **string** |  | [optional] 
+**OriginPath** | Pointer to **string** |  | [optional] 
+**ConnectionTimeout** | Pointer to **int64** |  | [optional] 
+**TimeoutBetweenBytes** | Pointer to **int64** |  | [optional] 
+**HmacAuthentication** | Pointer to **bool** |  | [optional] 
+**HmacRegionName** | Pointer to **string** |  | [optional] 
+**HmacAccessKey** | Pointer to **string** |  | [optional] 
+**HmacSecretKey** | Pointer to **string** |  | [optional] 
 **Bucket** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewOriginsResultResponse
 
-`func NewOriginsResultResponse(originId int64, originKey string, name string, originType string, addresses []OriginsResultResponseAddresses, originProtocolPolicy string, isOriginRedirectionEnabled bool, hostHeader string, method string, originPath string, connectionTimeout int64, timeoutBetweenBytes int64, hmacAuthentication bool, hmacRegionName string, hmacAccessKey string, hmacSecretKey string, ) *OriginsResultResponse`
+`func NewOriginsResultResponse(name string, ) *OriginsResultResponse`
 
 NewOriginsResultResponse instantiates a new OriginsResultResponse object
 This constructor will assign default values to properties that have it defined,
@@ -61,6 +61,11 @@ and a boolean to check if the value has been set.
 
 SetOriginId sets OriginId field to given value.
 
+### HasOriginId
+
+`func (o *OriginsResultResponse) HasOriginId() bool`
+
+HasOriginId returns a boolean if a field has been set.
 
 ### GetOriginKey
 
@@ -81,6 +86,11 @@ and a boolean to check if the value has been set.
 
 SetOriginKey sets OriginKey field to given value.
 
+### HasOriginKey
+
+`func (o *OriginsResultResponse) HasOriginKey() bool`
+
+HasOriginKey returns a boolean if a field has been set.
 
 ### GetName
 
@@ -121,6 +131,11 @@ and a boolean to check if the value has been set.
 
 SetOriginType sets OriginType field to given value.
 
+### HasOriginType
+
+`func (o *OriginsResultResponse) HasOriginType() bool`
+
+HasOriginType returns a boolean if a field has been set.
 
 ### GetAddresses
 
@@ -141,6 +156,11 @@ and a boolean to check if the value has been set.
 
 SetAddresses sets Addresses field to given value.
 
+### HasAddresses
+
+`func (o *OriginsResultResponse) HasAddresses() bool`
+
+HasAddresses returns a boolean if a field has been set.
 
 ### GetOriginProtocolPolicy
 
@@ -161,6 +181,11 @@ and a boolean to check if the value has been set.
 
 SetOriginProtocolPolicy sets OriginProtocolPolicy field to given value.
 
+### HasOriginProtocolPolicy
+
+`func (o *OriginsResultResponse) HasOriginProtocolPolicy() bool`
+
+HasOriginProtocolPolicy returns a boolean if a field has been set.
 
 ### GetIsOriginRedirectionEnabled
 
@@ -181,6 +206,11 @@ and a boolean to check if the value has been set.
 
 SetIsOriginRedirectionEnabled sets IsOriginRedirectionEnabled field to given value.
 
+### HasIsOriginRedirectionEnabled
+
+`func (o *OriginsResultResponse) HasIsOriginRedirectionEnabled() bool`
+
+HasIsOriginRedirectionEnabled returns a boolean if a field has been set.
 
 ### GetHostHeader
 
@@ -201,6 +231,11 @@ and a boolean to check if the value has been set.
 
 SetHostHeader sets HostHeader field to given value.
 
+### HasHostHeader
+
+`func (o *OriginsResultResponse) HasHostHeader() bool`
+
+HasHostHeader returns a boolean if a field has been set.
 
 ### GetMethod
 
@@ -221,6 +256,11 @@ and a boolean to check if the value has been set.
 
 SetMethod sets Method field to given value.
 
+### HasMethod
+
+`func (o *OriginsResultResponse) HasMethod() bool`
+
+HasMethod returns a boolean if a field has been set.
 
 ### GetOriginPath
 
@@ -241,6 +281,11 @@ and a boolean to check if the value has been set.
 
 SetOriginPath sets OriginPath field to given value.
 
+### HasOriginPath
+
+`func (o *OriginsResultResponse) HasOriginPath() bool`
+
+HasOriginPath returns a boolean if a field has been set.
 
 ### GetConnectionTimeout
 
@@ -261,6 +306,11 @@ and a boolean to check if the value has been set.
 
 SetConnectionTimeout sets ConnectionTimeout field to given value.
 
+### HasConnectionTimeout
+
+`func (o *OriginsResultResponse) HasConnectionTimeout() bool`
+
+HasConnectionTimeout returns a boolean if a field has been set.
 
 ### GetTimeoutBetweenBytes
 
@@ -281,6 +331,11 @@ and a boolean to check if the value has been set.
 
 SetTimeoutBetweenBytes sets TimeoutBetweenBytes field to given value.
 
+### HasTimeoutBetweenBytes
+
+`func (o *OriginsResultResponse) HasTimeoutBetweenBytes() bool`
+
+HasTimeoutBetweenBytes returns a boolean if a field has been set.
 
 ### GetHmacAuthentication
 
@@ -301,6 +356,11 @@ and a boolean to check if the value has been set.
 
 SetHmacAuthentication sets HmacAuthentication field to given value.
 
+### HasHmacAuthentication
+
+`func (o *OriginsResultResponse) HasHmacAuthentication() bool`
+
+HasHmacAuthentication returns a boolean if a field has been set.
 
 ### GetHmacRegionName
 
@@ -321,6 +381,11 @@ and a boolean to check if the value has been set.
 
 SetHmacRegionName sets HmacRegionName field to given value.
 
+### HasHmacRegionName
+
+`func (o *OriginsResultResponse) HasHmacRegionName() bool`
+
+HasHmacRegionName returns a boolean if a field has been set.
 
 ### GetHmacAccessKey
 
@@ -341,6 +406,11 @@ and a boolean to check if the value has been set.
 
 SetHmacAccessKey sets HmacAccessKey field to given value.
 
+### HasHmacAccessKey
+
+`func (o *OriginsResultResponse) HasHmacAccessKey() bool`
+
+HasHmacAccessKey returns a boolean if a field has been set.
 
 ### GetHmacSecretKey
 
@@ -361,6 +431,11 @@ and a boolean to check if the value has been set.
 
 SetHmacSecretKey sets HmacSecretKey field to given value.
 
+### HasHmacSecretKey
+
+`func (o *OriginsResultResponse) HasHmacSecretKey() bool`
+
+HasHmacSecretKey returns a boolean if a field has been set.
 
 ### GetBucket
 

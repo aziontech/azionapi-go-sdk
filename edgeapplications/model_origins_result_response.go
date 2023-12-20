@@ -20,22 +20,22 @@ var _ MappedNullable = &OriginsResultResponse{}
 
 // OriginsResultResponse struct for OriginsResultResponse
 type OriginsResultResponse struct {
-	OriginId int64 `json:"origin_id"`
-	OriginKey string `json:"origin_key"`
+	OriginId *int64 `json:"origin_id,omitempty"`
+	OriginKey *string `json:"origin_key,omitempty"`
 	Name string `json:"name"`
-	OriginType string `json:"origin_type"`
-	Addresses []OriginsResultResponseAddresses `json:"addresses"`
-	OriginProtocolPolicy string `json:"origin_protocol_policy"`
-	IsOriginRedirectionEnabled bool `json:"is_origin_redirection_enabled"`
-	HostHeader string `json:"host_header"`
-	Method string `json:"method"`
-	OriginPath string `json:"origin_path"`
-	ConnectionTimeout int64 `json:"connection_timeout"`
-	TimeoutBetweenBytes int64 `json:"timeout_between_bytes"`
-	HmacAuthentication bool `json:"hmac_authentication"`
-	HmacRegionName string `json:"hmac_region_name"`
-	HmacAccessKey string `json:"hmac_access_key"`
-	HmacSecretKey string `json:"hmac_secret_key"`
+	OriginType *string `json:"origin_type,omitempty"`
+	Addresses []OriginsResultResponseAddresses `json:"addresses,omitempty"`
+	OriginProtocolPolicy *string `json:"origin_protocol_policy,omitempty"`
+	IsOriginRedirectionEnabled *bool `json:"is_origin_redirection_enabled,omitempty"`
+	HostHeader *string `json:"host_header,omitempty"`
+	Method *string `json:"method,omitempty"`
+	OriginPath *string `json:"origin_path,omitempty"`
+	ConnectionTimeout *int64 `json:"connection_timeout,omitempty"`
+	TimeoutBetweenBytes *int64 `json:"timeout_between_bytes,omitempty"`
+	HmacAuthentication *bool `json:"hmac_authentication,omitempty"`
+	HmacRegionName *string `json:"hmac_region_name,omitempty"`
+	HmacAccessKey *string `json:"hmac_access_key,omitempty"`
+	HmacSecretKey *string `json:"hmac_secret_key,omitempty"`
 	Bucket *string `json:"bucket,omitempty"`
 	Prefix *string `json:"prefix,omitempty"`
 }
@@ -46,24 +46,9 @@ type _OriginsResultResponse OriginsResultResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOriginsResultResponse(originId int64, originKey string, name string, originType string, addresses []OriginsResultResponseAddresses, originProtocolPolicy string, isOriginRedirectionEnabled bool, hostHeader string, method string, originPath string, connectionTimeout int64, timeoutBetweenBytes int64, hmacAuthentication bool, hmacRegionName string, hmacAccessKey string, hmacSecretKey string) *OriginsResultResponse {
+func NewOriginsResultResponse(name string) *OriginsResultResponse {
 	this := OriginsResultResponse{}
-	this.OriginId = originId
-	this.OriginKey = originKey
 	this.Name = name
-	this.OriginType = originType
-	this.Addresses = addresses
-	this.OriginProtocolPolicy = originProtocolPolicy
-	this.IsOriginRedirectionEnabled = isOriginRedirectionEnabled
-	this.HostHeader = hostHeader
-	this.Method = method
-	this.OriginPath = originPath
-	this.ConnectionTimeout = connectionTimeout
-	this.TimeoutBetweenBytes = timeoutBetweenBytes
-	this.HmacAuthentication = hmacAuthentication
-	this.HmacRegionName = hmacRegionName
-	this.HmacAccessKey = hmacAccessKey
-	this.HmacSecretKey = hmacSecretKey
 	return &this
 }
 
@@ -75,52 +60,68 @@ func NewOriginsResultResponseWithDefaults() *OriginsResultResponse {
 	return &this
 }
 
-// GetOriginId returns the OriginId field value
+// GetOriginId returns the OriginId field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetOriginId() int64 {
-	if o == nil {
+	if o == nil || IsNil(o.OriginId) {
 		var ret int64
 		return ret
 	}
-
-	return o.OriginId
+	return *o.OriginId
 }
 
-// GetOriginIdOk returns a tuple with the OriginId field value
+// GetOriginIdOk returns a tuple with the OriginId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetOriginIdOk() (*int64, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OriginId) {
 		return nil, false
 	}
-	return &o.OriginId, true
+	return o.OriginId, true
 }
 
-// SetOriginId sets field value
+// HasOriginId returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasOriginId() bool {
+	if o != nil && !IsNil(o.OriginId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginId gets a reference to the given int64 and assigns it to the OriginId field.
 func (o *OriginsResultResponse) SetOriginId(v int64) {
-	o.OriginId = v
+	o.OriginId = &v
 }
 
-// GetOriginKey returns the OriginKey field value
+// GetOriginKey returns the OriginKey field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetOriginKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.OriginKey) {
 		var ret string
 		return ret
 	}
-
-	return o.OriginKey
+	return *o.OriginKey
 }
 
-// GetOriginKeyOk returns a tuple with the OriginKey field value
+// GetOriginKeyOk returns a tuple with the OriginKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetOriginKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OriginKey) {
 		return nil, false
 	}
-	return &o.OriginKey, true
+	return o.OriginKey, true
 }
 
-// SetOriginKey sets field value
+// HasOriginKey returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasOriginKey() bool {
+	if o != nil && !IsNil(o.OriginKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginKey gets a reference to the given string and assigns it to the OriginKey field.
 func (o *OriginsResultResponse) SetOriginKey(v string) {
-	o.OriginKey = v
+	o.OriginKey = &v
 }
 
 // GetName returns the Name field value
@@ -147,316 +148,420 @@ func (o *OriginsResultResponse) SetName(v string) {
 	o.Name = v
 }
 
-// GetOriginType returns the OriginType field value
+// GetOriginType returns the OriginType field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetOriginType() string {
-	if o == nil {
+	if o == nil || IsNil(o.OriginType) {
 		var ret string
 		return ret
 	}
-
-	return o.OriginType
+	return *o.OriginType
 }
 
-// GetOriginTypeOk returns a tuple with the OriginType field value
+// GetOriginTypeOk returns a tuple with the OriginType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetOriginTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OriginType) {
 		return nil, false
 	}
-	return &o.OriginType, true
+	return o.OriginType, true
 }
 
-// SetOriginType sets field value
+// HasOriginType returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasOriginType() bool {
+	if o != nil && !IsNil(o.OriginType) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginType gets a reference to the given string and assigns it to the OriginType field.
 func (o *OriginsResultResponse) SetOriginType(v string) {
-	o.OriginType = v
+	o.OriginType = &v
 }
 
-// GetAddresses returns the Addresses field value
+// GetAddresses returns the Addresses field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetAddresses() []OriginsResultResponseAddresses {
-	if o == nil {
+	if o == nil || IsNil(o.Addresses) {
 		var ret []OriginsResultResponseAddresses
 		return ret
 	}
-
 	return o.Addresses
 }
 
-// GetAddressesOk returns a tuple with the Addresses field value
+// GetAddressesOk returns a tuple with the Addresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetAddressesOk() ([]OriginsResultResponseAddresses, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Addresses) {
 		return nil, false
 	}
 	return o.Addresses, true
 }
 
-// SetAddresses sets field value
+// HasAddresses returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasAddresses() bool {
+	if o != nil && !IsNil(o.Addresses) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddresses gets a reference to the given []OriginsResultResponseAddresses and assigns it to the Addresses field.
 func (o *OriginsResultResponse) SetAddresses(v []OriginsResultResponseAddresses) {
 	o.Addresses = v
 }
 
-// GetOriginProtocolPolicy returns the OriginProtocolPolicy field value
+// GetOriginProtocolPolicy returns the OriginProtocolPolicy field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetOriginProtocolPolicy() string {
-	if o == nil {
+	if o == nil || IsNil(o.OriginProtocolPolicy) {
 		var ret string
 		return ret
 	}
-
-	return o.OriginProtocolPolicy
+	return *o.OriginProtocolPolicy
 }
 
-// GetOriginProtocolPolicyOk returns a tuple with the OriginProtocolPolicy field value
+// GetOriginProtocolPolicyOk returns a tuple with the OriginProtocolPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetOriginProtocolPolicyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OriginProtocolPolicy) {
 		return nil, false
 	}
-	return &o.OriginProtocolPolicy, true
+	return o.OriginProtocolPolicy, true
 }
 
-// SetOriginProtocolPolicy sets field value
+// HasOriginProtocolPolicy returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasOriginProtocolPolicy() bool {
+	if o != nil && !IsNil(o.OriginProtocolPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginProtocolPolicy gets a reference to the given string and assigns it to the OriginProtocolPolicy field.
 func (o *OriginsResultResponse) SetOriginProtocolPolicy(v string) {
-	o.OriginProtocolPolicy = v
+	o.OriginProtocolPolicy = &v
 }
 
-// GetIsOriginRedirectionEnabled returns the IsOriginRedirectionEnabled field value
+// GetIsOriginRedirectionEnabled returns the IsOriginRedirectionEnabled field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetIsOriginRedirectionEnabled() bool {
-	if o == nil {
+	if o == nil || IsNil(o.IsOriginRedirectionEnabled) {
 		var ret bool
 		return ret
 	}
-
-	return o.IsOriginRedirectionEnabled
+	return *o.IsOriginRedirectionEnabled
 }
 
-// GetIsOriginRedirectionEnabledOk returns a tuple with the IsOriginRedirectionEnabled field value
+// GetIsOriginRedirectionEnabledOk returns a tuple with the IsOriginRedirectionEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetIsOriginRedirectionEnabledOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IsOriginRedirectionEnabled) {
 		return nil, false
 	}
-	return &o.IsOriginRedirectionEnabled, true
+	return o.IsOriginRedirectionEnabled, true
 }
 
-// SetIsOriginRedirectionEnabled sets field value
+// HasIsOriginRedirectionEnabled returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasIsOriginRedirectionEnabled() bool {
+	if o != nil && !IsNil(o.IsOriginRedirectionEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsOriginRedirectionEnabled gets a reference to the given bool and assigns it to the IsOriginRedirectionEnabled field.
 func (o *OriginsResultResponse) SetIsOriginRedirectionEnabled(v bool) {
-	o.IsOriginRedirectionEnabled = v
+	o.IsOriginRedirectionEnabled = &v
 }
 
-// GetHostHeader returns the HostHeader field value
+// GetHostHeader returns the HostHeader field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetHostHeader() string {
-	if o == nil {
+	if o == nil || IsNil(o.HostHeader) {
 		var ret string
 		return ret
 	}
-
-	return o.HostHeader
+	return *o.HostHeader
 }
 
-// GetHostHeaderOk returns a tuple with the HostHeader field value
+// GetHostHeaderOk returns a tuple with the HostHeader field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetHostHeaderOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HostHeader) {
 		return nil, false
 	}
-	return &o.HostHeader, true
+	return o.HostHeader, true
 }
 
-// SetHostHeader sets field value
+// HasHostHeader returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasHostHeader() bool {
+	if o != nil && !IsNil(o.HostHeader) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostHeader gets a reference to the given string and assigns it to the HostHeader field.
 func (o *OriginsResultResponse) SetHostHeader(v string) {
-	o.HostHeader = v
+	o.HostHeader = &v
 }
 
-// GetMethod returns the Method field value
+// GetMethod returns the Method field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetMethod() string {
-	if o == nil {
+	if o == nil || IsNil(o.Method) {
 		var ret string
 		return ret
 	}
-
-	return o.Method
+	return *o.Method
 }
 
-// GetMethodOk returns a tuple with the Method field value
+// GetMethodOk returns a tuple with the Method field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetMethodOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Method) {
 		return nil, false
 	}
-	return &o.Method, true
+	return o.Method, true
 }
 
-// SetMethod sets field value
+// HasMethod returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasMethod() bool {
+	if o != nil && !IsNil(o.Method) {
+		return true
+	}
+
+	return false
+}
+
+// SetMethod gets a reference to the given string and assigns it to the Method field.
 func (o *OriginsResultResponse) SetMethod(v string) {
-	o.Method = v
+	o.Method = &v
 }
 
-// GetOriginPath returns the OriginPath field value
+// GetOriginPath returns the OriginPath field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetOriginPath() string {
-	if o == nil {
+	if o == nil || IsNil(o.OriginPath) {
 		var ret string
 		return ret
 	}
-
-	return o.OriginPath
+	return *o.OriginPath
 }
 
-// GetOriginPathOk returns a tuple with the OriginPath field value
+// GetOriginPathOk returns a tuple with the OriginPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetOriginPathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OriginPath) {
 		return nil, false
 	}
-	return &o.OriginPath, true
+	return o.OriginPath, true
 }
 
-// SetOriginPath sets field value
+// HasOriginPath returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasOriginPath() bool {
+	if o != nil && !IsNil(o.OriginPath) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginPath gets a reference to the given string and assigns it to the OriginPath field.
 func (o *OriginsResultResponse) SetOriginPath(v string) {
-	o.OriginPath = v
+	o.OriginPath = &v
 }
 
-// GetConnectionTimeout returns the ConnectionTimeout field value
+// GetConnectionTimeout returns the ConnectionTimeout field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetConnectionTimeout() int64 {
-	if o == nil {
+	if o == nil || IsNil(o.ConnectionTimeout) {
 		var ret int64
 		return ret
 	}
-
-	return o.ConnectionTimeout
+	return *o.ConnectionTimeout
 }
 
-// GetConnectionTimeoutOk returns a tuple with the ConnectionTimeout field value
+// GetConnectionTimeoutOk returns a tuple with the ConnectionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetConnectionTimeoutOk() (*int64, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ConnectionTimeout) {
 		return nil, false
 	}
-	return &o.ConnectionTimeout, true
+	return o.ConnectionTimeout, true
 }
 
-// SetConnectionTimeout sets field value
+// HasConnectionTimeout returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasConnectionTimeout() bool {
+	if o != nil && !IsNil(o.ConnectionTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionTimeout gets a reference to the given int64 and assigns it to the ConnectionTimeout field.
 func (o *OriginsResultResponse) SetConnectionTimeout(v int64) {
-	o.ConnectionTimeout = v
+	o.ConnectionTimeout = &v
 }
 
-// GetTimeoutBetweenBytes returns the TimeoutBetweenBytes field value
+// GetTimeoutBetweenBytes returns the TimeoutBetweenBytes field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetTimeoutBetweenBytes() int64 {
-	if o == nil {
+	if o == nil || IsNil(o.TimeoutBetweenBytes) {
 		var ret int64
 		return ret
 	}
-
-	return o.TimeoutBetweenBytes
+	return *o.TimeoutBetweenBytes
 }
 
-// GetTimeoutBetweenBytesOk returns a tuple with the TimeoutBetweenBytes field value
+// GetTimeoutBetweenBytesOk returns a tuple with the TimeoutBetweenBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetTimeoutBetweenBytesOk() (*int64, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TimeoutBetweenBytes) {
 		return nil, false
 	}
-	return &o.TimeoutBetweenBytes, true
+	return o.TimeoutBetweenBytes, true
 }
 
-// SetTimeoutBetweenBytes sets field value
+// HasTimeoutBetweenBytes returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasTimeoutBetweenBytes() bool {
+	if o != nil && !IsNil(o.TimeoutBetweenBytes) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeoutBetweenBytes gets a reference to the given int64 and assigns it to the TimeoutBetweenBytes field.
 func (o *OriginsResultResponse) SetTimeoutBetweenBytes(v int64) {
-	o.TimeoutBetweenBytes = v
+	o.TimeoutBetweenBytes = &v
 }
 
-// GetHmacAuthentication returns the HmacAuthentication field value
+// GetHmacAuthentication returns the HmacAuthentication field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetHmacAuthentication() bool {
-	if o == nil {
+	if o == nil || IsNil(o.HmacAuthentication) {
 		var ret bool
 		return ret
 	}
-
-	return o.HmacAuthentication
+	return *o.HmacAuthentication
 }
 
-// GetHmacAuthenticationOk returns a tuple with the HmacAuthentication field value
+// GetHmacAuthenticationOk returns a tuple with the HmacAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetHmacAuthenticationOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HmacAuthentication) {
 		return nil, false
 	}
-	return &o.HmacAuthentication, true
+	return o.HmacAuthentication, true
 }
 
-// SetHmacAuthentication sets field value
+// HasHmacAuthentication returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasHmacAuthentication() bool {
+	if o != nil && !IsNil(o.HmacAuthentication) {
+		return true
+	}
+
+	return false
+}
+
+// SetHmacAuthentication gets a reference to the given bool and assigns it to the HmacAuthentication field.
 func (o *OriginsResultResponse) SetHmacAuthentication(v bool) {
-	o.HmacAuthentication = v
+	o.HmacAuthentication = &v
 }
 
-// GetHmacRegionName returns the HmacRegionName field value
+// GetHmacRegionName returns the HmacRegionName field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetHmacRegionName() string {
-	if o == nil {
+	if o == nil || IsNil(o.HmacRegionName) {
 		var ret string
 		return ret
 	}
-
-	return o.HmacRegionName
+	return *o.HmacRegionName
 }
 
-// GetHmacRegionNameOk returns a tuple with the HmacRegionName field value
+// GetHmacRegionNameOk returns a tuple with the HmacRegionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetHmacRegionNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HmacRegionName) {
 		return nil, false
 	}
-	return &o.HmacRegionName, true
+	return o.HmacRegionName, true
 }
 
-// SetHmacRegionName sets field value
+// HasHmacRegionName returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasHmacRegionName() bool {
+	if o != nil && !IsNil(o.HmacRegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetHmacRegionName gets a reference to the given string and assigns it to the HmacRegionName field.
 func (o *OriginsResultResponse) SetHmacRegionName(v string) {
-	o.HmacRegionName = v
+	o.HmacRegionName = &v
 }
 
-// GetHmacAccessKey returns the HmacAccessKey field value
+// GetHmacAccessKey returns the HmacAccessKey field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetHmacAccessKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.HmacAccessKey) {
 		var ret string
 		return ret
 	}
-
-	return o.HmacAccessKey
+	return *o.HmacAccessKey
 }
 
-// GetHmacAccessKeyOk returns a tuple with the HmacAccessKey field value
+// GetHmacAccessKeyOk returns a tuple with the HmacAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetHmacAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HmacAccessKey) {
 		return nil, false
 	}
-	return &o.HmacAccessKey, true
+	return o.HmacAccessKey, true
 }
 
-// SetHmacAccessKey sets field value
+// HasHmacAccessKey returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasHmacAccessKey() bool {
+	if o != nil && !IsNil(o.HmacAccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetHmacAccessKey gets a reference to the given string and assigns it to the HmacAccessKey field.
 func (o *OriginsResultResponse) SetHmacAccessKey(v string) {
-	o.HmacAccessKey = v
+	o.HmacAccessKey = &v
 }
 
-// GetHmacSecretKey returns the HmacSecretKey field value
+// GetHmacSecretKey returns the HmacSecretKey field value if set, zero value otherwise.
 func (o *OriginsResultResponse) GetHmacSecretKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.HmacSecretKey) {
 		var ret string
 		return ret
 	}
-
-	return o.HmacSecretKey
+	return *o.HmacSecretKey
 }
 
-// GetHmacSecretKeyOk returns a tuple with the HmacSecretKey field value
+// GetHmacSecretKeyOk returns a tuple with the HmacSecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OriginsResultResponse) GetHmacSecretKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HmacSecretKey) {
 		return nil, false
 	}
-	return &o.HmacSecretKey, true
+	return o.HmacSecretKey, true
 }
 
-// SetHmacSecretKey sets field value
+// HasHmacSecretKey returns a boolean if a field has been set.
+func (o *OriginsResultResponse) HasHmacSecretKey() bool {
+	if o != nil && !IsNil(o.HmacSecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetHmacSecretKey gets a reference to the given string and assigns it to the HmacSecretKey field.
 func (o *OriginsResultResponse) SetHmacSecretKey(v string) {
-	o.HmacSecretKey = v
+	o.HmacSecretKey = &v
 }
 
 // GetBucket returns the Bucket field value if set, zero value otherwise.
@@ -533,22 +638,52 @@ func (o OriginsResultResponse) MarshalJSON() ([]byte, error) {
 
 func (o OriginsResultResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["origin_id"] = o.OriginId
-	toSerialize["origin_key"] = o.OriginKey
+	if !IsNil(o.OriginId) {
+		toSerialize["origin_id"] = o.OriginId
+	}
+	if !IsNil(o.OriginKey) {
+		toSerialize["origin_key"] = o.OriginKey
+	}
 	toSerialize["name"] = o.Name
-	toSerialize["origin_type"] = o.OriginType
-	toSerialize["addresses"] = o.Addresses
-	toSerialize["origin_protocol_policy"] = o.OriginProtocolPolicy
-	toSerialize["is_origin_redirection_enabled"] = o.IsOriginRedirectionEnabled
-	toSerialize["host_header"] = o.HostHeader
-	toSerialize["method"] = o.Method
-	toSerialize["origin_path"] = o.OriginPath
-	toSerialize["connection_timeout"] = o.ConnectionTimeout
-	toSerialize["timeout_between_bytes"] = o.TimeoutBetweenBytes
-	toSerialize["hmac_authentication"] = o.HmacAuthentication
-	toSerialize["hmac_region_name"] = o.HmacRegionName
-	toSerialize["hmac_access_key"] = o.HmacAccessKey
-	toSerialize["hmac_secret_key"] = o.HmacSecretKey
+	if !IsNil(o.OriginType) {
+		toSerialize["origin_type"] = o.OriginType
+	}
+	if !IsNil(o.Addresses) {
+		toSerialize["addresses"] = o.Addresses
+	}
+	if !IsNil(o.OriginProtocolPolicy) {
+		toSerialize["origin_protocol_policy"] = o.OriginProtocolPolicy
+	}
+	if !IsNil(o.IsOriginRedirectionEnabled) {
+		toSerialize["is_origin_redirection_enabled"] = o.IsOriginRedirectionEnabled
+	}
+	if !IsNil(o.HostHeader) {
+		toSerialize["host_header"] = o.HostHeader
+	}
+	if !IsNil(o.Method) {
+		toSerialize["method"] = o.Method
+	}
+	if !IsNil(o.OriginPath) {
+		toSerialize["origin_path"] = o.OriginPath
+	}
+	if !IsNil(o.ConnectionTimeout) {
+		toSerialize["connection_timeout"] = o.ConnectionTimeout
+	}
+	if !IsNil(o.TimeoutBetweenBytes) {
+		toSerialize["timeout_between_bytes"] = o.TimeoutBetweenBytes
+	}
+	if !IsNil(o.HmacAuthentication) {
+		toSerialize["hmac_authentication"] = o.HmacAuthentication
+	}
+	if !IsNil(o.HmacRegionName) {
+		toSerialize["hmac_region_name"] = o.HmacRegionName
+	}
+	if !IsNil(o.HmacAccessKey) {
+		toSerialize["hmac_access_key"] = o.HmacAccessKey
+	}
+	if !IsNil(o.HmacSecretKey) {
+		toSerialize["hmac_secret_key"] = o.HmacSecretKey
+	}
 	if !IsNil(o.Bucket) {
 		toSerialize["bucket"] = o.Bucket
 	}
@@ -563,22 +698,7 @@ func (o *OriginsResultResponse) UnmarshalJSON(bytes []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"origin_id",
-		"origin_key",
 		"name",
-		"origin_type",
-		"addresses",
-		"origin_protocol_policy",
-		"is_origin_redirection_enabled",
-		"host_header",
-		"method",
-		"origin_path",
-		"connection_timeout",
-		"timeout_between_bytes",
-		"hmac_authentication",
-		"hmac_region_name",
-		"hmac_access_key",
-		"hmac_secret_key",
 	}
 
 	allProperties := make(map[string]interface{})
