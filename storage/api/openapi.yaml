@@ -242,6 +242,14 @@ paths:
       description: Create a new object key in the bucket.
       operationId: storage_api_buckets_objects_create
       parameters:
+      - description: "The content type of the file (Example: text/plain)."
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
       - explode: false
         in: path
         name: bucket_name
@@ -292,6 +300,14 @@ paths:
       description: Update the object key from bucket.
       operationId: storage_api_buckets_objects_update
       parameters:
+      - description: "The content type of the file (Example: text/plain)."
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
       - explode: false
         in: path
         name: bucket_name
