@@ -32,5 +32,4 @@ model_state_enum.go
 model_success_bucket_operation.go
 model_success_object_operation.go
 response.go
-test/api_storage_test.go
 utils.go
