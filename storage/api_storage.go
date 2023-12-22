@@ -403,11 +403,11 @@ type ApiStorageApiBucketsObjectsCreateRequest struct {
 	ApiService *StorageAPIService
 	bucketName string
 	objectKey string
-	requestBody *map[string]interface{}
+	body *os.File
 }
 
-func (r ApiStorageApiBucketsObjectsCreateRequest) RequestBody(requestBody map[string]interface{}) ApiStorageApiBucketsObjectsCreateRequest {
-	r.requestBody = &requestBody
+func (r ApiStorageApiBucketsObjectsCreateRequest) Body(body *os.File) ApiStorageApiBucketsObjectsCreateRequest {
+	r.body = body
 	return r
 }
 
@@ -475,7 +475,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsCreateExecute(r ApiStorageAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.requestBody
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -911,11 +911,11 @@ type ApiStorageApiBucketsObjectsUpdateRequest struct {
 	ApiService *StorageAPIService
 	bucketName string
 	objectKey string
-	requestBody *map[string]interface{}
+	body *os.File
 }
 
-func (r ApiStorageApiBucketsObjectsUpdateRequest) RequestBody(requestBody map[string]interface{}) ApiStorageApiBucketsObjectsUpdateRequest {
-	r.requestBody = &requestBody
+func (r ApiStorageApiBucketsObjectsUpdateRequest) Body(body *os.File) ApiStorageApiBucketsObjectsUpdateRequest {
+	r.body = body
 	return r
 }
 
@@ -983,7 +983,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsUpdateExecute(r ApiStorageAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.requestBody
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

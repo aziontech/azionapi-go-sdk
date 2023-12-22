@@ -30,24 +30,24 @@ Create a new bucket
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    bucketCreate := *openapiclient.NewBucketCreate("Name_example", openapiclient.EdgeAccessEnum("read_only")) // BucketCreate | 
+	bucketCreate := *openapiclient.NewBucketCreate("Name_example", openapiclient.EdgeAccessEnum("read_only")) // BucketCreate | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsCreate(context.Background()).BucketCreate(bucketCreate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsCreate`: ResponseBucket
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsCreate(context.Background()).BucketCreate(bucketCreate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsCreate`: ResponseBucket
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsCreate`: %v\n", resp)
 }
 ```
 
@@ -96,24 +96,24 @@ Delete a bucket
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string | 
+	name := "name_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsDestroy(context.Background(), name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsDestroy`: SuccessBucketOperation
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsDestroy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsDestroy(context.Background(), name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsDestroy`: SuccessBucketOperation
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsDestroy`: %v\n", resp)
 }
 ```
 
@@ -166,25 +166,25 @@ List buckets
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsList(context.Background()).Page(page).PageSize(pageSize).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsList`: PaginatedBucketList
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsList(context.Background()).Page(page).PageSize(pageSize).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsList`: PaginatedBucketList
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsList`: %v\n", resp)
 }
 ```
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## StorageApiBucketsObjectsCreate
 
-> SuccessObjectOperation StorageApiBucketsObjectsCreate(ctx, bucketName, objectKey).RequestBody(requestBody).Execute()
+> SuccessObjectOperation StorageApiBucketsObjectsCreate(ctx, bucketName, objectKey).Body(body).Execute()
 
 Create new object key
 
@@ -234,26 +234,26 @@ Create new object key
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    bucketName := "bucketName_example" // string | 
-    objectKey := "objectKey_example" // string | 
-    requestBody := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
+	bucketName := "bucketName_example" // string | 
+	objectKey := "objectKey_example" // string | 
+	body := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsCreate(context.Background(), bucketName, objectKey).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsObjectsCreate`: SuccessObjectOperation
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsCreate(context.Background(), bucketName, objectKey).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsObjectsCreate`: SuccessObjectOperation
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsCreate`: %v\n", resp)
 }
 ```
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **requestBody** | **map[string]interface{}** |  | 
+ **body** | ***os.File** |  | 
 
 ### Return type
 
@@ -309,25 +309,25 @@ Delete object key
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    bucketName := "bucketName_example" // string | 
-    objectKey := "objectKey_example" // string | 
+	bucketName := "bucketName_example" // string | 
+	objectKey := "objectKey_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsDestroy(context.Background(), bucketName, objectKey).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsObjectsDestroy`: SuccessObjectOperation
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsDestroy`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsDestroy(context.Background(), bucketName, objectKey).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsObjectsDestroy`: SuccessObjectOperation
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsDestroy`: %v\n", resp)
 }
 ```
 
@@ -382,26 +382,26 @@ List buckets objects
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    bucketName := "bucketName_example" // string | 
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	bucketName := "bucketName_example" // string | 
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsList(context.Background(), bucketName).Page(page).PageSize(pageSize).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsObjectsList`: PaginatedBucketObjectList
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsList(context.Background(), bucketName).Page(page).PageSize(pageSize).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsObjectsList`: PaginatedBucketObjectList
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsList`: %v\n", resp)
 }
 ```
 
@@ -456,25 +456,25 @@ Download object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    bucketName := "bucketName_example" // string | 
-    objectKey := "objectKey_example" // string | 
+	bucketName := "bucketName_example" // string | 
+	objectKey := "objectKey_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsRetrieve(context.Background(), bucketName, objectKey).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsObjectsRetrieve`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsRetrieve(context.Background(), bucketName, objectKey).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsObjectsRetrieve`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 ## StorageApiBucketsObjectsUpdate
 
-> SuccessObjectOperation StorageApiBucketsObjectsUpdate(ctx, bucketName, objectKey).RequestBody(requestBody).Execute()
+> SuccessObjectOperation StorageApiBucketsObjectsUpdate(ctx, bucketName, objectKey).Body(body).Execute()
 
 Update the object key
 
@@ -529,26 +529,26 @@ Update the object key
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    bucketName := "bucketName_example" // string | 
-    objectKey := "objectKey_example" // string | 
-    requestBody := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
+	bucketName := "bucketName_example" // string | 
+	objectKey := "objectKey_example" // string | 
+	body := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsUpdate(context.Background(), bucketName, objectKey).RequestBody(requestBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsObjectsUpdate`: SuccessObjectOperation
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsUpdate(context.Background(), bucketName, objectKey).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsObjectsUpdate`: SuccessObjectOperation
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsUpdate`: %v\n", resp)
 }
 ```
 
@@ -570,7 +570,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **requestBody** | **map[string]interface{}** |  | 
+ **body** | ***os.File** |  | 
 
 ### Return type
 
@@ -604,24 +604,24 @@ Update bucket info
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string | 
+	name := "name_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StorageAPI.StorageApiBucketsPartialUpdate(context.Background(), name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StorageApiBucketsPartialUpdate`: ResponseBucket
-    fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsPartialUpdate(context.Background(), name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiBucketsPartialUpdate`: ResponseBucket
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsPartialUpdate`: %v\n", resp)
 }
 ```
 
