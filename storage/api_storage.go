@@ -403,7 +403,14 @@ type ApiStorageApiBucketsObjectsCreateRequest struct {
 	ApiService *StorageAPIService
 	bucketName string
 	objectKey string
+	contentType *string
 	body *os.File
+}
+
+// The content type of the file (Example: text/plain).
+func (r ApiStorageApiBucketsObjectsCreateRequest) ContentType(contentType string) ApiStorageApiBucketsObjectsCreateRequest {
+	r.contentType = &contentType
+	return r
 }
 
 func (r ApiStorageApiBucketsObjectsCreateRequest) Body(body *os.File) ApiStorageApiBucketsObjectsCreateRequest {
@@ -473,6 +480,9 @@ func (a *StorageAPIService) StorageApiBucketsObjectsCreateExecute(r ApiStorageAp
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.contentType != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -911,7 +921,14 @@ type ApiStorageApiBucketsObjectsUpdateRequest struct {
 	ApiService *StorageAPIService
 	bucketName string
 	objectKey string
+	contentType *string
 	body *os.File
+}
+
+// The content type of the file (Example: text/plain).
+func (r ApiStorageApiBucketsObjectsUpdateRequest) ContentType(contentType string) ApiStorageApiBucketsObjectsUpdateRequest {
+	r.contentType = &contentType
+	return r
 }
 
 func (r ApiStorageApiBucketsObjectsUpdateRequest) Body(body *os.File) ApiStorageApiBucketsObjectsUpdateRequest {
@@ -981,6 +998,9 @@ func (a *StorageAPIService) StorageApiBucketsObjectsUpdateExecute(r ApiStorageAp
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.contentType != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

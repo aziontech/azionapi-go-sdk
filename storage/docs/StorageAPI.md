@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## StorageApiBucketsObjectsCreate
 
-> SuccessObjectOperation StorageApiBucketsObjectsCreate(ctx, bucketName, objectKey).Body(body).Execute()
+> SuccessObjectOperation StorageApiBucketsObjectsCreate(ctx, bucketName, objectKey).ContentType(contentType).Body(body).Execute()
 
 Create new object key
 
@@ -243,11 +243,12 @@ import (
 func main() {
 	bucketName := "bucketName_example" // string | 
 	objectKey := "objectKey_example" // string | 
+	contentType := "contentType_example" // string | The content type of the file (Example: text/plain). (optional)
 	body := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsCreate(context.Background(), bucketName, objectKey).Body(body).Execute()
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsCreate(context.Background(), bucketName, objectKey).ContentType(contentType).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -275,6 +276,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **contentType** | **string** | The content type of the file (Example: text/plain). | 
  **body** | ***os.File** |  | 
 
 ### Return type
@@ -517,7 +519,7 @@ Name | Type | Description  | Notes
 
 ## StorageApiBucketsObjectsUpdate
 
-> SuccessObjectOperation StorageApiBucketsObjectsUpdate(ctx, bucketName, objectKey).Body(body).Execute()
+> SuccessObjectOperation StorageApiBucketsObjectsUpdate(ctx, bucketName, objectKey).ContentType(contentType).Body(body).Execute()
 
 Update the object key
 
@@ -538,11 +540,12 @@ import (
 func main() {
 	bucketName := "bucketName_example" // string | 
 	objectKey := "objectKey_example" // string | 
+	contentType := "contentType_example" // string | The content type of the file (Example: text/plain). (optional)
 	body := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsUpdate(context.Background(), bucketName, objectKey).Body(body).Execute()
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsUpdate(context.Background(), bucketName, objectKey).ContentType(contentType).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -570,6 +573,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **contentType** | **string** | The content type of the file (Example: text/plain). | 
  **body** | ***os.File** |  | 
 
 ### Return type
