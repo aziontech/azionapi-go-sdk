@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Key** | **string** |  | [readonly] 
 **LastModified** | **time.Time** |  | [readonly] 
 **Size** | **int32** |  | [readonly] 
-**Etag** | **string** |  | [readonly] 
+**Etag** | Pointer to **string** |  | [optional] [readonly] 
 
 ## Methods
 
 ### NewBucketObject
 
-`func NewBucketObject(key string, lastModified time.Time, size int32, etag string, ) *BucketObject`
+`func NewBucketObject(key string, lastModified time.Time, size int32, ) *BucketObject`
 
 NewBucketObject instantiates a new BucketObject object
 This constructor will assign default values to properties that have it defined,
@@ -107,6 +107,11 @@ and a boolean to check if the value has been set.
 
 SetEtag sets Etag field to given value.
 
+### HasEtag
+
+`func (o *BucketObject) HasEtag() bool`
+
+HasEtag returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
