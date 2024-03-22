@@ -483,7 +483,6 @@ components:
           readOnly: true
           type: string
       required:
-      - etag
       - key
       - last_modified
       - size

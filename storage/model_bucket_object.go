@@ -25,7 +25,7 @@ type BucketObject struct {
 	Key string `json:"key"`
 	LastModified time.Time `json:"last_modified"`
 	Size int32 `json:"size"`
-	Etag string `json:"etag"`
+	Etag *string `json:"etag,omitempty"`
 }
 
 type _BucketObject BucketObject
@@ -34,12 +34,11 @@ type _BucketObject BucketObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBucketObject(key string, lastModified time.Time, size int32, etag string) *BucketObject {
+func NewBucketObject(key string, lastModified time.Time, size int32) *BucketObject {
 	this := BucketObject{}
 	this.Key = key
 	this.LastModified = lastModified
 	this.Size = size
-	this.Etag = etag
 	return &this
 }
 
@@ -123,28 +122,36 @@ func (o *BucketObject) SetSize(v int32) {
 	o.Size = v
 }
 
-// GetEtag returns the Etag field value
+// GetEtag returns the Etag field value if set, zero value otherwise.
 func (o *BucketObject) GetEtag() string {
-	if o == nil {
+	if o == nil || IsNil(o.Etag) {
 		var ret string
 		return ret
 	}
-
-	return o.Etag
+	return *o.Etag
 }
 
-// GetEtagOk returns a tuple with the Etag field value
+// GetEtagOk returns a tuple with the Etag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BucketObject) GetEtagOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Etag) {
 		return nil, false
 	}
-	return &o.Etag, true
+	return o.Etag, true
 }
 
-// SetEtag sets field value
+// HasEtag returns a boolean if a field has been set.
+func (o *BucketObject) HasEtag() bool {
+	if o != nil && !IsNil(o.Etag) {
+		return true
+	}
+
+	return false
+}
+
+// SetEtag gets a reference to the given string and assigns it to the Etag field.
 func (o *BucketObject) SetEtag(v string) {
-	o.Etag = v
+	o.Etag = &v
 }
 
 func (o BucketObject) MarshalJSON() ([]byte, error) {
@@ -160,7 +167,9 @@ func (o BucketObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["key"] = o.Key
 	toSerialize["last_modified"] = o.LastModified
 	toSerialize["size"] = o.Size
-	toSerialize["etag"] = o.Etag
+	if !IsNil(o.Etag) {
+		toSerialize["etag"] = o.Etag
+	}
 	return toSerialize, nil
 }
 
@@ -172,7 +181,6 @@ func (o *BucketObject) UnmarshalJSON(data []byte) (err error) {
 		"key",
 		"last_modified",
 		"size",
-		"etag",
 	}
 
 	allProperties := make(map[string]interface{})
