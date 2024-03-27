@@ -22,6 +22,7 @@ type PaginatedBucketObjectList struct {
 	Count *int32 `json:"count,omitempty"`
 	Next NullableString `json:"next,omitempty"`
 	Previous NullableString `json:"previous,omitempty"`
+	ContinuationToken NullableString `json:"continuation_token,omitempty"`
 	Results []BucketObject `json:"results,omitempty"`
 }
 
@@ -158,6 +159,48 @@ func (o *PaginatedBucketObjectList) UnsetPrevious() {
 	o.Previous.Unset()
 }
 
+// GetContinuationToken returns the ContinuationToken field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PaginatedBucketObjectList) GetContinuationToken() string {
+	if o == nil || IsNil(o.ContinuationToken.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ContinuationToken.Get()
+}
+
+// GetContinuationTokenOk returns a tuple with the ContinuationToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PaginatedBucketObjectList) GetContinuationTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ContinuationToken.Get(), o.ContinuationToken.IsSet()
+}
+
+// HasContinuationToken returns a boolean if a field has been set.
+func (o *PaginatedBucketObjectList) HasContinuationToken() bool {
+	if o != nil && o.ContinuationToken.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetContinuationToken gets a reference to the given NullableString and assigns it to the ContinuationToken field.
+func (o *PaginatedBucketObjectList) SetContinuationToken(v string) {
+	o.ContinuationToken.Set(&v)
+}
+// SetContinuationTokenNil sets the value for ContinuationToken to be an explicit nil
+func (o *PaginatedBucketObjectList) SetContinuationTokenNil() {
+	o.ContinuationToken.Set(nil)
+}
+
+// UnsetContinuationToken ensures that no value is present for ContinuationToken, not even an explicit nil
+func (o *PaginatedBucketObjectList) UnsetContinuationToken() {
+	o.ContinuationToken.Unset()
+}
+
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *PaginatedBucketObjectList) GetResults() []BucketObject {
 	if o == nil || IsNil(o.Results) {
@@ -208,6 +251,9 @@ func (o PaginatedBucketObjectList) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Previous.IsSet() {
 		toSerialize["previous"] = o.Previous.Get()
+	}
+	if o.ContinuationToken.IsSet() {
+		toSerialize["continuation_token"] = o.ContinuationToken.Get()
 	}
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results

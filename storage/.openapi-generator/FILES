@@ -8,6 +8,7 @@ configuration.go
 docs/Bucket.md
 docs/BucketCreate.md
 docs/BucketObject.md
+docs/BucketUpdate.md
 docs/EdgeAccessEnum.md
 docs/ObjectResponseData.md
 docs/PaginatedBucketList.md
@@ -23,6 +24,7 @@ go.sum
 model_bucket.go
 model_bucket_create.go
 model_bucket_object.go
+model_bucket_update.go
 model_edge_access_enum.go
 model_object_response_data.go
 model_paginated_bucket_list.go

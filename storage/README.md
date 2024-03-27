@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
  - [Bucket](docs/Bucket.md)
  - [BucketCreate](docs/BucketCreate.md)
  - [BucketObject](docs/BucketObject.md)
+ - [BucketUpdate](docs/BucketUpdate.md)
  - [EdgeAccessEnum](docs/EdgeAccessEnum.md)
  - [ObjectResponseData](docs/ObjectResponseData.md)
  - [PaginatedBucketList](docs/PaginatedBucketList.md)
