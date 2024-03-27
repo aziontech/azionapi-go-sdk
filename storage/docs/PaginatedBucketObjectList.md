@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Count** | Pointer to **int32** |  | [optional] 
 **Next** | Pointer to **NullableString** |  | [optional] 
 **Previous** | Pointer to **NullableString** |  | [optional] 
+**ContinuationToken** | Pointer to **NullableString** |  | [optional] 
 **Results** | Pointer to [**[]BucketObject**](BucketObject.md) |  | [optional] 
 
 ## Methods
@@ -123,6 +124,41 @@ HasPrevious returns a boolean if a field has been set.
 `func (o *PaginatedBucketObjectList) UnsetPrevious()`
 
 UnsetPrevious ensures that no value is present for Previous, not even an explicit nil
+### GetContinuationToken
+
+`func (o *PaginatedBucketObjectList) GetContinuationToken() string`
+
+GetContinuationToken returns the ContinuationToken field if non-nil, zero value otherwise.
+
+### GetContinuationTokenOk
+
+`func (o *PaginatedBucketObjectList) GetContinuationTokenOk() (*string, bool)`
+
+GetContinuationTokenOk returns a tuple with the ContinuationToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContinuationToken
+
+`func (o *PaginatedBucketObjectList) SetContinuationToken(v string)`
+
+SetContinuationToken sets ContinuationToken field to given value.
+
+### HasContinuationToken
+
+`func (o *PaginatedBucketObjectList) HasContinuationToken() bool`
+
+HasContinuationToken returns a boolean if a field has been set.
+
+### SetContinuationTokenNil
+
+`func (o *PaginatedBucketObjectList) SetContinuationTokenNil(b bool)`
+
+ SetContinuationTokenNil sets the value for ContinuationToken to be an explicit nil
+
+### UnsetContinuationToken
+`func (o *PaginatedBucketObjectList) UnsetContinuationToken()`
+
+UnsetContinuationToken ensures that no value is present for ContinuationToken, not even an explicit nil
 ### GetResults
 
 `func (o *PaginatedBucketObjectList) GetResults() []BucketObject`

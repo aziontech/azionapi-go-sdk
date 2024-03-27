@@ -662,19 +662,19 @@ type ApiStorageApiBucketsObjectsListRequest struct {
 	ctx context.Context
 	ApiService *StorageAPIService
 	bucketName string
-	page *int32
-	pageSize *int32
+	continuationToken *string
+	maxObjectCount *int32
 }
 
-// A page number within the paginated result set.
-func (r ApiStorageApiBucketsObjectsListRequest) Page(page int32) ApiStorageApiBucketsObjectsListRequest {
-	r.page = &page
+// Token for next page.
+func (r ApiStorageApiBucketsObjectsListRequest) ContinuationToken(continuationToken string) ApiStorageApiBucketsObjectsListRequest {
+	r.continuationToken = &continuationToken
 	return r
 }
 
 // Number of results to return per page.
-func (r ApiStorageApiBucketsObjectsListRequest) PageSize(pageSize int32) ApiStorageApiBucketsObjectsListRequest {
-	r.pageSize = &pageSize
+func (r ApiStorageApiBucketsObjectsListRequest) MaxObjectCount(maxObjectCount int32) ApiStorageApiBucketsObjectsListRequest {
+	r.maxObjectCount = &maxObjectCount
 	return r
 }
 
@@ -721,11 +721,11 @@ func (a *StorageAPIService) StorageApiBucketsObjectsListExecute(r ApiStorageApiB
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	if r.continuationToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation_token", r.continuationToken, "")
 	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+	if r.maxObjectCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_object_count", r.maxObjectCount, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -802,7 +802,7 @@ type ApiStorageApiBucketsObjectsRetrieveRequest struct {
 	objectKey string
 }
 
-func (r ApiStorageApiBucketsObjectsRetrieveRequest) Execute() (*os.File, *http.Response, error) {
+func (r ApiStorageApiBucketsObjectsRetrieveRequest) Execute() (*http.Response, error) {
 	return r.ApiService.StorageApiBucketsObjectsRetrieveExecute(r)
 }
 
@@ -826,18 +826,16 @@ func (a *StorageAPIService) StorageApiBucketsObjectsRetrieve(ctx context.Context
 }
 
 // Execute executes the request
-//  @return *os.File
-func (a *StorageAPIService) StorageApiBucketsObjectsRetrieveExecute(r ApiStorageApiBucketsObjectsRetrieveRequest) (*os.File, *http.Response, error) {
+func (a *StorageAPIService) StorageApiBucketsObjectsRetrieveExecute(r ApiStorageApiBucketsObjectsRetrieveRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *os.File
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageAPIService.StorageApiBucketsObjectsRetrieve")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v4/storage/buckets/{bucket_name}/objects/{object_key}"
@@ -858,7 +856,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsRetrieveExecute(r ApiStorage
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/octet-stream"}
+	localVarHTTPHeaderAccepts := []string{"text/html", "application/json", "application/xml", "text/plain", "image/jpeg", "image/png", "image/gif", "video/mp4", "audio/mpeg", "application/pdf", "application/javascript", "text/css", "application/octet-stream"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -881,19 +879,19 @@ func (a *StorageAPIService) StorageApiBucketsObjectsRetrieveExecute(r ApiStorage
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -901,19 +899,10 @@ func (a *StorageAPIService) StorageApiBucketsObjectsRetrieveExecute(r ApiStorage
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiStorageApiBucketsObjectsUpdateRequest struct {
@@ -1059,6 +1048,12 @@ type ApiStorageApiBucketsPartialUpdateRequest struct {
 	ctx context.Context
 	ApiService *StorageAPIService
 	name string
+	bucketUpdate *BucketUpdate
+}
+
+func (r ApiStorageApiBucketsPartialUpdateRequest) BucketUpdate(bucketUpdate BucketUpdate) ApiStorageApiBucketsPartialUpdateRequest {
+	r.bucketUpdate = &bucketUpdate
+	return r
 }
 
 func (r ApiStorageApiBucketsPartialUpdateRequest) Execute() (*ResponseBucket, *http.Response, error) {
@@ -1105,7 +1100,7 @@ func (a *StorageAPIService) StorageApiBucketsPartialUpdateExecute(r ApiStorageAp
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1121,6 +1116,8 @@ func (a *StorageAPIService) StorageApiBucketsPartialUpdateExecute(r ApiStorageAp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.bucketUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

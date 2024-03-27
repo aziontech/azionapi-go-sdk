@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 
 ## StorageApiBucketsObjectsList
 
-> PaginatedBucketObjectList StorageApiBucketsObjectsList(ctx, bucketName).Page(page).PageSize(pageSize).Execute()
+> PaginatedBucketObjectList StorageApiBucketsObjectsList(ctx, bucketName).ContinuationToken(continuationToken).MaxObjectCount(maxObjectCount).Execute()
 
 List buckets objects
 
@@ -392,12 +392,12 @@ import (
 
 func main() {
 	bucketName := "bucketName_example" // string | 
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	continuationToken := "continuationToken_example" // string | Token for next page. (optional)
+	maxObjectCount := int32(56) // int32 | Number of results to return per page. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsList(context.Background(), bucketName).Page(page).PageSize(pageSize).Execute()
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsList(context.Background(), bucketName).ContinuationToken(continuationToken).MaxObjectCount(maxObjectCount).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -423,8 +423,8 @@ Other parameters are passed through a pointer to a apiStorageApiBucketsObjectsLi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** | A page number within the paginated result set. | 
- **pageSize** | **int32** | Number of results to return per page. | 
+ **continuationToken** | **string** | Token for next page. | 
+ **maxObjectCount** | **int32** | Number of results to return per page. | 
 
 ### Return type
 
@@ -446,7 +446,7 @@ Name | Type | Description  | Notes
 
 ## StorageApiBucketsObjectsRetrieve
 
-> *os.File StorageApiBucketsObjectsRetrieve(ctx, bucketName, objectKey).Execute()
+> StorageApiBucketsObjectsRetrieve(ctx, bucketName, objectKey).Execute()
 
 Download object
 
@@ -470,13 +470,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageAPI.StorageApiBucketsObjectsRetrieve(context.Background(), bucketName, objectKey).Execute()
+	r, err := apiClient.StorageAPI.StorageApiBucketsObjectsRetrieve(context.Background(), bucketName, objectKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsObjectsRetrieve``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `StorageApiBucketsObjectsRetrieve`: *os.File
-	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiBucketsObjectsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -501,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[***os.File**](*os.File.md)
+ (empty response body)
 
 ### Authorization
 
@@ -510,7 +508,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/octet-stream
+- **Accept**: text/html, application/json, application/xml, text/plain, image/jpeg, image/png, image/gif, video/mp4, audio/mpeg, application/pdf, application/javascript, text/css, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -596,7 +594,7 @@ Name | Type | Description  | Notes
 
 ## StorageApiBucketsPartialUpdate
 
-> ResponseBucket StorageApiBucketsPartialUpdate(ctx, name).Execute()
+> ResponseBucket StorageApiBucketsPartialUpdate(ctx, name).BucketUpdate(bucketUpdate).Execute()
 
 Update bucket info
 
@@ -616,10 +614,11 @@ import (
 
 func main() {
 	name := "name_example" // string | 
+	bucketUpdate := *openapiclient.NewBucketUpdate(openapiclient.EdgeAccessEnum("read_only")) // BucketUpdate |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageAPI.StorageApiBucketsPartialUpdate(context.Background(), name).Execute()
+	resp, r, err := apiClient.StorageAPI.StorageApiBucketsPartialUpdate(context.Background(), name).BucketUpdate(bucketUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiBucketsPartialUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -645,6 +644,7 @@ Other parameters are passed through a pointer to a apiStorageApiBucketsPartialUp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **bucketUpdate** | [**BucketUpdate**](BucketUpdate.md) |  | 
 
 ### Return type
 
@@ -656,7 +656,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
