@@ -12,6 +12,8 @@ package domains
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DomainResponseWithResults type satisfies the MappedNullable interface at compile time
@@ -23,14 +25,16 @@ type DomainResponseWithResults struct {
 	TotalPages int64 `json:"total_pages"`
 	SchemaVersion int64 `json:"schema_version"`
 	Links DomainLinks `json:"links"`
-	Results []DomainResults `json:"results"`
+	Results []DomainEntity `json:"results"`
 }
+
+type _DomainResponseWithResults DomainResponseWithResults
 
 // NewDomainResponseWithResults instantiates a new DomainResponseWithResults object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, links DomainLinks, results []DomainResults) *DomainResponseWithResults {
+func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, links DomainLinks, results []DomainEntity) *DomainResponseWithResults {
 	this := DomainResponseWithResults{}
 	this.Count = count
 	this.TotalPages = totalPages
@@ -145,9 +149,9 @@ func (o *DomainResponseWithResults) SetLinks(v DomainLinks) {
 }
 
 // GetResults returns the Results field value
-func (o *DomainResponseWithResults) GetResults() []DomainResults {
+func (o *DomainResponseWithResults) GetResults() []DomainEntity {
 	if o == nil {
-		var ret []DomainResults
+		var ret []DomainEntity
 		return ret
 	}
 
@@ -156,7 +160,7 @@ func (o *DomainResponseWithResults) GetResults() []DomainResults {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *DomainResponseWithResults) GetResultsOk() ([]DomainResults, bool) {
+func (o *DomainResponseWithResults) GetResultsOk() ([]DomainEntity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -164,7 +168,7 @@ func (o *DomainResponseWithResults) GetResultsOk() ([]DomainResults, bool) {
 }
 
 // SetResults sets field value
-func (o *DomainResponseWithResults) SetResults(v []DomainResults) {
+func (o *DomainResponseWithResults) SetResults(v []DomainEntity) {
 	o.Results = v
 }
 
@@ -184,6 +188,47 @@ func (o DomainResponseWithResults) ToMap() (map[string]interface{}, error) {
 	toSerialize["links"] = o.Links
 	toSerialize["results"] = o.Results
 	return toSerialize, nil
+}
+
+func (o *DomainResponseWithResults) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"count",
+		"total_pages",
+		"schema_version",
+		"links",
+		"results",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDomainResponseWithResults := _DomainResponseWithResults{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDomainResponseWithResults)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DomainResponseWithResults(varDomainResponseWithResults)
+
+	return err
 }
 
 type NullableDomainResponseWithResults struct {

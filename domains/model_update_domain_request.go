@@ -19,12 +19,17 @@ var _ MappedNullable = &UpdateDomainRequest{}
 
 // UpdateDomainRequest struct for UpdateDomainRequest
 type UpdateDomainRequest struct {
+	Name *string `json:"name,omitempty"`
 	Cnames []string `json:"cnames,omitempty"`
 	CnameAccessOnly *bool `json:"cname_access_only,omitempty"`
-	Name *string `json:"name,omitempty"`
 	IsActive *bool `json:"is_active,omitempty"`
 	EdgeApplicationId *int64 `json:"edge_application_id,omitempty"`
 	DigitalCertificateId NullableInt64 `json:"digital_certificate_id,omitempty"`
+	Environment *string `json:"environment,omitempty"`
+	IsMtlsEnabled *bool `json:"is_mtls_enabled,omitempty"`
+	MtlsTrustedCaCertificateId NullableInt64 `json:"mtls_trusted_ca_certificate_id,omitempty"`
+	MtlsVerification *string `json:"mtls_verification,omitempty"`
+	CrlList []int64 `json:"crl_list,omitempty"`
 }
 
 // NewUpdateDomainRequest instantiates a new UpdateDomainRequest object
@@ -42,6 +47,38 @@ func NewUpdateDomainRequest() *UpdateDomainRequest {
 func NewUpdateDomainRequestWithDefaults() *UpdateDomainRequest {
 	this := UpdateDomainRequest{}
 	return &this
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *UpdateDomainRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDomainRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *UpdateDomainRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *UpdateDomainRequest) SetName(v string) {
+	o.Name = &v
 }
 
 // GetCnames returns the Cnames field value if set, zero value otherwise.
@@ -106,38 +143,6 @@ func (o *UpdateDomainRequest) HasCnameAccessOnly() bool {
 // SetCnameAccessOnly gets a reference to the given bool and assigns it to the CnameAccessOnly field.
 func (o *UpdateDomainRequest) SetCnameAccessOnly(v bool) {
 	o.CnameAccessOnly = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *UpdateDomainRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateDomainRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *UpdateDomainRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *UpdateDomainRequest) SetName(v string) {
-	o.Name = &v
 }
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
@@ -246,6 +251,177 @@ func (o *UpdateDomainRequest) UnsetDigitalCertificateId() {
 	o.DigitalCertificateId.Unset()
 }
 
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *UpdateDomainRequest) GetEnvironment() string {
+	if o == nil || IsNil(o.Environment) {
+		var ret string
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDomainRequest) GetEnvironmentOk() (*string, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *UpdateDomainRequest) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given string and assigns it to the Environment field.
+func (o *UpdateDomainRequest) SetEnvironment(v string) {
+	o.Environment = &v
+}
+
+// GetIsMtlsEnabled returns the IsMtlsEnabled field value if set, zero value otherwise.
+func (o *UpdateDomainRequest) GetIsMtlsEnabled() bool {
+	if o == nil || IsNil(o.IsMtlsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMtlsEnabled
+}
+
+// GetIsMtlsEnabledOk returns a tuple with the IsMtlsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDomainRequest) GetIsMtlsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMtlsEnabled) {
+		return nil, false
+	}
+	return o.IsMtlsEnabled, true
+}
+
+// HasIsMtlsEnabled returns a boolean if a field has been set.
+func (o *UpdateDomainRequest) HasIsMtlsEnabled() bool {
+	if o != nil && !IsNil(o.IsMtlsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMtlsEnabled gets a reference to the given bool and assigns it to the IsMtlsEnabled field.
+func (o *UpdateDomainRequest) SetIsMtlsEnabled(v bool) {
+	o.IsMtlsEnabled = &v
+}
+
+// GetMtlsTrustedCaCertificateId returns the MtlsTrustedCaCertificateId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateDomainRequest) GetMtlsTrustedCaCertificateId() int64 {
+	if o == nil || IsNil(o.MtlsTrustedCaCertificateId.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.MtlsTrustedCaCertificateId.Get()
+}
+
+// GetMtlsTrustedCaCertificateIdOk returns a tuple with the MtlsTrustedCaCertificateId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateDomainRequest) GetMtlsTrustedCaCertificateIdOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MtlsTrustedCaCertificateId.Get(), o.MtlsTrustedCaCertificateId.IsSet()
+}
+
+// HasMtlsTrustedCaCertificateId returns a boolean if a field has been set.
+func (o *UpdateDomainRequest) HasMtlsTrustedCaCertificateId() bool {
+	if o != nil && o.MtlsTrustedCaCertificateId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMtlsTrustedCaCertificateId gets a reference to the given NullableInt64 and assigns it to the MtlsTrustedCaCertificateId field.
+func (o *UpdateDomainRequest) SetMtlsTrustedCaCertificateId(v int64) {
+	o.MtlsTrustedCaCertificateId.Set(&v)
+}
+// SetMtlsTrustedCaCertificateIdNil sets the value for MtlsTrustedCaCertificateId to be an explicit nil
+func (o *UpdateDomainRequest) SetMtlsTrustedCaCertificateIdNil() {
+	o.MtlsTrustedCaCertificateId.Set(nil)
+}
+
+// UnsetMtlsTrustedCaCertificateId ensures that no value is present for MtlsTrustedCaCertificateId, not even an explicit nil
+func (o *UpdateDomainRequest) UnsetMtlsTrustedCaCertificateId() {
+	o.MtlsTrustedCaCertificateId.Unset()
+}
+
+// GetMtlsVerification returns the MtlsVerification field value if set, zero value otherwise.
+func (o *UpdateDomainRequest) GetMtlsVerification() string {
+	if o == nil || IsNil(o.MtlsVerification) {
+		var ret string
+		return ret
+	}
+	return *o.MtlsVerification
+}
+
+// GetMtlsVerificationOk returns a tuple with the MtlsVerification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDomainRequest) GetMtlsVerificationOk() (*string, bool) {
+	if o == nil || IsNil(o.MtlsVerification) {
+		return nil, false
+	}
+	return o.MtlsVerification, true
+}
+
+// HasMtlsVerification returns a boolean if a field has been set.
+func (o *UpdateDomainRequest) HasMtlsVerification() bool {
+	if o != nil && !IsNil(o.MtlsVerification) {
+		return true
+	}
+
+	return false
+}
+
+// SetMtlsVerification gets a reference to the given string and assigns it to the MtlsVerification field.
+func (o *UpdateDomainRequest) SetMtlsVerification(v string) {
+	o.MtlsVerification = &v
+}
+
+// GetCrlList returns the CrlList field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateDomainRequest) GetCrlList() []int64 {
+	if o == nil {
+		var ret []int64
+		return ret
+	}
+	return o.CrlList
+}
+
+// GetCrlListOk returns a tuple with the CrlList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateDomainRequest) GetCrlListOk() ([]int64, bool) {
+	if o == nil || IsNil(o.CrlList) {
+		return nil, false
+	}
+	return o.CrlList, true
+}
+
+// HasCrlList returns a boolean if a field has been set.
+func (o *UpdateDomainRequest) HasCrlList() bool {
+	if o != nil && !IsNil(o.CrlList) {
+		return true
+	}
+
+	return false
+}
+
+// SetCrlList gets a reference to the given []int64 and assigns it to the CrlList field.
+func (o *UpdateDomainRequest) SetCrlList(v []int64) {
+	o.CrlList = v
+}
+
 func (o UpdateDomainRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -256,14 +432,14 @@ func (o UpdateDomainRequest) MarshalJSON() ([]byte, error) {
 
 func (o UpdateDomainRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.Cnames) {
 		toSerialize["cnames"] = o.Cnames
 	}
 	if !IsNil(o.CnameAccessOnly) {
 		toSerialize["cname_access_only"] = o.CnameAccessOnly
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
@@ -273,6 +449,21 @@ func (o UpdateDomainRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DigitalCertificateId.IsSet() {
 		toSerialize["digital_certificate_id"] = o.DigitalCertificateId.Get()
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.IsMtlsEnabled) {
+		toSerialize["is_mtls_enabled"] = o.IsMtlsEnabled
+	}
+	if o.MtlsTrustedCaCertificateId.IsSet() {
+		toSerialize["mtls_trusted_ca_certificate_id"] = o.MtlsTrustedCaCertificateId.Get()
+	}
+	if !IsNil(o.MtlsVerification) {
+		toSerialize["mtls_verification"] = o.MtlsVerification
+	}
+	if o.CrlList != nil {
+		toSerialize["crl_list"] = o.CrlList
 	}
 	return toSerialize, nil
 }

@@ -20,12 +20,12 @@ import (
 )
 
 
-// DomainsApiService DomainsApi service
-type DomainsApiService service
+// DomainsAPIService DomainsAPI service
+type DomainsAPIService service
 
 type ApiCreateDomainRequest struct {
 	ctx context.Context
-	ApiService *DomainsApiService
+	ApiService *DomainsAPIService
 	accept *string
 	contentType *string
 	createDomainRequest *CreateDomainRequest
@@ -58,7 +58,7 @@ It enables you to include a new domain into an account.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateDomainRequest
 */
-func (a *DomainsApiService) CreateDomain(ctx context.Context) ApiCreateDomainRequest {
+func (a *DomainsAPIService) CreateDomain(ctx context.Context) ApiCreateDomainRequest {
 	return ApiCreateDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -67,7 +67,7 @@ func (a *DomainsApiService) CreateDomain(ctx context.Context) ApiCreateDomainReq
 
 // Execute executes the request
 //  @return DomainResponseWithResult
-func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
+func (a *DomainsAPIService) CreateDomainExecute(r ApiCreateDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -75,7 +75,7 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*Doma
 		localVarReturnValue  *DomainResponseWithResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.CreateDomain")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsAPIService.CreateDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -164,7 +164,7 @@ func (a *DomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*Doma
 
 type ApiDelDomainRequest struct {
 	ctx context.Context
-	ApiService *DomainsApiService
+	ApiService *DomainsAPIService
 	id string
 	accept *string
 }
@@ -187,7 +187,7 @@ It enables you to delete a domain.
  @param id The id of the domain to be deleted. 
  @return ApiDelDomainRequest
 */
-func (a *DomainsApiService) DelDomain(ctx context.Context, id string) ApiDelDomainRequest {
+func (a *DomainsAPIService) DelDomain(ctx context.Context, id string) ApiDelDomainRequest {
 	return ApiDelDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -196,14 +196,14 @@ func (a *DomainsApiService) DelDomain(ctx context.Context, id string) ApiDelDoma
 }
 
 // Execute executes the request
-func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*http.Response, error) {
+func (a *DomainsAPIService) DelDomainExecute(r ApiDelDomainRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.DelDomain")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsAPIService.DelDomain")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -279,7 +279,7 @@ func (a *DomainsApiService) DelDomainExecute(r ApiDelDomainRequest) (*http.Respo
 
 type ApiGetDomainRequest struct {
 	ctx context.Context
-	ApiService *DomainsApiService
+	ApiService *DomainsAPIService
 	id string
 	accept *string
 }
@@ -302,7 +302,7 @@ It returns details of a domain.
  @param id The id of the domain to be consulted. 
  @return ApiGetDomainRequest
 */
-func (a *DomainsApiService) GetDomain(ctx context.Context, id string) ApiGetDomainRequest {
+func (a *DomainsAPIService) GetDomain(ctx context.Context, id string) ApiGetDomainRequest {
 	return ApiGetDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -312,7 +312,7 @@ func (a *DomainsApiService) GetDomain(ctx context.Context, id string) ApiGetDoma
 
 // Execute executes the request
 //  @return DomainResponseWithResult
-func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
+func (a *DomainsAPIService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -320,7 +320,7 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResp
 		localVarReturnValue  *DomainResponseWithResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.GetDomain")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsAPIService.GetDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -405,7 +405,7 @@ func (a *DomainsApiService) GetDomainExecute(r ApiGetDomainRequest) (*DomainResp
 
 type ApiGetDomainsRequest struct {
 	ctx context.Context
-	ApiService *DomainsApiService
+	ApiService *DomainsAPIService
 	page *int64
 	pageSize *int64
 	sort *string
@@ -450,7 +450,7 @@ It returns the list of domains of an account.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDomainsRequest
 */
-func (a *DomainsApiService) GetDomains(ctx context.Context) ApiGetDomainsRequest {
+func (a *DomainsAPIService) GetDomains(ctx context.Context) ApiGetDomainsRequest {
 	return ApiGetDomainsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -459,7 +459,7 @@ func (a *DomainsApiService) GetDomains(ctx context.Context) ApiGetDomainsRequest
 
 // Execute executes the request
 //  @return DomainResponseWithResults
-func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainResponseWithResults, *http.Response, error) {
+func (a *DomainsAPIService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainResponseWithResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -467,7 +467,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 		localVarReturnValue  *DomainResponseWithResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.GetDomains")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsAPIService.GetDomains")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -563,7 +563,7 @@ func (a *DomainsApiService) GetDomainsExecute(r ApiGetDomainsRequest) (*DomainRe
 
 type ApiPutDomainRequest struct {
 	ctx context.Context
-	ApiService *DomainsApiService
+	ApiService *DomainsAPIService
 	id string
 	accept *string
 	contentType *string
@@ -600,7 +600,7 @@ To update only some fields in a domain, consider using the PATCH method instead 
  @param id
  @return ApiPutDomainRequest
 */
-func (a *DomainsApiService) PutDomain(ctx context.Context, id string) ApiPutDomainRequest {
+func (a *DomainsAPIService) PutDomain(ctx context.Context, id string) ApiPutDomainRequest {
 	return ApiPutDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -610,7 +610,7 @@ func (a *DomainsApiService) PutDomain(ctx context.Context, id string) ApiPutDoma
 
 // Execute executes the request
 //  @return DomainResponseWithResult
-func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
+func (a *DomainsAPIService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -618,7 +618,7 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResp
 		localVarReturnValue  *DomainResponseWithResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.PutDomain")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsAPIService.PutDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -708,7 +708,7 @@ func (a *DomainsApiService) PutDomainExecute(r ApiPutDomainRequest) (*DomainResp
 
 type ApiUpdateDomainRequest struct {
 	ctx context.Context
-	ApiService *DomainsApiService
+	ApiService *DomainsAPIService
 	id string
 	accept *string
 	contentType *string
@@ -743,7 +743,7 @@ It updates one or more fields in a Domain, preserving the value of the fields no
  @param id
  @return ApiUpdateDomainRequest
 */
-func (a *DomainsApiService) UpdateDomain(ctx context.Context, id string) ApiUpdateDomainRequest {
+func (a *DomainsAPIService) UpdateDomain(ctx context.Context, id string) ApiUpdateDomainRequest {
 	return ApiUpdateDomainRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -753,7 +753,7 @@ func (a *DomainsApiService) UpdateDomain(ctx context.Context, id string) ApiUpda
 
 // Execute executes the request
 //  @return DomainResponseWithResult
-func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
+func (a *DomainsAPIService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*DomainResponseWithResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -761,7 +761,7 @@ func (a *DomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*Doma
 		localVarReturnValue  *DomainResponseWithResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsApiService.UpdateDomain")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainsAPIService.UpdateDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
