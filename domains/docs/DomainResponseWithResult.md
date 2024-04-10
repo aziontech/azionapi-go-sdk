@@ -4,14 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Count** | Pointer to **int64** |  | [optional] 
+**Links** | Pointer to [**DomainLinks**](DomainLinks.md) |  | [optional] 
+**Results** | [**DomainEntity**](DomainEntity.md) |  | 
+**TotalPages** | Pointer to **int64** |  | [optional] 
 **SchemaVersion** | **int64** |  | 
-**Results** | [**DomainResults**](DomainResults.md) |  | 
 
 ## Methods
 
 ### NewDomainResponseWithResult
 
-`func NewDomainResponseWithResult(schemaVersion int64, results DomainResults, ) *DomainResponseWithResult`
+`func NewDomainResponseWithResult(results DomainEntity, schemaVersion int64, ) *DomainResponseWithResult`
 
 NewDomainResponseWithResult instantiates a new DomainResponseWithResult object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +28,101 @@ will change when the set of required properties is changed
 NewDomainResponseWithResultWithDefaults instantiates a new DomainResponseWithResult object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCount
+
+`func (o *DomainResponseWithResult) GetCount() int64`
+
+GetCount returns the Count field if non-nil, zero value otherwise.
+
+### GetCountOk
+
+`func (o *DomainResponseWithResult) GetCountOk() (*int64, bool)`
+
+GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCount
+
+`func (o *DomainResponseWithResult) SetCount(v int64)`
+
+SetCount sets Count field to given value.
+
+### HasCount
+
+`func (o *DomainResponseWithResult) HasCount() bool`
+
+HasCount returns a boolean if a field has been set.
+
+### GetLinks
+
+`func (o *DomainResponseWithResult) GetLinks() DomainLinks`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *DomainResponseWithResult) GetLinksOk() (*DomainLinks, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *DomainResponseWithResult) SetLinks(v DomainLinks)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *DomainResponseWithResult) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
+
+### GetResults
+
+`func (o *DomainResponseWithResult) GetResults() DomainEntity`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *DomainResponseWithResult) GetResultsOk() (*DomainEntity, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *DomainResponseWithResult) SetResults(v DomainEntity)`
+
+SetResults sets Results field to given value.
+
+
+### GetTotalPages
+
+`func (o *DomainResponseWithResult) GetTotalPages() int64`
+
+GetTotalPages returns the TotalPages field if non-nil, zero value otherwise.
+
+### GetTotalPagesOk
+
+`func (o *DomainResponseWithResult) GetTotalPagesOk() (*int64, bool)`
+
+GetTotalPagesOk returns a tuple with the TotalPages field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalPages
+
+`func (o *DomainResponseWithResult) SetTotalPages(v int64)`
+
+SetTotalPages sets TotalPages field to given value.
+
+### HasTotalPages
+
+`func (o *DomainResponseWithResult) HasTotalPages() bool`
+
+HasTotalPages returns a boolean if a field has been set.
 
 ### GetSchemaVersion
 
@@ -44,26 +142,6 @@ and a boolean to check if the value has been set.
 `func (o *DomainResponseWithResult) SetSchemaVersion(v int64)`
 
 SetSchemaVersion sets SchemaVersion field to given value.
-
-
-### GetResults
-
-`func (o *DomainResponseWithResult) GetResults() DomainResults`
-
-GetResults returns the Results field if non-nil, zero value otherwise.
-
-### GetResultsOk
-
-`func (o *DomainResponseWithResult) GetResultsOk() (*DomainResults, bool)`
-
-GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResults
-
-`func (o *DomainResponseWithResult) SetResults(v DomainResults)`
-
-SetResults sets Results field to given value.
 
 
 

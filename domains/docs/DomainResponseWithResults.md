@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **TotalPages** | **int64** |  | 
 **SchemaVersion** | **int64** |  | 
 **Links** | [**DomainLinks**](DomainLinks.md) |  | 
-**Results** | [**[]DomainResults**](DomainResults.md) |  | 
+**Results** | [**[]DomainEntity**](DomainEntity.md) |  | 
 
 ## Methods
 
 ### NewDomainResponseWithResults
 
-`func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, links DomainLinks, results []DomainResults, ) *DomainResponseWithResults`
+`func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, links DomainLinks, results []DomainEntity, ) *DomainResponseWithResults`
 
 NewDomainResponseWithResults instantiates a new DomainResponseWithResults object
 This constructor will assign default values to properties that have it defined,
@@ -111,20 +111,20 @@ SetLinks sets Links field to given value.
 
 ### GetResults
 
-`func (o *DomainResponseWithResults) GetResults() []DomainResults`
+`func (o *DomainResponseWithResults) GetResults() []DomainEntity`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *DomainResponseWithResults) GetResultsOk() (*[]DomainResults, bool)`
+`func (o *DomainResponseWithResults) GetResultsOk() (*[]DomainEntity, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *DomainResponseWithResults) SetResults(v []DomainResults)`
+`func (o *DomainResponseWithResults) SetResults(v []DomainEntity)`
 
 SetResults sets Results field to given value.
 

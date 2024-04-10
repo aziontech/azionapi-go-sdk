@@ -12,6 +12,8 @@ package domains
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DomainResponseWithResult type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,23 @@ var _ MappedNullable = &DomainResponseWithResult{}
 
 // DomainResponseWithResult struct for DomainResponseWithResult
 type DomainResponseWithResult struct {
+	Count *int64 `json:"count,omitempty"`
+	Links *DomainLinks `json:"links,omitempty"`
+	Results DomainEntity `json:"results"`
+	TotalPages *int64 `json:"total_pages,omitempty"`
 	SchemaVersion int64 `json:"schema_version"`
-	Results DomainResults `json:"results"`
 }
+
+type _DomainResponseWithResult DomainResponseWithResult
 
 // NewDomainResponseWithResult instantiates a new DomainResponseWithResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainResponseWithResult(schemaVersion int64, results DomainResults) *DomainResponseWithResult {
+func NewDomainResponseWithResult(results DomainEntity, schemaVersion int64) *DomainResponseWithResult {
 	this := DomainResponseWithResult{}
-	this.SchemaVersion = schemaVersion
 	this.Results = results
+	this.SchemaVersion = schemaVersion
 	return &this
 }
 
@@ -40,6 +47,126 @@ func NewDomainResponseWithResult(schemaVersion int64, results DomainResults) *Do
 func NewDomainResponseWithResultWithDefaults() *DomainResponseWithResult {
 	this := DomainResponseWithResult{}
 	return &this
+}
+
+// GetCount returns the Count field value if set, zero value otherwise.
+func (o *DomainResponseWithResult) GetCount() int64 {
+	if o == nil || IsNil(o.Count) {
+		var ret int64
+		return ret
+	}
+	return *o.Count
+}
+
+// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainResponseWithResult) GetCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.Count) {
+		return nil, false
+	}
+	return o.Count, true
+}
+
+// HasCount returns a boolean if a field has been set.
+func (o *DomainResponseWithResult) HasCount() bool {
+	if o != nil && !IsNil(o.Count) {
+		return true
+	}
+
+	return false
+}
+
+// SetCount gets a reference to the given int64 and assigns it to the Count field.
+func (o *DomainResponseWithResult) SetCount(v int64) {
+	o.Count = &v
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *DomainResponseWithResult) GetLinks() DomainLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret DomainLinks
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainResponseWithResult) GetLinksOk() (*DomainLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *DomainResponseWithResult) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given DomainLinks and assigns it to the Links field.
+func (o *DomainResponseWithResult) SetLinks(v DomainLinks) {
+	o.Links = &v
+}
+
+// GetResults returns the Results field value
+func (o *DomainResponseWithResult) GetResults() DomainEntity {
+	if o == nil {
+		var ret DomainEntity
+		return ret
+	}
+
+	return o.Results
+}
+
+// GetResultsOk returns a tuple with the Results field value
+// and a boolean to check if the value has been set.
+func (o *DomainResponseWithResult) GetResultsOk() (*DomainEntity, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Results, true
+}
+
+// SetResults sets field value
+func (o *DomainResponseWithResult) SetResults(v DomainEntity) {
+	o.Results = v
+}
+
+// GetTotalPages returns the TotalPages field value if set, zero value otherwise.
+func (o *DomainResponseWithResult) GetTotalPages() int64 {
+	if o == nil || IsNil(o.TotalPages) {
+		var ret int64
+		return ret
+	}
+	return *o.TotalPages
+}
+
+// GetTotalPagesOk returns a tuple with the TotalPages field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainResponseWithResult) GetTotalPagesOk() (*int64, bool) {
+	if o == nil || IsNil(o.TotalPages) {
+		return nil, false
+	}
+	return o.TotalPages, true
+}
+
+// HasTotalPages returns a boolean if a field has been set.
+func (o *DomainResponseWithResult) HasTotalPages() bool {
+	if o != nil && !IsNil(o.TotalPages) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalPages gets a reference to the given int64 and assigns it to the TotalPages field.
+func (o *DomainResponseWithResult) SetTotalPages(v int64) {
+	o.TotalPages = &v
 }
 
 // GetSchemaVersion returns the SchemaVersion field value
@@ -66,30 +193,6 @@ func (o *DomainResponseWithResult) SetSchemaVersion(v int64) {
 	o.SchemaVersion = v
 }
 
-// GetResults returns the Results field value
-func (o *DomainResponseWithResult) GetResults() DomainResults {
-	if o == nil {
-		var ret DomainResults
-		return ret
-	}
-
-	return o.Results
-}
-
-// GetResultsOk returns a tuple with the Results field value
-// and a boolean to check if the value has been set.
-func (o *DomainResponseWithResult) GetResultsOk() (*DomainResults, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Results, true
-}
-
-// SetResults sets field value
-func (o *DomainResponseWithResult) SetResults(v DomainResults) {
-	o.Results = v
-}
-
 func (o DomainResponseWithResult) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -100,9 +203,56 @@ func (o DomainResponseWithResult) MarshalJSON() ([]byte, error) {
 
 func (o DomainResponseWithResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["schema_version"] = o.SchemaVersion
+	if !IsNil(o.Count) {
+		toSerialize["count"] = o.Count
+	}
+	if !IsNil(o.Links) {
+		toSerialize["links"] = o.Links
+	}
 	toSerialize["results"] = o.Results
+	if !IsNil(o.TotalPages) {
+		toSerialize["total_pages"] = o.TotalPages
+	}
+	toSerialize["schema_version"] = o.SchemaVersion
 	return toSerialize, nil
+}
+
+func (o *DomainResponseWithResult) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"results",
+		"schema_version",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDomainResponseWithResult := _DomainResponseWithResult{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDomainResponseWithResult)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DomainResponseWithResult(varDomainResponseWithResult)
+
+	return err
 }
 
 type NullableDomainResponseWithResult struct {

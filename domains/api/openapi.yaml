@@ -244,6 +244,8 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+        "405":
+          description: Method Not Allowed
         "422":
           description: Unprocessable Entity
         "500":
@@ -310,110 +312,148 @@ paths:
       - Domains
 components:
   schemas:
+    DomainData:
+      properties:
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: "[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|/]+"
+          type: string
+        cnames:
+          items:
+            type: string
+          type: array
+        cname_access_only:
+          type: boolean
+        is_active:
+          type: boolean
+        edge_application_id:
+          format: int64
+          maximum: 10000000000000000000
+          minimum: 1
+          type: integer
+        digital_certificate_id:
+          format: int64
+          nullable: true
+          type: integer
+        environment:
+          enum:
+          - production
+          - preview
+          type: string
+        is_mtls_enabled:
+          type: boolean
+        mtls_trusted_ca_certificate_id:
+          format: int64
+          nullable: true
+          type: integer
+        mtls_verification:
+          enum:
+          - enforce
+          - permissive
+          type: string
+        crl_list:
+          items:
+            format: int64
+            type: integer
+          nullable: true
+          type: array
+      type: object
+    DomainEntity:
+      allOf:
+      - properties:
+          id:
+            format: int64
+            type: integer
+          domain_name:
+            type: string
+        type: object
+      - $ref: '#/components/schemas/DomainData'
+      example:
+        edge_application_id: 5637376656633328640
+        is_active: true
+        cnames:
+        - cnames
+        - cnames
+        mtls_verification: enforce
+        domain_name: domain_name
+        environment: production
+        mtls_trusted_ca_certificate_id: 7
+        digital_certificate_id: 2
+        crl_list:
+        - 9
+        - 9
+        cname_access_only: true
+        name: name
+        is_mtls_enabled: true
+        id: 5
     CreateDomainRequest:
       additionalProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DomainData'
       example:
-        edge_application_id: 0
+        edge_application_id: 800828190461011456
+        environment: production
+        mtls_trusted_ca_certificate_id: 1
         is_active: true
         digital_certificate_id: 6
+        crl_list:
+        - 5
+        - 5
         cname_access_only: true
         name: name
+        is_mtls_enabled: true
         cnames:
         - cnames
         - cnames
-      properties:
-        cnames:
-          items:
-            type: string
-          type: array
-        cname_access_only:
-          type: boolean
-        name:
-          type: string
-        is_active:
-          type: boolean
-        edge_application_id:
-          format: int64
-          type: integer
-        digital_certificate_id:
-          format: int64
-          nullable: true
-          type: integer
+        mtls_verification: enforce
       required:
-      - cname_access_only
       - cnames
-      - digital_certificate_id
       - edge_application_id
-      - is_active
       - name
-      type: object
     UpdateDomainRequest:
-      additionalProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DomainData'
       example:
-        edge_application_id: 0
+        edge_application_id: 800828190461011456
+        environment: production
+        mtls_trusted_ca_certificate_id: 1
         is_active: true
         digital_certificate_id: 6
+        crl_list:
+        - 5
+        - 5
         cname_access_only: true
         name: name
+        is_mtls_enabled: true
         cnames:
         - cnames
         - cnames
-      properties:
-        cnames:
-          items:
-            type: string
-          type: array
-        cname_access_only:
-          type: boolean
-        name:
-          type: string
-        is_active:
-          type: boolean
-        edge_application_id:
-          format: int64
-          type: integer
-        digital_certificate_id:
-          format: int64
-          nullable: true
-          type: integer
-      type: object
+        mtls_verification: enforce
     PutDomainRequest:
       additionalProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DomainData'
       example:
-        edge_application_id: 0
+        edge_application_id: 800828190461011456
+        environment: production
+        mtls_trusted_ca_certificate_id: 1
         is_active: true
         digital_certificate_id: 6
+        crl_list:
+        - 5
+        - 5
         cname_access_only: true
         name: name
+        is_mtls_enabled: true
         cnames:
         - cnames
         - cnames
-      properties:
-        cnames:
-          items:
-            type: string
-          type: array
-        cname_access_only:
-          type: boolean
-        name:
-          type: string
-        is_active:
-          type: boolean
-        edge_application_id:
-          format: int64
-          type: integer
-        digital_certificate_id:
-          format: int64
-          nullable: true
-          type: integer
+        mtls_verification: enforce
       required:
-      - cname_access_only
       - cnames
-      - digital_certificate_id
       - edge_application_id
-      - is_active
       - name
-      type: object
     DomainLinks:
       additionalProperties: false
       example:
@@ -440,34 +480,40 @@ components:
           previous: previous
         total_pages: 6
         results:
-        - edge_application_id: 5
-          domain_name: domain_name
-          environment: environment
-          mtls_trusted_ca_certificate_id: mtls_trusted_ca_certificate_id
+        - edge_application_id: 5637376656633328640
           is_active: true
+          cnames:
+          - cnames
+          - cnames
+          mtls_verification: enforce
+          domain_name: domain_name
+          environment: production
+          mtls_trusted_ca_certificate_id: 7
           digital_certificate_id: 2
+          crl_list:
+          - 9
+          - 9
           cname_access_only: true
           name: name
           is_mtls_enabled: true
           id: 5
+        - edge_application_id: 5637376656633328640
+          is_active: true
           cnames:
           - cnames
           - cnames
-          mtls_verification: mtls_verification
-        - edge_application_id: 5
+          mtls_verification: enforce
           domain_name: domain_name
-          environment: environment
-          mtls_trusted_ca_certificate_id: mtls_trusted_ca_certificate_id
-          is_active: true
+          environment: production
+          mtls_trusted_ca_certificate_id: 7
           digital_certificate_id: 2
+          crl_list:
+          - 9
+          - 9
           cname_access_only: true
           name: name
           is_mtls_enabled: true
           id: 5
-          cnames:
-          - cnames
-          - cnames
-          mtls_verification: mtls_verification
       properties:
         count:
           format: int64
@@ -482,7 +528,7 @@ components:
           $ref: '#/components/schemas/DomainLinks'
         results:
           items:
-            $ref: '#/components/schemas/DomainResults'
+            $ref: '#/components/schemas/DomainEntity'
           type: array
       required:
       - count
@@ -494,94 +540,47 @@ components:
     DomainResponseWithResult:
       additionalProperties: false
       example:
-        schema_version: 0
+        schema_version: 1
+        count: 0
+        links:
+          next: next
+          previous: previous
+        total_pages: 6
         results:
-          edge_application_id: 5
-          domain_name: domain_name
-          environment: environment
-          mtls_trusted_ca_certificate_id: mtls_trusted_ca_certificate_id
+          edge_application_id: 5637376656633328640
           is_active: true
+          cnames:
+          - cnames
+          - cnames
+          mtls_verification: enforce
+          domain_name: domain_name
+          environment: production
+          mtls_trusted_ca_certificate_id: 7
           digital_certificate_id: 2
+          crl_list:
+          - 9
+          - 9
           cname_access_only: true
           name: name
           is_mtls_enabled: true
           id: 5
-          cnames:
-          - cnames
-          - cnames
-          mtls_verification: mtls_verification
       properties:
+        count:
+          format: int64
+          type: integer
+        links:
+          $ref: '#/components/schemas/DomainLinks'
+        results:
+          $ref: '#/components/schemas/DomainEntity'
+        total_pages:
+          format: int64
+          type: integer
         schema_version:
           format: int64
           type: integer
-        results:
-          $ref: '#/components/schemas/DomainResults'
       required:
       - results
       - schema_version
-      type: object
-    DomainResults:
-      additionalProperties: false
-      example:
-        edge_application_id: 5
-        domain_name: domain_name
-        environment: environment
-        mtls_trusted_ca_certificate_id: mtls_trusted_ca_certificate_id
-        is_active: true
-        digital_certificate_id: 2
-        cname_access_only: true
-        name: name
-        is_mtls_enabled: true
-        id: 5
-        cnames:
-        - cnames
-        - cnames
-        mtls_verification: mtls_verification
-      properties:
-        id:
-          format: int64
-          type: integer
-        name:
-          type: string
-        cnames:
-          items:
-            type: string
-          type: array
-        cname_access_only:
-          type: boolean
-        is_active:
-          type: boolean
-        edge_application_id:
-          format: int64
-          type: integer
-        digital_certificate_id:
-          format: int64
-          nullable: true
-          type: integer
-        domain_name:
-          type: string
-        environment:
-          type: string
-        is_mtls_enabled:
-          type: boolean
-        mtls_trusted_ca_certificate_id:
-          nullable: true
-          type: string
-        mtls_verification:
-          nullable: true
-          type: string
-      required:
-      - cname_access_only
-      - cnames
-      - digital_certificate_id
-      - domain_name
-      - edge_application_id
-      - id
-      - is_active
-      - is_mtls_enabled
-      - mtls_trusted_ca_certificate_id
-      - mtls_verification
-      - name
       type: object
   securitySchemes:
     tokenAuth:

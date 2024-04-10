@@ -12,100 +12,111 @@ package domains
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
-// checks if the PutDomainRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PutDomainRequest{}
+// checks if the DomainEntity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainEntity{}
 
-// PutDomainRequest struct for PutDomainRequest
-type PutDomainRequest struct {
-	Name string `json:"name"`
-	Cnames []string `json:"cnames"`
+// DomainEntity struct for DomainEntity
+type DomainEntity struct {
+	Name *string `json:"name,omitempty"`
+	Cnames []string `json:"cnames,omitempty"`
 	CnameAccessOnly *bool `json:"cname_access_only,omitempty"`
 	IsActive *bool `json:"is_active,omitempty"`
-	EdgeApplicationId int64 `json:"edge_application_id"`
+	EdgeApplicationId *int64 `json:"edge_application_id,omitempty"`
 	DigitalCertificateId NullableInt64 `json:"digital_certificate_id,omitempty"`
 	Environment *string `json:"environment,omitempty"`
 	IsMtlsEnabled *bool `json:"is_mtls_enabled,omitempty"`
 	MtlsTrustedCaCertificateId NullableInt64 `json:"mtls_trusted_ca_certificate_id,omitempty"`
 	MtlsVerification *string `json:"mtls_verification,omitempty"`
 	CrlList []int64 `json:"crl_list,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	DomainName *string `json:"domain_name,omitempty"`
 }
 
-type _PutDomainRequest PutDomainRequest
-
-// NewPutDomainRequest instantiates a new PutDomainRequest object
+// NewDomainEntity instantiates a new DomainEntity object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPutDomainRequest(name string, cnames []string, edgeApplicationId int64) *PutDomainRequest {
-	this := PutDomainRequest{}
-	this.Name = name
-	this.Cnames = cnames
-	this.EdgeApplicationId = edgeApplicationId
+func NewDomainEntity() *DomainEntity {
+	this := DomainEntity{}
 	return &this
 }
 
-// NewPutDomainRequestWithDefaults instantiates a new PutDomainRequest object
+// NewDomainEntityWithDefaults instantiates a new DomainEntity object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPutDomainRequestWithDefaults() *PutDomainRequest {
-	this := PutDomainRequest{}
+func NewDomainEntityWithDefaults() *DomainEntity {
+	this := DomainEntity{}
 	return &this
 }
 
-// GetName returns the Name field value
-func (o *PutDomainRequest) GetName() string {
-	if o == nil {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *DomainEntity) GetName() string {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetNameOk() (*string, bool) {
-	if o == nil {
+func (o *DomainEntity) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
-func (o *PutDomainRequest) SetName(v string) {
-	o.Name = v
+// HasName returns a boolean if a field has been set.
+func (o *DomainEntity) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
 }
 
-// GetCnames returns the Cnames field value
-func (o *PutDomainRequest) GetCnames() []string {
-	if o == nil {
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *DomainEntity) SetName(v string) {
+	o.Name = &v
+}
+
+// GetCnames returns the Cnames field value if set, zero value otherwise.
+func (o *DomainEntity) GetCnames() []string {
+	if o == nil || IsNil(o.Cnames) {
 		var ret []string
 		return ret
 	}
-
 	return o.Cnames
 }
 
-// GetCnamesOk returns a tuple with the Cnames field value
+// GetCnamesOk returns a tuple with the Cnames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetCnamesOk() ([]string, bool) {
-	if o == nil {
+func (o *DomainEntity) GetCnamesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Cnames) {
 		return nil, false
 	}
 	return o.Cnames, true
 }
 
-// SetCnames sets field value
-func (o *PutDomainRequest) SetCnames(v []string) {
+// HasCnames returns a boolean if a field has been set.
+func (o *DomainEntity) HasCnames() bool {
+	if o != nil && !IsNil(o.Cnames) {
+		return true
+	}
+
+	return false
+}
+
+// SetCnames gets a reference to the given []string and assigns it to the Cnames field.
+func (o *DomainEntity) SetCnames(v []string) {
 	o.Cnames = v
 }
 
 // GetCnameAccessOnly returns the CnameAccessOnly field value if set, zero value otherwise.
-func (o *PutDomainRequest) GetCnameAccessOnly() bool {
+func (o *DomainEntity) GetCnameAccessOnly() bool {
 	if o == nil || IsNil(o.CnameAccessOnly) {
 		var ret bool
 		return ret
@@ -115,7 +126,7 @@ func (o *PutDomainRequest) GetCnameAccessOnly() bool {
 
 // GetCnameAccessOnlyOk returns a tuple with the CnameAccessOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetCnameAccessOnlyOk() (*bool, bool) {
+func (o *DomainEntity) GetCnameAccessOnlyOk() (*bool, bool) {
 	if o == nil || IsNil(o.CnameAccessOnly) {
 		return nil, false
 	}
@@ -123,7 +134,7 @@ func (o *PutDomainRequest) GetCnameAccessOnlyOk() (*bool, bool) {
 }
 
 // HasCnameAccessOnly returns a boolean if a field has been set.
-func (o *PutDomainRequest) HasCnameAccessOnly() bool {
+func (o *DomainEntity) HasCnameAccessOnly() bool {
 	if o != nil && !IsNil(o.CnameAccessOnly) {
 		return true
 	}
@@ -132,12 +143,12 @@ func (o *PutDomainRequest) HasCnameAccessOnly() bool {
 }
 
 // SetCnameAccessOnly gets a reference to the given bool and assigns it to the CnameAccessOnly field.
-func (o *PutDomainRequest) SetCnameAccessOnly(v bool) {
+func (o *DomainEntity) SetCnameAccessOnly(v bool) {
 	o.CnameAccessOnly = &v
 }
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
-func (o *PutDomainRequest) GetIsActive() bool {
+func (o *DomainEntity) GetIsActive() bool {
 	if o == nil || IsNil(o.IsActive) {
 		var ret bool
 		return ret
@@ -147,7 +158,7 @@ func (o *PutDomainRequest) GetIsActive() bool {
 
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetIsActiveOk() (*bool, bool) {
+func (o *DomainEntity) GetIsActiveOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsActive) {
 		return nil, false
 	}
@@ -155,7 +166,7 @@ func (o *PutDomainRequest) GetIsActiveOk() (*bool, bool) {
 }
 
 // HasIsActive returns a boolean if a field has been set.
-func (o *PutDomainRequest) HasIsActive() bool {
+func (o *DomainEntity) HasIsActive() bool {
 	if o != nil && !IsNil(o.IsActive) {
 		return true
 	}
@@ -164,36 +175,44 @@ func (o *PutDomainRequest) HasIsActive() bool {
 }
 
 // SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
-func (o *PutDomainRequest) SetIsActive(v bool) {
+func (o *DomainEntity) SetIsActive(v bool) {
 	o.IsActive = &v
 }
 
-// GetEdgeApplicationId returns the EdgeApplicationId field value
-func (o *PutDomainRequest) GetEdgeApplicationId() int64 {
-	if o == nil {
+// GetEdgeApplicationId returns the EdgeApplicationId field value if set, zero value otherwise.
+func (o *DomainEntity) GetEdgeApplicationId() int64 {
+	if o == nil || IsNil(o.EdgeApplicationId) {
 		var ret int64
 		return ret
 	}
-
-	return o.EdgeApplicationId
+	return *o.EdgeApplicationId
 }
 
-// GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field value
+// GetEdgeApplicationIdOk returns a tuple with the EdgeApplicationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetEdgeApplicationIdOk() (*int64, bool) {
-	if o == nil {
+func (o *DomainEntity) GetEdgeApplicationIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.EdgeApplicationId) {
 		return nil, false
 	}
-	return &o.EdgeApplicationId, true
+	return o.EdgeApplicationId, true
 }
 
-// SetEdgeApplicationId sets field value
-func (o *PutDomainRequest) SetEdgeApplicationId(v int64) {
-	o.EdgeApplicationId = v
+// HasEdgeApplicationId returns a boolean if a field has been set.
+func (o *DomainEntity) HasEdgeApplicationId() bool {
+	if o != nil && !IsNil(o.EdgeApplicationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetEdgeApplicationId gets a reference to the given int64 and assigns it to the EdgeApplicationId field.
+func (o *DomainEntity) SetEdgeApplicationId(v int64) {
+	o.EdgeApplicationId = &v
 }
 
 // GetDigitalCertificateId returns the DigitalCertificateId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PutDomainRequest) GetDigitalCertificateId() int64 {
+func (o *DomainEntity) GetDigitalCertificateId() int64 {
 	if o == nil || IsNil(o.DigitalCertificateId.Get()) {
 		var ret int64
 		return ret
@@ -204,7 +223,7 @@ func (o *PutDomainRequest) GetDigitalCertificateId() int64 {
 // GetDigitalCertificateIdOk returns a tuple with the DigitalCertificateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PutDomainRequest) GetDigitalCertificateIdOk() (*int64, bool) {
+func (o *DomainEntity) GetDigitalCertificateIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -212,7 +231,7 @@ func (o *PutDomainRequest) GetDigitalCertificateIdOk() (*int64, bool) {
 }
 
 // HasDigitalCertificateId returns a boolean if a field has been set.
-func (o *PutDomainRequest) HasDigitalCertificateId() bool {
+func (o *DomainEntity) HasDigitalCertificateId() bool {
 	if o != nil && o.DigitalCertificateId.IsSet() {
 		return true
 	}
@@ -221,21 +240,21 @@ func (o *PutDomainRequest) HasDigitalCertificateId() bool {
 }
 
 // SetDigitalCertificateId gets a reference to the given NullableInt64 and assigns it to the DigitalCertificateId field.
-func (o *PutDomainRequest) SetDigitalCertificateId(v int64) {
+func (o *DomainEntity) SetDigitalCertificateId(v int64) {
 	o.DigitalCertificateId.Set(&v)
 }
 // SetDigitalCertificateIdNil sets the value for DigitalCertificateId to be an explicit nil
-func (o *PutDomainRequest) SetDigitalCertificateIdNil() {
+func (o *DomainEntity) SetDigitalCertificateIdNil() {
 	o.DigitalCertificateId.Set(nil)
 }
 
 // UnsetDigitalCertificateId ensures that no value is present for DigitalCertificateId, not even an explicit nil
-func (o *PutDomainRequest) UnsetDigitalCertificateId() {
+func (o *DomainEntity) UnsetDigitalCertificateId() {
 	o.DigitalCertificateId.Unset()
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *PutDomainRequest) GetEnvironment() string {
+func (o *DomainEntity) GetEnvironment() string {
 	if o == nil || IsNil(o.Environment) {
 		var ret string
 		return ret
@@ -245,7 +264,7 @@ func (o *PutDomainRequest) GetEnvironment() string {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetEnvironmentOk() (*string, bool) {
+func (o *DomainEntity) GetEnvironmentOk() (*string, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -253,7 +272,7 @@ func (o *PutDomainRequest) GetEnvironmentOk() (*string, bool) {
 }
 
 // HasEnvironment returns a boolean if a field has been set.
-func (o *PutDomainRequest) HasEnvironment() bool {
+func (o *DomainEntity) HasEnvironment() bool {
 	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
@@ -262,12 +281,12 @@ func (o *PutDomainRequest) HasEnvironment() bool {
 }
 
 // SetEnvironment gets a reference to the given string and assigns it to the Environment field.
-func (o *PutDomainRequest) SetEnvironment(v string) {
+func (o *DomainEntity) SetEnvironment(v string) {
 	o.Environment = &v
 }
 
 // GetIsMtlsEnabled returns the IsMtlsEnabled field value if set, zero value otherwise.
-func (o *PutDomainRequest) GetIsMtlsEnabled() bool {
+func (o *DomainEntity) GetIsMtlsEnabled() bool {
 	if o == nil || IsNil(o.IsMtlsEnabled) {
 		var ret bool
 		return ret
@@ -277,7 +296,7 @@ func (o *PutDomainRequest) GetIsMtlsEnabled() bool {
 
 // GetIsMtlsEnabledOk returns a tuple with the IsMtlsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetIsMtlsEnabledOk() (*bool, bool) {
+func (o *DomainEntity) GetIsMtlsEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsMtlsEnabled) {
 		return nil, false
 	}
@@ -285,7 +304,7 @@ func (o *PutDomainRequest) GetIsMtlsEnabledOk() (*bool, bool) {
 }
 
 // HasIsMtlsEnabled returns a boolean if a field has been set.
-func (o *PutDomainRequest) HasIsMtlsEnabled() bool {
+func (o *DomainEntity) HasIsMtlsEnabled() bool {
 	if o != nil && !IsNil(o.IsMtlsEnabled) {
 		return true
 	}
@@ -294,12 +313,12 @@ func (o *PutDomainRequest) HasIsMtlsEnabled() bool {
 }
 
 // SetIsMtlsEnabled gets a reference to the given bool and assigns it to the IsMtlsEnabled field.
-func (o *PutDomainRequest) SetIsMtlsEnabled(v bool) {
+func (o *DomainEntity) SetIsMtlsEnabled(v bool) {
 	o.IsMtlsEnabled = &v
 }
 
 // GetMtlsTrustedCaCertificateId returns the MtlsTrustedCaCertificateId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PutDomainRequest) GetMtlsTrustedCaCertificateId() int64 {
+func (o *DomainEntity) GetMtlsTrustedCaCertificateId() int64 {
 	if o == nil || IsNil(o.MtlsTrustedCaCertificateId.Get()) {
 		var ret int64
 		return ret
@@ -310,7 +329,7 @@ func (o *PutDomainRequest) GetMtlsTrustedCaCertificateId() int64 {
 // GetMtlsTrustedCaCertificateIdOk returns a tuple with the MtlsTrustedCaCertificateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PutDomainRequest) GetMtlsTrustedCaCertificateIdOk() (*int64, bool) {
+func (o *DomainEntity) GetMtlsTrustedCaCertificateIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -318,7 +337,7 @@ func (o *PutDomainRequest) GetMtlsTrustedCaCertificateIdOk() (*int64, bool) {
 }
 
 // HasMtlsTrustedCaCertificateId returns a boolean if a field has been set.
-func (o *PutDomainRequest) HasMtlsTrustedCaCertificateId() bool {
+func (o *DomainEntity) HasMtlsTrustedCaCertificateId() bool {
 	if o != nil && o.MtlsTrustedCaCertificateId.IsSet() {
 		return true
 	}
@@ -327,21 +346,21 @@ func (o *PutDomainRequest) HasMtlsTrustedCaCertificateId() bool {
 }
 
 // SetMtlsTrustedCaCertificateId gets a reference to the given NullableInt64 and assigns it to the MtlsTrustedCaCertificateId field.
-func (o *PutDomainRequest) SetMtlsTrustedCaCertificateId(v int64) {
+func (o *DomainEntity) SetMtlsTrustedCaCertificateId(v int64) {
 	o.MtlsTrustedCaCertificateId.Set(&v)
 }
 // SetMtlsTrustedCaCertificateIdNil sets the value for MtlsTrustedCaCertificateId to be an explicit nil
-func (o *PutDomainRequest) SetMtlsTrustedCaCertificateIdNil() {
+func (o *DomainEntity) SetMtlsTrustedCaCertificateIdNil() {
 	o.MtlsTrustedCaCertificateId.Set(nil)
 }
 
 // UnsetMtlsTrustedCaCertificateId ensures that no value is present for MtlsTrustedCaCertificateId, not even an explicit nil
-func (o *PutDomainRequest) UnsetMtlsTrustedCaCertificateId() {
+func (o *DomainEntity) UnsetMtlsTrustedCaCertificateId() {
 	o.MtlsTrustedCaCertificateId.Unset()
 }
 
 // GetMtlsVerification returns the MtlsVerification field value if set, zero value otherwise.
-func (o *PutDomainRequest) GetMtlsVerification() string {
+func (o *DomainEntity) GetMtlsVerification() string {
 	if o == nil || IsNil(o.MtlsVerification) {
 		var ret string
 		return ret
@@ -351,7 +370,7 @@ func (o *PutDomainRequest) GetMtlsVerification() string {
 
 // GetMtlsVerificationOk returns a tuple with the MtlsVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetMtlsVerificationOk() (*string, bool) {
+func (o *DomainEntity) GetMtlsVerificationOk() (*string, bool) {
 	if o == nil || IsNil(o.MtlsVerification) {
 		return nil, false
 	}
@@ -359,7 +378,7 @@ func (o *PutDomainRequest) GetMtlsVerificationOk() (*string, bool) {
 }
 
 // HasMtlsVerification returns a boolean if a field has been set.
-func (o *PutDomainRequest) HasMtlsVerification() bool {
+func (o *DomainEntity) HasMtlsVerification() bool {
 	if o != nil && !IsNil(o.MtlsVerification) {
 		return true
 	}
@@ -368,12 +387,12 @@ func (o *PutDomainRequest) HasMtlsVerification() bool {
 }
 
 // SetMtlsVerification gets a reference to the given string and assigns it to the MtlsVerification field.
-func (o *PutDomainRequest) SetMtlsVerification(v string) {
+func (o *DomainEntity) SetMtlsVerification(v string) {
 	o.MtlsVerification = &v
 }
 
 // GetCrlList returns the CrlList field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PutDomainRequest) GetCrlList() []int64 {
+func (o *DomainEntity) GetCrlList() []int64 {
 	if o == nil {
 		var ret []int64
 		return ret
@@ -384,7 +403,7 @@ func (o *PutDomainRequest) GetCrlList() []int64 {
 // GetCrlListOk returns a tuple with the CrlList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PutDomainRequest) GetCrlListOk() ([]int64, bool) {
+func (o *DomainEntity) GetCrlListOk() ([]int64, bool) {
 	if o == nil || IsNil(o.CrlList) {
 		return nil, false
 	}
@@ -392,7 +411,7 @@ func (o *PutDomainRequest) GetCrlListOk() ([]int64, bool) {
 }
 
 // HasCrlList returns a boolean if a field has been set.
-func (o *PutDomainRequest) HasCrlList() bool {
+func (o *DomainEntity) HasCrlList() bool {
 	if o != nil && !IsNil(o.CrlList) {
 		return true
 	}
@@ -401,11 +420,75 @@ func (o *PutDomainRequest) HasCrlList() bool {
 }
 
 // SetCrlList gets a reference to the given []int64 and assigns it to the CrlList field.
-func (o *PutDomainRequest) SetCrlList(v []int64) {
+func (o *DomainEntity) SetCrlList(v []int64) {
 	o.CrlList = v
 }
 
-func (o PutDomainRequest) MarshalJSON() ([]byte, error) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *DomainEntity) GetId() int64 {
+	if o == nil || IsNil(o.Id) {
+		var ret int64
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainEntity) GetIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *DomainEntity) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *DomainEntity) SetId(v int64) {
+	o.Id = &v
+}
+
+// GetDomainName returns the DomainName field value if set, zero value otherwise.
+func (o *DomainEntity) GetDomainName() string {
+	if o == nil || IsNil(o.DomainName) {
+		var ret string
+		return ret
+	}
+	return *o.DomainName
+}
+
+// GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainEntity) GetDomainNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DomainName) {
+		return nil, false
+	}
+	return o.DomainName, true
+}
+
+// HasDomainName returns a boolean if a field has been set.
+func (o *DomainEntity) HasDomainName() bool {
+	if o != nil && !IsNil(o.DomainName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDomainName gets a reference to the given string and assigns it to the DomainName field.
+func (o *DomainEntity) SetDomainName(v string) {
+	o.DomainName = &v
+}
+
+func (o DomainEntity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -413,17 +496,23 @@ func (o PutDomainRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o PutDomainRequest) ToMap() (map[string]interface{}, error) {
+func (o DomainEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["cnames"] = o.Cnames
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Cnames) {
+		toSerialize["cnames"] = o.Cnames
+	}
 	if !IsNil(o.CnameAccessOnly) {
 		toSerialize["cname_access_only"] = o.CnameAccessOnly
 	}
 	if !IsNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
 	}
-	toSerialize["edge_application_id"] = o.EdgeApplicationId
+	if !IsNil(o.EdgeApplicationId) {
+		toSerialize["edge_application_id"] = o.EdgeApplicationId
+	}
 	if o.DigitalCertificateId.IsSet() {
 		toSerialize["digital_certificate_id"] = o.DigitalCertificateId.Get()
 	}
@@ -442,80 +531,47 @@ func (o PutDomainRequest) ToMap() (map[string]interface{}, error) {
 	if o.CrlList != nil {
 		toSerialize["crl_list"] = o.CrlList
 	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.DomainName) {
+		toSerialize["domain_name"] = o.DomainName
+	}
 	return toSerialize, nil
 }
 
-func (o *PutDomainRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"cnames",
-		"edge_application_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPutDomainRequest := _PutDomainRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPutDomainRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PutDomainRequest(varPutDomainRequest)
-
-	return err
-}
-
-type NullablePutDomainRequest struct {
-	value *PutDomainRequest
+type NullableDomainEntity struct {
+	value *DomainEntity
 	isSet bool
 }
 
-func (v NullablePutDomainRequest) Get() *PutDomainRequest {
+func (v NullableDomainEntity) Get() *DomainEntity {
 	return v.value
 }
 
-func (v *NullablePutDomainRequest) Set(val *PutDomainRequest) {
+func (v *NullableDomainEntity) Set(val *DomainEntity) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePutDomainRequest) IsSet() bool {
+func (v NullableDomainEntity) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePutDomainRequest) Unset() {
+func (v *NullableDomainEntity) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePutDomainRequest(val *PutDomainRequest) *NullablePutDomainRequest {
-	return &NullablePutDomainRequest{value: val, isSet: true}
+func NewNullableDomainEntity(val *DomainEntity) *NullableDomainEntity {
+	return &NullableDomainEntity{value: val, isSet: true}
 }
 
-func (v NullablePutDomainRequest) MarshalJSON() ([]byte, error) {
+func (v NullableDomainEntity) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePutDomainRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
