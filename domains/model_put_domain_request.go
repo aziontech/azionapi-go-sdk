@@ -30,6 +30,7 @@ type PutDomainRequest struct {
 	Environment *string `json:"environment,omitempty"`
 	IsMtlsEnabled *bool `json:"is_mtls_enabled,omitempty"`
 	MtlsTrustedCaCertificateId NullableInt64 `json:"mtls_trusted_ca_certificate_id,omitempty"`
+	EdgeFirewallId NullableInt64 `json:"edge_firewall_id,omitempty"`
 	MtlsVerification *string `json:"mtls_verification,omitempty"`
 	CrlList []int64 `json:"crl_list,omitempty"`
 }
@@ -340,6 +341,48 @@ func (o *PutDomainRequest) UnsetMtlsTrustedCaCertificateId() {
 	o.MtlsTrustedCaCertificateId.Unset()
 }
 
+// GetEdgeFirewallId returns the EdgeFirewallId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PutDomainRequest) GetEdgeFirewallId() int64 {
+	if o == nil || IsNil(o.EdgeFirewallId.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.EdgeFirewallId.Get()
+}
+
+// GetEdgeFirewallIdOk returns a tuple with the EdgeFirewallId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PutDomainRequest) GetEdgeFirewallIdOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EdgeFirewallId.Get(), o.EdgeFirewallId.IsSet()
+}
+
+// HasEdgeFirewallId returns a boolean if a field has been set.
+func (o *PutDomainRequest) HasEdgeFirewallId() bool {
+	if o != nil && o.EdgeFirewallId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEdgeFirewallId gets a reference to the given NullableInt64 and assigns it to the EdgeFirewallId field.
+func (o *PutDomainRequest) SetEdgeFirewallId(v int64) {
+	o.EdgeFirewallId.Set(&v)
+}
+// SetEdgeFirewallIdNil sets the value for EdgeFirewallId to be an explicit nil
+func (o *PutDomainRequest) SetEdgeFirewallIdNil() {
+	o.EdgeFirewallId.Set(nil)
+}
+
+// UnsetEdgeFirewallId ensures that no value is present for EdgeFirewallId, not even an explicit nil
+func (o *PutDomainRequest) UnsetEdgeFirewallId() {
+	o.EdgeFirewallId.Unset()
+}
+
 // GetMtlsVerification returns the MtlsVerification field value if set, zero value otherwise.
 func (o *PutDomainRequest) GetMtlsVerification() string {
 	if o == nil || IsNil(o.MtlsVerification) {
@@ -435,6 +478,9 @@ func (o PutDomainRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.MtlsTrustedCaCertificateId.IsSet() {
 		toSerialize["mtls_trusted_ca_certificate_id"] = o.MtlsTrustedCaCertificateId.Get()
+	}
+	if o.EdgeFirewallId.IsSet() {
+		toSerialize["edge_firewall_id"] = o.EdgeFirewallId.Get()
 	}
 	if !IsNil(o.MtlsVerification) {
 		toSerialize["mtls_verification"] = o.MtlsVerification

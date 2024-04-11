@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Environment** | Pointer to **string** |  | [optional] 
 **IsMtlsEnabled** | Pointer to **bool** |  | [optional] 
 **MtlsTrustedCaCertificateId** | Pointer to **NullableInt64** |  | [optional] 
+**EdgeFirewallId** | Pointer to **NullableInt64** |  | [optional] 
 **MtlsVerification** | Pointer to **string** |  | [optional] 
 **CrlList** | Pointer to **[]int64** |  | [optional] 
 
@@ -280,6 +281,41 @@ HasMtlsTrustedCaCertificateId returns a boolean if a field has been set.
 `func (o *DomainData) UnsetMtlsTrustedCaCertificateId()`
 
 UnsetMtlsTrustedCaCertificateId ensures that no value is present for MtlsTrustedCaCertificateId, not even an explicit nil
+### GetEdgeFirewallId
+
+`func (o *DomainData) GetEdgeFirewallId() int64`
+
+GetEdgeFirewallId returns the EdgeFirewallId field if non-nil, zero value otherwise.
+
+### GetEdgeFirewallIdOk
+
+`func (o *DomainData) GetEdgeFirewallIdOk() (*int64, bool)`
+
+GetEdgeFirewallIdOk returns a tuple with the EdgeFirewallId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEdgeFirewallId
+
+`func (o *DomainData) SetEdgeFirewallId(v int64)`
+
+SetEdgeFirewallId sets EdgeFirewallId field to given value.
+
+### HasEdgeFirewallId
+
+`func (o *DomainData) HasEdgeFirewallId() bool`
+
+HasEdgeFirewallId returns a boolean if a field has been set.
+
+### SetEdgeFirewallIdNil
+
+`func (o *DomainData) SetEdgeFirewallIdNil(b bool)`
+
+ SetEdgeFirewallIdNil sets the value for EdgeFirewallId to be an explicit nil
+
+### UnsetEdgeFirewallId
+`func (o *DomainData) UnsetEdgeFirewallId()`
+
+UnsetEdgeFirewallId ensures that no value is present for EdgeFirewallId, not even an explicit nil
 ### GetMtlsVerification
 
 `func (o *DomainData) GetMtlsVerification() string`
