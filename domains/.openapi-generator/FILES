@@ -7,6 +7,7 @@ client.go
 configuration.go
 docs/CreateDomainRequest.md
 docs/DomainData.md
+docs/DomainDataDigitalCertificateId.md
 docs/DomainEntity.md
 docs/DomainLinks.md
 docs/DomainResponseWithResult.md
@@ -19,6 +20,7 @@ go.mod
 go.sum
 model_create_domain_request.go
 model_domain_data.go
+model_domain_data_digital_certificate_id.go
 model_domain_entity.go
 model_domain_links.go
 model_domain_response_with_result.go

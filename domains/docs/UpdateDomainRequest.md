@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CnameAccessOnly** | Pointer to **bool** |  | [optional] 
 **IsActive** | Pointer to **bool** |  | [optional] 
 **EdgeApplicationId** | Pointer to **int64** |  | [optional] 
-**DigitalCertificateId** | Pointer to **NullableInt64** |  | [optional] 
+**DigitalCertificateId** | Pointer to [**DomainDataDigitalCertificateId**](DomainDataDigitalCertificateId.md) |  | [optional] 
 **Environment** | Pointer to **string** |  | [optional] 
 **IsMtlsEnabled** | Pointer to **bool** |  | [optional] 
 **MtlsTrustedCaCertificateId** | Pointer to **NullableInt64** |  | [optional] 
@@ -163,20 +163,20 @@ HasEdgeApplicationId returns a boolean if a field has been set.
 
 ### GetDigitalCertificateId
 
-`func (o *UpdateDomainRequest) GetDigitalCertificateId() int64`
+`func (o *UpdateDomainRequest) GetDigitalCertificateId() DomainDataDigitalCertificateId`
 
 GetDigitalCertificateId returns the DigitalCertificateId field if non-nil, zero value otherwise.
 
 ### GetDigitalCertificateIdOk
 
-`func (o *UpdateDomainRequest) GetDigitalCertificateIdOk() (*int64, bool)`
+`func (o *UpdateDomainRequest) GetDigitalCertificateIdOk() (*DomainDataDigitalCertificateId, bool)`
 
 GetDigitalCertificateIdOk returns a tuple with the DigitalCertificateId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDigitalCertificateId
 
-`func (o *UpdateDomainRequest) SetDigitalCertificateId(v int64)`
+`func (o *UpdateDomainRequest) SetDigitalCertificateId(v DomainDataDigitalCertificateId)`
 
 SetDigitalCertificateId sets DigitalCertificateId field to given value.
 
@@ -186,16 +186,6 @@ SetDigitalCertificateId sets DigitalCertificateId field to given value.
 
 HasDigitalCertificateId returns a boolean if a field has been set.
 
-### SetDigitalCertificateIdNil
-
-`func (o *UpdateDomainRequest) SetDigitalCertificateIdNil(b bool)`
-
- SetDigitalCertificateIdNil sets the value for DigitalCertificateId to be an explicit nil
-
-### UnsetDigitalCertificateId
-`func (o *UpdateDomainRequest) UnsetDigitalCertificateId()`
-
-UnsetDigitalCertificateId ensures that no value is present for DigitalCertificateId, not even an explicit nil
 ### GetEnvironment
 
 `func (o *UpdateDomainRequest) GetEnvironment() string`

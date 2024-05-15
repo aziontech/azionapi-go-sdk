@@ -26,7 +26,7 @@ type PutDomainRequest struct {
 	CnameAccessOnly *bool `json:"cname_access_only,omitempty"`
 	IsActive *bool `json:"is_active,omitempty"`
 	EdgeApplicationId int64 `json:"edge_application_id"`
-	DigitalCertificateId NullableInt64 `json:"digital_certificate_id,omitempty"`
+	DigitalCertificateId *DomainDataDigitalCertificateId `json:"digital_certificate_id,omitempty"`
 	Environment *string `json:"environment,omitempty"`
 	IsMtlsEnabled *bool `json:"is_mtls_enabled,omitempty"`
 	MtlsTrustedCaCertificateId NullableInt64 `json:"mtls_trusted_ca_certificate_id,omitempty"`
@@ -193,46 +193,36 @@ func (o *PutDomainRequest) SetEdgeApplicationId(v int64) {
 	o.EdgeApplicationId = v
 }
 
-// GetDigitalCertificateId returns the DigitalCertificateId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PutDomainRequest) GetDigitalCertificateId() int64 {
-	if o == nil || IsNil(o.DigitalCertificateId.Get()) {
-		var ret int64
+// GetDigitalCertificateId returns the DigitalCertificateId field value if set, zero value otherwise.
+func (o *PutDomainRequest) GetDigitalCertificateId() DomainDataDigitalCertificateId {
+	if o == nil || IsNil(o.DigitalCertificateId) {
+		var ret DomainDataDigitalCertificateId
 		return ret
 	}
-	return *o.DigitalCertificateId.Get()
+	return *o.DigitalCertificateId
 }
 
 // GetDigitalCertificateIdOk returns a tuple with the DigitalCertificateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PutDomainRequest) GetDigitalCertificateIdOk() (*int64, bool) {
-	if o == nil {
+func (o *PutDomainRequest) GetDigitalCertificateIdOk() (*DomainDataDigitalCertificateId, bool) {
+	if o == nil || IsNil(o.DigitalCertificateId) {
 		return nil, false
 	}
-	return o.DigitalCertificateId.Get(), o.DigitalCertificateId.IsSet()
+	return o.DigitalCertificateId, true
 }
 
 // HasDigitalCertificateId returns a boolean if a field has been set.
 func (o *PutDomainRequest) HasDigitalCertificateId() bool {
-	if o != nil && o.DigitalCertificateId.IsSet() {
+	if o != nil && !IsNil(o.DigitalCertificateId) {
 		return true
 	}
 
 	return false
 }
 
-// SetDigitalCertificateId gets a reference to the given NullableInt64 and assigns it to the DigitalCertificateId field.
-func (o *PutDomainRequest) SetDigitalCertificateId(v int64) {
-	o.DigitalCertificateId.Set(&v)
-}
-// SetDigitalCertificateIdNil sets the value for DigitalCertificateId to be an explicit nil
-func (o *PutDomainRequest) SetDigitalCertificateIdNil() {
-	o.DigitalCertificateId.Set(nil)
-}
-
-// UnsetDigitalCertificateId ensures that no value is present for DigitalCertificateId, not even an explicit nil
-func (o *PutDomainRequest) UnsetDigitalCertificateId() {
-	o.DigitalCertificateId.Unset()
+// SetDigitalCertificateId gets a reference to the given DomainDataDigitalCertificateId and assigns it to the DigitalCertificateId field.
+func (o *PutDomainRequest) SetDigitalCertificateId(v DomainDataDigitalCertificateId) {
+	o.DigitalCertificateId = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -467,8 +457,8 @@ func (o PutDomainRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["is_active"] = o.IsActive
 	}
 	toSerialize["edge_application_id"] = o.EdgeApplicationId
-	if o.DigitalCertificateId.IsSet() {
-		toSerialize["digital_certificate_id"] = o.DigitalCertificateId.Get()
+	if !IsNil(o.DigitalCertificateId) {
+		toSerialize["digital_certificate_id"] = o.DigitalCertificateId
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
