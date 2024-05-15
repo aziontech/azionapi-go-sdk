@@ -333,9 +333,7 @@ components:
           minimum: 1
           type: integer
         digital_certificate_id:
-          format: int64
-          nullable: true
-          type: integer
+          $ref: '#/components/schemas/DomainData_digital_certificate_id'
         environment:
           enum:
           - production
@@ -593,6 +591,15 @@ components:
       - results
       - schema_version
       type: object
+    DomainData_digital_certificate_id:
+      anyOf:
+      - format: int64
+        nullable: true
+        type: integer
+      - enum:
+        - lets_encrypt
+        nullable: true
+        type: string
   securitySchemes:
     tokenAuth:
       description: |
