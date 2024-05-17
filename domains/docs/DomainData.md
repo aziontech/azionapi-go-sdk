@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CnameAccessOnly** | Pointer to **bool** |  | [optional] 
 **IsActive** | Pointer to **bool** |  | [optional] 
 **EdgeApplicationId** | Pointer to **int64** |  | [optional] 
-**DigitalCertificateId** | Pointer to [**DomainDataDigitalCertificateId**](DomainDataDigitalCertificateId.md) |  | [optional] 
+**DigitalCertificateId** | Pointer to **string** |  | [optional] 
 **Environment** | Pointer to **string** |  | [optional] 
 **IsMtlsEnabled** | Pointer to **bool** |  | [optional] 
 **MtlsTrustedCaCertificateId** | Pointer to **NullableInt64** |  | [optional] 
@@ -163,20 +163,20 @@ HasEdgeApplicationId returns a boolean if a field has been set.
 
 ### GetDigitalCertificateId
 
-`func (o *DomainData) GetDigitalCertificateId() DomainDataDigitalCertificateId`
+`func (o *DomainData) GetDigitalCertificateId() string`
 
 GetDigitalCertificateId returns the DigitalCertificateId field if non-nil, zero value otherwise.
 
 ### GetDigitalCertificateIdOk
 
-`func (o *DomainData) GetDigitalCertificateIdOk() (*DomainDataDigitalCertificateId, bool)`
+`func (o *DomainData) GetDigitalCertificateIdOk() (*string, bool)`
 
 GetDigitalCertificateIdOk returns a tuple with the DigitalCertificateId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDigitalCertificateId
 
-`func (o *DomainData) SetDigitalCertificateId(v DomainDataDigitalCertificateId)`
+`func (o *DomainData) SetDigitalCertificateId(v string)`
 
 SetDigitalCertificateId sets DigitalCertificateId field to given value.
 
