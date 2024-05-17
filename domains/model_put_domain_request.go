@@ -26,7 +26,7 @@ type PutDomainRequest struct {
 	CnameAccessOnly *bool `json:"cname_access_only,omitempty"`
 	IsActive *bool `json:"is_active,omitempty"`
 	EdgeApplicationId int64 `json:"edge_application_id"`
-	DigitalCertificateId *DomainDataDigitalCertificateId `json:"digital_certificate_id,omitempty"`
+	DigitalCertificateId *string `json:"digital_certificate_id,omitempty"`
 	Environment *string `json:"environment,omitempty"`
 	IsMtlsEnabled *bool `json:"is_mtls_enabled,omitempty"`
 	MtlsTrustedCaCertificateId NullableInt64 `json:"mtls_trusted_ca_certificate_id,omitempty"`
@@ -194,9 +194,9 @@ func (o *PutDomainRequest) SetEdgeApplicationId(v int64) {
 }
 
 // GetDigitalCertificateId returns the DigitalCertificateId field value if set, zero value otherwise.
-func (o *PutDomainRequest) GetDigitalCertificateId() DomainDataDigitalCertificateId {
+func (o *PutDomainRequest) GetDigitalCertificateId() string {
 	if o == nil || IsNil(o.DigitalCertificateId) {
-		var ret DomainDataDigitalCertificateId
+		var ret string
 		return ret
 	}
 	return *o.DigitalCertificateId
@@ -204,7 +204,7 @@ func (o *PutDomainRequest) GetDigitalCertificateId() DomainDataDigitalCertificat
 
 // GetDigitalCertificateIdOk returns a tuple with the DigitalCertificateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutDomainRequest) GetDigitalCertificateIdOk() (*DomainDataDigitalCertificateId, bool) {
+func (o *PutDomainRequest) GetDigitalCertificateIdOk() (*string, bool) {
 	if o == nil || IsNil(o.DigitalCertificateId) {
 		return nil, false
 	}
@@ -220,8 +220,8 @@ func (o *PutDomainRequest) HasDigitalCertificateId() bool {
 	return false
 }
 
-// SetDigitalCertificateId gets a reference to the given DomainDataDigitalCertificateId and assigns it to the DigitalCertificateId field.
-func (o *PutDomainRequest) SetDigitalCertificateId(v DomainDataDigitalCertificateId) {
+// SetDigitalCertificateId gets a reference to the given string and assigns it to the DigitalCertificateId field.
+func (o *PutDomainRequest) SetDigitalCertificateId(v string) {
 	o.DigitalCertificateId = &v
 }
 
