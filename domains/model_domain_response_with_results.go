@@ -25,7 +25,7 @@ type DomainResponseWithResults struct {
 	TotalPages int64 `json:"total_pages"`
 	SchemaVersion int64 `json:"schema_version"`
 	Links DomainLinks `json:"links"`
-	Results []DomainEntity `json:"results"`
+	Results []DomainEntityResponse `json:"results"`
 }
 
 type _DomainResponseWithResults DomainResponseWithResults
@@ -34,7 +34,7 @@ type _DomainResponseWithResults DomainResponseWithResults
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, links DomainLinks, results []DomainEntity) *DomainResponseWithResults {
+func NewDomainResponseWithResults(count int64, totalPages int64, schemaVersion int64, links DomainLinks, results []DomainEntityResponse) *DomainResponseWithResults {
 	this := DomainResponseWithResults{}
 	this.Count = count
 	this.TotalPages = totalPages
@@ -149,9 +149,9 @@ func (o *DomainResponseWithResults) SetLinks(v DomainLinks) {
 }
 
 // GetResults returns the Results field value
-func (o *DomainResponseWithResults) GetResults() []DomainEntity {
+func (o *DomainResponseWithResults) GetResults() []DomainEntityResponse {
 	if o == nil {
-		var ret []DomainEntity
+		var ret []DomainEntityResponse
 		return ret
 	}
 
@@ -160,7 +160,7 @@ func (o *DomainResponseWithResults) GetResults() []DomainEntity {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *DomainResponseWithResults) GetResultsOk() ([]DomainEntity, bool) {
+func (o *DomainResponseWithResults) GetResultsOk() ([]DomainEntityResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *DomainResponseWithResults) GetResultsOk() ([]DomainEntity, bool) {
 }
 
 // SetResults sets field value
-func (o *DomainResponseWithResults) SetResults(v []DomainEntity) {
+func (o *DomainResponseWithResults) SetResults(v []DomainEntityResponse) {
 	o.Results = v
 }
 

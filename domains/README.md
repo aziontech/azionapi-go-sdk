@@ -90,7 +90,9 @@ Class | Method | HTTP request | Description
 
  - [CreateDomainRequest](docs/CreateDomainRequest.md)
  - [DomainData](docs/DomainData.md)
+ - [DomainDataResponse](docs/DomainDataResponse.md)
  - [DomainEntity](docs/DomainEntity.md)
+ - [DomainEntityResponse](docs/DomainEntityResponse.md)
  - [DomainLinks](docs/DomainLinks.md)
  - [DomainResponseWithResult](docs/DomainResponseWithResult.md)
  - [DomainResponseWithResults](docs/DomainResponseWithResults.md)

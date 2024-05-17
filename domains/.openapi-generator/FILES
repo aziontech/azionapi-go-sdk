@@ -7,7 +7,9 @@ client.go
 configuration.go
 docs/CreateDomainRequest.md
 docs/DomainData.md
+docs/DomainDataResponse.md
 docs/DomainEntity.md
+docs/DomainEntityResponse.md
 docs/DomainLinks.md
 docs/DomainResponseWithResult.md
 docs/DomainResponseWithResults.md
@@ -19,7 +21,9 @@ go.mod
 go.sum
 model_create_domain_request.go
 model_domain_data.go
+model_domain_data_response.go
 model_domain_entity.go
+model_domain_entity_response.go
 model_domain_links.go
 model_domain_response_with_result.go
 model_domain_response_with_results.go
