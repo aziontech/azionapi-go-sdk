@@ -13,6 +13,10 @@ Method | HTTP request | Description
 [**StorageApiBucketsObjectsRetrieve**](StorageAPI.md#StorageApiBucketsObjectsRetrieve) | **Get** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Download object
 [**StorageApiBucketsObjectsUpdate**](StorageAPI.md#StorageApiBucketsObjectsUpdate) | **Put** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Update the object key
 [**StorageApiBucketsPartialUpdate**](StorageAPI.md#StorageApiBucketsPartialUpdate) | **Patch** /v4/storage/buckets/{name} | Update bucket info
+[**StorageApiS3CredentialsByAccessKey**](StorageAPI.md#StorageApiS3CredentialsByAccessKey) | **Get** /v4/storage/s3-credentials/{s3_credential_access_key} | get by s3 credentials by access key
+[**StorageApiS3CredentialsCreate**](StorageAPI.md#StorageApiS3CredentialsCreate) | **Post** /v4/storage/s3-credentials | create s3 credentials
+[**StorageApiS3CredentialsDelete**](StorageAPI.md#StorageApiS3CredentialsDelete) | **Delete** /v4/storage/s3-credentials/{s3_credential_access_key} | delete by s3 credentials
+[**StorageApiS3CredentialsList**](StorageAPI.md#StorageApiS3CredentialsList) | **Get** /v4/storage/s3-credentials | List s3 credentials
 
 
 
@@ -508,7 +512,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/html, application/json, application/xml, text/plain, image/jpeg, image/png, image/gif, video/mp4, audio/mpeg, application/pdf, application/javascript, text/css, application/octet-stream
+- **Accept**: text/html, application/json, application/xml, text/plain, image/jpeg, image/png, image/gif, video/mp4, audio/mpeg, application/pdf, application/javascript, text/css, application/octet-stream, multipart/form-data, application/x-www-form-urlencoded
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -657,6 +661,284 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StorageApiS3CredentialsByAccessKey
+
+> ResponseS3Credential StorageApiS3CredentialsByAccessKey(ctx, s3CredentialAccessKey).Execute()
+
+get by s3 credentials by access key
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	s3CredentialAccessKey := "s3CredentialAccessKey_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiS3CredentialsByAccessKey(context.Background(), s3CredentialAccessKey).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiS3CredentialsByAccessKey``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiS3CredentialsByAccessKey`: ResponseS3Credential
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiS3CredentialsByAccessKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**s3CredentialAccessKey** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStorageApiS3CredentialsByAccessKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ResponseS3Credential**](ResponseS3Credential.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StorageApiS3CredentialsCreate
+
+> ResponseS3Credential StorageApiS3CredentialsCreate(ctx).S3CredentialCreate(s3CredentialCreate).Execute()
+
+create s3 credentials
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	s3CredentialCreate := *openapiclient.NewS3CredentialCreate() // S3CredentialCreate | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiS3CredentialsCreate(context.Background()).S3CredentialCreate(s3CredentialCreate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiS3CredentialsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiS3CredentialsCreate`: ResponseS3Credential
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiS3CredentialsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStorageApiS3CredentialsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **s3CredentialCreate** | [**S3CredentialCreate**](S3CredentialCreate.md) |  | 
+
+### Return type
+
+[**ResponseS3Credential**](ResponseS3Credential.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StorageApiS3CredentialsDelete
+
+> ResponseS3Credential StorageApiS3CredentialsDelete(ctx, s3CredentialAccessKey).Execute()
+
+delete by s3 credentials
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	s3CredentialAccessKey := "s3CredentialAccessKey_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiS3CredentialsDelete(context.Background(), s3CredentialAccessKey).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiS3CredentialsDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiS3CredentialsDelete`: ResponseS3Credential
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiS3CredentialsDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**s3CredentialAccessKey** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStorageApiS3CredentialsDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ResponseS3Credential**](ResponseS3Credential.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StorageApiS3CredentialsList
+
+> PaginatedS3CredentialList StorageApiS3CredentialsList(ctx).Key(key).LastModified(lastModified).Size(size).ContinuationToken(continuationToken).Execute()
+
+List s3 credentials
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	key := "key_example" // string | Object key. Used to identify the object for requests. Sent in POST requests as a path variable. (optional)
+	lastModified := "lastModified_example" // string | Timestamp of the last modification to the object. (optional)
+	size := int32(56) // int32 | Size of file in bytes. (optional)
+	continuationToken := "continuationToken_example" // string | Hash that can be added to the continuation_token query to skip list to the next page. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StorageAPI.StorageApiS3CredentialsList(context.Background()).Key(key).LastModified(lastModified).Size(size).ContinuationToken(continuationToken).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageAPI.StorageApiS3CredentialsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StorageApiS3CredentialsList`: PaginatedS3CredentialList
+	fmt.Fprintf(os.Stdout, "Response from `StorageAPI.StorageApiS3CredentialsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStorageApiS3CredentialsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **string** | Object key. Used to identify the object for requests. Sent in POST requests as a path variable. | 
+ **lastModified** | **string** | Timestamp of the last modification to the object. | 
+ **size** | **int32** | Size of file in bytes. | 
+ **continuationToken** | **string** | Hash that can be added to the continuation_token query to skip list to the next page. | 
+
+### Return type
+
+[**PaginatedS3CredentialList**](PaginatedS3CredentialList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
