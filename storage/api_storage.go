@@ -856,7 +856,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsRetrieveExecute(r ApiStorage
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/html", "application/json", "application/xml", "text/plain", "image/jpeg", "image/png", "image/gif", "video/mp4", "audio/mpeg", "application/pdf", "application/javascript", "text/css", "application/octet-stream"}
+	localVarHTTPHeaderAccepts := []string{"text/html", "application/json", "application/xml", "text/plain", "image/jpeg", "image/png", "image/gif", "video/mp4", "audio/mpeg", "application/pdf", "application/javascript", "text/css", "application/octet-stream", "multipart/form-data", "application/x-www-form-urlencoded"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1118,6 +1118,517 @@ func (a *StorageAPIService) StorageApiBucketsPartialUpdateExecute(r ApiStorageAp
 	}
 	// body params
 	localVarPostBody = r.bucketUpdate
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStorageApiS3CredentialsByAccessKeyRequest struct {
+	ctx context.Context
+	ApiService *StorageAPIService
+	s3CredentialAccessKey string
+}
+
+func (r ApiStorageApiS3CredentialsByAccessKeyRequest) Execute() (*ResponseS3Credential, *http.Response, error) {
+	return r.ApiService.StorageApiS3CredentialsByAccessKeyExecute(r)
+}
+
+/*
+StorageApiS3CredentialsByAccessKey get by s3 credentials by access key
+
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param s3CredentialAccessKey
+ @return ApiStorageApiS3CredentialsByAccessKeyRequest
+*/
+func (a *StorageAPIService) StorageApiS3CredentialsByAccessKey(ctx context.Context, s3CredentialAccessKey string) ApiStorageApiS3CredentialsByAccessKeyRequest {
+	return ApiStorageApiS3CredentialsByAccessKeyRequest{
+		ApiService: a,
+		ctx: ctx,
+		s3CredentialAccessKey: s3CredentialAccessKey,
+	}
+}
+
+// Execute executes the request
+//  @return ResponseS3Credential
+func (a *StorageAPIService) StorageApiS3CredentialsByAccessKeyExecute(r ApiStorageApiS3CredentialsByAccessKeyRequest) (*ResponseS3Credential, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ResponseS3Credential
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageAPIService.StorageApiS3CredentialsByAccessKey")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v4/storage/s3-credentials/{s3_credential_access_key}"
+	localVarPath = strings.Replace(localVarPath, "{"+"s3_credential_access_key"+"}", url.PathEscape(parameterValueToString(r.s3CredentialAccessKey, "s3CredentialAccessKey")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStorageApiS3CredentialsCreateRequest struct {
+	ctx context.Context
+	ApiService *StorageAPIService
+	s3CredentialCreate *S3CredentialCreate
+}
+
+func (r ApiStorageApiS3CredentialsCreateRequest) S3CredentialCreate(s3CredentialCreate S3CredentialCreate) ApiStorageApiS3CredentialsCreateRequest {
+	r.s3CredentialCreate = &s3CredentialCreate
+	return r
+}
+
+func (r ApiStorageApiS3CredentialsCreateRequest) Execute() (*ResponseS3Credential, *http.Response, error) {
+	return r.ApiService.StorageApiS3CredentialsCreateExecute(r)
+}
+
+/*
+StorageApiS3CredentialsCreate create s3 credentials
+
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStorageApiS3CredentialsCreateRequest
+*/
+func (a *StorageAPIService) StorageApiS3CredentialsCreate(ctx context.Context) ApiStorageApiS3CredentialsCreateRequest {
+	return ApiStorageApiS3CredentialsCreateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ResponseS3Credential
+func (a *StorageAPIService) StorageApiS3CredentialsCreateExecute(r ApiStorageApiS3CredentialsCreateRequest) (*ResponseS3Credential, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ResponseS3Credential
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageAPIService.StorageApiS3CredentialsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v4/storage/s3-credentials"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.s3CredentialCreate == nil {
+		return localVarReturnValue, nil, reportError("s3CredentialCreate is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.s3CredentialCreate
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStorageApiS3CredentialsDeleteRequest struct {
+	ctx context.Context
+	ApiService *StorageAPIService
+	s3CredentialAccessKey string
+}
+
+func (r ApiStorageApiS3CredentialsDeleteRequest) Execute() (*ResponseS3Credential, *http.Response, error) {
+	return r.ApiService.StorageApiS3CredentialsDeleteExecute(r)
+}
+
+/*
+StorageApiS3CredentialsDelete delete by s3 credentials
+
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param s3CredentialAccessKey
+ @return ApiStorageApiS3CredentialsDeleteRequest
+*/
+func (a *StorageAPIService) StorageApiS3CredentialsDelete(ctx context.Context, s3CredentialAccessKey string) ApiStorageApiS3CredentialsDeleteRequest {
+	return ApiStorageApiS3CredentialsDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		s3CredentialAccessKey: s3CredentialAccessKey,
+	}
+}
+
+// Execute executes the request
+//  @return ResponseS3Credential
+func (a *StorageAPIService) StorageApiS3CredentialsDeleteExecute(r ApiStorageApiS3CredentialsDeleteRequest) (*ResponseS3Credential, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ResponseS3Credential
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageAPIService.StorageApiS3CredentialsDelete")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v4/storage/s3-credentials/{s3_credential_access_key}"
+	localVarPath = strings.Replace(localVarPath, "{"+"s3_credential_access_key"+"}", url.PathEscape(parameterValueToString(r.s3CredentialAccessKey, "s3CredentialAccessKey")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["tokenAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStorageApiS3CredentialsListRequest struct {
+	ctx context.Context
+	ApiService *StorageAPIService
+	key *string
+	lastModified *string
+	size *int32
+	continuationToken *string
+}
+
+// Object key. Used to identify the object for requests. Sent in POST requests as a path variable.
+func (r ApiStorageApiS3CredentialsListRequest) Key(key string) ApiStorageApiS3CredentialsListRequest {
+	r.key = &key
+	return r
+}
+
+// Timestamp of the last modification to the object.
+func (r ApiStorageApiS3CredentialsListRequest) LastModified(lastModified string) ApiStorageApiS3CredentialsListRequest {
+	r.lastModified = &lastModified
+	return r
+}
+
+// Size of file in bytes.
+func (r ApiStorageApiS3CredentialsListRequest) Size(size int32) ApiStorageApiS3CredentialsListRequest {
+	r.size = &size
+	return r
+}
+
+// Hash that can be added to the continuation_token query to skip list to the next page.
+func (r ApiStorageApiS3CredentialsListRequest) ContinuationToken(continuationToken string) ApiStorageApiS3CredentialsListRequest {
+	r.continuationToken = &continuationToken
+	return r
+}
+
+func (r ApiStorageApiS3CredentialsListRequest) Execute() (*PaginatedS3CredentialList, *http.Response, error) {
+	return r.ApiService.StorageApiS3CredentialsListExecute(r)
+}
+
+/*
+StorageApiS3CredentialsList List s3 credentials
+
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStorageApiS3CredentialsListRequest
+*/
+func (a *StorageAPIService) StorageApiS3CredentialsList(ctx context.Context) ApiStorageApiS3CredentialsListRequest {
+	return ApiStorageApiS3CredentialsListRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return PaginatedS3CredentialList
+func (a *StorageAPIService) StorageApiS3CredentialsListExecute(r ApiStorageApiS3CredentialsListRequest) (*PaginatedS3CredentialList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PaginatedS3CredentialList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageAPIService.StorageApiS3CredentialsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v4/storage/s3-credentials"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.key != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "")
+	}
+	if r.lastModified != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified", r.lastModified, "")
+	}
+	if r.size != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	}
+	if r.continuationToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation_token", r.continuationToken, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
