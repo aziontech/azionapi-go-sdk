@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -611,8 +612,8 @@ func (o ApplicationResultsCreate) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ApplicationResultsCreate) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *ApplicationResultsCreate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -639,7 +640,7 @@ func (o *ApplicationResultsCreate) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -653,7 +654,9 @@ func (o *ApplicationResultsCreate) UnmarshalJSON(bytes []byte) (err error) {
 
 	varApplicationResultsCreate := _ApplicationResultsCreate{}
 
-	err = json.Unmarshal(bytes, &varApplicationResultsCreate)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varApplicationResultsCreate)
 
 	if err != nil {
 		return err

@@ -25,25 +25,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    cacheSettingsId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	cacheSettingsId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -98,26 +98,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    cacheSettingsId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	cacheSettingsId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet`: ApplicationCacheGetOneResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet`: ApplicationCacheGetOneResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet`: %v\n", resp)
 }
 ```
 
@@ -171,27 +171,27 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    cacheSettingsId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    applicationCachePatchRequest := *openapiclient.NewApplicationCachePatchRequest() // ApplicationCachePatchRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	cacheSettingsId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	applicationCachePatchRequest := *openapiclient.NewApplicationCachePatchRequest() // ApplicationCachePatchRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ApplicationCachePatchRequest(applicationCachePatchRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch`: ApplicationCachePatchResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ApplicationCachePatchRequest(applicationCachePatchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch`: ApplicationCachePatchResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch`: %v\n", resp)
 }
 ```
 
@@ -246,28 +246,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    cacheSettingsId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    applicationCachePutRequest := *openapiclient.NewApplicationCachePutRequest("Name_example") // ApplicationCachePutRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	cacheSettingsId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	applicationCachePutRequest := *openapiclient.NewApplicationCachePutRequest("Name_example") // ApplicationCachePutRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).ApplicationCachePutRequest(applicationCachePutRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut`: ApplicationCachePutResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut(context.Background(), edgeApplicationId, cacheSettingsId).Accept(accept).ContentType(contentType).ApplicationCachePutRequest(applicationCachePutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut`: ApplicationCachePutResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut`: %v\n", resp)
 }
 ```
 
@@ -323,30 +323,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    page := int64(789) // int64 |  (optional)
-    pageSize := int64(789) // int64 |  (optional)
-    filter := "filter_example" // string |  (optional)
-    orderBy := "orderBy_example" // string |  (optional)
-    sort := "sort_example" // string |  (optional)
-    accept := "application/json; version=3" // string |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	page := int64(789) // int64 |  (optional)
+	pageSize := int64(789) // int64 |  (optional)
+	filter := "filter_example" // string |  (optional)
+	orderBy := "orderBy_example" // string |  (optional)
+	sort := "sort_example" // string |  (optional)
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsGet(context.Background(), edgeApplicationId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdCacheSettingsGet`: ApplicationCacheGetResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsGet(context.Background(), edgeApplicationId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdCacheSettingsGet`: ApplicationCacheGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -403,27 +403,27 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    applicationCacheCreateRequest := *openapiclient.NewApplicationCacheCreateRequest("Name_example") // ApplicationCacheCreateRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	applicationCacheCreateRequest := *openapiclient.NewApplicationCacheCreateRequest("Name_example") // ApplicationCacheCreateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).ApplicationCacheCreateRequest(applicationCacheCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdCacheSettingsPost`: ApplicationCacheCreateResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).ApplicationCacheCreateRequest(applicationCacheCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdCacheSettingsPost`: ApplicationCacheCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsCacheSettingsAPI.EdgeApplicationsEdgeApplicationIdCacheSettingsPost`: %v\n", resp)
 }
 ```
 

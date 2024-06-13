@@ -140,7 +140,7 @@ func (o *ApplicationUpdateRequest) GetHttpPortOk() (*interface{}, bool) {
 
 // HasHttpPort returns a boolean if a field has been set.
 func (o *ApplicationUpdateRequest) HasHttpPort() bool {
-	if o != nil && IsNil(o.HttpPort) {
+	if o != nil && !IsNil(o.HttpPort) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *ApplicationUpdateRequest) GetHttpsPortOk() (*interface{}, bool) {
 
 // HasHttpsPort returns a boolean if a field has been set.
 func (o *ApplicationUpdateRequest) HasHttpsPort() bool {
-	if o != nil && IsNil(o.HttpsPort) {
+	if o != nil && !IsNil(o.HttpsPort) {
 		return true
 	}
 
