@@ -25,24 +25,24 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    deviceGroupId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string | The id of the Device Groups that you plan to delete. (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	deviceGroupId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string | The id of the Device Groups that you plan to delete. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -96,26 +96,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    deviceGroupId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string | The id of the Device Groups that you plan to query. (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	deviceGroupId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string | The id of the Device Groups that you plan to query. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet`: DeviceGroupsIdResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet`: DeviceGroupsIdResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet`: %v\n", resp)
 }
 ```
 
@@ -169,28 +169,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    deviceGroupId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    patchDeviceGroupsRequest := *openapiclient.NewPatchDeviceGroupsRequest() // PatchDeviceGroupsRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	deviceGroupId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	patchDeviceGroupsRequest := *openapiclient.NewPatchDeviceGroupsRequest() // PatchDeviceGroupsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).PatchDeviceGroupsRequest(patchDeviceGroupsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch`: DeviceGroupsIdResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).PatchDeviceGroupsRequest(patchDeviceGroupsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch`: DeviceGroupsIdResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch`: %v\n", resp)
 }
 ```
 
@@ -246,28 +246,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    deviceGroupId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    updateDeviceGroupsRequest := *openapiclient.NewUpdateDeviceGroupsRequest() // UpdateDeviceGroupsRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	deviceGroupId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	updateDeviceGroupsRequest := *openapiclient.NewUpdateDeviceGroupsRequest() // UpdateDeviceGroupsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).UpdateDeviceGroupsRequest(updateDeviceGroupsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut`: DeviceGroupsIdResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut(context.Background(), edgeApplicationId, deviceGroupId).Accept(accept).ContentType(contentType).UpdateDeviceGroupsRequest(updateDeviceGroupsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut`: DeviceGroupsIdResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut`: %v\n", resp)
 }
 ```
 
@@ -323,30 +323,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    page := int64(789) // int64 |  (optional)
-    pageSize := int64(789) // int64 |  (optional)
-    filter := "filter_example" // string |  (optional)
-    orderBy := "orderBy_example" // string |  (optional)
-    sort := "sort_example" // string |  (optional)
-    accept := "application/json; version=3" // string |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	page := int64(789) // int64 |  (optional)
+	pageSize := int64(789) // int64 |  (optional)
+	filter := "filter_example" // string |  (optional)
+	orderBy := "orderBy_example" // string |  (optional)
+	sort := "sort_example" // string |  (optional)
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsGet(context.Background(), edgeApplicationId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsGet`: DeviceGroupsResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsGet(context.Background(), edgeApplicationId).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsGet`: DeviceGroupsResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -403,27 +403,27 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    createDeviceGroupsRequest := *openapiclient.NewCreateDeviceGroupsRequest("UserAgent_example", "Addresses_example") // CreateDeviceGroupsRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	createDeviceGroupsRequest := *openapiclient.NewCreateDeviceGroupsRequest("UserAgent_example", "Addresses_example") // CreateDeviceGroupsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).CreateDeviceGroupsRequest(createDeviceGroupsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsPost`: DeviceGroupsIdResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost(context.Background(), edgeApplicationId).Accept(accept).ContentType(contentType).CreateDeviceGroupsRequest(createDeviceGroupsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdDeviceGroupsPost`: DeviceGroupsIdResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsDeviceGroupsAPI.EdgeApplicationsEdgeApplicationIdDeviceGroupsPost`: %v\n", resp)
 }
 ```
 

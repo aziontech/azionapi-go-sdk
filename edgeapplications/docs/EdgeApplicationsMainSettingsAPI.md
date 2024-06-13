@@ -25,29 +25,29 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    page := int64(789) // int64 |  (optional)
-    pageSize := int64(789) // int64 |  (optional)
-    filter := "filter_example" // string |  (optional)
-    orderBy := "orderBy_example" // string |  (optional)
-    sort := "sort_example" // string |  (optional)
-    accept := "application/json; version=3" // string |  (optional)
+	page := int64(789) // int64 |  (optional)
+	pageSize := int64(789) // int64 |  (optional)
+	filter := "filter_example" // string |  (optional)
+	orderBy := "orderBy_example" // string |  (optional)
+	sort := "sort_example" // string |  (optional)
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsGet(context.Background()).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsGet`: GetApplicationsResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsGet(context.Background()).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsGet`: GetApplicationsResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsGet`: %v\n", resp)
 }
 ```
 
@@ -99,23 +99,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | The id of the edge application that you plan to delete.
-    accept := "application/json; version=3" // string |  (optional)
+	id := "id_example" // string | The id of the edge application that you plan to delete.
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdDelete(context.Background(), id).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdDelete(context.Background(), id).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -167,25 +167,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | 
-    accept := "application/json; version=3" // string |  (optional)
+	id := "id_example" // string | 
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdGet(context.Background(), id).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsIdGet`: GetApplicationResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdGet(context.Background(), id).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsIdGet`: GetApplicationResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdGet`: %v\n", resp)
 }
 ```
 
@@ -237,27 +237,27 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    applicationUpdateRequest := *openapiclient.NewApplicationUpdateRequest() // ApplicationUpdateRequest |  (optional)
+	id := "id_example" // string | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	applicationUpdateRequest := *openapiclient.NewApplicationUpdateRequest() // ApplicationUpdateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPatch(context.Background(), id).Accept(accept).ContentType(contentType).ApplicationUpdateRequest(applicationUpdateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsIdPatch`: ApplicationUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPatch(context.Background(), id).Accept(accept).ContentType(contentType).ApplicationUpdateRequest(applicationUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsIdPatch`: ApplicationUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPatch`: %v\n", resp)
 }
 ```
 
@@ -311,27 +311,27 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | The Id of the edge application to be overwritten. 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    applicationPutRequest := *openapiclient.NewApplicationPutRequest("Name_example") // ApplicationPutRequest |  (optional)
+	id := "id_example" // string | The Id of the edge application to be overwritten. 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	applicationPutRequest := *openapiclient.NewApplicationPutRequest("Name_example") // ApplicationPutRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPut(context.Background(), id).Accept(accept).ContentType(contentType).ApplicationPutRequest(applicationPutRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsIdPut`: ApplicationPutResult
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPut(context.Background(), id).Accept(accept).ContentType(contentType).ApplicationPutRequest(applicationPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsIdPut`: ApplicationPutResult
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsIdPut`: %v\n", resp)
 }
 ```
 
@@ -385,26 +385,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    createApplicationRequest := *openapiclient.NewCreateApplicationRequest("Name_example") // CreateApplicationRequest |  (optional)
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	createApplicationRequest := *openapiclient.NewCreateApplicationRequest("Name_example") // CreateApplicationRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsPost(context.Background()).Accept(accept).ContentType(contentType).CreateApplicationRequest(createApplicationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsPost`: CreateApplicationResult
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsMainSettingsAPI.EdgeApplicationsPost(context.Background()).Accept(accept).ContentType(contentType).CreateApplicationRequest(createApplicationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsMainSettingsAPI.EdgeApplicationsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsPost`: CreateApplicationResult
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsMainSettingsAPI.EdgeApplicationsPost`: %v\n", resp)
 }
 ```
 

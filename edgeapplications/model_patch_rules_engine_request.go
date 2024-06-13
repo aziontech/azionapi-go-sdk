@@ -20,6 +20,8 @@ var _ MappedNullable = &PatchRulesEngineRequest{}
 // PatchRulesEngineRequest struct for PatchRulesEngineRequest
 type PatchRulesEngineRequest struct {
 	Name *string `json:"name,omitempty"`
+	Order *int64 `json:"order,omitempty"`
+	IsActive *bool `json:"is_active,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria,omitempty"`
 	Behaviors []RulesEngineBehaviorEntry `json:"behaviors,omitempty"`
@@ -72,6 +74,70 @@ func (o *PatchRulesEngineRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchRulesEngineRequest) SetName(v string) {
 	o.Name = &v
+}
+
+// GetOrder returns the Order field value if set, zero value otherwise.
+func (o *PatchRulesEngineRequest) GetOrder() int64 {
+	if o == nil || IsNil(o.Order) {
+		var ret int64
+		return ret
+	}
+	return *o.Order
+}
+
+// GetOrderOk returns a tuple with the Order field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchRulesEngineRequest) GetOrderOk() (*int64, bool) {
+	if o == nil || IsNil(o.Order) {
+		return nil, false
+	}
+	return o.Order, true
+}
+
+// HasOrder returns a boolean if a field has been set.
+func (o *PatchRulesEngineRequest) HasOrder() bool {
+	if o != nil && !IsNil(o.Order) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrder gets a reference to the given int64 and assigns it to the Order field.
+func (o *PatchRulesEngineRequest) SetOrder(v int64) {
+	o.Order = &v
+}
+
+// GetIsActive returns the IsActive field value if set, zero value otherwise.
+func (o *PatchRulesEngineRequest) GetIsActive() bool {
+	if o == nil || IsNil(o.IsActive) {
+		var ret bool
+		return ret
+	}
+	return *o.IsActive
+}
+
+// GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchRulesEngineRequest) GetIsActiveOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsActive) {
+		return nil, false
+	}
+	return o.IsActive, true
+}
+
+// HasIsActive returns a boolean if a field has been set.
+func (o *PatchRulesEngineRequest) HasIsActive() bool {
+	if o != nil && !IsNil(o.IsActive) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
+func (o *PatchRulesEngineRequest) SetIsActive(v bool) {
+	o.IsActive = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -182,6 +248,12 @@ func (o PatchRulesEngineRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Order) {
+		toSerialize["order"] = o.Order
+	}
+	if !IsNil(o.IsActive) {
+		toSerialize["is_active"] = o.IsActive
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

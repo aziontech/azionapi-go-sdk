@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
+**Order** | Pointer to **int64** |  | [optional] 
+**IsActive** | Pointer to **bool** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Criteria** | [**[][]RulesEngineCriteria**]([]RulesEngineCriteria.md) |  | 
 **Behaviors** | [**[]RulesEngineBehaviorEntry**](RulesEngineBehaviorEntry.md) |  | 
@@ -47,6 +49,56 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOrder
+
+`func (o *CreateRulesEngineRequest) GetOrder() int64`
+
+GetOrder returns the Order field if non-nil, zero value otherwise.
+
+### GetOrderOk
+
+`func (o *CreateRulesEngineRequest) GetOrderOk() (*int64, bool)`
+
+GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrder
+
+`func (o *CreateRulesEngineRequest) SetOrder(v int64)`
+
+SetOrder sets Order field to given value.
+
+### HasOrder
+
+`func (o *CreateRulesEngineRequest) HasOrder() bool`
+
+HasOrder returns a boolean if a field has been set.
+
+### GetIsActive
+
+`func (o *CreateRulesEngineRequest) GetIsActive() bool`
+
+GetIsActive returns the IsActive field if non-nil, zero value otherwise.
+
+### GetIsActiveOk
+
+`func (o *CreateRulesEngineRequest) GetIsActiveOk() (*bool, bool)`
+
+GetIsActiveOk returns a tuple with the IsActive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsActive
+
+`func (o *CreateRulesEngineRequest) SetIsActive(v bool)`
+
+SetIsActive sets IsActive field to given value.
+
+### HasIsActive
+
+`func (o *CreateRulesEngineRequest) HasIsActive() bool`
+
+HasIsActive returns a boolean if a field has been set.
 
 ### GetDescription
 

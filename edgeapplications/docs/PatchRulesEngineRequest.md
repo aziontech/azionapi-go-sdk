@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
+**Order** | Pointer to **int64** |  | [optional] 
+**IsActive** | Pointer to **bool** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Criteria** | Pointer to [**[][]RulesEngineCriteria**]([]RulesEngineCriteria.md) |  | [optional] 
 **Behaviors** | Pointer to [**[]RulesEngineBehaviorEntry**](RulesEngineBehaviorEntry.md) |  | [optional] 
@@ -52,6 +54,56 @@ SetName sets Name field to given value.
 `func (o *PatchRulesEngineRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetOrder
+
+`func (o *PatchRulesEngineRequest) GetOrder() int64`
+
+GetOrder returns the Order field if non-nil, zero value otherwise.
+
+### GetOrderOk
+
+`func (o *PatchRulesEngineRequest) GetOrderOk() (*int64, bool)`
+
+GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrder
+
+`func (o *PatchRulesEngineRequest) SetOrder(v int64)`
+
+SetOrder sets Order field to given value.
+
+### HasOrder
+
+`func (o *PatchRulesEngineRequest) HasOrder() bool`
+
+HasOrder returns a boolean if a field has been set.
+
+### GetIsActive
+
+`func (o *PatchRulesEngineRequest) GetIsActive() bool`
+
+GetIsActive returns the IsActive field if non-nil, zero value otherwise.
+
+### GetIsActiveOk
+
+`func (o *PatchRulesEngineRequest) GetIsActiveOk() (*bool, bool)`
+
+GetIsActiveOk returns a tuple with the IsActive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsActive
+
+`func (o *PatchRulesEngineRequest) SetIsActive(v bool)`
+
+SetIsActive sets IsActive field to given value.
+
+### HasIsActive
+
+`func (o *PatchRulesEngineRequest) HasIsActive() bool`
+
+HasIsActive returns a boolean if a field has been set.
 
 ### GetDescription
 

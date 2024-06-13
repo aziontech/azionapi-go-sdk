@@ -12,6 +12,7 @@ package edgeapplications
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,6 +22,8 @@ var _ MappedNullable = &CreateRulesEngineRequest{}
 // CreateRulesEngineRequest struct for CreateRulesEngineRequest
 type CreateRulesEngineRequest struct {
 	Name string `json:"name"`
+	Order *int64 `json:"order,omitempty"`
+	IsActive *bool `json:"is_active,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Criteria [][]RulesEngineCriteria `json:"criteria"`
 	Behaviors []RulesEngineBehaviorEntry `json:"behaviors"`
@@ -70,6 +73,70 @@ func (o *CreateRulesEngineRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateRulesEngineRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetOrder returns the Order field value if set, zero value otherwise.
+func (o *CreateRulesEngineRequest) GetOrder() int64 {
+	if o == nil || IsNil(o.Order) {
+		var ret int64
+		return ret
+	}
+	return *o.Order
+}
+
+// GetOrderOk returns a tuple with the Order field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRulesEngineRequest) GetOrderOk() (*int64, bool) {
+	if o == nil || IsNil(o.Order) {
+		return nil, false
+	}
+	return o.Order, true
+}
+
+// HasOrder returns a boolean if a field has been set.
+func (o *CreateRulesEngineRequest) HasOrder() bool {
+	if o != nil && !IsNil(o.Order) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrder gets a reference to the given int64 and assigns it to the Order field.
+func (o *CreateRulesEngineRequest) SetOrder(v int64) {
+	o.Order = &v
+}
+
+// GetIsActive returns the IsActive field value if set, zero value otherwise.
+func (o *CreateRulesEngineRequest) GetIsActive() bool {
+	if o == nil || IsNil(o.IsActive) {
+		var ret bool
+		return ret
+	}
+	return *o.IsActive
+}
+
+// GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRulesEngineRequest) GetIsActiveOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsActive) {
+		return nil, false
+	}
+	return o.IsActive, true
+}
+
+// HasIsActive returns a boolean if a field has been set.
+func (o *CreateRulesEngineRequest) HasIsActive() bool {
+	if o != nil && !IsNil(o.IsActive) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
+func (o *CreateRulesEngineRequest) SetIsActive(v bool) {
+	o.IsActive = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -163,6 +230,12 @@ func (o CreateRulesEngineRequest) MarshalJSON() ([]byte, error) {
 func (o CreateRulesEngineRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Order) {
+		toSerialize["order"] = o.Order
+	}
+	if !IsNil(o.IsActive) {
+		toSerialize["is_active"] = o.IsActive
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -171,8 +244,8 @@ func (o CreateRulesEngineRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateRulesEngineRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
+func (o *CreateRulesEngineRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
@@ -183,7 +256,7 @@ func (o *CreateRulesEngineRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	allProperties := make(map[string]interface{})
 
-	err = json.Unmarshal(bytes, &allProperties)
+	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
 		return err;
@@ -197,7 +270,9 @@ func (o *CreateRulesEngineRequest) UnmarshalJSON(bytes []byte) (err error) {
 
 	varCreateRulesEngineRequest := _CreateRulesEngineRequest{}
 
-	err = json.Unmarshal(bytes, &varCreateRulesEngineRequest)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreateRulesEngineRequest)
 
 	if err != nil {
 		return err

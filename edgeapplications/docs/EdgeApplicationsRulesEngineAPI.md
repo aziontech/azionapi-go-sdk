@@ -25,31 +25,31 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    phase := "phase_example" // string | 
-    page := int64(789) // int64 |  (optional)
-    pageSize := int64(789) // int64 |  (optional)
-    filter := "filter_example" // string |  (optional)
-    orderBy := "orderBy_example" // string |  (optional)
-    sort := "sort_example" // string |  (optional)
-    accept := "application/json; version=3" // string |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	phase := "phase_example" // string | 
+	page := int64(789) // int64 |  (optional)
+	pageSize := int64(789) // int64 |  (optional)
+	filter := "filter_example" // string |  (optional)
+	orderBy := "orderBy_example" // string |  (optional)
+	sort := "sort_example" // string |  (optional)
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet(context.Background(), edgeApplicationId, phase).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet`: RulesEngineResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet(context.Background(), edgeApplicationId, phase).Page(page).PageSize(pageSize).Filter(filter).OrderBy(orderBy).Sort(sort).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet`: RulesEngineResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesGet`: %v\n", resp)
 }
 ```
 
@@ -110,28 +110,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    phase := "phase_example" // string | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    createRulesEngineRequest := *openapiclient.NewCreateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.RulesEngineBehaviorEntry{*openapiclient.NewRulesEngineBehaviorEntry("Name_example", *openapiclient.NewRulesEngineBehaviorObjectTarget())}) // CreateRulesEngineRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	phase := "phase_example" // string | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	createRulesEngineRequest := *openapiclient.NewCreateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.RulesEngineBehaviorEntry{*openapiclient.NewRulesEngineBehaviorEntry("Name_example", *openapiclient.NewRulesEngineBehaviorObjectTarget())}) // CreateRulesEngineRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost(context.Background(), edgeApplicationId, phase).Accept(accept).ContentType(contentType).CreateRulesEngineRequest(createRulesEngineRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost`: RulesEngineIdResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost(context.Background(), edgeApplicationId, phase).Accept(accept).ContentType(contentType).CreateRulesEngineRequest(createRulesEngineRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost`: RulesEngineIdResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesPost`: %v\n", resp)
 }
 ```
 
@@ -187,25 +187,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | The id of the edge application you plan to delete. 
-    phase := "phase_example" // string | 
-    ruleId := int64(789) // int64 | The id of the rule you plan to delete. 
-    accept := "application/json; version=3" // string |  (optional)
+	edgeApplicationId := int64(789) // int64 | The id of the edge application you plan to delete. 
+	phase := "phase_example" // string | 
+	ruleId := int64(789) // int64 | The id of the rule you plan to delete. 
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -261,27 +261,27 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | The id of the edge application you want to get. 
-    phase := "phase_example" // string | 
-    ruleId := int64(789) // int64 | The id of the rule you plan to delete. 
-    accept := "application/json; version=3" // string |  (optional)
+	edgeApplicationId := int64(789) // int64 | The id of the edge application you want to get. 
+	phase := "phase_example" // string | 
+	ruleId := int64(789) // int64 | The id of the rule you plan to delete. 
+	accept := "application/json; version=3" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet`: RulesEngineIdResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet`: RulesEngineIdResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdGet`: %v\n", resp)
 }
 ```
 
@@ -337,29 +337,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    phase := "phase_example" // string | 
-    ruleId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    patchRulesEngineRequest := *openapiclient.NewPatchRulesEngineRequest() // PatchRulesEngineRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	phase := "phase_example" // string | 
+	ruleId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	patchRulesEngineRequest := *openapiclient.NewPatchRulesEngineRequest() // PatchRulesEngineRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).ContentType(contentType).PatchRulesEngineRequest(patchRulesEngineRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch`: RulesEngineIdResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).ContentType(contentType).PatchRulesEngineRequest(patchRulesEngineRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch`: RulesEngineIdResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPatch`: %v\n", resp)
 }
 ```
 
@@ -417,29 +417,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeApplicationId := int64(789) // int64 | 
-    phase := "phase_example" // string | 
-    ruleId := int64(789) // int64 | 
-    accept := "application/json; version=3" // string |  (optional)
-    contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-    updateRulesEngineRequest := *openapiclient.NewUpdateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.RulesEngineBehaviorEntry{*openapiclient.NewRulesEngineBehaviorEntry("Name_example", *openapiclient.NewRulesEngineBehaviorObjectTarget())}) // UpdateRulesEngineRequest |  (optional)
+	edgeApplicationId := int64(789) // int64 | 
+	phase := "phase_example" // string | 
+	ruleId := int64(789) // int64 | 
+	accept := "application/json; version=3" // string |  (optional)
+	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
+	updateRulesEngineRequest := *openapiclient.NewUpdateRulesEngineRequest("Name_example", [][]RulesEngineCriteria{[]openapiclient.RulesEngineCriteria{*openapiclient.NewRulesEngineCriteria("Conditional_example", "Variable_example", "Operator_example")}}, []openapiclient.RulesEngineBehaviorEntry{*openapiclient.NewRulesEngineBehaviorEntry("Name_example", *openapiclient.NewRulesEngineBehaviorObjectTarget())}) // UpdateRulesEngineRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).ContentType(contentType).UpdateRulesEngineRequest(updateRulesEngineRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut`: RulesEngineIdResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut(context.Background(), edgeApplicationId, phase, ruleId).Accept(accept).ContentType(contentType).UpdateRulesEngineRequest(updateRulesEngineRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut`: RulesEngineIdResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeApplicationsRulesEngineAPI.EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleIdPut`: %v\n", resp)
 }
 ```
 
