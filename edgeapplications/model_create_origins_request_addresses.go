@@ -22,6 +22,9 @@ var _ MappedNullable = &CreateOriginsRequestAddresses{}
 // CreateOriginsRequestAddresses struct for CreateOriginsRequestAddresses
 type CreateOriginsRequestAddresses struct {
 	Address string `json:"address"`
+	IsActive *bool `json:"is_active,omitempty"`
+	Weight NullableInt64 `json:"weight,omitempty"`
+	ServerRole *string `json:"server_role,omitempty" validate:"regexp=^(primary|backup)$"`
 }
 
 type _CreateOriginsRequestAddresses CreateOriginsRequestAddresses
@@ -68,6 +71,112 @@ func (o *CreateOriginsRequestAddresses) SetAddress(v string) {
 	o.Address = v
 }
 
+// GetIsActive returns the IsActive field value if set, zero value otherwise.
+func (o *CreateOriginsRequestAddresses) GetIsActive() bool {
+	if o == nil || IsNil(o.IsActive) {
+		var ret bool
+		return ret
+	}
+	return *o.IsActive
+}
+
+// GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOriginsRequestAddresses) GetIsActiveOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsActive) {
+		return nil, false
+	}
+	return o.IsActive, true
+}
+
+// HasIsActive returns a boolean if a field has been set.
+func (o *CreateOriginsRequestAddresses) HasIsActive() bool {
+	if o != nil && !IsNil(o.IsActive) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
+func (o *CreateOriginsRequestAddresses) SetIsActive(v bool) {
+	o.IsActive = &v
+}
+
+// GetWeight returns the Weight field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateOriginsRequestAddresses) GetWeight() int64 {
+	if o == nil || IsNil(o.Weight.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.Weight.Get()
+}
+
+// GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateOriginsRequestAddresses) GetWeightOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Weight.Get(), o.Weight.IsSet()
+}
+
+// HasWeight returns a boolean if a field has been set.
+func (o *CreateOriginsRequestAddresses) HasWeight() bool {
+	if o != nil && o.Weight.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetWeight gets a reference to the given NullableInt64 and assigns it to the Weight field.
+func (o *CreateOriginsRequestAddresses) SetWeight(v int64) {
+	o.Weight.Set(&v)
+}
+// SetWeightNil sets the value for Weight to be an explicit nil
+func (o *CreateOriginsRequestAddresses) SetWeightNil() {
+	o.Weight.Set(nil)
+}
+
+// UnsetWeight ensures that no value is present for Weight, not even an explicit nil
+func (o *CreateOriginsRequestAddresses) UnsetWeight() {
+	o.Weight.Unset()
+}
+
+// GetServerRole returns the ServerRole field value if set, zero value otherwise.
+func (o *CreateOriginsRequestAddresses) GetServerRole() string {
+	if o == nil || IsNil(o.ServerRole) {
+		var ret string
+		return ret
+	}
+	return *o.ServerRole
+}
+
+// GetServerRoleOk returns a tuple with the ServerRole field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOriginsRequestAddresses) GetServerRoleOk() (*string, bool) {
+	if o == nil || IsNil(o.ServerRole) {
+		return nil, false
+	}
+	return o.ServerRole, true
+}
+
+// HasServerRole returns a boolean if a field has been set.
+func (o *CreateOriginsRequestAddresses) HasServerRole() bool {
+	if o != nil && !IsNil(o.ServerRole) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerRole gets a reference to the given string and assigns it to the ServerRole field.
+func (o *CreateOriginsRequestAddresses) SetServerRole(v string) {
+	o.ServerRole = &v
+}
+
 func (o CreateOriginsRequestAddresses) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -79,6 +188,15 @@ func (o CreateOriginsRequestAddresses) MarshalJSON() ([]byte, error) {
 func (o CreateOriginsRequestAddresses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["address"] = o.Address
+	if !IsNil(o.IsActive) {
+		toSerialize["is_active"] = o.IsActive
+	}
+	if o.Weight.IsSet() {
+		toSerialize["weight"] = o.Weight.Get()
+	}
+	if !IsNil(o.ServerRole) {
+		toSerialize["server_role"] = o.ServerRole
+	}
 	return toSerialize, nil
 }
 

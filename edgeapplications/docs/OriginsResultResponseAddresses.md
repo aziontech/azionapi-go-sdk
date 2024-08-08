@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** |  | 
-**Weight** | **NullableString** |  | 
+**Weight** | **NullableInt64** |  | 
 **ServerRole** | **string** |  | 
 **IsActive** | **bool** |  | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewOriginsResultResponseAddresses
 
-`func NewOriginsResultResponseAddresses(address string, weight NullableString, serverRole string, isActive bool, ) *OriginsResultResponseAddresses`
+`func NewOriginsResultResponseAddresses(address string, weight NullableInt64, serverRole string, isActive bool, ) *OriginsResultResponseAddresses`
 
 NewOriginsResultResponseAddresses instantiates a new OriginsResultResponseAddresses object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetAddress sets Address field to given value.
 
 ### GetWeight
 
-`func (o *OriginsResultResponseAddresses) GetWeight() string`
+`func (o *OriginsResultResponseAddresses) GetWeight() int64`
 
 GetWeight returns the Weight field if non-nil, zero value otherwise.
 
 ### GetWeightOk
 
-`func (o *OriginsResultResponseAddresses) GetWeightOk() (*string, bool)`
+`func (o *OriginsResultResponseAddresses) GetWeightOk() (*int64, bool)`
 
 GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeight
 
-`func (o *OriginsResultResponseAddresses) SetWeight(v string)`
+`func (o *OriginsResultResponseAddresses) SetWeight(v int64)`
 
 SetWeight sets Weight field to given value.
 
