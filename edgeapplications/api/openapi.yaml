@@ -3815,7 +3815,7 @@ components:
       example:
         addresses:
         - address: address
-        - address: address
+          weight: 10
         hmac_secret_key: hmac_secret_key
         origin_path: origin_path
         origin_protocol_policy: origin_protocol_policy
@@ -3956,11 +3956,11 @@ components:
         addresses:
         - address: address
           is_active: true
-          weight: weight
+          weight: 10
           server_role: server_role
         - address: address
           is_active: true
-          weight: weight
+          weight: 10
           server_role: server_role
         hmac_secret_key: hmac_secret_key
         method: method
@@ -4037,11 +4037,11 @@ components:
           addresses:
           - address: address
             is_active: true
-            weight: weight
+            weight: 10
             server_role: server_role
           - address: address
             is_active: true
-            weight: weight
+            weight: 10
             server_role: server_role
           hmac_secret_key: hmac_secret_key
           method: method
@@ -4063,11 +4063,11 @@ components:
           addresses:
           - address: address
             is_active: true
-            weight: weight
+            weight: 10
             server_role: server_role
           - address: address
             is_active: true
-            weight: weight
+            weight: 10
             server_role: server_role
           hmac_secret_key: hmac_secret_key
           method: method
@@ -4115,11 +4115,11 @@ components:
           addresses:
           - address: address
             is_active: true
-            weight: weight
+            weight: 10
             server_role: server_role
           - address: address
             is_active: true
-            weight: weight
+            weight: 10
             server_role: server_role
           hmac_secret_key: hmac_secret_key
           method: method
@@ -4668,8 +4668,22 @@ components:
     CreateOriginsRequest_addresses:
       example:
         address: address
+        is_active: true
+        weight: 10
+        server_role: primary
       properties:
         address:
+          type: string
+        is_active:
+          type: boolean
+        weight:
+          format: int64
+          nullable: true
+          type: integer
+        server_role:
+          maxLength: 10
+          minLength: 1
+          pattern: ^(primary|backup)$
           type: string
       required:
       - address
@@ -4678,14 +4692,15 @@ components:
       example:
         address: address
         is_active: true
-        weight: weight
-        server_role: server_role
+        weight: 10
+        server_role: primary
       properties:
         address:
           type: string
         weight:
+          format: int64
           nullable: true
-          type: string
+          type: integer
         server_role:
           type: string
         is_active:

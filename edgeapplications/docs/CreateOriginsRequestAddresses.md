@@ -5,6 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** |  | 
+**IsActive** | Pointer to **bool** |  | [optional] 
+**Weight** | Pointer to **NullableInt64** |  | [optional] 
+**ServerRole** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -44,6 +47,91 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
+
+### GetIsActive
+
+`func (o *CreateOriginsRequestAddresses) GetIsActive() bool`
+
+GetIsActive returns the IsActive field if non-nil, zero value otherwise.
+
+### GetIsActiveOk
+
+`func (o *CreateOriginsRequestAddresses) GetIsActiveOk() (*bool, bool)`
+
+GetIsActiveOk returns a tuple with the IsActive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsActive
+
+`func (o *CreateOriginsRequestAddresses) SetIsActive(v bool)`
+
+SetIsActive sets IsActive field to given value.
+
+### HasIsActive
+
+`func (o *CreateOriginsRequestAddresses) HasIsActive() bool`
+
+HasIsActive returns a boolean if a field has been set.
+
+### GetWeight
+
+`func (o *CreateOriginsRequestAddresses) GetWeight() int64`
+
+GetWeight returns the Weight field if non-nil, zero value otherwise.
+
+### GetWeightOk
+
+`func (o *CreateOriginsRequestAddresses) GetWeightOk() (*int64, bool)`
+
+GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWeight
+
+`func (o *CreateOriginsRequestAddresses) SetWeight(v int64)`
+
+SetWeight sets Weight field to given value.
+
+### HasWeight
+
+`func (o *CreateOriginsRequestAddresses) HasWeight() bool`
+
+HasWeight returns a boolean if a field has been set.
+
+### SetWeightNil
+
+`func (o *CreateOriginsRequestAddresses) SetWeightNil(b bool)`
+
+ SetWeightNil sets the value for Weight to be an explicit nil
+
+### UnsetWeight
+`func (o *CreateOriginsRequestAddresses) UnsetWeight()`
+
+UnsetWeight ensures that no value is present for Weight, not even an explicit nil
+### GetServerRole
+
+`func (o *CreateOriginsRequestAddresses) GetServerRole() string`
+
+GetServerRole returns the ServerRole field if non-nil, zero value otherwise.
+
+### GetServerRoleOk
+
+`func (o *CreateOriginsRequestAddresses) GetServerRoleOk() (*string, bool)`
+
+GetServerRoleOk returns a tuple with the ServerRole field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerRole
+
+`func (o *CreateOriginsRequestAddresses) SetServerRole(v string)`
+
+SetServerRole sets ServerRole field to given value.
+
+### HasServerRole
+
+`func (o *CreateOriginsRequestAddresses) HasServerRole() bool`
+
+HasServerRole returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
