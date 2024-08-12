@@ -23,7 +23,7 @@ var _ MappedNullable = &CreateOriginsRequestAddresses{}
 type CreateOriginsRequestAddresses struct {
 	Address string `json:"address"`
 	IsActive *bool `json:"is_active,omitempty"`
-	Weight NullableInt64 `json:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty"`
 	ServerRole *string `json:"server_role,omitempty" validate:"regexp=^(primary|backup)$"`
 }
 
@@ -103,46 +103,36 @@ func (o *CreateOriginsRequestAddresses) SetIsActive(v bool) {
 	o.IsActive = &v
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetWeight returns the Weight field value if set, zero value otherwise.
 func (o *CreateOriginsRequestAddresses) GetWeight() int64 {
-	if o == nil || IsNil(o.Weight.Get()) {
+	if o == nil || IsNil(o.Weight) {
 		var ret int64
 		return ret
 	}
-	return *o.Weight.Get()
+	return *o.Weight
 }
 
 // GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateOriginsRequestAddresses) GetWeightOk() (*int64, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Weight) {
 		return nil, false
 	}
-	return o.Weight.Get(), o.Weight.IsSet()
+	return o.Weight, true
 }
 
 // HasWeight returns a boolean if a field has been set.
 func (o *CreateOriginsRequestAddresses) HasWeight() bool {
-	if o != nil && o.Weight.IsSet() {
+	if o != nil && !IsNil(o.Weight) {
 		return true
 	}
 
 	return false
 }
 
-// SetWeight gets a reference to the given NullableInt64 and assigns it to the Weight field.
+// SetWeight gets a reference to the given int64 and assigns it to the Weight field.
 func (o *CreateOriginsRequestAddresses) SetWeight(v int64) {
-	o.Weight.Set(&v)
-}
-// SetWeightNil sets the value for Weight to be an explicit nil
-func (o *CreateOriginsRequestAddresses) SetWeightNil() {
-	o.Weight.Set(nil)
-}
-
-// UnsetWeight ensures that no value is present for Weight, not even an explicit nil
-func (o *CreateOriginsRequestAddresses) UnsetWeight() {
-	o.Weight.Unset()
+	o.Weight = &v
 }
 
 // GetServerRole returns the ServerRole field value if set, zero value otherwise.
@@ -191,8 +181,8 @@ func (o CreateOriginsRequestAddresses) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
 	}
-	if o.Weight.IsSet() {
-		toSerialize["weight"] = o.Weight.Get()
+	if !IsNil(o.Weight) {
+		toSerialize["weight"] = o.Weight
 	}
 	if !IsNil(o.ServerRole) {
 		toSerialize["server_role"] = o.ServerRole

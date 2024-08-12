@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** |  | 
 **IsActive** | Pointer to **bool** |  | [optional] 
-**Weight** | Pointer to **NullableInt64** |  | [optional] 
+**Weight** | Pointer to **int64** |  | [optional] 
 **ServerRole** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -98,16 +98,6 @@ SetWeight sets Weight field to given value.
 
 HasWeight returns a boolean if a field has been set.
 
-### SetWeightNil
-
-`func (o *CreateOriginsRequestAddresses) SetWeightNil(b bool)`
-
- SetWeightNil sets the value for Weight to be an explicit nil
-
-### UnsetWeight
-`func (o *CreateOriginsRequestAddresses) UnsetWeight()`
-
-UnsetWeight ensures that no value is present for Weight, not even an explicit nil
 ### GetServerRole
 
 `func (o *CreateOriginsRequestAddresses) GetServerRole() string`
