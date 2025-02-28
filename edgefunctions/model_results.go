@@ -199,7 +199,7 @@ func (o *Results) GetJsonArgsOk() (*interface{}, bool) {
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *Results) HasJsonArgs() bool {
-	if o != nil && IsNil(o.JsonArgs) {
+	if o != nil && !IsNil(o.JsonArgs) {
 		return true
 	}
 

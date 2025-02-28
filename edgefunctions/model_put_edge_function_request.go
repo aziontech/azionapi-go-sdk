@@ -21,7 +21,7 @@ var _ MappedNullable = &PutEdgeFunctionRequest{}
 type PutEdgeFunctionRequest struct {
 	Name *string `json:"name,omitempty"`
 	Code *string `json:"code,omitempty"`
-	JsonArgs interface{} `json:"json_args,omitempty"`
+	JsonArgs *CreateEdgeFunctionRequestJsonArgs `json:"json_args,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	InitiatorType *string `json:"initiator_type,omitempty"`
 	Language *string `json:"language,omitempty"`
@@ -109,37 +109,36 @@ func (o *PutEdgeFunctionRequest) SetCode(v string) {
 	o.Code = &v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PutEdgeFunctionRequest) GetJsonArgs() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
+func (o *PutEdgeFunctionRequest) GetJsonArgs() CreateEdgeFunctionRequestJsonArgs {
+	if o == nil || IsNil(o.JsonArgs) {
+		var ret CreateEdgeFunctionRequestJsonArgs
 		return ret
 	}
-	return o.JsonArgs
+	return *o.JsonArgs
 }
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PutEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool) {
+func (o *PutEdgeFunctionRequest) GetJsonArgsOk() (*CreateEdgeFunctionRequestJsonArgs, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
-	return &o.JsonArgs, true
+	return o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *PutEdgeFunctionRequest) HasJsonArgs() bool {
-	if o != nil && IsNil(o.JsonArgs) {
+	if o != nil && !IsNil(o.JsonArgs) {
 		return true
 	}
 
 	return false
 }
 
-// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
-func (o *PutEdgeFunctionRequest) SetJsonArgs(v interface{}) {
-	o.JsonArgs = v
+// SetJsonArgs gets a reference to the given CreateEdgeFunctionRequestJsonArgs and assigns it to the JsonArgs field.
+func (o *PutEdgeFunctionRequest) SetJsonArgs(v CreateEdgeFunctionRequestJsonArgs) {
+	o.JsonArgs = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -286,7 +285,7 @@ func (o PutEdgeFunctionRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if o.JsonArgs != nil {
+	if !IsNil(o.JsonArgs) {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	if !IsNil(o.Active) {

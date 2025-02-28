@@ -357,6 +357,8 @@ components:
       required: true
   schemas:
     ErrorResponse:
+      example:
+        detail: detail
       properties:
         detail:
           type: string
@@ -467,7 +469,7 @@ components:
         name: name
         active: true
         language: language
-        json_args: ""
+        json_args: {}
         initiator_type: edge_application
       properties:
         name:
@@ -476,7 +478,8 @@ components:
           type: string
         code:
           type: string
-        json_args: {}
+        json_args:
+          $ref: '#/components/schemas/CreateEdgeFunctionRequest_json_args'
         initiator_type:
           enum:
           - edge_application
@@ -488,6 +491,19 @@ components:
           type: boolean
       type: object
     BadRequestResponse:
+      example:
+        code:
+        - code
+        - code
+        name:
+        - name
+        - name
+        active:
+        - active
+        - active
+        language:
+        - language
+        - language
       properties:
         name:
           items:
@@ -532,7 +548,7 @@ components:
         code: code
         name: name
         active: true
-        json_args: ""
+        json_args: {}
         language: language
         initiator_type: edge_application
       properties:
@@ -540,7 +556,8 @@ components:
           type: string
         code:
           type: string
-        json_args: {}
+        json_args:
+          $ref: '#/components/schemas/CreateEdgeFunctionRequest_json_args'
         active:
           type: boolean
         initiator_type:
@@ -558,18 +575,25 @@ components:
         code: code
         name: name
         active: true
-        json_args: ""
+        json_args: {}
       properties:
         name:
           type: string
         code:
           type: string
-        json_args: {}
+        json_args:
+          $ref: '#/components/schemas/CreateEdgeFunctionRequest_json_args'
         active:
           type: boolean
         is_proprietary_code:
           type: boolean
       type: object
+    CreateEdgeFunctionRequest_json_args:
+      oneOf:
+      - type: object
+      - items:
+          type: object
+        type: array
   securitySchemes:
     tokenAuth:
       description: |
