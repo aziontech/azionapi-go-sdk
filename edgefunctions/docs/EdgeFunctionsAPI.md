@@ -25,27 +25,27 @@ edge_functions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    page := int64(789) // int64 |  (optional)
-    pageSize := int64(789) // int64 |  (optional)
-    sort := "sort_example" // string |  (optional)
-    orderBy := "orderBy_example" // string |  (optional)
+	page := int64(789) // int64 |  (optional)
+	pageSize := int64(789) // int64 |  (optional)
+	sort := "sort_example" // string |  (optional)
+	orderBy := "orderBy_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFunctionsGet`: ListEdgeFunctionResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFunctionsGet`: ListEdgeFunctionResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsGet`: %v\n", resp)
 }
 ```
 
@@ -95,22 +95,22 @@ edge_functions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -161,24 +161,24 @@ edge_functions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int64(789) // int64 | 
+	id := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFunctionsIdGet`: EdgeFunctionResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFunctionsIdGet`: EdgeFunctionResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsIdGet`: %v\n", resp)
 }
 ```
 
@@ -229,25 +229,25 @@ edge_functions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int64(789) // int64 | 
-    patchEdgeFunctionRequest := *openapiclient.NewPatchEdgeFunctionRequest() // PatchEdgeFunctionRequest | 
+	id := int64(789) // int64 | 
+	patchEdgeFunctionRequest := *openapiclient.NewPatchEdgeFunctionRequest() // PatchEdgeFunctionRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsIdPatch(context.Background(), id).PatchEdgeFunctionRequest(patchEdgeFunctionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsIdPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFunctionsIdPatch`: EdgeFunctionResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsIdPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsIdPatch(context.Background(), id).PatchEdgeFunctionRequest(patchEdgeFunctionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFunctionsIdPatch`: EdgeFunctionResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsIdPatch`: %v\n", resp)
 }
 ```
 
@@ -299,25 +299,25 @@ edge_functions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int64(789) // int64 | 
-    putEdgeFunctionRequest := *openapiclient.NewPutEdgeFunctionRequest() // PutEdgeFunctionRequest | 
+	id := int64(789) // int64 | 
+	putEdgeFunctionRequest := *openapiclient.NewPutEdgeFunctionRequest() // PutEdgeFunctionRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsIdPut(context.Background(), id).PutEdgeFunctionRequest(putEdgeFunctionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFunctionsIdPut`: EdgeFunctionResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsIdPut(context.Background(), id).PutEdgeFunctionRequest(putEdgeFunctionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFunctionsIdPut`: EdgeFunctionResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsIdPut`: %v\n", resp)
 }
 ```
 
@@ -369,24 +369,24 @@ edge_functions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    createEdgeFunctionRequest := *openapiclient.NewCreateEdgeFunctionRequest() // CreateEdgeFunctionRequest | 
+	createEdgeFunctionRequest := *openapiclient.NewCreateEdgeFunctionRequest() // CreateEdgeFunctionRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsPost(context.Background()).CreateEdgeFunctionRequest(createEdgeFunctionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFunctionsPost`: EdgeFunctionResponse
-    fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EdgeFunctionsAPI.EdgeFunctionsPost(context.Background()).CreateEdgeFunctionRequest(createEdgeFunctionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EdgeFunctionsAPI.EdgeFunctionsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFunctionsPost`: EdgeFunctionResponse
+	fmt.Fprintf(os.Stdout, "Response from `EdgeFunctionsAPI.EdgeFunctionsPost`: %v\n", resp)
 }
 ```
 
