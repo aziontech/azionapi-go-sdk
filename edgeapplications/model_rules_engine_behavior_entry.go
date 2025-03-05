@@ -15,6 +15,7 @@ import (
 	"fmt"
 )
 
+
 // RulesEngineBehaviorEntry struct for RulesEngineBehaviorEntry
 type RulesEngineBehaviorEntry struct {
 	RulesEngineBehaviorObject *RulesEngineBehaviorObject
@@ -54,7 +55,7 @@ func (dst *RulesEngineBehaviorEntry) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *RulesEngineBehaviorEntry) MarshalJSON() ([]byte, error) {
+func (src RulesEngineBehaviorEntry) MarshalJSON() ([]byte, error) {
 	if src.RulesEngineBehaviorObject != nil {
 		return json.Marshal(&src.RulesEngineBehaviorObject)
 	}
@@ -65,6 +66,7 @@ func (src *RulesEngineBehaviorEntry) MarshalJSON() ([]byte, error) {
 
 	return nil, nil // no data in anyOf schemas
 }
+
 
 type NullableRulesEngineBehaviorEntry struct {
 	value *RulesEngineBehaviorEntry

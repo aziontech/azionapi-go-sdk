@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
-**JsonArgs** | Pointer to [**CreateEdgeFunctionRequestJsonArgs**](CreateEdgeFunctionRequestJsonArgs.md) |  | [optional] 
+**JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **InitiatorType** | Pointer to **string** |  | [optional] 
 **Language** | Pointer to **string** |  | [optional] 
@@ -83,20 +83,20 @@ HasCode returns a boolean if a field has been set.
 
 ### GetJsonArgs
 
-`func (o *PutEdgeFunctionRequest) GetJsonArgs() CreateEdgeFunctionRequestJsonArgs`
+`func (o *PutEdgeFunctionRequest) GetJsonArgs() interface{}`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *PutEdgeFunctionRequest) GetJsonArgsOk() (*CreateEdgeFunctionRequestJsonArgs, bool)`
+`func (o *PutEdgeFunctionRequest) GetJsonArgsOk() (*interface{}, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *PutEdgeFunctionRequest) SetJsonArgs(v CreateEdgeFunctionRequestJsonArgs)`
+`func (o *PutEdgeFunctionRequest) SetJsonArgs(v interface{})`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -106,6 +106,16 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
+### SetJsonArgsNil
+
+`func (o *PutEdgeFunctionRequest) SetJsonArgsNil(b bool)`
+
+ SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
+
+### UnsetJsonArgs
+`func (o *PutEdgeFunctionRequest) UnsetJsonArgs()`
+
+UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetActive
 
 `func (o *PutEdgeFunctionRequest) GetActive() bool`
