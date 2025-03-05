@@ -90,7 +90,6 @@ Class | Method | HTTP request | Description
 
  - [BadRequestResponse](docs/BadRequestResponse.md)
  - [CreateEdgeFunctionRequest](docs/CreateEdgeFunctionRequest.md)
- - [CreateEdgeFunctionRequestJsonArgs](docs/CreateEdgeFunctionRequestJsonArgs.md)
  - [EdgeFunctionResponse](docs/EdgeFunctionResponse.md)
  - [ErrorResponse](docs/ErrorResponse.md)
  - [Links](docs/Links.md)

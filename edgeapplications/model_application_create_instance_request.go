@@ -23,7 +23,7 @@ var _ MappedNullable = &ApplicationCreateInstanceRequest{}
 type ApplicationCreateInstanceRequest struct {
 	Name string `json:"name"`
 	EdgeFunctionId int64 `json:"edge_function_id"`
-	Args interface{} `json:"args"`
+	Args ApplicationCreateInstanceRequestArgs `json:"args"`
 }
 
 type _ApplicationCreateInstanceRequest ApplicationCreateInstanceRequest
@@ -32,7 +32,7 @@ type _ApplicationCreateInstanceRequest ApplicationCreateInstanceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationCreateInstanceRequest(name string, edgeFunctionId int64, args interface{}) *ApplicationCreateInstanceRequest {
+func NewApplicationCreateInstanceRequest(name string, edgeFunctionId int64, args ApplicationCreateInstanceRequestArgs) *ApplicationCreateInstanceRequest {
 	this := ApplicationCreateInstanceRequest{}
 	this.Name = name
 	this.EdgeFunctionId = edgeFunctionId
@@ -97,10 +97,9 @@ func (o *ApplicationCreateInstanceRequest) SetEdgeFunctionId(v int64) {
 }
 
 // GetArgs returns the Args field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ApplicationCreateInstanceRequest) GetArgs() interface{} {
+func (o *ApplicationCreateInstanceRequest) GetArgs() ApplicationCreateInstanceRequestArgs {
 	if o == nil {
-		var ret interface{}
+		var ret ApplicationCreateInstanceRequestArgs
 		return ret
 	}
 
@@ -109,16 +108,15 @@ func (o *ApplicationCreateInstanceRequest) GetArgs() interface{} {
 
 // GetArgsOk returns a tuple with the Args field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationCreateInstanceRequest) GetArgsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Args) {
+func (o *ApplicationCreateInstanceRequest) GetArgsOk() (*ApplicationCreateInstanceRequestArgs, bool) {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Args, true
 }
 
 // SetArgs sets field value
-func (o *ApplicationCreateInstanceRequest) SetArgs(v interface{}) {
+func (o *ApplicationCreateInstanceRequest) SetArgs(v ApplicationCreateInstanceRequestArgs) {
 	o.Args = v
 }
 
@@ -134,9 +132,7 @@ func (o ApplicationCreateInstanceRequest) ToMap() (map[string]interface{}, error
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["edge_function_id"] = o.EdgeFunctionId
-	if o.Args != nil {
-		toSerialize["args"] = o.Args
-	}
+	toSerialize["args"] = o.Args
 	return toSerialize, nil
 }
 
