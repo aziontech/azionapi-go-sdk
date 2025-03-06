@@ -23,7 +23,7 @@ var _ MappedNullable = &ApplicationUpdateInstanceRequest{}
 type ApplicationUpdateInstanceRequest struct {
 	Name NullableString `json:"name"`
 	EdgeFunctionId NullableInt64 `json:"edge_function_id"`
-	Args ApplicationCreateInstanceRequestArgs `json:"args"`
+	Args ApplicationInstancesResultsArgs `json:"args"`
 }
 
 type _ApplicationUpdateInstanceRequest ApplicationUpdateInstanceRequest
@@ -32,7 +32,7 @@ type _ApplicationUpdateInstanceRequest ApplicationUpdateInstanceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationUpdateInstanceRequest(name NullableString, edgeFunctionId NullableInt64, args ApplicationCreateInstanceRequestArgs) *ApplicationUpdateInstanceRequest {
+func NewApplicationUpdateInstanceRequest(name NullableString, edgeFunctionId NullableInt64, args ApplicationInstancesResultsArgs) *ApplicationUpdateInstanceRequest {
 	this := ApplicationUpdateInstanceRequest{}
 	this.Name = name
 	this.EdgeFunctionId = edgeFunctionId
@@ -101,9 +101,9 @@ func (o *ApplicationUpdateInstanceRequest) SetEdgeFunctionId(v int64) {
 }
 
 // GetArgs returns the Args field value
-func (o *ApplicationUpdateInstanceRequest) GetArgs() ApplicationCreateInstanceRequestArgs {
+func (o *ApplicationUpdateInstanceRequest) GetArgs() ApplicationInstancesResultsArgs {
 	if o == nil {
-		var ret ApplicationCreateInstanceRequestArgs
+		var ret ApplicationInstancesResultsArgs
 		return ret
 	}
 
@@ -112,7 +112,7 @@ func (o *ApplicationUpdateInstanceRequest) GetArgs() ApplicationCreateInstanceRe
 
 // GetArgsOk returns a tuple with the Args field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationUpdateInstanceRequest) GetArgsOk() (*ApplicationCreateInstanceRequestArgs, bool) {
+func (o *ApplicationUpdateInstanceRequest) GetArgsOk() (*ApplicationInstancesResultsArgs, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *ApplicationUpdateInstanceRequest) GetArgsOk() (*ApplicationCreateInstan
 }
 
 // SetArgs sets field value
-func (o *ApplicationUpdateInstanceRequest) SetArgs(v ApplicationCreateInstanceRequestArgs) {
+func (o *ApplicationUpdateInstanceRequest) SetArgs(v ApplicationInstancesResultsArgs) {
 	o.Args = v
 }
 

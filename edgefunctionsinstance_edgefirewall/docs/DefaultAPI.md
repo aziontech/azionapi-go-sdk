@@ -25,23 +25,23 @@ Delete an Edge Functions Instance by uuid
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeFirewallId := int64(789) // int64 | 
-    edgeFunctionInstanceId := int64(789) // int64 | 
+	edgeFirewallId := int64(789) // int64 | 
+	edgeFunctionInstanceId := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete(context.Background(), edgeFirewallId, edgeFunctionInstanceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete(context.Background(), edgeFirewallId, edgeFunctionInstanceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -94,25 +94,25 @@ Retrieve an Edge Functions Instance set by uuid
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeFirewallId := int64(789) // int64 | 
-    edgeFunctionInstanceId := int64(789) // int64 | 
+	edgeFirewallId := int64(789) // int64 | 
+	edgeFunctionInstanceId := int64(789) // int64 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet(context.Background(), edgeFirewallId, edgeFunctionInstanceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet`: EdgeFunctionsInstanceResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet(context.Background(), edgeFirewallId, edgeFunctionInstanceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet`: EdgeFunctionsInstanceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet`: %v\n", resp)
 }
 ```
 
@@ -165,26 +165,26 @@ Update some Edge Functions Instance attributes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeFirewallId := int64(789) // int64 | 
-    edgeFunctionInstanceId := int64(789) // int64 | 
-    body := CreateEdgeFunctionsInstancesRequest(987) // CreateEdgeFunctionsInstancesRequest | 
+	edgeFirewallId := int64(789) // int64 | 
+	edgeFunctionInstanceId := int64(789) // int64 | 
+	body := CreateEdgeFunctionsInstancesRequest(987) // CreateEdgeFunctionsInstancesRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch(context.Background(), edgeFirewallId, edgeFunctionInstanceId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch`: EdgeFunctionsInstanceResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch(context.Background(), edgeFirewallId, edgeFunctionInstanceId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch`: EdgeFunctionsInstanceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch`: %v\n", resp)
 }
 ```
 
@@ -238,26 +238,26 @@ Overwrite some Edge Functions Instance attributes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeFirewallId := int64(789) // int64 | 
-    edgeFunctionInstanceId := int64(789) // int64 | 
-    body := CreateEdgeFunctionsInstancesRequest(987) // CreateEdgeFunctionsInstancesRequest | 
+	edgeFirewallId := int64(789) // int64 | 
+	edgeFunctionInstanceId := int64(789) // int64 | 
+	body := CreateEdgeFunctionsInstancesRequest(987) // CreateEdgeFunctionsInstancesRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut(context.Background(), edgeFirewallId, edgeFunctionInstanceId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut`: EdgeFunctionsInstanceResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut(context.Background(), edgeFirewallId, edgeFunctionInstanceId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut`: EdgeFunctionsInstanceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut`: %v\n", resp)
 }
 ```
 
@@ -311,28 +311,28 @@ List all user Edge Functions Instances
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeFirewallId := int64(789) // int64 | 
-    page := int64(789) // int64 |  (optional)
-    pageSize := int64(789) // int64 |  (optional)
-    sort := "sort_example" // string |  (optional)
-    orderBy := "orderBy_example" // string |  (optional)
+	edgeFirewallId := int64(789) // int64 | 
+	page := int64(789) // int64 |  (optional)
+	pageSize := int64(789) // int64 |  (optional)
+	sort := "sort_example" // string |  (optional)
+	orderBy := "orderBy_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesGet(context.Background(), edgeFirewallId).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesGet`: ListEdgeFunctionsInstancesResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesGet(context.Background(), edgeFirewallId).Page(page).PageSize(pageSize).Sort(sort).OrderBy(orderBy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesGet`: ListEdgeFunctionsInstancesResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesGet`: %v\n", resp)
 }
 ```
 
@@ -387,25 +387,25 @@ Create an Edge Functions Instance
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    edgeFirewallId := int64(789) // int64 | 
-    createEdgeFunctionsInstancesRequest := *openapiclient.NewCreateEdgeFunctionsInstancesRequest() // CreateEdgeFunctionsInstancesRequest | 
+	edgeFirewallId := int64(789) // int64 | 
+	createEdgeFunctionsInstancesRequest := *openapiclient.NewCreateEdgeFunctionsInstancesRequest() // CreateEdgeFunctionsInstancesRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesPost(context.Background(), edgeFirewallId).CreateEdgeFunctionsInstancesRequest(createEdgeFunctionsInstancesRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesPost`: EdgeFunctionsInstanceResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesPost(context.Background(), edgeFirewallId).CreateEdgeFunctionsInstancesRequest(createEdgeFunctionsInstancesRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EdgeFirewallEdgeFirewallIdFunctionsInstancesPost`: EdgeFunctionsInstanceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.EdgeFirewallEdgeFirewallIdFunctionsInstancesPost`: %v\n", resp)
 }
 ```
 

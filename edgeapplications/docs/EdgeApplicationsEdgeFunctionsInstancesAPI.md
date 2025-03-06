@@ -182,7 +182,7 @@ func main() {
 	functionsInstancesId := "functionsInstancesId_example" // string | The id of the edge function instance you plan to overwrite.
 	accept := "application/json; version=3" // string |  (optional)
 	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-	applicationUpdateInstanceRequest := *openapiclient.NewApplicationUpdateInstanceRequest("Name_example", NullableInt64(123), openapiclient.ApplicationCreateInstanceRequest_args{ArrayOfMapmapOfStringAny: new([]map[string]interface{})}) // ApplicationUpdateInstanceRequest |  (optional)
+	applicationUpdateInstanceRequest := *openapiclient.NewApplicationUpdateInstanceRequest("Name_example", NullableInt64(123), openapiclient.ApplicationInstancesResults_args{ArrayOfMapmapOfStringAny: new([]map[string]interface{})}) // ApplicationUpdateInstanceRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -259,7 +259,7 @@ func main() {
 	functionsInstancesId := "functionsInstancesId_example" // string | The id of the edge function instance you plan to overwrite.
 	accept := "application/json; version=3" // string |  (optional)
 	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-	applicationPutInstanceRequest := *openapiclient.NewApplicationPutInstanceRequest("Name_example", int64(123), openapiclient.ApplicationCreateInstanceRequest_args{ArrayOfMapmapOfStringAny: new([]map[string]interface{})}) // ApplicationPutInstanceRequest |  (optional)
+	applicationPutInstanceRequest := *openapiclient.NewApplicationPutInstanceRequest("Name_example", int64(123), openapiclient.ApplicationInstancesResults_args{ArrayOfMapmapOfStringAny: new([]map[string]interface{})}) // ApplicationPutInstanceRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -415,7 +415,7 @@ func main() {
 	edgeApplicationId := int64(789) // int64 | 
 	accept := "application/json; version=3" // string |  (optional)
 	contentType := "application/json" // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json (optional)
-	applicationCreateInstanceRequest := *openapiclient.NewApplicationCreateInstanceRequest("Name_example", int64(123), openapiclient.ApplicationCreateInstanceRequest_args{ArrayOfMapmapOfStringAny: new([]map[string]interface{})}) // ApplicationCreateInstanceRequest |  (optional)
+	applicationCreateInstanceRequest := *openapiclient.NewApplicationCreateInstanceRequest("Name_example", int64(123), openapiclient.ApplicationInstancesResults_args{ArrayOfMapmapOfStringAny: new([]map[string]interface{})}) // ApplicationCreateInstanceRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

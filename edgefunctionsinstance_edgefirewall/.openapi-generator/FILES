@@ -8,6 +8,7 @@ configuration.go
 docs/CreateEdgeFunctionsInstancesRequest.md
 docs/DefaultAPI.md
 docs/EdgeFunctionsInstance.md
+docs/EdgeFunctionsInstanceJsonArgs.md
 docs/EdgeFunctionsInstanceResponse.md
 docs/Links.md
 docs/ListEdgeFunctionsInstancesResponse.md
@@ -16,6 +17,7 @@ go.mod
 go.sum
 model_create_edge_functions_instances_request.go
 model_edge_functions_instance.go
+model_edge_functions_instance_json_args.go
 model_edge_functions_instance_response.go
 model_links.go
 model_list_edge_functions_instances_response.go

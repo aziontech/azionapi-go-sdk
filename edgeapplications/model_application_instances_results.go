@@ -24,7 +24,7 @@ type ApplicationInstancesResults struct {
 	Id int64 `json:"id"`
 	EdgeFunctionId int64 `json:"edge_function_id"`
 	Name string `json:"name"`
-	Args interface{} `json:"args"`
+	Args ApplicationInstancesResultsArgs `json:"args"`
 }
 
 type _ApplicationInstancesResults ApplicationInstancesResults
@@ -33,7 +33,7 @@ type _ApplicationInstancesResults ApplicationInstancesResults
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationInstancesResults(id int64, edgeFunctionId int64, name string, args interface{}) *ApplicationInstancesResults {
+func NewApplicationInstancesResults(id int64, edgeFunctionId int64, name string, args ApplicationInstancesResultsArgs) *ApplicationInstancesResults {
 	this := ApplicationInstancesResults{}
 	this.Id = id
 	this.EdgeFunctionId = edgeFunctionId
@@ -123,10 +123,9 @@ func (o *ApplicationInstancesResults) SetName(v string) {
 }
 
 // GetArgs returns the Args field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ApplicationInstancesResults) GetArgs() interface{} {
+func (o *ApplicationInstancesResults) GetArgs() ApplicationInstancesResultsArgs {
 	if o == nil {
-		var ret interface{}
+		var ret ApplicationInstancesResultsArgs
 		return ret
 	}
 
@@ -135,16 +134,15 @@ func (o *ApplicationInstancesResults) GetArgs() interface{} {
 
 // GetArgsOk returns a tuple with the Args field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationInstancesResults) GetArgsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Args) {
+func (o *ApplicationInstancesResults) GetArgsOk() (*ApplicationInstancesResultsArgs, bool) {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Args, true
 }
 
 // SetArgs sets field value
-func (o *ApplicationInstancesResults) SetArgs(v interface{}) {
+func (o *ApplicationInstancesResults) SetArgs(v ApplicationInstancesResultsArgs) {
 	o.Args = v
 }
 
@@ -161,9 +159,7 @@ func (o ApplicationInstancesResults) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["edge_function_id"] = o.EdgeFunctionId
 	toSerialize["name"] = o.Name
-	if o.Args != nil {
-		toSerialize["args"] = o.Args
-	}
+	toSerialize["args"] = o.Args
 	return toSerialize, nil
 }
 
