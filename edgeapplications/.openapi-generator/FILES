@@ -22,11 +22,11 @@ docs/ApplicationCachePutResponse.md
 docs/ApplicationCacheResponseDetails.md
 docs/ApplicationCacheResults.md
 docs/ApplicationCreateInstanceRequest.md
-docs/ApplicationCreateInstanceRequestArgs.md
 docs/ApplicationInstanceResults.md
 docs/ApplicationInstancesGetOneResponse.md
 docs/ApplicationInstancesGetResponse.md
 docs/ApplicationInstancesResults.md
+docs/ApplicationInstancesResultsArgs.md
 docs/ApplicationLinks.md
 docs/ApplicationOrigins.md
 docs/ApplicationPutInstanceRequest.md
@@ -91,11 +91,11 @@ model_application_cache_put_response.go
 model_application_cache_response_details.go
 model_application_cache_results.go
 model_application_create_instance_request.go
-model_application_create_instance_request_args.go
 model_application_instance_results.go
 model_application_instances_get_one_response.go
 model_application_instances_get_response.go
 model_application_instances_results.go
+model_application_instances_results_args.go
 model_application_links.go
 model_application_origins.go
 model_application_put_instance_request.go

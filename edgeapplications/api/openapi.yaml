@@ -3738,7 +3738,8 @@ components:
           type: integer
         name:
           type: string
-        args: {}
+        args:
+          $ref: '#/components/schemas/ApplicationInstancesResults_args'
       required:
       - args
       - edge_function_id
@@ -3756,7 +3757,7 @@ components:
           format: int64
           type: integer
         args:
-          $ref: '#/components/schemas/ApplicationCreateInstanceRequest_args'
+          $ref: '#/components/schemas/ApplicationInstancesResults_args'
       required:
       - args
       - edge_function_id
@@ -3773,7 +3774,7 @@ components:
           format: int64
           type: integer
         args:
-          $ref: '#/components/schemas/ApplicationCreateInstanceRequest_args'
+          $ref: '#/components/schemas/ApplicationInstancesResults_args'
       required:
       - args
       - edge_function_id
@@ -3792,7 +3793,7 @@ components:
           nullable: true
           type: integer
         args:
-          $ref: '#/components/schemas/ApplicationCreateInstanceRequest_args'
+          $ref: '#/components/schemas/ApplicationInstancesResults_args'
       required:
       - args
       - edge_function_id
@@ -4740,7 +4741,7 @@ components:
           nullable: true
           type: string
       type: object
-    ApplicationCreateInstanceRequest_args:
+    ApplicationInstancesResults_args:
       oneOf:
       - type: object
       - items:

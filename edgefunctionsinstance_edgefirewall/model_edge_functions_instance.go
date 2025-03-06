@@ -23,7 +23,7 @@ type EdgeFunctionsInstance struct {
 	Name *string `json:"name,omitempty"`
 	LastEditor *string `json:"last_editor,omitempty"`
 	LastModified *string `json:"last_modified,omitempty"`
-	JsonArgs interface{} `json:"json_args,omitempty"`
+	JsonArgs *EdgeFunctionsInstanceJsonArgs `json:"json_args,omitempty"`
 	EdgeFunction *int64 `json:"edge_function,omitempty"`
 }
 
@@ -172,37 +172,36 @@ func (o *EdgeFunctionsInstance) SetLastModified(v string) {
 	o.LastModified = &v
 }
 
-// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EdgeFunctionsInstance) GetJsonArgs() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
+func (o *EdgeFunctionsInstance) GetJsonArgs() EdgeFunctionsInstanceJsonArgs {
+	if o == nil || IsNil(o.JsonArgs) {
+		var ret EdgeFunctionsInstanceJsonArgs
 		return ret
 	}
-	return o.JsonArgs
+	return *o.JsonArgs
 }
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EdgeFunctionsInstance) GetJsonArgsOk() (*interface{}, bool) {
+func (o *EdgeFunctionsInstance) GetJsonArgsOk() (*EdgeFunctionsInstanceJsonArgs, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
-	return &o.JsonArgs, true
+	return o.JsonArgs, true
 }
 
 // HasJsonArgs returns a boolean if a field has been set.
 func (o *EdgeFunctionsInstance) HasJsonArgs() bool {
-	if o != nil && IsNil(o.JsonArgs) {
+	if o != nil && !IsNil(o.JsonArgs) {
 		return true
 	}
 
 	return false
 }
 
-// SetJsonArgs gets a reference to the given interface{} and assigns it to the JsonArgs field.
-func (o *EdgeFunctionsInstance) SetJsonArgs(v interface{}) {
-	o.JsonArgs = v
+// SetJsonArgs gets a reference to the given EdgeFunctionsInstanceJsonArgs and assigns it to the JsonArgs field.
+func (o *EdgeFunctionsInstance) SetJsonArgs(v EdgeFunctionsInstanceJsonArgs) {
+	o.JsonArgs = &v
 }
 
 // GetEdgeFunction returns the EdgeFunction field value if set, zero value otherwise.
@@ -259,7 +258,7 @@ func (o EdgeFunctionsInstance) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastModified) {
 		toSerialize["last_modified"] = o.LastModified
 	}
-	if o.JsonArgs != nil {
+	if !IsNil(o.JsonArgs) {
 		toSerialize["json_args"] = o.JsonArgs
 	}
 	if !IsNil(o.EdgeFunction) {
