@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **EdgeFunctionId** | **int64** |  | 
-**Args** | [**ApplicationInstancesResultsArgs**](ApplicationInstancesResultsArgs.md) |  | 
+**Args** | [**ApplicationCreateInstanceRequestArgs**](ApplicationCreateInstanceRequestArgs.md) |  | 
 
 ## Methods
 
 ### NewApplicationPutInstanceRequest
 
-`func NewApplicationPutInstanceRequest(name string, edgeFunctionId int64, args ApplicationInstancesResultsArgs, ) *ApplicationPutInstanceRequest`
+`func NewApplicationPutInstanceRequest(name string, edgeFunctionId int64, args ApplicationCreateInstanceRequestArgs, ) *ApplicationPutInstanceRequest`
 
 NewApplicationPutInstanceRequest instantiates a new ApplicationPutInstanceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetEdgeFunctionId sets EdgeFunctionId field to given value.
 
 ### GetArgs
 
-`func (o *ApplicationPutInstanceRequest) GetArgs() ApplicationInstancesResultsArgs`
+`func (o *ApplicationPutInstanceRequest) GetArgs() ApplicationCreateInstanceRequestArgs`
 
 GetArgs returns the Args field if non-nil, zero value otherwise.
 
 ### GetArgsOk
 
-`func (o *ApplicationPutInstanceRequest) GetArgsOk() (*ApplicationInstancesResultsArgs, bool)`
+`func (o *ApplicationPutInstanceRequest) GetArgsOk() (*ApplicationCreateInstanceRequestArgs, bool)`
 
 GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArgs
 
-`func (o *ApplicationPutInstanceRequest) SetArgs(v ApplicationInstancesResultsArgs)`
+`func (o *ApplicationPutInstanceRequest) SetArgs(v ApplicationCreateInstanceRequestArgs)`
 
 SetArgs sets Args field to given value.
 

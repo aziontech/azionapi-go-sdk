@@ -23,7 +23,7 @@ var _ MappedNullable = &ApplicationPutInstanceRequest{}
 type ApplicationPutInstanceRequest struct {
 	Name string `json:"name"`
 	EdgeFunctionId int64 `json:"edge_function_id"`
-	Args ApplicationInstancesResultsArgs `json:"args"`
+	Args ApplicationCreateInstanceRequestArgs `json:"args"`
 }
 
 type _ApplicationPutInstanceRequest ApplicationPutInstanceRequest
@@ -32,7 +32,7 @@ type _ApplicationPutInstanceRequest ApplicationPutInstanceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationPutInstanceRequest(name string, edgeFunctionId int64, args ApplicationInstancesResultsArgs) *ApplicationPutInstanceRequest {
+func NewApplicationPutInstanceRequest(name string, edgeFunctionId int64, args ApplicationCreateInstanceRequestArgs) *ApplicationPutInstanceRequest {
 	this := ApplicationPutInstanceRequest{}
 	this.Name = name
 	this.EdgeFunctionId = edgeFunctionId
@@ -97,9 +97,9 @@ func (o *ApplicationPutInstanceRequest) SetEdgeFunctionId(v int64) {
 }
 
 // GetArgs returns the Args field value
-func (o *ApplicationPutInstanceRequest) GetArgs() ApplicationInstancesResultsArgs {
+func (o *ApplicationPutInstanceRequest) GetArgs() ApplicationCreateInstanceRequestArgs {
 	if o == nil {
-		var ret ApplicationInstancesResultsArgs
+		var ret ApplicationCreateInstanceRequestArgs
 		return ret
 	}
 
@@ -108,7 +108,7 @@ func (o *ApplicationPutInstanceRequest) GetArgs() ApplicationInstancesResultsArg
 
 // GetArgsOk returns a tuple with the Args field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationPutInstanceRequest) GetArgsOk() (*ApplicationInstancesResultsArgs, bool) {
+func (o *ApplicationPutInstanceRequest) GetArgsOk() (*ApplicationCreateInstanceRequestArgs, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *ApplicationPutInstanceRequest) GetArgsOk() (*ApplicationInstancesResult
 }
 
 // SetArgs sets field value
-func (o *ApplicationPutInstanceRequest) SetArgs(v ApplicationInstancesResultsArgs) {
+func (o *ApplicationPutInstanceRequest) SetArgs(v ApplicationCreateInstanceRequestArgs) {
 	o.Args = v
 }
 

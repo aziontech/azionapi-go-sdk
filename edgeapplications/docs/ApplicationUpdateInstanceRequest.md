@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **NullableString** |  | 
 **EdgeFunctionId** | **NullableInt64** |  | 
-**Args** | [**ApplicationInstancesResultsArgs**](ApplicationInstancesResultsArgs.md) |  | 
+**Args** | [**ApplicationCreateInstanceRequestArgs**](ApplicationCreateInstanceRequestArgs.md) |  | 
 
 ## Methods
 
 ### NewApplicationUpdateInstanceRequest
 
-`func NewApplicationUpdateInstanceRequest(name NullableString, edgeFunctionId NullableInt64, args ApplicationInstancesResultsArgs, ) *ApplicationUpdateInstanceRequest`
+`func NewApplicationUpdateInstanceRequest(name NullableString, edgeFunctionId NullableInt64, args ApplicationCreateInstanceRequestArgs, ) *ApplicationUpdateInstanceRequest`
 
 NewApplicationUpdateInstanceRequest instantiates a new ApplicationUpdateInstanceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -89,20 +89,20 @@ SetEdgeFunctionId sets EdgeFunctionId field to given value.
 UnsetEdgeFunctionId ensures that no value is present for EdgeFunctionId, not even an explicit nil
 ### GetArgs
 
-`func (o *ApplicationUpdateInstanceRequest) GetArgs() ApplicationInstancesResultsArgs`
+`func (o *ApplicationUpdateInstanceRequest) GetArgs() ApplicationCreateInstanceRequestArgs`
 
 GetArgs returns the Args field if non-nil, zero value otherwise.
 
 ### GetArgsOk
 
-`func (o *ApplicationUpdateInstanceRequest) GetArgsOk() (*ApplicationInstancesResultsArgs, bool)`
+`func (o *ApplicationUpdateInstanceRequest) GetArgsOk() (*ApplicationCreateInstanceRequestArgs, bool)`
 
 GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArgs
 
-`func (o *ApplicationUpdateInstanceRequest) SetArgs(v ApplicationInstancesResultsArgs)`
+`func (o *ApplicationUpdateInstanceRequest) SetArgs(v ApplicationCreateInstanceRequestArgs)`
 
 SetArgs sets Args field to given value.
 
