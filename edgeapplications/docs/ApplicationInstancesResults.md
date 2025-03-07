@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | 
 **EdgeFunctionId** | **int64** |  | 
 **Name** | **string** |  | 
-**Args** | [**ApplicationInstancesResultsArgs**](ApplicationInstancesResultsArgs.md) |  | 
+**Args** | **interface{}** |  | 
 
 ## Methods
 
 ### NewApplicationInstancesResults
 
-`func NewApplicationInstancesResults(id int64, edgeFunctionId int64, name string, args ApplicationInstancesResultsArgs, ) *ApplicationInstancesResults`
+`func NewApplicationInstancesResults(id int64, edgeFunctionId int64, name string, args interface{}, ) *ApplicationInstancesResults`
 
 NewApplicationInstancesResults instantiates a new ApplicationInstancesResults object
 This constructor will assign default values to properties that have it defined,
@@ -90,24 +90,34 @@ SetName sets Name field to given value.
 
 ### GetArgs
 
-`func (o *ApplicationInstancesResults) GetArgs() ApplicationInstancesResultsArgs`
+`func (o *ApplicationInstancesResults) GetArgs() interface{}`
 
 GetArgs returns the Args field if non-nil, zero value otherwise.
 
 ### GetArgsOk
 
-`func (o *ApplicationInstancesResults) GetArgsOk() (*ApplicationInstancesResultsArgs, bool)`
+`func (o *ApplicationInstancesResults) GetArgsOk() (*interface{}, bool)`
 
 GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArgs
 
-`func (o *ApplicationInstancesResults) SetArgs(v ApplicationInstancesResultsArgs)`
+`func (o *ApplicationInstancesResults) SetArgs(v interface{})`
 
 SetArgs sets Args field to given value.
 
 
+### SetArgsNil
+
+`func (o *ApplicationInstancesResults) SetArgsNil(b bool)`
+
+ SetArgsNil sets the value for Args to be an explicit nil
+
+### UnsetArgs
+`func (o *ApplicationInstancesResults) UnsetArgs()`
+
+UnsetArgs ensures that no value is present for Args, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
