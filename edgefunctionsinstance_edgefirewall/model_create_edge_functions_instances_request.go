@@ -21,7 +21,7 @@ var _ MappedNullable = &CreateEdgeFunctionsInstancesRequest{}
 type CreateEdgeFunctionsInstancesRequest struct {
 	Name *string `json:"name,omitempty"`
 	EdgeFunction *int64 `json:"edge_function,omitempty"`
-	JsonArgs *EdgeFunctionsInstanceJsonArgs `json:"json_args,omitempty"`
+	JsonArgs *CreateEdgeFunctionsInstancesRequestJsonArgs `json:"json_args,omitempty"`
 }
 
 // NewCreateEdgeFunctionsInstancesRequest instantiates a new CreateEdgeFunctionsInstancesRequest object
@@ -106,9 +106,9 @@ func (o *CreateEdgeFunctionsInstancesRequest) SetEdgeFunction(v int64) {
 }
 
 // GetJsonArgs returns the JsonArgs field value if set, zero value otherwise.
-func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgs() EdgeFunctionsInstanceJsonArgs {
+func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgs() CreateEdgeFunctionsInstancesRequestJsonArgs {
 	if o == nil || IsNil(o.JsonArgs) {
-		var ret EdgeFunctionsInstanceJsonArgs
+		var ret CreateEdgeFunctionsInstancesRequestJsonArgs
 		return ret
 	}
 	return *o.JsonArgs
@@ -116,7 +116,7 @@ func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgs() EdgeFunctionsInstanc
 
 // GetJsonArgsOk returns a tuple with the JsonArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgsOk() (*EdgeFunctionsInstanceJsonArgs, bool) {
+func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgsOk() (*CreateEdgeFunctionsInstancesRequestJsonArgs, bool) {
 	if o == nil || IsNil(o.JsonArgs) {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *CreateEdgeFunctionsInstancesRequest) HasJsonArgs() bool {
 	return false
 }
 
-// SetJsonArgs gets a reference to the given EdgeFunctionsInstanceJsonArgs and assigns it to the JsonArgs field.
-func (o *CreateEdgeFunctionsInstancesRequest) SetJsonArgs(v EdgeFunctionsInstanceJsonArgs) {
+// SetJsonArgs gets a reference to the given CreateEdgeFunctionsInstancesRequestJsonArgs and assigns it to the JsonArgs field.
+func (o *CreateEdgeFunctionsInstancesRequest) SetJsonArgs(v CreateEdgeFunctionsInstancesRequestJsonArgs) {
 	o.JsonArgs = &v
 }
 

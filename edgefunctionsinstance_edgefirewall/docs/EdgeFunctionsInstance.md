@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **LastEditor** | Pointer to **string** |  | [optional] 
 **LastModified** | Pointer to **string** |  | [optional] 
-**JsonArgs** | Pointer to [**EdgeFunctionsInstanceJsonArgs**](EdgeFunctionsInstanceJsonArgs.md) |  | [optional] 
+**JsonArgs** | Pointer to **interface{}** |  | [optional] 
 **EdgeFunction** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -132,20 +132,20 @@ HasLastModified returns a boolean if a field has been set.
 
 ### GetJsonArgs
 
-`func (o *EdgeFunctionsInstance) GetJsonArgs() EdgeFunctionsInstanceJsonArgs`
+`func (o *EdgeFunctionsInstance) GetJsonArgs() interface{}`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *EdgeFunctionsInstance) GetJsonArgsOk() (*EdgeFunctionsInstanceJsonArgs, bool)`
+`func (o *EdgeFunctionsInstance) GetJsonArgsOk() (*interface{}, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *EdgeFunctionsInstance) SetJsonArgs(v EdgeFunctionsInstanceJsonArgs)`
+`func (o *EdgeFunctionsInstance) SetJsonArgs(v interface{})`
 
 SetJsonArgs sets JsonArgs field to given value.
 
@@ -155,6 +155,16 @@ SetJsonArgs sets JsonArgs field to given value.
 
 HasJsonArgs returns a boolean if a field has been set.
 
+### SetJsonArgsNil
+
+`func (o *EdgeFunctionsInstance) SetJsonArgsNil(b bool)`
+
+ SetJsonArgsNil sets the value for JsonArgs to be an explicit nil
+
+### UnsetJsonArgs
+`func (o *EdgeFunctionsInstance) UnsetJsonArgs()`
+
+UnsetJsonArgs ensures that no value is present for JsonArgs, not even an explicit nil
 ### GetEdgeFunction
 
 `func (o *EdgeFunctionsInstance) GetEdgeFunction() int64`

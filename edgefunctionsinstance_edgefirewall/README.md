@@ -89,8 +89,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CreateEdgeFunctionsInstancesRequest](docs/CreateEdgeFunctionsInstancesRequest.md)
+ - [CreateEdgeFunctionsInstancesRequestJsonArgs](docs/CreateEdgeFunctionsInstancesRequestJsonArgs.md)
  - [EdgeFunctionsInstance](docs/EdgeFunctionsInstance.md)
- - [EdgeFunctionsInstanceJsonArgs](docs/EdgeFunctionsInstanceJsonArgs.md)
  - [EdgeFunctionsInstanceResponse](docs/EdgeFunctionsInstanceResponse.md)
  - [Links](docs/Links.md)
  - [ListEdgeFunctionsInstancesResponse](docs/ListEdgeFunctionsInstancesResponse.md)

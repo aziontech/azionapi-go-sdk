@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **EdgeFunction** | Pointer to **int64** |  | [optional] 
-**JsonArgs** | Pointer to [**EdgeFunctionsInstanceJsonArgs**](EdgeFunctionsInstanceJsonArgs.md) |  | [optional] 
+**JsonArgs** | Pointer to [**CreateEdgeFunctionsInstancesRequestJsonArgs**](CreateEdgeFunctionsInstancesRequestJsonArgs.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasEdgeFunction returns a boolean if a field has been set.
 
 ### GetJsonArgs
 
-`func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgs() EdgeFunctionsInstanceJsonArgs`
+`func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgs() CreateEdgeFunctionsInstancesRequestJsonArgs`
 
 GetJsonArgs returns the JsonArgs field if non-nil, zero value otherwise.
 
 ### GetJsonArgsOk
 
-`func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgsOk() (*EdgeFunctionsInstanceJsonArgs, bool)`
+`func (o *CreateEdgeFunctionsInstancesRequest) GetJsonArgsOk() (*CreateEdgeFunctionsInstancesRequestJsonArgs, bool)`
 
 GetJsonArgsOk returns a tuple with the JsonArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJsonArgs
 
-`func (o *CreateEdgeFunctionsInstancesRequest) SetJsonArgs(v EdgeFunctionsInstanceJsonArgs)`
+`func (o *CreateEdgeFunctionsInstancesRequest) SetJsonArgs(v CreateEdgeFunctionsInstancesRequestJsonArgs)`
 
 SetJsonArgs sets JsonArgs field to given value.
 
