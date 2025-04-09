@@ -3673,11 +3673,11 @@ components:
           previous: previous
         total_pages: 6
         results:
-        - args: {}
+        - args: ""
           edge_function_id: 5
           name: name
           id: 5
-        - args: {}
+        - args: ""
           edge_function_id: 5
           name: name
           id: 5
@@ -3709,7 +3709,7 @@ components:
       example:
         schema_version: 0
         results:
-          args: {}
+          args: ""
           edge_function_id: 5
           name: name
           id: 5
@@ -3725,7 +3725,7 @@ components:
       type: object
     ApplicationInstancesResults:
       example:
-        args: {}
+        args: ""
         edge_function_id: 5
         name: name
         id: 5
@@ -3746,7 +3746,7 @@ components:
       - name
     ApplicationCreateInstanceRequest:
       example:
-        args: {}
+        args: ""
         edge_function_id: 0
         name: name
       properties:
@@ -3755,15 +3755,14 @@ components:
         edge_function_id:
           format: int64
           type: integer
-        args:
-          $ref: '#/components/schemas/ApplicationCreateInstanceRequest_args'
+        args: {}
       required:
       - args
       - edge_function_id
       - name
     ApplicationPutInstanceRequest:
       example:
-        args: {}
+        args: ""
         edge_function_id: 0
         name: name
       properties:
@@ -3772,15 +3771,14 @@ components:
         edge_function_id:
           format: int64
           type: integer
-        args:
-          $ref: '#/components/schemas/ApplicationCreateInstanceRequest_args'
+        args: {}
       required:
       - args
       - edge_function_id
       - name
     ApplicationUpdateInstanceRequest:
       example:
-        args: {}
+        args: ""
         edge_function_id: 0
         name: name
       properties:
@@ -3791,8 +3789,7 @@ components:
           format: int64
           nullable: true
           type: integer
-        args:
-          $ref: '#/components/schemas/ApplicationCreateInstanceRequest_args'
+        args: {}
       required:
       - args
       - edge_function_id
@@ -3802,7 +3799,7 @@ components:
       example:
         schema_version: 0
         results:
-          args: {}
+          args: ""
           edge_function_id: 5
           name: name
           id: 5
@@ -3818,7 +3815,7 @@ components:
       example:
         addresses:
         - address: address
-          weight: 1
+        - address: address
         hmac_secret_key: hmac_secret_key
         origin_path: origin_path
         origin_protocol_policy: origin_protocol_policy
@@ -3959,11 +3956,11 @@ components:
         addresses:
         - address: address
           is_active: true
-          weight: 1
+          weight: weight
           server_role: server_role
         - address: address
           is_active: true
-          weight: 1
+          weight: weight
           server_role: server_role
         hmac_secret_key: hmac_secret_key
         method: method
@@ -4040,11 +4037,11 @@ components:
           addresses:
           - address: address
             is_active: true
-            weight: 1
+            weight: weight
             server_role: server_role
           - address: address
             is_active: true
-            weight: 1
+            weight: weight
             server_role: server_role
           hmac_secret_key: hmac_secret_key
           method: method
@@ -4066,11 +4063,11 @@ components:
           addresses:
           - address: address
             is_active: true
-            weight: 1
+            weight: weight
             server_role: server_role
           - address: address
             is_active: true
-            weight: 1
+            weight: weight
             server_role: server_role
           hmac_secret_key: hmac_secret_key
           method: method
@@ -4118,11 +4115,11 @@ components:
           addresses:
           - address: address
             is_active: true
-            weight: 1
+            weight: weight
             server_role: server_role
           - address: address
             is_active: true
-            weight: 1
+            weight: weight
             server_role: server_role
           hmac_secret_key: hmac_secret_key
           method: method
@@ -4671,23 +4668,8 @@ components:
     CreateOriginsRequest_addresses:
       example:
         address: address
-        is_active: true
-        weight: 1
-        server_role: primary
       properties:
         address:
-          type: string
-        is_active:
-          type: boolean
-        weight:
-          format: int64
-          maximum: 100
-          minimum: 1
-          type: integer
-        server_role:
-          maxLength: 10
-          minLength: 1
-          pattern: ^(primary|backup)$
           type: string
       required:
       - address
@@ -4696,16 +4678,14 @@ components:
       example:
         address: address
         is_active: true
-        weight: 1
-        server_role: primary
+        weight: weight
+        server_role: server_role
       properties:
         address:
           type: string
         weight:
-          format: int64
-          maximum: 100
-          minimum: 1
-          type: integer
+          nullable: true
+          type: string
         server_role:
           type: string
         is_active:
@@ -4740,12 +4720,6 @@ components:
           nullable: true
           type: string
       type: object
-    ApplicationCreateInstanceRequest_args:
-      oneOf:
-      - type: object
-      - items:
-          type: object
-        type: array
     RulesEngineBehaviorObject_target:
       properties:
         captured_array:

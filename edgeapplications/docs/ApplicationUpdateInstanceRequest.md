@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **NullableString** |  | 
 **EdgeFunctionId** | **NullableInt64** |  | 
-**Args** | [**ApplicationCreateInstanceRequestArgs**](ApplicationCreateInstanceRequestArgs.md) |  | 
+**Args** | **interface{}** |  | 
 
 ## Methods
 
 ### NewApplicationUpdateInstanceRequest
 
-`func NewApplicationUpdateInstanceRequest(name NullableString, edgeFunctionId NullableInt64, args ApplicationCreateInstanceRequestArgs, ) *ApplicationUpdateInstanceRequest`
+`func NewApplicationUpdateInstanceRequest(name NullableString, edgeFunctionId NullableInt64, args interface{}, ) *ApplicationUpdateInstanceRequest`
 
 NewApplicationUpdateInstanceRequest instantiates a new ApplicationUpdateInstanceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -89,24 +89,34 @@ SetEdgeFunctionId sets EdgeFunctionId field to given value.
 UnsetEdgeFunctionId ensures that no value is present for EdgeFunctionId, not even an explicit nil
 ### GetArgs
 
-`func (o *ApplicationUpdateInstanceRequest) GetArgs() ApplicationCreateInstanceRequestArgs`
+`func (o *ApplicationUpdateInstanceRequest) GetArgs() interface{}`
 
 GetArgs returns the Args field if non-nil, zero value otherwise.
 
 ### GetArgsOk
 
-`func (o *ApplicationUpdateInstanceRequest) GetArgsOk() (*ApplicationCreateInstanceRequestArgs, bool)`
+`func (o *ApplicationUpdateInstanceRequest) GetArgsOk() (*interface{}, bool)`
 
 GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArgs
 
-`func (o *ApplicationUpdateInstanceRequest) SetArgs(v ApplicationCreateInstanceRequestArgs)`
+`func (o *ApplicationUpdateInstanceRequest) SetArgs(v interface{})`
 
 SetArgs sets Args field to given value.
 
 
+### SetArgsNil
+
+`func (o *ApplicationUpdateInstanceRequest) SetArgsNil(b bool)`
+
+ SetArgsNil sets the value for Args to be an explicit nil
+
+### UnsetArgs
+`func (o *ApplicationUpdateInstanceRequest) UnsetArgs()`
+
+UnsetArgs ensures that no value is present for Args, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
