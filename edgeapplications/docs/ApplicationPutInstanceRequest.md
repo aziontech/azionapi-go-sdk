@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **EdgeFunctionId** | **int64** |  | 
-**Args** | [**ApplicationCreateInstanceRequestArgs**](ApplicationCreateInstanceRequestArgs.md) |  | 
+**Args** | **interface{}** |  | 
 
 ## Methods
 
 ### NewApplicationPutInstanceRequest
 
-`func NewApplicationPutInstanceRequest(name string, edgeFunctionId int64, args ApplicationCreateInstanceRequestArgs, ) *ApplicationPutInstanceRequest`
+`func NewApplicationPutInstanceRequest(name string, edgeFunctionId int64, args interface{}, ) *ApplicationPutInstanceRequest`
 
 NewApplicationPutInstanceRequest instantiates a new ApplicationPutInstanceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -69,24 +69,34 @@ SetEdgeFunctionId sets EdgeFunctionId field to given value.
 
 ### GetArgs
 
-`func (o *ApplicationPutInstanceRequest) GetArgs() ApplicationCreateInstanceRequestArgs`
+`func (o *ApplicationPutInstanceRequest) GetArgs() interface{}`
 
 GetArgs returns the Args field if non-nil, zero value otherwise.
 
 ### GetArgsOk
 
-`func (o *ApplicationPutInstanceRequest) GetArgsOk() (*ApplicationCreateInstanceRequestArgs, bool)`
+`func (o *ApplicationPutInstanceRequest) GetArgsOk() (*interface{}, bool)`
 
 GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArgs
 
-`func (o *ApplicationPutInstanceRequest) SetArgs(v ApplicationCreateInstanceRequestArgs)`
+`func (o *ApplicationPutInstanceRequest) SetArgs(v interface{})`
 
 SetArgs sets Args field to given value.
 
 
+### SetArgsNil
+
+`func (o *ApplicationPutInstanceRequest) SetArgsNil(b bool)`
+
+ SetArgsNil sets the value for Args to be an explicit nil
+
+### UnsetArgs
+`func (o *ApplicationPutInstanceRequest) UnsetArgs()`
+
+UnsetArgs ensures that no value is present for Args, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

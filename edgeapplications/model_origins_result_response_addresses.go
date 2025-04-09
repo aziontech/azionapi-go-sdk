@@ -22,7 +22,7 @@ var _ MappedNullable = &OriginsResultResponseAddresses{}
 // OriginsResultResponseAddresses struct for OriginsResultResponseAddresses
 type OriginsResultResponseAddresses struct {
 	Address string `json:"address"`
-	Weight int64 `json:"weight"`
+	Weight NullableString `json:"weight"`
 	ServerRole string `json:"server_role"`
 	IsActive bool `json:"is_active"`
 }
@@ -33,7 +33,7 @@ type _OriginsResultResponseAddresses OriginsResultResponseAddresses
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOriginsResultResponseAddresses(address string, weight int64, serverRole string, isActive bool) *OriginsResultResponseAddresses {
+func NewOriginsResultResponseAddresses(address string, weight NullableString, serverRole string, isActive bool) *OriginsResultResponseAddresses {
 	this := OriginsResultResponseAddresses{}
 	this.Address = address
 	this.Weight = weight
@@ -75,27 +75,29 @@ func (o *OriginsResultResponseAddresses) SetAddress(v string) {
 }
 
 // GetWeight returns the Weight field value
-func (o *OriginsResultResponseAddresses) GetWeight() int64 {
-	if o == nil {
-		var ret int64
+// If the value is explicit nil, the zero value for string will be returned
+func (o *OriginsResultResponseAddresses) GetWeight() string {
+	if o == nil || o.Weight.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.Weight
+	return *o.Weight.Get()
 }
 
 // GetWeightOk returns a tuple with the Weight field value
 // and a boolean to check if the value has been set.
-func (o *OriginsResultResponseAddresses) GetWeightOk() (*int64, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OriginsResultResponseAddresses) GetWeightOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Weight, true
+	return o.Weight.Get(), o.Weight.IsSet()
 }
 
 // SetWeight sets field value
-func (o *OriginsResultResponseAddresses) SetWeight(v int64) {
-	o.Weight = v
+func (o *OriginsResultResponseAddresses) SetWeight(v string) {
+	o.Weight.Set(&v)
 }
 
 // GetServerRole returns the ServerRole field value
@@ -157,7 +159,7 @@ func (o OriginsResultResponseAddresses) MarshalJSON() ([]byte, error) {
 func (o OriginsResultResponseAddresses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["address"] = o.Address
-	toSerialize["weight"] = o.Weight
+	toSerialize["weight"] = o.Weight.Get()
 	toSerialize["server_role"] = o.ServerRole
 	toSerialize["is_active"] = o.IsActive
 	return toSerialize, nil
