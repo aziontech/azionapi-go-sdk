@@ -4,19 +4,19 @@ All URIs are relative to *https://api.azion.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**StorageApiBucketsCreate**](StorageAPI.md#StorageApiBucketsCreate) | **Post** /v4/storage/buckets | Create a new bucket
-[**StorageApiBucketsDestroy**](StorageAPI.md#StorageApiBucketsDestroy) | **Delete** /v4/storage/buckets/{name} | Delete a bucket
-[**StorageApiBucketsList**](StorageAPI.md#StorageApiBucketsList) | **Get** /v4/storage/buckets | List buckets
-[**StorageApiBucketsObjectsCreate**](StorageAPI.md#StorageApiBucketsObjectsCreate) | **Post** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Create new object key
-[**StorageApiBucketsObjectsDestroy**](StorageAPI.md#StorageApiBucketsObjectsDestroy) | **Delete** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Delete object key
-[**StorageApiBucketsObjectsList**](StorageAPI.md#StorageApiBucketsObjectsList) | **Get** /v4/storage/buckets/{bucket_name}/objects | List buckets objects
-[**StorageApiBucketsObjectsRetrieve**](StorageAPI.md#StorageApiBucketsObjectsRetrieve) | **Get** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Download object
-[**StorageApiBucketsObjectsUpdate**](StorageAPI.md#StorageApiBucketsObjectsUpdate) | **Put** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Update the object key
-[**StorageApiBucketsPartialUpdate**](StorageAPI.md#StorageApiBucketsPartialUpdate) | **Patch** /v4/storage/buckets/{name} | Update bucket info
-[**StorageApiS3CredentialsByAccessKey**](StorageAPI.md#StorageApiS3CredentialsByAccessKey) | **Get** /v4/storage/s3-credentials/{s3_credential_access_key} | get by s3 credentials by access key
-[**StorageApiS3CredentialsCreate**](StorageAPI.md#StorageApiS3CredentialsCreate) | **Post** /v4/storage/s3-credentials | create s3 credentials
-[**StorageApiS3CredentialsDelete**](StorageAPI.md#StorageApiS3CredentialsDelete) | **Delete** /v4/storage/s3-credentials/{s3_credential_access_key} | delete by s3 credentials
-[**StorageApiS3CredentialsList**](StorageAPI.md#StorageApiS3CredentialsList) | **Get** /v4/storage/s3-credentials | List s3 credentials
+[**StorageApiBucketsCreate**](StorageAPI.md#StorageApiBucketsCreate) | **Post** /v4/edge_storage/buckets | Create a new bucket
+[**StorageApiBucketsDestroy**](StorageAPI.md#StorageApiBucketsDestroy) | **Delete** /v4/edge_storage/buckets/{name} | Delete a bucket
+[**StorageApiBucketsList**](StorageAPI.md#StorageApiBucketsList) | **Get** /v4/edge_storage/buckets | List buckets
+[**StorageApiBucketsObjectsCreate**](StorageAPI.md#StorageApiBucketsObjectsCreate) | **Post** /v4/edge_storage/buckets/{bucket_name}/objects/{object_key} | Create new object key
+[**StorageApiBucketsObjectsDestroy**](StorageAPI.md#StorageApiBucketsObjectsDestroy) | **Delete** /v4/edge_storage/buckets/{bucket_name}/objects/{object_key} | Delete object key
+[**StorageApiBucketsObjectsList**](StorageAPI.md#StorageApiBucketsObjectsList) | **Get** /v4/edge_storage/buckets/{bucket_name}/objects | List buckets objects
+[**StorageApiBucketsObjectsRetrieve**](StorageAPI.md#StorageApiBucketsObjectsRetrieve) | **Get** /v4/edge_storage/buckets/{bucket_name}/objects/{object_key} | Download object
+[**StorageApiBucketsObjectsUpdate**](StorageAPI.md#StorageApiBucketsObjectsUpdate) | **Put** /v4/edge_storage/buckets/{bucket_name}/objects/{object_key} | Update the object key
+[**StorageApiBucketsPartialUpdate**](StorageAPI.md#StorageApiBucketsPartialUpdate) | **Patch** /v4/edge_storage/buckets/{name} | Update bucket info
+[**StorageApiS3CredentialsByAccessKey**](StorageAPI.md#StorageApiS3CredentialsByAccessKey) | **Get** /v4/edge_storage/s3-credentials/{s3_credential_access_key} | get by s3 credentials by access key
+[**StorageApiS3CredentialsCreate**](StorageAPI.md#StorageApiS3CredentialsCreate) | **Post** /v4/edge_storage/s3-credentials | create s3 credentials
+[**StorageApiS3CredentialsDelete**](StorageAPI.md#StorageApiS3CredentialsDelete) | **Delete** /v4/edge_storage/s3-credentials/{s3_credential_access_key} | delete by s3 credentials
+[**StorageApiS3CredentialsList**](StorageAPI.md#StorageApiS3CredentialsList) | **Get** /v4/edge_storage/s3-credentials | List s3 credentials
 
 
 

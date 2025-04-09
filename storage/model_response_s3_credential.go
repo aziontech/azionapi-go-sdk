@@ -19,7 +19,7 @@ var _ MappedNullable = &ResponseS3Credential{}
 
 // ResponseS3Credential struct for ResponseS3Credential
 type ResponseS3Credential struct {
-	State *string `json:"state,omitempty"`
+	State *string `json:"state,omitempty" validate:"regexp=.*"`
 	Data *S3Credential `json:"data,omitempty"`
 }
 

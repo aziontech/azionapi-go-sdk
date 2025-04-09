@@ -22,7 +22,7 @@ type PaginatedBucketObjectList struct {
 	Count *int32 `json:"count,omitempty"`
 	Next NullableString `json:"next,omitempty"`
 	Previous NullableString `json:"previous,omitempty"`
-	ContinuationToken NullableString `json:"continuation_token,omitempty"`
+	ContinuationToken NullableString `json:"continuation_token,omitempty" validate:"regexp=.*"`
 	Results []BucketObject `json:"results,omitempty"`
 }
 
