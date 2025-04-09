@@ -69,7 +69,7 @@ func (a *StorageAPIService) StorageApiBucketsCreateExecute(r ApiStorageApiBucket
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -190,7 +190,7 @@ func (a *StorageAPIService) StorageApiBucketsDestroyExecute(r ApiStorageApiBucke
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets/{name}"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterValueToString(r.name, "name")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -318,17 +318,17 @@ func (a *StorageAPIService) StorageApiBucketsListExecute(r ApiStorageApiBucketsL
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -456,7 +456,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsCreateExecute(r ApiStorageAp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets/{bucket_name}/objects/{object_key}"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets/{bucket_name}/objects/{object_key}"
 	localVarPath = strings.Replace(localVarPath, "{"+"bucket_name"+"}", url.PathEscape(parameterValueToString(r.bucketName, "bucketName")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"object_key"+"}", url.PathEscape(parameterValueToString(r.objectKey, "objectKey")), -1)
 
@@ -482,7 +482,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsCreateExecute(r ApiStorageAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -582,7 +582,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsDestroyExecute(r ApiStorageA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets/{bucket_name}/objects/{object_key}"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets/{bucket_name}/objects/{object_key}"
 	localVarPath = strings.Replace(localVarPath, "{"+"bucket_name"+"}", url.PathEscape(parameterValueToString(r.bucketName, "bucketName")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"object_key"+"}", url.PathEscape(parameterValueToString(r.objectKey, "objectKey")), -1)
 
@@ -714,7 +714,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsListExecute(r ApiStorageApiB
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets/{bucket_name}/objects"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets/{bucket_name}/objects"
 	localVarPath = strings.Replace(localVarPath, "{"+"bucket_name"+"}", url.PathEscape(parameterValueToString(r.bucketName, "bucketName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -722,10 +722,10 @@ func (a *StorageAPIService) StorageApiBucketsObjectsListExecute(r ApiStorageApiB
 	localVarFormParams := url.Values{}
 
 	if r.continuationToken != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation_token", r.continuationToken, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation_token", r.continuationToken, "form", "")
 	}
 	if r.maxObjectCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "max_object_count", r.maxObjectCount, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_object_count", r.maxObjectCount, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -838,7 +838,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsRetrieveExecute(r ApiStorage
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets/{bucket_name}/objects/{object_key}"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets/{bucket_name}/objects/{object_key}"
 	localVarPath = strings.Replace(localVarPath, "{"+"bucket_name"+"}", url.PathEscape(parameterValueToString(r.bucketName, "bucketName")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"object_key"+"}", url.PathEscape(parameterValueToString(r.objectKey, "objectKey")), -1)
 
@@ -963,7 +963,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsUpdateExecute(r ApiStorageAp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets/{bucket_name}/objects/{object_key}"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets/{bucket_name}/objects/{object_key}"
 	localVarPath = strings.Replace(localVarPath, "{"+"bucket_name"+"}", url.PathEscape(parameterValueToString(r.bucketName, "bucketName")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"object_key"+"}", url.PathEscape(parameterValueToString(r.objectKey, "objectKey")), -1)
 
@@ -989,7 +989,7 @@ func (a *StorageAPIService) StorageApiBucketsObjectsUpdateExecute(r ApiStorageAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.body
@@ -1092,7 +1092,7 @@ func (a *StorageAPIService) StorageApiBucketsPartialUpdateExecute(r ApiStorageAp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/buckets/{name}"
+	localVarPath := localBasePath + "/v4/edge_storage/buckets/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterValueToString(r.name, "name")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1211,7 +1211,7 @@ func (a *StorageAPIService) StorageApiS3CredentialsByAccessKeyExecute(r ApiStora
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/s3-credentials/{s3_credential_access_key}"
+	localVarPath := localBasePath + "/v4/edge_storage/s3-credentials/{s3_credential_access_key}"
 	localVarPath = strings.Replace(localVarPath, "{"+"s3_credential_access_key"+"}", url.PathEscape(parameterValueToString(r.s3CredentialAccessKey, "s3CredentialAccessKey")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1331,7 +1331,7 @@ func (a *StorageAPIService) StorageApiS3CredentialsCreateExecute(r ApiStorageApi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/s3-credentials"
+	localVarPath := localBasePath + "/v4/edge_storage/s3-credentials"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1452,7 +1452,7 @@ func (a *StorageAPIService) StorageApiS3CredentialsDeleteExecute(r ApiStorageApi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/s3-credentials/{s3_credential_access_key}"
+	localVarPath := localBasePath + "/v4/edge_storage/s3-credentials/{s3_credential_access_key}"
 	localVarPath = strings.Replace(localVarPath, "{"+"s3_credential_access_key"+"}", url.PathEscape(parameterValueToString(r.s3CredentialAccessKey, "s3CredentialAccessKey")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1594,23 +1594,23 @@ func (a *StorageAPIService) StorageApiS3CredentialsListExecute(r ApiStorageApiS3
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v4/storage/s3-credentials"
+	localVarPath := localBasePath + "/v4/edge_storage/s3-credentials"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.key != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
 	}
 	if r.lastModified != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified", r.lastModified, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_modified", r.lastModified, "form", "")
 	}
 	if r.size != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "form", "")
 	}
 	if r.continuationToken != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation_token", r.continuationToken, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continuation_token", r.continuationToken, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

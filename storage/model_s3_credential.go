@@ -20,13 +20,13 @@ var _ MappedNullable = &S3Credential{}
 
 // S3Credential struct for S3Credential
 type S3Credential struct {
-	Name *string `json:"name,omitempty"`
-	AccessKey *string `json:"access_key,omitempty"`
-	SecretKey *string `json:"secret_key,omitempty"`
+	Name *string `json:"name,omitempty" validate:"regexp=.*"`
+	AccessKey *string `json:"access_key,omitempty" validate:"regexp=.*"`
+	SecretKey *string `json:"secret_key,omitempty" validate:"regexp=.*"`
 	Capabilities []string `json:"capabilities,omitempty"`
-	Bucket *string `json:"bucket,omitempty"`
-	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Bucket *string `json:"bucket,omitempty" validate:"regexp=.*"`
+	ExpirationDate *time.Time `json:"expiration_date,omitempty" validate:"regexp=.*"`
+	CreatedAt *time.Time `json:"created_at,omitempty" validate:"regexp=.*"`
 }
 
 // NewS3Credential instantiates a new S3Credential object

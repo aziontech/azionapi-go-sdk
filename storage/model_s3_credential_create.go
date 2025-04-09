@@ -20,10 +20,10 @@ var _ MappedNullable = &S3CredentialCreate{}
 
 // S3CredentialCreate struct for S3CredentialCreate
 type S3CredentialCreate struct {
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" validate:"regexp=.*"`
 	Capabilities []string `json:"capabilities,omitempty"`
-	Bucket *string `json:"bucket,omitempty"`
-	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
+	Bucket *string `json:"bucket,omitempty" validate:"regexp=.*"`
+	ExpirationDate *time.Time `json:"expiration_date,omitempty" validate:"regexp=.*"`
 }
 
 // NewS3CredentialCreate instantiates a new S3CredentialCreate object

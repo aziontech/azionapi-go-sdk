@@ -10,7 +10,7 @@ servers:
 - description: Production
   url: https://api.azion.com
 paths:
-  /v4/storage/buckets:
+  /v4/edge_storage/buckets:
     get:
       description: ""
       operationId: storage_api_buckets_list
@@ -100,7 +100,7 @@ paths:
       summary: Create a new bucket
       tags:
       - storage
-  /v4/storage/buckets/{bucket_name}/objects:
+  /v4/edge_storage/buckets/{bucket_name}/objects:
     get:
       description: ""
       operationId: storage_api_buckets_objects_list
@@ -152,7 +152,7 @@ paths:
       summary: List buckets objects
       tags:
       - storage
-  /v4/storage/buckets/{bucket_name}/objects/{object_key}:
+  /v4/edge_storage/buckets/{bucket_name}/objects/{object_key}:
     delete:
       description: Delete an object key from bucket
       operationId: storage_api_buckets_objects_destroy
@@ -363,7 +363,7 @@ paths:
       summary: Update the object key
       tags:
       - storage
-  /v4/storage/buckets/{name}:
+  /v4/edge_storage/buckets/{name}:
     delete:
       description: ""
       operationId: storage_api_buckets_destroy
@@ -445,7 +445,7 @@ paths:
       summary: Update bucket info
       tags:
       - storage
-  /v4/storage/s3-credentials:
+  /v4/edge_storage/s3-credentials:
     get:
       description: ""
       operationId: storage_api_s3_credentials_list
@@ -541,7 +541,7 @@ paths:
       summary: create s3 credentials
       tags:
       - storage
-  /v4/storage/s3-credentials/{s3_credential_access_key}:
+  /v4/edge_storage/s3-credentials/{s3_credential_access_key}:
     delete:
       description: ""
       operationId: storage_api_s3_credentials_delete
