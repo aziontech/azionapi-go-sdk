@@ -18,6 +18,7 @@ import (
 
 // RulesEngineBehaviorEntry struct for RulesEngineBehaviorEntry
 type RulesEngineBehaviorEntry struct {
+	RulesEngineBehaviorInteger *RulesEngineBehaviorInteger
 	RulesEngineBehaviorObject *RulesEngineBehaviorObject
 	RulesEngineBehaviorString *RulesEngineBehaviorString
 }
@@ -25,6 +26,19 @@ type RulesEngineBehaviorEntry struct {
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *RulesEngineBehaviorEntry) UnmarshalJSON(data []byte) error {
 	var err error
+	// try to unmarshal JSON data into RulesEngineBehaviorInteger
+	err = json.Unmarshal(data, &dst.RulesEngineBehaviorInteger);
+	if err == nil {
+		jsonRulesEngineBehaviorInteger, _ := json.Marshal(dst.RulesEngineBehaviorInteger)
+		if string(jsonRulesEngineBehaviorInteger) == "{}" { // empty struct
+			dst.RulesEngineBehaviorInteger = nil
+		} else {
+			return nil // data stored in dst.RulesEngineBehaviorInteger, return on the first match
+		}
+	} else {
+		dst.RulesEngineBehaviorInteger = nil
+	}
+
 	// try to unmarshal JSON data into RulesEngineBehaviorObject
 	err = json.Unmarshal(data, &dst.RulesEngineBehaviorObject);
 	if err == nil {
@@ -56,6 +70,10 @@ func (dst *RulesEngineBehaviorEntry) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src RulesEngineBehaviorEntry) MarshalJSON() ([]byte, error) {
+	if src.RulesEngineBehaviorInteger != nil {
+		return json.Marshal(&src.RulesEngineBehaviorInteger)
+	}
+
 	if src.RulesEngineBehaviorObject != nil {
 		return json.Marshal(&src.RulesEngineBehaviorObject)
 	}
