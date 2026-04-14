@@ -1,6 +1,6 @@
 module github.com/aziontech/azionapi-go-sdk
 
-go 1.24.0
+go 1.79.3
 
 require (
 	github.com/stretchr/testify v1.4.0
