@@ -1,23 +1,27 @@
+name: Bump Version
+
 on:
   push:
     branches:
       - main
 
+# Least-privilege by default; the job elevates only what it needs.
+permissions: {}
+
 jobs:
   build:
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write # required to push the new version tag
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
 
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.37.0
+        uses: anothrNick/github-tag-action@3272e7a58f6c71ee9ede35f53b114e1bb9a91347 # 1.37.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCHES: main
